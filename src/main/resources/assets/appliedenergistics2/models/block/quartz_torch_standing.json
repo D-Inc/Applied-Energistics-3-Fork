@@ -1,4 +1,9 @@
 {
+    "textures": {
+        "particle": "appliedenergistics2:blocks/quartz_torch",
+        "metal": "appliedenergistics2:blocks/quartz_torch_metal",
+        "quartz": "appliedenergistics2:blocks/quartz_torch"
+    },
     "elements": [
         {
             "faces": {
@@ -297,9 +302,5 @@
                 10.0
             ]
         }
-    ],
-    "textures": {
-        "metal": "appliedenergistics2:blocks/quartz_torch_metal",
-        "quartz": "appliedenergistics2:blocks/quartz_torch"
-    }
+    ]
 }

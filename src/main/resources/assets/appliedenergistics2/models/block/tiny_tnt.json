@@ -1,7 +1,23 @@
 {
-    "__comment": "Model generated using MrCrayfish's Model Creator (http://mrcrayfish.com/modelcreator/)",
+    "textures": {
+        "particle": "blocks/tnt_bottom",
+        "0": "blocks/tnt_side",
+        "1": "blocks/tnt_top",
+        "2": "blocks/tnt_bottom"
+    },
     "elements": [
         {
+            "name": "Cube",
+            "from": [
+                4.0,
+                0.0,
+                4.0
+            ],
+            "to": [
+                12.0,
+                8.0,
+                12.0
+            ],
             "faces": {
                 "down": {
                     "texture": "#2",
@@ -57,24 +73,7 @@
                         16.0
                     ]
                 }
-            },
-            "from": [
-                4.0,
-                0.0,
-                4.0
-            ],
-            "name": "Cube",
-            "to": [
-                12.0,
-                8.0,
-                12.0
-            ]
+            }
         }
-    ],
-    "parent": "block/block",
-    "textures": {
-        "0": "blocks/tnt_side",
-        "1": "blocks/tnt_top",
-        "2": "blocks/tnt_bottom"
-    }
+    ]
 }

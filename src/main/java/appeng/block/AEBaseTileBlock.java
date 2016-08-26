@@ -21,6 +21,7 @@ package appeng.block;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
@@ -98,10 +99,7 @@ public abstract class AEBaseTileBlock extends AEBaseBlock implements ITileEntity
 	@Override
 	protected BlockStateContainer createBlockState()
 	{
-		return new ExtendedBlockState( this, getAEStates(), new IUnlistedProperty[] {
-				FORWARD,
-				UP
-		} );
+		return new ExtendedBlockState( this, getAEStates(), new IUnlistedProperty[] { FORWARD, UP } );
 	}
 
 	@Override

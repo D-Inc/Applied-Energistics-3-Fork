@@ -1,5 +1,9 @@
 {
-    "__comment": "Model generated using MrCrayfish's Model Creator (http://mrcrayfish.com/modelcreator/)",
+    "textures": {
+        "particle": "appliedenergistics2:blocks/wireless_inside",
+        "0": "appliedenergistics2:blocks/wireless_inside",
+        "1": "appliedenergistics2:blocks/wireless"
+    },
     "elements": [
         {
             "faces": {
@@ -760,9 +764,5 @@
                 9.0
             ]
         }
-    ],
-    "textures": {
-        "0": "appliedenergistics2:blocks/wireless_inside",
-        "1": "appliedenergistics2:blocks/wireless"
-    }
+    ]
 }

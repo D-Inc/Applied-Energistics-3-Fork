@@ -1,5 +1,9 @@
 {
-    "__comment": "Model generated using MrCrayfish's Model Creator (http://mrcrayfish.com/modelcreator/)",
+    "parent": "block/orientable",
+    "textures": {
+        "particle": "appliedenergistics2:blocks/inscriber",
+        "0": "appliedenergistics2:blocks/inscriber"
+    },
     "elements": [
         {
             "faces": {
@@ -484,9 +488,5 @@
                 16.0
             ]
         }
-    ],
-    "parent": "block/orientable",
-    "textures": {
-        "0": "appliedenergistics2:blocks/inscriber"
-    }
+    ]
 }

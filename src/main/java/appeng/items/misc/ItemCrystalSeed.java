@@ -21,6 +21,7 @@ package appeng.items.misc;
 
 import java.util.List;
 import java.util.Optional;
+
 import javax.annotation.Nullable;
 
 import net.minecraft.block.Block;
@@ -68,14 +69,11 @@ public class ItemCrystalSeed extends AEBaseItem implements IGrowableCrystal
 	public static ResolverResult getResolver( final int certus2 )
 	{
 
-		return AEApi.instance().definitions().items().crystalSeed().maybeStack( 1 )
-				.map( crystalSeedStack ->
-				{
-					crystalSeedStack.setItemDamage( certus2 );
-					crystalSeedStack = newStyle( crystalSeedStack );
-					return new ResolverResult( "ItemCrystalSeed", crystalSeedStack.getItemDamage(), crystalSeedStack.getTagCompound() );
-				} )
-				.orElse( null );
+		return AEApi.instance().definitions().items().crystalSeed().maybeStack( 1 ).map( crystalSeedStack -> {
+			crystalSeedStack.setItemDamage( certus2 );
+			crystalSeedStack = newStyle( crystalSeedStack );
+			return new ResolverResult( "ItemCrystalSeed", crystalSeedStack.getItemDamage(), crystalSeedStack.getTagCompound() );
+		} ).orElse( null );
 
 	}
 
@@ -229,7 +227,7 @@ public class ItemCrystalSeed extends AEBaseItem implements IGrowableCrystal
 
 		// Cannot read the pickup delay of the original item, so we
 		// use the pickup delay used for items dropped by a player instead
-		egc.setPickupDelay(40);
+		egc.setPickupDelay( 40 );
 
 		return egc;
 	}
