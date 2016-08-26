@@ -54,7 +54,6 @@ public final class AEConfig extends Configuration implements IConfigurableObject
 
 	public static final double TUNNEL_POWER_LOSS = 0.05;
 	public static final String VERSION = "@version@";
-	public static final String CHANNEL = "@aechannel@";
 	public static final String PACKET_CHANNEL = "AE";
 	public static AEConfig instance;
 	public final IConfigManager settings = new ConfigManager( this );
