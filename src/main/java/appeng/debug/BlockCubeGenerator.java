@@ -29,7 +29,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import appeng.block.AEBaseTileBlock;
+import appeng.core.lib.block.AEBaseTileBlock;
 
 
 public class BlockCubeGenerator extends AEBaseTileBlock

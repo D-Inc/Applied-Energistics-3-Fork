@@ -44,14 +44,14 @@ import appeng.api.networking.ticking.ITickManager;
 import appeng.api.parts.IPart;
 import appeng.api.parts.IPartHost;
 import appeng.api.util.AEPartLocation;
-import appeng.hooks.TickHandler;
-import appeng.items.AEBaseItem;
-import appeng.me.Grid;
-import appeng.me.GridNode;
-import appeng.me.cache.TickManagerCache;
-import appeng.parts.p2p.PartP2PTunnel;
-import appeng.tile.networking.TileController;
-import appeng.util.Platform;
+import appeng.core.hooks.TickHandler;
+import appeng.core.lib.item.AEBaseItem;
+import appeng.core.lib.util.Platform;
+import appeng.core.me.grid.Grid;
+import appeng.core.me.grid.GridNode;
+import appeng.core.me.grid.cache.TickManagerCache;
+import appeng.core.me.part.p2p.PartP2PTunnel;
+import appeng.core.me.tile.TileController;
 
 
 public class ToolDebugCard extends AEBaseItem

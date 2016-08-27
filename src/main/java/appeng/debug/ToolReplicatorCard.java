@@ -40,8 +40,8 @@ import appeng.api.networking.IGridNode;
 import appeng.api.networking.spatial.ISpatialCache;
 import appeng.api.util.AEPartLocation;
 import appeng.api.util.DimensionalCoord;
-import appeng.items.AEBaseItem;
-import appeng.util.Platform;
+import appeng.core.lib.item.AEBaseItem;
+import appeng.core.lib.util.Platform;
 
 
 public class ToolReplicatorCard extends AEBaseItem

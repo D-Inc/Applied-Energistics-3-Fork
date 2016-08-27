@@ -34,7 +34,7 @@ import net.minecraftforge.fml.relauncher.FMLRelaunchLog;
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin.MCVersion;
 
-import appeng.core.AEConfig;
+import appeng.core.lib.AEConfig;
 
 
 @MCVersion( "1.10.2" )

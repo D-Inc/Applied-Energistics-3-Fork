@@ -31,12 +31,12 @@ import net.minecraftforge.common.ForgeChunkManager.Ticket;
 import net.minecraftforge.common.ForgeChunkManager.Type;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 
-import appeng.core.AELog;
-import appeng.core.AppEng;
-import appeng.tile.AEBaseTile;
-import appeng.tile.TileEvent;
-import appeng.tile.events.TileEventType;
-import appeng.util.Platform;
+import appeng.core.lib.AELog;
+import appeng.core.lib.AppEng;
+import appeng.core.lib.tile.AEBaseTile;
+import appeng.core.lib.tile.TileEvent;
+import appeng.core.lib.tile.events.TileEventType;
+import appeng.core.lib.util.Platform;
 
 
 public class TileChunkLoader extends AEBaseTile implements ITickable

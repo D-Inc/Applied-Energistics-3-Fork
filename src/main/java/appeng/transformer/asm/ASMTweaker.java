@@ -40,7 +40,7 @@ import org.objectweb.asm.tree.VarInsnNode;
 import net.minecraft.launchwrapper.IClassTransformer;
 import net.minecraftforge.fml.relauncher.FMLRelaunchLog;
 
-import appeng.helpers.Reflected;
+import appeng.core.lib.helpers.Reflected;
 
 
 @Reflected

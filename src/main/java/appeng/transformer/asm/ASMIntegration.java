@@ -34,9 +34,9 @@ import org.objectweb.asm.tree.MethodNode;
 import net.minecraft.launchwrapper.IClassTransformer;
 import net.minecraftforge.fml.relauncher.FMLRelaunchLog;
 
-import appeng.helpers.Reflected;
-import appeng.integration.IntegrationRegistry;
-import appeng.integration.IntegrationType;
+import appeng.core.integration.IntegrationRegistry;
+import appeng.core.integration.IntegrationType;
+import appeng.core.lib.helpers.Reflected;
 import appeng.transformer.annotations.Integration;
 
 
