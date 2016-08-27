@@ -22,6 +22,8 @@ package appeng.core.worlddata;
 import org.junit.Assert;
 import org.junit.Test;
 
+import appeng.core.lib.worlddata.MeteorDataNameEncoder;
+
 
 /**
  * Tests for {@link MeteorDataNameEncoder}

@@ -30,7 +30,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
 
-import appeng.tile.AEBaseTile;
+import appeng.core.lib.tile.AEBaseTile;
 
 
 public class TileItemGen extends AEBaseTile implements IInventory

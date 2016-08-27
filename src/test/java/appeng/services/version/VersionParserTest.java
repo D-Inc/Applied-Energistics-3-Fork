@@ -4,12 +4,16 @@ package appeng.services.version;
 
 import org.junit.Test;
 
-import appeng.services.version.exceptions.InvalidBuildException;
-import appeng.services.version.exceptions.InvalidChannelException;
-import appeng.services.version.exceptions.InvalidRevisionException;
-import appeng.services.version.exceptions.InvalidVersionException;
-import appeng.services.version.exceptions.MissingSeparatorException;
-import appeng.services.version.exceptions.VersionCheckerException;
+import appeng.core.services.version.Channel;
+import appeng.core.services.version.DefaultVersion;
+import appeng.core.services.version.Version;
+import appeng.core.services.version.VersionParser;
+import appeng.core.services.version.exceptions.InvalidBuildException;
+import appeng.core.services.version.exceptions.InvalidChannelException;
+import appeng.core.services.version.exceptions.InvalidRevisionException;
+import appeng.core.services.version.exceptions.InvalidVersionException;
+import appeng.core.services.version.exceptions.MissingSeparatorException;
+import appeng.core.services.version.exceptions.VersionCheckerException;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;

@@ -31,9 +31,9 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import appeng.core.AELog;
-import appeng.items.AEBaseItem;
-import appeng.util.Platform;
+import appeng.core.lib.AELog;
+import appeng.core.lib.item.AEBaseItem;
+import appeng.core.lib.util.Platform;
 
 
 public class ToolEraser extends AEBaseItem

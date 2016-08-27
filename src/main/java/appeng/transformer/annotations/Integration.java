@@ -24,7 +24,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import appeng.integration.IntegrationType;
+import appeng.core.integration.IntegrationType;
 
 
 public @interface Integration

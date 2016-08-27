@@ -21,7 +21,7 @@ package appeng.debug;
 
 import net.minecraft.block.material.Material;
 
-import appeng.block.AEBaseTileBlock;
+import appeng.core.lib.block.AEBaseTileBlock;
 
 
 public class BlockItemGen extends AEBaseTileBlock

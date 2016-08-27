@@ -25,8 +25,8 @@ import net.minecraft.util.EnumFacing;
 
 import appeng.api.networking.IGridNode;
 import appeng.api.util.AEPartLocation;
-import appeng.me.helpers.AENetworkProxy;
-import appeng.tile.grid.AENetworkTile;
+import appeng.core.me.grid.helpers.AENetworkProxy;
+import appeng.core.me.tile.AENetworkTile;
 
 
 public class TilePhantomNode extends AENetworkTile

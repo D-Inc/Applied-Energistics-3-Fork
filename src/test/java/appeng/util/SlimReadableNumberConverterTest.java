@@ -4,6 +4,9 @@ package appeng.util;
 
 import org.junit.Test;
 
+import appeng.core.lib.util.ISlimReadableNumberConverter;
+import appeng.core.lib.util.ReadableNumberConverter;
+
 import static org.junit.Assert.assertEquals;
 
 
