@@ -9,7 +9,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import appeng.core.lib.AppEng;
+import appeng.core.AppEng;
 import appeng.core.lib.client.render.FacingToRotation;
 import appeng.core.worldgen.block.BlockSkyChest;
 import appeng.core.worldgen.block.BlockSkyChest.SkyChestType;

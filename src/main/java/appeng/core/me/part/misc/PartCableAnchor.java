@@ -52,7 +52,7 @@ import appeng.api.parts.IPartHost;
 import appeng.api.parts.PartItemStack;
 import appeng.api.util.AECableType;
 import appeng.api.util.AEPartLocation;
-import appeng.core.lib.AppEng;
+import appeng.core.AppEng;
 import appeng.core.lib.client.render.model.ModelsCache;
 
 

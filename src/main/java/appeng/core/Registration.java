@@ -16,7 +16,7 @@
  * along with Applied Energistics 2.  If not, see <http://www.gnu.org/licenses/lgpl>.
  */
 
-package appeng.core.lib;
+package appeng.core;
 
 
 import java.io.File;
@@ -57,6 +57,10 @@ import appeng.api.networking.ticking.ITickManager;
 import appeng.api.parts.IPartHelper;
 import appeng.core.hooks.TickHandler;
 import appeng.core.item.ItemMultiItem;
+import appeng.core.lib.AEConfig;
+import appeng.core.lib.Api;
+import appeng.core.lib.ApiDefinitions;
+import appeng.core.lib.RecipeLoader;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.features.registries.P2PTunnelRegistry;
 import appeng.core.lib.features.registries.entries.BasicCellHandler;

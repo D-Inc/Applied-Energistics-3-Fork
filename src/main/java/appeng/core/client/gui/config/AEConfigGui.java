@@ -28,8 +28,8 @@ import net.minecraftforge.common.config.ConfigElement;
 import net.minecraftforge.fml.client.config.GuiConfig;
 import net.minecraftforge.fml.client.config.IConfigElement;
 
+import appeng.core.AppEng;
 import appeng.core.lib.AEConfig;
-import appeng.core.lib.AppEng;
 
 
 public class AEConfigGui extends GuiConfig

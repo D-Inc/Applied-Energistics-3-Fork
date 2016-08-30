@@ -31,8 +31,9 @@ import net.minecraftforge.common.ForgeChunkManager.Ticket;
 import net.minecraftforge.common.ForgeChunkManager.Type;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 
+import appeng.core.AppEng;
+import appeng.core.AppEngCore;
 import appeng.core.lib.AELog;
-import appeng.core.lib.AppEng;
 import appeng.core.lib.tile.AEBaseTile;
 import appeng.core.lib.tile.TileEvent;
 import appeng.core.lib.tile.events.TileEventType;
@@ -62,7 +63,7 @@ public class TileChunkLoader extends AEBaseTile implements ITickable
 			return;
 		}
 
-		this.ct = ForgeChunkManager.requestTicket( AppEng.instance(), this.worldObj, Type.NORMAL );
+		this.ct = ForgeChunkManager.requestTicket( AppEng.instance().getModule( AppEngCore.class ), this.worldObj, Type.NORMAL );
 
 		if( this.ct == null )
 		{

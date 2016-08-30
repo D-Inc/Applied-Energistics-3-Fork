@@ -41,6 +41,7 @@ import appeng.api.config.TerminalStyle;
 import appeng.api.config.YesNo;
 import appeng.api.util.IConfigManager;
 import appeng.api.util.IConfigurableObject;
+import appeng.core.AppEng;
 import appeng.core.item.MaterialType;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.settings.TickRates;

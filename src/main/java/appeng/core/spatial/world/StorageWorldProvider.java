@@ -31,7 +31,8 @@ import net.minecraftforge.client.IRenderHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import appeng.core.lib.AppEng;
+import appeng.core.AppEng;
+import appeng.core.AppEngCore;
 import appeng.core.spatial.client.renderer.SpatialSkyRender;
 
 
@@ -41,7 +42,7 @@ public class StorageWorldProvider extends WorldProvider
 	public StorageWorldProvider()
 	{
 		this.hasNoSky = true;
-		this.biomeProvider = new BiomeProviderSingle( AppEng.instance().getRegistration().getStorageBiome() );
+		this.biomeProvider = new BiomeProviderSingle( AppEng.instance().getModule( AppEngCore.class ).getRegistration().getStorageBiome() );
 	}
 	
 	@Override
@@ -97,7 +98,7 @@ public class StorageWorldProvider extends WorldProvider
 	@Override
 	public DimensionType getDimensionType()
 	{
-		return AppEng.instance().getRegistration().getStorageDimensionType();
+		return AppEng.instance().getModule( AppEngCore.class ).getRegistration().getStorageDimensionType();
 	}
 
 	@Override

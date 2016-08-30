@@ -28,8 +28,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
+import appeng.core.AppEng;
+import appeng.core.AppEngCore;
 import appeng.core.entity.EntityChargedQuartz;
-import appeng.core.lib.AppEng;
 import appeng.core.lib.entity.EntityIds;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.features.MaterialStackSrc;
@@ -143,7 +144,7 @@ public enum MaterialType
 		this( metaValue, modelName, part );
 		this.droppedEntity = c;
 
-		EntityRegistry.registerModEntity( this.droppedEntity, this.droppedEntity.getSimpleName(), EntityIds.get( this.droppedEntity ), AppEng.instance(), 16, 4, true );
+		EntityRegistry.registerModEntity( this.droppedEntity, this.droppedEntity.getSimpleName(), EntityIds.get( this.droppedEntity ), AppEng.instance().getModule( AppEngCore.class ), 16, 4, true );
 	}
 
 	MaterialType( final int metaValue, String modelName, final AEFeature part, final String oreDictionary, final Class<? extends Entity> c )
@@ -151,7 +152,7 @@ public enum MaterialType
 		this( metaValue, modelName, part );
 		this.oreName = oreDictionary;
 		this.droppedEntity = c;
-		EntityRegistry.registerModEntity( this.droppedEntity, this.droppedEntity.getSimpleName(), EntityIds.get( this.droppedEntity ), AppEng.instance(), 16, 4, true );
+		EntityRegistry.registerModEntity( this.droppedEntity, this.droppedEntity.getSimpleName(), EntityIds.get( this.droppedEntity ), AppEng.instance().getModule( AppEngCore.class ), 16, 4, true );
 	}
 
 	MaterialType( final int metaValue, String modelName, final AEFeature part, final String oreDictionary )

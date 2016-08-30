@@ -16,7 +16,7 @@
  * along with Applied Energistics 2.  If not, see <http://www.gnu.org/licenses/lgpl>.
  */
 
-package appeng.core.lib;
+package appeng.core;
 
 
 import java.util.HashMap;
@@ -26,6 +26,7 @@ import java.util.Map;
 import net.minecraftforge.fml.common.event.FMLInterModComms;
 
 import appeng.api.config.TunnelType;
+import appeng.core.lib.AELog;
 import appeng.core.lib.api.IIMCProcessor;
 import appeng.core.lib.api.imc.IMCBlackListSpatial;
 import appeng.core.lib.api.imc.IMCGrinder;
