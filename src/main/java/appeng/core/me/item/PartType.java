@@ -27,8 +27,8 @@ import java.util.Set;
 import net.minecraft.util.ResourceLocation;
 
 import appeng.api.parts.IPart;
+import appeng.core.AppEng;
 import appeng.core.integration.IntegrationType;
-import appeng.core.lib.AppEng;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.localization.GuiText;
 import appeng.core.me.part.automation.PartAnnihilationPlane;

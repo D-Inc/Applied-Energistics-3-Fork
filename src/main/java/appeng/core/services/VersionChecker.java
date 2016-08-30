@@ -29,9 +29,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLInterModComms;
 
+import appeng.core.AppEng;
+import appeng.core.AppEngCore;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.AELog;
-import appeng.core.lib.AppEng;
 import appeng.core.services.version.ModVersionFetcher;
 import appeng.core.services.version.Version;
 import appeng.core.services.version.VersionCheckerConfig;
@@ -192,7 +193,7 @@ public final class VersionChecker implements Runnable
 			}
 
 			versionInf.setString( "newFileName", "appliedenergistics2-" + ghFormatted + ".jar" );
-			FMLInterModComms.sendRuntimeMessage( AppEng.instance(), "VersionChecker", "addUpdate", versionInf );
+			FMLInterModComms.sendRuntimeMessage( AppEng.instance().getModule( AppEngCore.class ), "VersionChecker", "addUpdate", versionInf );
 
 			AELog.info( "Reported new version to VersionChecker mod." );
 		}

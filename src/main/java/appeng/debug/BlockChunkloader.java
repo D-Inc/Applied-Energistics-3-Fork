@@ -27,7 +27,8 @@ import net.minecraftforge.common.ForgeChunkManager;
 import net.minecraftforge.common.ForgeChunkManager.LoadingCallback;
 import net.minecraftforge.common.ForgeChunkManager.Ticket;
 
-import appeng.core.lib.AppEng;
+import appeng.core.AppEng;
+import appeng.core.AppEngCore;
 import appeng.core.lib.block.AEBaseTileBlock;
 
 
@@ -38,7 +39,7 @@ public class BlockChunkloader extends AEBaseTileBlock implements LoadingCallback
 	{
 		super( Material.IRON );
 		this.setTileEntity( TileChunkLoader.class );
-		ForgeChunkManager.setForcedChunkLoadingCallback( AppEng.instance(), this );
+		ForgeChunkManager.setForcedChunkLoadingCallback( AppEng.instance().getModule( AppEngCore.class ), this );
 	}
 
 	@Override

@@ -16,7 +16,7 @@
  * along with Applied Energistics 2.  If not, see <http://www.gnu.org/licenses/lgpl>.
  */
 
-package appeng.transformer.asm;
+package appeng.core.transformer.asm;
 
 
 import java.util.Iterator;
@@ -37,7 +37,7 @@ import net.minecraftforge.fml.relauncher.FMLRelaunchLog;
 import appeng.core.integration.IntegrationRegistry;
 import appeng.core.integration.IntegrationType;
 import appeng.core.lib.helpers.Reflected;
-import appeng.transformer.annotations.Integration;
+import appeng.core.transformer.annotations.Integration;
 
 
 @Reflected

@@ -36,10 +36,13 @@ import appeng.core.lib.client.EffectType;
 import appeng.core.lib.sync.AppEngPacket;
 
 
+/*
+ * TODO 1.10.2-MODUSEP - I dunno what to do with proxies. Srsly. I think we will have to use a proxy per module.
+ */
 public abstract class CommonHelper
 {
 
-	@SidedProxy( clientSide = "appeng.client.ClientHelper", serverSide = "appeng.server.ServerHelper" )
+	@SidedProxy( clientSide = "appeng.core.lib.client.ClientHelper", serverSide = "appeng.core.lib.server.ServerHelper" )
 	public static CommonHelper proxy;
 
 	public abstract void preinit();

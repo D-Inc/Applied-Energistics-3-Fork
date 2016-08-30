@@ -53,11 +53,11 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import appeng.api.parts.CableRenderMode;
 import appeng.api.util.AECableType;
 import appeng.api.util.AEColor;
+import appeng.core.AppEng;
 import appeng.core.hooks.TickHandler;
 import appeng.core.hooks.TickHandler.PlayerColor;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.AELog;
-import appeng.core.lib.AppEng;
 import appeng.core.lib.CommonHelper;
 import appeng.core.lib.block.AEBaseBlock;
 import appeng.core.lib.client.render.RenderFloatingItem;
@@ -78,10 +78,10 @@ import appeng.core.lib.util.Platform;
 import appeng.core.me.item.PartType;
 import appeng.core.me.part.AEBasePart;
 import appeng.core.server.ServerHelper;
+import appeng.core.transformer.MissingCoreMod;
 import appeng.misc.client.render.RenderTinyTNTPrimed;
 import appeng.misc.entity.EntityTinyTNTPrimed;
 import appeng.tools.client.render.texture.ParticleTextures;
-import appeng.transformer.MissingCoreMod;
 
 
 public class ClientHelper extends ServerHelper

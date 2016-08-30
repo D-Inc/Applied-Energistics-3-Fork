@@ -16,7 +16,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
-import appeng.core.lib.AppEng;
+import appeng.core.AppEng;
 
 
 public class ModelOverrideComponent implements PreInitComponent

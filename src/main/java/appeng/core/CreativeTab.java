@@ -16,7 +16,7 @@
  * along with Applied Energistics 2.  If not, see <http://www.gnu.org/licenses/lgpl>.
  */
 
-package appeng.core.lib;
+package appeng.core;
 
 
 import java.util.Optional;
@@ -27,22 +27,25 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 import appeng.api.AEApi;
-import appeng.decorative.item.ItemFacade;
+import appeng.api.definitions.IBlocks;
+import appeng.api.definitions.IDefinitions;
+import appeng.api.definitions.IItemDefinition;
+import appeng.api.definitions.IItems;
+import appeng.api.definitions.IMaterials;
 
 
-public final class CreativeTabFacade extends CreativeTabs
+public final class CreativeTab extends CreativeTabs
 {
+	public static CreativeTab instance = null;
 
-	public static CreativeTabFacade instance = null;
-
-	public CreativeTabFacade()
+	public CreativeTab()
 	{
-		super( "appliedenergistics2.facades" );
+		super( "appliedenergistics2" );
 	}
 
 	static void init()
 	{
-		instance = new CreativeTabFacade();
+		instance = new CreativeTab();
 	}
 
 	@Override
@@ -54,12 +57,25 @@ public final class CreativeTabFacade extends CreativeTabs
 	@Override
 	public ItemStack getIconItemStack()
 	{
-		final Optional<Item> maybeFacade = AEApi.instance().definitions().items().facade().maybeItem();
-		if( maybeFacade.isPresent() )
+		final IDefinitions definitions = AEApi.instance().definitions();
+		final IBlocks blocks = definitions.blocks();
+		final IItems items = definitions.items();
+		final IMaterials materials = definitions.materials();
+
+		return this.findFirst( blocks.controller(), blocks.chest(), blocks.cellWorkbench(), blocks.fluixBlock(), items.cell1k(), items.networkTool(), materials.fluixCrystal(), materials.certusQuartzCrystal() );
+	}
+
+	private ItemStack findFirst( final IItemDefinition... choices )
+	{
+		for( final IItemDefinition definition : choices )
 		{
-			return ( (ItemFacade) maybeFacade.get() ).getCreativeTabIcon();
+			Optional<ItemStack> maybeIs = definition.maybeStack( 1 );
+			if( maybeIs.isPresent() )
+			{
+				return maybeIs.get();
+			}
 		}
 
-		return new ItemStack( Blocks.PLANKS );
+		return new ItemStack( Blocks.CHEST );
 	}
 }

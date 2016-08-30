@@ -11,9 +11,9 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import appeng.core.AppEng;
+import appeng.core.CreativeTab;
 import appeng.core.lib.AEConfig;
-import appeng.core.lib.AppEng;
-import appeng.core.lib.CreativeTab;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.features.ItemDefinition;
 import appeng.core.lib.util.Platform;

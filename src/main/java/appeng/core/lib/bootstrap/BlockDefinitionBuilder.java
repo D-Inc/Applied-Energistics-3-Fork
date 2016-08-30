@@ -18,9 +18,9 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import appeng.api.definitions.IBlockDefinition;
+import appeng.core.AppEng;
+import appeng.core.CreativeTab;
 import appeng.core.lib.AEConfig;
-import appeng.core.lib.AppEng;
-import appeng.core.lib.CreativeTab;
 import appeng.core.lib.block.AEBaseBlock;
 import appeng.core.lib.block.AEBaseTileBlock;
 import appeng.core.lib.features.AEFeature;

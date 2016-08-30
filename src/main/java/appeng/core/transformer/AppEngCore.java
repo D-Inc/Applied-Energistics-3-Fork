@@ -16,7 +16,7 @@
  * along with Applied Energistics 2.  If not, see <http://www.gnu.org/licenses/lgpl>.
  */
 
-package appeng.transformer;
+package appeng.core.transformer;
 
 
 import java.util.Map;
@@ -25,6 +25,7 @@ import javax.annotation.Nullable;
 
 import com.google.common.eventbus.EventBus;
 
+import net.minecraftforge.common.ForgeVersion;
 import net.minecraftforge.fml.common.DummyModContainer;
 import net.minecraftforge.fml.common.LoadController;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -37,7 +38,7 @@ import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin.MCVersion;
 import appeng.core.lib.AEConfig;
 
 
-@MCVersion( "1.10.2" )
+@MCVersion( ForgeVersion.mcVersion )
 public final class AppEngCore extends DummyModContainer implements IFMLLoadingPlugin
 {
 	private final ModMetadata metadata = new ModMetadata();
@@ -64,13 +65,13 @@ public final class AppEngCore extends DummyModContainer implements IFMLLoadingPl
 	@Override
 	public String[] getASMTransformerClass()
 	{
-		return new String[] { "appeng.transformer.asm.ASMIntegration" };
+		return new String[] { "appeng.core.transformer.asm.ASMIntegration" };
 	}
 
 	@Override
 	public String getModContainerClass()
 	{
-		return "appeng.transformer.AppEngCore";
+		return "appeng.core.transformer.AppEngCore";
 	}
 
 	@Nullable
@@ -89,7 +90,7 @@ public final class AppEngCore extends DummyModContainer implements IFMLLoadingPl
 	@Override
 	public String getAccessTransformerClass()
 	{
-		return "appeng.transformer.asm.ASMTweaker";
+		return "appeng.core.transformer.asm.ASMTweaker";
 	}
 
 	@Override

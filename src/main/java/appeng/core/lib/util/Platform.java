@@ -122,12 +122,13 @@ import appeng.api.storage.data.IItemList;
 import appeng.api.util.AEColor;
 import appeng.api.util.AEPartLocation;
 import appeng.api.util.DimensionalCoord;
+import appeng.core.AppEng;
+import appeng.core.AppEngCore;
 import appeng.core.hooks.TickHandler;
 import appeng.core.integration.IntegrationRegistry;
 import appeng.core.integration.IntegrationType;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.AELog;
-import appeng.core.lib.AppEng;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.stats.Stats;
 import appeng.core.lib.sync.GuiBridge;
@@ -390,15 +391,15 @@ public class Platform
 		{
 			if( tile == null && type.getType() == GuiHostType.ITEM )
 			{
-				p.openGui( AppEng.instance(), type.ordinal() << 4, p.getEntityWorld(), p.inventory.currentItem, 0, 0 );
+				p.openGui( AppEng.instance().getModule( AppEngCore.class ), type.ordinal() << 4, p.getEntityWorld(), p.inventory.currentItem, 0, 0 );
 			}
 			else if( tile == null || type.getType() == GuiHostType.ITEM )
 			{
-				p.openGui( AppEng.instance(), type.ordinal() << 4 | ( 1 << 3 ), p.getEntityWorld(), x, y, z );
+				p.openGui( AppEng.instance().getModule( AppEngCore.class ), type.ordinal() << 4 | ( 1 << 3 ), p.getEntityWorld(), x, y, z );
 			}
 			else
 			{
-				p.openGui( AppEng.instance(), type.ordinal() << 4 | ( side.ordinal() ), tile.getWorld(), x, y, z );
+				p.openGui( AppEng.instance().getModule( AppEngCore.class ), type.ordinal() << 4 | ( side.ordinal() ), tile.getWorld(), x, y, z );
 			}
 		}
 	}

@@ -21,6 +21,7 @@ package appeng.misc.block;
 
 import java.util.Collections;
 import java.util.List;
+
 import javax.annotation.Nullable;
 
 import net.minecraft.block.Block;
@@ -43,7 +44,8 @@ import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
-import appeng.core.lib.AppEng;
+import appeng.core.AppEng;
+import appeng.core.AppEngCore;
 import appeng.core.lib.block.AEBaseBlock;
 import appeng.core.lib.entity.EntityIds;
 import appeng.core.lib.helpers.ICustomCollision;

@@ -1,38 +1,15 @@
-/*
- * This file is part of Applied Energistics 2.
- * Copyright (c) 2013 - 2015, AlgorithmX2, All rights reserved.
- *
- * Applied Energistics 2 is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * Applied Energistics 2 is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with Applied Energistics 2.  If not, see <http://www.gnu.org/licenses/lgpl>.
- */
 
-package appeng.core.lib;
+package appeng.core;
 
 
 import java.io.File;
-import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Nonnull;
 
-import com.google.common.base.Stopwatch;
-
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.FMLCommonHandler;
-import net.minecraftforge.fml.common.Loader;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLInterModComms;
+import net.minecraftforge.fml.common.event.FMLInterModComms.IMCEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerAboutToStartEvent;
@@ -43,10 +20,14 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 import appeng.core.hooks.TickHandler;
 import appeng.core.integration.IntegrationRegistry;
-import appeng.core.lib.crash.CrashInfo;
+import appeng.core.lib.AEConfig;
+import appeng.core.lib.AELog;
+import appeng.core.lib.CommonHelper;
+import appeng.core.lib.FacadeConfig;
 import appeng.core.lib.crash.IntegrationCrashEnhancement;
-import appeng.core.lib.crash.ModCrashEnhancement;
 import appeng.core.lib.features.AEFeature;
+import appeng.core.lib.module.AEModule;
+import appeng.core.lib.module.Module;
 import appeng.core.lib.sync.GuiBridge;
 import appeng.core.lib.sync.network.NetworkHandler;
 import appeng.core.lib.util.Platform;
@@ -60,29 +41,12 @@ import appeng.core.services.export.ExportProcess;
 import appeng.core.services.export.ForgeExportConfig;
 import appeng.core.services.version.VersionCheckerConfig;
 
-
-@Mod( modid = AppEng.MOD_ID, acceptedMinecraftVersions = "[1.10.2]", name = AppEng.MOD_NAME, version = AEConfig.VERSION, dependencies = AppEng.MOD_DEPENDENCIES, guiFactory = "appeng.client.gui.config.AEConfigGuiFactory" )
-public final class AppEng
+/*
+ * TODO 1.10.2-MODUSEP - Dat giant mess though. Move all stuff that belongs to specific modules into these specific modules. Yes, you can boom the API.
+ */
+@AEModule( "core" )
+public class AppEngCore implements Module
 {
-	public static final String MOD_ID = "appliedenergistics2";
-	public static final String MOD_NAME = "Applied Energistics 2";
-
-	public static final String ASSETS = "appliedenergistics2:";
-
-	public static final String MOD_DEPENDENCIES =
-			// a few mods, AE should load after, probably.
-			// required-after:AppliedEnergistics2API|all;
-			// "after:gregtech_addon;after:Mekanism;after:IC2;after:ThermalExpansion;after:BuildCraft|Core;" +
-
-			// depend on version of forge used for build.
-			"after:appliedenergistics2-core;" + "required-after:Forge@[" // require forge.
-			+ net.minecraftforge.common.ForgeVersion.majorVersion + '.' // majorVersion
-			+ net.minecraftforge.common.ForgeVersion.minorVersion + '.' // minorVersion
-			+ net.minecraftforge.common.ForgeVersion.revisionVersion + '.' // revisionVersion
-			+ net.minecraftforge.common.ForgeVersion.buildVersion + ",)"; // buildVersion
-
-	@Nonnull
-	private static final AppEng INSTANCE = new AppEng();
 
 	private final Registration registration;
 
@@ -101,18 +65,9 @@ public final class AppEng
 	 */
 	private ExportConfig exportConfig;
 
-	private AppEng()
+	public AppEngCore()
 	{
-		FMLCommonHandler.instance().registerCrashCallable( new ModCrashEnhancement( CrashInfo.MOD_VERSION ) );
-
 		this.registration = new Registration();
-	}
-
-	@Nonnull
-	@Mod.InstanceFactory
-	public static AppEng instance()
-	{
-		return INSTANCE;
 	}
 
 	@Nonnull
@@ -121,15 +76,9 @@ public final class AppEng
 		return this.registration;
 	}
 
-	@EventHandler
-	private void preInit( final FMLPreInitializationEvent event )
+	@Override
+	public void preInit( FMLPreInitializationEvent event )
 	{
-		if( !Loader.isModLoaded( "appliedenergistics2-core" ) )
-		{
-			CommonHelper.proxy.missingCoreMod();
-		}
-
-		final Stopwatch watch = Stopwatch.createStarted();
 		this.configDirectory = new File( event.getModConfigurationDirectory().getPath(), "AppliedEnergistics2" );
 		this.recipeDirectory = new File( this.configDirectory, "recipes" );
 
@@ -167,8 +116,6 @@ public final class AppEng
 
 			this.startService( "AE2 VersionChecker", versionCheckerThread );
 		}
-
-		AELog.info( "Pre Initialization ( ended after " + watch.elapsed( TimeUnit.MILLISECONDS ) + "ms )" );
 	}
 
 	private void startService( final String serviceName, final Thread thread )
@@ -180,12 +127,9 @@ public final class AppEng
 		thread.start();
 	}
 
-	@EventHandler
-	private void init( final FMLInitializationEvent event )
+	@Override
+	public void init( FMLInitializationEvent event )
 	{
-		final Stopwatch start = Stopwatch.createStarted();
-		AELog.info( "Initialization ( started )" );
-
 		if( this.exportConfig.isExportingItemNamesEnabled() )
 		{
 			final ExportProcess process = new ExportProcess( this.recipeDirectory, this.exportConfig );
@@ -196,16 +140,11 @@ public final class AppEng
 
 		this.registration.initialize( event, this.recipeDirectory, this.customRecipeConfig );
 		IntegrationRegistry.INSTANCE.init();
-
-		AELog.info( "Initialization ( ended after " + start.elapsed( TimeUnit.MILLISECONDS ) + "ms )" );
 	}
 
-	@EventHandler
-	private void postInit( final FMLPostInitializationEvent event )
+	@Override
+	public void postInit( FMLPostInitializationEvent event )
 	{
-		final Stopwatch start = Stopwatch.createStarted();
-		AELog.info( "Post Initialization ( started )" );
-
 		this.registration.postInit( event );
 		IntegrationRegistry.INSTANCE.postInit();
 		FMLCommonHandler.instance().registerCrashCallable( new IntegrationCrashEnhancement() );
@@ -215,40 +154,39 @@ public final class AppEng
 
 		NetworkRegistry.INSTANCE.registerGuiHandler( this, GuiBridge.GUI_Handler );
 		NetworkHandler.instance = new NetworkHandler( "AE2" );
-
-		AELog.info( "Post Initialization ( ended after " + start.elapsed( TimeUnit.MILLISECONDS ) + "ms )" );
 	}
 
-	@EventHandler
-	private void handleIMCEvent( final FMLInterModComms.IMCEvent event )
+	@Override
+	public void handleIMCEvent( IMCEvent event )
 	{
 		final IMCHandler imcHandler = new IMCHandler();
 
 		imcHandler.handleIMCEvent( event );
 	}
 
-	@EventHandler
-	private void serverAboutToStart( final FMLServerAboutToStartEvent evt )
+	@Override
+	public void serverAboutToStart( FMLServerAboutToStartEvent event )
 	{
-		WorldData.onServerAboutToStart( evt.getServer() );
+		WorldData.onServerAboutToStart( event.getServer() );
 	}
 
-	@EventHandler
-	private void serverStopping( final FMLServerStoppingEvent event )
+	@Override
+	public void serverStarting( FMLServerStartingEvent event )
+	{
+		event.registerServerCommand( new AECommand( event.getServer() ) );
+	}
+
+	@Override
+	public void serverStopping( FMLServerStoppingEvent event )
 	{
 		WorldData.instance().onServerStopping();
 	}
 
-	@EventHandler
-	private void serverStopped( final FMLServerStoppedEvent event )
+	@Override
+	public void serverStopped( FMLServerStoppedEvent event )
 	{
 		WorldData.instance().onServerStoppped();
 		TickHandler.INSTANCE.shutdown();
 	}
 
-	@EventHandler
-	private void serverStarting( final FMLServerStartingEvent evt )
-	{
-		evt.registerServerCommand( new AECommand( evt.getServer() ) );
-	}
 }

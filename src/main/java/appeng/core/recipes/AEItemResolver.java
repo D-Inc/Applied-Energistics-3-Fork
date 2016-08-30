@@ -30,10 +30,10 @@ import appeng.api.recipes.ResolverResult;
 import appeng.api.recipes.ResolverResultSet;
 import appeng.api.util.AEColor;
 import appeng.api.util.AEColoredItemDefinition;
+import appeng.core.AppEng;
 import appeng.core.item.ItemCrystalSeed;
 import appeng.core.item.ItemMultiItem;
 import appeng.core.item.MaterialType;
-import appeng.core.lib.AppEng;
 import appeng.core.me.item.ItemMultiPart;
 import appeng.core.me.item.PartType;
 
