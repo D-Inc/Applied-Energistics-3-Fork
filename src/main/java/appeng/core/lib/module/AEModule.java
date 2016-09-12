@@ -1,4 +1,6 @@
+
 package appeng.core.lib.module;
+
 
 import static java.lang.annotation.ElementType.TYPE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
@@ -6,8 +8,10 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
+
 /**
  * Annotate {@link Module} with this annotation and make sure it has no-args constructor to add it to AE.
+ * 
  * @author elix_x
  *
  */
@@ -20,5 +24,11 @@ public @interface AEModule
 	 * @return Name of the module
 	 */
 	String value();
-	
+
+	/**
+	 * TODO 1.10.2-MODUSEP - Document.
+	 * @return module's dependencies
+	 */
+	String dependencies() default "";
+
 }

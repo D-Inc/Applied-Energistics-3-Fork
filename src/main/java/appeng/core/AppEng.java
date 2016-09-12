@@ -20,12 +20,19 @@ package appeng.core;
 
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Nonnull;
 
 import com.google.common.base.Stopwatch;
 import com.google.common.collect.ImmutableMap;
+
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.tuple.ImmutablePair;
+import org.apache.commons.lang3.tuple.Pair;
 
 import net.minecraftforge.common.ForgeVersion;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -42,6 +49,7 @@ import net.minecraftforge.fml.common.event.FMLServerAboutToStartEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppedEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
+import net.minecraftforge.fml.relauncher.Side;
 
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.AELog;
@@ -103,9 +111,9 @@ public final class AppEng
 	{
 		return (M) classModule.get( clas );
 	}
-	
+
 	private File configDirectory;
-	
+
 	public File getConfigDirectory()
 	{
 		return configDirectory;
@@ -120,9 +128,7 @@ public final class AppEng
 			CommonHelper.proxy.missingCoreMod();
 		}
 
-		ImmutableMap.Builder<String, Module> modulesBuilder = ImmutableMap.builder();
-		ImmutableMap.Builder<Class, Module> classModuleBuilder = ImmutableMap.builder();
-		ImmutableMap.Builder<Module, Boolean> internalBuilder = ImmutableMap.builder();
+		Map<String, Pair<Class<Module>, String>> foundModules = new HashMap<>();
 		ASMDataTable annotations = event.getAsmData();
 		for( ASMData data : annotations.getAll( AEModule.class.getCanonicalName() ) )
 		{
@@ -131,30 +137,103 @@ public final class AppEng
 				Class clas = Class.forName( data.getClassName() );
 				Class<Module> claz = clas.asSubclass( Module.class );
 				Module module = claz.newInstance();
-				modulesBuilder.put( (String) data.getAnnotationInfo().get( "value" ), module );
-				classModuleBuilder.put( claz, module );
-				internalBuilder.put( module, !claz.isAnnotationPresent( Mod.class ) );
+				foundModules.put( (String) data.getAnnotationInfo().get( "value" ), new ImmutablePair<Class<Module>, String>( claz, (String) data.getAnnotationInfo().get( "dependencies" ) ) );
 			}
 			catch( Exception e )
 			{
 				// :(
 			}
 		}
-		modules = modulesBuilder.build();
-		classModule = classModuleBuilder.build();
-		internal = internalBuilder.build();
 
-		AELog.info( "Succesfully loaded %s modules", modules.size() );
+		// TODO 1.10.2-MODUSEP - Implement ordering...
+		Map<String, Class<Module>> modules = new HashMap<>();
+		for( Entry<String, Pair<Class<Module>, String>> e : foundModules.entrySet() )
+		{
+			boolean load = true;
+			if( e.getValue().getRight() != null )
+			{
+				for( String dep : e.getValue().getRight().split( ";" ) )
+				{
+					String[] depkv = dep.split( ":" );
+					String[] keys = depkv[0].split( "\\-" );
+					String value = depkv.length > 0 ? depkv[1] : null;
+
+					Side side = ArrayUtils.contains( keys, "client" ) ? Side.CLIENT : ArrayUtils.contains( keys, "server" ) ? Side.SERVER : null;
+					boolean required = ArrayUtils.contains( keys, "required" );
+					boolean force = ArrayUtils.contains( keys, "force" );
+
+					if( side != null && value == null )
+					{
+						load &= side == event.getSide();
+						if( side == event.getSide() || !force )
+						{
+							continue;
+						}
+					}
+					else if( required && value != null )
+					{
+						String what = value.substring( 0, value.indexOf( '-' ) );
+						String which = value.substring( value.indexOf( '-' ) + 1, value.length() );
+						boolean found = side == null || side == event.getSide();
+						switch( what )
+						{
+							case "mod":
+								found &= Loader.isModLoaded( which );
+								break;
+							case "module":
+								found &= modules.containsKey( which );
+								break;
+							default:
+								found = false;
+						}
+						if( found || !force )
+						{
+							load &= found;
+							continue;
+						}
+					}
+					//TODO 1.10.2-MODUSEP - Report this in a fancier way ;)... Maybe >D...
+					throw new RuntimeException( String.format( "Missing hard required dependency for module %s - %s", e.getKey(), dep ) );
+				}
+			}
+			if( load )
+			{
+				modules.put( e.getKey(), e.getValue().getLeft() );
+			}
+		}
+
+		ImmutableMap.Builder<String, Module> modulesBuilder = ImmutableMap.builder();
+		ImmutableMap.Builder<Class, Module> classModuleBuilder = ImmutableMap.builder();
+		ImmutableMap.Builder<Module, Boolean> internalBuilder = ImmutableMap.builder();
+		for( Entry<String, Class<Module>> e : modules.entrySet() )
+		{
+			try
+			{
+				Module module = e.getValue().newInstance();
+				modulesBuilder.put( e.getKey(), module );
+				classModuleBuilder.put( e.getValue(), module );
+				internalBuilder.put( module, !e.getValue().isAnnotationPresent( Mod.class ) );
+			}
+			catch( Exception exc )
+			{
+				// :(
+			}
+		}
+		this.modules = modulesBuilder.build();
+		this.classModule = classModuleBuilder.build();
+		this.internal = internalBuilder.build();
+
+		AELog.info( "Succesfully loaded %s modules", foundModules.size() );
 
 		final Stopwatch watch = Stopwatch.createStarted();
 		AELog.info( "Pre Initialization ( started )" );
 
 		this.configDirectory = new File( event.getModConfigurationDirectory().getPath(), "AppliedEnergistics2" );
 		AEConfig.instance = new AEConfig( new File( AppEng.instance().getConfigDirectory(), "AppliedEnergistics2.cfg" ) );
-		
-		for( Module module : modules.values() )
+
+		for( Module module : this.modules.values() )
 		{
-			if( internal.get( module ) )
+			if( this.internal.get( module ) )
 			{
 				module.preInit( event );
 			}
@@ -193,7 +272,7 @@ public final class AppEng
 				module.postInit( event );
 			}
 		}
-		
+
 		AEConfig.instance.save();
 
 		AELog.info( "Post Initialization ( ended after " + start.elapsed( TimeUnit.MILLISECONDS ) + "ms )" );
