@@ -2,6 +2,8 @@
 package appeng.core.me;
 
 
+import java.io.File;
+
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLInterModComms.IMCEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -11,6 +13,10 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppedEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 
+import appeng.core.AppEng;
+import appeng.core.lib.AEConfig;
+import appeng.core.lib.FacadeConfig;
+import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.module.AEModule;
 import appeng.core.lib.module.Module;
 
@@ -22,7 +28,11 @@ public class AppEngME implements Module
 	@Override
 	public void preInit( FMLPreInitializationEvent event )
 	{
-
+		FacadeConfig.instance = new FacadeConfig( new File( AppEng.instance().getConfigDirectory(), "Facades.cfg" ) );
+		if( AEConfig.instance.isFeatureEnabled( AEFeature.Facades ) )
+		{
+			CreativeTabFacade.init();
+		}
 	}
 
 	@Override

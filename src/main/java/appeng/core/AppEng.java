@@ -19,6 +19,7 @@
 package appeng.core;
 
 
+import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Nonnull;
@@ -102,6 +103,13 @@ public final class AppEng
 	{
 		return (M) classModule.get( clas );
 	}
+	
+	private File configDirectory;
+	
+	public File getConfigDirectory()
+	{
+		return configDirectory;
+	}
 
 	@EventHandler
 	private void preInit( final FMLPreInitializationEvent event )
@@ -141,6 +149,9 @@ public final class AppEng
 		final Stopwatch watch = Stopwatch.createStarted();
 		AELog.info( "Pre Initialization ( started )" );
 
+		this.configDirectory = new File( event.getModConfigurationDirectory().getPath(), "AppliedEnergistics2" );
+		AEConfig.instance = new AEConfig( new File( AppEng.instance().getConfigDirectory(), "AppliedEnergistics2.cfg" ) );
+		
 		for( Module module : modules.values() )
 		{
 			if( internal.get( module ) )
@@ -182,6 +193,8 @@ public final class AppEng
 				module.postInit( event );
 			}
 		}
+		
+		AEConfig.instance.save();
 
 		AELog.info( "Post Initialization ( ended after " + start.elapsed( TimeUnit.MILLISECONDS ) + "ms )" );
 	}
