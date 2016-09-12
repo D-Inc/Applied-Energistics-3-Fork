@@ -50,7 +50,6 @@ public class AppEngCore implements Module
 
 	private final Registration registration;
 
-	private File configDirectory;
 	private CustomRecipeConfig customRecipeConfig;
 
 	/**
@@ -79,28 +78,17 @@ public class AppEngCore implements Module
 	@Override
 	public void preInit( FMLPreInitializationEvent event )
 	{
-		this.configDirectory = new File( event.getModConfigurationDirectory().getPath(), "AppliedEnergistics2" );
-		this.recipeDirectory = new File( this.configDirectory, "recipes" );
+		this.recipeDirectory = new File( AppEng.instance().getConfigDirectory(), "recipes" );
 
-		final File configFile = new File( this.configDirectory, "AppliedEnergistics2.cfg" );
-		final File facadeFile = new File( this.configDirectory, "Facades.cfg" );
-		final File versionFile = new File( this.configDirectory, "VersionChecker.cfg" );
-		final File recipeFile = new File( this.configDirectory, "CustomRecipes.cfg" );
+		final File versionFile = new File( AppEng.instance().getConfigDirectory(), "VersionChecker.cfg" );
+		final File recipeFile = new File( AppEng.instance().getConfigDirectory(), "CustomRecipes.cfg" );
 		final Configuration recipeConfiguration = new Configuration( recipeFile );
 
-		AEConfig.instance = new AEConfig( configFile );
-		FacadeConfig.instance = new FacadeConfig( facadeFile );
 		final VersionCheckerConfig versionCheckerConfig = new VersionCheckerConfig( versionFile );
 		this.customRecipeConfig = new CustomRecipeForgeConfiguration( recipeConfiguration );
 		this.exportConfig = new ForgeExportConfig( recipeConfiguration );
 
-		AELog.info( "Pre Initialization ( started )" );
-
 		CreativeTab.init();
-		if( AEConfig.instance.isFeatureEnabled( AEFeature.Facades ) )
-		{
-			CreativeTabFacade.init();
-		}
 
 		this.registration.preInitialize( event );
 
@@ -150,7 +138,6 @@ public class AppEngCore implements Module
 		FMLCommonHandler.instance().registerCrashCallable( new IntegrationCrashEnhancement() );
 
 		CommonHelper.proxy.postInit();
-		AEConfig.instance.save();
 
 		NetworkRegistry.INSTANCE.registerGuiHandler( this, GuiBridge.GUI_Handler );
 		NetworkHandler.instance = new NetworkHandler( "AE2" );
