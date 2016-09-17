@@ -52,7 +52,7 @@ apply from: 'gradle/scripts/integration.gradle'
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
-version = aeversion + "-" + aechannel + "-" + aebuild
+version = "${aeversion}.${aeminor}.${aebuild}-$aechannel"
 group = aegroup
 archivesBaseName = aebasename
 
