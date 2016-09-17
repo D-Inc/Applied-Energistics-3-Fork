@@ -307,7 +307,7 @@ public class AEBaseTile extends TileEntity implements ITickable, IOrientable, IC
 		}
 		else
 		{
-			// TODO: Optimize Network Load
+			// TODO Pre-1.8 - Optimize Network Load
 			if( this.worldObj != null )
 			{
 				AELog.blockUpdate( this.pos, this );

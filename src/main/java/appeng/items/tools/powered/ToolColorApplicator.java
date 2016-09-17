@@ -103,14 +103,14 @@ public class ToolColorApplicator extends AEBasePoweredItem implements IStorageCe
 		super( AEConfig.instance.colorApplicatorBattery );
 		if( Platform.isClient() )
 		{
-			// TODO - color applicator
+			// TODO 1.10.2-R - color applicator
 			// MinecraftForgeClient.registerItemRenderer( this, new ToolColorApplicatorRender() );
 		}
 	}
 
 	public void postInit()
 	{
-		// TODO BOOTSTRAP
+		// TODO Pre-1.8 - BOOTSTRAP
 		BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject( this, new DispenserBlockTool() );
 	}
 

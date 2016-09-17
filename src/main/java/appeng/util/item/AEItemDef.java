@@ -213,7 +213,7 @@ public class AEItemDef
 	}
 
 	/**
-	 * TODO: Check if replaceable by hashCode();
+	 * TODO Pre-1.8 - Check if replaceable by hashCode();
 	 */
 	int getMyHash()
 	{

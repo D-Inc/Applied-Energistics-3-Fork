@@ -81,7 +81,7 @@ import appeng.util.prioitylist.FuzzyPriorityList;
 import appeng.util.prioitylist.PrecisePriorityList;
 
 
-// TODO: BC Integration
+// TODO Pre-1.8 - BC Integration
 //@Interface( iname = IntegrationType.BuildCraftTransport, iface = "buildcraft.api.transport.IPipeConnection" )
 public class PartStorageBus extends PartUpgradeable implements IGridTickable, ICellContainer, IMEMonitorHandlerReceiver<IAEItemStack> /*
 																																	 * ,
@@ -516,7 +516,7 @@ public class PartStorageBus extends PartUpgradeable implements IGridTickable, IC
 	{
 	}
 
-	// TODO: BC PIPE INTEGRATION
+	// TODO Pre-1.8 - BC PIPE INTEGRATION
 	/*
 	 * @Override
 	 * @Method( iname = IntegrationType.BuildCraftTransport )

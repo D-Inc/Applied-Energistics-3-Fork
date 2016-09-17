@@ -198,8 +198,8 @@ public class PartPlacement
 			}
 		}
 
-		// TODO: IFMP INTEGRATION
-		// TODO IIMMIBISMICROBLOCKS INTEGRATION
+		// TODO Pre-1.8 - IFMP INTEGRATION
+		// TODO Pre-1.8 - IIMMIBISMICROBLOCKS INTEGRATION
 
 		/*
 		 * if( host == null && tile != null && IntegrationRegistry.INSTANCE.isEnabled( IntegrationType.FMP ) )
@@ -271,8 +271,8 @@ public class PartPlacement
 				host = (IPartHost) tile;
 			}
 
-			// TODO: IFMP INTEGRATION
-			// TODO IIMMIBISMICROBLOCKS INTEGRATION
+			// TODO Pre-1.8 - IFMP INTEGRATION
+			// TODO Pre-1.8 - IIMMIBISMICROBLOCKS INTEGRATION
 
 			/*
 			 * if( host == null && tile != null && IntegrationRegistry.INSTANCE.isEnabled( IntegrationType.FMP ) )

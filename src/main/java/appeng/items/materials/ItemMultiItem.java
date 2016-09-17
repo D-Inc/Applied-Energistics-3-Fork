@@ -351,7 +351,7 @@ public final class ItemMultiItem extends AEBaseItem implements IStorageComponent
 
 		if( location instanceof EntityItem && eqi instanceof EntityItem )
 		{
-			// TODO: Entity Pick up time?
+			// TODO Pre-1.8 - Entity Pick up time?
 			// needs fixing?
 			// ( (EntityItem) eqi ).setPickupDelay( ( (EntityItem) location ).pick;
 		}

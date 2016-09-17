@@ -94,7 +94,7 @@ public class GuiPatternTerm extends GuiMEMonitorable
 		}
 		catch( final IOException e )
 		{
-			// TODO Auto-generated catch block
+			// TODO Pre-1.8 - Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

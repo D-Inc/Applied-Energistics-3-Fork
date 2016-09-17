@@ -1037,7 +1037,7 @@ public class Platform
 		{
 			try
 			{
-				// TODO: Build Craft Wrench?
+				// TODO Pre-1.8 - Build Craft Wrench?
 				/*
 				 * if( eq.getItem() instanceof IToolWrench )
 				 * {

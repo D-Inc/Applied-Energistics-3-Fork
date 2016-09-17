@@ -19,7 +19,7 @@
 package appeng.hooks;
 
 
-// TODO Villager Trading!??!?!
+// TODO Pre-1.8 - Villager Trading!??!?!
 
 public class AETrading
 {

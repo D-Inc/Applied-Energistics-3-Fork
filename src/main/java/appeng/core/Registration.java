@@ -243,7 +243,7 @@ public final class Registration
 		final Runnable recipeLoader = new RecipeLoader( recipeDirectory, customRecipeConfig, this.recipeHandler );
 		recipeLoader.run();
 
-		// TODO readd layers
+		// TODO Pre-1.8 - readd layers
 		// partHelper.registerNewLayer( "appeng.parts.layers.LayerISidedInventory",
 		// "net.minecraft.inventory.ISidedInventory" );
 		// partHelper.registerNewLayer( "appeng.parts.layers.LayerIFluidHandler",
@@ -416,7 +416,7 @@ public final class Registration
 		// add villager trading to black smiths for a few basic materials
 		if( AEConfig.instance.isFeatureEnabled( AEFeature.VillagerTrading ) )
 		{
-			// TODO: VILLAGER TRADING
+			// TODO Pre-1.8 - VILLAGER TRADING
 			// VillagerRegistry.instance().getRegisteredVillagers()..registerVillageTradeHandler( 3, new AETrading() );
 		}
 

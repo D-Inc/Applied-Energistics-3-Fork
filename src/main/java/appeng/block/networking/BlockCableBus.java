@@ -124,9 +124,7 @@ public class BlockCableBus extends AEBaseTileBlock
 	@Override
 	public int getWeakPower( final IBlockState state, final IBlockAccess w, final BlockPos pos, final EnumFacing side )
 	{
-		return this.cb( w, pos ).isProvidingWeakPower( side.getOpposite() ); // TODO:
-		// IS
-		// OPPOSITE!?
+		return this.cb( w, pos ).isProvidingWeakPower( side.getOpposite() ); // TODO Pre-1.8 - IS OPPOSITE!?
 	}
 
 	@Override
@@ -144,9 +142,7 @@ public class BlockCableBus extends AEBaseTileBlock
 	@Override
 	public int getStrongPower( final IBlockState state, final IBlockAccess w, final BlockPos pos, final EnumFacing side )
 	{
-		return this.cb( w, pos ).isProvidingStrongPower( side.getOpposite() ); // TODO:
-		// IS
-		// OPPOSITE!?
+		return this.cb( w, pos ).isProvidingStrongPower( side.getOpposite() ); // TODO Pre-1.8 - IS OPPOSITE!?
 	}
 
 	@Override
@@ -245,7 +241,7 @@ public class BlockCableBus extends AEBaseTileBlock
 		{
 			final IPartHost host = (IPartHost) object;
 
-			// TODO HIT EFFECTS
+			// TODO Pre-1.8 - HIT EFFECTS
 			/*
 			 * for( AEPartLocation side : AEPartLocation.values() ) { IPart p =
 			 * host.getPart( side ); TextureAtlasSprite ico = this.getIcon( p );
@@ -276,7 +272,7 @@ public class BlockCableBus extends AEBaseTileBlock
 		{
 			final IPartHost host = (IPartHost) object;
 
-			// TODO DESTROY EFFECTS
+			// TODO Pre-1.8 - DESTROY EFFECTS
 			/*
 			 * for( AEPartLocation side : AEPartLocation.values() ) { IPart p =
 			 * host.getPart( side ); TextureAtlasSprite ico = this.getIcon( p );

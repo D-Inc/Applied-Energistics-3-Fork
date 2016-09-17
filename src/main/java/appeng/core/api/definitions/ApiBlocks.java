@@ -310,7 +310,7 @@ public final class ApiBlocks implements IBlocks
 				} )
 				.build();
 
-		// TODO Re-Add Slabs...
+		// TODO Pre-1.8 - Re-Add Slabs...
 		/*
 		 * this.skyStoneSlab = constructor.registerBlockDefinition( new AEBaseSlabBlock( skyStone_stone,
 		 * EnumSet.of(AEFeature.DecorativeQuartzBlocks), false, "SkyStoneSlabBlock" ) );

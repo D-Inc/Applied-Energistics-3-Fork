@@ -56,7 +56,7 @@ public class GuiInterfaceTerminal extends AEBaseGui
 
 	private static final int LINES_ON_PAGE = 6;
 
-	// TODO: copied from GuiMEMonitorable. It looks not changed, maybe unneeded?
+	// TODO Pre-1.8 - copied from GuiMEMonitorable. It looks not changed, maybe unneeded?
 	private final int offsetX = 9;
 
 	private final HashMap<Long, ClientDCInternalInv> byId = new HashMap<Long, ClientDCInternalInv>();

@@ -222,7 +222,7 @@ public class ClientHelper extends ServerHelper
 			GL11.glColor4f( 1.0F, 1.0F, 1.0F, 1.0F );
 			// GL11.glDisable( GL11.GL_CULL_FACE );
 
-			// TODO RENDER ITEM FOR STORAGE MONITOR!
+			// TODO Pre-1.8 - RENDER ITEM FOR STORAGE MONITOR!
 
 			GL11.glPopMatrix();
 		}

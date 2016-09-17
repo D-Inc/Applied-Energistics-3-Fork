@@ -368,7 +368,7 @@ public class PartFormationPlane extends PartUpgradeable implements ICellContaine
 				final EntityPlayer player = Platform.getPlayer( (WorldServer) w );
 				Platform.configurePlayer( player, side, this.getTile() );
 
-				// TODO: LIMIT FIREWORKS
+				// TODO Pre-1.8 - LIMIT FIREWORKS
 				/*
 				 * if( i instanceof ItemFirework )
 				 * {
@@ -433,7 +433,7 @@ public class PartFormationPlane extends PartUpgradeable implements ICellContaine
 
 				final int sum = 0;
 
-				// TODO: LIMIT OTHER THIGNS!
+				// TODO Pre-1.8 - LIMIT OTHER THIGNS!
 				/*
 				 * for( List Z : c.entityLists )
 				 * {

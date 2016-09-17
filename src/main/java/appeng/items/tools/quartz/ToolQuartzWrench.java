@@ -35,7 +35,7 @@ import appeng.items.AEBaseItem;
 import appeng.util.Platform;
 
 
-// TODO BC Integration
+// TODO Pre-1.8 - BC Integration
 //@Interface( iface = "buildcraft.api.tools.IToolWrench", iname = IntegrationType.BuildCraftCore )
 public class ToolQuartzWrench extends AEBaseItem implements IAEWrench /* , IToolWrench */
 {
@@ -80,7 +80,7 @@ public class ToolQuartzWrench extends AEBaseItem implements IAEWrench /* , ITool
 		return true;
 	}
 
-	// TODO: BC Wrench Integration
+	// TODO Pre-1.8 -BC Wrench Integration
 	/*
 	 * @Override
 	 * public boolean canWrench( EntityPlayer player, int x, int y, int z )

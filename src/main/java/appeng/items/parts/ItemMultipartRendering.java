@@ -26,7 +26,7 @@ public class ItemMultipartRendering extends ItemRenderingCustomizer
 
 	private ModelResourceLocation getItemMeshDefinition( ItemStack is )
 	{
-		// TODO: Avoid object creation here. This happens every frame
+		// TODO 1.10.2-R - Avoid object creation here. This happens every frame
 		return new ModelResourceLocation( item.getTypeByStack( is ).getModel(), null );
 	}
 

@@ -87,7 +87,7 @@ public class ToolEntropyManipulator extends AEBasePoweredItem implements IBlockT
 
 	public void postInit()
 	{
-		// TODO BOOTSTRAP
+		// TODO Pre-1.8 - BOOTSTRAP
 		BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject( this, new DispenserBlockTool() );
 	}
 

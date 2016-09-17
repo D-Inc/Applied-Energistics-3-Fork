@@ -194,7 +194,7 @@ public class PacketNEIRecipe extends AppEngPacket
 									ItemStack whichItem = Platform.extractItemsByRecipe( energy, cct.getActionSource(), storage, player.worldObj, r, is, testInv, patternItem, x, all, realForFake, filter );
 
 									// If that doesn't get it, grab exact items from network (?)
-									// TODO see if this code is necessary
+									// TODO Pre-1.8 - see if this code is necessary
 									if( whichItem == null )
 									{
 										for( int y = 0; y < this.recipe[x].length; y++ )

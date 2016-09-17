@@ -90,7 +90,7 @@ public class ToolMassCannon extends AEBasePoweredItem implements IStorageCell
 
 	public void postInit()
 	{
-		// TODO BOOTSTRAP
+		// TODO Pre-1.8 - BOOTSTRAP
 		BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject( this, new DispenserMatterCannon() );
 	}
 

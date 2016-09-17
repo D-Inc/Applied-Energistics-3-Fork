@@ -52,7 +52,7 @@ import appeng.items.contents.NetworkToolViewer;
 import appeng.util.Platform;
 
 
-// TODO BC Integration
+// TODO Pre-1.8 - BC Integration
 //@Interface( iface = "buildcraft.api.tools.IToolWrench", iname = IntegrationType.BuildCraftCore )
 public class ToolNetworkTool extends AEBaseItem implements IGuiItem, IAEWrench /* , IToolWrench */
 {
@@ -190,6 +190,6 @@ public class ToolNetworkTool extends AEBaseItem implements IGuiItem, IAEWrench /
 		return true;
 	}
 
-	// TODO: BC WRENCH INTEGRATION
+	// TODO Pre-1.8 - BC WRENCH INTEGRATION
 
 }
