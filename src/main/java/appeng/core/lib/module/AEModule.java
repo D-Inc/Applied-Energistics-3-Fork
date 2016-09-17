@@ -29,14 +29,17 @@ public @interface AEModule
 	 * Use this to make your addon dependent of something using elix-x fancy dependency syntax:
 	 * Each module dependency statement is seperated by a semicolon (;).
 	 * To declare your module side-only, just use "client" or "server" as one dependency statement
-	 * Use "crash" if you want to stop game loading when used on the wrong side
+	 * 		Your module will not be loaded if used on the wrong side
+	 * Use "crash" if you want to stop game loading instead
 	 * You can also declare dependency on a mod or AE2 module.
 	 * For that, write your modifiers, seperated by a dash (-), followed by a colon (:), and the thing you want to depend on
 	 * modifiers are: 	"server"/"client" if you only depend on it on either client or server
 	 * 					"hard" will make that dependency hard, aka your module will load if and only if it is there
 	 * 					"soft" will just put your module in front of that module.
-	 * 					You have to use either "hard" or "soft"
-	 * 					"before" will make you module load before the module specified here, aka it reverses the dependency
+	 * 						You have to use either "hard" or "soft"
+	 * 					"after" will make your module load after the module specified here
+	 * 					"before" will make you module load before the module specified here
+	 * 						not using "before" or "after" makes that random
 	 * 					"crash" will make the game crash if the dependency is not there instead of just not loading your module.
 	 * 						Use with "hard"
 	 * You can depend on either a mod or a AE2 module.

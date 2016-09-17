@@ -28,7 +28,7 @@ import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Nonnull;
 
-import appeng.core.lib.module.ModuleLoaderHelper;
+import appeng.core.lib.module.Toposorter;
 import com.google.common.base.Stopwatch;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
@@ -36,7 +36,9 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiErrorScreen;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.CustomModLoadingErrorDisplayException;
@@ -69,6 +71,7 @@ import appeng.core.lib.crash.CrashInfo;
 import appeng.core.lib.crash.ModCrashEnhancement;
 import appeng.core.lib.module.AEModule;
 import appeng.core.lib.module.Module;
+import org.lwjgl.Sys;
 
 
 @Mod( modid = AppEng.MOD_ID, name = AppEng.MOD_NAME, version = AEConfig.VERSION, dependencies = AppEng.MOD_DEPENDENCIES, acceptedMinecraftVersions = ForgeVersion.mcVersion, guiFactory = "appeng.client.gui.config.AEConfigGuiFactory" )
@@ -93,7 +96,14 @@ public final class AppEng
 
 	@Nonnull
 	private static final AppEng INSTANCE = new AppEng();
-
+	private ImmutableMap<String, Module> modules;
+	private ImmutableMap<Class, Module> classModule;
+	private ImmutableList<String> moduleOrder;
+	/*
+	 * TODO 1.10.2-MODUSEP - Do we even want some modules be @Mod at the same time? Weird.
+	 */
+	private ImmutableMap<Module, Boolean> internal;
+	private File configDirectory;
 	private AppEng()
 	{
 		FMLCommonHandler.instance().registerCrashCallable( new ModCrashEnhancement( CrashInfo.MOD_VERSION ) );
@@ -106,14 +116,6 @@ public final class AppEng
 		return INSTANCE;
 	}
 
-	private ImmutableMap<String, Module> modules;
-	private ImmutableMap<Class, Module> classModule;
-	private ImmutableList<String> moduleOrder;
-	/*
-	 * TODO 1.10.2-MODUSEP - Do we even want some modules be @Mod at the same time? Weird.
-	 */
-	private ImmutableMap<Module, Boolean> internal;
-
 	public <M extends Module> M getModule( String name )
 	{
 		return (M) modules.get( name );
@@ -124,156 +126,104 @@ public final class AppEng
 		return (M) classModule.get( clas );
 	}
 
-	private File configDirectory;
-
 	public File getConfigDirectory()
 	{
 		return configDirectory;
 	}
 
+	/**
+	 * Checks whether all required dependencies are here
+     */
+	private boolean isValid(String name, Map<String, Pair<Class<Module>, String>> modules, Side currentSide, List<String> validModules, List<String> checkedModules){
+		if(checkedModules.contains(name))
+			return validModules.contains(name);
+		checkedModules.add(name);
+		if(!modules.containsKey(name))
+			return false;
+		for(String dep : modules.get(name).getRight().split(";")){
+			String[] temp = dep.split(":");
+			String[] modifiers = dep.split("\\-");
+			String depName = temp.length>0?temp[1]:null;
+			Side requiredSide = ArrayUtils.contains(modifiers, "client" ) ? Side.CLIENT : ArrayUtils.contains(modifiers, "server" ) ? Side.SERVER : currentSide;
+			boolean hard = ArrayUtils.contains(modifiers, "hard");
+			boolean soft = ArrayUtils.contains(modifiers, "soft");
+			boolean crash = hard&&ArrayUtils.contains(modifiers, "crash");
+			if(soft && hard)
+				return false;
+			if(soft) //Allows "client-soft" as side specifier, but noone would write it
+				continue;
+			if(name==null){
+				if(requiredSide==currentSide)
+					continue;
+				else if(crash)
+					throw new CustomModLoadingErrorDisplayException(String.format("Module %s is %s side only!", name, requiredSide.toString()), null) { //Will open a gui.
+						@Override public void initGui(GuiErrorScreen errorScreen, FontRenderer fontRenderer) {}//Used to add buttons, we have none
 
-	private static void insertBeforeDependencies(String key, Map<String, Pair<Class<Module>, String>> foundModules, Side currentSide){
-		Pair<Class<Module>, String> entry = foundModules.get(key);if(entry.getRight() != null ) {
-			for (String dep : entry.getRight().split(";")) {
-				String[] depkv = dep.split(":");
-				String[] keys = depkv[0].split("\\-");
-				String value = depkv.length > 0 ? depkv[1] : null;
-
-				Side side = ArrayUtils.contains(keys, "client") ? Side.CLIENT : ArrayUtils.contains(keys, "server") ? Side.SERVER : null;
-				boolean hardDepend = ArrayUtils.contains(keys, "hard");
-				boolean softDepend = ArrayUtils.contains(keys, "soft");
-				boolean loadBefore = ArrayUtils.contains(keys, "before");
-				if (!loadBefore) continue; //we only care for "before" here
-				boolean crash = ArrayUtils.contains(keys, "crash");
-				boolean isModuleDependency = hardDepend || softDepend;
-
-
-				if (isModuleDependency && value != null) //we only can infer this into modules
-				{
-					String what = value.substring(0, value.indexOf('-'));
-					String which = value.substring(value.indexOf('-') + 1, value.length());
-					if (side == null || side == currentSide && what.equals("module"))
-						if (foundModules.containsKey(which)) {
-							Pair<Class<Module>, String> pair = foundModules.get(which);
-							String s = pair.getRight();
-							if (side != null) {
-								s = s + (side == Side.CLIENT ? "client" : "server");
-							}
-							if (softDepend)
-								s += "soft";
-							if (hardDepend) {
-								s += "hard";
-								if(crash)
-									s+=crash;
-							}
-							foundModules.put(which, new ImmutablePair<Class<Module>, String>(pair.getLeft(), s));
-						} else
-							throw new CustomModLoadingErrorDisplayException(String.format("Missing hard required dependency for module %s - %s", key, dep), null) { //Will open a gui.
-								@Override
-								public void initGui(GuiErrorScreen errorScreen, FontRenderer fontRenderer) {
-									//Used to add buttons, we have none
-								}
-
-								@Override
-								public void drawScreen(GuiErrorScreen errorScreen, FontRenderer fontRenderer, int mouseRelX, int mouseRelY, float tickTime) {
-									//from net.minecraftforge.fml.client.GuiModsMissing
-									errorScreen.drawDefaultBackground();
-									int offset = 75;
-									String modMissingDependenciesText = "Module " + TextFormatting.BOLD + key + TextFormatting.RESET + " is missing required hard dependency " + TextFormatting.BOLD + dep + TextFormatting.RESET + ".";
-									errorScreen.drawCenteredString(fontRenderer, modMissingDependenciesText, errorScreen.width / 2, offset, 0xFFFFFF);
-
-								}
-							};
+						@Override
+						public void drawScreen(GuiErrorScreen errorScreen, FontRenderer fontRenderer, int mouseRelX, int mouseRelY, float tickTime) {
+							//from net.minecraftforge.fml.client.GuiModsMissing
+							errorScreen.drawDefaultBackground();
+							String text = "Module " + TextFormatting.BOLD + name + TextFormatting.RESET+" can only be used on "+TextFormatting.BOLD+requiredSide.toString()+TextFormatting.RESET+"!";
+							errorScreen.drawCenteredString(fontRenderer, text, errorScreen.width / 2, 75, 0xFFFFFF);
+						}
+					};
+				return false;
+			}else if(depName!=null&&hard){
+				String what = depName.substring( 0, depName.indexOf( '-' ) );
+				String which = depName.substring( depName.indexOf( '-' ) + 1, depName.length() );
+				boolean depFound = false;
+				if(requiredSide==currentSide) {
+					if (which.equals("mod")){
+						depFound = Loader.isModLoaded(what);
+					}else if(which.equals("module")){
+						depFound = isValid(what, modules, currentSide, validModules, checkedModules);
+					}
 				}
-			}
+				if(!depFound)
+					if(crash)
+						throw new CustomModLoadingErrorDisplayException(String.format("Missing hard required dependency for module %s - %s", name, depName), null) { //Will open a gui.
+							@Override
+							public void initGui(GuiErrorScreen errorScreen, FontRenderer fontRenderer) {}//Used to add buttons, we have none
+
+							@Override
+							public void drawScreen(GuiErrorScreen errorScreen, FontRenderer fontRenderer, int mouseRelX, int mouseRelY, float tickTime) {
+								//from net.minecraftforge.fml.client.GuiModsMissing
+								errorScreen.drawDefaultBackground();
+								String modMissingDependenciesText = "Module " + TextFormatting.BOLD + name + TextFormatting.RESET+" is missing required hard dependency "+TextFormatting.BOLD+depName+TextFormatting.RESET+".";
+								errorScreen.drawCenteredString(fontRenderer, modMissingDependenciesText, errorScreen.width / 2, 75, 0xFFFFFF);
+							}
+						};
+					return false;
+			}else return false; //Syntax error
 		}
+		validModules.add(name);
+		return true;
 	}
 
-	private static void validateAndPutModule(String key, Map<String, Pair<Class<Module>, String>> foundModules, Side currentSide, Map<String, Class<Module>> result, List<String> order, List<String> checked){
-		checked.add(key);
-		boolean load = true;
-		Pair<Class<Module>, String> entry = foundModules.get(key);
-		if(entry.getRight() != null )
-		{
-			for( String dep : entry.getRight().split( ";" ) )
-			{
-				String[] depkv = dep.split( ":" );
-				String[] keys = depkv[0].split( "\\-" );
-				String value = depkv.length > 0 ? depkv[1] : null;
-
-				Side side = ArrayUtils.contains( keys, "client" ) ? Side.CLIENT : ArrayUtils.contains( keys, "server" ) ? Side.SERVER : null;
-				boolean hardDepend = ArrayUtils.contains( keys, "hard");
-				boolean softDepend = ArrayUtils.contains( keys, "soft");
-				boolean crash = ArrayUtils.contains( keys, "crash" ) && hardDepend;
-				boolean isModuleDependency = hardDepend||softDepend;
-
-				if( side != null && value == null ) //Side-only generous modules
-				{
-					load &= side == currentSide;
-					if( side == currentSide || !crash )
-					{
-						continue;
-					}
+	private void addAsNode(String name, Map<String, Pair<Class<Module>, String>> foundModules, Toposorter.Graph<String> graph, Side currentSide){
+		if(graph.hasNode(name))
+			return;
+		Toposorter.Graph<String>.Node node = graph.addNewNode(name, name);
+		for(String dep : foundModules.get(name).getRight().split(";")){
+			String[] temp = dep.split(":");
+			String[] modifiers = dep.split("\\-");
+			String depName = temp.length>0?temp[1]:null;
+			Side requiredSide = ArrayUtils.contains(modifiers, "client" ) ? Side.CLIENT : ArrayUtils.contains(modifiers, "server" ) ? Side.SERVER : currentSide;
+			boolean before = ArrayUtils.contains(modifiers, "before");
+			boolean after = ArrayUtils.contains(modifiers, "after");
+			if(depName!=null){
+				String what = depName.substring( 0, depName.indexOf( '-' ) );
+				String which = depName.substring( depName.indexOf( '-' ) + 1, depName.length() );
+				if(which.equals("module") && requiredSide==currentSide){
+					addAsNode(what, foundModules, graph, currentSide);
+					if(after)
+						node.dependOn(graph.getNode(what));
+					else if(before)
+						node.dependencyOf(graph.getNode(what));
+					//"mod" cannot be handled here because AE2 cannot control mod loading
+					//else there is no vertex added to this graph
 				}
-				else if( isModuleDependency && value != null ) //look for mod
-				{
-					String what = value.substring( 0, value.indexOf( '-' ) );
-					String which = value.substring( value.indexOf( '-' ) + 1, value.length() );
-					boolean depFound = side == null || side == currentSide;
-					if(depFound)
-						switch( what )
-						{
-							case "mod":
-								depFound &= Loader.isModLoaded( which );
-								break;
-							case "module":
-								if(order.contains(which)) {
-									depFound &= true;
-									break;
-								}
-								if(checked.contains(which)) {//order does not, but checked does
-									depFound = false;
-									break;
-								}
-								if(foundModules.containsKey(which)){
-									validateAndPutModule(which, foundModules, currentSide, result, order, checked);
-									depFound &= order.contains(which);
-								}else depFound = false;
-								break;
-							default:
-								depFound = false;
-						}
-					if(softDepend)
-						continue; //do not affect loading
-					if(hardDepend){
-						load &= depFound;
-						if(depFound||!crash){
-							continue;
-						}
-					}
-				}
-				throw new CustomModLoadingErrorDisplayException(String.format("Missing hard required dependency for module %s - %s", key, dep), null) { //Will open a gui.
-					@Override
-					public void initGui(GuiErrorScreen errorScreen, FontRenderer fontRenderer) {
-						//Used to add buttons, we have none
-					}
-
-					@Override
-					public void drawScreen(GuiErrorScreen errorScreen, FontRenderer fontRenderer, int mouseRelX, int mouseRelY, float tickTime) {
-						//from net.minecraftforge.fml.client.GuiModsMissing
-						errorScreen.drawDefaultBackground();
-						int offset = 75;
-						String modMissingDependenciesText = "Module " + TextFormatting.BOLD + key + TextFormatting.RESET+" is missing required hard dependency "+TextFormatting.BOLD+dep+TextFormatting.RESET+".";
-						errorScreen.drawCenteredString(fontRenderer, modMissingDependenciesText, errorScreen.width / 2, offset, 0xFFFFFF);
-
-					}
-				};
 			}
-		}
-		if( load )
-		{
-			result.put(key, entry.getLeft());
-			order.add(key);
 		}
 	}
 
@@ -282,7 +232,8 @@ public final class AppEng
 	{
 		if( !Loader.isModLoaded( "appliedenergistics2-core" ) )
 		{
-			// TODO 1.10.2-MODUSEP - I dunno what to do with proxies. Srsly. I think we will have to use a proxy per module. If so, do we also need generic proxy :D ?
+			// TODO 1.10.2-MODUSEP - I dunno what to do with proxies. Srsly. I think we will have to use a proxy per module. If so, do we also need generic proxy
+			// TODO 1.10.2-MODUSEP Answer: Internal modules have to have a proxy provided by AE2 or at least a proxy created by AE2 - external mods are @Mod so they have their own
 			CommonHelper.proxy.missingCoreMod();
 		}
 
@@ -303,22 +254,53 @@ public final class AppEng
 			}
 		}
 
-		Maps.newHashMap(foundModules).forEach((name, data) -> {insertBeforeDependencies(name, foundModules, event.getSide());}); //Avoid ConcurrentModificationException
 
-		Map<String, Class<Module>> modules = Maps.newHashMap();
-		List<String> order = Lists.newArrayList();
+
 		List<String> checked = Lists.newArrayList();
-		for( String key: foundModules.keySet() )
-		{
-			if(!checked.contains(key)){
-			validateAndPutModule(key, foundModules, event.getSide(), modules, order, checked);
+		List<String> valid = Lists.newArrayList();
+		Map<String, Class<Module>> modules = Maps.newHashMap();
+		for(Map.Entry<String, Pair<Class<Module>, String>> entry:foundModules.entrySet()){
+			if(isValid(entry.getKey(), foundModules, event.getSide(), valid, checked)){
+				modules.put(entry.getKey(), entry.getValue().getLeft());
+			}
 		}
+		Toposorter.Graph<String> graph = new Toposorter.Graph<String>();
+		for(String name : modules.keySet()){
+			addAsNode(name, foundModules, graph, event.getSide());
 		}
-		ImmutableList.Builder<String> orderBuilder = ImmutableList.builder();
-		orderBuilder.addAll(order);
-		this.moduleOrder = orderBuilder.build();
 
+		List<String> ls = null;
+		try {
+			ls = Toposorter.toposort(graph);
+		} catch (Toposorter.SortingException e) {
+			boolean moduleFound = false;
+			event.getModLog().error("Module "+e.getNode()+" has circular dependencies:");
+			for(String s : e.getVisitedNodes()){
+				if(s.equals(e.getNode())){
+					moduleFound = true;
+					event.getModLog().error("\""+s+"\"");
+					continue;
+				}
+				if(moduleFound){
+					event.getModLog().error("depending on: \""+s+"\"");
+				}
+			}
+			event.getModLog().error("again depending on \""+e.getNode()+"\"");
 
+			throw new CustomModLoadingErrorDisplayException(String.format("Circular dependency at module %s", e.getNode()), null) { //Will open a gui.
+				@Override
+				public void initGui(GuiErrorScreen errorScreen, FontRenderer fontRenderer) {}
+
+				@Override
+				public void drawScreen(GuiErrorScreen errorScreen, FontRenderer fontRenderer, int mouseRelX, int mouseRelY, float tickTime) {
+					//from net.minecraftforge.fml.client.GuiModsMissing
+					errorScreen.drawDefaultBackground();
+					String modMissingDependenciesText = "The module " + TextFormatting.BOLD + e.getNode() + TextFormatting.RESET+" has circular dependencies! See the log for a list!";
+					errorScreen.drawCenteredString(fontRenderer, modMissingDependenciesText, errorScreen.width / 2, 75, 0xFFFFFF);
+				}
+			};
+		}
+		moduleOrder = new ImmutableList.Builder<String>().addAll(ls).build();
 		ImmutableMap.Builder<String, Module> modulesBuilder = ImmutableMap.builder();
 		ImmutableMap.Builder<Class, Module> classModuleBuilder = ImmutableMap.builder();
 		ImmutableMap.Builder<Module, Boolean> internalBuilder = ImmutableMap.builder();
