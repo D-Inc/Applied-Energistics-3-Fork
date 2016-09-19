@@ -29,6 +29,8 @@ import com.google.common.collect.ImmutableMap;
 import org.lwjgl.opengl.GL11;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.gui.GuiErrorScreen;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.resources.IReloadableResourceManager;
 import net.minecraft.entity.item.EntityItem;
@@ -48,6 +50,7 @@ import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.client.model.IModel;
 import net.minecraftforge.client.model.ModelLoaderRegistry;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.client.CustomModLoadingErrorDisplayException;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import appeng.api.parts.CableRenderMode;
@@ -276,6 +279,26 @@ public class ClientHelper extends ServerHelper
 	public void missingCoreMod()
 	{
 		throw new MissingCoreMod();
+	}
+
+	@Override
+	public void moduleLoadingException( String exceptionText, String guiText )
+	{
+		throw new CustomModLoadingErrorDisplayException( exceptionText, null ){
+
+			@Override
+			public void initGui( GuiErrorScreen errorScreen, FontRenderer fontRenderer )
+			{
+
+			}
+
+			@Override
+			public void drawScreen( GuiErrorScreen errorScreen, FontRenderer fontRenderer, int mouseRelX, int mouseRelY, float tickTime )
+			{
+				errorScreen.drawDefaultBackground();
+				errorScreen.drawCenteredString( fontRenderer, guiText, errorScreen.width / 2, 75, 0xFFFFFF );
+			}
+		};
 	}
 
 	@SubscribeEvent

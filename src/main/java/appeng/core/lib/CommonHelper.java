@@ -74,5 +74,7 @@ public abstract class CommonHelper
 	public abstract void updateRenderMode( EntityPlayer player );
 
 	public abstract void missingCoreMod();
+	
+	public abstract void moduleLoadingException(String exceptionText, String guiText);
 
 }
