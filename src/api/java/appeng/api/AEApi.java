@@ -27,6 +27,7 @@ package appeng.api;
 import java.lang.reflect.Field;
 
 import appeng.api.exceptions.CoreInaccessibleException;
+import appeng.core.lib.Api;
 
 
 /**
@@ -38,7 +39,7 @@ public enum AEApi
 {
 	;
 
-	private static final String CORE_API_FQN = "appeng.core.Api";
+	private static final String CORE_API_FQN = "appeng.core.lib.Api";
 	private static final String CORE_API_FIELD = "INSTANCE";
 	private static final IAppEngApi HELD_API;
 
@@ -62,6 +63,11 @@ public enum AEApi
 		catch( final IllegalAccessException e )
 		{
 			throw new CoreInaccessibleException( "AE2 API tried to access the " + CORE_API_FIELD + " field in " + CORE_API_FQN + " without enough access permissions." );
+		}
+		catch( final NoClassDefFoundError e)
+		{
+			e.printStackTrace();//Debug
+			throw new CoreInaccessibleException( "AE2 API tried to access the " + CORE_API_FQN + " class, but it is invalid." );
 		}
 	}
 

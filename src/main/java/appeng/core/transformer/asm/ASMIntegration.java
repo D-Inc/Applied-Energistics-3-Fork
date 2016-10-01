@@ -71,7 +71,7 @@ public final class ASMIntegration implements IClassTransformer
 	@Override
 	public byte[] transform( final String name, final String transformedName, final byte[] basicClass )
 	{
-		if( basicClass == null || transformedName.startsWith( "appeng.transformer" ) )
+		if( basicClass == null || transformedName.startsWith( "appeng.core.transformer" ) )
 		{
 			return basicClass;
 		}
@@ -103,6 +103,7 @@ public final class ASMIntegration implements IClassTransformer
 
 	private boolean removeOptionals( final ClassNode classNode )
 	{
+
 		boolean changed = false;
 
 		if( classNode.visibleAnnotations != null )

@@ -144,7 +144,7 @@ public enum MaterialType
 		this( metaValue, modelName, part );
 		this.droppedEntity = c;
 
-		EntityRegistry.registerModEntity( this.droppedEntity, this.droppedEntity.getSimpleName(), EntityIds.get( this.droppedEntity ), AppEng.instance().getModule( AppEngCore.class ), 16, 4, true );
+		EntityRegistry.registerModEntity( this.droppedEntity, this.droppedEntity.getSimpleName(), EntityIds.get( this.droppedEntity ), AppEng.instance(), 16, 4, true );
 	}
 
 	MaterialType( final int metaValue, String modelName, final AEFeature part, final String oreDictionary, final Class<? extends Entity> c )
@@ -152,7 +152,7 @@ public enum MaterialType
 		this( metaValue, modelName, part );
 		this.oreName = oreDictionary;
 		this.droppedEntity = c;
-		EntityRegistry.registerModEntity( this.droppedEntity, this.droppedEntity.getSimpleName(), EntityIds.get( this.droppedEntity ), AppEng.instance().getModule( AppEngCore.class ), 16, 4, true );
+		EntityRegistry.registerModEntity( this.droppedEntity, this.droppedEntity.getSimpleName(), EntityIds.get( this.droppedEntity ), AppEng.instance(), 16, 4, true );
 	}
 
 	MaterialType( final int metaValue, String modelName, final AEFeature part, final String oreDictionary )

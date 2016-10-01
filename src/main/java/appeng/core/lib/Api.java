@@ -37,7 +37,7 @@ import appeng.core.me.grid.GridNode;
 
 public final class Api implements IAppEngApi
 {
-	public static final Api INSTANCE = new Api();
+	public static final Api INSTANCE = new Api(); //TODO undo changes, make final
 
 	private final ApiPart partHelper;
 

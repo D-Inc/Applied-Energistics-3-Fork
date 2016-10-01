@@ -64,9 +64,10 @@ import appeng.core.lib.crash.CrashInfo;
 import appeng.core.lib.crash.ModCrashEnhancement;
 import appeng.core.lib.module.AEModule;
 import appeng.core.lib.module.Toposorter;
+import org.lwjgl.Sys;
 
 
-@Mod( modid = AppEng.MOD_ID, name = AppEng.MOD_NAME, version = AEConfig.VERSION, dependencies = AppEng.MOD_DEPENDENCIES, acceptedMinecraftVersions = ForgeVersion.mcVersion, guiFactory = "appeng.client.gui.config.AEConfigGuiFactory" )
+@Mod( modid = AppEng.MOD_ID, name = AppEng.MOD_NAME, version = AEConfig.VERSION, dependencies = AppEng.MOD_DEPENDENCIES, acceptedMinecraftVersions = ForgeVersion.mcVersion, guiFactory = "appeng.core.client.gui.config.AEConfigGuiFactory" )
 public final class AppEng
 {
 	public static final String MOD_ID = "appliedenergistics2";
@@ -88,10 +89,10 @@ public final class AppEng
 
 	@Nonnull
 	private static final AppEng INSTANCE = new AppEng();
-	private ImmutableMap<String, Object> modules;
-	private ImmutableMap<Class<?>, Object> classModule;
+	private ImmutableMap<String, ?> modules;
+	private ImmutableMap<Class<?>, ?> classModule;
 	private ImmutableList<String> moduleOrder;
-	private ImmutableMap<Object, Boolean> internal;
+	private ImmutableMap<?, Boolean> internal;
 	private File configDirectory;
 
 	private AppEng()
@@ -115,6 +116,8 @@ public final class AppEng
 	{
 		return (M) classModule.get( clas );
 	}
+
+
 
 	public File getConfigDirectory()
 	{
@@ -197,6 +200,8 @@ public final class AppEng
 			{
 				if( s.equals( e.getNode() ) )
 				{
+					if (moduleFound )
+						break;
 					moduleFound = true;
 					event.getModLog().error( "\"" + s + "\"" );
 					continue;
@@ -256,6 +261,8 @@ public final class AppEng
 		checkedModules.add( name );
 		if( !modules.containsKey( name ) )
 			return false;
+		if( modules.get( name ).getRight() == null || modules.get( name ).getRight().equals( "" ) )
+			return true;
 		for( String dep : modules.get( name ).getRight().split( ";" ) )
 		{
 			String[] temp = dep.split( ":" );
@@ -315,6 +322,8 @@ public final class AppEng
 		if( graph.hasNode( name ) )
 			return;
 		Toposorter.Graph<String>.Node node = graph.addNewNode( name, name );
+		if( foundModules.get( name ).getRight() == null || foundModules.get( name ).getRight().equals( "" ) )
+			return;
 		for( String dep : foundModules.get( name ).getRight().split( ";" ) )
 		{
 			String[] temp = dep.split( ":" );
