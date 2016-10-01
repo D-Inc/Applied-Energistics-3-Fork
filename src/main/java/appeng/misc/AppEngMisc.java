@@ -21,9 +21,6 @@ import appeng.core.lib.module.Module;
 
 
 @AEModule( "misc" )
-/*
- * TODO 1.10.2-MODUSEP - Do we even want some modules be @Mod at the same time? Weird.
- */
 @Mod( modid = AppEngMisc.MODID, name = AppEngMisc.NAME, version = AEConfig.VERSION, dependencies = "required-after:" + AppEng.MOD_ID, acceptedMinecraftVersions = ForgeVersion.mcVersion )
 public class AppEngMisc implements Module
 {

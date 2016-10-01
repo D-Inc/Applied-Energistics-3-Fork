@@ -20,13 +20,11 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 import appeng.core.hooks.TickHandler;
 import appeng.core.integration.IntegrationRegistry;
-import appeng.core.lib.AEConfig;
 import appeng.core.lib.AELog;
 import appeng.core.lib.CommonHelper;
-import appeng.core.lib.FacadeConfig;
 import appeng.core.lib.crash.IntegrationCrashEnhancement;
-import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.module.AEModule;
+import appeng.core.lib.module.AEModule.ModuleEventHandler;
 import appeng.core.lib.module.Module;
 import appeng.core.lib.sync.GuiBridge;
 import appeng.core.lib.sync.network.NetworkHandler;
@@ -75,7 +73,7 @@ public class AppEngCore implements Module
 		return this.registration;
 	}
 
-	@Override
+	@ModuleEventHandler
 	public void preInit( FMLPreInitializationEvent event )
 	{
 		this.recipeDirectory = new File( AppEng.instance().getConfigDirectory(), "recipes" );
@@ -115,7 +113,7 @@ public class AppEngCore implements Module
 		thread.start();
 	}
 
-	@Override
+	@ModuleEventHandler
 	public void init( FMLInitializationEvent event )
 	{
 		if( this.exportConfig.isExportingItemNamesEnabled() )
@@ -130,7 +128,7 @@ public class AppEngCore implements Module
 		IntegrationRegistry.INSTANCE.init();
 	}
 
-	@Override
+	@ModuleEventHandler
 	public void postInit( FMLPostInitializationEvent event )
 	{
 		this.registration.postInit( event );
@@ -143,7 +141,7 @@ public class AppEngCore implements Module
 		NetworkHandler.instance = new NetworkHandler( "AE2" );
 	}
 
-	@Override
+	@ModuleEventHandler
 	public void handleIMCEvent( IMCEvent event )
 	{
 		final IMCHandler imcHandler = new IMCHandler();
@@ -151,25 +149,25 @@ public class AppEngCore implements Module
 		imcHandler.handleIMCEvent( event );
 	}
 
-	@Override
+	@ModuleEventHandler
 	public void serverAboutToStart( FMLServerAboutToStartEvent event )
 	{
 		WorldData.onServerAboutToStart( event.getServer() );
 	}
 
-	@Override
+	@ModuleEventHandler
 	public void serverStarting( FMLServerStartingEvent event )
 	{
 		event.registerServerCommand( new AECommand( event.getServer() ) );
 	}
 
-	@Override
+	@ModuleEventHandler
 	public void serverStopping( FMLServerStoppingEvent event )
 	{
 		WorldData.instance().onServerStopping();
 	}
 
-	@Override
+	@ModuleEventHandler
 	public void serverStopped( FMLServerStoppedEvent event )
 	{
 		WorldData.instance().onServerStoppped();

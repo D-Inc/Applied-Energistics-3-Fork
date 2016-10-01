@@ -20,6 +20,7 @@ package appeng.core;
 
 
 import java.io.File;
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,6 +46,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.discovery.ASMDataTable;
 import net.minecraftforge.fml.common.discovery.ASMDataTable.ASMData;
+import net.minecraftforge.fml.common.event.FMLEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLInterModComms;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -90,9 +92,6 @@ public final class AppEng
 	private ImmutableMap<String, Module> modules;
 	private ImmutableMap<Class, Module> classModule;
 	private ImmutableList<String> moduleOrder;
-	/*
-	 * TODO 1.10.2-MODUSEP - Do we even want some modules be @Mod at the same time? Weird.
-	 */
 	private ImmutableMap<Module, Boolean> internal;
 	private File configDirectory;
 
@@ -121,6 +120,28 @@ public final class AppEng
 	public File getConfigDirectory()
 	{
 		return configDirectory;
+	}
+
+	private void fireModulesEvent( final FMLEvent event )
+	{
+		for( String name : moduleOrder )
+		{
+			Module module = getModule( name );
+			for( Method method : module.getClass().getDeclaredMethods() )
+			{
+				if( method.getParameterTypes().length == 1 && method.getParameterTypes()[0].isAssignableFrom( event.getClass() ) )
+				{
+					try
+					{
+						method.invoke( module, event );
+					}
+					catch( Exception e )
+					{
+						// :(
+					}
+				}
+			}
+		}
 	}
 
 	@EventHandler
@@ -223,14 +244,7 @@ public final class AppEng
 		this.configDirectory = new File( event.getModConfigurationDirectory().getPath(), "AppliedEnergistics2" );
 		AEConfig.instance = new AEConfig( new File( AppEng.instance().getConfigDirectory(), "AppliedEnergistics2.cfg" ) );
 
-		for( String name : moduleOrder )
-		{
-			Module module = getModule( name );
-			if( this.internal.get( module ) )
-			{
-				module.preInit( event );
-			}
-		}
+		fireModulesEvent( event );
 
 		AELog.info( "Pre Initialization ( ended after " + watch.elapsed( TimeUnit.MILLISECONDS ) + "ms )" );
 	}
@@ -339,14 +353,7 @@ public final class AppEng
 		final Stopwatch start = Stopwatch.createStarted();
 		AELog.info( "Initialization ( started )" );
 
-		for( String name : moduleOrder )
-		{
-			Module module = getModule( name );
-			if( this.internal.get( module ) )
-			{
-				module.init( event );
-			}
-		}
+		fireModulesEvent( event );
 
 		AELog.info( "Initialization ( ended after " + start.elapsed( TimeUnit.MILLISECONDS ) + "ms )" );
 	}
@@ -357,14 +364,7 @@ public final class AppEng
 		final Stopwatch start = Stopwatch.createStarted();
 		AELog.info( "Post Initialization ( started )" );
 
-		for( String name : moduleOrder )
-		{
-			Module module = getModule( name );
-			if( this.internal.get( module ) )
-			{
-				module.postInit( event );
-			}
-		}
+		fireModulesEvent( event );
 
 		AEConfig.instance.save();
 
@@ -374,65 +374,30 @@ public final class AppEng
 	@EventHandler
 	private void handleIMCEvent( final FMLInterModComms.IMCEvent event )
 	{
-		for( Module module : modules.values() )
-		{
-			// TODO 1.10.2-MODUSEP - Do modules still need to receive IMC sent to AE even if they're separate mods?
-			// if( internal.get( module ) )
-			{
-				module.handleIMCEvent( event );
-			}
-		}
+		fireModulesEvent( event );
 	}
 
 	@EventHandler
 	private void serverAboutToStart( final FMLServerAboutToStartEvent event )
 	{
-		for( String name : moduleOrder )
-		{
-			Module module = getModule( name );
-			if( this.internal.get( module ) )
-			{
-				module.serverAboutToStart( event );
-			}
-		}
+		fireModulesEvent( event );
 	}
 
 	@EventHandler
 	private void serverStarting( final FMLServerStartingEvent event )
 	{
-		for( String name : moduleOrder )
-		{
-			Module module = getModule( name );
-			if( this.internal.get( module ) )
-			{
-				module.serverStarting( event );
-			}
-		}
+		fireModulesEvent( event );
 	}
 
 	@EventHandler
 	private void serverStopping( final FMLServerStoppingEvent event )
 	{
-		for( String name : moduleOrder )
-		{
-			Module module = getModule( name );
-			if( this.internal.get( module ) )
-			{
-				module.serverStopping( event );
-			}
-		}
+		fireModulesEvent( event );
 	}
 
 	@EventHandler
 	private void serverStopped( final FMLServerStoppedEvent event )
 	{
-		for( String name : moduleOrder )
-		{
-			Module module = getModule( name );
-			if( this.internal.get( module ) )
-			{
-				module.serverStopped( event );
-			}
-		}
+		fireModulesEvent( event );
 	}
 }

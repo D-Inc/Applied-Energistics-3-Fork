@@ -18,6 +18,7 @@ import appeng.core.lib.AEConfig;
 import appeng.core.lib.FacadeConfig;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.module.AEModule;
+import appeng.core.lib.module.AEModule.ModuleEventHandler;
 import appeng.core.lib.module.Module;
 
 
@@ -25,7 +26,7 @@ import appeng.core.lib.module.Module;
 public class AppEngME implements Module
 {
 
-	@Override
+	@ModuleEventHandler
 	public void preInit( FMLPreInitializationEvent event )
 	{
 		FacadeConfig.instance = new FacadeConfig( new File( AppEng.instance().getConfigDirectory(), "Facades.cfg" ) );
@@ -35,43 +36,43 @@ public class AppEngME implements Module
 		}
 	}
 
-	@Override
+	@ModuleEventHandler
 	public void init( FMLInitializationEvent event )
 	{
 
 	}
 
-	@Override
+	@ModuleEventHandler
 	public void postInit( FMLPostInitializationEvent event )
 	{
 
 	}
 
-	@Override
+	@ModuleEventHandler
 	public void handleIMCEvent( IMCEvent event )
 	{
 
 	}
 
-	@Override
+	@ModuleEventHandler
 	public void serverAboutToStart( FMLServerAboutToStartEvent event )
 	{
 
 	}
 
-	@Override
+	@ModuleEventHandler
 	public void serverStarting( FMLServerStartingEvent event )
 	{
 
 	}
 
-	@Override
+	@ModuleEventHandler
 	public void serverStopping( FMLServerStoppingEvent event )
 	{
 
 	}
 
-	@Override
+	@ModuleEventHandler
 	public void serverStopped( FMLServerStoppedEvent event )
 	{
 

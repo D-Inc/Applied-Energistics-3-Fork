@@ -12,6 +12,7 @@ import net.minecraftforge.fml.common.event.FMLServerStoppedEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 
 import appeng.core.lib.module.AEModule;
+import appeng.core.lib.module.AEModule.ModuleEventHandler;
 import appeng.core.lib.module.Module;
 
 
@@ -19,49 +20,49 @@ import appeng.core.lib.module.Module;
 public class AppEngWorldGen implements Module
 {
 
-	@Override
+	@ModuleEventHandler
 	public void preInit( FMLPreInitializationEvent event )
 	{
 
 	}
 
-	@Override
+	@ModuleEventHandler
 	public void init( FMLInitializationEvent event )
 	{
 
 	}
 
-	@Override
+	@ModuleEventHandler
 	public void postInit( FMLPostInitializationEvent event )
 	{
 
 	}
 
-	@Override
+	@ModuleEventHandler
 	public void handleIMCEvent( IMCEvent event )
 	{
 
 	}
 
-	@Override
+	@ModuleEventHandler
 	public void serverAboutToStart( FMLServerAboutToStartEvent event )
 	{
 
 	}
 
-	@Override
+	@ModuleEventHandler
 	public void serverStarting( FMLServerStartingEvent event )
 	{
 
 	}
 
-	@Override
+	@ModuleEventHandler
 	public void serverStopping( FMLServerStoppingEvent event )
 	{
 
 	}
 
-	@Override
+	@ModuleEventHandler
 	public void serverStopped( FMLServerStoppedEvent event )
 	{
 
