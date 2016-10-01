@@ -17,7 +17,6 @@ import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 import appeng.core.AppEng;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.module.AEModule;
-import appeng.core.lib.module.Module;
 
 
 @AEModule( "debug" )
@@ -28,7 +27,7 @@ import appeng.core.lib.module.Module;
  * The only module not built with gradle.
  */
 @Mod( modid = AppEngDebug.MODID, name = AppEngDebug.NAME, version = AEConfig.VERSION, dependencies = "required-after:" + AppEng.MOD_ID, acceptedMinecraftVersions = ForgeVersion.mcVersion )
-public class AppEngDebug implements Module
+public class AppEngDebug
 {
 
 	public static final String MODID = AppEng.MOD_ID + "|debug";

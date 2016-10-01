@@ -17,12 +17,11 @@ import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 import appeng.core.AppEng;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.module.AEModule;
-import appeng.core.lib.module.Module;
 
 
 @AEModule( "misc" )
 @Mod( modid = AppEngMisc.MODID, name = AppEngMisc.NAME, version = AEConfig.VERSION, dependencies = "required-after:" + AppEng.MOD_ID, acceptedMinecraftVersions = ForgeVersion.mcVersion )
-public class AppEngMisc implements Module
+public class AppEngMisc
 {
 
 	public static final String MODID = AppEng.MOD_ID + "|misc";

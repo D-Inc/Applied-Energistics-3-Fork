@@ -25,7 +25,6 @@ import appeng.core.lib.CommonHelper;
 import appeng.core.lib.crash.IntegrationCrashEnhancement;
 import appeng.core.lib.module.AEModule;
 import appeng.core.lib.module.AEModule.ModuleEventHandler;
-import appeng.core.lib.module.Module;
 import appeng.core.lib.sync.GuiBridge;
 import appeng.core.lib.sync.network.NetworkHandler;
 import appeng.core.lib.util.Platform;
@@ -43,7 +42,7 @@ import appeng.core.services.version.VersionCheckerConfig;
  * TODO 1.10.2-MODUSEP - Dat giant mess though. Move all stuff that belongs to specific modules into these specific modules. Yes, you can boom the API.
  */
 @AEModule( "core" )
-public class AppEngCore implements Module
+public class AppEngCore
 {
 
 	private final Registration registration;

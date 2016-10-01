@@ -19,11 +19,10 @@ import appeng.core.lib.FacadeConfig;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.module.AEModule;
 import appeng.core.lib.module.AEModule.ModuleEventHandler;
-import appeng.core.lib.module.Module;
 
 
 @AEModule( "me" )
-public class AppEngME implements Module
+public class AppEngME
 {
 
 	@ModuleEventHandler

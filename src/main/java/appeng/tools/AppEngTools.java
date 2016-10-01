@@ -17,7 +17,6 @@ import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 import appeng.core.AppEng;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.module.AEModule;
-import appeng.core.lib.module.Module;
 
 
 @AEModule( "tools" )
@@ -25,7 +24,7 @@ import appeng.core.lib.module.Module;
  * TODO 1.10.2-MODUSEP - Do we even want some modules be @Mod at the same time? Weird.
  */
 @Mod( modid = AppEngTools.MODID, name = AppEngTools.NAME, version = AEConfig.VERSION, dependencies = "required-after:" + AppEng.MOD_ID, acceptedMinecraftVersions = ForgeVersion.mcVersion )
-public class AppEngTools implements Module
+public class AppEngTools
 {
 
 	public static final String MODID = AppEng.MOD_ID + "|tools";

@@ -13,11 +13,10 @@ import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 
 import appeng.core.lib.module.AEModule;
 import appeng.core.lib.module.AEModule.ModuleEventHandler;
-import appeng.core.lib.module.Module;
 
 
 @AEModule( "spatial" )
-public class AppEngSpatial implements Module
+public class AppEngSpatial
 {
 
 	@ModuleEventHandler

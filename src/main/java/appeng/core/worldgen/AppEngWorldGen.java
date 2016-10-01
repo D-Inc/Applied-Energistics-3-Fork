@@ -13,11 +13,10 @@ import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 
 import appeng.core.lib.module.AEModule;
 import appeng.core.lib.module.AEModule.ModuleEventHandler;
-import appeng.core.lib.module.Module;
 
 
 @AEModule( "worldgen" )
-public class AppEngWorldGen implements Module
+public class AppEngWorldGen
 {
 
 	@ModuleEventHandler

@@ -63,7 +63,6 @@ import appeng.core.lib.CommonHelper;
 import appeng.core.lib.crash.CrashInfo;
 import appeng.core.lib.crash.ModCrashEnhancement;
 import appeng.core.lib.module.AEModule;
-import appeng.core.lib.module.Module;
 import appeng.core.lib.module.Toposorter;
 
 
@@ -89,10 +88,10 @@ public final class AppEng
 
 	@Nonnull
 	private static final AppEng INSTANCE = new AppEng();
-	private ImmutableMap<String, Module> modules;
-	private ImmutableMap<Class, Module> classModule;
+	private ImmutableMap<String, Object> modules;
+	private ImmutableMap<Class<?>, Object> classModule;
 	private ImmutableList<String> moduleOrder;
-	private ImmutableMap<Module, Boolean> internal;
+	private ImmutableMap<Object, Boolean> internal;
 	private File configDirectory;
 
 	private AppEng()
@@ -107,12 +106,12 @@ public final class AppEng
 		return INSTANCE;
 	}
 
-	public <M extends Module> M getModule( String name )
+	public Object getModule( String name )
 	{
-		return (M) modules.get( name );
+		return modules.get( name );
 	}
 
-	public <M extends Module> M getModule( Class<M> clas )
+	public <M> M getModule( Class<M> clas )
 	{
 		return (M) classModule.get( clas );
 	}
@@ -126,10 +125,10 @@ public final class AppEng
 	{
 		for( String name : moduleOrder )
 		{
-			Module module = getModule( name );
+			Object module = getModule( name );
 			for( Method method : module.getClass().getDeclaredMethods() )
 			{
-				if( method.getParameterTypes().length == 1 && method.getParameterTypes()[0].isAssignableFrom( event.getClass() ) )
+				if( method.getParameterTypes().length == 1 && method.getParameterTypes()[0].isAssignableFrom( event.getClass() ) && method.getDeclaredAnnotation( AEModule.ModuleEventHandler.class ) != null )
 				{
 					try
 					{
@@ -154,16 +153,14 @@ public final class AppEng
 			CommonHelper.proxy.missingCoreMod();
 		}
 
-		Map<String, Pair<Class<Module>, String>> foundModules = new HashMap<>();
+		Map<String, Pair<Class<?>, String>> foundModules = new HashMap<>();
 		ASMDataTable annotations = event.getAsmData();
 		for( ASMData data : annotations.getAll( AEModule.class.getCanonicalName() ) )
 		{
 			try
 			{
-				Class clas = Class.forName( data.getClassName() );
-				Class<Module> claz = clas.asSubclass( Module.class );
-				Module module = claz.newInstance();
-				foundModules.put( (String) data.getAnnotationInfo().get( "value" ), new ImmutablePair<Class<Module>, String>( claz, (String) data.getAnnotationInfo().get( "dependencies" ) ) );
+				Class<?> clazz = Class.forName( data.getClassName() );
+				foundModules.put( (String) data.getAnnotationInfo().get( "value" ), new ImmutablePair<Class<?>, String>( clazz, (String) data.getAnnotationInfo().get( "dependencies" ) ) );
 			}
 			catch( Exception e )
 			{
@@ -173,8 +170,8 @@ public final class AppEng
 
 		List<String> checked = Lists.newArrayList();
 		List<String> valid = Lists.newArrayList();
-		Map<String, Class<Module>> modules = Maps.newHashMap();
-		for( Map.Entry<String, Pair<Class<Module>, String>> entry : foundModules.entrySet() )
+		Map<String, Class<?>> modules = Maps.newHashMap();
+		for( Map.Entry<String, Pair<Class<?>, String>> entry : foundModules.entrySet() )
 		{
 			if( isValid( entry.getKey(), foundModules, event.getSide(), valid, checked ) )
 			{
@@ -213,16 +210,16 @@ public final class AppEng
 			CommonHelper.proxy.moduleLoadingException( String.format( "Circular dependency at module %s", e.getNode() ), "The module " + TextFormatting.BOLD + e.getNode() + TextFormatting.RESET + " has circular dependencies! See the log for a list!" );
 		}
 		moduleOrder = new ImmutableList.Builder<String>().addAll( ls ).build();
-		ImmutableMap.Builder<String, Module> modulesBuilder = ImmutableMap.builder();
-		ImmutableMap.Builder<Class, Module> classModuleBuilder = ImmutableMap.builder();
-		ImmutableMap.Builder<Module, Boolean> internalBuilder = ImmutableMap.builder();
+		ImmutableMap.Builder<String, Object> modulesBuilder = ImmutableMap.builder();
+		ImmutableMap.Builder<Class<?>, Object> classModuleBuilder = ImmutableMap.builder();
+		ImmutableMap.Builder<Object, Boolean> internalBuilder = ImmutableMap.builder();
 
 		for( String name : moduleOrder )
 		{
 			try
 			{
-				Class<Module> moduleClass = modules.get( name );
-				Module module = moduleClass.newInstance();
+				Class<?> moduleClass = modules.get( name );
+                Object module = moduleClass.newInstance();
 				modulesBuilder.put( name, module );
 				classModuleBuilder.put( moduleClass, module );
 				internalBuilder.put( module, !moduleClass.isAnnotationPresent( Mod.class ) );
@@ -252,7 +249,7 @@ public final class AppEng
 	/**
 	 * Checks whether all required dependencies are here
 	 */
-	private boolean isValid( String name, Map<String, Pair<Class<Module>, String>> modules, Side currentSide, List<String> validModules, List<String> checkedModules )
+	private boolean isValid( String name, Map<String, Pair<Class<?>, String>> modules, Side currentSide, List<String> validModules, List<String> checkedModules )
 	{
 		if( checkedModules.contains( name ) )
 			return validModules.contains( name );
@@ -313,7 +310,7 @@ public final class AppEng
 		return true;
 	}
 
-	private void addAsNode( String name, Map<String, Pair<Class<Module>, String>> foundModules, Toposorter.Graph<String> graph, Side currentSide )
+	private void addAsNode( String name, Map<String, Pair<Class<?>, String>> foundModules, Toposorter.Graph<String> graph, Side currentSide )
 	{
 		if( graph.hasNode( name ) )
 			return;
