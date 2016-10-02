@@ -20,6 +20,8 @@ package appeng.core;
 
 
 import java.io.File;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
@@ -28,12 +30,14 @@ import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Nonnull;
 
+import appeng.core.lib.module.ModuleProxy;
 import com.google.common.base.Stopwatch;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
+import jdk.internal.org.objectweb.asm.ClassVisitor;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
@@ -65,6 +69,7 @@ import appeng.core.lib.crash.ModCrashEnhancement;
 import appeng.core.lib.module.AEModule;
 import appeng.core.lib.module.Toposorter;
 import org.lwjgl.Sys;
+import org.lwjgl.opencl.CL;
 
 
 @Mod( modid = AppEng.MOD_ID, name = AppEng.MOD_NAME, version = AEConfig.VERSION, dependencies = AppEng.MOD_DEPENDENCIES, acceptedMinecraftVersions = ForgeVersion.mcVersion, guiFactory = "appeng.core.client.gui.config.AEConfigGuiFactory" )
@@ -187,10 +192,10 @@ public final class AppEng
 			addAsNode( name, foundModules, graph, event.getSide() );
 		}
 
-		List<String> ls = null;
+		List<String> moduleLoadingOrder = null;
 		try
 		{
-			ls = Toposorter.toposort( graph );
+			moduleLoadingOrder = Toposorter.toposort( graph );
 		}
 		catch( Toposorter.SortingException e )
 		{
@@ -214,26 +219,32 @@ public final class AppEng
 			event.getModLog().error( "again depending on \"" + e.getNode() + "\"" );
 			CommonHelper.proxy.moduleLoadingException( String.format( "Circular dependency at module %s", e.getNode() ), "The module " + TextFormatting.BOLD + e.getNode() + TextFormatting.RESET + " has circular dependencies! See the log for a list!" );
 		}
-		moduleOrder = new ImmutableList.Builder<String>().addAll( ls ).build();
 		ImmutableMap.Builder<String, Object> modulesBuilder = ImmutableMap.builder();
 		ImmutableMap.Builder<Class<?>, Object> classModuleBuilder = ImmutableMap.builder();
 		ImmutableMap.Builder<Object, Boolean> internalBuilder = ImmutableMap.builder();
+		ImmutableList.Builder<String> orderBuilder = ImmutableList.builder();
 
-		for( String name : moduleOrder )
+
+		for( String name : moduleLoadingOrder )
 		{
 			try
 			{
 				Class<?> moduleClass = modules.get( name );
-                Object module = moduleClass.newInstance();
+				Object module = moduleClass.newInstance();
+				findAndLoadModuleProxy( module );
+				orderBuilder.add( name );
 				modulesBuilder.put( name, module );
 				classModuleBuilder.put( moduleClass, module );
 				internalBuilder.put( module, !moduleClass.isAnnotationPresent( Mod.class ) );
 			}
-			catch( Exception exc )
+			catch ( ReflectiveOperationException e )
 			{
-				// :(
+				event.getModLog().error( "Error while trying to setup the module " + name );
+				e.printStackTrace();
 			}
 		}
+
+		this.moduleOrder = orderBuilder.build();
 		this.modules = modulesBuilder.build();
 		this.classModule = classModuleBuilder.build();
 		this.internal = internalBuilder.build();
@@ -249,6 +260,22 @@ public final class AppEng
 		fireModulesEvent( event );
 
 		AELog.info( "Pre Initialization ( ended after " + watch.elapsed( TimeUnit.MILLISECONDS ) + "ms )" );
+	}
+
+
+	private void findAndLoadModuleProxy( Object module ) throws ClassNotFoundException, IllegalAccessException, InstantiationException, IllegalArgumentException
+	{
+		for( Field f : module.getClass().getDeclaredFields() )
+		{
+			Annotation annotation = f.getAnnotation( ModuleProxy.class );
+			if( annotation == null )
+				continue;
+
+			ModuleProxy proxyInfo = ( ModuleProxy ) annotation;
+			Object proxy = Class.forName( FMLCommonHandler.instance().getSide() == Side.CLIENT ? proxyInfo.clientSide() : proxyInfo.serverSide() ).newInstance();
+			f.set( module, proxy );
+			return;
+		}
 	}
 
 	/**

@@ -19,6 +19,7 @@
 package appeng.core.lib;
 
 
+import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Random;
 

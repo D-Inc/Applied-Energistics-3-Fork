@@ -19,6 +19,7 @@
 package appeng.core.server;
 
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -44,7 +45,7 @@ import appeng.core.lib.util.Platform;
 import appeng.tools.item.ToolNetworkTool;
 
 
-public class ServerHelper extends CommonHelper
+public abstract class ServerHelper extends CommonHelper
 {
 
 	private EntityPlayer renderModeBased;
@@ -201,4 +202,5 @@ public class ServerHelper extends CommonHelper
 
 		return CableRenderMode.Standard;
 	}
+
 }
