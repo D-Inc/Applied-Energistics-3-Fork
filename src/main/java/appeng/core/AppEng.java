@@ -66,7 +66,6 @@ import appeng.core.lib.CommonHelper;
 import appeng.core.lib.crash.CrashInfo;
 import appeng.core.lib.crash.ModCrashEnhancement;
 import appeng.core.lib.module.AEModule;
-import appeng.core.lib.module.ModuleSidedProxy;
 import appeng.core.lib.module.Toposorter;
 
 
@@ -244,7 +243,6 @@ public final class AppEng
 			{
 				Class<?> moduleClass = modules.get( name );
 				Object module = moduleClass.newInstance();
-				populateProxy( module );
 				orderBuilder.add( name );
 				modulesBuilder.put( name, module );
 				classModuleBuilder.put( moduleClass, module );
@@ -376,22 +374,6 @@ public final class AppEng
 					// "mod" cannot be handled here because AE2 cannot control mod loading else there is no vertex added to this graph
 				}
 			}
-		}
-	}
-
-	private void populateProxy( Object module ) throws ClassNotFoundException, IllegalAccessException, InstantiationException, IllegalArgumentException
-	{
-		for( Field f : module.getClass().getDeclaredFields() )
-		{
-			ModuleSidedProxy annotation = f.getAnnotation( ModuleSidedProxy.class );
-			if( annotation == null )
-			{
-				continue;
-			}
-			Object proxy = Class.forName( FMLCommonHandler.instance().getSide() == Side.CLIENT ? annotation.clientSide() : annotation.serverSide() ).newInstance();
-			f.setAccessible( true );
-			modifiers.set( f, f.getModifiers() & ( ~Modifier.FINAL ) );
-			f.set( module, proxy );
 		}
 	}
 
