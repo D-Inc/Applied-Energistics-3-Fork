@@ -20,7 +20,7 @@ package appeng.core;
 
 
 import java.io.File;
-import java.lang.annotation.Annotation;
+import java.lang.reflect.Modifier;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.HashMap;
@@ -30,14 +30,13 @@ import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Nonnull;
 
-import appeng.core.lib.module.ModuleProxy;
 import com.google.common.base.Stopwatch;
+import com.google.common.base.Throwables;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
-import jdk.internal.org.objectweb.asm.ClassVisitor;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
@@ -67,9 +66,8 @@ import appeng.core.lib.CommonHelper;
 import appeng.core.lib.crash.CrashInfo;
 import appeng.core.lib.crash.ModCrashEnhancement;
 import appeng.core.lib.module.AEModule;
+import appeng.core.lib.module.ModuleSidedProxy;
 import appeng.core.lib.module.Toposorter;
-import org.lwjgl.Sys;
-import org.lwjgl.opencl.CL;
 
 
 @Mod( modid = AppEng.MOD_ID, name = AppEng.MOD_NAME, version = AEConfig.VERSION, dependencies = AppEng.MOD_DEPENDENCIES, acceptedMinecraftVersions = ForgeVersion.mcVersion, guiFactory = "appeng.core.client.gui.config.AEConfigGuiFactory" )
@@ -92,8 +90,26 @@ public final class AppEng
 					+ net.minecraftforge.common.ForgeVersion.revisionVersion + '.' // revisionVersion
 					+ net.minecraftforge.common.ForgeVersion.buildVersion + ",)"; // buildVersion
 
+	// TODO @Elix-x Will be replaced with utils...
+	private static final Field modifiers;
+	static
+	{
+		try
+		{
+			modifiers = Field.class.getDeclaredField( "modifiers" );
+			modifiers.setAccessible( true );
+		}
+		catch( ReflectiveOperationException e )
+		{
+			// :(
+			// Should not happen.
+			throw Throwables.propagate( e );
+		}
+	}
+
 	@Nonnull
 	private static final AppEng INSTANCE = new AppEng();
+
 	private ImmutableMap<String, ?> modules;
 	private ImmutableMap<Class<?>, ?> classModule;
 	private ImmutableList<String> moduleOrder;
@@ -121,8 +137,6 @@ public final class AppEng
 	{
 		return (M) classModule.get( clas );
 	}
-
-
 
 	public File getConfigDirectory()
 	{
@@ -156,8 +170,6 @@ public final class AppEng
 	{
 		if( !Loader.isModLoaded( "appliedenergistics2-core" ) )
 		{
-			// TODO 1.10.2-MODUSEP - I dunno what to do with proxies. Srsly. I think we will have to use a proxy per module. If so, do we also need generic proxy
-			// TODO 1.10.2-MODUSEP Answer: Internal modules have to have a proxy provided by AE2 or at least a proxy created by AE2 - external mods are @Mod so they have their own
 			CommonHelper.proxy.missingCoreMod();
 		}
 
@@ -205,8 +217,10 @@ public final class AppEng
 			{
 				if( s.equals( e.getNode() ) )
 				{
-					if (moduleFound )
+					if( moduleFound )
+					{
 						break;
+					}
 					moduleFound = true;
 					event.getModLog().error( "\"" + s + "\"" );
 					continue;
@@ -224,20 +238,19 @@ public final class AppEng
 		ImmutableMap.Builder<Object, Boolean> internalBuilder = ImmutableMap.builder();
 		ImmutableList.Builder<String> orderBuilder = ImmutableList.builder();
 
-
 		for( String name : moduleLoadingOrder )
 		{
 			try
 			{
 				Class<?> moduleClass = modules.get( name );
 				Object module = moduleClass.newInstance();
-				findAndLoadModuleProxy( module );
+				populateProxy( module );
 				orderBuilder.add( name );
 				modulesBuilder.put( name, module );
 				classModuleBuilder.put( moduleClass, module );
 				internalBuilder.put( module, !moduleClass.isAnnotationPresent( Mod.class ) );
 			}
-			catch ( ReflectiveOperationException e )
+			catch( ReflectiveOperationException e )
 			{
 				event.getModLog().error( "Error while trying to setup the module " + name );
 				e.printStackTrace();
@@ -260,22 +273,6 @@ public final class AppEng
 		fireModulesEvent( event );
 
 		AELog.info( "Pre Initialization ( ended after " + watch.elapsed( TimeUnit.MILLISECONDS ) + "ms )" );
-	}
-
-
-	private void findAndLoadModuleProxy( Object module ) throws ClassNotFoundException, IllegalAccessException, InstantiationException, IllegalArgumentException
-	{
-		for( Field f : module.getClass().getDeclaredFields() )
-		{
-			Annotation annotation = f.getAnnotation( ModuleProxy.class );
-			if( annotation == null )
-				continue;
-
-			ModuleProxy proxyInfo = ( ModuleProxy ) annotation;
-			Object proxy = Class.forName( FMLCommonHandler.instance().getSide() == Side.CLIENT ? proxyInfo.clientSide() : proxyInfo.serverSide() ).newInstance();
-			f.set( module, proxy );
-			return;
-		}
 	}
 
 	/**
@@ -380,6 +377,21 @@ public final class AppEng
 		}
 	}
 
+	private void populateProxy( Object module ) throws ClassNotFoundException, IllegalAccessException, InstantiationException, IllegalArgumentException
+	{
+		for( Field f : module.getClass().getDeclaredFields() )
+		{
+			ModuleSidedProxy annotation = f.getAnnotation( ModuleSidedProxy.class );
+			if( annotation == null )
+			{
+				continue;
+			}
+			Object proxy = Class.forName( FMLCommonHandler.instance().getSide() == Side.CLIENT ? annotation.clientSide() : annotation.serverSide() ).newInstance();
+			f.setAccessible( true );
+			modifiers.set( f, f.getModifiers() & ( ~Modifier.FINAL ) );
+			f.set( module, proxy );
+		}
+	}
 	@EventHandler
 	private void init( final FMLInitializationEvent event )
 	{
