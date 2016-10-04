@@ -66,6 +66,7 @@ import appeng.core.lib.CommonHelper;
 import appeng.core.lib.crash.CrashInfo;
 import appeng.core.lib.crash.ModCrashEnhancement;
 import appeng.core.lib.module.AEModule;
+import appeng.core.lib.module.Instance;
 import appeng.core.lib.module.Toposorter;
 
 
@@ -379,37 +380,29 @@ public final class AppEng
 
 	private void populateInstances( ASMDataTable annotations )
 	{
-		for( Object module : modules.values() )
+		ClassLoader mcl = Loader.instance().getModClassLoader();
+
+		for( ASMData data : annotations.getAll( Instance.class.getCanonicalName() ) )
 		{
-			for( Field f : module.getClass().getDeclaredFields() )
+			try
 			{
-				try
+				System.out.println( "Populating " + data.getClassName() + "." + data.getObjectName() );
+				Object instance = modules.get( data.getAnnotationInfo().get( "value" ) );
+				if( instance == null )
 				{
-					AEModule.Instance annotation = f.getAnnotation( AEModule.Instance.class );
-					if( annotation == null )
-					{
-						continue;
-					}
-					Object instance = modules.get( annotation.value() );
-					if( instance == null )
-					{
-						instance = classModule.get( Class.forName( annotation.value() ) );
-					}
-					if( instance == null )
-					{
-						// :(
-					}
-					else
-					{
-						f.setAccessible( true );
-						modifiers.set( f, f.getModifiers() & ( ~Modifier.FINAL ) );
-						f.set( module, instance );
-					}
+					instance = classModule.get( Class.forName( (String) data.getAnnotationInfo().get( "value" ) ) );
 				}
-				catch( ReflectiveOperationException e )
-				{
-					// :(
-				}
+				Class<?> target = Class.forName( data.getClassName(), true, mcl );
+				Field f = target.getDeclaredField( data.getObjectName() );
+				f.setAccessible( true );
+				modifiers.set( f, f.getModifiers() & ( ~Modifier.FINAL ) );
+				f.set( classModule.get( target ), instance );
+				System.out.println( "Populated " + data.getClassName() + "." + data.getObjectName() + " with " + instance );
+			}
+			catch( ReflectiveOperationException e )
+			{
+				e.printStackTrace();
+				// :(
 			}
 		}
 	}
