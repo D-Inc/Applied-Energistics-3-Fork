@@ -11,13 +11,12 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import java.util.regex.Pattern;
 
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
-
-import ibxm.Module;
 
 
 /**
- * Annotate {@link Module} with this annotation and make sure it has no-args constructor to add it to AE.
+ * Annotate module class with this annotation and make sure it has no-args constructor to add it to AE.
  * 
  * @author Elix_x
  *
@@ -36,10 +35,12 @@ public @interface AEModule
 	 * Used to define dependencies for your module. Syntax is generically similar to forge, with a few improvements.
 	 * <br>
 	 * You can leave this field empty, if you don't have any dependencies.
-	 * <br><br>
+	 * <br>
+	 * <br>
 	 * Generic syntax {@link Pattern}:
 	 * <code>(((client|server|after|before|hard|crash)-?)+(:(mod|module)-[^;]+)?)+</code>
-	 * <br><br>
+	 * <br>
+	 * <br>
 	 * Each module dependency statement is seperated by a semicolon (;).
 	 * To declare your module side-only, just use "client" or "server" as one dependency statement with "hard".
 	 * Your module will not be loaded if used on the wrong side.
@@ -50,15 +51,16 @@ public @interface AEModule
 	 * You can depend on either a mod or a AE2 module.
 	 * For mods use "mod-<modid>", repacing <modid> with the modid of the mod you want to depend on.
 	 * For modules use "module-<name>", replacing <name> with the name of the module you want to depend on.
-	 * <br><br>
+	 * <br>
+	 * <br>
 	 * Modifiers:
 	 * <ul>
-	 * <li> "server"/"client" if you only depend on it on either client or server
-	 * <li> "after" will make your module load after the module specified here
-	 * <li> "before" will make you module load before the module specified here
+	 * <li>"server"/"client" if you only depend on it on either client or server
+	 * <li>"after" will make your module load after the module specified here
+	 * <li>"before" will make you module load before the module specified here
 	 * not using "before" or "after" makes that random
-	 * <li> "hard" will make that dependency hard, aka your module will load if and only if it is there
-	 * <li> "crash" will make the game crash if the dependency is not there instead of just not loading your module. Use with "hard"
+	 * <li>"hard" will make that dependency hard, aka your module will load if and only if it is there
+	 * <li>"crash" will make the game crash if the dependency is not there instead of just not loading your module. Use with "hard"
 	 * </ul>
 	 * 
 	 * @return module's dependencies
@@ -66,6 +68,24 @@ public @interface AEModule
 	 * @author Elix_x
 	 */
 	String dependencies() default "";
+
+	/**
+	 * Populate given field with instance of module with given name or class. Works similarly to {@link Mod#Instance}, but for modules.
+	 * <br>
+	 * Works with static and/or private and/or final fields, but <b>only inside module class</b> (any module).
+	 * 
+	 * @author Elix_x
+	 */
+	@Retention( RetentionPolicy.RUNTIME )
+	@Target( ElementType.FIELD )
+	public @interface Instance
+	{
+		/**
+		 * @return Name or class of module to inject it's instance.
+		 */
+		String value();
+
+	}
 
 	/**
 	 * Marks the associated method as handling an FML lifecycle event redirected from AE.

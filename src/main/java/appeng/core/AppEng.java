@@ -20,9 +20,9 @@ package appeng.core;
 
 
 import java.io.File;
-import java.lang.reflect.Modifier;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -128,9 +128,9 @@ public final class AppEng
 		return INSTANCE;
 	}
 
-	public Object getModule( String name )
+	public <M> M getModule( String name )
 	{
-		return modules.get( name );
+		return (M) modules.get( name );
 	}
 
 	public <M> M getModule( Class<M> clas )
@@ -262,6 +262,8 @@ public final class AppEng
 		this.classModule = classModuleBuilder.build();
 		this.internal = internalBuilder.build();
 
+		populateInstances( annotations );
+
 		AELog.info( "Succesfully loaded %s modules", modules.size() );
 
 		final Stopwatch watch = Stopwatch.createStarted();
@@ -392,6 +394,44 @@ public final class AppEng
 			f.set( module, proxy );
 		}
 	}
+
+	private void populateInstances( ASMDataTable annotations )
+	{
+		for( Object module : modules.values() )
+		{
+			for( Field f : module.getClass().getDeclaredFields() )
+			{
+				try
+				{
+					AEModule.Instance annotation = f.getAnnotation( AEModule.Instance.class );
+					if( annotation == null )
+					{
+						continue;
+					}
+					Object instance = modules.get( annotation.value() );
+					if( instance == null )
+					{
+						instance = classModule.get( Class.forName( annotation.value() ) );
+					}
+					if( instance == null )
+					{
+						// :(
+					}
+					else
+					{
+						f.setAccessible( true );
+						modifiers.set( f, f.getModifiers() & ( ~Modifier.FINAL ) );
+						f.set( module, instance );
+					}
+				}
+				catch( ReflectiveOperationException e )
+				{
+					// :(
+				}
+			}
+		}
+	}
+
 	@EventHandler
 	private void init( final FMLInitializationEvent event )
 	{
