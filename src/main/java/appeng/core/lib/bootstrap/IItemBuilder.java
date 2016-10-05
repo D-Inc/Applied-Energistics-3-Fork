@@ -1,3 +1,4 @@
+
 package appeng.core.lib.bootstrap;
 
 
@@ -5,7 +6,6 @@ import net.minecraft.creativetab.CreativeTabs;
 
 import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.features.ItemDefinition;
-import appeng.core.lib.util.Platform;
 
 
 /**

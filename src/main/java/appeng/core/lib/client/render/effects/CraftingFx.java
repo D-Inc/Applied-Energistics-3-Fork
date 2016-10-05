@@ -93,7 +93,7 @@ public class CraftingFx extends ParticleBreaking
 			offY -= interpPosY;
 			offZ -= interpPosZ;
 
-			int i = this.getBrightnessForRender(partialTick);
+			int i = this.getBrightnessForRender( partialTick );
 			int j = i >> 16 & 65535;
 			int k = i & 65535;
 

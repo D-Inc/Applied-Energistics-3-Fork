@@ -41,9 +41,11 @@ import appeng.core.services.version.VersionCheckerConfig;
 /*
  * TODO 1.10.2-MODUSEP - Dat giant mess though. Move all stuff that belongs to specific modules into these specific modules. Yes, you can boom the API.
  */
-@AEModule( "core" )
+@AEModule( AppEngCore.NAME )
 public class AppEngCore
 {
+
+	public static final String NAME = "tools";
 
 	@SidedProxy( clientSide = "appeng.core.client.AppEngCoreClientProxy", serverSide = "appeng.core.server.AppEngCoreServerProxy" )
 	private static AppEngCoreProxy proxy;

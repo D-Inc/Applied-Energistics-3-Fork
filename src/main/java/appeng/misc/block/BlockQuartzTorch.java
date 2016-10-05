@@ -49,6 +49,7 @@ import appeng.core.lib.client.render.effects.LightningFX;
 import appeng.core.lib.helpers.ICustomCollision;
 import appeng.core.lib.helpers.MetaRotation;
 
+
 public class BlockQuartzTorch extends AEBaseBlock implements IOrientableBlock, ICustomCollision
 {
 
@@ -75,10 +76,9 @@ public class BlockQuartzTorch extends AEBaseBlock implements IOrientableBlock, I
 	@Override
 	public IBlockState getActualState( IBlockState state, IBlockAccess worldIn, BlockPos pos )
 	{
-		boolean oddPlacement = ((pos.getX() + pos.getY() + pos.getZ()) % 2) != 0;
+		boolean oddPlacement = ( ( pos.getX() + pos.getY() + pos.getZ() ) % 2 ) != 0;
 
-		return super.getActualState( state, worldIn, pos )
-				.withProperty( ODD, oddPlacement );
+		return super.getActualState( state, worldIn, pos ).withProperty( ODD, oddPlacement );
 	}
 
 	@Override
@@ -91,7 +91,7 @@ public class BlockQuartzTorch extends AEBaseBlock implements IOrientableBlock, I
 	public IBlockState getStateFromMeta( final int meta )
 	{
 		EnumFacing facing = EnumFacing.values()[meta];
-		return getDefaultState().withProperty(FACING, facing);
+		return getDefaultState().withProperty( FACING, facing );
 	}
 
 	@Override
@@ -125,10 +125,10 @@ public class BlockQuartzTorch extends AEBaseBlock implements IOrientableBlock, I
 	@Override
 	public void addCollidingBlockToList( final World w, final BlockPos pos, final AxisAlignedBB bb, final List out, final Entity e )
 	{/*
-	 * double xOff = -0.15 * getUp().offsetX; double yOff = -0.15 * getUp().offsetY; double zOff = -0.15 *
-	 * getUp().offsetZ; out.add( AxisAlignedBB.getBoundingBox( xOff + (double) x + 0.15, yOff + (double) y + 0.15, zOff
-	 * + (double) z + 0.15,// ahh xOff + (double) x + 0.85, yOff + (double) y + 0.85, zOff + (double) z + 0.85 ) );
-	 */
+		 * double xOff = -0.15 * getUp().offsetX; double yOff = -0.15 * getUp().offsetY; double zOff = -0.15 *
+		 * getUp().offsetZ; out.add( AxisAlignedBB.getBoundingBox( xOff + (double) x + 0.15, yOff + (double) y + 0.15, zOff
+		 * + (double) z + 0.15,// ahh xOff + (double) x + 0.85, yOff + (double) y + 0.85, zOff + (double) z + 0.85 ) );
+		 */
 	}
 
 	@Override
@@ -161,7 +161,7 @@ public class BlockQuartzTorch extends AEBaseBlock implements IOrientableBlock, I
 	}
 
 	@Override
-	public void neighborChanged( final IBlockState state, final World w, final BlockPos pos,final Block neighborBlock )
+	public void neighborChanged( final IBlockState state, final World w, final BlockPos pos, final Block neighborBlock )
 	{
 		final EnumFacing up = this.getOrientable( w, pos ).getUp();
 		if( !this.canPlaceAt( w, pos, up.getOpposite() ) )
@@ -214,7 +214,7 @@ public class BlockQuartzTorch extends AEBaseBlock implements IOrientableBlock, I
 		return false;
 	}
 
-	@SideOnly(Side.CLIENT)
+	@SideOnly( Side.CLIENT )
 	public BlockRenderLayer getBlockLayer()
 	{
 		return BlockRenderLayer.CUTOUT;

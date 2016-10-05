@@ -19,17 +19,16 @@ import appeng.core.lib.AEConfig;
 import appeng.core.lib.module.AEModule;
 
 
-@AEModule( "decorative" )
-/*
- * TODO 1.10.2-MODUSEP - Do we even want some modules be @Mod at the same time? Weird.
- */
+@AEModule( AppEngDecorative.NAME )
 @Mod( modid = AppEngDecorative.MODID, name = AppEngDecorative.NAME, version = AEConfig.VERSION, dependencies = "required-after:" + AppEng.MOD_ID, acceptedMinecraftVersions = ForgeVersion.mcVersion )
 public class AppEngDecorative
 {
 
-	public static final String MODID = AppEng.MOD_ID + "|decorative";
+	public static final String NAME = "decorative";
 
-	public static final String NAME = AppEng.MOD_NAME + " | decorative";
+	public static final String MODID = AppEng.MOD_ID + "|" + NAME;
+
+	public static final String MODNAME = AppEng.MOD_NAME + " | " + NAME;
 
 	@EventHandler
 	public void preInit( final FMLPreInitializationEvent event )

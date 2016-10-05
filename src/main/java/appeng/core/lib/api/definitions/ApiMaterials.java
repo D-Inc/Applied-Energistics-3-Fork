@@ -115,21 +115,16 @@ public final class ApiMaterials implements IMaterials
 	public ApiMaterials( FeatureFactory registry )
 	{
 		final ItemMultiItem materials = new ItemMultiItem();
-		registry.item( "multi_material", () -> materials )
-				.rendering( new ItemRenderingCustomizer()
-				{
-					@Override
-					@SideOnly( Side.CLIENT )
-					public void customize( IItemRendering rendering )
-					{
-						rendering.meshDefinition( is -> materials.getTypeByStack( is ).getModel() );
-						// Register a resource location for every material type
-						rendering.variants( Arrays.stream( MaterialType.values() )
-								.map( MaterialType::getModel )
-								.collect( Collectors.toList() ) );
-					}
-				} )
-				.build();
+		registry.item( "multi_material", () -> materials ).rendering( new ItemRenderingCustomizer(){
+			@Override
+			@SideOnly( Side.CLIENT )
+			public void customize( IItemRendering rendering )
+			{
+				rendering.meshDefinition( is -> materials.getTypeByStack( is ).getModel() );
+				// Register a resource location for every material type
+				rendering.variants( Arrays.stream( MaterialType.values() ).map( MaterialType::getModel ).collect( Collectors.toList() ) );
+			}
+		} ).build();
 
 		this.cell2SpatialPart = new DamagedItemDefinition( "material.cell.spatial.2", materials.createMaterial( MaterialType.Cell2SpatialPart ) );
 		this.cell16SpatialPart = new DamagedItemDefinition( "material.cell.spatial.16", materials.createMaterial( MaterialType.Cell16SpatialPart ) );

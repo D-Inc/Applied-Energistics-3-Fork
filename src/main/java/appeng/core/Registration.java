@@ -22,6 +22,7 @@ package appeng.core;
 import java.io.File;
 import java.util.HashSet;
 import java.util.Set;
+
 import javax.annotation.Nonnull;
 
 import com.google.common.base.Preconditions;
@@ -275,7 +276,6 @@ public final class Registration
 		FMLCommonHandler.instance().bus().register( TickHandler.INSTANCE );
 		MinecraftForge.EVENT_BUS.register( TickHandler.INSTANCE );
 
-
 		MinecraftForge.EVENT_BUS.register( new PartPlacement() );
 
 		if( AEConfig.instance.isFeatureEnabled( AEFeature.ChestLoot ) )
@@ -298,8 +298,7 @@ public final class Registration
 		registries.cell().addCellHandler( new BasicCellHandler() );
 		registries.cell().addCellHandler( new CreativeCellHandler() );
 
-		api.definitions().materials().matterBall().maybeStack( 1 ).ifPresent( ammoStack ->
-		{
+		api.definitions().materials().matterBall().maybeStack( 1 ).ifPresent( ammoStack -> {
 			final double weight = 32;
 
 			registries.matterCannon().registerAmmo( ammoStack, weight );
@@ -412,8 +411,7 @@ public final class Registration
 		// Inscriber
 		Upgrades.SPEED.registerItem( blocks.inscriber(), 3 );
 
-		items.wirelessTerminal().maybeItem().ifPresent( terminal ->
-		{
+		items.wirelessTerminal().maybeItem().ifPresent( terminal -> {
 			registries.wireless().registerWirelessHandler( (IWirelessTermHandler) terminal );
 		} );
 

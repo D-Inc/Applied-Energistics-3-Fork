@@ -19,94 +19,94 @@
 package appeng.core.lib.util.inv;
 
 
-//public class AdaptorBCPipe extends InventoryAdaptor
-//{
-//	private final IBuildCraftTransport bc;
-//	private final TileEntity i;
-//	private final ForgeDirection d;
+// public class AdaptorBCPipe extends InventoryAdaptor
+// {
+// private final IBuildCraftTransport bc;
+// private final TileEntity i;
+// private final ForgeDirection d;
 //
-//	public AdaptorBCPipe( TileEntity s, ForgeDirection dd )
-//	{
-//		this.bc = (IBuildCraftTransport) IntegrationRegistry.INSTANCE.getInstance( IntegrationType.BC );
-//		if( IntegrationRegistry.INSTANCE.isEnabled( IntegrationType.BuildCraftTransport ) )
-//		{
-//			if( this.bc.isPipe( s, dd ) )
-//			{
-//				this.i = s;
-//				this.d = dd;
-//				return;
-//			}
-//		}
-//		this.i = null;
-//		this.d = null;
-//	}
+// public AdaptorBCPipe( TileEntity s, ForgeDirection dd )
+// {
+// this.bc = (IBuildCraftTransport) IntegrationRegistry.INSTANCE.getInstance( IntegrationType.BC );
+// if( IntegrationRegistry.INSTANCE.isEnabled( IntegrationType.BuildCraftTransport ) )
+// {
+// if( this.bc.isPipe( s, dd ) )
+// {
+// this.i = s;
+// this.d = dd;
+// return;
+// }
+// }
+// this.i = null;
+// this.d = null;
+// }
 //
-//	@Override
-//	public ItemStack removeItems( int amount, ItemStack filter, IInventoryDestination destination )
-//	{
-//		return null;
-//	}
+// @Override
+// public ItemStack removeItems( int amount, ItemStack filter, IInventoryDestination destination )
+// {
+// return null;
+// }
 //
-//	@Override
-//	public ItemStack simulateRemove( int amount, ItemStack filter, IInventoryDestination destination )
-//	{
-//		return null;
-//	}
+// @Override
+// public ItemStack simulateRemove( int amount, ItemStack filter, IInventoryDestination destination )
+// {
+// return null;
+// }
 //
-//	@Override
-//	public ItemStack removeSimilarItems( int amount, ItemStack filter, FuzzyMode fuzzyMode, IInventoryDestination destination )
-//	{
-//		return null;
-//	}
+// @Override
+// public ItemStack removeSimilarItems( int amount, ItemStack filter, FuzzyMode fuzzyMode, IInventoryDestination destination )
+// {
+// return null;
+// }
 //
-//	@Override
-//	public ItemStack simulateSimilarRemove( int amount, ItemStack filter, FuzzyMode fuzzyMode, IInventoryDestination destination )
-//	{
-//		return null;
-//	}
+// @Override
+// public ItemStack simulateSimilarRemove( int amount, ItemStack filter, FuzzyMode fuzzyMode, IInventoryDestination destination )
+// {
+// return null;
+// }
 //
-//	@Override
-//	public ItemStack addItems( ItemStack toBeAdded )
-//	{
-//		if( this.i == null )
-//		{
-//			return toBeAdded;
-//		}
-//		if( toBeAdded == null )
-//		{
-//			return null;
-//		}
-//		if( toBeAdded.stackSize == 0 )
-//		{
-//			return null;
-//		}
+// @Override
+// public ItemStack addItems( ItemStack toBeAdded )
+// {
+// if( this.i == null )
+// {
+// return toBeAdded;
+// }
+// if( toBeAdded == null )
+// {
+// return null;
+// }
+// if( toBeAdded.stackSize == 0 )
+// {
+// return null;
+// }
 //
-//		if( IntegrationRegistry.INSTANCE.isEnabled( IntegrationType.BuildCraftTransport ) && this.bc.addItemsToPipe( this.i, toBeAdded, this.d ) )
-//		{
-//			return null;
-//		}
-//		return toBeAdded;
-//	}
+// if( IntegrationRegistry.INSTANCE.isEnabled( IntegrationType.BuildCraftTransport ) && this.bc.addItemsToPipe( this.i, toBeAdded, this.d ) )
+// {
+// return null;
+// }
+// return toBeAdded;
+// }
 //
-//	@Override
-//	public ItemStack simulateAdd( ItemStack toBeSimulated )
-//	{
-//		if( this.i == null )
-//		{
-//			return toBeSimulated;
-//		}
-//		return null;
-//	}
+// @Override
+// public ItemStack simulateAdd( ItemStack toBeSimulated )
+// {
+// if( this.i == null )
+// {
+// return toBeSimulated;
+// }
+// return null;
+// }
 //
-//	@Override
-//	public boolean containsItems()
-//	{
-//		return false;
-//	}
+// @Override
+// public boolean containsItems()
+// {
+// return false;
+// }
 //
-//	@Override
-//	public Iterator<ItemSlot> iterator()
-//	{
-//		return new NullIterator<ItemSlot>();
-//	}
+// @Override
+// public Iterator<ItemSlot> iterator()
+// {
+// return new NullIterator<ItemSlot>();
+// }
 // }

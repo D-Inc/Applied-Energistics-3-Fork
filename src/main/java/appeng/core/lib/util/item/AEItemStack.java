@@ -590,7 +590,7 @@ public final class AEItemStack extends AEStack<IAEItemStack> implements IAEItemS
 
 		return this.getDefinition().getDisplayName();
 	}
-	
+
 	@SideOnly( Side.CLIENT )
 	public String getModID()
 	{

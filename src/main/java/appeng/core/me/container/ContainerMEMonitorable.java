@@ -340,7 +340,7 @@ public class ContainerMEMonitorable extends AEBaseContainer implements IConfigMa
 			}
 		}
 	}
-	
+
 	@Override
 	public void removeListener( final IContainerListener c )
 	{

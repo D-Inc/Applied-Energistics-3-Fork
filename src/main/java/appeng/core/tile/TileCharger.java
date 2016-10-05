@@ -167,8 +167,7 @@ public class TileCharger extends AENetworkPowerTile implements ICrankable, ITick
 			{
 				this.extractAEPower( this.getInternalMaxPower(), Actionable.MODULATE, PowerMultiplier.CONFIG );// 1500
 
-				materials.certusQuartzCrystalCharged().maybeStack( myItem.stackSize ).ifPresent( charged ->
-						this.setInventorySlotContents( 0, charged ) );
+				materials.certusQuartzCrystalCharged().maybeStack( myItem.stackSize ).ifPresent( charged -> this.setInventorySlotContents( 0, charged ) );
 			}
 		}
 	}
@@ -207,8 +206,7 @@ public class TileCharger extends AENetworkPowerTile implements ICrankable, ITick
 			{
 				this.extractAEPower( this.getInternalMaxPower(), Actionable.MODULATE, PowerMultiplier.CONFIG );// 1500
 
-				materials.certusQuartzCrystalCharged().maybeStack( myItem.stackSize ).ifPresent( charged ->
-						this.setInventorySlotContents( 0, charged ) );
+				materials.certusQuartzCrystalCharged().maybeStack( myItem.stackSize ).ifPresent( charged -> this.setInventorySlotContents( 0, charged ) );
 			}
 		}
 	}

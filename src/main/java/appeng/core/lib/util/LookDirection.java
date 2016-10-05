@@ -18,7 +18,9 @@
 
 package appeng.core.lib.util;
 
+
 import net.minecraft.util.math.Vec3d;
+
 
 public class LookDirection
 {

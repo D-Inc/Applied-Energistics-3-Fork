@@ -403,8 +403,7 @@ public class CachedPlane
 
 		private void setBlockIDWithMetadata( final int y, final Object[] blk )
 		{
-			CachedPlane.this.matrixFrame.maybeBlock().ifPresent( matrixFrameBlock ->
-			{
+			CachedPlane.this.matrixFrame.maybeBlock().ifPresent( matrixFrameBlock -> {
 				if( blk[0] == matrixFrameBlock )
 				{
 					blk[0] = Platform.AIR_BLOCK;

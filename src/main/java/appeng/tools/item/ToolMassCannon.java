@@ -20,6 +20,7 @@ package appeng.tools.item;
 
 
 import java.util.List;
+
 import javax.annotation.Nullable;
 
 import net.minecraft.block.Block;
@@ -293,8 +294,7 @@ public class ToolMassCannon extends AEBasePoweredItem implements IStorageCell
 				final Block whatsThere = w.getBlockState( hitPos ).getBlock();
 				if( whatsThere.isReplaceable( w, hitPos ) && w.isAirBlock( hitPos ) )
 				{
-					AEApi.instance().definitions().blocks().paint().maybeBlock().ifPresent( paintBlock ->
-					{
+					AEApi.instance().definitions().blocks().paint().maybeBlock().ifPresent( paintBlock -> {
 						w.setBlockState( hitPos, paintBlock.getDefaultState(), 3 );
 					} );
 				}

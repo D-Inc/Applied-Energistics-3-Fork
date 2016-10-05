@@ -1,7 +1,9 @@
+
 package appeng.core.lib.bootstrap.components;
 
 
 import java.util.Map;
+
 import javax.annotation.Nonnull;
 
 import net.minecraft.client.Minecraft;
@@ -33,10 +35,9 @@ public class ItemModelComponent implements InitComponent
 	{
 		ItemModelMesher itemMesher = Minecraft.getMinecraft().getRenderItem().getItemModelMesher();
 
-		modelsByMeta.forEach( ( meta, model ) ->
-		{
+		modelsByMeta.forEach( ( meta, model ) -> {
 			itemMesher.register( item, meta, model );
 		} );
 	}
-	
+
 }

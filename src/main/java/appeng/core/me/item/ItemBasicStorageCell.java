@@ -257,8 +257,7 @@ public final class ItemBasicStorageCell extends AEBaseItem implements IStorageCe
 					}
 
 					// drop empty storage cell case
-					AEApi.instance().definitions().materials().emptyStorageCell().maybeStack( 1 ).ifPresent( is ->
-					{
+					AEApi.instance().definitions().materials().emptyStorageCell().maybeStack( 1 ).ifPresent( is -> {
 						final ItemStack extraA = ia.addItems( is );
 						if( extraA != null )
 						{
@@ -287,8 +286,7 @@ public final class ItemBasicStorageCell extends AEBaseItem implements IStorageCe
 	@Override
 	public ItemStack getContainerItem( final ItemStack itemStack )
 	{
-		return AEApi.instance().definitions().materials().emptyStorageCell().maybeStack( 1 )
-				.orElseThrow( () -> new MissingDefinition( "Tried to use empty storage cells while basic storage cells are defined." ) );
+		return AEApi.instance().definitions().materials().emptyStorageCell().maybeStack( 1 ).orElseThrow( () -> new MissingDefinition( "Tried to use empty storage cells while basic storage cells are defined." ) );
 	}
 
 	@Override

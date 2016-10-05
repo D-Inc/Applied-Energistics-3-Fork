@@ -141,9 +141,7 @@ public class TileQuantumBridge extends AENetworkInvTile implements IAEMultiBlock
 
 	private boolean isCenter()
 	{
-		return AEApi.instance().definitions().blocks().quantumLink().maybeBlock()
-				.map( link -> getBlockType() == link )
-				.orElse( false );
+		return AEApi.instance().definitions().blocks().quantumLink().maybeBlock().map( link -> getBlockType() == link ).orElse( false );
 	}
 
 	@MENetworkEventSubscribe

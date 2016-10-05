@@ -21,7 +21,6 @@ package appeng.core.lib.util;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-
 import java.util.Optional;
 
 import appeng.core.lib.AELog;

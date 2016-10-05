@@ -1,3 +1,4 @@
+
 package appeng.core.lib.bootstrap;
 
 
@@ -80,7 +81,7 @@ class BlockRendering implements IBlockRendering
 		{
 			registry.modelOverrideComponent.addOverride( block.getRegistryName().getResourcePath(), modelCustomizer );
 		}
-		else if ( block instanceof AEBaseTileBlock )
+		else if( block instanceof AEBaseTileBlock )
 		{
 			// This is a default rotating model if the base-block uses an AE tile entity which exposes UP/FRONT as extended props
 			registry.modelOverrideComponent.addOverride( block.getRegistryName().getResourcePath(), ( l, m ) -> new CachingRotatingBakedModel( m ) );

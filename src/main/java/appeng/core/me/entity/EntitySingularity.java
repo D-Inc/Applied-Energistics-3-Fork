@@ -129,8 +129,7 @@ public final class EntitySingularity extends AEBaseEntityItem
 									e.setDead();
 								}
 
-								materials.qESingularity().maybeStack( 2 ).ifPresent( singularityStack ->
-								{
+								materials.qESingularity().maybeStack( 2 ).ifPresent( singularityStack -> {
 									final NBTTagCompound cmp = Platform.openNbtData( singularityStack );
 									cmp.setLong( "freq", ( new Date() ).getTime() * 100 + ( randTickSeed ) % 100 );
 									randTickSeed++;

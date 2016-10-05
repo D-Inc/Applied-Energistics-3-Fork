@@ -20,6 +20,7 @@ package appeng.core.lib.features;
 
 
 import java.util.Optional;
+
 import javax.annotation.Nonnull;
 
 import com.google.common.base.Preconditions;
@@ -66,7 +67,7 @@ public final class DamagedItemDefinition implements IItemDefinition
 	@Override
 	public Optional<ItemStack> maybeStack( final int stackSize )
 	{
-		return this.source.map( input -> input.stack( stackSize ));
+		return this.source.map( input -> input.stack( stackSize ) );
 	}
 
 	@Override

@@ -84,7 +84,7 @@ public class EnergyFx extends ParticleBreaking
 
 		if( blkX == this.startBlkX && blkY == this.startBlkY && blkZ == this.startBlkZ )
 		{
-			int i = this.getBrightnessForRender(par2);
+			int i = this.getBrightnessForRender( par2 );
 			int j = i >> 16 & 65535;
 			int k = i & 65535;
 

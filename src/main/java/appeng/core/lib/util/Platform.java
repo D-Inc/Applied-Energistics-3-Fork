@@ -1136,7 +1136,7 @@ public class Platform
 		}
 		return -1;
 	}
-	
+
 	public static int findEmpty( final Object[] l )
 	{
 		for( int x = 0; x < l.length; x++ )

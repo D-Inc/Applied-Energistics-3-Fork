@@ -20,6 +20,7 @@ package appeng.core.block;
 
 
 import java.util.Random;
+
 import javax.annotation.Nullable;
 
 import net.minecraft.block.material.Material;
@@ -43,6 +44,7 @@ import appeng.core.lib.tile.AEBaseTile;
 import appeng.core.lib.util.Platform;
 import appeng.core.tile.TileVibrationChamber;
 
+
 public final class BlockVibrationChamber extends AEBaseTileBlock
 {
 
@@ -63,14 +65,13 @@ public final class BlockVibrationChamber extends AEBaseTileBlock
 		TileVibrationChamber te = this.getTileEntity( world, pos );
 		boolean active = te != null && te.isOn;
 
-		return super.getActualState( state, world, pos )
-				.withProperty( ACTIVE, active );
+		return super.getActualState( state, world, pos ).withProperty( ACTIVE, active );
 	}
 
 	@Override
 	protected IProperty[] getAEStates()
 	{
-		return new IProperty[]{ ACTIVE };
+		return new IProperty[] { ACTIVE };
 	}
 
 	@Override
@@ -93,7 +94,7 @@ public final class BlockVibrationChamber extends AEBaseTileBlock
 
 		return true;
 	}
-	
+
 	@Override
 	public void randomDisplayTick( final IBlockState state, final World w, final BlockPos pos, final Random r )
 	{

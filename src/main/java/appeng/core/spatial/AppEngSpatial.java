@@ -15,9 +15,11 @@ import appeng.core.lib.module.AEModule;
 import appeng.core.lib.module.AEModule.ModuleEventHandler;
 
 
-@AEModule( "spatial" )
+@AEModule( AppEngSpatial.NAME )
 public class AppEngSpatial
 {
+
+	public static final String NAME = "spatial";
 
 	@ModuleEventHandler
 	public void preInit( FMLPreInitializationEvent event )

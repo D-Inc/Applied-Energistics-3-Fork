@@ -79,7 +79,7 @@ public final class MeteoriteWorldGen implements IWorldGenerator
 				{
 					for( int cz = pz - 6; cz < pz + 6; cz++ )
 					{
-						if( w.getChunkProvider().getLoadedChunk( cx, cz ) != null)
+						if( w.getChunkProvider().getLoadedChunk( cx, cz ) != null )
 						{
 							if( px == cx && pz == cz )
 							{

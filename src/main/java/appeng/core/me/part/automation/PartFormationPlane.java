@@ -448,10 +448,10 @@ public class PartFormationPlane extends PartUpgradeable implements ICellContaine
 
 						is.stackSize = (int) maxStorage;
 						final EntityItem ei = new EntityItem( w, // w
-						( ( side.xOffset != 0 ? 0.0 : 0.7 ) * ( Platform.getRandomFloat() - 0.5f ) ) + 0.5 + side.xOffset * -0.3 + tePos.getX(), // spawn
-						( ( side.yOffset != 0 ? 0.0 : 0.7 ) * ( Platform.getRandomFloat() - 0.5f ) ) + 0.5 + side.yOffset * -0.3 + tePos.getY(), // spawn
-						( ( side.zOffset != 0 ? 0.0 : 0.7 ) * ( Platform.getRandomFloat() - 0.5f ) ) + 0.5 + side.zOffset * -0.3 + tePos.getZ(), // spawn
-						is.copy() );
+								( ( side.xOffset != 0 ? 0.0 : 0.7 ) * ( Platform.getRandomFloat() - 0.5f ) ) + 0.5 + side.xOffset * -0.3 + tePos.getX(), // spawn
+								( ( side.yOffset != 0 ? 0.0 : 0.7 ) * ( Platform.getRandomFloat() - 0.5f ) ) + 0.5 + side.yOffset * -0.3 + tePos.getY(), // spawn
+								( ( side.zOffset != 0 ? 0.0 : 0.7 ) * ( Platform.getRandomFloat() - 0.5f ) ) + 0.5 + side.zOffset * -0.3 + tePos.getZ(), // spawn
+								is.copy() );
 
 						Entity result = ei;
 

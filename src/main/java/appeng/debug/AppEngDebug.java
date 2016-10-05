@@ -19,20 +19,19 @@ import appeng.core.lib.AEConfig;
 import appeng.core.lib.module.AEModule;
 
 
-@AEModule( "debug" )
-/*
- * TODO 1.10.2-MODUSEP - Do we even want some modules be @Mod at the same time? Weird.
- */
 /*
  * The only module not built with gradle.
  */
+@AEModule( AppEngDebug.NAME )
 @Mod( modid = AppEngDebug.MODID, name = AppEngDebug.NAME, version = AEConfig.VERSION, dependencies = "required-after:" + AppEng.MOD_ID, acceptedMinecraftVersions = ForgeVersion.mcVersion )
 public class AppEngDebug
 {
 
-	public static final String MODID = AppEng.MOD_ID + "|debug";
+	public static final String NAME = "debug";
 
-	public static final String NAME = AppEng.MOD_NAME + " | debug";
+	public static final String MODID = AppEng.MOD_ID + "|" + NAME;
+
+	public static final String MODNAME = AppEng.MOD_NAME + " | " + NAME;
 
 	@EventHandler
 	public void preInit( final FMLPreInitializationEvent event )

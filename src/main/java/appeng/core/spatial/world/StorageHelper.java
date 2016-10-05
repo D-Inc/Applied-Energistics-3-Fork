@@ -87,13 +87,13 @@ public class StorageHelper
 		{
 			return entity;
 		}
-		
+
 		// Are we riding something? Teleport it instead.
 		if( entity.isRiding() )
 		{
 			return this.teleportEntity( entity.getRidingEntity(), link );
 		}
-		
+
 		// Is something riding us? Handle it first.
 		final List<Entity> passangers = entity.getPassengers();
 		final List<Entity> passangersOnOtherSide = new ArrayList<>();
@@ -174,12 +174,10 @@ public class StorageHelper
 	}
 
 	public void swapRegions( final World src /** over world **/
-	, final World dst /** storage cell **/
-	, final int x, final int y, final int z, final int i, final int j, final int k, final int scaleX, final int scaleY, final int scaleZ )
+			, final World dst/** storage cell **/
+			,final int x, final int y, final int z, final int i, final int j, final int k, final int scaleX, final int scaleY, final int scaleZ )
 	{
-		AEApi.instance().definitions().blocks().matrixFrame().maybeBlock().ifPresent( matrixFrameBlock ->
-				this.transverseEdges( i - 1, j - 1, k - 1, i + scaleX + 1, j + scaleY + 1, k + scaleZ + 1, new WrapInMatrixFrame( matrixFrameBlock.getDefaultState(), dst ) )
-		);
+		AEApi.instance().definitions().blocks().matrixFrame().maybeBlock().ifPresent( matrixFrameBlock -> this.transverseEdges( i - 1, j - 1, k - 1, i + scaleX + 1, j + scaleY + 1, k + scaleZ + 1, new WrapInMatrixFrame( matrixFrameBlock.getDefaultState(), dst ) ) );
 
 		final AxisAlignedBB srcBox = new AxisAlignedBB( x, y, z, x + scaleX + 1, y + scaleY + 1, z + scaleZ + 1 );
 

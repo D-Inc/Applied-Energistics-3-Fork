@@ -15,6 +15,7 @@ import appeng.core.worldgen.block.BlockSkyChest;
 import appeng.core.worldgen.block.BlockSkyChest.SkyChestType;
 import appeng.core.worldgen.tile.TileSkyChest;
 
+
 @SideOnly( Side.CLIENT )
 public class SkyChestTESR extends TileEntitySpecialRenderer<TileSkyChest>
 {

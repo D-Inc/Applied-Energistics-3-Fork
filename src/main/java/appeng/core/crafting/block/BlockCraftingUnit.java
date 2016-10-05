@@ -61,7 +61,7 @@ public class BlockCraftingUnit extends AEBaseTileBlock
 	{
 		return new IProperty[] { POWERED, FORMED };
 	}
-	
+
 	@Override
 	public IBlockState getStateFromMeta( final int meta )
 	{

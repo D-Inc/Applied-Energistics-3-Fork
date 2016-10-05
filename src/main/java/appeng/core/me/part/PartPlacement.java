@@ -21,7 +21,6 @@ package appeng.core.me.part;
 
 import java.util.LinkedList;
 import java.util.List;
-
 import java.util.Optional;
 
 import net.minecraft.block.Block;
@@ -383,7 +382,7 @@ public class PartPlacement
 					final SoundType ss = multiPartBlock.getSoundType();
 
 					world.playSound( player, 0.5 + pos.getX(), 0.5 + pos.getY(), 0.5 + pos.getZ(), ss.getPlaceSound(), SoundCategory.BLOCKS, ( ss.getVolume() + 1.0F ) / 2.0F, ss.getPitch() * 0.8F );
-				});
+				} );
 
 				if( !player.capabilities.isCreativeMode )
 				{

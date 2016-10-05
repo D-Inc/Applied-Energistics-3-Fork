@@ -39,7 +39,7 @@ public abstract class AEBaseItem extends Item
 	public String toString()
 	{
 		String regName = getRegistryName() != null ? getRegistryName().getResourcePath() : "unregistered";
-		return getClass().getSimpleName() + "[" + regName  + "]";
+		return getClass().getSimpleName() + "[" + regName + "]";
 	}
 
 	@Override

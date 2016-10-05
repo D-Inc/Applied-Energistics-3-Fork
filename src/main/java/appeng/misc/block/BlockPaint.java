@@ -41,6 +41,7 @@ import appeng.core.lib.block.AEBaseTileBlock;
 import appeng.core.lib.util.Platform;
 import appeng.misc.tile.TilePaint;
 
+
 public class BlockPaint extends AEBaseTileBlock
 {
 

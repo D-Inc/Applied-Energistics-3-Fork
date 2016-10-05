@@ -37,6 +37,7 @@ import appeng.core.lib.sync.GuiBridge;
 import appeng.core.lib.util.Platform;
 import appeng.core.spatial.tile.TileSpatialIOPort;
 
+
 public class BlockSpatialIOPort extends AEBaseTileBlock
 {
 

@@ -19,11 +19,10 @@
 package appeng.core.lib.worlddata;
 
 
+import java.util.Optional;
 import java.util.UUID;
 
 import javax.annotation.Nonnull;
-
-import java.util.Optional;
 
 
 /**

@@ -20,6 +20,7 @@ package appeng.core.recipes.game;
 
 
 import java.util.Optional;
+
 import javax.annotation.Nullable;
 
 import net.minecraft.inventory.IInventory;
@@ -62,8 +63,7 @@ public final class FacadeRecipe implements IRecipe
 		{
 			if( this.anchor.isSameAs( inv.getStackInSlot( 1 ) ) && this.anchor.isSameAs( inv.getStackInSlot( 3 ) ) && this.anchor.isSameAs( inv.getStackInSlot( 5 ) ) && this.anchor.isSameAs( inv.getStackInSlot( 7 ) ) )
 			{
-				return this.maybeFacade.map( facadeItemDefinition ->
-				{
+				return this.maybeFacade.map( facadeItemDefinition -> {
 					final ItemFacade facade = (ItemFacade) facadeItemDefinition;
 
 					final ItemStack facades = facade.createFacadeForItem( inv.getStackInSlot( 4 ), !createFacade );

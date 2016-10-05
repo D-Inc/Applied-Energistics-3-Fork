@@ -21,6 +21,7 @@ public class BakingPipelineBakedModel extends BakingPipeline implements IBakedMo
 {
 
 	private final IBakedModel parent;
+
 	public BakingPipelineBakedModel( IBakedModel parent, BakingPipelineElement<?, ?>... pipeline )
 	{
 		super( pipeline );

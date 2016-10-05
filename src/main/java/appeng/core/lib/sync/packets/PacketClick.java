@@ -57,11 +57,11 @@ public class PacketClick extends AppEngPacket
 		this.x = stream.readInt();
 		this.y = stream.readInt();
 		this.z = stream.readInt();
-		this.side = EnumFacing.values()[ stream.readByte() ];
+		this.side = EnumFacing.values()[stream.readByte()];
 		this.hitX = stream.readFloat();
 		this.hitY = stream.readFloat();
 		this.hitZ = stream.readFloat();
-		this.hand = EnumHand.values()[ stream.readByte() ];
+		this.hand = EnumHand.values()[stream.readByte()];
 	}
 
 	// api

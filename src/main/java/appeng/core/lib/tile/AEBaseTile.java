@@ -117,14 +117,15 @@ public class AEBaseTile extends TileEntity implements ITickable, IOrientable, IC
 	}
 
 	@Nonnull
-	public IBlockState getBlockState(){
+	public IBlockState getBlockState()
+	{
 		if( state == null )
 		{
 			state = worldObj.getBlockState( getPos() );
 		}
 		return state;
 	}
-	
+
 	/**
 	 * for dormant chunk cache.
 	 */
@@ -201,7 +202,7 @@ public class AEBaseTile extends TileEntity implements ITickable, IOrientable, IC
 			h.tick( this );
 		}
 	}
-	
+
 	@Override
 	public SPacketUpdateTileEntity getUpdatePacket()
 	{

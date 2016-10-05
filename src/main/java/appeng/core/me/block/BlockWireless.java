@@ -21,6 +21,7 @@ package appeng.core.me.block;
 
 import java.util.Collections;
 import java.util.List;
+
 import javax.annotation.Nullable;
 
 import net.minecraft.block.state.IBlockState;
@@ -41,6 +42,7 @@ import appeng.core.lib.helpers.ICustomCollision;
 import appeng.core.lib.sync.GuiBridge;
 import appeng.core.lib.util.Platform;
 import appeng.core.me.tile.TileWireless;
+
 
 public class BlockWireless extends AEBaseTileBlock implements ICustomCollision
 {

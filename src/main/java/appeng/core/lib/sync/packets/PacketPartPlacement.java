@@ -52,7 +52,7 @@ public class PacketPartPlacement extends AppEngPacket
 		this.z = stream.readInt();
 		this.face = stream.readByte();
 		this.eyeHeight = stream.readFloat();
-		this.hand = EnumHand.values()[ stream.readByte() ];
+		this.hand = EnumHand.values()[stream.readByte()];
 	}
 
 	// api

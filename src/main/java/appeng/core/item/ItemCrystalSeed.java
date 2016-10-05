@@ -40,7 +40,6 @@ import appeng.api.definitions.IMaterials;
 import appeng.api.implementations.items.IGrowableCrystal;
 import appeng.api.recipes.ResolverResult;
 import appeng.core.AppEng;
-import appeng.core.AppEngCore;
 import appeng.core.entity.EntityGrowingCrystal;
 import appeng.core.lib.entity.EntityIds;
 import appeng.core.lib.item.AEBaseItem;

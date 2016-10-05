@@ -23,6 +23,7 @@ import appeng.core.lib.block.AEBaseTileBlock;
 import appeng.core.lib.helpers.AEGlassMaterial;
 import appeng.core.me.tile.TileCreativeEnergyCell;
 
+
 public class BlockCreativeEnergyCell extends AEBaseTileBlock
 {
 

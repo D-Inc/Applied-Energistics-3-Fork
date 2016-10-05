@@ -64,7 +64,6 @@ import appeng.core.lib.util.Platform;
 import appeng.core.lib.util.item.AEItemStack;
 import appeng.core.me.grid.GridAccessException;
 import appeng.core.me.part.PartBasicState;
-import appeng.core.server.AppEngCoreServerProxy;
 
 
 public class PartAnnihilationPlane extends PartBasicState implements IGridTickable, IWorldCallable<TickRateModulation>

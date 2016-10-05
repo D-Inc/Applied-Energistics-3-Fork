@@ -15,9 +15,11 @@ import appeng.core.lib.module.AEModule;
 import appeng.core.lib.module.AEModule.ModuleEventHandler;
 
 
-@AEModule( "worldgen" )
+@AEModule( AppEngWorldGen.NAME )
 public class AppEngWorldGen
 {
+
+	public static final String NAME = "worldgen";
 
 	@ModuleEventHandler
 	public void preInit( FMLPreInitializationEvent event )

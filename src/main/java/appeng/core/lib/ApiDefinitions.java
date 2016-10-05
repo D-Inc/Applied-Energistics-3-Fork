@@ -53,7 +53,6 @@ public final class ApiDefinitions implements IDefinitions
 		return registry;
 	}
 
-
 	@Override
 	public ApiBlocks blocks()
 	{

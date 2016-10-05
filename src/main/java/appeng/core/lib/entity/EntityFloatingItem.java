@@ -19,7 +19,6 @@
 package appeng.core.lib.entity;
 
 
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;

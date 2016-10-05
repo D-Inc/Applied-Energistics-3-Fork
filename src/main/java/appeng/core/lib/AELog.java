@@ -27,12 +27,11 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.message.ParameterizedMessage;
 
 import net.minecraft.util.math.BlockPos;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-import appeng.core.AppEng;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.tile.AEBaseTile;
 import appeng.core.lib.util.Platform;
+
 
 /*
  * TODO 1.10.2-MODUSEP - Make this not static. AKA a logger per module, modules name should go after prefix with dash. Set in AppEng#preInit(FMLPreInitializationEvent) after all modules have been loaded via Module.setLogger (create new method). Logger instance should be stored in module.

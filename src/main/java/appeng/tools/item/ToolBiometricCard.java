@@ -68,7 +68,7 @@ public class ToolBiometricCard extends AEBaseItem implements IBiometricCard
 
 		return new ActionResult<ItemStack>( EnumActionResult.PASS, is );
 	}
-	
+
 	@Override
 	public boolean itemInteractionForEntity( ItemStack is, final EntityPlayer player, final EntityLivingBase target, final EnumHand hand )
 	{

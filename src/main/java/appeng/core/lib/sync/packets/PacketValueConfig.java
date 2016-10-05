@@ -98,7 +98,7 @@ public class PacketValueConfig extends AppEngPacket
 	{
 		final Container c = player.openContainer;
 
-		if( this.Name.equals( "Item" ) && ( ( player.getHeldItem( EnumHand.MAIN_HAND ) != null && player.getHeldItem(EnumHand.MAIN_HAND).getItem() instanceof IMouseWheelItem ) || ( player.getHeldItem( EnumHand.OFF_HAND ) != null && player.getHeldItem(EnumHand.OFF_HAND).getItem() instanceof IMouseWheelItem ) ) )
+		if( this.Name.equals( "Item" ) && ( ( player.getHeldItem( EnumHand.MAIN_HAND ) != null && player.getHeldItem( EnumHand.MAIN_HAND ).getItem() instanceof IMouseWheelItem ) || ( player.getHeldItem( EnumHand.OFF_HAND ) != null && player.getHeldItem( EnumHand.OFF_HAND ).getItem() instanceof IMouseWheelItem ) ) )
 		{
 			final EnumHand hand;
 			if( player.getHeldItem( EnumHand.MAIN_HAND ) != null && player.getHeldItem( EnumHand.MAIN_HAND ).getItem() instanceof IMouseWheelItem )

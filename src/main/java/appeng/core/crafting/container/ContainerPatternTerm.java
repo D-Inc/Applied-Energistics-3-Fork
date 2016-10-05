@@ -199,7 +199,7 @@ public class ContainerPatternTerm extends ContainerMEMonitorable implements IAEA
 		if( output != null && !this.isPattern( output ) )
 		{
 			return;
-		}// if nothing is there we should snag a new pattern.
+		} // if nothing is there we should snag a new pattern.
 		else if( output == null )
 		{
 			output = this.patternSlotIN.getStack();

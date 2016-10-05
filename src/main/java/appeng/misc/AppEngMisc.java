@@ -20,13 +20,15 @@ import appeng.core.lib.module.AEModule;
 
 
 @AEModule( "misc" )
-@Mod( modid = AppEngMisc.MODID, name = AppEngMisc.NAME, version = AEConfig.VERSION, dependencies = "required-after:" + AppEng.MOD_ID, acceptedMinecraftVersions = ForgeVersion.mcVersion )
+@Mod( modid = AppEngMisc.MODID, name = AppEngMisc.MODNAME, version = AEConfig.VERSION, dependencies = "required-after:" + AppEng.MOD_ID, acceptedMinecraftVersions = ForgeVersion.mcVersion )
 public class AppEngMisc
 {
 
-	public static final String MODID = AppEng.MOD_ID + "|misc";
+	public static final String NAME = "misc";
 
-	public static final String NAME = AppEng.MOD_NAME + " | misc";
+	public static final String MODID = AppEng.MOD_ID + "|" + NAME;
+
+	public static final String MODNAME = AppEng.MOD_NAME + " | " + NAME;
 
 	@EventHandler
 	public void preInit( final FMLPreInitializationEvent event )

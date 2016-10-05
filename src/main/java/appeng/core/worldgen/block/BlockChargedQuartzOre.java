@@ -48,16 +48,13 @@ public final class BlockChargedQuartzOre extends BlockQuartzOre
 	@Override
 	public Item getItemDropped( final IBlockState state, final Random rand, final int fortune )
 	{
-		return AEApi.instance().definitions().materials().certusQuartzCrystalCharged().maybeItem()
-				.orElseThrow( () -> new MissingDefinition( "Tried to access charged certus quartz crystal, even though they are disabled" ) );
+		return AEApi.instance().definitions().materials().certusQuartzCrystalCharged().maybeItem().orElseThrow( () -> new MissingDefinition( "Tried to access charged certus quartz crystal, even though they are disabled" ) );
 	}
 
 	@Override
 	public int damageDropped( final IBlockState state )
 	{
-		return AEApi.instance().definitions().materials().certusQuartzCrystalCharged().maybeStack( 1 )
-				.orElseThrow( () -> new MissingDefinition( "Tried to access charged certus quartz crystal, even though they are disabled" ) )
-				.getItemDamage();
+		return AEApi.instance().definitions().materials().certusQuartzCrystalCharged().maybeStack( 1 ).orElseThrow( () -> new MissingDefinition( "Tried to access charged certus quartz crystal, even though they are disabled" ) ).getItemDamage();
 	}
 
 	@Override

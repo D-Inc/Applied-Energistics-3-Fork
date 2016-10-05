@@ -1,3 +1,4 @@
+
 package appeng.core.lib.bootstrap;
 
 
@@ -149,8 +150,7 @@ class BlockDefinitionBuilder implements IBlockBuilder
 		item.setRegistryName( AppEng.MOD_ID, registryName );
 
 		// Register the item and block with the game
-		factory.addPreInit( side ->
-		{
+		factory.addPreInit( side -> {
 			GameRegistry.register( block );
 			GameRegistry.register( item );
 		} );
@@ -182,8 +182,7 @@ class BlockDefinitionBuilder implements IBlockBuilder
 		{
 			AEBaseTileBlock tileBlock = (AEBaseTileBlock) block;
 
-			factory.addPreInit( side ->
-			{
+			factory.addPreInit( side -> {
 				Class<? extends AEBaseTile> tileEntityClass = tileBlock.getTileEntityClass();
 				AEBaseTile.registerTileItem( tileEntityClass, new BlockStackSrc( block, 0, ActivityState.Enabled ) );
 

@@ -21,9 +21,11 @@ import appeng.core.lib.module.AEModule;
 import appeng.core.lib.module.AEModule.ModuleEventHandler;
 
 
-@AEModule( "me" )
+@AEModule( AppEngME.NAME )
 public class AppEngME
 {
+
+	public static final String NAME = "me";
 
 	@ModuleEventHandler
 	public void preInit( FMLPreInitializationEvent event )

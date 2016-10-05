@@ -21,6 +21,7 @@ package appeng.core.me.block;
 
 import appeng.core.me.tile.TileDenseEnergyCell;
 
+
 public class BlockDenseEnergyCell extends BlockEnergyCell
 {
 

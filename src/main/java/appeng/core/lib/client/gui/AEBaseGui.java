@@ -66,13 +66,13 @@ import appeng.core.lib.client.render.AppEngRenderItem;
 import appeng.core.lib.container.AEBaseContainer;
 import appeng.core.lib.container.slot.AppEngCraftingSlot;
 import appeng.core.lib.container.slot.AppEngSlot;
+import appeng.core.lib.container.slot.AppEngSlot.hasCalculatedValidness;
 import appeng.core.lib.container.slot.OptionalSlotFake;
 import appeng.core.lib.container.slot.SlotDisabled;
 import appeng.core.lib.container.slot.SlotFake;
 import appeng.core.lib.container.slot.SlotInaccessible;
 import appeng.core.lib.container.slot.SlotOutput;
 import appeng.core.lib.container.slot.SlotRestrictedInput;
-import appeng.core.lib.container.slot.AppEngSlot.hasCalculatedValidness;
 import appeng.core.lib.helpers.InventoryAction;
 import appeng.core.lib.sync.network.NetworkHandler;
 import appeng.core.lib.sync.packets.PacketInventoryAction;
@@ -381,7 +381,7 @@ public abstract class AEBaseGui extends GuiContainer
 		}
 	}
 
-	//TODO 1.9.4 aftermath - Whole ClickType thing, to be checked.
+	// TODO 1.9.4 aftermath - Whole ClickType thing, to be checked.
 	@Override
 	protected void handleMouseClick( final Slot slot, final int slotIdx, final int key, final ClickType clickType )
 	{
@@ -928,6 +928,7 @@ public abstract class AEBaseGui extends GuiContainer
 		final ResourceLocation loc = new ResourceLocation( "appliedenergistics2", "textures/" + file );
 		this.mc.getTextureManager().bindTexture( loc );
 	}
+
 	protected GuiScrollbar getScrollBar()
 	{
 		return this.myScrollBar;

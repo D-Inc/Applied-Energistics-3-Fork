@@ -44,7 +44,7 @@ public class StorageWorldProvider extends WorldProvider
 		this.hasNoSky = true;
 		this.biomeProvider = new BiomeProviderSingle( AppEng.instance().getModule( AppEngCore.class ).getRegistration().getStorageBiome() );
 	}
-	
+
 	@Override
 	public IChunkGenerator createChunkGenerator()
 	{

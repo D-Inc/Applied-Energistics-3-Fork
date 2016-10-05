@@ -19,107 +19,107 @@
 package appeng.core.lib.tile.powered;
 
 
-//import java.util.EnumSet;
+// import java.util.EnumSet;
 //
-//import net.minecraft.tileentity.TileEntity;
-//import net.minecraftforge.common.util.ForgeDirection;
+// import net.minecraft.tileentity.TileEntity;
+// import net.minecraftforge.common.util.ForgeDirection;
 //
-//import ic2.api.energy.tile.IEnergySink;
+// import ic2.api.energy.tile.IEnergySink;
 //
-//import appeng.api.config.PowerUnits;
-//import appeng.integration.IntegrationRegistry;
-//import appeng.integration.IntegrationType;
-//import appeng.integration.abstraction.IIC2;
-//import appeng.transformer.annotations.Integration.Interface;
-//import appeng.util.Platform;
+// import appeng.api.config.PowerUnits;
+// import appeng.integration.IntegrationRegistry;
+// import appeng.integration.IntegrationType;
+// import appeng.integration.abstraction.IIC2;
+// import appeng.transformer.annotations.Integration.Interface;
+// import appeng.util.Platform;
 //
 //
-//@Interface( iname = IntegrationType.IC2, iface = "ic2.api.energy.tile.IEnergySink" )
-//public abstract class IC2 extends AERootPoweredTile implements IEnergySink
-//{
+// @Interface( iname = IntegrationType.IC2, iface = "ic2.api.energy.tile.IEnergySink" )
+// public abstract class IC2 extends AERootPoweredTile implements IEnergySink
+// {
 //
-//	boolean isInIC2 = false;
+// boolean isInIC2 = false;
 //
-//	@Override
-//	public final boolean acceptsEnergyFrom( TileEntity emitter, ForgeDirection direction )
-//	{
-//		return this.getPowerSides().contains( direction );
-//	}
+// @Override
+// public final boolean acceptsEnergyFrom( TileEntity emitter, ForgeDirection direction )
+// {
+// return this.getPowerSides().contains( direction );
+// }
 //
-//	@Override
-//	public final double getDemandedEnergy()
-//	{
-//		return this.getExternalPowerDemand( PowerUnits.EU, Double.MAX_VALUE );
-//	}
+// @Override
+// public final double getDemandedEnergy()
+// {
+// return this.getExternalPowerDemand( PowerUnits.EU, Double.MAX_VALUE );
+// }
 //
-//	@Override
-//	public final int getSinkTier()
-//	{
-//		return Integer.MAX_VALUE;
-//	}
+// @Override
+// public final int getSinkTier()
+// {
+// return Integer.MAX_VALUE;
+// }
 //
-//	@Override
-//	public final double injectEnergy( ForgeDirection directionFrom, double amount, double voltage )
-//	{
-//		// just store the excess in the current block, if I return the waste,
-//		// IC2 will just disintegrate it - Oct 20th 2013
-//		double overflow = PowerUnits.EU.convertTo( PowerUnits.AE, this.injectExternalPower( PowerUnits.EU, amount ) );
-//		this.internalCurrentPower += overflow;
-//		return 0; // see above comment.
-//	}
+// @Override
+// public final double injectEnergy( ForgeDirection directionFrom, double amount, double voltage )
+// {
+// // just store the excess in the current block, if I return the waste,
+// // IC2 will just disintegrate it - Oct 20th 2013
+// double overflow = PowerUnits.EU.convertTo( PowerUnits.AE, this.injectExternalPower( PowerUnits.EU, amount ) );
+// this.internalCurrentPower += overflow;
+// return 0; // see above comment.
+// }
 //
-//	@Override
-//	public void invalidate()
-//	{
-//		super.invalidate();
-//		this.removeFromENet();
-//	}
+// @Override
+// public void invalidate()
+// {
+// super.invalidate();
+// this.removeFromENet();
+// }
 //
-//	private void removeFromENet()
-//	{
-//		if( IntegrationRegistry.INSTANCE.isEnabled( IntegrationType.IC2 ) )
-//		{
-//			IIC2 ic2Integration = (IIC2) IntegrationRegistry.INSTANCE.getInstance( IntegrationType.IC2 );
-//			if( this.isInIC2 && Platform.isServer() && ic2Integration != null )
-//			{
-//				ic2Integration.removeFromEnergyNet( this );
-//				this.isInIC2 = false;
-//			}
-//		}
-//	}
+// private void removeFromENet()
+// {
+// if( IntegrationRegistry.INSTANCE.isEnabled( IntegrationType.IC2 ) )
+// {
+// IIC2 ic2Integration = (IIC2) IntegrationRegistry.INSTANCE.getInstance( IntegrationType.IC2 );
+// if( this.isInIC2 && Platform.isServer() && ic2Integration != null )
+// {
+// ic2Integration.removeFromEnergyNet( this );
+// this.isInIC2 = false;
+// }
+// }
+// }
 //
-//	@Override
-//	public void onChunkUnload()
-//	{
-//		super.onChunkUnload();
-//		this.removeFromENet();
-//	}
+// @Override
+// public void onChunkUnload()
+// {
+// super.onChunkUnload();
+// this.removeFromENet();
+// }
 //
-//	@Override
-//	public void onReady()
-//	{
-//		super.onReady();
-//		this.addToENet();
-//	}
+// @Override
+// public void onReady()
+// {
+// super.onReady();
+// this.addToENet();
+// }
 //
-//	private void addToENet()
-//	{
-//		if( IntegrationRegistry.INSTANCE.isEnabled( IntegrationType.IC2 ) )
-//		{
-//			IIC2 ic2Integration = (IIC2) IntegrationRegistry.INSTANCE.getInstance( IntegrationType.IC2 );
-//			if( !this.isInIC2 && Platform.isServer() && ic2Integration != null )
-//			{
-//				ic2Integration.addToEnergyNet( this );
-//				this.isInIC2 = true;
-//			}
-//		}
-//	}
+// private void addToENet()
+// {
+// if( IntegrationRegistry.INSTANCE.isEnabled( IntegrationType.IC2 ) )
+// {
+// IIC2 ic2Integration = (IIC2) IntegrationRegistry.INSTANCE.getInstance( IntegrationType.IC2 );
+// if( !this.isInIC2 && Platform.isServer() && ic2Integration != null )
+// {
+// ic2Integration.addToEnergyNet( this );
+// this.isInIC2 = true;
+// }
+// }
+// }
 //
-//	@Override
-//	protected void setPowerSides( EnumSet<ForgeDirection> sides )
-//	{
-//		super.setPowerSides( sides );
-//		this.removeFromENet();
-//		this.addToENet();
-//	}
+// @Override
+// protected void setPowerSides( EnumSet<ForgeDirection> sides )
+// {
+// super.setPowerSides( sides );
+// this.removeFromENet();
+// this.addToENet();
+// }
 // }

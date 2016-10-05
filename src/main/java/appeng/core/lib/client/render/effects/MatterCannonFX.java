@@ -97,7 +97,7 @@ public class MatterCannonFX extends ParticleBreaking
 		final float f13 = (float) ( this.prevPosZ + ( this.posZ - this.prevPosZ ) * par2 - interpPosZ );
 		final float f14 = 1.0F;
 
-		int i = this.getBrightnessForRender(par2);
+		int i = this.getBrightnessForRender( par2 );
 		int j = i >> 16 & 65535;
 		int k = i & 65535;
 

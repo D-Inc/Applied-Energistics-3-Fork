@@ -81,9 +81,7 @@ public final class ApiParts implements IParts
 	public ApiParts( FeatureFactory registry, IPartHelper partHelper )
 	{
 		final ItemMultiPart itemMultiPart = new ItemMultiPart( partHelper );
-		registry.item( "multipart", () -> itemMultiPart )
-				.rendering( new ItemMultipartRendering( itemMultiPart ) )
-				.build();
+		registry.item( "multipart", () -> itemMultiPart ).rendering( new ItemMultipartRendering( itemMultiPart ) ).build();
 
 		this.cableSmart = constructColoredDefinition( itemMultiPart, PartType.CableSmart );
 		this.cableCovered = constructColoredDefinition( itemMultiPart, PartType.CableCovered );

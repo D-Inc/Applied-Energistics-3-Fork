@@ -37,6 +37,7 @@ import appeng.core.lib.block.AEBaseTileBlock;
 import appeng.core.lib.sync.GuiBridge;
 import appeng.core.lib.util.Platform;
 
+
 public class BlockMolecularAssembler extends AEBaseTileBlock
 {
 

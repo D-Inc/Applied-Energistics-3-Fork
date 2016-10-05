@@ -19,75 +19,75 @@
 package appeng.core.me.part.layers;
 
 
-//import cofh.api.energy.IEnergyConnection;
-//import cofh.api.energy.IEnergyHandler;
-//import cofh.api.energy.IEnergyProvider;
-//import cofh.api.energy.IEnergyReceiver;
-//import appeng.api.parts.IPart;
-//import appeng.api.parts.LayerBase;
-//import appeng.api.util.ForgeDirection;
+// import cofh.api.energy.IEnergyConnection;
+// import cofh.api.energy.IEnergyHandler;
+// import cofh.api.energy.IEnergyProvider;
+// import cofh.api.energy.IEnergyReceiver;
+// import appeng.api.parts.IPart;
+// import appeng.api.parts.LayerBase;
+// import appeng.api.util.ForgeDirection;
 //
 //
-//public class LayerIEnergyHandler extends LayerBase implements IEnergyHandler
-//{
+// public class LayerIEnergyHandler extends LayerBase implements IEnergyHandler
+// {
 //
-//	@Override
-//	public int receiveEnergy( ForgeDirection from, int maxReceive, boolean simulate )
-//	{
-//		IPart part = this.getPart( from );
-//		if( part instanceof IEnergyReceiver )
-//		{
-//			return ( (IEnergyReceiver) part ).receiveEnergy( from, maxReceive, simulate );
-//		}
+// @Override
+// public int receiveEnergy( ForgeDirection from, int maxReceive, boolean simulate )
+// {
+// IPart part = this.getPart( from );
+// if( part instanceof IEnergyReceiver )
+// {
+// return ( (IEnergyReceiver) part ).receiveEnergy( from, maxReceive, simulate );
+// }
 //
-//		return 0;
-//	}
+// return 0;
+// }
 //
-//	@Override
-//	public int extractEnergy( ForgeDirection from, int maxExtract, boolean simulate )
-//	{
-//		IPart part = this.getPart( from );
-//		if( part instanceof IEnergyProvider )
-//		{
-//			return ( (IEnergyProvider) part ).extractEnergy( from, maxExtract, simulate );
-//		}
+// @Override
+// public int extractEnergy( ForgeDirection from, int maxExtract, boolean simulate )
+// {
+// IPart part = this.getPart( from );
+// if( part instanceof IEnergyProvider )
+// {
+// return ( (IEnergyProvider) part ).extractEnergy( from, maxExtract, simulate );
+// }
 //
-//		return 0;
-//	}
+// return 0;
+// }
 //
-//	@Override
-//	public int getEnergyStored( ForgeDirection from )
-//	{
-//		IPart part = this.getPart( from );
-//		if( part instanceof IEnergyProvider )
-//		{
-//			return ( (IEnergyProvider) part ).getEnergyStored( from );
-//		}
+// @Override
+// public int getEnergyStored( ForgeDirection from )
+// {
+// IPart part = this.getPart( from );
+// if( part instanceof IEnergyProvider )
+// {
+// return ( (IEnergyProvider) part ).getEnergyStored( from );
+// }
 //
-//		return 0;
-//	}
+// return 0;
+// }
 //
-//	@Override
-//	public int getMaxEnergyStored( ForgeDirection from )
-//	{
-//		IPart part = this.getPart( from );
-//		if( part instanceof IEnergyProvider )
-//		{
-//			return ( (IEnergyProvider) part ).getMaxEnergyStored( from );
-//		}
+// @Override
+// public int getMaxEnergyStored( ForgeDirection from )
+// {
+// IPart part = this.getPart( from );
+// if( part instanceof IEnergyProvider )
+// {
+// return ( (IEnergyProvider) part ).getMaxEnergyStored( from );
+// }
 //
-//		return 0;
-//	}
+// return 0;
+// }
 //
-//	@Override
-//	public boolean canConnectEnergy( ForgeDirection from )
-//	{
-//		IPart part = this.getPart( from );
-//		if( part instanceof IEnergyConnection )
-//		{
-//			return ( (IEnergyConnection) part ).canConnectEnergy( from );
-//		}
+// @Override
+// public boolean canConnectEnergy( ForgeDirection from )
+// {
+// IPart part = this.getPart( from );
+// if( part instanceof IEnergyConnection )
+// {
+// return ( (IEnergyConnection) part ).canConnectEnergy( from );
+// }
 //
-//		return false;
-//	}
+// return false;
+// }
 // }

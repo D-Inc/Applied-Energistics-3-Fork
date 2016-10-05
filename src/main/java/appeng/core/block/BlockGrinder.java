@@ -35,6 +35,7 @@ import appeng.core.lib.sync.GuiBridge;
 import appeng.core.lib.util.Platform;
 import appeng.core.tile.TileGrinder;
 
+
 public class BlockGrinder extends AEBaseTileBlock
 {
 

@@ -39,6 +39,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import appeng.core.lib.block.AEBaseBlock;
 import appeng.core.lib.helpers.ICustomCollision;
 
+
 public class BlockMatrixFrame extends AEBaseBlock implements ICustomCollision
 {
 

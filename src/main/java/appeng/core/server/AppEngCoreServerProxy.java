@@ -19,32 +19,11 @@
 package appeng.core.server;
 
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-import appeng.api.parts.CableRenderMode;
 import appeng.core.AppEngCoreProxy;
-import appeng.core.lib.block.AEBaseBlock;
-import appeng.core.lib.client.EffectType;
-import appeng.core.lib.sync.AppEngPacket;
-import appeng.core.lib.sync.network.NetworkHandler;
-import appeng.core.lib.util.Platform;
-import appeng.tools.item.ToolNetworkTool;
 
 
 public abstract class AppEngCoreServerProxy extends AppEngCoreProxy

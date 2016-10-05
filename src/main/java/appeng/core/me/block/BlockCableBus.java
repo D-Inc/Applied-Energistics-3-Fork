@@ -22,6 +22,7 @@ package appeng.core.me.block;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Random;
+
 import javax.annotation.Nullable;
 
 import net.minecraft.block.Block;
@@ -99,8 +100,7 @@ public class BlockCableBus extends AEBaseTileBlock
 	@Override
 	public IBlockState getExtendedState( IBlockState state, IBlockAccess world, BlockPos pos )
 	{
-		return ( (IExtendedBlockState) super.getExtendedState( state, world, pos ) )
-				.withProperty( cableBus, ( (TileCableBus) world.getTileEntity( pos ) ).getCableBus() );
+		return ( (IExtendedBlockState) super.getExtendedState( state, world, pos ) ).withProperty( cableBus, ( (TileCableBus) world.getTileEntity( pos ) ).getCableBus() );
 	}
 
 	@Override

@@ -154,8 +154,7 @@ public final class EntityChargedQuartz extends AEBaseEntityItem
 					netherQuartz.setDead();
 				}
 
-				materials.fluixCrystal().maybeStack( 2 ).ifPresent( is ->
-				{
+				materials.fluixCrystal().maybeStack( 2 ).ifPresent( is -> {
 					final EntityItem entity = new EntityItem( this.worldObj, this.posX, this.posY, this.posZ, is );
 
 					this.worldObj.spawnEntityInWorld( entity );

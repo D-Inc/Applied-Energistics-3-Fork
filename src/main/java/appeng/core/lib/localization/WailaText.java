@@ -18,7 +18,9 @@
 
 package appeng.core.lib.localization;
 
+
 import net.minecraft.util.text.translation.I18n;
+
 
 public enum WailaText
 {

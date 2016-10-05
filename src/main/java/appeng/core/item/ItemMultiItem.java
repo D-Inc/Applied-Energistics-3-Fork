@@ -139,7 +139,7 @@ public final class ItemMultiItem extends AEBaseItem implements IStorageComponent
 	public MaterialType getTypeByStack( final ItemStack is )
 	{
 		MaterialType type = this.dmgToMaterial.get( is.getItemDamage() );
-		return (type != null) ? type : MaterialType.InvalidType;
+		return ( type != null ) ? type : MaterialType.InvalidType;
 	}
 
 	@Override

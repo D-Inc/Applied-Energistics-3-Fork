@@ -29,6 +29,7 @@ import appeng.core.lib.block.AEBaseTileBlock;
 import appeng.core.lib.helpers.AEGlassMaterial;
 import appeng.core.spatial.tile.TileSpatialPylon;
 
+
 public class BlockSpatialPylon extends AEBaseTileBlock
 {
 

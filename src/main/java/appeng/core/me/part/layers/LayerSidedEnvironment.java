@@ -19,44 +19,44 @@
 package appeng.core.me.part.layers;
 
 
-//import javax.annotation.Nullable;
+// import javax.annotation.Nullable;
 //
-//import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-//import li.cil.oc.api.network.Node;
-//import li.cil.oc.api.network.SidedEnvironment;
-//import appeng.api.parts.IPart;
-//import appeng.api.parts.LayerBase;
-//import appeng.api.util.ForgeDirection;
-//import appeng.core.Registration;
-//import appeng.helpers.Reflected;
+// import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+// import li.cil.oc.api.network.Node;
+// import li.cil.oc.api.network.SidedEnvironment;
+// import appeng.api.parts.IPart;
+// import appeng.api.parts.LayerBase;
+// import appeng.api.util.ForgeDirection;
+// import appeng.core.Registration;
+// import appeng.helpers.Reflected;
 //
 //
-///**
+/// **
 // * Reflected in {@link Registration#initialize(FMLInitializationEvent)}
 // */
-//@Reflected
-//public class LayerSidedEnvironment extends LayerBase implements SidedEnvironment
-//{
-//	@Nullable
-//	@Override
-//	public Node sidedNode( ForgeDirection side )
-//	{
-//		final IPart part = this.getPart( side );
-//		if( part instanceof SidedEnvironment )
-//		{
-//			return ( (SidedEnvironment) part ).sidedNode( side );
-//		}
-//		return null;
-//	}
+// @Reflected
+// public class LayerSidedEnvironment extends LayerBase implements SidedEnvironment
+// {
+// @Nullable
+// @Override
+// public Node sidedNode( ForgeDirection side )
+// {
+// final IPart part = this.getPart( side );
+// if( part instanceof SidedEnvironment )
+// {
+// return ( (SidedEnvironment) part ).sidedNode( side );
+// }
+// return null;
+// }
 //
-//	@Override
-//	public boolean canConnect( ForgeDirection side )
-//	{
-//		final IPart part = this.getPart( side );
-//		if( part instanceof SidedEnvironment )
-//		{
-//			return ( (SidedEnvironment) part ).canConnect( side );
-//		}
-//		return false;
-//	}
+// @Override
+// public boolean canConnect( ForgeDirection side )
+// {
+// final IPart part = this.getPart( side );
+// if( part instanceof SidedEnvironment )
+// {
+// return ( (SidedEnvironment) part ).canConnect( side );
+// }
+// return false;
+// }
 // }

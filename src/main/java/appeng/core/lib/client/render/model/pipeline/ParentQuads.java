@@ -1,4 +1,6 @@
+
 package appeng.core.lib.client.render.model.pipeline;
+
 
 import java.util.List;
 
@@ -8,6 +10,7 @@ import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.util.EnumFacing;
 
 import appeng.api.client.BakingPipelineElement;
+
 
 public class ParentQuads implements BakingPipelineElement<Void, BakedQuad>
 {

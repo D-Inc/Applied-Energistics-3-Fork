@@ -38,6 +38,7 @@ import appeng.core.lib.block.AEBaseTileBlock;
 import appeng.core.lib.helpers.ICustomCollision;
 import appeng.misc.tile.TileLightDetector;
 
+
 public class BlockLightDetector extends AEBaseTileBlock implements IOrientableBlock, ICustomCollision
 {
 
@@ -105,14 +106,14 @@ public class BlockLightDetector extends AEBaseTileBlock implements IOrientableBl
 	@Override
 	public void addCollidingBlockToList( final World w, final BlockPos pos, final AxisAlignedBB bb, final List<AxisAlignedBB> out, final Entity e )
 	{/*
-	 * double xOff = -0.15 * getUp().offsetX; double yOff = -0.15 *
-	 * getUp().offsetY; double zOff = -0.15 * getUp().offsetZ; out.add(
-	 * AxisAlignedBB.getBoundingBox( xOff + (double) x + 0.15, yOff +
-	 * (double) y + 0.15, zOff + (double) z + 0.15,// ahh xOff + (double) x
-	 * + 0.85, yOff + (double) y + 0.85, zOff + (double) z + 0.85 ) );
-	 */
+		 * double xOff = -0.15 * getUp().offsetX; double yOff = -0.15 *
+		 * getUp().offsetY; double zOff = -0.15 * getUp().offsetZ; out.add(
+		 * AxisAlignedBB.getBoundingBox( xOff + (double) x + 0.15, yOff +
+		 * (double) y + 0.15, zOff + (double) z + 0.15,// ahh xOff + (double) x
+		 * + 0.85, yOff + (double) y + 0.85, zOff + (double) z + 0.85 ) );
+		 */
 	}
-	
+
 	@Override
 	public void neighborChanged( IBlockState state, World w, BlockPos pos, Block blockIn )
 	{

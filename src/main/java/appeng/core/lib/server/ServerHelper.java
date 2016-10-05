@@ -19,7 +19,6 @@
 package appeng.core.lib.server;
 
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -49,7 +48,7 @@ public abstract class ServerHelper extends CommonHelper
 {
 
 	private EntityPlayer renderModeBased;
-	
+
 	@Override
 	public World getWorld()
 	{

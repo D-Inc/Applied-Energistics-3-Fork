@@ -21,6 +21,7 @@ package appeng.core.worldgen.block;
 
 import java.util.Collections;
 import java.util.List;
+
 import javax.annotation.Nullable;
 
 import net.minecraft.block.material.Material;
@@ -70,7 +71,6 @@ public class BlockSkyChest extends AEBaseTileBlock implements ICustomCollision
 	{
 		return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
 	}
-
 
 	@Override
 	public boolean onActivated( final World w, final BlockPos pos, final EntityPlayer player, final EnumHand hand, final @Nullable ItemStack heldItem, final EnumFacing side, final float hitX, final float hitY, final float hitZ )

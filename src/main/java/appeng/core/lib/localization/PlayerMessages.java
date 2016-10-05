@@ -25,22 +25,9 @@ import net.minecraft.util.text.TextComponentTranslation;
 
 public enum PlayerMessages
 {
-	ChestCannotReadStorageCell,
-	InvalidMachine,
-	LoadedSettings,
-	SavedSettings,
-	MachineNotPowered,
+	ChestCannotReadStorageCell, InvalidMachine, LoadedSettings, SavedSettings, MachineNotPowered,
 
-	isNowLocked,
-	isNowUnlocked,
-	AmmoDepleted,
-	CommunicationError,
-	OutOfRange,
-	DeviceNotPowered,
-	DeviceNotWirelessTerminal,
-	DeviceNotLinked,
-	StationCanNotBeLocated,
-	SettingCleared, ;
+	isNowLocked, isNowUnlocked, AmmoDepleted, CommunicationError, OutOfRange, DeviceNotPowered, DeviceNotWirelessTerminal, DeviceNotLinked, StationCanNotBeLocated, SettingCleared,;
 
 	public ITextComponent get()
 	{

@@ -35,6 +35,7 @@ import net.minecraftforge.common.property.IExtendedBlockState;
 import appeng.core.lib.block.AEBaseTileBlock;
 import appeng.core.me.tile.TileController;
 
+
 public class BlockController extends AEBaseTileBlock
 {
 
@@ -50,11 +51,11 @@ public class BlockController extends AEBaseTileBlock
 
 	}
 
-    /**
-     * Controls the rendering of the controller block (connected texture style).
-     * inside_a and inside_b are alternating patterns for a controller that is enclosed by other controllers,
-     * and since they are always offline, they do not have the usual sub-states.
-     */
+	/**
+	 * Controls the rendering of the controller block (connected texture style).
+	 * inside_a and inside_b are alternating patterns for a controller that is enclosed by other controllers,
+	 * and since they are always offline, they do not have the usual sub-states.
+	 */
 	public enum ControllerRenderType implements IStringSerializable
 	{
 		block, column, inside_a, inside_b;

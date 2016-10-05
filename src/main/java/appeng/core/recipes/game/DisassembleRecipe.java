@@ -22,6 +22,7 @@ package appeng.core.recipes.game;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 

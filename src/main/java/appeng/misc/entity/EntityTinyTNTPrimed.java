@@ -89,8 +89,7 @@ public final class EntityTinyTNTPrimed extends EntityTNTPrimed implements IEntit
 
 		if( this.isInWater() && Platform.isServer() ) // put out the fuse.
 		{
-			AEApi.instance().definitions().blocks().tinyTNT().maybeStack( 1 ).ifPresent( tntStack ->
-			{
+			AEApi.instance().definitions().blocks().tinyTNT().maybeStack( 1 ).ifPresent( tntStack -> {
 				final EntityItem item = new EntityItem( this.worldObj, this.posX, this.posY, this.posZ, tntStack );
 
 				item.motionX = this.motionX;
@@ -162,7 +161,7 @@ public final class EntityTinyTNTPrimed extends EntityTNTPrimed implements IEntit
 
 							if( strength > 0.01 )
 							{
-								if( block.getMaterial(state) != Material.AIR )
+								if( block.getMaterial( state ) != Material.AIR )
 								{
 									if( block.canDropFromExplosion( ex ) )
 									{
@@ -190,6 +189,7 @@ public final class EntityTinyTNTPrimed extends EntityTNTPrimed implements IEntit
 	@Override
 	public void readSpawnData( final ByteBuf data )
 	{
-		this.setFuse( data.readByte() );;
+		this.setFuse( data.readByte() );
+		;
 	}
 }

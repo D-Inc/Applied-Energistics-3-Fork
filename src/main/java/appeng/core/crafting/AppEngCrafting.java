@@ -15,9 +15,11 @@ import appeng.core.lib.module.AEModule;
 import appeng.core.lib.module.AEModule.ModuleEventHandler;
 
 
-@AEModule( "crafting" )
+@AEModule( AppEngCrafting.NAME )
 public class AppEngCrafting
 {
+
+	public static final String NAME = "crafting";
 
 	@ModuleEventHandler
 	public void preInit( FMLPreInitializationEvent event )

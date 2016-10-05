@@ -107,6 +107,6 @@ public class StorageChunkProvider extends ChunkProviderOverworld
 	@Override
 	public void recreateStructures( Chunk chunkIn, int x, int z )
 	{
-		
+
 	}
 }

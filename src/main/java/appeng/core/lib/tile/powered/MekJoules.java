@@ -19,54 +19,54 @@
 package appeng.core.lib.tile.powered;
 
 
-//import net.minecraftforge.common.util.ForgeDirection;
+// import net.minecraftforge.common.util.ForgeDirection;
 //
-//import mekanism.api.energy.IStrictEnergyAcceptor;
+// import mekanism.api.energy.IStrictEnergyAcceptor;
 //
-//import appeng.api.config.PowerUnits;
-//import appeng.integration.IntegrationType;
-//import appeng.transformer.annotations.Integration.Interface;
+// import appeng.api.config.PowerUnits;
+// import appeng.integration.IntegrationType;
+// import appeng.transformer.annotations.Integration.Interface;
 //
 //
-//@Interface( iname = IntegrationType.Mekanism, iface = "mekanism.api.energy.IStrictEnergyAcceptor" )
-//public abstract class MekJoules extends RedstoneFlux implements IStrictEnergyAcceptor
-//{
+// @Interface( iname = IntegrationType.Mekanism, iface = "mekanism.api.energy.IStrictEnergyAcceptor" )
+// public abstract class MekJoules extends RedstoneFlux implements IStrictEnergyAcceptor
+// {
 //
-//	@Override
-//	public double getEnergy()
-//	{
-//		return 0;
-//	}
+// @Override
+// public double getEnergy()
+// {
+// return 0;
+// }
 //
-//	@Override
-//	public void setEnergy( double energy )
-//	{
-//		double extra = this.injectExternalPower( PowerUnits.MK, energy );
-//		this.internalCurrentPower += PowerUnits.MK.convertTo( PowerUnits.AE, extra );
-//	}
+// @Override
+// public void setEnergy( double energy )
+// {
+// double extra = this.injectExternalPower( PowerUnits.MK, energy );
+// this.internalCurrentPower += PowerUnits.MK.convertTo( PowerUnits.AE, extra );
+// }
 //
-//	@Override
-//	public double getMaxEnergy()
-//	{
-//		return this.getExternalPowerDemand( PowerUnits.MK, 100000 );
-//	}
+// @Override
+// public double getMaxEnergy()
+// {
+// return this.getExternalPowerDemand( PowerUnits.MK, 100000 );
+// }
 //
-//	@Override
-//	public double transferEnergyToAcceptor( ForgeDirection side, double amount )
-//	{
-//		double demand = this.getExternalPowerDemand( PowerUnits.MK, Double.MAX_VALUE );
-//		if( amount > demand )
-//		{
-//			amount = demand;
-//		}
+// @Override
+// public double transferEnergyToAcceptor( ForgeDirection side, double amount )
+// {
+// double demand = this.getExternalPowerDemand( PowerUnits.MK, Double.MAX_VALUE );
+// if( amount > demand )
+// {
+// amount = demand;
+// }
 //
-//		double overflow = this.injectExternalPower( PowerUnits.MK, amount );
-//		return amount - overflow;
-//	}
+// double overflow = this.injectExternalPower( PowerUnits.MK, amount );
+// return amount - overflow;
+// }
 //
-//	@Override
-//	public boolean canReceiveEnergy( ForgeDirection side )
-//	{
-//		return this.getPowerSides().contains( side );
-//	}
+// @Override
+// public boolean canReceiveEnergy( ForgeDirection side )
+// {
+// return this.getPowerSides().contains( side );
+// }
 // }

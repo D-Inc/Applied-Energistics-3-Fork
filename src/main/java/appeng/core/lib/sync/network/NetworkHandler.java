@@ -29,11 +29,10 @@ import net.minecraftforge.fml.common.network.FMLEventChannel;
 import net.minecraftforge.fml.common.network.FMLNetworkEvent.ClientCustomPacketEvent;
 import net.minecraftforge.fml.common.network.FMLNetworkEvent.ServerConnectionFromClientEvent;
 import net.minecraftforge.fml.common.network.FMLNetworkEvent.ServerCustomPacketEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 import appeng.core.lib.sync.AppEngPacket;
 import appeng.core.lib.worlddata.WorldData;
-
-import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 
 public class NetworkHandler

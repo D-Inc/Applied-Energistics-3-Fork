@@ -99,9 +99,9 @@ public class PacketTransitionEffect extends AppEngPacket
 					fx.fromItem( this.d );
 				}
 
-				fx.setMotionX( -0.1f * this.d.xOffset);
-				fx.setMotionY( -0.1f * this.d.yOffset);
-				fx.setMotionZ( -0.1f * this.d.zOffset);
+				fx.setMotionX( -0.1f * this.d.xOffset );
+				fx.setMotionY( -0.1f * this.d.yOffset );
+				fx.setMotionZ( -0.1f * this.d.zOffset );
 
 				Minecraft.getMinecraft().effectRenderer.addEffect( fx );
 			}

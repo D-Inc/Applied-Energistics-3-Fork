@@ -19,47 +19,47 @@
 package appeng.core.lib.tile.powered;
 
 
-//import net.minecraftforge.common.util.ForgeDirection;
+// import net.minecraftforge.common.util.ForgeDirection;
 //
-//import cofh.api.energy.IEnergyReceiver;
+// import cofh.api.energy.IEnergyReceiver;
 //
-//import appeng.api.config.PowerUnits;
-//import appeng.integration.IntegrationType;
-//import appeng.transformer.annotations.Integration.Interface;
+// import appeng.api.config.PowerUnits;
+// import appeng.integration.IntegrationType;
+// import appeng.transformer.annotations.Integration.Interface;
 //
 //
-//@Interface( iname = IntegrationType.RF, iface = "cofh.api.energy.IEnergyReceiver" )
-//public abstract class RedstoneFlux extends RotaryCraft implements IEnergyReceiver
-//{
-//	@Override
-//	public final int receiveEnergy( ForgeDirection from, int maxReceive, boolean simulate )
-//	{
-//		final int networkRFDemand = (int) Math.floor( this.getExternalPowerDemand( PowerUnits.RF, maxReceive ) );
-//		final int usedRF = Math.min( maxReceive, networkRFDemand );
+// @Interface( iname = IntegrationType.RF, iface = "cofh.api.energy.IEnergyReceiver" )
+// public abstract class RedstoneFlux extends RotaryCraft implements IEnergyReceiver
+// {
+// @Override
+// public final int receiveEnergy( ForgeDirection from, int maxReceive, boolean simulate )
+// {
+// final int networkRFDemand = (int) Math.floor( this.getExternalPowerDemand( PowerUnits.RF, maxReceive ) );
+// final int usedRF = Math.min( maxReceive, networkRFDemand );
 //
-//		if( !simulate )
-//		{
-//			this.injectExternalPower( PowerUnits.RF, usedRF );
-//		}
+// if( !simulate )
+// {
+// this.injectExternalPower( PowerUnits.RF, usedRF );
+// }
 //
-//		return usedRF;
-//	}
+// return usedRF;
+// }
 //
-//	@Override
-//	public final int getEnergyStored( ForgeDirection from )
-//	{
-//		return (int) Math.floor( PowerUnits.AE.convertTo( PowerUnits.RF, this.getAECurrentPower() ) );
-//	}
+// @Override
+// public final int getEnergyStored( ForgeDirection from )
+// {
+// return (int) Math.floor( PowerUnits.AE.convertTo( PowerUnits.RF, this.getAECurrentPower() ) );
+// }
 //
-//	@Override
-//	public final int getMaxEnergyStored( ForgeDirection from )
-//	{
-//		return (int) Math.floor( PowerUnits.AE.convertTo( PowerUnits.RF, this.getAEMaxPower() ) );
-//	}
+// @Override
+// public final int getMaxEnergyStored( ForgeDirection from )
+// {
+// return (int) Math.floor( PowerUnits.AE.convertTo( PowerUnits.RF, this.getAEMaxPower() ) );
+// }
 //
-//	@Override
-//	public final boolean canConnectEnergy( ForgeDirection from )
-//	{
-//		return this.getPowerSides().contains( from );
-//	}
+// @Override
+// public final boolean canConnectEnergy( ForgeDirection from )
+// {
+// return this.getPowerSides().contains( from );
+// }
 // }

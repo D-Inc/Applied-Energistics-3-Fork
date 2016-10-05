@@ -214,7 +214,6 @@ public final class MeteoritePlacer
 	private void placeMeteorite( final IMeteoriteWorld w, final int x, final int y, final int z )
 	{
 
-
 		// spawn meteor
 		this.skyStoneDefinition.maybeBlock().ifPresent( block -> placeMeteoriteSkyStone( w, x, y, z, block ) );
 

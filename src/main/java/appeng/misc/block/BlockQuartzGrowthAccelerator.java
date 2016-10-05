@@ -61,8 +61,7 @@ public class BlockQuartzGrowthAccelerator extends AEBaseTileBlock
 		TileQuartzGrowthAccelerator te = getTileEntity( world, pos );
 		boolean powered = te != null && te.isPowered();
 
-		return super.getActualState( state, world, pos )
-				.withProperty( POWERED, powered );
+		return super.getActualState( state, world, pos ).withProperty( POWERED, powered );
 	}
 
 	@Override

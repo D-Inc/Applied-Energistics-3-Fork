@@ -163,21 +163,13 @@ public final class ApiItems implements IItems
 		this.spatialCell16 = spatialCells.item( "spatial_storage_cell_16_cubed", () -> new ItemSpatialStorageCell( 16 ) ).build();
 		this.spatialCell128 = spatialCells.item( "spatial_storage_cell_128_cubed", () -> new ItemSpatialStorageCell( 128 ) ).build();
 
-		this.facade = registry.item( "facade", ItemFacade::new )
-				.features( AEFeature.Facades )
-				.creativeTab( CreativeTabFacade.instance )
-				.build();
-		this.crystalSeed = registry.item( "crystal_seed", ItemCrystalSeed::new )
-				.rendering( new ItemCrystalSeedRendering() )
-				.build();
+		this.facade = registry.item( "facade", ItemFacade::new ).features( AEFeature.Facades ).creativeTab( CreativeTabFacade.instance ).build();
+		this.crystalSeed = registry.item( "crystal_seed", ItemCrystalSeed::new ).rendering( new ItemCrystalSeedRendering() ).build();
 
 		// rv1
 		this.encodedPattern = registry.item( "encoded_pattern", ItemEncodedPattern::new ).features( AEFeature.Patterns ).build();
 
-		this.paintBall = registry.item( "paint_ball", ItemPaintBall::new )
-				.features( AEFeature.PaintBalls )
-				.rendering( new ItemPaintBallRendering() )
-				.build();
+		this.paintBall = registry.item( "paint_ball", ItemPaintBall::new ).features( AEFeature.PaintBalls ).rendering( new ItemPaintBallRendering() ).build();
 		this.coloredPaintBall = registry.colored( this.paintBall, 0 );
 		this.coloredLumenPaintBall = registry.colored( this.paintBall, 20 );
 

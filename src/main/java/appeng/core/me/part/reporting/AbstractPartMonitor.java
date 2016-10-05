@@ -158,7 +158,7 @@ public abstract class AbstractPartMonitor extends AbstractPartDisplay implements
 
 	@Override
 	public boolean onPartActivate( final EntityPlayer player, final EnumHand hand, final Vec3d pos )
-	{		
+	{
 		if( Platform.isClient() )
 		{
 			return true;
