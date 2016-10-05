@@ -15,10 +15,8 @@ import net.minecraftforge.fml.common.event.FMLServerStoppedEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 
 import appeng.core.AppEng;
-import appeng.core.AppEngCore;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.module.AEModule;
-import appeng.core.lib.module.Instance;
 
 
 @AEModule( "tools" )
@@ -33,18 +31,10 @@ public class AppEngTools
 
 	public static final String NAME = AppEng.MOD_NAME + " | tools";
 
-	@Instance( "core" )
-	private static final AppEngCore core = null;
-
-	@Instance( "appeng.core.AppEngCore" )
-	private static final AppEngCore corec = null;
-
 	@EventHandler
 	public void preInit( final FMLPreInitializationEvent event )
 	{
-		System.out.println( core );
-		System.out.println( core == corec );
-		System.out.println( core == AppEng.instance().getModule( "core" ) );
+
 	}
 
 	@EventHandler

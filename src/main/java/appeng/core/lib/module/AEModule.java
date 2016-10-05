@@ -11,6 +11,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import java.util.regex.Pattern;
 
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 
 
@@ -67,6 +68,25 @@ public @interface AEModule
 	 * @author Elix_x
 	 */
 	String dependencies() default "";
+
+	/**
+	 * Populate given field with instance of module with given name or class. Works similarly to {@link Mod#Instance}, but for modules.
+	 * <br>
+	 * Field <b>must be static</b> unless it is located inside module class.
+	 * Works with private and/or final fields.
+	 * 
+	 * @author Elix_x
+	 */
+	@Retention( RetentionPolicy.RUNTIME )
+	@Target( ElementType.FIELD )
+	public @interface Instance
+	{
+		/**
+		 * @return Name or class of module to inject it's instance.
+		 */
+		String value();
+
+	}
 
 	/**
 	 * Marks the associated method as handling an FML lifecycle event redirected from AE.
