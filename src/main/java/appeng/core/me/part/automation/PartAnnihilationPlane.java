@@ -56,6 +56,7 @@ import appeng.api.storage.data.IAEItemStack;
 import appeng.api.util.AECableType;
 import appeng.api.util.AEPartLocation;
 import appeng.core.hooks.TickHandler;
+import appeng.core.lib.CommonHelper;
 import appeng.core.lib.settings.TickRates;
 import appeng.core.lib.sync.packets.PacketTransitionEffect;
 import appeng.core.lib.util.IWorldCallable;
@@ -63,7 +64,7 @@ import appeng.core.lib.util.Platform;
 import appeng.core.lib.util.item.AEItemStack;
 import appeng.core.me.grid.GridAccessException;
 import appeng.core.me.part.PartBasicState;
-import appeng.core.server.ServerHelper;
+import appeng.core.server.AppEngCoreServerProxy;
 
 
 public class PartAnnihilationPlane extends PartBasicState implements IGridTickable, IWorldCallable<TickRateModulation>
@@ -202,7 +203,7 @@ public class PartAnnihilationPlane extends PartBasicState implements IGridTickab
 
 				if( changed )
 				{
-					ServerHelper.proxy.sendToAllNearExcept( null, pos.getX(), pos.getY(), pos.getZ(), 64, this.getTile().getWorld(), new PacketTransitionEffect( entity.posX, entity.posY, entity.posZ, this.getSide(), false ) );
+					CommonHelper.proxy.sendToAllNearExcept( null, pos.getX(), pos.getY(), pos.getZ(), 64, this.getTile().getWorld(), new PacketTransitionEffect( entity.posX, entity.posY, entity.posZ, this.getSide(), false ) );
 				}
 			}
 		}
@@ -364,7 +365,7 @@ public class PartAnnihilationPlane extends PartBasicState implements IGridTickab
 						{
 							energy.extractAEPower( requiredPower, Actionable.MODULATE, PowerMultiplier.CONFIG );
 							this.breakBlockAndStoreItems( w, pos, items );
-							ServerHelper.proxy.sendToAllNearExcept( null, pos.getX(), pos.getY(), pos.getZ(), 64, w, new PacketTransitionEffect( pos.getX(), pos.getY(), pos.getZ(), this.getSide(), true ) );
+							CommonHelper.proxy.sendToAllNearExcept( null, pos.getX(), pos.getY(), pos.getZ(), 64, w, new PacketTransitionEffect( pos.getX(), pos.getY(), pos.getZ(), this.getSide(), true ) );
 						}
 						else
 						{

@@ -25,10 +25,10 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.AxisAlignedBB;
 
 import appeng.core.lib.AEConfig;
+import appeng.core.lib.CommonHelper;
 import appeng.core.lib.item.powered.AEBasePoweredItem;
 import appeng.core.lib.sync.packets.PacketLightning;
 import appeng.core.lib.util.Platform;
-import appeng.core.server.ServerHelper;
 
 
 public class ToolChargedStaff extends AEBasePoweredItem
@@ -53,7 +53,7 @@ public class ToolChargedStaff extends AEBasePoweredItem
 					final float dx = (float) ( Platform.getRandomFloat() * target.width + entityBoundingBox.minX );
 					final float dy = (float) ( Platform.getRandomFloat() * target.height + entityBoundingBox.minY );
 					final float dz = (float) ( Platform.getRandomFloat() * target.width + entityBoundingBox.minZ );
-					ServerHelper.proxy.sendToAllNearExcept( null, dx, dy, dz, 32.0, target.worldObj, new PacketLightning( dx, dy, dz ) );
+					CommonHelper.proxy.sendToAllNearExcept( null, dx, dy, dz, 32.0, target.worldObj, new PacketLightning( dx, dy, dz ) );
 				}
 			}
 			target.attackEntityFrom( DamageSource.magic, 6 );

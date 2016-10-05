@@ -16,55 +16,56 @@
  * along with Applied Energistics 2.  If not, see <http://www.gnu.org/licenses/lgpl>.
  */
 
-package appeng.core.lib;
+package appeng.core.server;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 import appeng.api.parts.CableRenderMode;
+import appeng.core.AppEngCoreProxy;
 import appeng.core.lib.block.AEBaseBlock;
 import appeng.core.lib.client.EffectType;
 import appeng.core.lib.sync.AppEngPacket;
+import appeng.core.lib.sync.network.NetworkHandler;
+import appeng.core.lib.util.Platform;
+import appeng.tools.item.ToolNetworkTool;
 
 
-public abstract class CommonHelper
+public abstract class AppEngCoreServerProxy extends AppEngCoreProxy
 {
 
-	@SidedProxy( clientSide = "appeng.core.lib.client.ClientHelper", serverSide = "appeng.core.lib.server.ServerHelper" )
-	public static CommonHelper proxy;
+	@Override
+	public void preInit( FMLPreInitializationEvent event )
+	{
 
-	public abstract void missingCoreMod();
+	}
 
-	public abstract void moduleLoadingException( String exceptionText, String guiText );
+	@Override
+	public void init( FMLInitializationEvent event )
+	{
 
-	public abstract void bindTileEntitySpecialRenderer( Class<? extends TileEntity> tile, AEBaseBlock blk );
+	}
 
-	public abstract World getWorld();
+	@Override
+	public void postInit( FMLPostInitializationEvent event )
+	{
 
-	public abstract List<EntityPlayer> getPlayers();
-
-	public abstract void sendToAllNearExcept( EntityPlayer p, double x, double y, double z, double dist, World w, AppEngPacket packet );
-
-	public abstract void spawnEffect( EffectType effect, World worldObj, double posX, double posY, double posZ, Object extra );
-
-	public abstract boolean shouldAddParticles( Random r );
-
-	public abstract RayTraceResult getRTR();
-
-	public abstract void doRenderItem( ItemStack itemstack, World w );
-
-	public abstract CableRenderMode getRenderMode();
-
-	public abstract void triggerUpdates();
-
-	public abstract void updateRenderMode( EntityPlayer player );
+	}
 
 }

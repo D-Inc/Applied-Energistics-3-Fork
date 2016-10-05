@@ -16,29 +16,23 @@
  * along with Applied Energistics 2.  If not, see <http://www.gnu.org/licenses/lgpl>.
  */
 
-package appeng.core.lib.client;
+package appeng.core.client;
 
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 import com.google.common.collect.ImmutableMap;
 
 import org.lwjgl.opengl.GL11;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.gui.GuiErrorScreen;
-import net.minecraft.entity.item.EntityItem;
+import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.client.resources.IReloadableResourceManager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelBakeEvent;
@@ -46,19 +40,21 @@ import net.minecraftforge.client.event.MouseEvent;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.client.model.IModel;
-import net.minecraftforge.fml.client.CustomModLoadingErrorDisplayException;
+import net.minecraftforge.client.model.ModelLoaderRegistry;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import appeng.api.parts.CableRenderMode;
 import appeng.api.util.AECableType;
 import appeng.api.util.AEColor;
 import appeng.core.AppEng;
 import appeng.core.hooks.TickHandler;
 import appeng.core.hooks.TickHandler.PlayerColor;
-import appeng.core.lib.AEConfig;
 import appeng.core.lib.AELog;
 import appeng.core.lib.CommonHelper;
-import appeng.core.lib.block.AEBaseBlock;
+import appeng.core.lib.client.render.RenderFloatingItem;
 import appeng.core.lib.client.render.effects.AssemblerFX;
 import appeng.core.lib.client.render.effects.CraftingFx;
 import appeng.core.lib.client.render.effects.EnergyFx;
@@ -67,188 +63,44 @@ import appeng.core.lib.client.render.effects.LightningFX;
 import appeng.core.lib.client.render.effects.VibrantFX;
 import appeng.core.lib.client.render.model.ModelsCache;
 import appeng.core.lib.client.render.model.UVLModelLoader;
+import appeng.core.lib.entity.EntityFloatingItem;
 import appeng.core.lib.helpers.IMouseWheelItem;
-import appeng.core.lib.server.ServerHelper;
 import appeng.core.lib.sync.network.NetworkHandler;
 import appeng.core.lib.sync.packets.PacketAssemblerAnimation;
 import appeng.core.lib.sync.packets.PacketValueConfig;
 import appeng.core.lib.util.Platform;
 import appeng.core.me.item.PartType;
 import appeng.core.me.part.AEBasePart;
-import appeng.core.transformer.MissingCoreMod;
+import appeng.core.server.AppEngCoreServerProxy;
+import appeng.misc.client.render.RenderTinyTNTPrimed;
+import appeng.misc.entity.EntityTinyTNTPrimed;
 import appeng.tools.client.render.texture.ParticleTextures;
 
 
-public class ClientHelper extends ServerHelper
+public class AppEngCoreClientProxy extends AppEngCoreServerProxy
 {
 
 	@Override
-	public World getWorld()
+	public void preInit( FMLPreInitializationEvent event )
 	{
-		if( Platform.isClient() )
-		{
-			return Minecraft.getMinecraft().theWorld;
-		}
-		else
-		{
-			return super.getWorld();
-		}
+		MinecraftForge.EVENT_BUS.register( this );
+		ModelLoaderRegistry.registerLoader( UVLModelLoader.INSTANCE );
+		( (IReloadableResourceManager) Minecraft.getMinecraft().getResourceManager() ).registerReloadListener( ModelsCache.INSTANCE );
 	}
 
 	@Override
-	public void bindTileEntitySpecialRenderer( final Class<? extends TileEntity> tile, final AEBaseBlock blk )
+	public void init( FMLInitializationEvent event )
 	{
 
 	}
 
 	@Override
-	public List<EntityPlayer> getPlayers()
+	public void postInit( FMLPostInitializationEvent event )
 	{
-		if( Platform.isClient() )
-		{
-			final List<EntityPlayer> o = new ArrayList<>();
-			o.add( Minecraft.getMinecraft().thePlayer );
-			return o;
-		}
-		else
-		{
-			return super.getPlayers();
-		}
-	}
+		final RenderManager inst = Minecraft.getMinecraft().getRenderManager();
 
-	@Override
-	public void spawnEffect( final EffectType effect, final World worldObj, final double posX, final double posY, final double posZ, final Object o )
-	{
-		if( AEConfig.instance.enableEffects )
-		{
-			switch( effect )
-			{
-				case Assembler:
-					this.spawnAssembler( worldObj, posX, posY, posZ, o );
-					return;
-				case Vibrant:
-					this.spawnVibrant( worldObj, posX, posY, posZ );
-					return;
-				case Crafting:
-					this.spawnCrafting( worldObj, posX, posY, posZ );
-					return;
-				case Energy:
-					this.spawnEnergy( worldObj, posX, posY, posZ );
-					return;
-				case Lightning:
-					this.spawnLightning( worldObj, posX, posY, posZ );
-					return;
-				case LightningArc:
-					this.spawnLightningArc( worldObj, posX, posY, posZ, (Vec3d) o );
-					return;
-				default:
-			}
-		}
-	}
-
-	@Override
-	public boolean shouldAddParticles( final Random r )
-	{
-		final int setting = Minecraft.getMinecraft().gameSettings.particleSetting;
-		if( setting == 2 )
-		{
-			return false;
-		}
-		if( setting == 0 )
-		{
-			return true;
-		}
-		return r.nextInt( 2 * ( setting + 1 ) ) == 0;
-	}
-
-	@Override
-	public RayTraceResult getRTR()
-	{
-		return Minecraft.getMinecraft().objectMouseOver;
-	}
-
-	@Override
-	public void doRenderItem( final ItemStack itemstack, final World w )
-	{
-		if( itemstack != null )
-		{
-			final EntityItem entityitem = new EntityItem( w, 0.0D, 0.0D, 0.0D, itemstack );
-			entityitem.getEntityItem().stackSize = 1;
-
-			// set all this stuff and then do shit? meh?
-			entityitem.hoverStart = 0;
-			entityitem.setNoDespawn();
-			entityitem.rotationYaw = 0;
-
-			GL11.glPushMatrix();
-			GL11.glTranslatef( 0, -0.04F, 0 );
-			GL11.glColor4f( 1.0F, 1.0F, 1.0F, 1.0F );
-			// GL11.glDisable( GL11.GL_CULL_FACE );
-
-			// TODO Pre-1.8 - RENDER ITEM FOR STORAGE MONITOR!
-
-			GL11.glPopMatrix();
-		}
-	}
-
-	@Override
-	public CableRenderMode getRenderMode()
-	{
-		if( Platform.isServer() )
-		{
-			return super.getRenderMode();
-		}
-
-		final Minecraft mc = Minecraft.getMinecraft();
-		final EntityPlayer player = mc.thePlayer;
-
-		return this.renderModeForPlayer( player );
-	}
-
-	@Override
-	public void triggerUpdates()
-	{
-		final Minecraft mc = Minecraft.getMinecraft();
-		if( mc == null || mc.thePlayer == null || mc.theWorld == null )
-		{
-			return;
-		}
-
-		final EntityPlayer player = mc.thePlayer;
-
-		final int x = (int) player.posX;
-		final int y = (int) player.posY;
-		final int z = (int) player.posZ;
-
-		final int range = 16 * 16;
-
-		mc.theWorld.markBlockRangeForRenderUpdate( x - range, y - range, z - range, x + range, y + range, z + range );
-	}
-
-	@Override
-	public void missingCoreMod()
-	{
-		throw new MissingCoreMod();
-	}
-
-	@Override
-	public void moduleLoadingException( String exceptionText, String guiText )
-	{
-		throw new CustomModLoadingErrorDisplayException( exceptionText, null ){
-
-			@Override
-			public void initGui( GuiErrorScreen errorScreen, FontRenderer fontRenderer )
-			{
-
-			}
-
-			@Override
-			public void drawScreen( GuiErrorScreen errorScreen, FontRenderer fontRenderer, int mouseRelX, int mouseRelY, float tickTime )
-			{
-				errorScreen.drawDefaultBackground();
-				errorScreen.drawCenteredString( fontRenderer, guiText, errorScreen.width / 2, 75, 0xFFFFFF );
-			}
-		};
+		inst.entityRenderMap.put( EntityTinyTNTPrimed.class, new RenderTinyTNTPrimed( inst ) );
+		inst.entityRenderMap.put( EntityFloatingItem.class, new RenderFloatingItem( inst ) );
 	}
 
 	@SubscribeEvent

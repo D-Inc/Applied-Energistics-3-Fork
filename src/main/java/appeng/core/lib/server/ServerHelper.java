@@ -16,7 +16,7 @@
  * along with Applied Energistics 2.  If not, see <http://www.gnu.org/licenses/lgpl>.
  */
 
-package appeng.core.server;
+package appeng.core.lib.server;
 
 
 import java.lang.reflect.Field;
@@ -49,19 +49,7 @@ public abstract class ServerHelper extends CommonHelper
 {
 
 	private EntityPlayer renderModeBased;
-
-	@Override
-	public void preinit()
-	{
-
-	}
-
-	@Override
-	public void init()
-	{
-
-	}
-
+	
 	@Override
 	public World getWorld()
 	{
@@ -136,12 +124,6 @@ public abstract class ServerHelper extends CommonHelper
 
 	@Override
 	public void doRenderItem( final ItemStack sis, final World tile )
-	{
-
-	}
-
-	@Override
-	public void postInit()
 	{
 
 	}

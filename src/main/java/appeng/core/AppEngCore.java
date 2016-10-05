@@ -8,6 +8,7 @@ import javax.annotation.Nonnull;
 
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLInterModComms.IMCEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -21,13 +22,11 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import appeng.core.hooks.TickHandler;
 import appeng.core.integration.IntegrationRegistry;
 import appeng.core.lib.AELog;
-import appeng.core.lib.CommonHelper;
 import appeng.core.lib.crash.IntegrationCrashEnhancement;
 import appeng.core.lib.module.AEModule;
 import appeng.core.lib.module.AEModule.ModuleEventHandler;
 import appeng.core.lib.sync.GuiBridge;
 import appeng.core.lib.sync.network.NetworkHandler;
-import appeng.core.lib.util.Platform;
 import appeng.core.lib.worlddata.WorldData;
 import appeng.core.recipes.CustomRecipeConfig;
 import appeng.core.recipes.CustomRecipeForgeConfiguration;
@@ -38,12 +37,16 @@ import appeng.core.services.export.ExportProcess;
 import appeng.core.services.export.ForgeExportConfig;
 import appeng.core.services.version.VersionCheckerConfig;
 
+
 /*
  * TODO 1.10.2-MODUSEP - Dat giant mess though. Move all stuff that belongs to specific modules into these specific modules. Yes, you can boom the API.
  */
 @AEModule( "core" )
 public class AppEngCore
 {
+
+	@SidedProxy( clientSide = "appeng.core.client.AppEngCoreClientProxy", serverSide = "appeng.core.server.AppEngCoreServerProxy" )
+	private static AppEngCoreProxy proxy;
 
 	private final Registration registration;
 
@@ -89,10 +92,7 @@ public class AppEngCore
 
 		this.registration.preInitialize( event );
 
-		if( Platform.isClient() )
-		{
-			CommonHelper.proxy.preinit();
-		}
+		proxy.preInit( event );
 
 		if( versionCheckerConfig.isVersionCheckingEnabled() )
 		{
@@ -124,6 +124,9 @@ public class AppEngCore
 		}
 
 		this.registration.initialize( event, this.recipeDirectory, this.customRecipeConfig );
+
+		proxy.init( event );
+
 		IntegrationRegistry.INSTANCE.init();
 	}
 
@@ -134,7 +137,7 @@ public class AppEngCore
 		IntegrationRegistry.INSTANCE.postInit();
 		FMLCommonHandler.instance().registerCrashCallable( new IntegrationCrashEnhancement() );
 
-		CommonHelper.proxy.postInit();
+		proxy.postInit( event );
 
 		NetworkRegistry.INSTANCE.registerGuiHandler( this, GuiBridge.GUI_Handler );
 		NetworkHandler.instance = new NetworkHandler( "AE2" );
