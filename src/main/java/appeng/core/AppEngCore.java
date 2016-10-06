@@ -19,12 +19,12 @@ import net.minecraftforge.fml.common.event.FMLServerStoppedEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 
+import appeng.api.module.Module;
+import appeng.api.module.Module.ModuleEventHandler;
 import appeng.core.hooks.TickHandler;
 import appeng.core.integration.IntegrationRegistry;
 import appeng.core.lib.AELog;
 import appeng.core.lib.crash.IntegrationCrashEnhancement;
-import appeng.core.lib.module.AEModule;
-import appeng.core.lib.module.AEModule.ModuleEventHandler;
 import appeng.core.lib.sync.GuiBridge;
 import appeng.core.lib.sync.network.NetworkHandler;
 import appeng.core.lib.worlddata.WorldData;
@@ -41,7 +41,7 @@ import appeng.core.services.version.VersionCheckerConfig;
 /*
  * TODO 1.10.2-MODUSEP - Dat giant mess though. Move all stuff that belongs to specific modules into these specific modules. Yes, you can boom the API.
  */
-@AEModule( value = AppEngCore.NAME, dependencies = "hard-before:module-*")
+@Module( value = AppEngCore.NAME, dependencies = "hard-before:module-*")
 public class AppEngCore
 {
 

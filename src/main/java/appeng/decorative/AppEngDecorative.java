@@ -14,12 +14,12 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppedEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 
+import appeng.api.module.Module;
 import appeng.core.AppEng;
 import appeng.core.lib.AEConfig;
-import appeng.core.lib.module.AEModule;
 
 
-@AEModule( AppEngDecorative.NAME )
+@Module( AppEngDecorative.NAME )
 @Mod( modid = AppEngDecorative.MODID, name = AppEngDecorative.NAME, version = AEConfig.VERSION, dependencies = "required-after:" + AppEng.MOD_ID, acceptedMinecraftVersions = ForgeVersion.mcVersion )
 public class AppEngDecorative
 {

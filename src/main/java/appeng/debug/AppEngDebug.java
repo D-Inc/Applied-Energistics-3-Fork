@@ -14,15 +14,15 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppedEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 
+import appeng.api.module.Module;
 import appeng.core.AppEng;
 import appeng.core.lib.AEConfig;
-import appeng.core.lib.module.AEModule;
 
 
 /*
  * The only module not built with gradle.
  */
-@AEModule( AppEngDebug.NAME )
+@Module( AppEngDebug.NAME )
 @Mod( modid = AppEngDebug.MODID, name = AppEngDebug.NAME, version = AEConfig.VERSION, dependencies = "required-after:" + AppEng.MOD_ID, acceptedMinecraftVersions = ForgeVersion.mcVersion )
 public class AppEngDebug
 {

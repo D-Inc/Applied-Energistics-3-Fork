@@ -1,5 +1,5 @@
 
-package appeng.core.lib.module;
+package appeng.api.module;
 
 
 import static java.lang.annotation.ElementType.TYPE;
@@ -23,7 +23,7 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
  */
 @Retention( RUNTIME )
 @Target( TYPE )
-public @interface AEModule
+public @interface Module
 {
 	/**
 	 * 

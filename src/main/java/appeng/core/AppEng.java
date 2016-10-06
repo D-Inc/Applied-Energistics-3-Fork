@@ -61,12 +61,12 @@ import net.minecraftforge.fml.common.event.FMLServerStoppedEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
+import appeng.api.module.Module;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.AELog;
 import appeng.core.lib.CommonHelper;
 import appeng.core.lib.crash.CrashInfo;
 import appeng.core.lib.crash.ModCrashEnhancement;
-import appeng.core.lib.module.AEModule;
 import appeng.core.lib.module.Toposorter;
 
 
@@ -150,7 +150,7 @@ public final class AppEng
 			Object module = getModule( name );
 			for( Method method : module.getClass().getDeclaredMethods() )
 			{
-				if( method.getParameterTypes().length == 1 && method.getParameterTypes()[0].isAssignableFrom( event.getClass() ) && method.getDeclaredAnnotation( AEModule.ModuleEventHandler.class ) != null )
+				if( method.getParameterTypes().length == 1 && method.getParameterTypes()[0].isAssignableFrom( event.getClass() ) && method.getDeclaredAnnotation( Module.ModuleEventHandler.class ) != null )
 				{
 					try
 					{
@@ -175,7 +175,7 @@ public final class AppEng
 
 		Map<String, Pair<Class<?>, String>> foundModules = new HashMap<>();
 		ASMDataTable annotations = event.getAsmData();
-		for( ASMData data : annotations.getAll( AEModule.class.getCanonicalName() ) )
+		for( ASMData data : annotations.getAll( Module.class.getCanonicalName() ) )
 		{
 			try
 			{
@@ -442,7 +442,7 @@ public final class AppEng
 	{
 		ClassLoader mcl = Loader.instance().getModClassLoader();
 
-		for( ASMData data : annotations.getAll( AEModule.Instance.class.getTypeName() ) )
+		for( ASMData data : annotations.getAll( Module.Instance.class.getTypeName() ) )
 		{
 			try
 			{
