@@ -23,7 +23,10 @@ import java.io.File;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Nonnull;
@@ -36,7 +39,6 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
 import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.SystemUtils;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 
@@ -66,7 +68,6 @@ import appeng.core.lib.crash.CrashInfo;
 import appeng.core.lib.crash.ModCrashEnhancement;
 import appeng.core.lib.module.AEModule;
 import appeng.core.lib.module.Toposorter;
-import org.lwjgl.Sys;
 
 
 @Mod( modid = AppEng.MOD_ID, name = AppEng.MOD_NAME, version = AEConfig.VERSION, dependencies = AppEng.MOD_DEPENDENCIES, acceptedMinecraftVersions = ForgeVersion.mcVersion, guiFactory = "appeng.core.client.gui.config.AEConfigGuiFactory" )
@@ -204,7 +205,7 @@ public final class AppEng
 		}
 		for( Toposorter.Graph<String>.Node n : graph.getAllNodes() )
 		{
-			if( n.getName().startsWith( ":" ))
+			if( n.getName().startsWith( ":" ) )
 				continue;
 			if( n.getDependencies().isEmpty() && !n.getWhatDependsOnMe().contains( beforeall ) )
 			{
@@ -292,10 +293,10 @@ public final class AppEng
 	/**
 	 * Checks whether all required dependencies are here
 	 */
-	private boolean isValid( String name, Map<String, Pair<Class<?>, String>> modules, Side currentSide, LinkedList<String> modulesBeingChecked ) //LinkedList is list and stack
+	private boolean isValid( String name, Map<String, Pair<Class<?>, String>> modules, Side currentSide, LinkedList<String> modulesBeingChecked ) // LinkedList is list and stack
 	{
 		if( modulesBeingChecked.contains( name ) )
-			return true; //A module depends on itself, so we assume it works
+			return true; // A module depends on itself, so we assume it works
 		if( !modules.containsKey( name ) )
 			return false;
 		if( modules.get( name ).getRight() == null || modules.get( name ).getRight().equals( "" ) )
@@ -304,8 +305,10 @@ public final class AppEng
 		for( String dep : modules.get( name ).getRight().split( ";" ) )
 		{
 			String[] temp = dep.split( ":" );
-			if(temp.length == 0)
+			if( temp.length == 0 )
+			{
 				continue;
+			}
 			String[] modifiers = temp[0].split( "\\-" );
 			String depName = temp.length > 0 ? temp[1] : null;
 			Side requiredSide = ArrayUtils.contains( modifiers, "client" ) ? Side.CLIENT : ArrayUtils.contains( modifiers, "server" ) ? Side.SERVER : currentSide;
@@ -339,7 +342,7 @@ public final class AppEng
 					else if( what.equals( "module" ) )
 					{
 						if( which.equals( "*" ) )
-						{ //All modules
+						{ // All modules
 							depFound = true;
 							if( before )
 								hasBeforeAll = true;
@@ -364,7 +367,7 @@ public final class AppEng
 					{
 						CommonHelper.proxy.moduleLoadingException( String.format( "Missing hard required dependency for module %s - %s", name, depName ), "Module " + TextFormatting.BOLD + name + TextFormatting.RESET + " is missing required hard dependency " + TextFormatting.BOLD + depName + TextFormatting.RESET + "." );
 					}
-                    return false;
+					return false;
 				}
 			}
 			else
@@ -372,24 +375,28 @@ public final class AppEng
 				return false; // Syntax error
 			}
 		}
-		if(hasAfterAll && (hasBefore || hasBeforeAll))
+		if( hasAfterAll && ( hasBefore || hasBeforeAll ) )
+		{
 			return false;
-		if(hasBeforeAll && (hasAfter || hasAfterAll))
+		}
+		if( hasBeforeAll && ( hasAfter || hasAfterAll ) )
+		{
 			return false;
+		}
 		return true;
 	}
 
 	private void addAsNode( String name, Map<String, Pair<Class<?>, String>> foundModules, Toposorter.Graph<String> graph, Side currentSide )
 	{
-		if( graph.hasNode( name ) )
-			return;
+		if( graph.hasNode( name ) ){
+			return;}
 		Toposorter.Graph<String>.Node node = graph.addNewNode( name, name );
-		if( foundModules.get( name ).getRight() == null || foundModules.get( name ).getRight().equals( "" ) )
-			return;
+		if( foundModules.get( name ).getRight() == null || foundModules.get( name ).getRight().equals( "" ) ){
+			return;}
 		for( String dep : foundModules.get( name ).getRight().split( ";" ) )
 		{
 			String[] temp = dep.split( ":" );
-			if(temp.length == 0)
+			if( temp.length == 0 )
 				continue;
 			String[] modifiers = temp[0].split( "\\-" );
 			String depName = temp.length > 0 ? temp[1] : null;
@@ -402,13 +409,13 @@ public final class AppEng
 				String which = depName.substring( depName.indexOf( '-' ) + 1, depName.length() );
 				if( what.equals( "module" ) && requiredSide == currentSide )
 				{
-					if( which.equals( "*"  ) )
+					if( which.equals( "*" ) )
 					{
-						if ( after )
+						if( after )
 						{
 							node.dependOn( graph.getNode( ":afterall" ) );
 						}
-						else if ( before )
+						else if( before )
 						{
 							node.dependencyOf( graph.getNode( ":beforeall" ) );
 						}
@@ -416,10 +423,11 @@ public final class AppEng
 					else
 					{
 						addAsNode( which, foundModules, graph, currentSide );
-						if ( after )
+						if( after )
 						{
 							node.dependOn( graph.getNode( which ) );
-						} else if ( before )
+						}
+						else if( before )
 						{
 							node.dependencyOf( graph.getNode( which ) );
 						}

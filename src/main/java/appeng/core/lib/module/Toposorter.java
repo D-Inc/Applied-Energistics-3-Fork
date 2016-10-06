@@ -2,7 +2,11 @@
 package appeng.core.lib.module;
 
 
-import java.util.*;
+import java.util.Collection;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -99,11 +103,15 @@ public class Toposorter
 			@Override
 			public boolean equals( Object o )
 			{
-				if(o == null)
+				if( o == null )
+				{
 					return false;
-				if(!(o instanceof Graph.Node))
+				}
+				if( !( o instanceof Graph.Node ) )
+				{
 					return false;
-				return ( ( Node ) o ).getName().equals( this.getName() ) && ( ( Node ) o ).getData().equals( this.getData() );
+				}
+				return ( (Node) o ).getName().equals( this.getName() ) && ( (Node) o ).getData().equals( this.getData() );
 			}
 		}
 
@@ -161,8 +169,10 @@ public class Toposorter
 		{
 			inspectNode( subNode.getName(), graph, res, debugger );
 		}
-		if(!res.contains( node.getData() ))
-		res.add( node.getData() );
+		if( !res.contains( node.getData() ) )
+		{
+			res.add( node.getData() );
+		}
 		node.unmark();
 		debugger.pop();
 	}

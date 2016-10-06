@@ -51,17 +51,17 @@ public @interface AEModule
 	 * You can depend on either a mod or a AE2 module.
 	 * For mods use "mod-<modid>", repacing <modid> with the modid of the mod you want to depend on.
 	 * For modules use "module-<name>", replacing <name> with the name of the module you want to depend on.
-	 * If you want depend on all modules, use an asterisk (*)
+	 * <br>
+	 * For modules dependency, you can declare loading order with modifiers. Not using any loading order modifier will result in random order.
 	 * <br>
 	 * <br>
 	 * Modifiers:
 	 * <ul>
-	 * <li>"server"/"client" if you only depend on it on either client or server
-	 * <li>"after" will make your module load after the module specified here
-	 * <li>"before" will make you module load before the module specified here
-	 * not using "before" or "after" makes that random
-	 * <li>"hard" will make that dependency hard, aka your module will load if and only if it is there
-	 * <li>"crash" will make the game crash if the dependency is not there instead of just not loading your module. Use with "hard"
+	 * <li>"server"/"client" if you only depend on it on either client or server.
+	 * <li>"after" will make your module load after the module specified here. Using "*" as module name will select all modules.
+	 * <li>"before" will make you module load before the module specified here. Using "*" as module name will select all modules.
+	 * <li>"hard" will make that dependency hard, aka your module will load if and only if it is there.
+	 * <li>"crash" will make the game crash if the dependency is not there instead of just not loading your module. Use with "hard".
 	 * </ul>
 	 * 
 	 * @return module's dependencies

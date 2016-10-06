@@ -22,7 +22,7 @@ import appeng.core.lib.module.AEModule;
 /*
  * The only module not built with gradle.
  */
-@AEModule( value = AppEngDebug.NAME )
+@AEModule( AppEngDebug.NAME )
 @Mod( modid = AppEngDebug.MODID, name = AppEngDebug.NAME, version = AEConfig.VERSION, dependencies = "required-after:" + AppEng.MOD_ID, acceptedMinecraftVersions = ForgeVersion.mcVersion )
 public class AppEngDebug
 {
