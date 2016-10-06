@@ -2,10 +2,7 @@
 package appeng.core.lib.module;
 
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -93,6 +90,21 @@ public class Toposorter
 				return isBeingChecked;
 			}
 
+			@Override
+			public int hashCode()
+			{
+				return getName().hashCode();
+			}
+
+			@Override
+			public boolean equals( Object o )
+			{
+				if(o == null)
+					return false;
+				if(!(o instanceof Graph.Node))
+					return false;
+				return ( ( Node ) o ).getName().equals( this.getName() ) && ( ( Node ) o ).getData().equals( this.getData() );
+			}
 		}
 
 		private Map<String, Node> nodes;
@@ -128,7 +140,7 @@ public class Toposorter
 	public static <T> List<T> toposort( Graph<T> graph ) throws SortingException
 	{
 		List<T> res = Lists.newArrayList();
-		List<String> debugger = Lists.newArrayList();
+		LinkedList<String> debugger = Lists.newLinkedList();
 		for( Graph<T>.Node node : graph.getAllNodes() )
 		{
 			inspectNode( node.getName(), graph, res, debugger );
@@ -136,22 +148,23 @@ public class Toposorter
 		return res;
 	}
 
-	private static <T> void inspectNode( String name, Graph<T> graph, List<T> res, List<String> debugger ) throws SortingException
+	private static <T> void inspectNode( String name, Graph<T> graph, List<T> res, LinkedList<String> debugger ) throws SortingException
 	{
 		Graph<T>.Node node = graph.getNode( name );
 		if( node.isMarked() )
 		{
 			throw new SortingException( name, debugger );
 		}
-		debugger.add( name );
+		debugger.push( name );
 		node.mark();
 		for( Graph<T>.Node subNode : node.getDependencies() )
 		{
 			inspectNode( subNode.getName(), graph, res, debugger );
 		}
+		if(!res.contains( node.getData() ))
 		res.add( node.getData() );
 		node.unmark();
-		debugger.remove( name );
+		debugger.pop();
 	}
 
 	public static class SortingException extends Exception

@@ -51,6 +51,7 @@ public @interface AEModule
 	 * You can depend on either a mod or a AE2 module.
 	 * For mods use "mod-<modid>", repacing <modid> with the modid of the mod you want to depend on.
 	 * For modules use "module-<name>", replacing <name> with the name of the module you want to depend on.
+	 * If you want depend on all modules, use an asterisk (*)
 	 * <br>
 	 * <br>
 	 * Modifiers:

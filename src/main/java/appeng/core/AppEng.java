@@ -23,9 +23,7 @@ import java.io.File;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Nonnull;
@@ -38,6 +36,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
 import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.SystemUtils;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 
@@ -67,6 +66,7 @@ import appeng.core.lib.crash.CrashInfo;
 import appeng.core.lib.crash.ModCrashEnhancement;
 import appeng.core.lib.module.AEModule;
 import appeng.core.lib.module.Toposorter;
+import org.lwjgl.Sys;
 
 
 @Mod( modid = AppEng.MOD_ID, name = AppEng.MOD_NAME, version = AEConfig.VERSION, dependencies = AppEng.MOD_DEPENDENCIES, acceptedMinecraftVersions = ForgeVersion.mcVersion, guiFactory = "appeng.core.client.gui.config.AEConfigGuiFactory" )
@@ -187,26 +187,40 @@ public final class AppEng
 			}
 		}
 
-		List<String> checked = Lists.newArrayList();
-		List<String> valid = Lists.newArrayList();
 		Map<String, Class<?>> modules = Maps.newHashMap();
 		for( Map.Entry<String, Pair<Class<?>, String>> entry : foundModules.entrySet() )
 		{
-			if( isValid( entry.getKey(), foundModules, event.getSide(), valid, checked ) )
+			if( isValid( entry.getKey(), foundModules, event.getSide(), Lists.newLinkedList() ) )
 			{
 				modules.put( entry.getKey(), entry.getValue().getLeft() );
 			}
 		}
 		Toposorter.Graph<String> graph = new Toposorter.Graph<String>();
+		Toposorter.Graph<String>.Node beforeall = graph.addNewNode( ":beforeall", ":beforeall" );
+		Toposorter.Graph<String>.Node afterall = graph.addNewNode( ":afterall", ":afterall" );
 		for( String name : modules.keySet() )
 		{
 			addAsNode( name, foundModules, graph, event.getSide() );
+		}
+		for( Toposorter.Graph<String>.Node n : graph.getAllNodes() )
+		{
+			if( n.getName().startsWith( ":" ))
+				continue;
+			if( n.getDependencies().isEmpty() && !n.getWhatDependsOnMe().contains( beforeall ) )
+			{
+				n.dependOn( beforeall );
+			}
+			if( n.getWhatDependsOnMe().isEmpty() && !n.getDependencies().contains( afterall ) )
+			{
+				n.dependencyOf( afterall );
+			}
 		}
 
 		List<String> moduleLoadingOrder = null;
 		try
 		{
 			moduleLoadingOrder = Toposorter.toposort( graph );
+			moduleLoadingOrder.removeIf( ( s ) -> s.startsWith( ":" ) );
 		}
 		catch( Toposorter.SortingException e )
 		{
@@ -278,23 +292,27 @@ public final class AppEng
 	/**
 	 * Checks whether all required dependencies are here
 	 */
-	private boolean isValid( String name, Map<String, Pair<Class<?>, String>> modules, Side currentSide, List<String> validModules, List<String> checkedModules )
+	private boolean isValid( String name, Map<String, Pair<Class<?>, String>> modules, Side currentSide, LinkedList<String> modulesBeingChecked ) //LinkedList is list and stack
 	{
-		if( checkedModules.contains( name ) )
-			return validModules.contains( name );
-		checkedModules.add( name );
+		if( modulesBeingChecked.contains( name ) )
+			return true; //A module depends on itself, so we assume it works
 		if( !modules.containsKey( name ) )
 			return false;
 		if( modules.get( name ).getRight() == null || modules.get( name ).getRight().equals( "" ) )
 			return true;
+		boolean hasBefore = false, hasAfter = false, hasBeforeAll = false, hasAfterAll = false;
 		for( String dep : modules.get( name ).getRight().split( ";" ) )
 		{
 			String[] temp = dep.split( ":" );
-			String[] modifiers = dep.split( "\\-" );
+			if(temp.length == 0)
+				continue;
+			String[] modifiers = temp[0].split( "\\-" );
 			String depName = temp.length > 0 ? temp[1] : null;
 			Side requiredSide = ArrayUtils.contains( modifiers, "client" ) ? Side.CLIENT : ArrayUtils.contains( modifiers, "server" ) ? Side.SERVER : currentSide;
 			boolean hard = ArrayUtils.contains( modifiers, "hard" );
 			boolean crash = hard && ArrayUtils.contains( modifiers, "crash" );
+			boolean before = ArrayUtils.contains( modifiers, "before" );
+			boolean after = ArrayUtils.contains( modifiers, "after" );
 			if( name == null )
 			{
 				if( requiredSide == currentSide )
@@ -314,13 +332,30 @@ public final class AppEng
 				boolean depFound = false;
 				if( requiredSide == currentSide )
 				{
-					if( which.equals( "mod" ) )
+					if( what.equals( "mod" ) )
 					{
-						depFound = Loader.isModLoaded( what );
+						depFound = Loader.isModLoaded( which );
 					}
-					else if( which.equals( "module" ) )
+					else if( what.equals( "module" ) )
 					{
-						depFound = isValid( what, modules, currentSide, validModules, checkedModules );
+						if( which.equals( "*" ) )
+						{ //All modules
+							depFound = true;
+							if( before )
+								hasBeforeAll = true;
+							if( after )
+								hasAfterAll = true;
+						}
+						else
+						{
+							modulesBeingChecked.push( name );
+							depFound = isValid( which, modules, currentSide, modulesBeingChecked );
+							modulesBeingChecked.pop();
+							if( after )
+								hasAfter = true;
+							if( before )
+								hasBefore = true;
+						}
 					}
 				}
 				if( !depFound )
@@ -329,15 +364,18 @@ public final class AppEng
 					{
 						CommonHelper.proxy.moduleLoadingException( String.format( "Missing hard required dependency for module %s - %s", name, depName ), "Module " + TextFormatting.BOLD + name + TextFormatting.RESET + " is missing required hard dependency " + TextFormatting.BOLD + depName + TextFormatting.RESET + "." );
 					}
+                    return false;
 				}
-				return false;
 			}
 			else
 			{
 				return false; // Syntax error
 			}
 		}
-		validModules.add( name );
+		if(hasAfterAll && (hasBefore || hasBeforeAll))
+			return false;
+		if(hasBeforeAll && (hasAfter || hasAfterAll))
+			return false;
 		return true;
 	}
 
@@ -351,7 +389,9 @@ public final class AppEng
 		for( String dep : foundModules.get( name ).getRight().split( ";" ) )
 		{
 			String[] temp = dep.split( ":" );
-			String[] modifiers = dep.split( "\\-" );
+			if(temp.length == 0)
+				continue;
+			String[] modifiers = temp[0].split( "\\-" );
 			String depName = temp.length > 0 ? temp[1] : null;
 			Side requiredSide = ArrayUtils.contains( modifiers, "client" ) ? Side.CLIENT : ArrayUtils.contains( modifiers, "server" ) ? Side.SERVER : currentSide;
 			boolean before = ArrayUtils.contains( modifiers, "before" );
@@ -360,16 +400,29 @@ public final class AppEng
 			{
 				String what = depName.substring( 0, depName.indexOf( '-' ) );
 				String which = depName.substring( depName.indexOf( '-' ) + 1, depName.length() );
-				if( which.equals( "module" ) && requiredSide == currentSide )
+				if( what.equals( "module" ) && requiredSide == currentSide )
 				{
-					addAsNode( what, foundModules, graph, currentSide );
-					if( after )
+					if( which.equals( "*"  ) )
 					{
-						node.dependOn( graph.getNode( what ) );
+						if ( after )
+						{
+							node.dependOn( graph.getNode( ":afterall" ) );
+						}
+						else if ( before )
+						{
+							node.dependencyOf( graph.getNode( ":beforeall" ) );
+						}
 					}
-					else if( before )
+					else
 					{
-						node.dependencyOf( graph.getNode( what ) );
+						addAsNode( which, foundModules, graph, currentSide );
+						if ( after )
+						{
+							node.dependOn( graph.getNode( which ) );
+						} else if ( before )
+						{
+							node.dependencyOf( graph.getNode( which ) );
+						}
 					}
 					// "mod" cannot be handled here because AE2 cannot control mod loading else there is no vertex added to this graph
 				}

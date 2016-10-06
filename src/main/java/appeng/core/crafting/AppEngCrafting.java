@@ -15,7 +15,7 @@ import appeng.core.lib.module.AEModule;
 import appeng.core.lib.module.AEModule.ModuleEventHandler;
 
 
-@AEModule( AppEngCrafting.NAME )
+@AEModule( value = AppEngCrafting.NAME )
 public class AppEngCrafting
 {
 
