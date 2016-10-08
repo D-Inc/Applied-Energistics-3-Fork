@@ -26,12 +26,13 @@ import java.util.Map;
 import net.minecraftforge.fml.common.event.FMLInterModComms;
 
 import appeng.api.config.TunnelType;
-import appeng.core.api.IIMCProcessor;
-import appeng.core.api.imc.IMCBlackListSpatial;
-import appeng.core.api.imc.IMCGrinder;
-import appeng.core.api.imc.IMCMatterCannon;
-import appeng.core.api.imc.IMCP2PAttunement;
-import appeng.core.api.imc.IMCSpatial;
+import appeng.core.lib.AELog;
+import appeng.core.lib.api.IIMCProcessor;
+import appeng.core.lib.api.imc.IMCBlackListSpatial;
+import appeng.core.lib.api.imc.IMCGrinder;
+import appeng.core.lib.api.imc.IMCMatterCannon;
+import appeng.core.lib.api.imc.IMCP2PAttunement;
+import appeng.core.lib.api.imc.IMCSpatial;
 
 
 /**

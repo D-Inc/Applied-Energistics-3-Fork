@@ -22,6 +22,12 @@ package appeng.services.version;
 import org.junit.Assert;
 import org.junit.Test;
 
+import appeng.core.services.version.Channel;
+import appeng.core.services.version.DefaultVersion;
+import appeng.core.services.version.DoNotCheckVersion;
+import appeng.core.services.version.MissingVersion;
+import appeng.core.services.version.Version;
+
 
 /**
  * Tests for {@link Version}

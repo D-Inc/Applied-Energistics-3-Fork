@@ -28,10 +28,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 
-import appeng.items.AEBaseItem;
-import appeng.util.Platform;
-import appeng.worldgen.MeteoritePlacer;
-import appeng.worldgen.meteorite.StandardWorld;
+import appeng.core.lib.item.AEBaseItem;
+import appeng.core.lib.util.Platform;
+import appeng.core.worldgen.world.MeteoritePlacer;
+import appeng.core.worldgen.world.meteorite.StandardWorld;
 
 
 public class ToolMeteoritePlacer extends AEBaseItem

@@ -20,17 +20,37 @@ package appeng.core;
 
 
 import java.io.File;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Nonnull;
 
 import com.google.common.base.Stopwatch;
+import com.google.common.base.Throwables;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 
-import net.minecraftforge.common.config.Configuration;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.tuple.ImmutablePair;
+import org.apache.commons.lang3.tuple.Pair;
+
+import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.common.ForgeVersion;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.discovery.ASMDataTable;
+import net.minecraftforge.fml.common.discovery.ASMDataTable.ASMData;
+import net.minecraftforge.fml.common.event.FMLEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLInterModComms;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -39,29 +59,18 @@ import net.minecraftforge.fml.common.event.FMLServerAboutToStartEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppedEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.relauncher.Side;
 
-import appeng.core.crash.CrashInfo;
-import appeng.core.crash.IntegrationCrashEnhancement;
-import appeng.core.crash.ModCrashEnhancement;
-import appeng.core.features.AEFeature;
-import appeng.core.sync.GuiBridge;
-import appeng.core.sync.network.NetworkHandler;
-import appeng.core.worlddata.WorldData;
-import appeng.hooks.TickHandler;
-import appeng.integration.IntegrationRegistry;
-import appeng.recipes.CustomRecipeConfig;
-import appeng.recipes.CustomRecipeForgeConfiguration;
-import appeng.server.AECommand;
-import appeng.services.VersionChecker;
-import appeng.services.export.ExportConfig;
-import appeng.services.export.ExportProcess;
-import appeng.services.export.ForgeExportConfig;
-import appeng.services.version.VersionCheckerConfig;
-import appeng.util.Platform;
+import appeng.api.module.Module;
+import appeng.core.lib.AEConfig;
+import appeng.core.lib.AELog;
+import appeng.core.lib.CommonHelper;
+import appeng.core.lib.crash.CrashInfo;
+import appeng.core.lib.crash.ModCrashEnhancement;
+import appeng.core.lib.module.Toposorter;
 
 
-@Mod( modid = AppEng.MOD_ID, acceptedMinecraftVersions = "[1.10.2]", name = AppEng.MOD_NAME, version = AEConfig.VERSION, dependencies = AppEng.MOD_DEPENDENCIES, guiFactory = "appeng.client.gui.config.AEConfigGuiFactory" )
+@Mod( modid = AppEng.MOD_ID, name = AppEng.MOD_NAME, version = AEConfig.VERSION, dependencies = AppEng.MOD_DEPENDENCIES, acceptedMinecraftVersions = ForgeVersion.mcVersion, guiFactory = "appeng.core.client.gui.config.AEConfigGuiFactory" )
 public final class AppEng
 {
 	public static final String MOD_ID = "appliedenergistics2";
@@ -76,36 +85,40 @@ public final class AppEng
 
 			// depend on version of forge used for build.
 			"after:appliedenergistics2-core;" + "required-after:Forge@[" // require forge.
-			+ net.minecraftforge.common.ForgeVersion.majorVersion + '.' // majorVersion
-			+ net.minecraftforge.common.ForgeVersion.minorVersion + '.' // minorVersion
-			+ net.minecraftforge.common.ForgeVersion.revisionVersion + '.' // revisionVersion
-			+ net.minecraftforge.common.ForgeVersion.buildVersion + ",)"; // buildVersion
+					+ net.minecraftforge.common.ForgeVersion.majorVersion + '.' // majorVersion
+					+ net.minecraftforge.common.ForgeVersion.minorVersion + '.' // minorVersion
+					+ net.minecraftforge.common.ForgeVersion.revisionVersion + '.' // revisionVersion
+					+ net.minecraftforge.common.ForgeVersion.buildVersion + ",)"; // buildVersion
+
+	// TODO @Elix-x Will be replaced with utils...
+	private static final Field modifiers;
+	static
+	{
+		try
+		{
+			modifiers = Field.class.getDeclaredField( "modifiers" );
+			modifiers.setAccessible( true );
+		}
+		catch( ReflectiveOperationException e )
+		{
+			// :(
+			// Should not happen.
+			throw Throwables.propagate( e );
+		}
+	}
 
 	@Nonnull
 	private static final AppEng INSTANCE = new AppEng();
 
-	private final Registration registration;
-
+	private ImmutableMap<String, ?> modules;
+	private ImmutableMap<Class<?>, ?> classModule;
+	private ImmutableList<String> moduleOrder;
+	private ImmutableMap<?, Boolean> internal;
 	private File configDirectory;
-	private CustomRecipeConfig customRecipeConfig;
-
-	/**
-	 * Folder for recipes
-	 *
-	 * used for CSV item names and the recipes
-	 */
-	private File recipeDirectory;
-
-	/**
-	 * determined in pre-init but used in init
-	 */
-	private ExportConfig exportConfig;
 
 	private AppEng()
 	{
 		FMLCommonHandler.instance().registerCrashCallable( new ModCrashEnhancement( CrashInfo.MOD_VERSION ) );
-
-		this.registration = new Registration();
 	}
 
 	@Nonnull
@@ -115,10 +128,41 @@ public final class AppEng
 		return INSTANCE;
 	}
 
-	@Nonnull
-	public final Registration getRegistration()
+	public <M> M getModule( String name )
 	{
-		return this.registration;
+		return (M) modules.get( name );
+	}
+
+	public <M> M getModule( Class<M> clas )
+	{
+		return (M) classModule.get( clas );
+	}
+
+	public File getConfigDirectory()
+	{
+		return configDirectory;
+	}
+
+	private void fireModulesEvent( final FMLEvent event )
+	{
+		for( String name : moduleOrder )
+		{
+			Object module = getModule( name );
+			for( Method method : module.getClass().getDeclaredMethods() )
+			{
+				if( method.getParameterTypes().length == 1 && method.getParameterTypes()[0].isAssignableFrom( event.getClass() ) && method.getDeclaredAnnotation( Module.ModuleEventHandler.class ) != null )
+				{
+					try
+					{
+						method.invoke( module, event );
+					}
+					catch( Exception e )
+					{
+						// :(
+					}
+				}
+			}
+		}
 	}
 
 	@EventHandler
@@ -129,55 +173,296 @@ public final class AppEng
 			CommonHelper.proxy.missingCoreMod();
 		}
 
+		Map<String, Pair<Class<?>, String>> foundModules = new HashMap<>();
+		ASMDataTable annotations = event.getAsmData();
+		for( ASMData data : annotations.getAll( Module.class.getCanonicalName() ) )
+		{
+			try
+			{
+				Class<?> clazz = Class.forName( data.getClassName() );
+				foundModules.put( (String) data.getAnnotationInfo().get( "value" ), new ImmutablePair<Class<?>, String>( clazz, (String) data.getAnnotationInfo().get( "dependencies" ) ) );
+			}
+			catch( Exception e )
+			{
+				// :(
+			}
+		}
+
+		Map<String, Class<?>> modules = Maps.newHashMap();
+		for( Map.Entry<String, Pair<Class<?>, String>> entry : foundModules.entrySet() )
+		{
+			if( isValid( entry.getKey(), foundModules, event.getSide(), Lists.newLinkedList() ) )
+			{
+				modules.put( entry.getKey(), entry.getValue().getLeft() );
+			}
+		}
+		Toposorter.Graph<String> graph = new Toposorter.Graph<String>();
+		Toposorter.Graph<String>.Node beforeall = graph.addNewNode( ":beforeall", ":beforeall" );
+		Toposorter.Graph<String>.Node afterall = graph.addNewNode( ":afterall", ":afterall" );
+		for( String name : modules.keySet() )
+		{
+			addAsNode( name, foundModules, graph, event.getSide() );
+		}
+		for( Toposorter.Graph<String>.Node n : graph.getAllNodes() )
+		{
+			if( n.getName().startsWith( ":" ) )
+				continue;
+			if( n.getDependencies().isEmpty() && !n.getWhatDependsOnMe().contains( beforeall ) )
+			{
+				n.dependOn( beforeall );
+			}
+			if( n.getWhatDependsOnMe().isEmpty() && !n.getDependencies().contains( afterall ) )
+			{
+				n.dependencyOf( afterall );
+			}
+		}
+
+		List<String> moduleLoadingOrder = null;
+		try
+		{
+			moduleLoadingOrder = Toposorter.toposort( graph );
+			moduleLoadingOrder.removeIf( ( s ) -> s.startsWith( ":" ) );
+		}
+		catch( Toposorter.SortingException e )
+		{
+			boolean moduleFound = false;
+			event.getModLog().error( "Module " + e.getNode() + " has circular dependencies:" );
+			for( String s : e.getVisitedNodes() )
+			{
+				if( s.equals( e.getNode() ) )
+				{
+					if( moduleFound )
+					{
+						break;
+					}
+					moduleFound = true;
+					event.getModLog().error( "\"" + s + "\"" );
+					continue;
+				}
+				if( moduleFound )
+				{
+					event.getModLog().error( "depending on: \"" + s + "\"" );
+				}
+			}
+			event.getModLog().error( "again depending on \"" + e.getNode() + "\"" );
+			CommonHelper.proxy.moduleLoadingException( String.format( "Circular dependency at module %s", e.getNode() ), "The module " + TextFormatting.BOLD + e.getNode() + TextFormatting.RESET + " has circular dependencies! See the log for a list!" );
+		}
+		ImmutableMap.Builder<String, Object> modulesBuilder = ImmutableMap.builder();
+		ImmutableMap.Builder<Class<?>, Object> classModuleBuilder = ImmutableMap.builder();
+		ImmutableMap.Builder<Object, Boolean> internalBuilder = ImmutableMap.builder();
+		ImmutableList.Builder<String> orderBuilder = ImmutableList.builder();
+
+		for( String name : moduleLoadingOrder )
+		{
+			try
+			{
+				Class<?> moduleClass = modules.get( name );
+				Object module = moduleClass.newInstance();
+				orderBuilder.add( name );
+				modulesBuilder.put( name, module );
+				classModuleBuilder.put( moduleClass, module );
+				internalBuilder.put( module, !moduleClass.isAnnotationPresent( Mod.class ) );
+			}
+			catch( ReflectiveOperationException e )
+			{
+				event.getModLog().error( "Error while trying to setup the module " + name );
+				e.printStackTrace();
+			}
+		}
+
+		this.moduleOrder = orderBuilder.build();
+		this.modules = modulesBuilder.build();
+		this.classModule = classModuleBuilder.build();
+		this.internal = internalBuilder.build();
+
+		populateInstances( annotations );
+
+		AELog.info( "Succesfully loaded %s modules", modules.size() );
+
 		final Stopwatch watch = Stopwatch.createStarted();
-		this.configDirectory = new File( event.getModConfigurationDirectory().getPath(), "AppliedEnergistics2" );
-		this.recipeDirectory = new File( this.configDirectory, "recipes" );
-
-		final File configFile = new File( this.configDirectory, "AppliedEnergistics2.cfg" );
-		final File facadeFile = new File( this.configDirectory, "Facades.cfg" );
-		final File versionFile = new File( this.configDirectory, "VersionChecker.cfg" );
-		final File recipeFile = new File( this.configDirectory, "CustomRecipes.cfg" );
-		final Configuration recipeConfiguration = new Configuration( recipeFile );
-
-		AEConfig.instance = new AEConfig( configFile );
-		FacadeConfig.instance = new FacadeConfig( facadeFile );
-		final VersionCheckerConfig versionCheckerConfig = new VersionCheckerConfig( versionFile );
-		this.customRecipeConfig = new CustomRecipeForgeConfiguration( recipeConfiguration );
-		this.exportConfig = new ForgeExportConfig( recipeConfiguration );
-
 		AELog.info( "Pre Initialization ( started )" );
 
-		CreativeTab.init();
-		if( AEConfig.instance.isFeatureEnabled( AEFeature.Facades ) )
-		{
-			CreativeTabFacade.init();
-		}
+		this.configDirectory = new File( event.getModConfigurationDirectory().getPath(), "AppliedEnergistics2" );
+		AEConfig.instance = new AEConfig( new File( AppEng.instance().getConfigDirectory(), "AppliedEnergistics2.cfg" ) );
 
-		this.registration.preInitialize( event );
-
-		if( Platform.isClient() )
-		{
-			CommonHelper.proxy.preinit();
-		}
-
-		if( versionCheckerConfig.isVersionCheckingEnabled() )
-		{
-			final VersionChecker versionChecker = new VersionChecker( versionCheckerConfig );
-			final Thread versionCheckerThread = new Thread( versionChecker );
-
-			this.startService( "AE2 VersionChecker", versionCheckerThread );
-		}
+		fireModulesEvent( event );
 
 		AELog.info( "Pre Initialization ( ended after " + watch.elapsed( TimeUnit.MILLISECONDS ) + "ms )" );
 	}
 
-	private void startService( final String serviceName, final Thread thread )
+	/**
+	 * Checks whether all required dependencies are here
+	 */
+	private boolean isValid( String name, Map<String, Pair<Class<?>, String>> modules, Side currentSide, LinkedList<String> modulesBeingChecked ) // LinkedList is list and stack
 	{
-		thread.setName( serviceName );
-		thread.setPriority( Thread.MIN_PRIORITY );
+		if( modulesBeingChecked.contains( name ) )
+			return true; // A module depends on itself, so we assume it works
+		if( !modules.containsKey( name ) )
+			return false;
+		if( modules.get( name ).getRight() == null || modules.get( name ).getRight().equals( "" ) )
+			return true;
+		boolean hasBefore = false, hasAfter = false, hasBeforeAll = false, hasAfterAll = false;
+		for( String dep : modules.get( name ).getRight().split( ";" ) )
+		{
+			String[] temp = dep.split( ":" );
+			if( temp.length == 0 )
+			{
+				continue;
+			}
+			String[] modifiers = temp[0].split( "\\-" );
+			String depName = temp.length > 0 ? temp[1] : null;
+			Side requiredSide = ArrayUtils.contains( modifiers, "client" ) ? Side.CLIENT : ArrayUtils.contains( modifiers, "server" ) ? Side.SERVER : currentSide;
+			boolean hard = ArrayUtils.contains( modifiers, "hard" );
+			boolean crash = hard && ArrayUtils.contains( modifiers, "crash" );
+			boolean before = ArrayUtils.contains( modifiers, "before" );
+			boolean after = ArrayUtils.contains( modifiers, "after" );
+			if( name == null )
+			{
+				if( requiredSide == currentSide )
+				{
+					continue;
+				}
+				else if( crash )
+				{
+					CommonHelper.proxy.moduleLoadingException( String.format( "Module %s is %s side only!", name, requiredSide.toString() ), "Module " + TextFormatting.BOLD + name + TextFormatting.RESET + " can only be used on " + TextFormatting.BOLD + requiredSide.toString() + TextFormatting.RESET + "!" );
+				}
+				return false;
+			}
+			else if( depName != null && hard )
+			{
+				String what = depName.substring( 0, depName.indexOf( '-' ) );
+				String which = depName.substring( depName.indexOf( '-' ) + 1, depName.length() );
+				boolean depFound = false;
+				if( requiredSide == currentSide )
+				{
+					if( what.equals( "mod" ) )
+					{
+						depFound = Loader.isModLoaded( which );
+					}
+					else if( what.equals( "module" ) )
+					{
+						if( which.equals( "*" ) )
+						{ // All modules
+							depFound = true;
+							if( before )
+								hasBeforeAll = true;
+							if( after )
+								hasAfterAll = true;
+						}
+						else
+						{
+							modulesBeingChecked.push( name );
+							depFound = isValid( which, modules, currentSide, modulesBeingChecked );
+							modulesBeingChecked.pop();
+							if( after )
+								hasAfter = true;
+							if( before )
+								hasBefore = true;
+						}
+					}
+				}
+				if( !depFound )
+				{
+					if( crash )
+					{
+						CommonHelper.proxy.moduleLoadingException( String.format( "Missing hard required dependency for module %s - %s", name, depName ), "Module " + TextFormatting.BOLD + name + TextFormatting.RESET + " is missing required hard dependency " + TextFormatting.BOLD + depName + TextFormatting.RESET + "." );
+					}
+					return false;
+				}
+			}
+			else
+			{
+				return false; // Syntax error
+			}
+		}
+		if( hasAfterAll && ( hasBefore || hasBeforeAll ) )
+		{
+			return false;
+		}
+		if( hasBeforeAll && ( hasAfter || hasAfterAll ) )
+		{
+			return false;
+		}
+		return true;
+	}
 
-		AELog.info( "Starting " + serviceName );
-		thread.start();
+	private void addAsNode( String name, Map<String, Pair<Class<?>, String>> foundModules, Toposorter.Graph<String> graph, Side currentSide )
+	{
+		if( graph.hasNode( name ) ){
+			return;}
+		Toposorter.Graph<String>.Node node = graph.addNewNode( name, name );
+		if( foundModules.get( name ).getRight() == null || foundModules.get( name ).getRight().equals( "" ) ){
+			return;}
+		for( String dep : foundModules.get( name ).getRight().split( ";" ) )
+		{
+			String[] temp = dep.split( ":" );
+			if( temp.length == 0 )
+				continue;
+			String[] modifiers = temp[0].split( "\\-" );
+			String depName = temp.length > 0 ? temp[1] : null;
+			Side requiredSide = ArrayUtils.contains( modifiers, "client" ) ? Side.CLIENT : ArrayUtils.contains( modifiers, "server" ) ? Side.SERVER : currentSide;
+			boolean before = ArrayUtils.contains( modifiers, "before" );
+			boolean after = ArrayUtils.contains( modifiers, "after" );
+			if( depName != null )
+			{
+				String what = depName.substring( 0, depName.indexOf( '-' ) );
+				String which = depName.substring( depName.indexOf( '-' ) + 1, depName.length() );
+				if( what.equals( "module" ) && requiredSide == currentSide )
+				{
+					if( which.equals( "*" ) )
+					{
+						if( after )
+						{
+							node.dependOn( graph.getNode( ":afterall" ) );
+						}
+						else if( before )
+						{
+							node.dependencyOf( graph.getNode( ":beforeall" ) );
+						}
+					}
+					else
+					{
+						addAsNode( which, foundModules, graph, currentSide );
+						if( after )
+						{
+							node.dependOn( graph.getNode( which ) );
+						}
+						else if( before )
+						{
+							node.dependencyOf( graph.getNode( which ) );
+						}
+					}
+					// "mod" cannot be handled here because AE2 cannot control mod loading else there is no vertex added to this graph
+				}
+			}
+		}
+	}
+
+	private void populateInstances( ASMDataTable annotations )
+	{
+		ClassLoader mcl = Loader.instance().getModClassLoader();
+
+		for( ASMData data : annotations.getAll( Module.Instance.class.getTypeName() ) )
+		{
+			try
+			{
+				Object instance = modules.get( data.getAnnotationInfo().get( "value" ) );
+				if( instance == null )
+				{
+					instance = classModule.get( Class.forName( (String) data.getAnnotationInfo().get( "value" ) ) );
+				}
+				Class<?> target = Class.forName( data.getClassName(), true, mcl );
+				Field f = target.getDeclaredField( data.getObjectName() );
+				f.setAccessible( true );
+				modifiers.set( f, f.getModifiers() & ( ~Modifier.FINAL ) );
+				f.set( classModule.get( target ), instance );
+			}
+			catch( ReflectiveOperationException e )
+			{
+				e.printStackTrace();
+				// :(
+			}
+		}
 	}
 
 	@EventHandler
@@ -186,16 +471,7 @@ public final class AppEng
 		final Stopwatch start = Stopwatch.createStarted();
 		AELog.info( "Initialization ( started )" );
 
-		if( this.exportConfig.isExportingItemNamesEnabled() )
-		{
-			final ExportProcess process = new ExportProcess( this.recipeDirectory, this.exportConfig );
-			final Thread exportProcessThread = new Thread( process );
-
-			this.startService( "AE2 CSV Export", exportProcessThread );
-		}
-
-		this.registration.initialize( event, this.recipeDirectory, this.customRecipeConfig );
-		IntegrationRegistry.INSTANCE.init();
+		fireModulesEvent( event );
 
 		AELog.info( "Initialization ( ended after " + start.elapsed( TimeUnit.MILLISECONDS ) + "ms )" );
 	}
@@ -206,15 +482,9 @@ public final class AppEng
 		final Stopwatch start = Stopwatch.createStarted();
 		AELog.info( "Post Initialization ( started )" );
 
-		this.registration.postInit( event );
-		IntegrationRegistry.INSTANCE.postInit();
-		FMLCommonHandler.instance().registerCrashCallable( new IntegrationCrashEnhancement() );
+		fireModulesEvent( event );
 
-		CommonHelper.proxy.postInit();
 		AEConfig.instance.save();
-
-		NetworkRegistry.INSTANCE.registerGuiHandler( this, GuiBridge.GUI_Handler );
-		NetworkHandler.instance = new NetworkHandler( "AE2" );
 
 		AELog.info( "Post Initialization ( ended after " + start.elapsed( TimeUnit.MILLISECONDS ) + "ms )" );
 	}
@@ -222,33 +492,30 @@ public final class AppEng
 	@EventHandler
 	private void handleIMCEvent( final FMLInterModComms.IMCEvent event )
 	{
-		final IMCHandler imcHandler = new IMCHandler();
-
-		imcHandler.handleIMCEvent( event );
+		fireModulesEvent( event );
 	}
 
 	@EventHandler
-	private void serverAboutToStart( final FMLServerAboutToStartEvent evt )
+	private void serverAboutToStart( final FMLServerAboutToStartEvent event )
 	{
-		WorldData.onServerAboutToStart( evt.getServer() );
+		fireModulesEvent( event );
+	}
+
+	@EventHandler
+	private void serverStarting( final FMLServerStartingEvent event )
+	{
+		fireModulesEvent( event );
 	}
 
 	@EventHandler
 	private void serverStopping( final FMLServerStoppingEvent event )
 	{
-		WorldData.instance().onServerStopping();
+		fireModulesEvent( event );
 	}
 
 	@EventHandler
 	private void serverStopped( final FMLServerStoppedEvent event )
 	{
-		WorldData.instance().onServerStoppped();
-		TickHandler.INSTANCE.shutdown();
-	}
-
-	@EventHandler
-	private void serverStarting( final FMLServerStartingEvent evt )
-	{
-		evt.registerServerCommand( new AECommand( evt.getServer() ) );
+		fireModulesEvent( event );
 	}
 }

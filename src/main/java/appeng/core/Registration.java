@@ -22,6 +22,7 @@ package appeng.core;
 import java.io.File;
 import java.util.HashSet;
 import java.util.Set;
+
 import javax.annotation.Nonnull;
 
 import com.google.common.base.Preconditions;
@@ -55,54 +56,58 @@ import appeng.api.networking.spatial.ISpatialCache;
 import appeng.api.networking.storage.IStorageGrid;
 import appeng.api.networking.ticking.ITickManager;
 import appeng.api.parts.IPartHelper;
-import appeng.block.networking.BlockCableBus;
-import appeng.core.features.AEFeature;
-import appeng.core.features.registries.P2PTunnelRegistry;
-import appeng.core.features.registries.entries.BasicCellHandler;
-import appeng.core.features.registries.entries.CreativeCellHandler;
-import appeng.core.localization.GuiText;
-import appeng.core.localization.PlayerMessages;
-import appeng.core.stats.PlayerStatsRegistration;
-import appeng.hooks.TickHandler;
-import appeng.items.materials.ItemMultiItem;
-import appeng.loot.ChestLoot;
-import appeng.me.cache.CraftingGridCache;
-import appeng.me.cache.EnergyGridCache;
-import appeng.me.cache.GridStorageCache;
-import appeng.me.cache.P2PCache;
-import appeng.me.cache.PathGridCache;
-import appeng.me.cache.SecurityCache;
-import appeng.me.cache.SpatialPylonCache;
-import appeng.me.cache.TickManagerCache;
-import appeng.me.storage.AEExternalHandler;
-import appeng.parts.PartPlacement;
-import appeng.recipes.AEItemResolver;
-import appeng.recipes.CustomRecipeConfig;
-import appeng.recipes.RecipeHandler;
-import appeng.recipes.game.DisassembleRecipe;
-import appeng.recipes.game.FacadeRecipe;
-import appeng.recipes.game.ShapedRecipe;
-import appeng.recipes.game.ShapelessRecipe;
-import appeng.recipes.handlers.Crusher;
-import appeng.recipes.handlers.Grind;
-import appeng.recipes.handlers.GrindFZ;
-import appeng.recipes.handlers.HCCrusher;
-import appeng.recipes.handlers.Inscribe;
-import appeng.recipes.handlers.Macerator;
-import appeng.recipes.handlers.MekCrusher;
-import appeng.recipes.handlers.MekEnrichment;
-import appeng.recipes.handlers.Press;
-import appeng.recipes.handlers.Pulverizer;
-import appeng.recipes.handlers.Shaped;
-import appeng.recipes.handlers.Shapeless;
-import appeng.recipes.handlers.Smelt;
-import appeng.recipes.ores.OreDictionaryHandler;
-import appeng.spatial.BiomeGenStorage;
-import appeng.spatial.StorageWorldProvider;
-import appeng.tile.AEBaseTile;
-import appeng.util.Platform;
-import appeng.worldgen.MeteoriteWorldGen;
-import appeng.worldgen.QuartzWorldGen;
+import appeng.core.hooks.TickHandler;
+import appeng.core.item.ItemMultiItem;
+import appeng.core.lib.AEConfig;
+import appeng.core.lib.Api;
+import appeng.core.lib.ApiDefinitions;
+import appeng.core.lib.RecipeLoader;
+import appeng.core.lib.features.AEFeature;
+import appeng.core.lib.features.registries.P2PTunnelRegistry;
+import appeng.core.lib.features.registries.entries.BasicCellHandler;
+import appeng.core.lib.features.registries.entries.CreativeCellHandler;
+import appeng.core.lib.localization.GuiText;
+import appeng.core.lib.localization.PlayerMessages;
+import appeng.core.lib.stats.PlayerStatsRegistration;
+import appeng.core.lib.tile.AEBaseTile;
+import appeng.core.lib.util.Platform;
+import appeng.core.me.block.BlockCableBus;
+import appeng.core.me.grid.cache.CraftingGridCache;
+import appeng.core.me.grid.cache.EnergyGridCache;
+import appeng.core.me.grid.cache.GridStorageCache;
+import appeng.core.me.grid.cache.P2PCache;
+import appeng.core.me.grid.cache.PathGridCache;
+import appeng.core.me.grid.cache.SecurityCache;
+import appeng.core.me.grid.cache.SpatialPylonCache;
+import appeng.core.me.grid.cache.TickManagerCache;
+import appeng.core.me.grid.storage.AEExternalHandler;
+import appeng.core.me.part.PartPlacement;
+import appeng.core.recipes.AEItemResolver;
+import appeng.core.recipes.CustomRecipeConfig;
+import appeng.core.recipes.RecipeHandler;
+import appeng.core.recipes.game.DisassembleRecipe;
+import appeng.core.recipes.game.FacadeRecipe;
+import appeng.core.recipes.game.ShapedRecipe;
+import appeng.core.recipes.game.ShapelessRecipe;
+import appeng.core.recipes.handlers.Crusher;
+import appeng.core.recipes.handlers.Grind;
+import appeng.core.recipes.handlers.GrindFZ;
+import appeng.core.recipes.handlers.HCCrusher;
+import appeng.core.recipes.handlers.Inscribe;
+import appeng.core.recipes.handlers.Macerator;
+import appeng.core.recipes.handlers.MekCrusher;
+import appeng.core.recipes.handlers.MekEnrichment;
+import appeng.core.recipes.handlers.Press;
+import appeng.core.recipes.handlers.Pulverizer;
+import appeng.core.recipes.handlers.Shaped;
+import appeng.core.recipes.handlers.Shapeless;
+import appeng.core.recipes.handlers.Smelt;
+import appeng.core.recipes.ores.OreDictionaryHandler;
+import appeng.core.spatial.world.BiomeGenStorage;
+import appeng.core.spatial.world.StorageWorldProvider;
+import appeng.core.worldgen.loot.ChestLoot;
+import appeng.core.worldgen.world.MeteoriteWorldGen;
+import appeng.core.worldgen.world.QuartzWorldGen;
 
 
 public final class Registration
@@ -271,7 +276,6 @@ public final class Registration
 		FMLCommonHandler.instance().bus().register( TickHandler.INSTANCE );
 		MinecraftForge.EVENT_BUS.register( TickHandler.INSTANCE );
 
-
 		MinecraftForge.EVENT_BUS.register( new PartPlacement() );
 
 		if( AEConfig.instance.isFeatureEnabled( AEFeature.ChestLoot ) )
@@ -294,8 +298,7 @@ public final class Registration
 		registries.cell().addCellHandler( new BasicCellHandler() );
 		registries.cell().addCellHandler( new CreativeCellHandler() );
 
-		api.definitions().materials().matterBall().maybeStack( 1 ).ifPresent( ammoStack ->
-		{
+		api.definitions().materials().matterBall().maybeStack( 1 ).ifPresent( ammoStack -> {
 			final double weight = 32;
 
 			registries.matterCannon().registerAmmo( ammoStack, weight );
@@ -408,8 +411,7 @@ public final class Registration
 		// Inscriber
 		Upgrades.SPEED.registerItem( blocks.inscriber(), 3 );
 
-		items.wirelessTerminal().maybeItem().ifPresent( terminal ->
-		{
+		items.wirelessTerminal().maybeItem().ifPresent( terminal -> {
 			registries.wireless().registerWirelessHandler( (IWirelessTermHandler) terminal );
 		} );
 

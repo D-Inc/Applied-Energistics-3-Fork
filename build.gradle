@@ -78,7 +78,7 @@ jar {
 }
 
 minecraft {
-    coreMod = "appeng.transformer.AppEngCore"
+    coreMod = "appeng.core.transformer.AppEngCore"
 
     version = minecraft_version + "-" + forge_version
 

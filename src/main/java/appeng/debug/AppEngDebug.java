@@ -1,0 +1,84 @@
+
+package appeng.debug;
+
+
+import net.minecraftforge.common.ForgeVersion;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLInterModComms.IMCEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerAboutToStartEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
+import net.minecraftforge.fml.common.event.FMLServerStoppedEvent;
+import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
+
+import appeng.api.module.Module;
+import appeng.core.AppEng;
+import appeng.core.lib.AEConfig;
+
+
+/*
+ * The only module not built with gradle.
+ */
+@Module( AppEngDebug.NAME )
+@Mod( modid = AppEngDebug.MODID, name = AppEngDebug.NAME, version = AEConfig.VERSION, dependencies = "required-after:" + AppEng.MOD_ID, acceptedMinecraftVersions = ForgeVersion.mcVersion )
+public class AppEngDebug
+{
+
+	public static final String NAME = "debug";
+
+	public static final String MODID = AppEng.MOD_ID + "|" + NAME;
+
+	public static final String MODNAME = AppEng.MOD_NAME + " | " + NAME;
+
+	@EventHandler
+	public void preInit( final FMLPreInitializationEvent event )
+	{
+
+	}
+
+	@EventHandler
+	public void init( final FMLInitializationEvent event )
+	{
+
+	}
+
+	@EventHandler
+	public void postInit( final FMLPostInitializationEvent event )
+	{
+
+	}
+
+	@EventHandler
+	public void handleIMCEvent( IMCEvent event )
+	{
+
+	}
+
+	@EventHandler
+	public void serverAboutToStart( FMLServerAboutToStartEvent event )
+	{
+
+	}
+
+	@EventHandler
+	public void serverStarting( FMLServerStartingEvent event )
+	{
+
+	}
+
+	@EventHandler
+	public void serverStopping( FMLServerStoppingEvent event )
+	{
+
+	}
+
+	@EventHandler
+	public void serverStopped( FMLServerStoppedEvent event )
+	{
+
+	}
+
+}
