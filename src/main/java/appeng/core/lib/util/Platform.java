@@ -91,9 +91,7 @@ import appeng.api.config.Actionable;
 import appeng.api.config.FuzzyMode;
 import appeng.api.config.PowerMultiplier;
 import appeng.api.config.PowerUnits;
-import appeng.api.config.SearchBoxMode;
 import appeng.api.config.SecurityPermissions;
-import appeng.api.config.SortOrder;
 import appeng.api.definitions.IItemDefinition;
 import appeng.api.definitions.IMaterials;
 import appeng.api.definitions.IParts;
@@ -125,8 +123,6 @@ import appeng.api.util.DimensionalCoord;
 import appeng.core.AppEng;
 import appeng.core.AppEngCore;
 import appeng.core.hooks.TickHandler;
-import appeng.core.integration.IntegrationRegistry;
-import appeng.core.integration.IntegrationType;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.AELog;
 import appeng.core.lib.features.AEFeature;
@@ -352,21 +348,6 @@ public class Platform
 
 	private static boolean isNotValidSetting( final Enum e )
 	{
-		if( e == SortOrder.INVTWEAKS && !IntegrationRegistry.INSTANCE.isEnabled( IntegrationType.InvTweaks ) )
-		{
-			return true;
-		}
-
-		if( e == SearchBoxMode.NEI_AUTOSEARCH && !IntegrationRegistry.INSTANCE.isEnabled( IntegrationType.NEI ) )
-		{
-			return true;
-		}
-
-		if( e == SearchBoxMode.NEI_MANUAL_SEARCH && !IntegrationRegistry.INSTANCE.isEnabled( IntegrationType.NEI ) )
-		{
-			return true;
-		}
-
 		return false;
 	}
 

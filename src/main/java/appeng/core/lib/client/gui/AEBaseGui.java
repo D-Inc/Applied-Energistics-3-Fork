@@ -56,9 +56,6 @@ import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 
 import appeng.api.storage.data.IAEItemStack;
 import appeng.core.crafting.container.SlotPatternTerm;
-import appeng.core.integration.IntegrationRegistry;
-import appeng.core.integration.IntegrationType;
-import appeng.core.integration.abstraction.INEI;
 import appeng.core.lib.AELog;
 import appeng.core.lib.client.gui.widgets.GuiScrollbar;
 import appeng.core.lib.client.gui.widgets.ITooltip;
@@ -895,16 +892,9 @@ public abstract class AEBaseGui extends GuiContainer
 
 	private RenderItem setItemRender( final RenderItem item )
 	{
-		if( IntegrationRegistry.INSTANCE.isEnabled( IntegrationType.NEI ) )
-		{
-			return ( (INEI) IntegrationRegistry.INSTANCE.getInstance( IntegrationType.NEI ) ).setItemRender( item );
-		}
-		else
-		{
-			final RenderItem ri = this.itemRender;
-			this.itemRender = item;
-			return ri;
-		}
+		final RenderItem ri = this.itemRender;
+		this.itemRender = item;
+		return ri;
 	}
 
 	protected boolean isPowered()

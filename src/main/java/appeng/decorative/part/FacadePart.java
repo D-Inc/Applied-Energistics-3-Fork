@@ -56,9 +56,6 @@ import appeng.api.parts.IPartCollisionHelper;
 import appeng.api.parts.IPartHost;
 import appeng.api.util.AEPartLocation;
 import appeng.core.AppEng;
-import appeng.core.integration.IntegrationRegistry;
-import appeng.core.integration.IntegrationType;
-import appeng.core.integration.abstraction.IBuildCraftTransport;
 import appeng.core.lib.client.render.model.ModelsCache;
 import appeng.core.lib.client.render.model.pipeline.MatVecApplicator;
 import appeng.core.lib.client.render.model.pipeline.ParentQuads;
@@ -182,12 +179,6 @@ public class FacadePart implements IFacadePart, IBoxProvider
 			final IFacadeItem facade = (IFacadeItem) maybeFacade;
 
 			return facade.getTextureItem( this.facade );
-		}
-		else if( IntegrationRegistry.INSTANCE.isEnabled( IntegrationType.BuildCraftTransport ) )
-		{
-			final IBuildCraftTransport bc = (IBuildCraftTransport) IntegrationRegistry.INSTANCE.getInstance( IntegrationType.BuildCraftTransport );
-
-			return bc.getTextureForFacade( this.facade );
 		}
 
 		return null;

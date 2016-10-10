@@ -89,14 +89,9 @@ import appeng.core.recipes.game.DisassembleRecipe;
 import appeng.core.recipes.game.FacadeRecipe;
 import appeng.core.recipes.game.ShapedRecipe;
 import appeng.core.recipes.game.ShapelessRecipe;
-import appeng.core.recipes.handlers.Crusher;
 import appeng.core.recipes.handlers.Grind;
-import appeng.core.recipes.handlers.GrindFZ;
 import appeng.core.recipes.handlers.HCCrusher;
 import appeng.core.recipes.handlers.Inscribe;
-import appeng.core.recipes.handlers.Macerator;
-import appeng.core.recipes.handlers.MekCrusher;
-import appeng.core.recipes.handlers.MekEnrichment;
 import appeng.core.recipes.handlers.Press;
 import appeng.core.recipes.handlers.Pulverizer;
 import appeng.core.recipes.handlers.Shaped;
@@ -212,13 +207,8 @@ public final class Registration
 		registry.addNewSubItemResolver( new AEItemResolver() );
 
 		registry.addNewCraftHandler( "hccrusher", HCCrusher.class );
-		registry.addNewCraftHandler( "mekcrusher", MekCrusher.class );
-		registry.addNewCraftHandler( "mekechamber", MekEnrichment.class );
 		registry.addNewCraftHandler( "grind", Grind.class );
-		registry.addNewCraftHandler( "crusher", Crusher.class );
-		registry.addNewCraftHandler( "grindfz", GrindFZ.class );
 		registry.addNewCraftHandler( "pulverizer", Pulverizer.class );
-		registry.addNewCraftHandler( "macerator", Macerator.class );
 
 		registry.addNewCraftHandler( "smelt", Smelt.class );
 		registry.addNewCraftHandler( "inscribe", Inscribe.class );
@@ -341,7 +331,6 @@ public final class Registration
 		PlayerMessages.values();
 		GuiText.values();
 
-		Api.INSTANCE.partHelper().initFMPSupport();
 		blocks.multiPart().maybeBlock().ifPresent( block -> ( (BlockCableBus) block ).setupTile() );
 
 		definitions.getRegistry().getBootstrapComponents().forEach( b -> b.postInitialize( event.getSide() ) );

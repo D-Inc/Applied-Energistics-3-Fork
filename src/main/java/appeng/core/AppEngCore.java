@@ -7,7 +7,6 @@ import java.io.File;
 import javax.annotation.Nonnull;
 
 import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLInterModComms.IMCEvent;
@@ -22,9 +21,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import appeng.api.module.Module;
 import appeng.api.module.Module.ModuleEventHandler;
 import appeng.core.hooks.TickHandler;
-import appeng.core.integration.IntegrationRegistry;
 import appeng.core.lib.AELog;
-import appeng.core.lib.crash.IntegrationCrashEnhancement;
 import appeng.core.lib.sync.GuiBridge;
 import appeng.core.lib.sync.network.NetworkHandler;
 import appeng.core.lib.worlddata.WorldData;
@@ -41,7 +38,7 @@ import appeng.core.services.version.VersionCheckerConfig;
 /*
  * TODO 1.10.2-MODUSEP - Dat giant mess though. Move all stuff that belongs to specific modules into these specific modules. Yes, you can boom the API.
  */
-@Module( value = AppEngCore.NAME, dependencies = "hard-before:module-*")
+@Module( value = AppEngCore.NAME, dependencies = "hard-before:module-*" )
 public class AppEngCore
 {
 
@@ -128,16 +125,12 @@ public class AppEngCore
 		this.registration.initialize( event, this.recipeDirectory, this.customRecipeConfig );
 
 		proxy.init( event );
-
-		IntegrationRegistry.INSTANCE.init();
 	}
 
 	@ModuleEventHandler
 	public void postInit( FMLPostInitializationEvent event )
 	{
 		this.registration.postInit( event );
-		IntegrationRegistry.INSTANCE.postInit();
-		FMLCommonHandler.instance().registerCrashCallable( new IntegrationCrashEnhancement() );
 
 		proxy.postInit( event );
 

@@ -21,8 +21,6 @@ package appeng.core.worldgen.client.gui;
 
 import net.minecraft.entity.player.InventoryPlayer;
 
-import appeng.core.integration.IntegrationRegistry;
-import appeng.core.integration.IntegrationType;
 import appeng.core.lib.client.gui.AEBaseGui;
 import appeng.core.lib.localization.GuiText;
 import appeng.core.worldgen.container.ContainerSkyChest;
@@ -55,6 +53,6 @@ public class GuiSkyChest extends AEBaseGui
 	@Override
 	protected boolean enableSpaceClicking()
 	{
-		return !IntegrationRegistry.INSTANCE.isEnabled( IntegrationType.InvTweaks );
+		return true;
 	}
 }

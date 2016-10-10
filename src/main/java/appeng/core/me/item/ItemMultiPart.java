@@ -50,8 +50,6 @@ import appeng.api.parts.IPart;
 import appeng.api.parts.IPartHelper;
 import appeng.api.parts.IPartItem;
 import appeng.api.util.AEColor;
-import appeng.core.integration.IntegrationRegistry;
-import appeng.core.integration.IntegrationType;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.features.ActivityState;
@@ -117,11 +115,6 @@ public final class ItemMultiPart extends AEBaseItem implements IPartItem, IItemG
 		for( final AEFeature f : mat.getFeature() )
 		{
 			enabled = enabled && AEConfig.instance.isFeatureEnabled( f );
-		}
-
-		for( final IntegrationType integrationType : mat.getIntegrations() )
-		{
-			enabled &= IntegrationRegistry.INSTANCE.isEnabled( integrationType );
 		}
 
 		final int partDamage = mat.getBaseDamage() + varID;

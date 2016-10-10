@@ -39,13 +39,9 @@ import appeng.api.networking.events.MENetworkPowerStatusChange;
 import appeng.api.networking.ticking.IGridTickable;
 import appeng.api.networking.ticking.TickRateModulation;
 import appeng.api.networking.ticking.TickingRequest;
-import appeng.core.integration.IntegrationRegistry;
-import appeng.core.integration.IntegrationType;
-import appeng.core.integration.abstraction.IBuildCraftTransport;
 import appeng.core.lib.settings.TickRates;
 import appeng.core.lib.tile.inventory.AppEngNullInventory;
 import appeng.core.lib.util.Platform;
-import appeng.core.lib.util.inv.WrapperBCPipe;
 import appeng.core.lib.util.inv.WrapperChainedInventory;
 import appeng.core.lib.util.inv.WrapperMCISidedInventory;
 import appeng.core.me.grid.GridAccessException;
@@ -132,21 +128,6 @@ public class PartP2PItems extends PartP2PTunnel<PartP2PItems> implements /* IPip
 			}
 
 			this.which.add( this );
-
-			if( IntegrationRegistry.INSTANCE.isEnabled( IntegrationType.BuildCraftTransport ) )
-			{
-				final IBuildCraftTransport buildcraft = (IBuildCraftTransport) IntegrationRegistry.INSTANCE.getInstance( IntegrationType.BuildCraftTransport );
-				if( buildcraft.isPipe( te, this.getSide().getOpposite().getFacing() ) )
-				{
-					try
-					{
-						output = new WrapperBCPipe( te, this.getSide().getFacing().getOpposite() );
-					}
-					catch( final Throwable ignore )
-					{
-					}
-				}
-			}
 
 			/*
 			 * if ( AppEng.INSTANCE.isIntegrationEnabled( "TE" ) ) { ITE thermal = (ITE) AppEng.INSTANCE.getIntegration(

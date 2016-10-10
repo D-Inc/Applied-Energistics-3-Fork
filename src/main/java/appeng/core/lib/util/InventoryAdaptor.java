@@ -29,9 +29,6 @@ import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.EnumFacing;
 
 import appeng.api.config.FuzzyMode;
-import appeng.core.integration.IntegrationRegistry;
-import appeng.core.integration.IntegrationType;
-import appeng.core.integration.abstraction.IBetterStorage;
 import appeng.core.lib.util.inv.AdaptorIInventory;
 import appeng.core.lib.util.inv.AdaptorList;
 import appeng.core.lib.util.inv.AdaptorPlayerInventory;
@@ -51,8 +48,6 @@ public abstract class InventoryAdaptor implements Iterable<ItemSlot>
 			return null;
 		}
 
-		final IBetterStorage bs = (IBetterStorage) ( IntegrationRegistry.INSTANCE.isEnabled( IntegrationType.BetterStorage ) ? IntegrationRegistry.INSTANCE.getInstance( IntegrationType.BetterStorage ) : null );
-
 		if( te instanceof EntityPlayer )
 		{
 			return new AdaptorIInventory( new AdaptorPlayerInventory( ( (EntityPlayer) te ).inventory, false ) );
@@ -63,10 +58,6 @@ public abstract class InventoryAdaptor implements Iterable<ItemSlot>
 			final ArrayList<ItemStack> list = (ArrayList<ItemStack>) te;
 
 			return new AdaptorList( list );
-		}
-		else if( bs != null && bs.isStorageCrate( te ) )
-		{
-			return bs.getAdaptor( te, d );
 		}
 		else if( te instanceof TileEntityChest )
 		{

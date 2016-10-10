@@ -46,9 +46,6 @@ import appeng.api.util.AEColor;
 import appeng.api.util.AEPartLocation;
 import appeng.api.util.DimensionalCoord;
 import appeng.core.hooks.TickHandler;
-import appeng.core.integration.IntegrationRegistry;
-import appeng.core.integration.IntegrationType;
-import appeng.core.integration.abstraction.IImmibisMicroblocks;
 import appeng.core.lib.helpers.AEMultiTile;
 import appeng.core.lib.helpers.ICustomCollision;
 import appeng.core.lib.tile.AEBaseTile;
@@ -317,15 +314,6 @@ public class TileCableBus extends AEBaseTile implements AEMultiTile, ICustomColl
 	@Override
 	public void cleanup()
 	{
-		if( IntegrationRegistry.INSTANCE.isEnabled( IntegrationType.ImmibisMicroblocks ) )
-		{
-			final IImmibisMicroblocks imb = (IImmibisMicroblocks) IntegrationRegistry.INSTANCE.getInstance( IntegrationType.ImmibisMicroblocks );
-			if( imb != null && imb.leaveParts( this ) )
-			{
-				return;
-			}
-		}
-
 		this.getWorld().setBlockToAir( this.pos );
 	}
 

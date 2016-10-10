@@ -63,9 +63,6 @@ import appeng.api.util.AECableType;
 import appeng.api.util.AEColor;
 import appeng.api.util.AEPartLocation;
 import appeng.api.util.DimensionalCoord;
-import appeng.core.integration.IntegrationRegistry;
-import appeng.core.integration.IntegrationType;
-import appeng.core.integration.abstraction.ICLApi;
 import appeng.core.lib.AELog;
 import appeng.core.lib.helpers.AEMultiTile;
 import appeng.core.lib.util.Platform;
@@ -896,11 +893,6 @@ public class CableBusContainer extends CableBusStorage implements AEMultiTile, I
 			{
 				light = Math.max( p.getLightLevel(), light );
 			}
-		}
-
-		if( light > 0 && IntegrationRegistry.INSTANCE.isEnabled( IntegrationType.CLApi ) )
-		{
-			return ( (ICLApi) IntegrationRegistry.INSTANCE.getInstance( IntegrationType.CLApi ) ).colorLight( this.getColor(), light );
 		}
 
 		return light;

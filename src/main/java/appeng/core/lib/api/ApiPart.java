@@ -51,9 +51,6 @@ import net.minecraft.world.World;
 import appeng.api.parts.CableRenderMode;
 import appeng.api.parts.IPartHelper;
 import appeng.api.parts.LayerBase;
-import appeng.core.integration.IntegrationRegistry;
-import appeng.core.integration.IntegrationType;
-import appeng.core.integration.abstraction.IFMP;
 import appeng.core.lib.AELog;
 import appeng.core.lib.CommonHelper;
 import appeng.core.me.part.PartPlacement;
@@ -67,17 +64,6 @@ public class ApiPart implements IPartHelper
 	private final Map<Class<?>, String> interfaces2Layer = new HashMap<Class<?>, String>();
 	private final Map<String, Class> roots = new HashMap<String, Class>();
 	private final List<String> desc = new LinkedList<String>();
-
-	public void initFMPSupport()
-	{
-		for( final Class layerInterface : this.interfaces2Layer.keySet() )
-		{
-			if( IntegrationRegistry.INSTANCE.isEnabled( IntegrationType.FMP ) )
-			{
-				( (IFMP) IntegrationRegistry.INSTANCE.getInstance( IntegrationType.FMP ) ).registerPassThrough( layerInterface );
-			}
-		}
-	}
 
 	public Class getCombinedInstance( final String base )
 	{

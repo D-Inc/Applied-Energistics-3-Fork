@@ -40,8 +40,6 @@ import appeng.api.storage.ITerminalHost;
 import appeng.api.storage.data.IAEItemStack;
 import appeng.api.util.IConfigManager;
 import appeng.api.util.IConfigurableObject;
-import appeng.core.integration.IntegrationRegistry;
-import appeng.core.integration.IntegrationType;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.AELog;
 import appeng.core.lib.client.gui.AEBaseMEGui;
@@ -225,7 +223,7 @@ public class GuiMEMonitorable extends AEBaseMEGui implements ISortSource, IConfi
 		this.maxRows = this.getMaxRows();
 		this.perRow = AEConfig.instance.getConfigManager().getSetting( Settings.TERMINAL_STYLE ) != TerminalStyle.FULL ? 9 : 9 + ( ( this.width - this.standardSize ) / 18 );
 
-		final boolean hasNEI = IntegrationRegistry.INSTANCE.isEnabled( IntegrationType.NEI );
+		final boolean hasNEI = false;
 
 		final int NEI = hasNEI ? 0 : 0;
 		int top = hasNEI ? 22 : 0;

@@ -55,10 +55,6 @@ import appeng.api.parts.PartItemStack;
 import appeng.api.parts.SelectedPart;
 import appeng.api.util.AEPartLocation;
 import appeng.api.util.DimensionalCoord;
-import appeng.core.integration.IntegrationRegistry;
-import appeng.core.integration.IntegrationType;
-import appeng.core.integration.abstraction.IBuildCraftTransport;
-import appeng.core.integration.abstraction.IFMP;
 import appeng.core.lib.CommonHelper;
 import appeng.core.lib.sync.network.NetworkHandler;
 import appeng.core.lib.sync.packets.PacketClick;
@@ -335,11 +331,6 @@ public class PartPlacement
 				final Block blkID = world.getBlockState( te_pos ).getBlock();
 				tile = world.getTileEntity( te_pos );
 
-				if( tile != null && IntegrationRegistry.INSTANCE.isEnabled( IntegrationType.FMP ) )
-				{
-					host = ( (IFMP) IntegrationRegistry.INSTANCE.getInstance( IntegrationType.FMP ) ).getOrCreateHost( tile );
-				}
-
 				if( ( blkID == null || blkID.isReplaceable( world, te_pos ) || host != null ) ) // /&& side !=
 				// AEPartLocation.INTERNAL
 				// )
@@ -427,15 +418,6 @@ public class PartPlacement
 		if( held.getItem() instanceof IFacadeItem )
 		{
 			return ( (IFacadeItem) held.getItem() ).createPartFromItemStack( held, side );
-		}
-
-		if( IntegrationRegistry.INSTANCE.isEnabled( IntegrationType.BuildCraftTransport ) )
-		{
-			final IBuildCraftTransport bc = (IBuildCraftTransport) IntegrationRegistry.INSTANCE.getInstance( IntegrationType.BuildCraftTransport );
-			if( bc.isFacade( held ) )
-			{
-				return bc.createFacadePart( held, side );
-			}
 		}
 
 		return null;

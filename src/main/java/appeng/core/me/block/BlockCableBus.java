@@ -57,9 +57,6 @@ import appeng.api.parts.IPartHost;
 import appeng.api.parts.PartItemStack;
 import appeng.api.parts.SelectedPart;
 import appeng.api.util.AEColor;
-import appeng.core.integration.IntegrationRegistry;
-import appeng.core.integration.IntegrationType;
-import appeng.core.integration.abstraction.IFMP;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.Api;
 import appeng.core.lib.block.AEBaseTileBlock;
@@ -307,10 +304,6 @@ public class BlockCableBus extends AEBaseTileBlock
 		if( te instanceof TileCableBus )
 		{
 			out = ( (TileCableBus) te ).getCableBus();
-		}
-		else if( IntegrationRegistry.INSTANCE.isEnabled( IntegrationType.FMP ) )
-		{
-			out = ( (IFMP) IntegrationRegistry.INSTANCE.getInstance( IntegrationType.FMP ) ).getCableContainer( te );
 		}
 
 		return out == null ? NULL_CABLE_BUS : out;

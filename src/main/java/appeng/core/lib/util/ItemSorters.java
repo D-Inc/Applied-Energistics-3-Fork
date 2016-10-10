@@ -23,9 +23,6 @@ import java.util.Comparator;
 
 import appeng.api.config.SortDir;
 import appeng.api.storage.data.IAEItemStack;
-import appeng.core.integration.IntegrationRegistry;
-import appeng.core.integration.IntegrationType;
-import appeng.core.integration.abstraction.IInvTweaks;
 import appeng.core.lib.util.item.AEItemStack;
 
 
@@ -83,42 +80,10 @@ public class ItemSorters
 			return compareLong( o1.getStackSize(), o2.getStackSize() );
 		}
 	};
-	private static IInvTweaks api;
-	public static final Comparator<IAEItemStack> CONFIG_BASED_SORT_BY_INV_TWEAKS = new Comparator<IAEItemStack>(){
-
-		@Override
-		public int compare( final IAEItemStack o1, final IAEItemStack o2 )
-		{
-			if( api == null )
-			{
-				return CONFIG_BASED_SORT_BY_NAME.compare( o1, o2 );
-			}
-
-			final int cmp = api.compareItems( o1.getItemStack(), o2.getItemStack() );
-
-			if( getDirection() == SortDir.ASCENDING )
-			{
-				return cmp;
-			}
-			return -cmp;
-		}
-	};
 
 	public static void init()
 	{
-		if( api != null )
-		{
-			return;
-		}
 
-		if( IntegrationRegistry.INSTANCE.isEnabled( IntegrationType.InvTweaks ) )
-		{
-			api = (IInvTweaks) IntegrationRegistry.INSTANCE.getInstance( IntegrationType.InvTweaks );
-		}
-		else
-		{
-			api = null;
-		}
 	}
 
 	public static int compareInt( final int a, final int b )

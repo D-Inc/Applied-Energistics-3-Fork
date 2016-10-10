@@ -230,10 +230,6 @@ public class ItemRepo
 		{
 			Collections.sort( this.view, ItemSorters.CONFIG_BASED_SORT_BY_SIZE );
 		}
-		else if( SortBy == SortOrder.INVTWEAKS )
-		{
-			Collections.sort( this.view, ItemSorters.CONFIG_BASED_SORT_BY_INV_TWEAKS );
-		}
 		else
 		{
 			Collections.sort( this.view, ItemSorters.CONFIG_BASED_SORT_BY_NAME );
