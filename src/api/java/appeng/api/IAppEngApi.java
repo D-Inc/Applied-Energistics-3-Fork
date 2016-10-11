@@ -24,9 +24,7 @@
 package appeng.api;
 
 
-import appeng.api.definitions.IDefinitions;
 import appeng.api.exceptions.FailedConnection;
-import appeng.api.features.IRegistryContainer;
 import appeng.api.networking.IGridBlock;
 import appeng.api.networking.IGridConnection;
 import appeng.api.networking.IGridNode;
@@ -39,7 +37,7 @@ public interface IAppEngApi
 	/**
 	 * @return Registry Container for the numerous registries in AE2.
 	 */
-	IRegistryContainer registries();
+//	IRegistryContainer registries();
 
 	/**
 	 * @return helper for working with storage data types.
@@ -54,7 +52,7 @@ public interface IAppEngApi
 	/**
 	 * @return an accessible list of all AE definitions
 	 */
-	IDefinitions definitions();
+//	IDefinitions definitions();
 
 	/**
 	 * create a grid node for your {@link appeng.api.networking.IGridHost}

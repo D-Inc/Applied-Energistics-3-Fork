@@ -19,6 +19,8 @@
 package appeng.core.me.grid.cluster.implementations;
 
 
+import appeng.core.lib.Api;
+import appeng.core.lib.api.definitions.ApiBlocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -26,12 +28,12 @@ import net.minecraft.world.World;
 
 import appeng.api.AEApi;
 import appeng.api.definitions.IBlockDefinition;
-import appeng.api.definitions.IBlocks;
 import appeng.api.util.WorldCoord;
 import appeng.core.me.grid.cluster.IAECluster;
 import appeng.core.me.grid.cluster.IAEMultiBlock;
 import appeng.core.me.grid.cluster.MBCalculator;
 import appeng.core.me.tile.TileQuantumBridge;
+import org.lwjgl.opengl.ARBPixelBufferObject;
 
 
 public class QuantumCalculator extends MBCalculator
@@ -87,7 +89,7 @@ public class QuantumCalculator extends MBCalculator
 					}
 
 					num++;
-					final IBlocks blocks = AEApi.instance().definitions().blocks();
+					final ApiBlocks blocks = Api.internalApi().definitions().blocks();
 					if( num == 5 )
 					{
 						if( !this.isBlockAtLocation( w, p, blocks.quantumLink() ) )

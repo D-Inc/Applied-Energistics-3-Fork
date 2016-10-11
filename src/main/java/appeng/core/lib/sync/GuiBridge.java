@@ -22,6 +22,8 @@ package appeng.core.lib.sync;
 import java.lang.reflect.Constructor;
 import java.util.List;
 
+import appeng.core.lib.Api;
+import appeng.core.lib.api.definitions.ApiMaterials;
 import com.google.common.collect.Lists;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -37,7 +39,6 @@ import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import appeng.api.AEApi;
 import appeng.api.config.SecurityPermissions;
 import appeng.api.definitions.IComparableDefinition;
-import appeng.api.definitions.IMaterials;
 import appeng.api.exceptions.AppEngException;
 import appeng.api.features.IWirelessTermHandler;
 import appeng.api.implementations.IUpgradeableHost;
@@ -302,7 +303,7 @@ public enum GuiBridge implements IGuiHandler
 				return ( (IGuiItem) it.getItem() ).getGuiObject( it, w, new BlockPos( x, y, z ) );
 			}
 
-			final IWirelessTermHandler wh = AEApi.instance().registries().wireless().getWirelessTerminalHandler( it );
+			final IWirelessTermHandler wh = Api.internalApi().registries().wireless().getWirelessTerminalHandler( it );
 			if( wh != null )
 			{
 				return new WirelessTerminalGuiObject( wh, it, player, w, x, y, z );
@@ -369,7 +370,7 @@ public enum GuiBridge implements IGuiHandler
 					{
 						final ItemStack is = ( (Slot) so ).getStack();
 
-						final IMaterials materials = AEApi.instance().definitions().materials();
+						final ApiMaterials materials = Api.internalApi().definitions().materials();
 						this.addPressAchievementToPlayer( is, materials, inventory.player );
 					}
 				}
@@ -409,7 +410,7 @@ public enum GuiBridge implements IGuiHandler
 		return inventory.getClass().getName();
 	}
 
-	private void addPressAchievementToPlayer( final ItemStack newItem, final IMaterials possibleMaterials, final EntityPlayer player )
+	private void addPressAchievementToPlayer( final ItemStack newItem, final ApiMaterials possibleMaterials, final EntityPlayer player )
 	{
 		final IComparableDefinition logic = possibleMaterials.logicProcessorPress();
 		final IComparableDefinition eng = possibleMaterials.engProcessorPress();

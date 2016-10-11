@@ -25,6 +25,12 @@ import java.util.Set;
 
 import javax.annotation.Nonnull;
 
+import appeng.api.features.IWirelessTermHandler;
+import appeng.core.lib.api.ApiPart;
+import appeng.core.lib.api.definitions.ApiBlocks;
+import appeng.core.lib.api.definitions.ApiItems;
+import appeng.core.lib.api.definitions.ApiParts;
+import appeng.core.lib.features.registries.*;
 import com.google.common.base.Preconditions;
 
 import net.minecraft.world.DimensionType;
@@ -39,15 +45,7 @@ import net.minecraftforge.oredict.RecipeSorter;
 import net.minecraftforge.oredict.RecipeSorter.Category;
 
 import appeng.api.config.Upgrades;
-import appeng.api.definitions.IBlocks;
-import appeng.api.definitions.IItems;
-import appeng.api.definitions.IParts;
-import appeng.api.features.IRecipeHandlerRegistry;
-import appeng.api.features.IRegistryContainer;
-import appeng.api.features.IWirelessTermHandler;
 import appeng.api.features.IWorldGen.WorldGenType;
-import appeng.api.movable.IMovableRegistry;
-import appeng.api.networking.IGridCacheRegistry;
 import appeng.api.networking.crafting.ICraftingGrid;
 import appeng.api.networking.energy.IEnergyGrid;
 import appeng.api.networking.pathing.IPathingGrid;
@@ -63,7 +61,6 @@ import appeng.core.lib.Api;
 import appeng.core.lib.ApiDefinitions;
 import appeng.core.lib.RecipeLoader;
 import appeng.core.lib.features.AEFeature;
-import appeng.core.lib.features.registries.P2PTunnelRegistry;
 import appeng.core.lib.features.registries.entries.BasicCellHandler;
 import appeng.core.lib.features.registries.entries.CreativeCellHandler;
 import appeng.core.lib.localization.GuiText;
@@ -131,7 +128,7 @@ public final class Registration
 		this.registerSpatial( false );
 
 		final Api api = Api.INSTANCE;
-		final IRecipeHandlerRegistry recipeRegistry = api.registries().recipes();
+		final RecipeHandlerRegistry recipeRegistry = api.registries().recipes();
 		this.registerCraftHandlers( recipeRegistry );
 
 		RecipeSorter.register( "AE2-Facade", FacadeRecipe.class, Category.SHAPED, "" );
@@ -202,7 +199,7 @@ public final class Registration
 		}
 	}
 
-	private void registerCraftHandlers( final IRecipeHandlerRegistry registry )
+	private void registerCraftHandlers( final RecipeHandlerRegistry registry )
 	{
 		registry.addNewSubItemResolver( new AEItemResolver() );
 
@@ -227,7 +224,7 @@ public final class Registration
 
 		final Api api = Api.INSTANCE;
 		final IPartHelper partHelper = api.partHelper();
-		final IRegistryContainer registries = api.registries();
+		final RegistryContainer registries = api.registries();
 
 		ApiDefinitions definitions = api.definitions();
 		definitions.getRegistry().getBootstrapComponents().forEach( b -> b.initialize( event.getSide() ) );
@@ -273,7 +270,7 @@ public final class Registration
 			MinecraftForge.EVENT_BUS.register( new ChestLoot() );
 		}
 
-		final IGridCacheRegistry gcr = registries.gridCache();
+		final GridCacheRegistry gcr = registries.gridCache();
 		gcr.registerGridCache( ITickManager.class, TickManagerCache.class );
 		gcr.registerGridCache( IEnergyGrid.class, EnergyGridCache.class );
 		gcr.registerGridCache( IPathingGrid.class, PathGridCache.class );
@@ -318,11 +315,11 @@ public final class Registration
 		this.registerSpatial( true );
 
 		final Api api = Api.INSTANCE;
-		final IRegistryContainer registries = api.registries();
+		final RegistryContainer registries = api.registries();
 		ApiDefinitions definitions = api.definitions();
-		final IParts parts = definitions.parts();
-		final IBlocks blocks = definitions.blocks();
-		final IItems items = definitions.items();
+		final ApiParts parts = definitions.parts();
+		final ApiBlocks blocks = definitions.blocks();
+		final ApiItems items = definitions.items();
 
 		// default settings..
 		( (P2PTunnelRegistry) registries.p2pTunnel() ).configure();
@@ -401,7 +398,7 @@ public final class Registration
 		Upgrades.SPEED.registerItem( blocks.inscriber(), 3 );
 
 		items.wirelessTerminal().maybeItem().ifPresent( terminal -> {
-			registries.wireless().registerWirelessHandler( (IWirelessTermHandler) terminal );
+			registries.wireless().registerWirelessHandler( (IWirelessTermHandler ) terminal );
 		} );
 
 		// add villager trading to black smiths for a few basic materials
@@ -421,7 +418,7 @@ public final class Registration
 			GameRegistry.registerWorldGenerator( new MeteoriteWorldGen(), 0 );
 		}
 
-		final IMovableRegistry mr = registries.movable();
+		final MovableTileRegistry mr = registries.movable();
 
 		/*
 		 * You can't move bed rock.

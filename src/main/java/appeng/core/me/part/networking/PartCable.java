@@ -24,6 +24,9 @@ import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
 
+import appeng.core.lib.Api;
+import appeng.core.lib.api.ApiPart;
+import appeng.core.lib.api.definitions.ApiParts;
 import com.google.common.collect.ImmutableSet;
 
 import org.lwjgl.util.vector.Matrix4f;
@@ -45,7 +48,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import appeng.api.AEApi;
 import appeng.api.client.BakingPipeline;
 import appeng.api.config.SecurityPermissions;
-import appeng.api.definitions.IParts;
 import appeng.api.implementations.parts.IPartCable;
 import appeng.api.networking.GridFlags;
 import appeng.api.networking.IGridConnection;
@@ -130,7 +132,7 @@ public class PartCable extends AEBasePart implements IPartCable
 		{
 			ItemStack newPart = null;
 
-			final IParts parts = AEApi.instance().definitions().parts();
+			final ApiParts parts = Api.internalApi().definitions().parts();
 
 			if( this.getCableConnectionType() == AECableType.GLASS )
 			{

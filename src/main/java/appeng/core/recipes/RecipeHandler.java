@@ -35,6 +35,11 @@ import java.util.zip.ZipOutputStream;
 
 import javax.annotation.Nonnull;
 
+import appeng.core.lib.Api;
+import appeng.core.lib.ApiDefinitions;
+import appeng.core.lib.api.definitions.ApiBlocks;
+import appeng.core.lib.api.definitions.ApiItems;
+import appeng.core.lib.features.registries.RecipeHandlerRegistry;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.HashMultimap;
 
@@ -44,13 +49,9 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.LoaderState;
 
 import appeng.api.AEApi;
-import appeng.api.definitions.IBlocks;
-import appeng.api.definitions.IDefinitions;
-import appeng.api.definitions.IItems;
 import appeng.api.exceptions.MissingIngredientError;
 import appeng.api.exceptions.RecipeError;
 import appeng.api.exceptions.RegistrationError;
-import appeng.api.features.IRecipeHandlerRegistry;
 import appeng.api.recipes.ICraftHandler;
 import appeng.api.recipes.IIngredient;
 import appeng.api.recipes.IRecipeHandler;
@@ -126,9 +127,9 @@ public class RecipeHandler implements IRecipeHandler
 			throw new RecipeError( "Not applicable for website" );
 		}
 
-		final IDefinitions definitions = AEApi.instance().definitions();
-		final IItems items = definitions.items();
-		final IBlocks blocks = definitions.blocks();
+		final ApiDefinitions definitions = Api.internalApi().definitions();
+		final ApiItems items = definitions.items();
+		final ApiBlocks blocks = definitions.blocks();
 
 		final Optional<Item> maybeCrystalSeedItem = items.crystalSeed().maybeItem();
 		final Optional<Item> maybeSkyStoneItem = blocks.skyStoneBlock().maybeItem();
@@ -539,7 +540,7 @@ public class RecipeHandler implements IRecipeHandler
 	{
 		try
 		{
-			final IRecipeHandlerRegistry cr = AEApi.instance().registries().recipes();
+			final RecipeHandlerRegistry cr =Api.internalApi().registries().recipes();
 
 			if( this.tokens.isEmpty() )
 			{

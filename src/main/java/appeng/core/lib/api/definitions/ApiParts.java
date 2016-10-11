@@ -20,7 +20,6 @@ package appeng.core.lib.api.definitions;
 
 
 import appeng.api.definitions.IItemDefinition;
-import appeng.api.definitions.IParts;
 import appeng.api.exceptions.MissingDefinition;
 import appeng.api.parts.IPartHelper;
 import appeng.api.util.AEColor;
@@ -37,7 +36,7 @@ import appeng.core.me.item.PartType;
 /**
  * Internal implementation for the API parts
  */
-public final class ApiParts implements IParts
+public final class ApiParts// implements IParts
 {
 	private final AEColoredItemDefinition cableSmart;
 	private final AEColoredItemDefinition cableCovered;
@@ -139,143 +138,143 @@ public final class ApiParts implements IParts
 		return definition;
 	}
 
-	@Override
+	/*@Override*/
 	public AEColoredItemDefinition cableSmart()
 	{
 		return this.cableSmart;
 	}
 
-	@Override
+	/*@Override*/
 	public AEColoredItemDefinition cableCovered()
 	{
 		return this.cableCovered;
 	}
 
-	@Override
+	/*@Override*/
 	public AEColoredItemDefinition cableGlass()
 	{
 		return this.cableGlass;
 	}
 
-	@Override
+	/*@Override*/
 	public AEColoredItemDefinition cableDense()
 	{
 		return this.cableDense;
 	}
 
-	@Override
+	/*@Override*/
 	public AEColoredItemDefinition lumenCableSmart()
 	{
 		throw new MissingDefinition( "Lumen Smart Cable has yet to be implemented." );
 		// return this.lumenCableSmart;
 	}
 
-	@Override
+	/*@Override*/
 	public AEColoredItemDefinition lumenCableCovered()
 	{
 		throw new MissingDefinition( "Lumen Covered Cable has yet to be implemented." );
 		// return this.lumenCableCovered;
 	}
 
-	@Override
+	/*@Override*/
 	public AEColoredItemDefinition lumenCableGlass()
 	{
 		throw new MissingDefinition( "Lumen Glass Cable has yet to be implemented." );
 		// return this.lumenCableGlass;
 	}
 
-	@Override
+	/*@Override*/
 	public AEColoredItemDefinition lumenCableDense()
 	{
 		throw new MissingDefinition( "Lumen Dense Cable has yet to be implemented." );
 		// return this.lumenCableDense;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition quartzFiber()
 	{
 		return this.quartzFiber;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition toggleBus()
 	{
 		return this.toggleBus;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition invertedToggleBus()
 	{
 		return this.invertedToggleBus;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition storageBus()
 	{
 		return this.storageBus;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition importBus()
 	{
 		return this.importBus;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition exportBus()
 	{
 		return this.exportBus;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition iface()
 	{
 		return this.iface;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition levelEmitter()
 	{
 		return this.levelEmitter;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition annihilationPlane()
 	{
 		return this.annihilationPlane;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition identityAnnihilationPlane()
 	{
 		return this.identityAnnihilationPlane;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition formationPlane()
 	{
 		return this.formationPlane;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition p2PTunnelME()
 	{
 		return this.p2PTunnelME;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition p2PTunnelRedstone()
 	{
 		return this.p2PTunnelRedstone;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition p2PTunnelItems()
 	{
 		return this.p2PTunnelItems;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition p2PTunnelLiquids()
 	{
 		return this.p2PTunnelLiquids;
@@ -294,7 +293,7 @@ public final class ApiParts implements IParts
 	 * }
 	 */
 
-	@Override
+	/*@Override*/
 	public IItemDefinition p2PTunnelLight()
 	{
 		return this.p2PTunnelLight;
@@ -313,61 +312,61 @@ public final class ApiParts implements IParts
 	 * }
 	 */
 
-	@Override
+	/*@Override*/
 	public IItemDefinition cableAnchor()
 	{
 		return this.cableAnchor;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition monitor()
 	{
 		return this.monitor;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition semiDarkMonitor()
 	{
 		return this.semiDarkMonitor;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition darkMonitor()
 	{
 		return this.darkMonitor;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition interfaceTerminal()
 	{
 		return this.interfaceTerminal;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition patternTerminal()
 	{
 		return this.patternTerminal;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition craftingTerminal()
 	{
 		return this.craftingTerminal;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition terminal()
 	{
 		return this.terminal;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition storageMonitor()
 	{
 		return this.storageMonitor;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition conversionMonitor()
 	{
 		return this.conversionMonitor;

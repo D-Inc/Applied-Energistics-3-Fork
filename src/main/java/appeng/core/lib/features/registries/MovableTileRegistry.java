@@ -28,12 +28,11 @@ import net.minecraft.tileentity.TileEntity;
 
 import appeng.api.exceptions.AppEngException;
 import appeng.api.movable.IMovableHandler;
-import appeng.api.movable.IMovableRegistry;
 import appeng.api.movable.IMovableTile;
 import appeng.core.spatial.DefaultSpatialHandler;
 
 
-public class MovableTileRegistry implements IMovableRegistry
+public class MovableTileRegistry// implements IMovableRegistry
 {
 
 	private final HashSet<Block> blacklisted = new HashSet<Block>();
@@ -45,13 +44,13 @@ public class MovableTileRegistry implements IMovableRegistry
 
 	private final IMovableHandler nullHandler = new DefaultSpatialHandler();
 
-	@Override
+//	@Override
 	public void blacklistBlock( final Block blk )
 	{
 		this.blacklisted.add( blk );
 	}
 
-	@Override
+//	@Override
 	public void whiteListTileEntity( final Class<? extends TileEntity> c )
 	{
 		if( c.getName().equals( TileEntity.class.getName() ) )
@@ -62,7 +61,7 @@ public class MovableTileRegistry implements IMovableRegistry
 		this.test.add( c );
 	}
 
-	@Override
+//	@Override
 	public boolean askToMove( final TileEntity te )
 	{
 		final Class myClass = te.getClass();
@@ -129,7 +128,7 @@ public class MovableTileRegistry implements IMovableRegistry
 		return this.nullHandler;
 	}
 
-	@Override
+//	@Override
 	public void doneMoving( final TileEntity te )
 	{
 		if( te instanceof IMovableTile )
@@ -139,13 +138,13 @@ public class MovableTileRegistry implements IMovableRegistry
 		}
 	}
 
-	@Override
+//	@Override
 	public void addHandler( final IMovableHandler han )
 	{
 		this.handlers.add( han );
 	}
 
-	@Override
+//	@Override
 	public IMovableHandler getHandler( final TileEntity te )
 	{
 		final Class myClass = te.getClass();
@@ -153,13 +152,13 @@ public class MovableTileRegistry implements IMovableRegistry
 		return h == null ? this.dsh : h;
 	}
 
-	@Override
+//	@Override
 	public IMovableHandler getDefaultHandler()
 	{
 		return this.dsh;
 	}
 
-	@Override
+//	@Override
 	public boolean isBlacklisted( final Block blk )
 	{
 		return this.blacklisted.contains( blk );

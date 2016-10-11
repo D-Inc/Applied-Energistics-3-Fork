@@ -19,7 +19,6 @@
 package appeng.core.lib;
 
 
-import appeng.api.definitions.IDefinitions;
 import appeng.api.parts.IPartHelper;
 import appeng.core.lib.api.definitions.ApiBlocks;
 import appeng.core.lib.api.definitions.ApiItems;
@@ -31,7 +30,7 @@ import appeng.core.lib.bootstrap.FeatureFactory;
 /**
  * Internal implementation of the definitions for the API
  */
-public final class ApiDefinitions implements IDefinitions
+public final class ApiDefinitions// implements IDefinitions
 {
 	private final ApiBlocks blocks;
 	private final ApiItems items;
@@ -53,25 +52,25 @@ public final class ApiDefinitions implements IDefinitions
 		return registry;
 	}
 
-	@Override
+//	@Override
 	public ApiBlocks blocks()
 	{
 		return this.blocks;
 	}
 
-	@Override
+//	@Override
 	public ApiItems items()
 	{
 		return this.items;
 	}
 
-	@Override
+//	@Override
 	public ApiMaterials materials()
 	{
 		return this.materials;
 	}
 
-	@Override
+//	@Override
 	public ApiParts parts()
 	{
 		return this.parts;

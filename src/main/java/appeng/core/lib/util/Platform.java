@@ -36,6 +36,10 @@ import java.util.WeakHashMap;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import appeng.core.lib.Api;
+import appeng.core.lib.api.ApiPart;
+import appeng.core.lib.api.definitions.ApiMaterials;
+import appeng.core.lib.api.definitions.ApiParts;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -93,8 +97,6 @@ import appeng.api.config.PowerMultiplier;
 import appeng.api.config.PowerUnits;
 import appeng.api.config.SecurityPermissions;
 import appeng.api.definitions.IItemDefinition;
-import appeng.api.definitions.IMaterials;
-import appeng.api.definitions.IParts;
 import appeng.api.implementations.items.IAEItemPowerStorage;
 import appeng.api.implementations.items.IAEWrench;
 import appeng.api.implementations.tiles.ITileStorageMonitorable;
@@ -1666,7 +1668,7 @@ public class Platform
 
 		if( removed != null )
 		{
-			final IMEInventory<IAEItemStack> myItems = AEApi.instance().registries().cell().getCellInventory( removed, null, StorageChannel.ITEMS );
+			final IMEInventory<IAEItemStack> myItems = Api.internalApi().registries().cell().getCellInventory( removed, null, StorageChannel.ITEMS );
 
 			if( myItems != null )
 			{
@@ -1676,7 +1678,7 @@ public class Platform
 				}
 			}
 
-			final IMEInventory<IAEFluidStack> myFluids = AEApi.instance().registries().cell().getCellInventory( removed, null, StorageChannel.FLUIDS );
+			final IMEInventory<IAEFluidStack> myFluids = Api.internalApi().registries().cell().getCellInventory( removed, null, StorageChannel.FLUIDS );
 
 			if( myFluids != null )
 			{
@@ -1689,14 +1691,14 @@ public class Platform
 
 		if( added != null )
 		{
-			final IMEInventory<IAEItemStack> myItems = AEApi.instance().registries().cell().getCellInventory( added, null, StorageChannel.ITEMS );
+			final IMEInventory<IAEItemStack> myItems = Api.internalApi().registries().cell().getCellInventory( added, null, StorageChannel.ITEMS );
 
 			if( myItems != null )
 			{
 				myItems.getAvailableItems( itemChanges );
 			}
 
-			final IMEInventory<IAEFluidStack> myFluids = AEApi.instance().registries().cell().getCellInventory( added, null, StorageChannel.FLUIDS );
+			final IMEInventory<IAEFluidStack> myFluids = Api.internalApi().registries().cell().getCellInventory( added, null, StorageChannel.FLUIDS );
 
 			if( myFluids != null )
 			{
@@ -2067,7 +2069,7 @@ public class Platform
 
 		if( type == AEFeature.CertusQuartzTools )
 		{
-			final IItemDefinition certusQuartzCrystal = AEApi.instance().definitions().materials().certusQuartzCrystal();
+			final IItemDefinition certusQuartzCrystal = Api.internalApi().definitions().materials().certusQuartzCrystal();
 
 			return certusQuartzCrystal.isSameAs( b );
 		}
@@ -2082,7 +2084,7 @@ public class Platform
 
 	public static Object findPreferred( final ItemStack[] is )
 	{
-		final IParts parts = AEApi.instance().definitions().parts();
+		final ApiParts parts = Api.internalApi().definitions().parts();
 
 		for( final ItemStack stack : is )
 		{
@@ -2167,7 +2169,7 @@ public class Platform
 
 	public static void addStat( final int playerID, final Achievement achievement )
 	{
-		final EntityPlayer p = AEApi.instance().registries().players().findPlayer( playerID );
+		final EntityPlayer p = Api.internalApi().registries().players().findPlayer( playerID );
 		if( p != null )
 		{
 			p.addStat( achievement, 1 );
@@ -2176,7 +2178,7 @@ public class Platform
 
 	public static boolean isRecipePrioritized( final ItemStack what )
 	{
-		final IMaterials materials = AEApi.instance().definitions().materials();
+		final ApiMaterials materials = Api.internalApi().definitions().materials();
 
 		boolean isPurified = materials.purifiedCertusQuartzCrystal().isSameAs( what );
 		isPurified |= materials.purifiedFluixCrystal().isSameAs( what );

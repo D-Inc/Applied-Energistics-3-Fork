@@ -23,6 +23,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Optional;
 
+import appeng.core.lib.Api;
+import appeng.core.lib.api.definitions.ApiParts;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -34,7 +36,6 @@ import appeng.api.config.Actionable;
 import appeng.api.config.PowerMultiplier;
 import appeng.api.config.PowerUnits;
 import appeng.api.config.TunnelType;
-import appeng.api.definitions.IParts;
 import appeng.api.implementations.items.IMemoryCard;
 import appeng.api.implementations.items.MemoryCardMessages;
 import appeng.api.parts.IPart;
@@ -120,7 +121,7 @@ public abstract class PartP2PTunnel<T extends PartP2PTunnel> extends PartBasicSt
 			return super.getItemStack( type );
 		}
 
-		final Optional<ItemStack> maybeMEStack = AEApi.instance().definitions().parts().p2PTunnelME().maybeStack( 1 );
+		final Optional<ItemStack> maybeMEStack = Api.internalApi().definitions().parts().p2PTunnelME().maybeStack( 1 );
 		if( maybeMEStack.isPresent() )
 		{
 			return maybeMEStack.get();
@@ -165,7 +166,7 @@ public abstract class PartP2PTunnel<T extends PartP2PTunnel> extends PartBasicSt
 		// UniqueIdentifier id = GameRegistry.findUniqueIdentifierFor( is.getItem() );
 		// AELog.info( "ID:" + id.toString() + " : " + is.getItemDamage() );
 
-		final TunnelType tt = AEApi.instance().registries().p2pTunnel().getTunnelTypeByItem( is );
+		final TunnelType tt = Api.internalApi().registries().p2pTunnel().getTunnelTypeByItem( is );
 		if( is != null && is.getItem() instanceof IMemoryCard )
 		{
 			final IMemoryCard mc = (IMemoryCard) is.getItem();
@@ -214,7 +215,7 @@ public abstract class PartP2PTunnel<T extends PartP2PTunnel> extends PartBasicSt
 		{
 			final ItemStack newType;
 
-			final IParts parts = AEApi.instance().definitions().parts();
+			final ApiParts parts = Api.internalApi().definitions().parts();
 
 			switch( tt )
 			{

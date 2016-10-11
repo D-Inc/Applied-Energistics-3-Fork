@@ -21,7 +21,6 @@ package appeng.core.lib;
 
 import appeng.api.IAppEngApi;
 import appeng.api.exceptions.FailedConnection;
-import appeng.api.features.IRegistryContainer;
 import appeng.api.networking.IGridBlock;
 import appeng.api.networking.IGridConnection;
 import appeng.api.networking.IGridNode;
@@ -29,6 +28,7 @@ import appeng.api.storage.IStorageHelper;
 import appeng.api.util.AEPartLocation;
 import appeng.core.lib.api.ApiPart;
 import appeng.core.lib.api.ApiStorage;
+import appeng.core.lib.features.registries.MovableTileRegistry;
 import appeng.core.lib.features.registries.RegistryContainer;
 import appeng.core.lib.util.Platform;
 import appeng.core.me.grid.GridConnection;
@@ -37,12 +37,12 @@ import appeng.core.me.grid.GridNode;
 
 public final class Api implements IAppEngApi
 {
-	public static final Api INSTANCE = new Api(); // TODO undo changes, make final
+	public static final Api INSTANCE = new Api();
 
 	private final ApiPart partHelper;
 
-	// private MovableTileRegistry MovableRegistry = new MovableTileRegistry();
-	private final IRegistryContainer registryContainer;
+	private MovableTileRegistry MovableRegistry = new MovableTileRegistry();
+	private final RegistryContainer registryContainer;
 	private final IStorageHelper storageHelper;
 	private final ApiDefinitions definitions;
 
@@ -54,8 +54,8 @@ public final class Api implements IAppEngApi
 		this.definitions = new ApiDefinitions( this.partHelper );
 	}
 
-	@Override
-	public IRegistryContainer registries()
+//	@Override
+	public RegistryContainer registries()
 	{
 		return this.registryContainer;
 	}
@@ -72,7 +72,7 @@ public final class Api implements IAppEngApi
 		return this.partHelper;
 	}
 
-	@Override
+//	@Override
 	public ApiDefinitions definitions()
 	{
 		return this.definitions;
@@ -93,5 +93,9 @@ public final class Api implements IAppEngApi
 	public IGridConnection createGridConnection( final IGridNode a, final IGridNode b ) throws FailedConnection
 	{
 		return new GridConnection( a, b, AEPartLocation.INTERNAL );
+	}
+
+	public static Api internalApi(){
+		return INSTANCE;
 	}
 }

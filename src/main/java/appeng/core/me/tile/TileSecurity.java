@@ -23,6 +23,8 @@ import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.List;
 
+import appeng.core.lib.Api;
+import appeng.core.lib.features.registries.PlayerRegistry;
 import io.netty.buffer.ByteBuf;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -45,7 +47,6 @@ import appeng.api.config.ViewItems;
 import appeng.api.events.LocatableEventAnnounce;
 import appeng.api.events.LocatableEventAnnounce.LocatableEvent;
 import appeng.api.features.ILocatable;
-import appeng.api.features.IPlayerRegistry;
 import appeng.api.implementations.items.IBiometricCard;
 import appeng.api.implementations.tiles.IColorableTile;
 import appeng.api.networking.GridFlags;
@@ -311,7 +312,7 @@ public class TileSecurity extends AENetworkTile implements ITerminalHost, IAEApp
 	@Override
 	public void readPermissions( final HashMap<Integer, EnumSet<SecurityPermissions>> playerPerms )
 	{
-		final IPlayerRegistry pr = AEApi.instance().registries().players();
+		final PlayerRegistry pr = Api.internalApi().registries().players();
 
 		// read permissions
 		for( final IAEItemStack ais : this.inventory.getStoredItems() )

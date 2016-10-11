@@ -26,13 +26,13 @@ package appeng.api.implementations.items;
 
 import java.util.EnumSet;
 
+import appeng.core.lib.features.registries.PlayerRegistry;
+import appeng.core.lib.helpers.PlayerSecurityWrapper;
 import com.mojang.authlib.GameProfile;
 
 import net.minecraft.item.ItemStack;
 
 import appeng.api.config.SecurityPermissions;
-import appeng.api.features.IPlayerRegistry;
-import appeng.api.networking.security.ISecurityRegistry;
 
 
 public interface IBiometricCard
@@ -87,5 +87,7 @@ public interface IBiometricCard
 	 * @param pr player registry
 	 * @param is card
 	 */
-	void registerPermissions( ISecurityRegistry registry, IPlayerRegistry pr, ItemStack is );
+	void registerPermissions( PlayerSecurityWrapper registry, PlayerRegistry pr, ItemStack is );
+	//TODO API Implemetation classes are used in API definitions.
+	//TODO API This is a no-go, so maybe that method should be removed
 }

@@ -20,7 +20,6 @@ package appeng.core.lib.api.definitions;
 
 
 import appeng.api.definitions.IItemDefinition;
-import appeng.api.definitions.IItems;
 import appeng.api.util.AEColoredItemDefinition;
 import appeng.core.crafting.item.ItemEncodedPattern;
 import appeng.core.item.ItemCrystalSeed;
@@ -61,7 +60,7 @@ import appeng.tools.item.ToolQuartzWrench;
 /**
  * Internal implementation for the API items
  */
-public final class ApiItems implements IItems
+public final class ApiItems// implements IItems
 {
 	private final IItemDefinition certusQuartzAxe;
 	private final IItemDefinition certusQuartzHoe;
@@ -180,223 +179,223 @@ public final class ApiItems implements IItems
 		this.toolReplicatorCard = debugTools.item( "debug_replicator_card", ToolReplicatorCard::new ).build();
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition certusQuartzAxe()
 	{
 		return this.certusQuartzAxe;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition certusQuartzHoe()
 	{
 		return this.certusQuartzHoe;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition certusQuartzShovel()
 	{
 		return this.certusQuartzShovel;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition certusQuartzPick()
 	{
 		return this.certusQuartzPick;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition certusQuartzSword()
 	{
 		return this.certusQuartzSword;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition certusQuartzWrench()
 	{
 		return this.certusQuartzWrench;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition certusQuartzKnife()
 	{
 		return this.certusQuartzKnife;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition netherQuartzAxe()
 	{
 		return this.netherQuartzAxe;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition netherQuartzHoe()
 	{
 		return this.netherQuartzHoe;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition netherQuartzShovel()
 	{
 		return this.netherQuartzShovel;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition netherQuartzPick()
 	{
 		return this.netherQuartzPick;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition netherQuartzSword()
 	{
 		return this.netherQuartzSword;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition netherQuartzWrench()
 	{
 		return this.netherQuartzWrench;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition netherQuartzKnife()
 	{
 		return this.netherQuartzKnife;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition entropyManipulator()
 	{
 		return this.entropyManipulator;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition wirelessTerminal()
 	{
 		return this.wirelessTerminal;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition biometricCard()
 	{
 		return this.biometricCard;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition chargedStaff()
 	{
 		return this.memoryCard;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition massCannon()
 	{
 		return this.massCannon;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition memoryCard()
 	{
 		return this.memoryCard;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition networkTool()
 	{
 		return this.networkTool;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition portableCell()
 	{
 		return this.portableCell;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition cellCreative()
 	{
 		return this.cellCreative;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition viewCell()
 	{
 		return this.viewCell;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition cell1k()
 	{
 		return this.cell1k;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition cell4k()
 	{
 		return this.cell4k;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition cell16k()
 	{
 		return this.cell16k;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition cell64k()
 	{
 		return this.cell64k;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition spatialCell2()
 	{
 		return this.spatialCell2;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition spatialCell16()
 	{
 		return this.spatialCell16;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition spatialCell128()
 	{
 		return this.spatialCell128;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition facade()
 	{
 		return this.facade;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition crystalSeed()
 	{
 		return this.crystalSeed;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition encodedPattern()
 	{
 		return this.encodedPattern;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition colorApplicator()
 	{
 		return this.colorApplicator;
 	}
 
-	@Override
+	/*@Override*/
 	public AEColoredItemDefinition coloredPaintBall()
 	{
 		return this.coloredPaintBall;
 	}
 
-	@Override
+	/*@Override*/
 	public AEColoredItemDefinition coloredLumenPaintBall()
 	{
 		return this.coloredLumenPaintBall;

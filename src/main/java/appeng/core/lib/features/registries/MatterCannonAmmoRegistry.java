@@ -24,13 +24,12 @@ import java.util.HashMap;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
-import appeng.api.features.IMatterCannonAmmoRegistry;
 import appeng.core.lib.util.Platform;
 import appeng.core.recipes.ores.IOreListener;
 import appeng.core.recipes.ores.OreDictionaryHandler;
 
 
-public class MatterCannonAmmoRegistry implements IOreListener, IMatterCannonAmmoRegistry
+public class MatterCannonAmmoRegistry implements IOreListener//, IMatterCannonAmmoRegistry
 {
 
 	private final HashMap<ItemStack, Double> DamageModifiers = new HashMap<ItemStack, Double>();
@@ -41,13 +40,13 @@ public class MatterCannonAmmoRegistry implements IOreListener, IMatterCannonAmmo
 		this.registerAmmo( new ItemStack( Items.GOLD_NUGGET ), 196.96655 );
 	}
 
-	@Override
+//	@Override
 	public void registerAmmo( final ItemStack ammo, final double weight )
 	{
 		this.DamageModifiers.put( ammo, weight );
 	}
 
-	@Override
+//	@Override
 	public float getPenetration( final ItemStack is )
 	{
 		for( final ItemStack o : this.DamageModifiers.keySet() )
@@ -60,7 +59,7 @@ public class MatterCannonAmmoRegistry implements IOreListener, IMatterCannonAmmo
 		return 0;
 	}
 
-	@Override
+//	@Override
 	public void oreRegistered( final String name, final ItemStack item )
 	{
 		if( !( name.startsWith( "berry" ) || name.startsWith( "nugget" ) ) )

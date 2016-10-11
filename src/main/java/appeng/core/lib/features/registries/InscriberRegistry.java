@@ -33,7 +33,6 @@ import net.minecraft.item.ItemStack;
 
 import appeng.api.features.IInscriberRecipe;
 import appeng.api.features.IInscriberRecipeBuilder;
-import appeng.api.features.IInscriberRegistry;
 import appeng.api.features.InscriberProcessType;
 import appeng.core.lib.features.registries.entries.InscriberRecipe;
 
@@ -43,7 +42,7 @@ import appeng.core.lib.features.registries.entries.InscriberRecipe;
  * @version rv3
  * @since rv2
  */
-public final class InscriberRegistry implements IInscriberRegistry
+public final class InscriberRegistry// implements IInscriberRegistry
 {
 	private final Set<IInscriberRecipe> recipes;
 	private final Set<ItemStack> optionals;
@@ -57,34 +56,34 @@ public final class InscriberRegistry implements IInscriberRegistry
 	}
 
 	@Nonnull
-	@Override
+//	@Override
 	public Collection<IInscriberRecipe> getRecipes()
 	{
 		return Collections.unmodifiableCollection( this.recipes );
 	}
 
 	@Nonnull
-	@Override
+//	@Override
 	public Set<ItemStack> getOptionals()
 	{
 		return this.optionals;
 	}
 
 	@Nonnull
-	@Override
+//	@Override
 	public Set<ItemStack> getInputs()
 	{
 		return this.inputs;
 	}
 
 	@Nonnull
-	@Override
+//	@Override
 	public IInscriberRecipeBuilder builder()
 	{
 		return new Builder();
 	}
 
-	@Override
+//	@Override
 	public void addRecipe( final IInscriberRecipe recipe )
 	{
 		if( recipe == null )
@@ -100,7 +99,7 @@ public final class InscriberRegistry implements IInscriberRegistry
 		this.inputs.addAll( recipe.getInputs() );
 	}
 
-	@Override
+//	@Override
 	public void removeRecipe( final IInscriberRecipe toBeRemovedRecipe )
 	{
 		for( final Iterator<IInscriberRecipe> iterator = this.recipes.iterator(); iterator.hasNext(); )

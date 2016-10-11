@@ -27,7 +27,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 
 import appeng.api.definitions.IBlockDefinition;
-import appeng.api.definitions.IBlocks;
 import appeng.api.definitions.ITileDefinition;
 import appeng.core.AppEng;
 import appeng.core.block.BlockCharger;
@@ -99,7 +98,7 @@ import appeng.tools.hooks.DispenserBehaviorTinyTNT;
 /**
  * Internal implementation for the API blocks
  */
-public final class ApiBlocks implements IBlocks
+public final class ApiBlocks// implements IBlocks
 {
 	private final IBlockDefinition quartzOre;
 	private final IBlockDefinition quartzOreCharged;
@@ -301,151 +300,151 @@ public final class ApiBlocks implements IBlocks
 		return registry.block( registryName, () -> new BlockStairCommon( block.maybeBlock().get(), block.identifier() ) ).features( AEFeature.DecorativeQuartzBlocks ).build();
 	}
 
-	@Override
+	/*@Override*/
 	public IBlockDefinition quartzOre()
 	{
 		return this.quartzOre;
 	}
 
-	@Override
+	/*@Override*/
 	public IBlockDefinition quartzOreCharged()
 	{
 		return this.quartzOreCharged;
 	}
 
-	@Override
+	/*@Override*/
 	public IBlockDefinition matrixFrame()
 	{
 		return this.matrixFrame;
 	}
 
-	@Override
+	/*@Override*/
 	public IBlockDefinition quartzBlock()
 	{
 		return this.quartzBlock;
 	}
 
-	@Override
+	/*@Override*/
 	public IBlockDefinition quartzPillar()
 	{
 		return this.quartzPillar;
 	}
 
-	@Override
+	/*@Override*/
 	public IBlockDefinition chiseledQuartzBlock()
 	{
 		return this.chiseledQuartzBlock;
 	}
 
-	@Override
+	/*@Override*/
 	public IBlockDefinition quartzGlass()
 	{
 		return this.quartzGlass;
 	}
 
-	@Override
+	/*@Override*/
 	public IBlockDefinition quartzVibrantGlass()
 	{
 		return this.quartzVibrantGlass;
 	}
 
-	@Override
+	/*@Override*/
 	public IBlockDefinition quartzFixture()
 	{
 		return this.quartzFixture;
 	}
 
-	@Override
+	/*@Override*/
 	public IBlockDefinition fluixBlock()
 	{
 		return this.fluixBlock;
 	}
 
-	@Override
+	/*@Override*/
 	public IBlockDefinition skyStoneBlock()
 	{
 		return this.skyStoneBlock;
 	}
 
-	@Override
+	/*@Override*/
 	public IBlockDefinition smoothSkyStoneBlock()
 	{
 		return this.smoothSkyStoneBlock;
 	}
 
-	@Override
+	/*@Override*/
 	public IBlockDefinition skyStoneBrick()
 	{
 		return this.skyStoneBrick;
 	}
 
-	@Override
+	/*@Override*/
 	public IBlockDefinition skyStoneSmallBrick()
 	{
 		return this.skyStoneSmallBrick;
 	}
 
-	@Override
+	/*@Override*/
 	public IBlockDefinition skyStoneChest()
 	{
 		return this.skyStoneChest;
 	}
 
-	@Override
+	/*@Override*/
 	public IBlockDefinition smoothSkyStoneChest()
 	{
 		return this.smoothSkyStoneChest;
 	}
 
-	@Override
+	/*@Override*/
 	public IBlockDefinition skyCompass()
 	{
 		return this.skyCompass;
 	}
 
-	@Override
+	/*@Override*/
 	public IBlockDefinition skyStoneStairs()
 	{
 		return this.skyStoneStairs;
 	}
 
-	@Override
+	/*@Override*/
 	public IBlockDefinition smoothSkyStoneStairs()
 	{
 		return this.smoothSkyStoneStairs;
 	}
 
-	@Override
+	/*@Override*/
 	public IBlockDefinition skyStoneBrickStairs()
 	{
 		return this.skyStoneBrickStairs;
 	}
 
-	@Override
+	/*@Override*/
 	public IBlockDefinition skyStoneSmallBrickStairs()
 	{
 		return this.skyStoneSmallBrickStairs;
 	}
 
-	@Override
+	/*@Override*/
 	public IBlockDefinition fluixStairs()
 	{
 		return this.fluixStairs;
 	}
 
-	@Override
+	/*@Override*/
 	public IBlockDefinition quartzStairs()
 	{
 		return this.quartzStairs;
 	}
 
-	@Override
+	/*@Override*/
 	public IBlockDefinition chiseledQuartzStairs()
 	{
 		return this.chiseledQuartzStairs;
 	}
 
-	@Override
+	/*@Override*/
 	public IBlockDefinition quartzPillarStairs()
 	{
 		return this.quartzPillarStairs;
@@ -494,211 +493,211 @@ public final class ApiBlocks implements IBlocks
 	 * }
 	 */
 
-	@Override
+	/*@Override*/
 	public ITileDefinition grindstone()
 	{
 		return this.grindstone;
 	}
 
-	@Override
+	/*@Override*/
 	public ITileDefinition crank()
 	{
 		return this.crank;
 	}
 
-	@Override
+	/*@Override*/
 	public ITileDefinition inscriber()
 	{
 		return this.inscriber;
 	}
 
-	@Override
+	/*@Override*/
 	public ITileDefinition wirelessAccessPoint()
 	{
 		return this.wirelessAccessPoint;
 	}
 
-	@Override
+	/*@Override*/
 	public ITileDefinition charger()
 	{
 		return this.charger;
 	}
 
-	@Override
+	/*@Override*/
 	public IBlockDefinition tinyTNT()
 	{
 		return this.tinyTNT;
 	}
 
-	@Override
+	/*@Override*/
 	public ITileDefinition securityStation()
 	{
 		return this.securityStation;
 	}
 
-	@Override
+	/*@Override*/
 	public ITileDefinition quantumRing()
 	{
 		return this.quantumRing;
 	}
 
-	@Override
+	/*@Override*/
 	public ITileDefinition quantumLink()
 	{
 		return this.quantumLink;
 	}
 
-	@Override
+	/*@Override*/
 	public ITileDefinition spatialPylon()
 	{
 		return this.spatialPylon;
 	}
 
-	@Override
+	/*@Override*/
 	public ITileDefinition spatialIOPort()
 	{
 		return this.spatialIOPort;
 	}
 
-	@Override
+	/*@Override*/
 	public ITileDefinition multiPart()
 	{
 		return this.multiPart;
 	}
 
-	@Override
+	/*@Override*/
 	public ITileDefinition controller()
 	{
 		return this.controller;
 	}
 
-	@Override
+	/*@Override*/
 	public ITileDefinition drive()
 	{
 		return this.drive;
 	}
 
-	@Override
+	/*@Override*/
 	public ITileDefinition chest()
 	{
 		return this.chest;
 	}
 
-	@Override
+	/*@Override*/
 	public ITileDefinition iface()
 	{
 		return this.iface;
 	}
 
-	@Override
+	/*@Override*/
 	public ITileDefinition cellWorkbench()
 	{
 		return this.cellWorkbench;
 	}
 
-	@Override
+	/*@Override*/
 	public ITileDefinition iOPort()
 	{
 		return this.iOPort;
 	}
 
-	@Override
+	/*@Override*/
 	public ITileDefinition condenser()
 	{
 		return this.condenser;
 	}
 
-	@Override
+	/*@Override*/
 	public ITileDefinition energyAcceptor()
 	{
 		return this.energyAcceptor;
 	}
 
-	@Override
+	/*@Override*/
 	public ITileDefinition vibrationChamber()
 	{
 		return this.vibrationChamber;
 	}
 
-	@Override
+	/*@Override*/
 	public ITileDefinition quartzGrowthAccelerator()
 	{
 		return this.quartzGrowthAccelerator;
 	}
 
-	@Override
+	/*@Override*/
 	public ITileDefinition energyCell()
 	{
 		return this.energyCell;
 	}
 
-	@Override
+	/*@Override*/
 	public ITileDefinition energyCellDense()
 	{
 		return this.energyCellDense;
 	}
 
-	@Override
+	/*@Override*/
 	public ITileDefinition energyCellCreative()
 	{
 		return this.energyCellCreative;
 	}
 
-	@Override
+	/*@Override*/
 	public ITileDefinition craftingUnit()
 	{
 		return this.craftingUnit;
 	}
 
-	@Override
+	/*@Override*/
 	public ITileDefinition craftingAccelerator()
 	{
 		return this.craftingAccelerator;
 	}
 
-	@Override
+	/*@Override*/
 	public ITileDefinition craftingStorage1k()
 	{
 		return this.craftingStorage1k;
 	}
 
-	@Override
+	/*@Override*/
 	public ITileDefinition craftingStorage4k()
 	{
 		return this.craftingStorage4k;
 	}
 
-	@Override
+	/*@Override*/
 	public ITileDefinition craftingStorage16k()
 	{
 		return this.craftingStorage16k;
 	}
 
-	@Override
+	/*@Override*/
 	public ITileDefinition craftingStorage64k()
 	{
 		return this.craftingStorage64k;
 	}
 
-	@Override
+	/*@Override*/
 	public ITileDefinition craftingMonitor()
 	{
 		return this.craftingMonitor;
 	}
 
-	@Override
+	/*@Override*/
 	public ITileDefinition molecularAssembler()
 	{
 		return this.molecularAssembler;
 	}
 
-	@Override
+	/*@Override*/
 	public ITileDefinition lightDetector()
 	{
 		return this.lightDetector;
 	}
 
-	@Override
+	/*@Override*/
 	public ITileDefinition paint()
 	{
 		return this.paint;

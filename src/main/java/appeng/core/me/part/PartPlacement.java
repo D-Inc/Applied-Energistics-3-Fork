@@ -23,6 +23,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
+import appeng.core.lib.Api;
+import appeng.core.lib.api.definitions.ApiItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.state.IBlockState;
@@ -47,7 +49,6 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 import appeng.api.AEApi;
 import appeng.api.definitions.IBlockDefinition;
-import appeng.api.definitions.IItems;
 import appeng.api.parts.IFacadePart;
 import appeng.api.parts.IPartHost;
 import appeng.api.parts.IPartItem;
@@ -243,7 +244,7 @@ public class PartPlacement
 
 		BlockPos te_pos = pos;
 
-		final IBlockDefinition multiPart = AEApi.instance().definitions().blocks().multiPart();
+		final IBlockDefinition multiPart = Api.internalApi().definitions().blocks().multiPart();
 		if( host == null && pass == PlaceType.PLACE_ITEM )
 		{
 			EnumFacing offset = null;
@@ -454,7 +455,7 @@ public class PartPlacement
 			else
 			{
 				final ItemStack held = event.getEntityPlayer().getHeldItem( event.getHand() );
-				final IItems items = AEApi.instance().definitions().items();
+				final ApiItems items = Api.internalApi().definitions().items();
 
 				boolean supportedItem = items.memoryCard().isSameAs( held );
 				supportedItem |= items.colorApplicator().isSameAs( held );

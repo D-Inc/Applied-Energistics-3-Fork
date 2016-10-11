@@ -28,6 +28,8 @@ import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import appeng.core.lib.Api;
+import appeng.core.lib.ApiDefinitions;
 import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableMap;
@@ -57,7 +59,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import appeng.api.AEApi;
 import appeng.api.client.BakingPipeline;
 import appeng.api.config.Upgrades;
-import appeng.api.definitions.IDefinitions;
 import appeng.api.implementations.IUpgradeableHost;
 import appeng.api.implementations.items.IMemoryCard;
 import appeng.api.implementations.items.MemoryCardMessages;
@@ -477,7 +478,7 @@ public abstract class AEBasePart implements IPart, IGridProxyable, IActionHost, 
 			ItemStack is = this.getItemStack( PartItemStack.Network );
 
 			// Blocks and parts share the same soul!
-			final IDefinitions definitions = AEApi.instance().definitions();
+			final ApiDefinitions definitions = Api.internalApi().definitions();
 			if( definitions.parts().iface().isSameAs( is ) )
 			{
 				Optional<ItemStack> iface = definitions.blocks().iface().maybeStack( 1 );

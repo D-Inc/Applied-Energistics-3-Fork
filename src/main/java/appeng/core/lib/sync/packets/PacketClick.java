@@ -19,6 +19,8 @@
 package appeng.core.lib.sync.packets;
 
 
+import appeng.core.lib.Api;
+import appeng.core.lib.api.definitions.ApiItems;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 
@@ -30,7 +32,6 @@ import net.minecraft.util.math.BlockPos;
 
 import appeng.api.AEApi;
 import appeng.api.definitions.IComparableDefinition;
-import appeng.api.definitions.IItems;
 import appeng.api.implementations.items.IMemoryCard;
 import appeng.api.implementations.items.MemoryCardMessages;
 import appeng.core.lib.sync.AppEngPacket;
@@ -87,7 +88,7 @@ public class PacketClick extends AppEngPacket
 	public void serverPacketData( final INetworkInfo manager, final AppEngPacket packet, final EntityPlayer player )
 	{
 		final ItemStack is = player.inventory.getCurrentItem();
-		final IItems items = AEApi.instance().definitions().items();
+		final ApiItems items = Api.internalApi().definitions().items();
 		final IComparableDefinition maybeMemoryCard = items.memoryCard();
 		final IComparableDefinition maybeColorApplicator = items.colorApplicator();
 

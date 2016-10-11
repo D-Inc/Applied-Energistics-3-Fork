@@ -27,12 +27,11 @@ import net.minecraft.util.EnumFacing;
 
 import appeng.api.networking.security.BaseActionSource;
 import appeng.api.storage.IExternalStorageHandler;
-import appeng.api.storage.IExternalStorageRegistry;
 import appeng.api.storage.StorageChannel;
 import appeng.core.lib.features.registries.entries.ExternalIInv;
 
 
-public class ExternalStorageRegistry implements IExternalStorageRegistry
+public class ExternalStorageRegistry// implements IExternalStorageRegistry
 {
 
 	private final List<IExternalStorageHandler> Handlers;
@@ -43,13 +42,13 @@ public class ExternalStorageRegistry implements IExternalStorageRegistry
 		this.Handlers = new ArrayList<IExternalStorageHandler>();
 	}
 
-	@Override
+//	@Override
 	public void addExternalStorageInterface( final IExternalStorageHandler ei )
 	{
 		this.Handlers.add( ei );
 	}
 
-	@Override
+//	@Override
 	public IExternalStorageHandler getHandler( final TileEntity te, final EnumFacing d, final StorageChannel chan, final BaseActionSource mySrc )
 	{
 		for( final IExternalStorageHandler x : this.Handlers )
