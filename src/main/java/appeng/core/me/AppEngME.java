@@ -13,6 +13,7 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppedEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 
+import appeng.api.module.IME;
 import appeng.api.module.Module;
 import appeng.api.module.Module.ModuleEventHandler;
 import appeng.core.AppEng;
@@ -21,11 +22,9 @@ import appeng.core.lib.FacadeConfig;
 import appeng.core.lib.features.AEFeature;
 
 
-@Module( AppEngME.NAME )
-public class AppEngME
+@Module( IME.NAME )
+public class AppEngME implements IME
 {
-
-	public static final String NAME = "me";
 
 	@ModuleEventHandler
 	public void preInit( FMLPreInitializationEvent event )

@@ -4,10 +4,6 @@ package appeng.core.worldgen;
 
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLInterModComms.IMCEvent;
-
-import appeng.api.module.Module;
-import appeng.api.module.Module.ModuleEventHandler;
-
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerAboutToStartEvent;
@@ -15,12 +11,14 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppedEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 
+import appeng.api.module.IWorldGen;
+import appeng.api.module.Module;
+import appeng.api.module.Module.ModuleEventHandler;
 
-@Module( AppEngWorldGen.NAME )
-public class AppEngWorldGen
+
+@Module( IWorldGen.NAME )
+public class AppEngWorldGen implements IWorldGen
 {
-
-	public static final String NAME = "worldgen";
 
 	@ModuleEventHandler
 	public void preInit( FMLPreInitializationEvent event )

@@ -18,6 +18,7 @@ import net.minecraftforge.fml.common.event.FMLServerStoppedEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 
+import appeng.api.module.ICore;
 import appeng.api.module.Module;
 import appeng.api.module.Module.ModuleEventHandler;
 import appeng.core.hooks.TickHandler;
@@ -38,11 +39,9 @@ import appeng.core.services.version.VersionCheckerConfig;
 /*
  * TODO 1.10.2-MODUSEP - Dat giant mess though. Move all stuff that belongs to specific modules into these specific modules. Yes, you can boom the API.
  */
-@Module( value = AppEngCore.NAME, dependencies = "hard-before:module-*" )
-public class AppEngCore
+@Module( value = ICore.NAME, dependencies = "hard-before:module-*" )
+public class AppEngCore implements ICore
 {
-
-	public static final String NAME = "core";
 
 	@SidedProxy( clientSide = "appeng.core.client.AppEngCoreClientProxy", serverSide = "appeng.core.server.AppEngCoreServerProxy" )
 	private static AppEngCoreProxy proxy;
