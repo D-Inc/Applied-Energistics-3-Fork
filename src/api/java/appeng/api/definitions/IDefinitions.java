@@ -5,6 +5,6 @@ package appeng.api.definitions;
 public interface IDefinitions<T>
 {
 
-	T get( String identifier );
+	IDefinitions<T> get( String identifier );
 
 }
