@@ -44,18 +44,18 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import appeng.api.AEApi;
-import appeng.api.implementations.items.IItemGroup;
-import appeng.api.parts.IPart;
-import appeng.api.parts.IPartHelper;
-import appeng.api.parts.IPartItem;
-import appeng.api.util.AEColor;
+import appeng.core.api.AEApi;
+import appeng.core.api.implementations.items.IItemGroup;
+import appeng.core.api.util.AEColor;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.features.ActivityState;
 import appeng.core.lib.features.ItemStackSrc;
 import appeng.core.lib.item.AEBaseItem;
 import appeng.core.lib.localization.GuiText;
+import appeng.core.me.api.parts.IPart;
+import appeng.core.me.api.parts.IPartHelper;
+import appeng.core.me.api.parts.IPartItem;
 
 
 public final class ItemMultiPart extends AEBaseItem implements IPartItem, IItemGroup

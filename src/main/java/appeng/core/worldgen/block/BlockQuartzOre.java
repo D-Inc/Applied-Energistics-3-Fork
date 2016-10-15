@@ -30,8 +30,8 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-import appeng.api.AEApi;
-import appeng.api.exceptions.MissingDefinition;
+import appeng.core.api.AEApi;
+import appeng.core.api.exceptions.MissingDefinition;
 import appeng.core.lib.block.AEBaseBlock;
 
 

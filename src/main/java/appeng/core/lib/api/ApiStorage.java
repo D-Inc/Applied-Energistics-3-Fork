@@ -27,21 +27,21 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.FluidStack;
 
-import appeng.api.networking.crafting.ICraftingLink;
-import appeng.api.networking.crafting.ICraftingRequester;
-import appeng.api.networking.energy.IEnergySource;
-import appeng.api.networking.security.BaseActionSource;
-import appeng.api.storage.IMEInventory;
-import appeng.api.storage.IStorageHelper;
-import appeng.api.storage.data.IAEFluidStack;
-import appeng.api.storage.data.IAEItemStack;
-import appeng.api.storage.data.IItemList;
 import appeng.core.crafting.me.CraftingLink;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.util.item.AEFluidStack;
 import appeng.core.lib.util.item.AEItemStack;
 import appeng.core.lib.util.item.FluidList;
 import appeng.core.lib.util.item.ItemList;
+import appeng.core.me.api.networking.crafting.ICraftingLink;
+import appeng.core.me.api.networking.crafting.ICraftingRequester;
+import appeng.core.me.api.networking.energy.IEnergySource;
+import appeng.core.me.api.networking.security.BaseActionSource;
+import appeng.core.me.api.storage.IMEInventory;
+import appeng.core.me.api.storage.IStorageHelper;
+import appeng.core.me.api.storage.data.IAEFluidStack;
+import appeng.core.me.api.storage.data.IAEItemStack;
+import appeng.core.me.api.storage.data.IItemList;
 
 
 public class ApiStorage implements IStorageHelper

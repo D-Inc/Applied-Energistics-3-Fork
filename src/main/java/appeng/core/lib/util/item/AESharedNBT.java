@@ -26,10 +26,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
-import appeng.api.AEApi;
-import appeng.api.features.IItemComparison;
-import appeng.api.storage.data.IAETagCompound;
+import appeng.core.api.AEApi;
+import appeng.core.api.features.IItemComparison;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.storage.data.IAETagCompound;
 
 
 /*

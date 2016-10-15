@@ -24,15 +24,15 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 
-import appeng.api.config.ActionItems;
-import appeng.api.config.Settings;
-import appeng.api.storage.ITerminalHost;
+import appeng.core.api.config.ActionItems;
+import appeng.core.api.config.Settings;
 import appeng.core.crafting.container.ContainerCraftingTerm;
 import appeng.core.lib.client.gui.widgets.GuiImgButton;
 import appeng.core.lib.helpers.InventoryAction;
 import appeng.core.lib.localization.GuiText;
 import appeng.core.lib.sync.network.NetworkHandler;
 import appeng.core.lib.sync.packets.PacketInventoryAction;
+import appeng.core.me.api.storage.ITerminalHost;
 import appeng.core.me.client.gui.GuiMEMonitorable;
 import appeng.core.me.container.SlotCraftingMatrix;
 

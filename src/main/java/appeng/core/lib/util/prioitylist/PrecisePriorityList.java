@@ -19,8 +19,8 @@
 package appeng.core.lib.util.prioitylist;
 
 
-import appeng.api.storage.data.IAEStack;
-import appeng.api.storage.data.IItemList;
+import appeng.core.me.api.storage.data.IAEStack;
+import appeng.core.me.api.storage.data.IItemList;
 
 
 public class PrecisePriorityList<T extends IAEStack<T>> implements IPartitionList<T>

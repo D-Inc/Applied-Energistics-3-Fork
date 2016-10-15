@@ -23,16 +23,16 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
 
-import appeng.api.networking.security.BaseActionSource;
-import appeng.api.networking.storage.IBaseMonitor;
-import appeng.api.storage.IMEInventory;
-import appeng.api.storage.IMEMonitor;
-import appeng.api.storage.IMEMonitorHandlerReceiver;
-import appeng.api.storage.StorageChannel;
-import appeng.api.storage.data.IAEStack;
-import appeng.api.storage.data.IItemList;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.util.inv.ItemListIgnoreCrafting;
+import appeng.core.me.api.networking.security.BaseActionSource;
+import appeng.core.me.api.networking.storage.IBaseMonitor;
+import appeng.core.me.api.storage.IMEInventory;
+import appeng.core.me.api.storage.IMEMonitor;
+import appeng.core.me.api.storage.IMEMonitorHandlerReceiver;
+import appeng.core.me.api.storage.StorageChannel;
+import appeng.core.me.api.storage.data.IAEStack;
+import appeng.core.me.api.storage.data.IItemList;
 
 
 public class MEMonitorPassThrough<T extends IAEStack<T>> extends MEPassThrough<T> implements IMEMonitor<T>, IMEMonitorHandlerReceiver<T>

@@ -29,8 +29,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-import appeng.api.implementations.items.IAEWrench;
-import appeng.api.util.DimensionalCoord;
+import appeng.core.api.implementations.items.IAEWrench;
+import appeng.core.api.util.DimensionalCoord;
 import appeng.core.lib.item.AEBaseItem;
 import appeng.core.lib.util.Platform;
 

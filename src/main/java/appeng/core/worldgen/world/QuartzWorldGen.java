@@ -29,10 +29,10 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraftforge.fml.common.IWorldGenerator;
 
-import appeng.api.AEApi;
 import appeng.api.definitions.IBlockDefinition;
 import appeng.api.definitions.IBlocks;
-import appeng.api.features.IWorldGen.WorldGenType;
+import appeng.core.api.AEApi;
+import appeng.core.api.features.IWorldGen.WorldGenType;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.features.registries.WorldGenRegistry;
 

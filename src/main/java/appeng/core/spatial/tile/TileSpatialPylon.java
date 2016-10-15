@@ -25,12 +25,12 @@ import io.netty.buffer.ByteBuf;
 
 import net.minecraft.util.EnumFacing;
 
-import appeng.api.networking.GridFlags;
-import appeng.api.networking.events.MENetworkChannelsChanged;
-import appeng.api.networking.events.MENetworkEventSubscribe;
-import appeng.api.networking.events.MENetworkPowerStatusChange;
 import appeng.core.lib.tile.TileEvent;
 import appeng.core.lib.tile.events.TileEventType;
+import appeng.core.me.api.networking.GridFlags;
+import appeng.core.me.api.networking.events.MENetworkChannelsChanged;
+import appeng.core.me.api.networking.events.MENetworkEventSubscribe;
+import appeng.core.me.api.networking.events.MENetworkPowerStatusChange;
 import appeng.core.me.grid.GridAccessException;
 import appeng.core.me.grid.cluster.IAEMultiBlock;
 import appeng.core.me.grid.cluster.implementations.SpatialPylonCalculator;

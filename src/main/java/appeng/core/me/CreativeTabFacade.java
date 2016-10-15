@@ -26,7 +26,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-import appeng.api.AEApi;
+import appeng.core.api.AEApi;
 import appeng.decorative.item.ItemFacade;
 
 

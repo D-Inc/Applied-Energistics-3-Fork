@@ -22,11 +22,11 @@ package appeng.core.me.container;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IInventory;
 
-import appeng.api.config.FullnessMode;
-import appeng.api.config.OperationMode;
-import appeng.api.config.RedstoneMode;
-import appeng.api.config.SecurityPermissions;
-import appeng.api.config.Settings;
+import appeng.core.api.config.FullnessMode;
+import appeng.core.api.config.OperationMode;
+import appeng.core.api.config.RedstoneMode;
+import appeng.core.api.config.SecurityPermissions;
+import appeng.core.api.config.Settings;
 import appeng.core.lib.container.ContainerUpgradeable;
 import appeng.core.lib.container.guisync.GuiSync;
 import appeng.core.lib.container.slot.SlotOutput;

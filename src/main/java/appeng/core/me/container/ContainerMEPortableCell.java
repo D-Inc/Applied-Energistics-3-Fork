@@ -22,9 +22,9 @@ package appeng.core.me.container;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
 
-import appeng.api.config.Actionable;
-import appeng.api.config.PowerMultiplier;
-import appeng.api.implementations.guiobjects.IPortableCell;
+import appeng.core.api.config.Actionable;
+import appeng.core.api.config.PowerMultiplier;
+import appeng.core.api.implementations.guiobjects.IPortableCell;
 import appeng.core.lib.container.interfaces.IInventorySlotAware;
 import appeng.core.lib.util.Platform;
 

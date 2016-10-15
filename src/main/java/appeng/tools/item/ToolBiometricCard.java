@@ -34,13 +34,13 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 
-import appeng.api.config.SecurityPermissions;
-import appeng.api.features.IPlayerRegistry;
-import appeng.api.implementations.items.IBiometricCard;
-import appeng.api.networking.security.ISecurityRegistry;
+import appeng.core.api.config.SecurityPermissions;
+import appeng.core.api.features.IPlayerRegistry;
+import appeng.core.api.implementations.items.IBiometricCard;
 import appeng.core.lib.item.AEBaseItem;
 import appeng.core.lib.localization.GuiText;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.networking.security.ISecurityRegistry;
 
 
 public class ToolBiometricCard extends AEBaseItem implements IBiometricCard

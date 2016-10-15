@@ -41,12 +41,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-import appeng.api.AEApi;
-import appeng.api.exceptions.MissingDefinition;
-import appeng.api.parts.IAlphaPassItem;
-import appeng.api.util.AEPartLocation;
+import appeng.core.api.AEApi;
+import appeng.core.api.exceptions.MissingDefinition;
+import appeng.core.api.util.AEPartLocation;
 import appeng.core.lib.FacadeConfig;
 import appeng.core.lib.item.AEBaseItem;
+import appeng.core.me.api.parts.IAlphaPassItem;
 import appeng.decorative.part.FacadePart;
 import appeng.decorative.part.IFacadeItem;
 

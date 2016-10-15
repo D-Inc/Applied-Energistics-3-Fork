@@ -27,10 +27,10 @@ import com.google.common.base.Preconditions;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
-import appeng.api.exceptions.MissingIngredientError;
-import appeng.api.exceptions.RegistrationError;
-import appeng.api.recipes.IIngredient;
-import appeng.api.recipes.ResolverResultSet;
+import appeng.core.api.exceptions.MissingIngredientError;
+import appeng.core.api.exceptions.RegistrationError;
+import appeng.core.api.recipes.IIngredient;
+import appeng.core.api.recipes.ResolverResultSet;
 
 
 public class IngredientSet implements IIngredient

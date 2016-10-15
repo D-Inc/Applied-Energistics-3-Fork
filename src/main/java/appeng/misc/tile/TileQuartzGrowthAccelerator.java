@@ -25,15 +25,15 @@ import io.netty.buffer.ByteBuf;
 
 import net.minecraft.util.EnumFacing;
 
-import appeng.api.implementations.IPowerChannelState;
-import appeng.api.implementations.tiles.ICrystalGrowthAccelerator;
-import appeng.api.networking.events.MENetworkEventSubscribe;
-import appeng.api.networking.events.MENetworkPowerStatusChange;
-import appeng.api.util.AECableType;
-import appeng.api.util.AEPartLocation;
+import appeng.core.api.implementations.IPowerChannelState;
+import appeng.core.api.implementations.tiles.ICrystalGrowthAccelerator;
+import appeng.core.api.util.AECableType;
+import appeng.core.api.util.AEPartLocation;
 import appeng.core.lib.tile.TileEvent;
 import appeng.core.lib.tile.events.TileEventType;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.networking.events.MENetworkEventSubscribe;
+import appeng.core.me.api.networking.events.MENetworkPowerStatusChange;
 import appeng.core.me.grid.GridAccessException;
 import appeng.core.me.tile.AENetworkTile;
 

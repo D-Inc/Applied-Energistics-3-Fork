@@ -26,19 +26,19 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import appeng.api.AEApi;
-import appeng.api.networking.IGrid;
-import appeng.api.networking.IGridCache;
-import appeng.api.networking.IGridHost;
-import appeng.api.networking.IGridNode;
-import appeng.api.networking.IGridStorage;
-import appeng.api.networking.IMachineSet;
-import appeng.api.networking.events.MENetworkEvent;
-import appeng.api.networking.events.MENetworkPostCacheConstruction;
-import appeng.api.util.IReadOnlyCollection;
+import appeng.core.api.AEApi;
+import appeng.core.api.util.IReadOnlyCollection;
 import appeng.core.hooks.TickHandler;
 import appeng.core.lib.util.ReadOnlyCollection;
 import appeng.core.lib.worlddata.WorldData;
+import appeng.core.me.api.networking.IGrid;
+import appeng.core.me.api.networking.IGridCache;
+import appeng.core.me.api.networking.IGridHost;
+import appeng.core.me.api.networking.IGridNode;
+import appeng.core.me.api.networking.IGridStorage;
+import appeng.core.me.api.networking.IMachineSet;
+import appeng.core.me.api.networking.events.MENetworkEvent;
+import appeng.core.me.api.networking.events.MENetworkPostCacheConstruction;
 
 
 public class Grid implements IGrid

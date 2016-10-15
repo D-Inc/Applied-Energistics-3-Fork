@@ -23,8 +23,8 @@ import java.util.HashMap;
 
 import net.minecraft.world.World;
 
-import appeng.api.networking.IGridNode;
 import appeng.core.lib.util.IWorldCallable;
+import appeng.core.me.api.networking.IGridNode;
 import appeng.core.me.part.p2p.PartP2PTunnelME;
 
 

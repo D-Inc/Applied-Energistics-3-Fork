@@ -29,8 +29,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
-import appeng.api.features.IGrinderEntry;
-import appeng.api.features.IGrinderRegistry;
+import appeng.core.api.features.IGrinderEntry;
+import appeng.core.api.features.IGrinderRegistry;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.AELog;
 import appeng.core.lib.features.registries.entries.AppEngGrinderRecipe;

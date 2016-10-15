@@ -19,17 +19,17 @@
 package appeng.core.me.grid.storage;
 
 
-import appeng.api.config.AccessRestriction;
-import appeng.api.config.Actionable;
-import appeng.api.config.IncludeExclude;
-import appeng.api.networking.security.BaseActionSource;
-import appeng.api.storage.IMEInventory;
-import appeng.api.storage.IMEInventoryHandler;
-import appeng.api.storage.StorageChannel;
-import appeng.api.storage.data.IAEStack;
-import appeng.api.storage.data.IItemList;
+import appeng.core.api.config.AccessRestriction;
+import appeng.core.api.config.Actionable;
+import appeng.core.api.config.IncludeExclude;
 import appeng.core.lib.util.prioitylist.DefaultPriorityList;
 import appeng.core.lib.util.prioitylist.IPartitionList;
+import appeng.core.me.api.networking.security.BaseActionSource;
+import appeng.core.me.api.storage.IMEInventory;
+import appeng.core.me.api.storage.IMEInventoryHandler;
+import appeng.core.me.api.storage.StorageChannel;
+import appeng.core.me.api.storage.data.IAEStack;
+import appeng.core.me.api.storage.data.IItemList;
 
 
 public class MEInventoryHandler<T extends IAEStack<T>> implements IMEInventoryHandler<T>

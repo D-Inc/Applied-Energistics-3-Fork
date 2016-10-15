@@ -25,11 +25,11 @@ import java.util.List;
 
 import net.minecraft.item.ItemStack;
 
-import appeng.api.AEApi;
-import appeng.api.exceptions.MissingIngredientError;
-import appeng.api.exceptions.RegistrationError;
-import appeng.api.features.IInscriberRecipe;
-import appeng.api.features.InscriberProcessType;
+import appeng.core.api.AEApi;
+import appeng.core.api.exceptions.MissingIngredientError;
+import appeng.core.api.exceptions.RegistrationError;
+import appeng.core.api.features.IInscriberRecipe;
+import appeng.core.api.features.InscriberProcessType;
 import appeng.core.lib.features.registries.entries.InscriberRecipe;
 
 

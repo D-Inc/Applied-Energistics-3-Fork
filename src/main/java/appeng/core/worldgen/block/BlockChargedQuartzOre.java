@@ -29,8 +29,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import appeng.api.AEApi;
-import appeng.api.exceptions.MissingDefinition;
+import appeng.core.api.AEApi;
+import appeng.core.api.exceptions.MissingDefinition;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.CommonHelper;
 import appeng.core.lib.client.render.effects.ChargedOreFX;

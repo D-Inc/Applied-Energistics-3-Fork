@@ -40,10 +40,8 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Type;
 import net.minecraftforge.fml.common.gameevent.TickEvent.WorldTickEvent;
 
-import appeng.api.AEApi;
-import appeng.api.networking.IGridNode;
-import appeng.api.parts.CableRenderMode;
-import appeng.api.util.AEColor;
+import appeng.core.api.AEApi;
+import appeng.core.api.util.AEColor;
 import appeng.core.crafting.me.CraftingJob;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.AELog;
@@ -52,6 +50,8 @@ import appeng.core.lib.sync.packets.PacketPaintedEntity;
 import appeng.core.lib.tile.AEBaseTile;
 import appeng.core.lib.util.IWorldCallable;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.networking.IGridNode;
+import appeng.core.me.api.parts.CableRenderMode;
 import appeng.core.me.grid.Grid;
 import appeng.core.me.grid.NetworkList;
 

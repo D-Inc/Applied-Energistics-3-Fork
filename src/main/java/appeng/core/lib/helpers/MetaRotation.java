@@ -27,7 +27,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-import appeng.api.util.IOrientable;
+import appeng.core.api.util.IOrientable;
 import appeng.decorative.block.BlockQuartzPillar;
 
 

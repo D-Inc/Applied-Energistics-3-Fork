@@ -23,8 +23,8 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 
-import appeng.api.networking.energy.IEnergyWatcher;
-import appeng.api.networking.energy.IEnergyWatcherHost;
+import appeng.core.me.api.networking.energy.IEnergyWatcher;
+import appeng.core.me.api.networking.energy.IEnergyWatcherHost;
 import appeng.core.me.grid.cache.EnergyGridCache;
 
 

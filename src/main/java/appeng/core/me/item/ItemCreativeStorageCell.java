@@ -22,9 +22,9 @@ package appeng.core.me.item;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 
-import appeng.api.config.FuzzyMode;
-import appeng.api.storage.ICellWorkbenchItem;
+import appeng.core.api.config.FuzzyMode;
 import appeng.core.lib.item.AEBaseItem;
+import appeng.core.me.api.storage.ICellWorkbenchItem;
 
 
 public class ItemCreativeStorageCell extends AEBaseItem implements ICellWorkbenchItem

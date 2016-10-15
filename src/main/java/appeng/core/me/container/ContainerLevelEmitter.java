@@ -26,12 +26,12 @@ import net.minecraft.inventory.IInventory;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import appeng.api.config.FuzzyMode;
-import appeng.api.config.LevelType;
-import appeng.api.config.RedstoneMode;
-import appeng.api.config.SecurityPermissions;
-import appeng.api.config.Settings;
-import appeng.api.config.YesNo;
+import appeng.core.api.config.FuzzyMode;
+import appeng.core.api.config.LevelType;
+import appeng.core.api.config.RedstoneMode;
+import appeng.core.api.config.SecurityPermissions;
+import appeng.core.api.config.Settings;
+import appeng.core.api.config.YesNo;
 import appeng.core.lib.container.ContainerUpgradeable;
 import appeng.core.lib.container.guisync.GuiSync;
 import appeng.core.lib.container.slot.SlotFakeTypeOnly;

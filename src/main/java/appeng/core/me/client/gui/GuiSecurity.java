@@ -23,14 +23,14 @@ import java.io.IOException;
 
 import net.minecraft.entity.player.InventoryPlayer;
 
-import appeng.api.config.SecurityPermissions;
-import appeng.api.config.SortOrder;
-import appeng.api.storage.ITerminalHost;
+import appeng.core.api.config.SecurityPermissions;
+import appeng.core.api.config.SortOrder;
 import appeng.core.lib.AELog;
 import appeng.core.lib.client.gui.widgets.GuiToggleButton;
 import appeng.core.lib.localization.GuiText;
 import appeng.core.lib.sync.network.NetworkHandler;
 import appeng.core.lib.sync.packets.PacketValueConfig;
+import appeng.core.me.api.storage.ITerminalHost;
 import appeng.core.me.container.ContainerSecurity;
 
 

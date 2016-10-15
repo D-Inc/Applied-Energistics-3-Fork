@@ -27,9 +27,9 @@ import java.util.Map;
 
 import javax.annotation.Nullable;
 
-import appeng.api.recipes.ICraftHandler;
-import appeng.api.recipes.IRecipeHandler;
-import appeng.api.recipes.ISubItemResolver;
+import appeng.core.api.recipes.ICraftHandler;
+import appeng.core.api.recipes.IRecipeHandler;
+import appeng.core.api.recipes.ISubItemResolver;
 import appeng.core.lib.AELog;
 import appeng.core.recipes.RecipeHandler;
 

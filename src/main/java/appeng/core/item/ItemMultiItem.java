@@ -50,14 +50,12 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
 
-import appeng.api.config.Upgrades;
-import appeng.api.implementations.IUpgradeableHost;
-import appeng.api.implementations.items.IItemGroup;
-import appeng.api.implementations.items.IStorageComponent;
-import appeng.api.implementations.items.IUpgradeModule;
-import appeng.api.implementations.tiles.ISegmentedInventory;
-import appeng.api.parts.IPartHost;
-import appeng.api.parts.SelectedPart;
+import appeng.core.api.config.Upgrades;
+import appeng.core.api.implementations.IUpgradeableHost;
+import appeng.core.api.implementations.items.IItemGroup;
+import appeng.core.api.implementations.items.IStorageComponent;
+import appeng.core.api.implementations.items.IUpgradeModule;
+import appeng.core.api.implementations.tiles.ISegmentedInventory;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.features.IStackSrc;
@@ -65,6 +63,8 @@ import appeng.core.lib.features.MaterialStackSrc;
 import appeng.core.lib.item.AEBaseItem;
 import appeng.core.lib.util.InventoryAdaptor;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.parts.IPartHost;
+import appeng.core.me.api.parts.SelectedPart;
 
 
 public final class ItemMultiItem extends AEBaseItem implements IStorageComponent, IUpgradeModule

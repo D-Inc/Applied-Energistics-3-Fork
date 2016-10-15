@@ -25,7 +25,7 @@ import java.util.Map;
 
 import net.minecraftforge.fml.common.event.FMLInterModComms;
 
-import appeng.api.config.TunnelType;
+import appeng.core.api.config.TunnelType;
 import appeng.core.lib.AELog;
 import appeng.core.lib.api.IIMCProcessor;
 import appeng.core.lib.api.imc.IMCBlackListSpatial;

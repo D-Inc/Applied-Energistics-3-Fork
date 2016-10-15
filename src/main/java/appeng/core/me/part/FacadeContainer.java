@@ -28,11 +28,11 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
-import appeng.api.AEApi;
-import appeng.api.parts.IFacadeContainer;
-import appeng.api.parts.IFacadePart;
-import appeng.api.parts.IPartHost;
-import appeng.api.util.AEPartLocation;
+import appeng.core.api.AEApi;
+import appeng.core.api.util.AEPartLocation;
+import appeng.core.me.api.parts.IFacadeContainer;
+import appeng.core.me.api.parts.IFacadePart;
+import appeng.core.me.api.parts.IPartHost;
 import appeng.decorative.item.ItemFacade;
 import appeng.decorative.part.FacadePart;
 import appeng.decorative.part.IFacadeItem;

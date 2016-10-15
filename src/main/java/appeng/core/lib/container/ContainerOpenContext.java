@@ -23,8 +23,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import appeng.api.parts.IPart;
-import appeng.api.util.AEPartLocation;
+import appeng.core.api.util.AEPartLocation;
+import appeng.core.me.api.parts.IPart;
 
 
 public class ContainerOpenContext

@@ -31,8 +31,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-import appeng.api.parts.SelectedPart;
-import appeng.api.util.AEColor;
+import appeng.core.api.util.AEColor;
+import appeng.core.me.api.parts.SelectedPart;
 
 
 public class NullCableBusContainer implements ICableBusContainer

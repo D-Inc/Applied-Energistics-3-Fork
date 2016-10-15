@@ -33,12 +33,12 @@ import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.item.ItemStack;
 
-import appeng.api.storage.data.IAEItemStack;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.localization.GuiText;
 import appeng.core.lib.util.ISlimReadableNumberConverter;
 import appeng.core.lib.util.IWideReadableNumberConverter;
 import appeng.core.lib.util.ReadableNumberConverter;
+import appeng.core.me.api.storage.data.IAEItemStack;
 
 
 /**

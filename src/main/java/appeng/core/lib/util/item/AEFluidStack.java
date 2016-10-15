@@ -36,12 +36,12 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 
-import appeng.api.config.FuzzyMode;
-import appeng.api.storage.StorageChannel;
-import appeng.api.storage.data.IAEFluidStack;
-import appeng.api.storage.data.IAEStack;
-import appeng.api.storage.data.IAETagCompound;
+import appeng.core.api.config.FuzzyMode;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.storage.StorageChannel;
+import appeng.core.me.api.storage.data.IAEFluidStack;
+import appeng.core.me.api.storage.data.IAEStack;
+import appeng.core.me.api.storage.data.IAETagCompound;
 
 
 public final class AEFluidStack extends AEStack<IAEFluidStack> implements IAEFluidStack, Comparable<AEFluidStack>

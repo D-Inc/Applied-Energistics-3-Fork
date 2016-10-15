@@ -21,7 +21,7 @@ package appeng.core.me.part.reporting;
 
 import net.minecraft.item.ItemStack;
 
-import appeng.api.util.AEColor;
+import appeng.core.api.util.AEColor;
 
 
 /**

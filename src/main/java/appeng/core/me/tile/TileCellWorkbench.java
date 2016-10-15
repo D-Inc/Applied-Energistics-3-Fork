@@ -27,12 +27,11 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import appeng.api.config.CopyMode;
-import appeng.api.config.Settings;
-import appeng.api.config.Upgrades;
-import appeng.api.implementations.IUpgradeableHost;
-import appeng.api.storage.ICellWorkbenchItem;
-import appeng.api.util.IConfigManager;
+import appeng.core.api.config.CopyMode;
+import appeng.core.api.config.Settings;
+import appeng.core.api.config.Upgrades;
+import appeng.core.api.implementations.IUpgradeableHost;
+import appeng.core.api.util.IConfigManager;
 import appeng.core.lib.tile.AEBaseTile;
 import appeng.core.lib.tile.TileEvent;
 import appeng.core.lib.tile.events.TileEventType;
@@ -42,6 +41,7 @@ import appeng.core.lib.tile.inventory.IAEAppEngInventory;
 import appeng.core.lib.tile.inventory.InvOperation;
 import appeng.core.lib.util.ConfigManager;
 import appeng.core.lib.util.IConfigManagerHost;
+import appeng.core.me.api.storage.ICellWorkbenchItem;
 
 
 public class TileCellWorkbench extends AEBaseTile implements IUpgradeableHost, IAEAppEngInventory, IConfigManagerHost

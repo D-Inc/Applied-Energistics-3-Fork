@@ -22,7 +22,7 @@ package appeng.core.lib.util.item;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import appeng.api.storage.data.IAEItemStack;
+import appeng.core.me.api.storage.data.IAEItemStack;
 
 
 public class MeaningfulItemIterator<T extends IAEItemStack> implements Iterator<T>

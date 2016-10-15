@@ -33,8 +33,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import appeng.api.parts.SelectedPart;
-import appeng.api.util.AEColor;
+import appeng.core.api.util.AEColor;
+import appeng.core.me.api.parts.SelectedPart;
 
 
 public interface ICableBusContainer

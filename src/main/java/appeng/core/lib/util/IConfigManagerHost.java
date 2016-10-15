@@ -19,7 +19,7 @@
 package appeng.core.lib.util;
 
 
-import appeng.api.util.IConfigManager;
+import appeng.core.api.util.IConfigManager;
 
 
 public interface IConfigManagerHost

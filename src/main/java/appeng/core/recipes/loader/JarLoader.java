@@ -26,7 +26,7 @@ import javax.annotation.Nonnull;
 
 import com.google.common.base.Preconditions;
 
-import appeng.api.recipes.IRecipeLoader;
+import appeng.core.api.recipes.IRecipeLoader;
 
 
 public class JarLoader implements IRecipeLoader

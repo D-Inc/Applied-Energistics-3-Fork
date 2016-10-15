@@ -21,7 +21,7 @@ package appeng.core.me.client.gui;
 
 import net.minecraft.entity.player.InventoryPlayer;
 
-import appeng.api.implementations.guiobjects.IPortableCell;
+import appeng.core.api.implementations.guiobjects.IPortableCell;
 import appeng.core.me.container.ContainerMEPortableCell;
 
 

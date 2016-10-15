@@ -24,7 +24,7 @@ import java.util.List;
 
 import net.minecraft.item.ItemStack;
 
-import appeng.api.config.FuzzyMode;
+import appeng.core.api.config.FuzzyMode;
 import appeng.core.lib.util.InventoryAdaptor;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.util.iterators.StackToSlotIterator;

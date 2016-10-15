@@ -30,20 +30,20 @@ import javax.annotation.Nonnull;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
-import appeng.api.AEApi;
-import appeng.api.config.SearchBoxMode;
-import appeng.api.config.Settings;
-import appeng.api.config.SortOrder;
-import appeng.api.config.ViewItems;
-import appeng.api.config.YesNo;
-import appeng.api.storage.data.IAEItemStack;
-import appeng.api.storage.data.IItemList;
+import appeng.core.api.AEApi;
+import appeng.core.api.config.SearchBoxMode;
+import appeng.core.api.config.Settings;
+import appeng.core.api.config.SortOrder;
+import appeng.core.api.config.ViewItems;
+import appeng.core.api.config.YesNo;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.client.gui.widgets.IScrollSource;
 import appeng.core.lib.client.gui.widgets.ISortSource;
 import appeng.core.lib.util.ItemSorters;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.util.prioitylist.IPartitionList;
+import appeng.core.me.api.storage.data.IAEItemStack;
+import appeng.core.me.api.storage.data.IItemList;
 import appeng.core.me.item.ItemViewCell;
 
 
@@ -219,7 +219,7 @@ public class ItemRepo
 		final Enum SortBy = this.sortSrc.getSortBy();
 		final Enum SortDir = this.sortSrc.getSortDir();
 
-		ItemSorters.setDirection( (appeng.api.config.SortDir) SortDir );
+		ItemSorters.setDirection( (appeng.core.api.config.SortDir) SortDir );
 		ItemSorters.init();
 
 		if( SortBy == SortOrder.MOD )

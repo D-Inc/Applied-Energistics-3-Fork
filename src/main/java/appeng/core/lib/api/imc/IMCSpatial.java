@@ -27,7 +27,7 @@ package appeng.core.lib.api.imc;
 
 import net.minecraftforge.fml.common.event.FMLInterModComms.IMCMessage;
 
-import appeng.api.AEApi;
+import appeng.core.api.AEApi;
 import appeng.core.lib.AELog;
 import appeng.core.lib.api.IIMCProcessor;
 

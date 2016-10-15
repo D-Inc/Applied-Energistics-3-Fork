@@ -19,10 +19,10 @@
 package appeng.core.me.grid;
 
 
-import appeng.api.networking.IGridCache;
-import appeng.api.networking.IGridHost;
-import appeng.api.networking.IGridNode;
-import appeng.api.networking.IGridStorage;
+import appeng.core.me.api.networking.IGridCache;
+import appeng.core.me.api.networking.IGridHost;
+import appeng.core.me.api.networking.IGridNode;
+import appeng.core.me.api.networking.IGridStorage;
 
 
 public class GridCacheWrapper implements IGridCache

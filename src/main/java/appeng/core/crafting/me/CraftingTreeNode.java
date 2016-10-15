@@ -28,14 +28,14 @@ import com.google.common.collect.Lists;
 
 import net.minecraft.world.World;
 
-import appeng.api.AEApi;
-import appeng.api.config.Actionable;
-import appeng.api.config.FuzzyMode;
-import appeng.api.networking.crafting.ICraftingGrid;
-import appeng.api.networking.crafting.ICraftingPatternDetails;
-import appeng.api.networking.security.BaseActionSource;
-import appeng.api.storage.data.IAEItemStack;
-import appeng.api.storage.data.IItemList;
+import appeng.core.api.AEApi;
+import appeng.core.api.config.Actionable;
+import appeng.core.api.config.FuzzyMode;
+import appeng.core.me.api.networking.crafting.ICraftingGrid;
+import appeng.core.me.api.networking.crafting.ICraftingPatternDetails;
+import appeng.core.me.api.networking.security.BaseActionSource;
+import appeng.core.me.api.storage.data.IAEItemStack;
+import appeng.core.me.api.storage.data.IItemList;
 import appeng.core.me.grid.cluster.implementations.CraftingCPUCluster;
 
 

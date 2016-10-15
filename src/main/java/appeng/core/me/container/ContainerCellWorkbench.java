@@ -29,15 +29,10 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
 
-import appeng.api.AEApi;
-import appeng.api.config.CopyMode;
-import appeng.api.config.FuzzyMode;
-import appeng.api.config.Settings;
-import appeng.api.storage.ICellWorkbenchItem;
-import appeng.api.storage.IMEInventory;
-import appeng.api.storage.StorageChannel;
-import appeng.api.storage.data.IAEItemStack;
-import appeng.api.storage.data.IItemList;
+import appeng.core.api.AEApi;
+import appeng.core.api.config.CopyMode;
+import appeng.core.api.config.FuzzyMode;
+import appeng.core.api.config.Settings;
 import appeng.core.lib.container.ContainerUpgradeable;
 import appeng.core.lib.container.guisync.GuiSync;
 import appeng.core.lib.container.slot.OptionalSlotRestrictedInput;
@@ -46,6 +41,11 @@ import appeng.core.lib.container.slot.SlotRestrictedInput;
 import appeng.core.lib.tile.inventory.AppEngNullInventory;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.util.iterators.NullIterator;
+import appeng.core.me.api.storage.ICellWorkbenchItem;
+import appeng.core.me.api.storage.IMEInventory;
+import appeng.core.me.api.storage.StorageChannel;
+import appeng.core.me.api.storage.data.IAEItemStack;
+import appeng.core.me.api.storage.data.IItemList;
 import appeng.core.me.tile.TileCellWorkbench;
 
 

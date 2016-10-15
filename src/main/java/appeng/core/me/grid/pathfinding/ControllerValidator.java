@@ -21,9 +21,9 @@ package appeng.core.me.grid.pathfinding;
 
 import net.minecraft.util.math.BlockPos;
 
-import appeng.api.networking.IGridHost;
-import appeng.api.networking.IGridNode;
-import appeng.api.networking.IGridVisitor;
+import appeng.core.me.api.networking.IGridHost;
+import appeng.core.me.api.networking.IGridNode;
+import appeng.core.me.api.networking.IGridVisitor;
 import appeng.core.me.tile.TileController;
 
 

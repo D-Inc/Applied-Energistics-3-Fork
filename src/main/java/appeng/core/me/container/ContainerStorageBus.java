@@ -25,16 +25,13 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 
-import appeng.api.AEApi;
-import appeng.api.config.AccessRestriction;
-import appeng.api.config.FuzzyMode;
-import appeng.api.config.SecurityPermissions;
-import appeng.api.config.Settings;
-import appeng.api.config.StorageFilter;
-import appeng.api.config.Upgrades;
-import appeng.api.storage.IMEInventory;
-import appeng.api.storage.data.IAEItemStack;
-import appeng.api.storage.data.IItemList;
+import appeng.core.api.AEApi;
+import appeng.core.api.config.AccessRestriction;
+import appeng.core.api.config.FuzzyMode;
+import appeng.core.api.config.SecurityPermissions;
+import appeng.core.api.config.Settings;
+import appeng.core.api.config.StorageFilter;
+import appeng.core.api.config.Upgrades;
 import appeng.core.lib.container.ContainerUpgradeable;
 import appeng.core.lib.container.guisync.GuiSync;
 import appeng.core.lib.container.slot.OptionalSlotFakeTypeOnly;
@@ -42,6 +39,9 @@ import appeng.core.lib.container.slot.SlotFakeTypeOnly;
 import appeng.core.lib.container.slot.SlotRestrictedInput;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.util.iterators.NullIterator;
+import appeng.core.me.api.storage.IMEInventory;
+import appeng.core.me.api.storage.data.IAEItemStack;
+import appeng.core.me.api.storage.data.IItemList;
 import appeng.core.me.part.misc.PartStorageBus;
 
 

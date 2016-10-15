@@ -25,10 +25,10 @@ import java.util.Map;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import appeng.api.events.LocatableEventAnnounce;
-import appeng.api.events.LocatableEventAnnounce.LocatableEvent;
-import appeng.api.features.ILocatable;
-import appeng.api.features.ILocatableRegistry;
+import appeng.core.api.events.LocatableEventAnnounce;
+import appeng.core.api.events.LocatableEventAnnounce.LocatableEvent;
+import appeng.core.api.features.ILocatable;
+import appeng.core.api.features.ILocatableRegistry;
 import appeng.core.lib.util.Platform;
 
 

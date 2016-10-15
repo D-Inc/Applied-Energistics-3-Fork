@@ -47,21 +47,21 @@ import net.minecraftforge.common.model.TRSRTransformation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import appeng.api.AEApi;
 import appeng.api.client.BakingPipeline;
-import appeng.api.parts.IBoxProvider;
-import appeng.api.parts.IFacadeContainer;
-import appeng.api.parts.IFacadePart;
-import appeng.api.parts.IPartCollisionHelper;
-import appeng.api.parts.IPartHost;
-import appeng.api.util.AEPartLocation;
 import appeng.core.AppEng;
+import appeng.core.api.AEApi;
+import appeng.core.api.util.AEPartLocation;
 import appeng.core.lib.client.render.model.ModelsCache;
 import appeng.core.lib.client.render.model.pipeline.MatVecApplicator;
 import appeng.core.lib.client.render.model.pipeline.ParentQuads;
 import appeng.core.lib.client.render.model.pipeline.StatePosRecolorator;
 import appeng.core.lib.client.render.model.pipeline.TypeTransformer;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.parts.IBoxProvider;
+import appeng.core.me.api.parts.IFacadeContainer;
+import appeng.core.me.api.parts.IFacadePart;
+import appeng.core.me.api.parts.IPartCollisionHelper;
+import appeng.core.me.api.parts.IPartHost;
 
 
 public class FacadePart implements IFacadePart, IBoxProvider

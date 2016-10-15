@@ -38,7 +38,7 @@ import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.IEntityAdditionalSpawnData;
 
-import appeng.api.AEApi;
+import appeng.core.api.AEApi;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.CommonHelper;
 import appeng.core.lib.features.AEFeature;

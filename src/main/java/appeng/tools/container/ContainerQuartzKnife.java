@@ -28,7 +28,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerDestroyItemEvent;
 
-import appeng.api.AEApi;
+import appeng.core.api.AEApi;
 import appeng.core.lib.container.AEBaseContainer;
 import appeng.core.lib.container.slot.SlotRestrictedInput;
 import appeng.core.lib.tile.inventory.AppEngInternalInventory;

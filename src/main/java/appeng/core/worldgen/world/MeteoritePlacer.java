@@ -38,10 +38,10 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.oredict.OreDictionary;
 
-import appeng.api.AEApi;
 import appeng.api.definitions.IBlockDefinition;
 import appeng.api.definitions.IBlocks;
 import appeng.api.definitions.IMaterials;
+import appeng.core.api.AEApi;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.util.InventoryAdaptor;

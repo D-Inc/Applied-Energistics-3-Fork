@@ -33,8 +33,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-import appeng.api.util.AEPartLocation;
-import appeng.api.util.IOrientable;
+import appeng.core.api.util.AEPartLocation;
+import appeng.core.api.util.IOrientable;
 import appeng.core.lib.block.AEBaseTileBlock;
 import appeng.core.lib.sync.GuiBridge;
 import appeng.core.lib.util.Platform;

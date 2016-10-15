@@ -27,13 +27,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.ITextComponent;
 
-import appeng.api.AEApi;
-import appeng.api.storage.data.IAEItemStack;
+import appeng.core.api.AEApi;
 import appeng.core.lib.AELog;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.util.item.AEItemStack;
 import appeng.core.lib.util.iterators.AEInvIterator;
 import appeng.core.lib.util.iterators.InvIterator;
+import appeng.core.me.api.storage.data.IAEItemStack;
 
 
 public class AppEngInternalAEInventory implements IInventory, Iterable<ItemStack>

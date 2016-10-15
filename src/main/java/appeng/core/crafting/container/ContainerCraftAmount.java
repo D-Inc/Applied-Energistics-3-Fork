@@ -25,16 +25,16 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.world.World;
 
-import appeng.api.config.SecurityPermissions;
-import appeng.api.networking.IGrid;
-import appeng.api.networking.security.BaseActionSource;
-import appeng.api.networking.security.IActionHost;
-import appeng.api.networking.security.PlayerSource;
-import appeng.api.storage.ITerminalHost;
-import appeng.api.storage.data.IAEItemStack;
+import appeng.core.api.config.SecurityPermissions;
 import appeng.core.lib.container.AEBaseContainer;
 import appeng.core.lib.container.slot.SlotInaccessible;
 import appeng.core.lib.tile.inventory.AppEngInternalInventory;
+import appeng.core.me.api.networking.IGrid;
+import appeng.core.me.api.networking.security.BaseActionSource;
+import appeng.core.me.api.networking.security.IActionHost;
+import appeng.core.me.api.networking.security.PlayerSource;
+import appeng.core.me.api.storage.ITerminalHost;
+import appeng.core.me.api.storage.data.IAEItemStack;
 
 
 public class ContainerCraftAmount extends AEBaseContainer

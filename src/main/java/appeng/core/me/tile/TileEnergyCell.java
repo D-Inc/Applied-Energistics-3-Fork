@@ -21,17 +21,17 @@ package appeng.core.me.tile;
 
 import net.minecraft.nbt.NBTTagCompound;
 
-import appeng.api.config.AccessRestriction;
-import appeng.api.config.Actionable;
-import appeng.api.config.PowerMultiplier;
-import appeng.api.networking.energy.IAEPowerStorage;
-import appeng.api.networking.events.MENetworkPowerStorage;
-import appeng.api.networking.events.MENetworkPowerStorage.PowerEventType;
-import appeng.api.util.AECableType;
-import appeng.api.util.AEPartLocation;
+import appeng.core.api.config.AccessRestriction;
+import appeng.core.api.config.Actionable;
+import appeng.core.api.config.PowerMultiplier;
+import appeng.core.api.util.AECableType;
+import appeng.core.api.util.AEPartLocation;
 import appeng.core.lib.tile.TileEvent;
 import appeng.core.lib.tile.events.TileEventType;
 import appeng.core.lib.util.SettingsFrom;
+import appeng.core.me.api.networking.energy.IAEPowerStorage;
+import appeng.core.me.api.networking.events.MENetworkPowerStorage;
+import appeng.core.me.api.networking.events.MENetworkPowerStorage.PowerEventType;
 import appeng.core.me.block.BlockEnergyCell;
 import appeng.core.me.grid.GridAccessException;
 

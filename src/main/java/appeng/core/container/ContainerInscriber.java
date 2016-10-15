@@ -23,9 +23,9 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
-import appeng.api.AEApi;
 import appeng.api.definitions.IItemDefinition;
-import appeng.api.features.IInscriberRecipe;
+import appeng.core.api.AEApi;
+import appeng.core.api.features.IInscriberRecipe;
 import appeng.core.lib.container.ContainerUpgradeable;
 import appeng.core.lib.container.guisync.GuiSync;
 import appeng.core.lib.container.interfaces.IProgressProvider;

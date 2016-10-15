@@ -21,8 +21,8 @@ package appeng.core.lib.util.iterators;
 
 import java.util.Iterator;
 
-import appeng.api.storage.data.IAEItemStack;
 import appeng.core.lib.tile.inventory.AppEngInternalAEInventory;
+import appeng.core.me.api.storage.data.IAEItemStack;
 
 
 public final class AEInvIterator implements Iterator<IAEItemStack>

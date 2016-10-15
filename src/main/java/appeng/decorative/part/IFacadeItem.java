@@ -22,7 +22,7 @@ package appeng.decorative.part;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 
-import appeng.api.util.AEPartLocation;
+import appeng.core.api.util.AEPartLocation;
 
 
 public interface IFacadeItem

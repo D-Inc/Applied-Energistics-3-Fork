@@ -21,17 +21,17 @@ package appeng.core.me.grid.storage;
 
 import com.mojang.authlib.GameProfile;
 
-import appeng.api.AEApi;
-import appeng.api.config.AccessRestriction;
-import appeng.api.config.Actionable;
-import appeng.api.config.SecurityPermissions;
-import appeng.api.implementations.items.IBiometricCard;
-import appeng.api.networking.security.BaseActionSource;
-import appeng.api.networking.security.PlayerSource;
-import appeng.api.storage.IMEInventoryHandler;
-import appeng.api.storage.StorageChannel;
-import appeng.api.storage.data.IAEItemStack;
-import appeng.api.storage.data.IItemList;
+import appeng.core.api.AEApi;
+import appeng.core.api.config.AccessRestriction;
+import appeng.core.api.config.Actionable;
+import appeng.core.api.config.SecurityPermissions;
+import appeng.core.api.implementations.items.IBiometricCard;
+import appeng.core.me.api.networking.security.BaseActionSource;
+import appeng.core.me.api.networking.security.PlayerSource;
+import appeng.core.me.api.storage.IMEInventoryHandler;
+import appeng.core.me.api.storage.StorageChannel;
+import appeng.core.me.api.storage.data.IAEItemStack;
+import appeng.core.me.api.storage.data.IItemList;
 import appeng.core.me.grid.GridAccessException;
 import appeng.core.me.tile.TileSecurity;
 

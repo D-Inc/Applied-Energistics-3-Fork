@@ -19,6 +19,12 @@
 package appeng.core.me.tile;
 
 
+import appeng.core.api.AEApi;
+import appeng.core.api.config.CondenserOutput;
+import appeng.core.api.config.Settings;
+import appeng.core.api.implementations.items.IStorageComponent;
+import appeng.core.api.util.IConfigManager;
+import appeng.core.api.util.IConfigurableObject;
 import appeng.core.lib.Api;
 import appeng.core.lib.api.definitions.ApiMaterials;
 import net.minecraft.inventory.IInventory;
@@ -30,12 +36,6 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 
-import appeng.api.AEApi;
-import appeng.api.config.CondenserOutput;
-import appeng.api.config.Settings;
-import appeng.api.implementations.items.IStorageComponent;
-import appeng.api.util.IConfigManager;
-import appeng.api.util.IConfigurableObject;
 import appeng.core.lib.tile.AEBaseInvTile;
 import appeng.core.lib.tile.TileEvent;
 import appeng.core.lib.tile.events.TileEventType;

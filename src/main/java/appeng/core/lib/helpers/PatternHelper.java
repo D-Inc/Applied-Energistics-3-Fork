@@ -35,13 +35,13 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.world.World;
 
-import appeng.api.AEApi;
-import appeng.api.networking.crafting.ICraftingPatternDetails;
-import appeng.api.storage.data.IAEItemStack;
+import appeng.core.api.AEApi;
 import appeng.core.lib.container.ContainerNull;
 import appeng.core.lib.util.ItemSorters;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.util.item.AEItemStack;
+import appeng.core.me.api.networking.crafting.ICraftingPatternDetails;
+import appeng.core.me.api.storage.data.IAEItemStack;
 
 
 public class PatternHelper implements ICraftingPatternDetails, Comparable<PatternHelper>

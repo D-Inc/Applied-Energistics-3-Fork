@@ -41,16 +41,8 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import appeng.api.implementations.parts.IPartStorageMonitor;
-import appeng.api.networking.security.BaseActionSource;
-import appeng.api.networking.storage.IStackWatcher;
-import appeng.api.networking.storage.IStackWatcherHost;
-import appeng.api.storage.IMEMonitor;
-import appeng.api.storage.StorageChannel;
-import appeng.api.storage.data.IAEItemStack;
-import appeng.api.storage.data.IAEStack;
-import appeng.api.storage.data.IItemList;
-import appeng.api.util.AEPartLocation;
+import appeng.core.api.implementations.parts.IPartStorageMonitor;
+import appeng.core.api.util.AEPartLocation;
 import appeng.core.lib.AELog;
 import appeng.core.lib.client.ClientHelper;
 import appeng.core.lib.helpers.Reflected;
@@ -59,6 +51,14 @@ import appeng.core.lib.util.IWideReadableNumberConverter;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.util.ReadableNumberConverter;
 import appeng.core.lib.util.item.AEItemStack;
+import appeng.core.me.api.networking.security.BaseActionSource;
+import appeng.core.me.api.networking.storage.IStackWatcher;
+import appeng.core.me.api.networking.storage.IStackWatcherHost;
+import appeng.core.me.api.storage.IMEMonitor;
+import appeng.core.me.api.storage.StorageChannel;
+import appeng.core.me.api.storage.data.IAEItemStack;
+import appeng.core.me.api.storage.data.IAEStack;
+import appeng.core.me.api.storage.data.IItemList;
 import appeng.core.me.grid.GridAccessException;
 
 

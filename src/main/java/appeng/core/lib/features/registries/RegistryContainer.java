@@ -19,7 +19,7 @@
 package appeng.core.lib.features.registries;
 
 
-import appeng.api.features.IWorldGen;
+import appeng.core.api.features.IWorldGen;
 
 
 /**

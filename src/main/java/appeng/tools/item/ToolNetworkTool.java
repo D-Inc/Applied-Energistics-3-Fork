@@ -33,15 +33,12 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-import appeng.api.implementations.guiobjects.IGuiItem;
-import appeng.api.implementations.guiobjects.IGuiItemObject;
-import appeng.api.implementations.items.IAEWrench;
-import appeng.api.networking.IGridHost;
-import appeng.api.parts.IPartHost;
-import appeng.api.parts.SelectedPart;
-import appeng.api.util.AEPartLocation;
-import appeng.api.util.DimensionalCoord;
-import appeng.api.util.INetworkToolAgent;
+import appeng.core.api.implementations.guiobjects.IGuiItem;
+import appeng.core.api.implementations.guiobjects.IGuiItemObject;
+import appeng.core.api.implementations.items.IAEWrench;
+import appeng.core.api.util.AEPartLocation;
+import appeng.core.api.util.DimensionalCoord;
+import appeng.core.api.util.INetworkToolAgent;
 import appeng.core.lib.client.ClientHelper;
 import appeng.core.lib.container.AEBaseContainer;
 import appeng.core.lib.item.AEBaseItem;
@@ -49,6 +46,9 @@ import appeng.core.lib.sync.GuiBridge;
 import appeng.core.lib.sync.network.NetworkHandler;
 import appeng.core.lib.sync.packets.PacketClick;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.networking.IGridHost;
+import appeng.core.me.api.parts.IPartHost;
+import appeng.core.me.api.parts.SelectedPart;
 import appeng.core.me.item.NetworkToolViewer;
 
 

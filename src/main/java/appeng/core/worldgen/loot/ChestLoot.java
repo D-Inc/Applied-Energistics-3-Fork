@@ -2,6 +2,7 @@
 package appeng.core.worldgen.loot;
 
 
+import appeng.core.api.AEApi;
 import appeng.core.lib.Api;
 import appeng.core.lib.api.definitions.ApiMaterials;
 import net.minecraft.world.storage.loot.LootEntry;
@@ -15,8 +16,6 @@ import net.minecraft.world.storage.loot.functions.LootFunction;
 import net.minecraft.world.storage.loot.functions.SetMetadata;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-import appeng.api.AEApi;
 
 
 public class ChestLoot

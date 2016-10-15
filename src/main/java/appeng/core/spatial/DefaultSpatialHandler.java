@@ -24,7 +24,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
 
-import appeng.api.movable.IMovableHandler;
+import appeng.core.spatial.api.movable.IMovableHandler;
 
 
 public class DefaultSpatialHandler implements IMovableHandler

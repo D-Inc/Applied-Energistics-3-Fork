@@ -37,7 +37,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.EnumSkyBlock;
 
-import appeng.api.util.AEColor;
+import appeng.core.api.util.AEColor;
 import appeng.core.lib.helpers.Splotch;
 import appeng.core.lib.tile.AEBaseTile;
 import appeng.core.lib.tile.TileEvent;

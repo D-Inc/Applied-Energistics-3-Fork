@@ -29,7 +29,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.gen.ChunkProviderOverworld;
 
-import appeng.api.AEApi;
+import appeng.core.api.AEApi;
 import appeng.core.lib.AEConfig;
 
 

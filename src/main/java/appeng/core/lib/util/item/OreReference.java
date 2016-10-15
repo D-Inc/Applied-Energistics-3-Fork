@@ -28,7 +28,7 @@ import java.util.Set;
 
 import net.minecraft.item.ItemStack;
 
-import appeng.api.storage.data.IAEItemStack;
+import appeng.core.me.api.storage.data.IAEItemStack;
 
 
 public class OreReference

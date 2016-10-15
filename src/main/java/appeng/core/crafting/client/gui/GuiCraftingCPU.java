@@ -35,13 +35,11 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
 
-import appeng.api.AEApi;
-import appeng.api.config.SortDir;
-import appeng.api.config.SortOrder;
-import appeng.api.config.ViewItems;
-import appeng.api.storage.data.IAEItemStack;
-import appeng.api.storage.data.IItemList;
-import appeng.api.util.AEColor;
+import appeng.core.api.AEApi;
+import appeng.core.api.config.SortDir;
+import appeng.core.api.config.SortOrder;
+import appeng.core.api.config.ViewItems;
+import appeng.core.api.util.AEColor;
 import appeng.core.crafting.container.ContainerCraftingCPU;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.AELog;
@@ -53,6 +51,8 @@ import appeng.core.lib.sync.network.NetworkHandler;
 import appeng.core.lib.sync.packets.PacketValueConfig;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.util.ReadableNumberConverter;
+import appeng.core.me.api.storage.data.IAEItemStack;
+import appeng.core.me.api.storage.data.IItemList;
 
 
 public class GuiCraftingCPU extends AEBaseGui implements ISortSource

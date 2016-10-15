@@ -20,14 +20,14 @@ package appeng.core.lib.api.definitions;
 
 
 import appeng.api.definitions.IItemDefinition;
-import appeng.api.exceptions.MissingDefinition;
-import appeng.api.parts.IPartHelper;
-import appeng.api.util.AEColor;
-import appeng.api.util.AEColoredItemDefinition;
+import appeng.core.api.exceptions.MissingDefinition;
+import appeng.core.api.util.AEColor;
+import appeng.core.api.util.AEColoredItemDefinition;
 import appeng.core.lib.bootstrap.FeatureFactory;
 import appeng.core.lib.features.ColoredItemDefinition;
 import appeng.core.lib.features.DamagedItemDefinition;
 import appeng.core.lib.features.ItemStackSrc;
+import appeng.core.me.api.parts.IPartHelper;
 import appeng.core.me.item.ItemMultiPart;
 import appeng.core.me.item.ItemMultipartRendering;
 import appeng.core.me.item.PartType;

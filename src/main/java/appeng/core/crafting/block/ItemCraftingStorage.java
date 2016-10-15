@@ -22,7 +22,7 @@ package appeng.core.crafting.block;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 
-import appeng.api.AEApi;
+import appeng.core.api.AEApi;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.item.AEBaseItemBlock;

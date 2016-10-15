@@ -33,15 +33,15 @@ import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.storage.ExtendedBlockStorage;
 
-import appeng.api.AEApi;
 import appeng.api.definitions.IBlockDefinition;
-import appeng.api.movable.IMovableHandler;
-import appeng.api.movable.IMovableRegistry;
-import appeng.api.util.AEPartLocation;
-import appeng.api.util.WorldCoord;
+import appeng.core.api.AEApi;
+import appeng.core.api.util.AEPartLocation;
+import appeng.core.api.util.WorldCoord;
 import appeng.core.lib.AELog;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.worlddata.WorldData;
+import appeng.core.spatial.api.movable.IMovableHandler;
+import appeng.core.spatial.api.movable.IMovableRegistry;
 
 
 public class CachedPlane

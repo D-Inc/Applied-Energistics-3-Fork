@@ -19,7 +19,7 @@
 package appeng.core.me.grid.cache.helpers;
 
 
-import appeng.api.networking.IGridConnection;
+import appeng.core.me.api.networking.IGridConnection;
 
 
 public class ConnectionWrapper

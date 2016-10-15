@@ -23,6 +23,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
+import appeng.api.definitions.IBlockDefinition;
+import appeng.core.api.AEApi;
+import appeng.core.api.util.AEPartLocation;
+import appeng.core.api.util.DimensionalCoord;
 import appeng.core.lib.Api;
 import appeng.core.lib.api.definitions.ApiItems;
 import net.minecraft.block.Block;
@@ -47,21 +51,17 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
-import appeng.api.AEApi;
-import appeng.api.definitions.IBlockDefinition;
-import appeng.api.parts.IFacadePart;
-import appeng.api.parts.IPartHost;
-import appeng.api.parts.IPartItem;
-import appeng.api.parts.PartItemStack;
-import appeng.api.parts.SelectedPart;
-import appeng.api.util.AEPartLocation;
-import appeng.api.util.DimensionalCoord;
 import appeng.core.lib.CommonHelper;
 import appeng.core.lib.sync.network.NetworkHandler;
 import appeng.core.lib.sync.packets.PacketClick;
 import appeng.core.lib.sync.packets.PacketPartPlacement;
 import appeng.core.lib.util.LookDirection;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.parts.IFacadePart;
+import appeng.core.me.api.parts.IPartHost;
+import appeng.core.me.api.parts.IPartItem;
+import appeng.core.me.api.parts.PartItemStack;
+import appeng.core.me.api.parts.SelectedPart;
 import appeng.decorative.part.IFacadeItem;
 
 

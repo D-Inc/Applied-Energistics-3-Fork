@@ -23,11 +23,11 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 
-import appeng.api.networking.security.BaseActionSource;
-import appeng.api.storage.IExternalStorageHandler;
-import appeng.api.storage.IMEInventory;
-import appeng.api.storage.StorageChannel;
 import appeng.core.lib.util.InventoryAdaptor;
+import appeng.core.me.api.networking.security.BaseActionSource;
+import appeng.core.me.api.storage.IExternalStorageHandler;
+import appeng.core.me.api.storage.IMEInventory;
+import appeng.core.me.api.storage.StorageChannel;
 import appeng.core.me.grid.storage.MEMonitorIInventory;
 
 

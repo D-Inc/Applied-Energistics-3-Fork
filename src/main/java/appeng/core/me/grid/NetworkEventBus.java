@@ -28,10 +28,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import appeng.api.networking.IGridNode;
-import appeng.api.networking.events.MENetworkEvent;
-import appeng.api.networking.events.MENetworkEventSubscribe;
 import appeng.core.lib.AELog;
+import appeng.core.me.api.networking.IGridNode;
+import appeng.core.me.api.networking.events.MENetworkEvent;
+import appeng.core.me.api.networking.events.MENetworkEventSubscribe;
 
 
 public class NetworkEventBus

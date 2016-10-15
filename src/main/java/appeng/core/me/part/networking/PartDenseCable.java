@@ -25,18 +25,18 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 
-import appeng.api.networking.GridFlags;
-import appeng.api.networking.IGridHost;
-import appeng.api.networking.IGridNode;
-import appeng.api.networking.events.MENetworkChannelsChanged;
-import appeng.api.networking.events.MENetworkEventSubscribe;
-import appeng.api.networking.events.MENetworkPowerStatusChange;
-import appeng.api.parts.BusSupport;
-import appeng.api.parts.IPartCollisionHelper;
-import appeng.api.util.AECableType;
-import appeng.api.util.AEPartLocation;
+import appeng.core.api.util.AECableType;
+import appeng.core.api.util.AEPartLocation;
 import appeng.core.lib.helpers.Reflected;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.networking.GridFlags;
+import appeng.core.me.api.networking.IGridHost;
+import appeng.core.me.api.networking.IGridNode;
+import appeng.core.me.api.networking.events.MENetworkChannelsChanged;
+import appeng.core.me.api.networking.events.MENetworkEventSubscribe;
+import appeng.core.me.api.networking.events.MENetworkPowerStatusChange;
+import appeng.core.me.api.parts.BusSupport;
+import appeng.core.me.api.parts.IPartCollisionHelper;
 
 
 public class PartDenseCable extends PartCable

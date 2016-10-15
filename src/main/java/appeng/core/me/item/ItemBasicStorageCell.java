@@ -33,19 +33,13 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import appeng.api.AEApi;
-import appeng.api.config.FuzzyMode;
-import appeng.api.config.IncludeExclude;
-import appeng.api.exceptions.MissingDefinition;
-import appeng.api.implementations.items.IItemGroup;
-import appeng.api.implementations.items.IStorageCell;
-import appeng.api.implementations.items.IUpgradeModule;
-import appeng.api.storage.ICellInventory;
-import appeng.api.storage.ICellInventoryHandler;
-import appeng.api.storage.IMEInventoryHandler;
-import appeng.api.storage.StorageChannel;
-import appeng.api.storage.data.IAEItemStack;
-import appeng.api.storage.data.IItemList;
+import appeng.core.api.AEApi;
+import appeng.core.api.config.FuzzyMode;
+import appeng.core.api.config.IncludeExclude;
+import appeng.core.api.exceptions.MissingDefinition;
+import appeng.core.api.implementations.items.IItemGroup;
+import appeng.core.api.implementations.items.IStorageCell;
+import appeng.core.api.implementations.items.IUpgradeModule;
 import appeng.core.item.MaterialType;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.features.AEFeature;
@@ -53,6 +47,12 @@ import appeng.core.lib.item.AEBaseItem;
 import appeng.core.lib.localization.GuiText;
 import appeng.core.lib.util.InventoryAdaptor;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.storage.ICellInventory;
+import appeng.core.me.api.storage.ICellInventoryHandler;
+import appeng.core.me.api.storage.IMEInventoryHandler;
+import appeng.core.me.api.storage.StorageChannel;
+import appeng.core.me.api.storage.data.IAEItemStack;
+import appeng.core.me.api.storage.data.IItemList;
 
 
 public final class ItemBasicStorageCell extends AEBaseItem implements IStorageCell, IItemGroup

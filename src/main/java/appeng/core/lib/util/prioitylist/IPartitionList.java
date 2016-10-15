@@ -19,7 +19,7 @@
 package appeng.core.lib.util.prioitylist;
 
 
-import appeng.api.storage.data.IAEStack;
+import appeng.core.me.api.storage.data.IAEStack;
 
 
 public interface IPartitionList<T extends IAEStack<T>>

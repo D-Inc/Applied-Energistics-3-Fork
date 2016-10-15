@@ -29,10 +29,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import appeng.api.config.AccessRestriction;
-import appeng.api.config.PowerUnits;
 import appeng.api.definitions.IBlockDefinition;
-import appeng.api.implementations.items.IAEItemPowerStorage;
+import appeng.core.api.config.AccessRestriction;
+import appeng.core.api.config.PowerUnits;
+import appeng.core.api.implementations.items.IAEItemPowerStorage;
 import appeng.core.lib.Api;
 import appeng.core.lib.localization.GuiText;
 import appeng.core.lib.util.Platform;

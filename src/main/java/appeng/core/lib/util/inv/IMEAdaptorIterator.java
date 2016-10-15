@@ -21,8 +21,8 @@ package appeng.core.lib.util.inv;
 
 import java.util.Iterator;
 
-import appeng.api.storage.data.IAEItemStack;
-import appeng.api.storage.data.IItemList;
+import appeng.core.me.api.storage.data.IAEItemStack;
+import appeng.core.me.api.storage.data.IItemList;
 
 
 public final class IMEAdaptorIterator implements Iterator<ItemSlot>

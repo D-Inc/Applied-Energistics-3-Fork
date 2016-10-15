@@ -28,25 +28,25 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
-import appeng.api.AEApi;
-import appeng.api.config.Actionable;
-import appeng.api.networking.IGrid;
-import appeng.api.networking.IGridHost;
-import appeng.api.networking.IGridNode;
-import appeng.api.networking.crafting.ICraftingCallback;
-import appeng.api.networking.crafting.ICraftingGrid;
-import appeng.api.networking.crafting.ICraftingJob;
-import appeng.api.networking.crafting.ICraftingPatternDetails;
-import appeng.api.networking.security.BaseActionSource;
-import appeng.api.networking.security.IActionHost;
-import appeng.api.networking.security.MachineSource;
-import appeng.api.networking.security.PlayerSource;
-import appeng.api.networking.storage.IStorageGrid;
-import appeng.api.storage.data.IAEItemStack;
-import appeng.api.storage.data.IItemList;
-import appeng.api.util.DimensionalCoord;
+import appeng.core.api.AEApi;
+import appeng.core.api.config.Actionable;
+import appeng.core.api.util.DimensionalCoord;
 import appeng.core.hooks.TickHandler;
 import appeng.core.lib.AELog;
+import appeng.core.me.api.networking.IGrid;
+import appeng.core.me.api.networking.IGridHost;
+import appeng.core.me.api.networking.IGridNode;
+import appeng.core.me.api.networking.crafting.ICraftingCallback;
+import appeng.core.me.api.networking.crafting.ICraftingGrid;
+import appeng.core.me.api.networking.crafting.ICraftingJob;
+import appeng.core.me.api.networking.crafting.ICraftingPatternDetails;
+import appeng.core.me.api.networking.security.BaseActionSource;
+import appeng.core.me.api.networking.security.IActionHost;
+import appeng.core.me.api.networking.security.MachineSource;
+import appeng.core.me.api.networking.security.PlayerSource;
+import appeng.core.me.api.networking.storage.IStorageGrid;
+import appeng.core.me.api.storage.data.IAEItemStack;
+import appeng.core.me.api.storage.data.IItemList;
 
 
 public class CraftingJob implements Runnable, ICraftingJob

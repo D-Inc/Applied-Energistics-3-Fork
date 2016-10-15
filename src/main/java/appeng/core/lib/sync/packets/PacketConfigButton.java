@@ -25,9 +25,9 @@ import io.netty.buffer.Unpooled;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 
-import appeng.api.config.Settings;
-import appeng.api.util.IConfigManager;
-import appeng.api.util.IConfigurableObject;
+import appeng.core.api.config.Settings;
+import appeng.core.api.util.IConfigManager;
+import appeng.core.api.util.IConfigurableObject;
 import appeng.core.lib.container.AEBaseContainer;
 import appeng.core.lib.helpers.Reflected;
 import appeng.core.lib.sync.AppEngPacket;

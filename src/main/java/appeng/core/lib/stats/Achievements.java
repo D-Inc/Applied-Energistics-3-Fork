@@ -23,10 +23,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.Achievement;
 
-import appeng.api.AEApi;
 import appeng.api.definitions.IItemDefinition;
-import appeng.api.util.AEColor;
-import appeng.api.util.AEColoredItemDefinition;
+import appeng.core.api.AEApi;
+import appeng.core.api.util.AEColor;
+import appeng.core.api.util.AEColoredItemDefinition;
 
 
 public enum Achievements

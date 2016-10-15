@@ -24,11 +24,11 @@ import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.entity.Entity;
 import net.minecraft.world.World;
 
-import appeng.api.storage.data.IAEItemStack;
 import appeng.core.lib.CommonHelper;
 import appeng.core.lib.client.EffectType;
 import appeng.core.lib.entity.EntityFloatingItem;
 import appeng.core.lib.entity.ICanDie;
+import appeng.core.me.api.storage.data.IAEItemStack;
 
 
 public class AssemblerFX extends Particle implements ICanDie

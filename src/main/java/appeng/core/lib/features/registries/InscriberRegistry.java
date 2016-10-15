@@ -31,9 +31,9 @@ import javax.annotation.Nonnull;
 
 import net.minecraft.item.ItemStack;
 
-import appeng.api.features.IInscriberRecipe;
-import appeng.api.features.IInscriberRecipeBuilder;
-import appeng.api.features.InscriberProcessType;
+import appeng.core.api.features.IInscriberRecipe;
+import appeng.core.api.features.IInscriberRecipeBuilder;
+import appeng.core.api.features.InscriberProcessType;
 import appeng.core.lib.features.registries.entries.InscriberRecipe;
 
 

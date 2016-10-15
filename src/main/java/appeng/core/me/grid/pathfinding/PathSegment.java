@@ -25,9 +25,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-import appeng.api.networking.GridFlags;
-import appeng.api.networking.IGridMultiblock;
-import appeng.api.networking.IGridNode;
+import appeng.core.me.api.networking.GridFlags;
+import appeng.core.me.api.networking.IGridMultiblock;
+import appeng.core.me.api.networking.IGridNode;
 import appeng.core.me.grid.cache.PathGridCache;
 
 

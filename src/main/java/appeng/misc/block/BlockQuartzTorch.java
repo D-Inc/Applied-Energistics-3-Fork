@@ -40,8 +40,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import appeng.api.util.IOrientable;
-import appeng.api.util.IOrientableBlock;
+import appeng.core.api.util.IOrientable;
+import appeng.core.api.util.IOrientableBlock;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.CommonHelper;
 import appeng.core.lib.block.AEBaseBlock;

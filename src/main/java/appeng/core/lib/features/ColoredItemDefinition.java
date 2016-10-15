@@ -24,8 +24,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 
-import appeng.api.util.AEColor;
-import appeng.api.util.AEColoredItemDefinition;
+import appeng.core.api.util.AEColor;
+import appeng.core.api.util.AEColoredItemDefinition;
 
 
 public final class ColoredItemDefinition implements AEColoredItemDefinition

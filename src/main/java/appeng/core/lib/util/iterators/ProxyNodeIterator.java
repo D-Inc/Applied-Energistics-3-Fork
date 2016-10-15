@@ -21,9 +21,9 @@ package appeng.core.lib.util.iterators;
 
 import java.util.Iterator;
 
-import appeng.api.networking.IGridHost;
-import appeng.api.networking.IGridNode;
-import appeng.api.util.AEPartLocation;
+import appeng.core.api.util.AEPartLocation;
+import appeng.core.me.api.networking.IGridHost;
+import appeng.core.me.api.networking.IGridNode;
 
 
 public final class ProxyNodeIterator implements Iterator<IGridNode>

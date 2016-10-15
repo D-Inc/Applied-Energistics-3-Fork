@@ -12,8 +12,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import appeng.api.definitions.IItemDefinition;
-import appeng.api.util.AEColor;
-import appeng.api.util.AEColoredItemDefinition;
+import appeng.core.api.util.AEColor;
+import appeng.core.api.util.AEColoredItemDefinition;
 import appeng.core.lib.bootstrap.components.InitComponent;
 import appeng.core.lib.bootstrap.components.ModelOverrideComponent;
 import appeng.core.lib.bootstrap.components.PostInitComponent;

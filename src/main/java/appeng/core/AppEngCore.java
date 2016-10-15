@@ -18,9 +18,9 @@ import net.minecraftforge.fml.common.event.FMLServerStoppedEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 
-import appeng.api.module.ICore;
 import appeng.api.module.Module;
 import appeng.api.module.Module.ModuleEventHandler;
+import appeng.core.api.ICore;
 import appeng.core.hooks.TickHandler;
 import appeng.core.lib.AELog;
 import appeng.core.lib.sync.GuiBridge;

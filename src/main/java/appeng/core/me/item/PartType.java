@@ -26,10 +26,10 @@ import java.util.Set;
 
 import net.minecraft.util.ResourceLocation;
 
-import appeng.api.parts.IPart;
 import appeng.core.AppEng;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.localization.GuiText;
+import appeng.core.me.api.parts.IPart;
 import appeng.core.me.part.automation.PartAnnihilationPlane;
 import appeng.core.me.part.automation.PartExportBus;
 import appeng.core.me.part.automation.PartFormationPlane;

@@ -25,10 +25,10 @@ import java.util.Set;
 
 import net.minecraft.nbt.NBTTagCompound;
 
-import appeng.api.config.LevelEmitterMode;
-import appeng.api.config.Settings;
-import appeng.api.config.StorageFilter;
-import appeng.api.util.IConfigManager;
+import appeng.core.api.config.LevelEmitterMode;
+import appeng.core.api.config.Settings;
+import appeng.core.api.config.StorageFilter;
+import appeng.core.api.util.IConfigManager;
 import appeng.core.lib.AELog;
 
 

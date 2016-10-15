@@ -34,15 +34,15 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
-import appeng.api.AEApi;
-import appeng.api.implementations.ICraftingPatternItem;
-import appeng.api.networking.crafting.ICraftingPatternDetails;
-import appeng.api.storage.data.IAEItemStack;
+import appeng.core.api.AEApi;
+import appeng.core.api.implementations.ICraftingPatternItem;
 import appeng.core.lib.CommonHelper;
 import appeng.core.lib.helpers.PatternHelper;
 import appeng.core.lib.item.AEBaseItem;
 import appeng.core.lib.localization.GuiText;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.networking.crafting.ICraftingPatternDetails;
+import appeng.core.me.api.storage.data.IAEItemStack;
 
 
 public class ItemEncodedPattern extends AEBaseItem implements ICraftingPatternItem

@@ -19,6 +19,10 @@
 package appeng.core.lib.sync.packets;
 
 
+import appeng.api.definitions.IComparableDefinition;
+import appeng.core.api.AEApi;
+import appeng.core.api.implementations.items.IMemoryCard;
+import appeng.core.api.implementations.items.MemoryCardMessages;
 import appeng.core.lib.Api;
 import appeng.core.lib.api.definitions.ApiItems;
 import io.netty.buffer.ByteBuf;
@@ -30,10 +34,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 
-import appeng.api.AEApi;
-import appeng.api.definitions.IComparableDefinition;
-import appeng.api.implementations.items.IMemoryCard;
-import appeng.api.implementations.items.MemoryCardMessages;
 import appeng.core.lib.sync.AppEngPacket;
 import appeng.core.lib.sync.network.INetworkInfo;
 import appeng.tools.item.ToolColorApplicator;

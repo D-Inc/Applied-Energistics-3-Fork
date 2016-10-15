@@ -21,16 +21,16 @@ package appeng.core.spatial.container;
 
 import net.minecraft.entity.player.InventoryPlayer;
 
-import appeng.api.config.SecurityPermissions;
-import appeng.api.networking.IGrid;
-import appeng.api.networking.energy.IEnergyGrid;
-import appeng.api.networking.spatial.ISpatialCache;
-import appeng.api.util.AEPartLocation;
+import appeng.core.api.config.SecurityPermissions;
+import appeng.core.api.util.AEPartLocation;
 import appeng.core.lib.container.AEBaseContainer;
 import appeng.core.lib.container.guisync.GuiSync;
 import appeng.core.lib.container.slot.SlotOutput;
 import appeng.core.lib.container.slot.SlotRestrictedInput;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.networking.IGrid;
+import appeng.core.me.api.networking.energy.IEnergyGrid;
+import appeng.core.me.api.networking.spatial.ISpatialCache;
 import appeng.core.spatial.tile.TileSpatialIOPort;
 
 

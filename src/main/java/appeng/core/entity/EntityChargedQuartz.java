@@ -32,8 +32,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
-import appeng.api.AEApi;
 import appeng.api.definitions.IMaterials;
+import appeng.core.api.AEApi;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.CommonHelper;
 import appeng.core.lib.client.EffectType;

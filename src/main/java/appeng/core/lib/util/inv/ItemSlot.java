@@ -21,8 +21,8 @@ package appeng.core.lib.util.inv;
 
 import net.minecraft.item.ItemStack;
 
-import appeng.api.storage.data.IAEItemStack;
 import appeng.core.lib.util.item.AEItemStack;
+import appeng.core.me.api.storage.data.IAEItemStack;
 
 
 public class ItemSlot

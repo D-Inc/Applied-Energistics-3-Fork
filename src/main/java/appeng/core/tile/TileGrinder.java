@@ -27,9 +27,9 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 
-import appeng.api.AEApi;
-import appeng.api.features.IGrinderEntry;
-import appeng.api.implementations.tiles.ICrankable;
+import appeng.core.api.AEApi;
+import appeng.core.api.features.IGrinderEntry;
+import appeng.core.api.implementations.tiles.ICrankable;
 import appeng.core.lib.tile.AEBaseInvTile;
 import appeng.core.lib.tile.inventory.AppEngInternalInventory;
 import appeng.core.lib.tile.inventory.InvOperation;

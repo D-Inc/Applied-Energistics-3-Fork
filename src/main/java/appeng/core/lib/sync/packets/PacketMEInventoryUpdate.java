@@ -40,13 +40,13 @@ import net.minecraftforge.fml.common.network.internal.FMLProxyPacket;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import appeng.api.storage.data.IAEItemStack;
 import appeng.core.crafting.client.gui.GuiCraftConfirm;
 import appeng.core.crafting.client.gui.GuiCraftingCPU;
 import appeng.core.lib.AELog;
 import appeng.core.lib.sync.AppEngPacket;
 import appeng.core.lib.sync.network.INetworkInfo;
 import appeng.core.lib.util.item.AEItemStack;
+import appeng.core.me.api.storage.data.IAEItemStack;
 import appeng.core.me.client.gui.GuiMEMonitorable;
 import appeng.core.me.client.gui.GuiNetworkStatus;
 

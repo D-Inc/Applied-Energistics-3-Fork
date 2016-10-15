@@ -23,7 +23,7 @@ import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.Map;
 
-import appeng.api.config.SecurityPermissions;
+import appeng.core.api.config.SecurityPermissions;
 
 
 public class PlayerSecurityWrapper// implements ISecurityRegistry

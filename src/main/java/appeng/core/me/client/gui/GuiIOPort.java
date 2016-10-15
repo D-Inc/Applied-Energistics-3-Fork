@@ -26,12 +26,12 @@ import org.lwjgl.input.Mouse;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.player.InventoryPlayer;
 
-import appeng.api.AEApi;
-import appeng.api.config.FullnessMode;
-import appeng.api.config.OperationMode;
-import appeng.api.config.RedstoneMode;
-import appeng.api.config.Settings;
 import appeng.api.definitions.IDefinitions;
+import appeng.core.api.AEApi;
+import appeng.core.api.config.FullnessMode;
+import appeng.core.api.config.OperationMode;
+import appeng.core.api.config.RedstoneMode;
+import appeng.core.api.config.Settings;
 import appeng.core.lib.client.gui.GuiUpgradeable;
 import appeng.core.lib.client.gui.widgets.GuiImgButton;
 import appeng.core.lib.localization.GuiText;

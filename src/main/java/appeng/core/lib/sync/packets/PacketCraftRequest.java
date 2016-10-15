@@ -27,12 +27,7 @@ import io.netty.buffer.Unpooled;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 
-import appeng.api.networking.IGrid;
-import appeng.api.networking.IGridHost;
-import appeng.api.networking.IGridNode;
-import appeng.api.networking.crafting.ICraftingGrid;
-import appeng.api.networking.crafting.ICraftingJob;
-import appeng.api.util.AEPartLocation;
+import appeng.core.api.util.AEPartLocation;
 import appeng.core.crafting.container.ContainerCraftAmount;
 import appeng.core.crafting.container.ContainerCraftConfirm;
 import appeng.core.lib.AELog;
@@ -41,6 +36,11 @@ import appeng.core.lib.sync.AppEngPacket;
 import appeng.core.lib.sync.GuiBridge;
 import appeng.core.lib.sync.network.INetworkInfo;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.networking.IGrid;
+import appeng.core.me.api.networking.IGridHost;
+import appeng.core.me.api.networking.IGridNode;
+import appeng.core.me.api.networking.crafting.ICraftingGrid;
+import appeng.core.me.api.networking.crafting.ICraftingJob;
 
 
 public class PacketCraftRequest extends AppEngPacket

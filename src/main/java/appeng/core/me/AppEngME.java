@@ -13,13 +13,13 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppedEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 
-import appeng.api.module.IME;
 import appeng.api.module.Module;
 import appeng.api.module.Module.ModuleEventHandler;
 import appeng.core.AppEng;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.FacadeConfig;
 import appeng.core.lib.features.AEFeature;
+import appeng.core.me.api.IME;
 
 
 @Module( IME.NAME )

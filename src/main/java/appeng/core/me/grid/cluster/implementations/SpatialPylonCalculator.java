@@ -23,8 +23,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import appeng.api.util.DimensionalCoord;
-import appeng.api.util.WorldCoord;
+import appeng.core.api.util.DimensionalCoord;
+import appeng.core.api.util.WorldCoord;
 import appeng.core.me.grid.cluster.IAECluster;
 import appeng.core.me.grid.cluster.IAEMultiBlock;
 import appeng.core.me.grid.cluster.MBCalculator;

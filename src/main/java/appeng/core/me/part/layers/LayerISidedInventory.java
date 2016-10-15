@@ -30,10 +30,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.text.ITextComponent;
 
-import appeng.api.parts.IPart;
-import appeng.api.parts.IPartHost;
-import appeng.api.parts.LayerBase;
-import appeng.api.util.AEPartLocation;
+import appeng.core.api.util.AEPartLocation;
+import appeng.core.me.api.parts.IPart;
+import appeng.core.me.api.parts.IPartHost;
+import appeng.core.me.api.parts.LayerBase;
 
 
 /**

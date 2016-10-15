@@ -47,9 +47,9 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import appeng.api.util.AECableType;
-import appeng.api.util.AEColor;
 import appeng.core.AppEng;
+import appeng.core.api.util.AECableType;
+import appeng.core.api.util.AEColor;
 import appeng.core.hooks.TickHandler;
 import appeng.core.hooks.TickHandler.PlayerColor;
 import appeng.core.lib.AELog;

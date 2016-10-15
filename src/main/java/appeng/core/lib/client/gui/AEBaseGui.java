@@ -54,7 +54,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 
-import appeng.api.storage.data.IAEItemStack;
 import appeng.core.crafting.container.SlotPatternTerm;
 import appeng.core.lib.AELog;
 import appeng.core.lib.client.gui.widgets.GuiScrollbar;
@@ -74,6 +73,7 @@ import appeng.core.lib.helpers.InventoryAction;
 import appeng.core.lib.sync.network.NetworkHandler;
 import appeng.core.lib.sync.packets.PacketInventoryAction;
 import appeng.core.lib.sync.packets.PacketSwapSlots;
+import appeng.core.me.api.storage.data.IAEItemStack;
 import appeng.core.me.client.gui.InternalSlotME;
 import appeng.core.me.client.gui.SlotDisconnected;
 import appeng.core.me.client.gui.SlotME;

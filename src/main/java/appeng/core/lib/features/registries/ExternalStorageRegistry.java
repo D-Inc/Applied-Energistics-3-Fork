@@ -25,10 +25,10 @@ import java.util.List;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 
-import appeng.api.networking.security.BaseActionSource;
-import appeng.api.storage.IExternalStorageHandler;
-import appeng.api.storage.StorageChannel;
 import appeng.core.lib.features.registries.entries.ExternalIInv;
+import appeng.core.me.api.networking.security.BaseActionSource;
+import appeng.core.me.api.storage.IExternalStorageHandler;
+import appeng.core.me.api.storage.StorageChannel;
 
 
 public class ExternalStorageRegistry// implements IExternalStorageRegistry

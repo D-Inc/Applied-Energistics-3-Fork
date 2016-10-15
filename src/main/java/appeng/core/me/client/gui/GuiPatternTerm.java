@@ -26,10 +26,9 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 
-import appeng.api.config.ActionItems;
-import appeng.api.config.ItemSubstitution;
-import appeng.api.config.Settings;
-import appeng.api.storage.ITerminalHost;
+import appeng.core.api.config.ActionItems;
+import appeng.core.api.config.ItemSubstitution;
+import appeng.core.api.config.Settings;
 import appeng.core.crafting.container.ContainerPatternTerm;
 import appeng.core.lib.client.gui.widgets.GuiImgButton;
 import appeng.core.lib.client.gui.widgets.GuiTabButton;
@@ -37,6 +36,7 @@ import appeng.core.lib.container.slot.AppEngSlot;
 import appeng.core.lib.localization.GuiText;
 import appeng.core.lib.sync.network.NetworkHandler;
 import appeng.core.lib.sync.packets.PacketValueConfig;
+import appeng.core.me.api.storage.ITerminalHost;
 
 
 public class GuiPatternTerm extends GuiMEMonitorable

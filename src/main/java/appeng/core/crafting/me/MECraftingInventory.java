@@ -19,14 +19,14 @@
 package appeng.core.crafting.me;
 
 
-import appeng.api.AEApi;
-import appeng.api.config.Actionable;
-import appeng.api.networking.security.BaseActionSource;
-import appeng.api.storage.IMEInventory;
-import appeng.api.storage.IMEMonitor;
-import appeng.api.storage.StorageChannel;
-import appeng.api.storage.data.IAEItemStack;
-import appeng.api.storage.data.IItemList;
+import appeng.core.api.AEApi;
+import appeng.core.api.config.Actionable;
+import appeng.core.me.api.networking.security.BaseActionSource;
+import appeng.core.me.api.storage.IMEInventory;
+import appeng.core.me.api.storage.IMEMonitor;
+import appeng.core.me.api.storage.StorageChannel;
+import appeng.core.me.api.storage.data.IAEItemStack;
+import appeng.core.me.api.storage.data.IItemList;
 
 
 public class MECraftingInventory implements IMEInventory<IAEItemStack>

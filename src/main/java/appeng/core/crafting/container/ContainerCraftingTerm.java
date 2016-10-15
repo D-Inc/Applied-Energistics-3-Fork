@@ -25,12 +25,12 @@ import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 
-import appeng.api.storage.ITerminalHost;
 import appeng.core.lib.container.ContainerNull;
 import appeng.core.lib.helpers.IContainerCraftingPacket;
 import appeng.core.lib.tile.inventory.AppEngInternalInventory;
 import appeng.core.lib.tile.inventory.IAEAppEngInventory;
 import appeng.core.lib.tile.inventory.InvOperation;
+import appeng.core.me.api.storage.ITerminalHost;
 import appeng.core.me.container.ContainerMEMonitorable;
 import appeng.core.me.container.SlotCraftingMatrix;
 import appeng.core.me.container.SlotCraftingTerm;

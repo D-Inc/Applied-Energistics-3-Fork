@@ -19,9 +19,9 @@
 package appeng.core.me.grid.pathfinding;
 
 
-import appeng.api.networking.IGridConnection;
-import appeng.api.networking.IGridConnectionVisitor;
-import appeng.api.networking.IGridNode;
+import appeng.core.me.api.networking.IGridConnection;
+import appeng.core.me.api.networking.IGridConnectionVisitor;
+import appeng.core.me.api.networking.IGridNode;
 import appeng.core.me.grid.GridConnection;
 import appeng.core.me.grid.GridNode;
 

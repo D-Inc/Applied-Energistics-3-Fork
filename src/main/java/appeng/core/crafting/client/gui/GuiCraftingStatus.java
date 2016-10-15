@@ -34,7 +34,6 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
 
-import appeng.api.storage.ITerminalHost;
 import appeng.core.crafting.container.ContainerCraftingStatus;
 import appeng.core.lib.AELog;
 import appeng.core.lib.client.gui.widgets.GuiTabButton;
@@ -44,6 +43,7 @@ import appeng.core.lib.sync.GuiBridge;
 import appeng.core.lib.sync.network.NetworkHandler;
 import appeng.core.lib.sync.packets.PacketSwitchGuis;
 import appeng.core.lib.sync.packets.PacketValueConfig;
+import appeng.core.me.api.storage.ITerminalHost;
 import appeng.core.me.part.reporting.PartCraftingTerminal;
 import appeng.core.me.part.reporting.PartPatternTerminal;
 import appeng.core.me.part.reporting.PartTerminal;

@@ -19,18 +19,18 @@
 package appeng.core.lib;
 
 
-import appeng.api.IAppEngApi;
-import appeng.api.exceptions.FailedConnection;
-import appeng.api.networking.IGridBlock;
-import appeng.api.networking.IGridConnection;
-import appeng.api.networking.IGridNode;
-import appeng.api.storage.IStorageHelper;
-import appeng.api.util.AEPartLocation;
+import appeng.core.api.IAppEngApi;
+import appeng.core.api.exceptions.FailedConnection;
+import appeng.core.api.util.AEPartLocation;
 import appeng.core.lib.api.ApiPart;
 import appeng.core.lib.api.ApiStorage;
 import appeng.core.lib.features.registries.MovableTileRegistry;
 import appeng.core.lib.features.registries.RegistryContainer;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.networking.IGridBlock;
+import appeng.core.me.api.networking.IGridConnection;
+import appeng.core.me.api.networking.IGridNode;
+import appeng.core.me.api.storage.IStorageHelper;
 import appeng.core.me.grid.GridConnection;
 import appeng.core.me.grid.GridNode;
 

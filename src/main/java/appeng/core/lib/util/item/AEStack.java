@@ -23,7 +23,7 @@ import java.io.IOException;
 
 import io.netty.buffer.ByteBuf;
 
-import appeng.api.storage.data.IAEStack;
+import appeng.core.me.api.storage.data.IAEStack;
 
 
 public abstract class AEStack<StackType extends IAEStack> implements IAEStack<StackType>

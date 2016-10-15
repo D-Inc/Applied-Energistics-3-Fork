@@ -33,17 +33,17 @@ import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
 
-import appeng.api.AEApi;
-import appeng.api.features.INetworkEncodable;
-import appeng.api.implementations.ICraftingPatternItem;
-import appeng.api.implementations.items.IBiometricCard;
-import appeng.api.implementations.items.ISpatialStorageCell;
-import appeng.api.implementations.items.IStorageComponent;
-import appeng.api.implementations.items.IUpgradeModule;
-import appeng.api.networking.crafting.ICraftingPatternDetails;
-import appeng.api.storage.ICellWorkbenchItem;
+import appeng.core.api.AEApi;
+import appeng.core.api.features.INetworkEncodable;
+import appeng.core.api.implementations.ICraftingPatternItem;
+import appeng.core.api.implementations.items.IBiometricCard;
+import appeng.core.api.implementations.items.ISpatialStorageCell;
+import appeng.core.api.implementations.items.IStorageComponent;
+import appeng.core.api.implementations.items.IUpgradeModule;
 import appeng.core.crafting.item.ItemEncodedPattern;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.networking.crafting.ICraftingPatternDetails;
+import appeng.core.me.api.storage.ICellWorkbenchItem;
 
 
 /**

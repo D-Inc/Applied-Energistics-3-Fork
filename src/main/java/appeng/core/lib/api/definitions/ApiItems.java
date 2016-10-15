@@ -20,7 +20,7 @@ package appeng.core.lib.api.definitions;
 
 
 import appeng.api.definitions.IItemDefinition;
-import appeng.api.util.AEColoredItemDefinition;
+import appeng.core.api.util.AEColoredItemDefinition;
 import appeng.core.crafting.item.ItemEncodedPattern;
 import appeng.core.item.ItemCrystalSeed;
 import appeng.core.item.ItemCrystalSeedRendering;

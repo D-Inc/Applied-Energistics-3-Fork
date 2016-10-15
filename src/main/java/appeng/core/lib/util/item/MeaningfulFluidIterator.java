@@ -22,7 +22,7 @@ package appeng.core.lib.util.item;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import appeng.api.storage.data.IAEStack;
+import appeng.core.me.api.storage.data.IAEStack;
 
 
 public class MeaningfulFluidIterator<T extends IAEStack> implements Iterator<T>

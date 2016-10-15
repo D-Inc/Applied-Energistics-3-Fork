@@ -30,13 +30,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.math.BlockPos;
 
-import appeng.api.config.Actionable;
-import appeng.api.networking.energy.IEnergySource;
-import appeng.api.networking.security.BaseActionSource;
-import appeng.api.storage.IMEMonitor;
-import appeng.api.storage.IStorageMonitorable;
-import appeng.api.storage.data.IAEItemStack;
-import appeng.api.storage.data.IItemList;
+import appeng.core.api.config.Actionable;
 import appeng.core.lib.container.ContainerNull;
 import appeng.core.lib.container.slot.AppEngCraftingSlot;
 import appeng.core.lib.helpers.IContainerCraftingPacket;
@@ -45,6 +39,12 @@ import appeng.core.lib.util.InventoryAdaptor;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.util.inv.AdaptorPlayerHand;
 import appeng.core.lib.util.item.AEItemStack;
+import appeng.core.me.api.networking.energy.IEnergySource;
+import appeng.core.me.api.networking.security.BaseActionSource;
+import appeng.core.me.api.storage.IMEMonitor;
+import appeng.core.me.api.storage.IStorageMonitorable;
+import appeng.core.me.api.storage.data.IAEItemStack;
+import appeng.core.me.api.storage.data.IItemList;
 import appeng.core.me.item.ItemViewCell;
 
 

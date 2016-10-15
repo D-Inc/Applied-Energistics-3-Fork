@@ -31,9 +31,9 @@ import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.common.util.FakePlayerFactory;
 
-import appeng.api.parts.IPart;
-import appeng.api.parts.IPartHost;
-import appeng.api.util.AEPartLocation;
+import appeng.core.api.util.AEPartLocation;
+import appeng.core.me.api.parts.IPart;
+import appeng.core.me.api.parts.IPartHost;
 
 
 public class PartIdentityAnnihilationPlane extends PartAnnihilationPlane

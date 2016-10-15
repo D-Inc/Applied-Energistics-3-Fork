@@ -25,7 +25,7 @@ import com.mojang.authlib.GameProfile;
 
 import net.minecraft.entity.player.EntityPlayer;
 
-import appeng.api.features.IPlayerRegistry;
+import appeng.core.api.features.IPlayerRegistry;
 import appeng.core.lib.worlddata.WorldData;
 
 

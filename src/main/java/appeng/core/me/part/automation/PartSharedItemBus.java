@@ -25,13 +25,13 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import appeng.api.config.RedstoneMode;
-import appeng.api.config.Upgrades;
-import appeng.api.networking.ticking.IGridTickable;
-import appeng.api.networking.ticking.TickRateModulation;
+import appeng.core.api.config.RedstoneMode;
+import appeng.core.api.config.Upgrades;
 import appeng.core.lib.tile.inventory.AppEngInternalAEInventory;
 import appeng.core.lib.util.InventoryAdaptor;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.networking.ticking.IGridTickable;
+import appeng.core.me.api.networking.ticking.TickRateModulation;
 import appeng.core.me.grid.GridAccessException;
 
 

@@ -19,12 +19,12 @@
 package appeng.core.lib;
 
 
-import appeng.api.parts.IPartHelper;
 import appeng.core.lib.api.definitions.ApiBlocks;
 import appeng.core.lib.api.definitions.ApiItems;
 import appeng.core.lib.api.definitions.ApiMaterials;
 import appeng.core.lib.api.definitions.ApiParts;
 import appeng.core.lib.bootstrap.FeatureFactory;
+import appeng.core.me.api.parts.IPartHelper;
 
 
 /**

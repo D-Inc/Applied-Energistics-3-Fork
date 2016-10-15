@@ -27,7 +27,7 @@ import net.minecraft.world.chunk.IChunkGenerator;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraftforge.fml.common.IWorldGenerator;
 
-import appeng.api.features.IWorldGen.WorldGenType;
+import appeng.core.api.features.IWorldGen.WorldGenType;
 import appeng.core.hooks.TickHandler;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.features.registries.WorldGenRegistry;

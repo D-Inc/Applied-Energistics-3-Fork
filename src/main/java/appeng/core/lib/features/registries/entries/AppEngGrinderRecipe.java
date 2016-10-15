@@ -21,7 +21,7 @@ package appeng.core.lib.features.registries.entries;
 
 import net.minecraft.item.ItemStack;
 
-import appeng.api.features.IGrinderEntry;
+import appeng.core.api.features.IGrinderEntry;
 
 
 public class AppEngGrinderRecipe implements IGrinderEntry

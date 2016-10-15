@@ -33,16 +33,16 @@ import javax.annotation.Nullable;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
-import appeng.api.config.AccessRestriction;
-import appeng.api.config.Actionable;
-import appeng.api.networking.events.MENetworkStorageEvent;
-import appeng.api.networking.security.BaseActionSource;
-import appeng.api.storage.IMEInventoryHandler;
-import appeng.api.storage.IMEMonitor;
-import appeng.api.storage.IMEMonitorHandlerReceiver;
-import appeng.api.storage.StorageChannel;
-import appeng.api.storage.data.IAEStack;
-import appeng.api.storage.data.IItemList;
+import appeng.core.api.config.AccessRestriction;
+import appeng.core.api.config.Actionable;
+import appeng.core.me.api.networking.events.MENetworkStorageEvent;
+import appeng.core.me.api.networking.security.BaseActionSource;
+import appeng.core.me.api.storage.IMEInventoryHandler;
+import appeng.core.me.api.storage.IMEMonitor;
+import appeng.core.me.api.storage.IMEMonitorHandlerReceiver;
+import appeng.core.me.api.storage.StorageChannel;
+import appeng.core.me.api.storage.data.IAEStack;
+import appeng.core.me.api.storage.data.IItemList;
 import appeng.core.me.grid.storage.ItemWatcher;
 
 

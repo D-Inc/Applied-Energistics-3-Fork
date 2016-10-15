@@ -26,10 +26,10 @@ import java.util.LinkedList;
 import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntity;
 
-import appeng.api.exceptions.AppEngException;
-import appeng.api.movable.IMovableHandler;
-import appeng.api.movable.IMovableTile;
+import appeng.core.api.exceptions.AppEngException;
 import appeng.core.spatial.DefaultSpatialHandler;
+import appeng.core.spatial.api.movable.IMovableHandler;
+import appeng.core.spatial.api.movable.IMovableTile;
 
 
 public class MovableTileRegistry// implements IMovableRegistry

@@ -39,8 +39,8 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import appeng.api.AEApi;
-import appeng.api.util.DimensionalCoord;
+import appeng.core.api.AEApi;
+import appeng.core.api.util.DimensionalCoord;
 import appeng.core.lib.util.Platform;
 
 

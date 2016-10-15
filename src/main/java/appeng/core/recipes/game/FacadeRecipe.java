@@ -31,9 +31,9 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 
-import appeng.api.AEApi;
 import appeng.api.definitions.IComparableDefinition;
 import appeng.api.definitions.IDefinitions;
+import appeng.core.api.AEApi;
 import appeng.decorative.item.ItemFacade;
 
 

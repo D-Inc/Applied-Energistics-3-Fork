@@ -23,8 +23,8 @@ import java.util.EnumSet;
 
 import net.minecraft.util.EnumFacing;
 
-import appeng.api.networking.IGridNode;
-import appeng.api.util.AEPartLocation;
+import appeng.core.api.util.AEPartLocation;
+import appeng.core.me.api.networking.IGridNode;
 import appeng.core.me.grid.helpers.AENetworkProxy;
 import appeng.core.me.tile.AENetworkTile;
 

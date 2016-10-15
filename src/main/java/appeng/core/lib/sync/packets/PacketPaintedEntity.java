@@ -24,7 +24,7 @@ import io.netty.buffer.Unpooled;
 
 import net.minecraft.entity.player.EntityPlayer;
 
-import appeng.api.util.AEColor;
+import appeng.core.api.util.AEColor;
 import appeng.core.hooks.TickHandler;
 import appeng.core.hooks.TickHandler.PlayerColor;
 import appeng.core.lib.sync.AppEngPacket;

@@ -31,15 +31,15 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 
-import appeng.api.implementations.IPowerChannelState;
-import appeng.api.implementations.parts.IPartMonitor;
-import appeng.api.networking.GridFlags;
-import appeng.api.networking.events.MENetworkBootingStatusChange;
-import appeng.api.networking.events.MENetworkEventSubscribe;
-import appeng.api.networking.events.MENetworkPowerStatusChange;
-import appeng.api.parts.IPartCollisionHelper;
-import appeng.api.util.AEPartLocation;
+import appeng.core.api.implementations.IPowerChannelState;
+import appeng.core.api.implementations.parts.IPartMonitor;
+import appeng.core.api.util.AEPartLocation;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.networking.GridFlags;
+import appeng.core.me.api.networking.events.MENetworkBootingStatusChange;
+import appeng.core.me.api.networking.events.MENetworkEventSubscribe;
+import appeng.core.me.api.networking.events.MENetworkPowerStatusChange;
+import appeng.core.me.api.parts.IPartCollisionHelper;
 import appeng.core.me.grid.GridAccessException;
 import appeng.core.me.part.AEBasePart;
 

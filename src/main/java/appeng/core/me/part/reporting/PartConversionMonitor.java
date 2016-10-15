@@ -29,14 +29,14 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.Vec3d;
 
-import appeng.api.networking.energy.IEnergySource;
-import appeng.api.networking.security.PlayerSource;
-import appeng.api.storage.IMEMonitor;
-import appeng.api.storage.data.IAEItemStack;
 import appeng.core.lib.helpers.Reflected;
 import appeng.core.lib.util.InventoryAdaptor;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.util.item.AEItemStack;
+import appeng.core.me.api.networking.energy.IEnergySource;
+import appeng.core.me.api.networking.security.PlayerSource;
+import appeng.core.me.api.storage.IMEMonitor;
+import appeng.core.me.api.storage.data.IAEItemStack;
 import appeng.core.me.grid.GridAccessException;
 
 

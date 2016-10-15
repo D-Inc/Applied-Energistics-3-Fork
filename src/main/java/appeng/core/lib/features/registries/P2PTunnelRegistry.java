@@ -32,14 +32,14 @@ import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 
-import appeng.api.AEApi;
-import appeng.api.config.TunnelType;
 import appeng.api.definitions.IBlocks;
 import appeng.api.definitions.IDefinitions;
 import appeng.api.definitions.IItemDefinition;
 import appeng.api.definitions.IParts;
-import appeng.api.features.IP2PTunnelRegistry;
-import appeng.api.util.AEColor;
+import appeng.core.api.AEApi;
+import appeng.core.api.config.TunnelType;
+import appeng.core.api.features.IP2PTunnelRegistry;
+import appeng.core.api.util.AEColor;
 import appeng.core.lib.util.Platform;
 
 

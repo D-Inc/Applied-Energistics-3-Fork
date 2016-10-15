@@ -39,7 +39,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 
-import appeng.api.AEApi;
+import appeng.core.api.AEApi;
 import appeng.core.lib.client.gui.AEBaseGui;
 import appeng.core.lib.client.gui.widgets.GuiScrollbar;
 import appeng.core.lib.client.gui.widgets.MEGuiTextField;

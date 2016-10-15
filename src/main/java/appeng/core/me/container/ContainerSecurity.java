@@ -25,18 +25,18 @@ import net.minecraft.inventory.IContainerListener;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 
-import appeng.api.AEApi;
-import appeng.api.config.SecurityPermissions;
-import appeng.api.features.INetworkEncodable;
-import appeng.api.features.IWirelessTermHandler;
-import appeng.api.implementations.items.IBiometricCard;
-import appeng.api.storage.ITerminalHost;
+import appeng.core.api.AEApi;
+import appeng.core.api.config.SecurityPermissions;
+import appeng.core.api.features.INetworkEncodable;
+import appeng.core.api.features.IWirelessTermHandler;
+import appeng.core.api.implementations.items.IBiometricCard;
 import appeng.core.lib.container.guisync.GuiSync;
 import appeng.core.lib.container.slot.SlotOutput;
 import appeng.core.lib.container.slot.SlotRestrictedInput;
 import appeng.core.lib.tile.inventory.AppEngInternalInventory;
 import appeng.core.lib.tile.inventory.IAEAppEngInventory;
 import appeng.core.lib.tile.inventory.InvOperation;
+import appeng.core.me.api.storage.ITerminalHost;
 import appeng.core.me.tile.TileSecurity;
 
 

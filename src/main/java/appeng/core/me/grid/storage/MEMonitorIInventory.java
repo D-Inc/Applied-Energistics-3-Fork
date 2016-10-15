@@ -28,20 +28,20 @@ import java.util.concurrent.ConcurrentSkipListMap;
 
 import net.minecraft.item.ItemStack;
 
-import appeng.api.AEApi;
-import appeng.api.config.AccessRestriction;
-import appeng.api.config.Actionable;
-import appeng.api.config.StorageFilter;
-import appeng.api.networking.security.BaseActionSource;
-import appeng.api.networking.ticking.TickRateModulation;
-import appeng.api.storage.IMEMonitor;
-import appeng.api.storage.IMEMonitorHandlerReceiver;
-import appeng.api.storage.StorageChannel;
-import appeng.api.storage.data.IAEItemStack;
-import appeng.api.storage.data.IItemList;
+import appeng.core.api.AEApi;
+import appeng.core.api.config.AccessRestriction;
+import appeng.core.api.config.Actionable;
+import appeng.core.api.config.StorageFilter;
 import appeng.core.lib.util.InventoryAdaptor;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.util.inv.ItemSlot;
+import appeng.core.me.api.networking.security.BaseActionSource;
+import appeng.core.me.api.networking.ticking.TickRateModulation;
+import appeng.core.me.api.storage.IMEMonitor;
+import appeng.core.me.api.storage.IMEMonitorHandlerReceiver;
+import appeng.core.me.api.storage.StorageChannel;
+import appeng.core.me.api.storage.data.IAEItemStack;
+import appeng.core.me.api.storage.data.IItemList;
 
 
 public class MEMonitorIInventory implements IMEMonitor<IAEItemStack>

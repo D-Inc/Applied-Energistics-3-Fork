@@ -19,8 +19,8 @@
 package appeng.core.me.grid.helpers;
 
 
-import appeng.api.networking.IGridHost;
-import appeng.api.util.DimensionalCoord;
+import appeng.core.api.util.DimensionalCoord;
+import appeng.core.me.api.networking.IGridHost;
 
 
 public interface IGridProxyable extends IGridHost

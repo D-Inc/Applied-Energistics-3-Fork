@@ -8,11 +8,11 @@ import javax.annotation.Nullable;
 
 import net.minecraft.item.ItemStack;
 
-import appeng.api.exceptions.MissingIngredientError;
-import appeng.api.exceptions.RecipeError;
-import appeng.api.exceptions.RegistrationError;
-import appeng.api.recipes.ICraftHandler;
-import appeng.api.recipes.IIngredient;
+import appeng.core.api.exceptions.MissingIngredientError;
+import appeng.core.api.exceptions.RecipeError;
+import appeng.core.api.exceptions.RegistrationError;
+import appeng.core.api.recipes.ICraftHandler;
+import appeng.core.api.recipes.IIngredient;
 import appeng.core.lib.util.Platform;
 import appeng.core.recipes.RecipeHandler;
 

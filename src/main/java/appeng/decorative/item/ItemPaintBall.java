@@ -25,7 +25,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-import appeng.api.util.AEColor;
+import appeng.core.api.util.AEColor;
 import appeng.core.lib.item.AEBaseItem;
 import appeng.core.lib.localization.GuiText;
 

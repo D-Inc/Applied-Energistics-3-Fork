@@ -10,7 +10,7 @@ import net.minecraftforge.common.property.IExtendedBlockState;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import appeng.api.util.AEPartLocation;
+import appeng.core.api.util.AEPartLocation;
 import appeng.core.me.part.CableBusContainer;
 
 

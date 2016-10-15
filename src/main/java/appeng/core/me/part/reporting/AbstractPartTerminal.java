@@ -28,16 +28,12 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.Vec3d;
 
-import appeng.api.config.Settings;
-import appeng.api.config.SortDir;
-import appeng.api.config.SortOrder;
-import appeng.api.config.ViewItems;
-import appeng.api.implementations.tiles.IViewCellStorage;
-import appeng.api.storage.IMEMonitor;
-import appeng.api.storage.ITerminalHost;
-import appeng.api.storage.data.IAEFluidStack;
-import appeng.api.storage.data.IAEItemStack;
-import appeng.api.util.IConfigManager;
+import appeng.core.api.config.Settings;
+import appeng.core.api.config.SortDir;
+import appeng.core.api.config.SortOrder;
+import appeng.core.api.config.ViewItems;
+import appeng.core.api.implementations.tiles.IViewCellStorage;
+import appeng.core.api.util.IConfigManager;
 import appeng.core.lib.sync.GuiBridge;
 import appeng.core.lib.tile.inventory.AppEngInternalInventory;
 import appeng.core.lib.tile.inventory.IAEAppEngInventory;
@@ -45,6 +41,10 @@ import appeng.core.lib.tile.inventory.InvOperation;
 import appeng.core.lib.util.ConfigManager;
 import appeng.core.lib.util.IConfigManagerHost;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.storage.IMEMonitor;
+import appeng.core.me.api.storage.ITerminalHost;
+import appeng.core.me.api.storage.data.IAEFluidStack;
+import appeng.core.me.api.storage.data.IAEItemStack;
 import appeng.core.me.grid.GridAccessException;
 
 
