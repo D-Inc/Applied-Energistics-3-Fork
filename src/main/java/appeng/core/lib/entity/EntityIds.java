@@ -24,7 +24,7 @@ import net.minecraft.entity.Entity;
 import appeng.core.entity.EntityChargedQuartz;
 import appeng.core.entity.EntityGrowingCrystal;
 import appeng.core.me.entity.EntitySingularity;
-import appeng.misc.entity.EntityTinyTNTPrimed;
+import appeng.miscellaneous.entity.EntityTinyTNTPrimed;
 
 
 public final class EntityIds

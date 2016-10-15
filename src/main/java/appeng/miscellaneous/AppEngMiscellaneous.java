@@ -1,5 +1,5 @@
 
-package appeng.misc;
+package appeng.miscellaneous;
 
 
 import net.minecraftforge.common.ForgeVersion;
@@ -17,17 +17,17 @@ import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 import appeng.api.module.Module;
 import appeng.core.AppEng;
 import appeng.core.lib.AEConfig;
-import appeng.misc.api.IMisc;
+import appeng.miscellaneous.api.IMiscellaneous;
 
 
 @Module( "misc" )
-@Mod( modid = AppEngMisc.MODID, name = AppEngMisc.MODNAME, version = AEConfig.VERSION, dependencies = "required-after:" + AppEng.MOD_ID, acceptedMinecraftVersions = ForgeVersion.mcVersion )
-public class AppEngMisc implements IMisc
+@Mod( modid = AppEngMiscellaneous.MODID, name = AppEngMiscellaneous.MODNAME, version = AEConfig.VERSION, dependencies = "required-after:" + AppEng.MOD_ID, acceptedMinecraftVersions = ForgeVersion.mcVersion )
+public class AppEngMiscellaneous implements IMiscellaneous
 {
 
-	public static final String MODID = AppEng.MOD_ID + "|" + IMisc.NAME;
+	public static final String MODID = AppEng.MOD_ID + "|" + IMiscellaneous.NAME;
 
-	public static final String MODNAME = AppEng.MOD_NAME + " | " + IMisc.NAME;
+	public static final String MODNAME = AppEng.MOD_NAME + " | " + IMiscellaneous.NAME;
 
 	@EventHandler
 	public void preInit( final FMLPreInitializationEvent event )

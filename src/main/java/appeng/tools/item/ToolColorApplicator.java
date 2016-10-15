@@ -74,8 +74,8 @@ import appeng.core.me.grid.storage.CellInventoryHandler;
 import appeng.core.me.item.CellConfig;
 import appeng.core.me.item.CellUpgrades;
 import appeng.decorative.item.ItemPaintBall;
-import appeng.misc.block.BlockPaint;
-import appeng.misc.tile.TilePaint;
+import appeng.miscellaneous.block.BlockPaint;
+import appeng.miscellaneous.tile.TilePaint;
 import appeng.tools.hooks.DispenserBlockTool;
 
 

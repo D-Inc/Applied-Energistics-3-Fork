@@ -52,7 +52,7 @@ import appeng.core.lib.AEConfig;
 import appeng.core.lib.item.powered.AEBasePoweredItem;
 import appeng.core.lib.util.InWorldToolOperationResult;
 import appeng.core.lib.util.Platform;
-import appeng.misc.block.BlockTinyTNT;
+import appeng.miscellaneous.block.BlockTinyTNT;
 import appeng.tools.hooks.DispenserBlockTool;
 
 

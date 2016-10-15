@@ -86,12 +86,12 @@ import appeng.decorative.block.BlockQuartzGlass;
 import appeng.decorative.block.BlockQuartzLamp;
 import appeng.decorative.block.BlockQuartzPillar;
 import appeng.decorative.block.BlockStairCommon;
-import appeng.misc.block.BlockLightDetector;
-import appeng.misc.block.BlockPaint;
-import appeng.misc.block.BlockQuartzGrowthAccelerator;
-import appeng.misc.block.BlockQuartzTorch;
-import appeng.misc.block.BlockSkyCompass;
-import appeng.misc.block.BlockTinyTNT;
+import appeng.miscellaneous.block.BlockLightDetector;
+import appeng.miscellaneous.block.BlockPaint;
+import appeng.miscellaneous.block.BlockQuartzGrowthAccelerator;
+import appeng.miscellaneous.block.BlockQuartzTorch;
+import appeng.miscellaneous.block.BlockSkyCompass;
+import appeng.miscellaneous.block.BlockTinyTNT;
 import appeng.tools.hooks.DispenserBehaviorTinyTNT;
 
 

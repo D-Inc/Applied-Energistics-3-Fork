@@ -72,8 +72,8 @@ import appeng.core.lib.util.Platform;
 import appeng.core.me.item.PartType;
 import appeng.core.me.part.AEBasePart;
 import appeng.core.server.AppEngCoreServerProxy;
-import appeng.misc.client.render.RenderTinyTNTPrimed;
-import appeng.misc.entity.EntityTinyTNTPrimed;
+import appeng.miscellaneous.client.render.RenderTinyTNTPrimed;
+import appeng.miscellaneous.entity.EntityTinyTNTPrimed;
 import appeng.tools.client.render.texture.ParticleTextures;
 
 

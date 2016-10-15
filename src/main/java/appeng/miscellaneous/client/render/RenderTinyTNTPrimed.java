@@ -16,7 +16,7 @@
  * along with Applied Energistics 2.  If not, see <http://www.gnu.org/licenses/lgpl>.
  */
 
-package appeng.misc.client.render;
+package appeng.miscellaneous.client.render;
 
 
 import org.lwjgl.opengl.GL11;
@@ -33,7 +33,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import appeng.misc.entity.EntityTinyTNTPrimed;
+import appeng.miscellaneous.entity.EntityTinyTNTPrimed;
 
 
 @SideOnly( Side.CLIENT )

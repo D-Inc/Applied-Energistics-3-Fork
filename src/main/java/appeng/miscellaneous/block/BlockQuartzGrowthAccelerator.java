@@ -16,7 +16,7 @@
  * along with Applied Energistics 2.  If not, see <http://www.gnu.org/licenses/lgpl>.
  */
 
-package appeng.misc.block;
+package appeng.miscellaneous.block;
 
 
 import java.util.Random;
@@ -39,7 +39,7 @@ import appeng.core.lib.CommonHelper;
 import appeng.core.lib.block.AEBaseTileBlock;
 import appeng.core.lib.client.render.effects.LightningFX;
 import appeng.core.lib.util.Platform;
-import appeng.misc.tile.TileQuartzGrowthAccelerator;
+import appeng.miscellaneous.tile.TileQuartzGrowthAccelerator;
 
 
 public class BlockQuartzGrowthAccelerator extends AEBaseTileBlock

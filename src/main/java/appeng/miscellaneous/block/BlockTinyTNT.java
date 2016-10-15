@@ -16,7 +16,7 @@
  * along with Applied Energistics 2.  If not, see <http://www.gnu.org/licenses/lgpl>.
  */
 
-package appeng.misc.block;
+package appeng.miscellaneous.block;
 
 
 import java.util.Collections;
@@ -48,7 +48,7 @@ import appeng.core.AppEng;
 import appeng.core.lib.block.AEBaseBlock;
 import appeng.core.lib.entity.EntityIds;
 import appeng.core.lib.helpers.ICustomCollision;
-import appeng.misc.entity.EntityTinyTNTPrimed;
+import appeng.miscellaneous.entity.EntityTinyTNTPrimed;
 
 
 public class BlockTinyTNT extends AEBaseBlock implements ICustomCollision

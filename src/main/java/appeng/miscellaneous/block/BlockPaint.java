@@ -16,7 +16,7 @@
  * along with Applied Energistics 2.  If not, see <http://www.gnu.org/licenses/lgpl>.
  */
 
-package appeng.misc.block;
+package appeng.miscellaneous.block;
 
 
 import java.util.List;
@@ -39,7 +39,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import appeng.core.lib.block.AEBaseTileBlock;
 import appeng.core.lib.util.Platform;
-import appeng.misc.tile.TilePaint;
+import appeng.miscellaneous.tile.TilePaint;
 
 
 public class BlockPaint extends AEBaseTileBlock
