@@ -286,7 +286,7 @@ public class PartPlacement
 
 			final Optional<ItemStack> maybeMultiPartStack = multiPart.maybeStack( 1 );
 			final Optional<Block> maybeMultiPartBlock = multiPart.maybeBlock();
-			final Optional<ItemBlock> maybeMultiPartItemBlock = multiPart.maybeItemBlock();
+			final Optional<ItemBlock> maybeMultiPartItemBlock = multiPart.maybeItem();
 
 			final boolean hostIsNotPresent = host == null;
 			final boolean multiPartPresent = maybeMultiPartBlock.isPresent() && maybeMultiPartStack.isPresent() && maybeMultiPartItemBlock.isPresent();

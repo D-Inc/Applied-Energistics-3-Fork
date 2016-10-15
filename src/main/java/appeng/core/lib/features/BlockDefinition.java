@@ -49,7 +49,7 @@ public class BlockDefinition extends ItemDefinition implements IBlockDefinition
 	}
 
 	@Override
-	public final Optional<ItemBlock> maybeItemBlock()
+	public final Optional<ItemBlock> maybeItem()
 	{
 		return this.block.map( ItemBlock::new );
 	}

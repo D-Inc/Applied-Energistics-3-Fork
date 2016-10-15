@@ -26,33 +26,21 @@ package appeng.api.definitions;
 
 import java.util.Optional;
 
-import javax.annotation.Nonnull;
-
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 
-public interface IItemDefinition extends IComparableDefinition
+public interface IItemDefinition<I extends Item> extends IDefinition<I>
 {
-	/**
-	 * @return the unique name of the definition which will be used to register the underlying structure. Will never be
-	 * null
-	 */
-	@Nonnull
-	String identifier();
-
-	/**
-	 * @return the {@link Item} Implementation if applicable
-	 */
-	Optional<Item> maybeItem();
 
 	/**
 	 * @return an {@link ItemStack} with specified quantity of this item.
 	 */
 	Optional<ItemStack> maybeStack( int stackSize );
 
-	/**
-	 * @return <tt>true</tt> if definition is enabled
-	 */
-	boolean isEnabled();
+	default boolean isSameAs( ItemStack itemstack )
+	{
+		return isSameAs( itemstack.getItem() );
+	}
+
 }

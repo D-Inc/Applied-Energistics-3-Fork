@@ -46,7 +46,7 @@ public final class FacadeRecipe implements IRecipe
 	{
 		final IDefinitions definitions = AEApi.instance().definitions();
 
-		this.maybeFacade = definitions.items().facade().maybeItem();
+		this.maybeFacade = definitions.items().facade().maybe();
 		this.anchor = definitions.parts().cableAnchor();
 	}
 

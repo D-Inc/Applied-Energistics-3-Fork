@@ -4,31 +4,32 @@ package appeng.api.definitions;
 
 import java.util.Optional;
 
+import org.apache.commons.lang3.tuple.ImmutablePair;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
 
-public interface IBlockDefinition extends IItemDefinition
+public interface IBlockDefinition<B extends Block> extends IDefinition<B>
 {
-	/**
-	 * @return the {@link Block} implementation if applicable
-	 */
-	Optional<Block> maybeBlock();
 
 	/**
 	 * @return the {@link ItemBlock} implementation if applicable
 	 */
-	Optional<ItemBlock> maybeItemBlock();
+	<I extends ItemBlock> Optional<IItemDefinition<I>> maybeItem();
 
 	/**
-	 * Compare Block with world.
+	 * Compare block in world with this.
 	 *
-	 * @param world world of block
-	 * @param pos location
+	 * @param world of block
+	 * @param pos of block
 	 *
-	 * @return if the block is placed in the world at the specific location.
+	 * @return whether the block at the location is the same
 	 */
-	boolean isSameAs( IBlockAccess world, BlockPos pos );
+	default boolean isSameAs( IBlockAccess world, BlockPos pos )
+	{
+		return isSameAs( new ImmutablePair( world, pos ) );
+	}
 }

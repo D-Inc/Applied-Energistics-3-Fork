@@ -93,7 +93,7 @@ public class BlockQuartzOre extends AEBaseBlock
 	public Item getItemDropped( final IBlockState state, /* is null */
 			final Random rand, final int fortune )
 	{
-		return AEApi.instance().definitions().materials().certusQuartzCrystal().maybeItem().orElseThrow( () -> new MissingDefinition( "Tried to access certus quartz crystal, even though they are disabled" ) );
+		return AEApi.instance().definitions().materials().certusQuartzCrystal().maybe().orElseThrow( () -> new MissingDefinition( "Tried to access certus quartz crystal, even though they are disabled" ) );
 	}
 
 	@Override
