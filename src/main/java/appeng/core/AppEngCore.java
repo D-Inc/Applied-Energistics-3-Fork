@@ -6,6 +6,8 @@ import java.io.File;
 
 import javax.annotation.Nonnull;
 
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -18,11 +20,15 @@ import net.minecraftforge.fml.common.event.FMLServerStoppedEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 
+import appeng.api.definitions.IDefinitions;
 import appeng.api.module.Module;
 import appeng.api.module.Module.ModuleEventHandler;
 import appeng.core.api.ICore;
+import appeng.core.definitions.CoreBlockDefinitions;
+import appeng.core.definitions.CoreItemDefinitions;
 import appeng.core.hooks.TickHandler;
 import appeng.core.lib.AELog;
+import appeng.core.lib.bootstrap.FeatureFactory;
 import appeng.core.lib.sync.GuiBridge;
 import appeng.core.lib.sync.network.NetworkHandler;
 import appeng.core.lib.worlddata.WorldData;
@@ -62,9 +68,27 @@ public class AppEngCore implements ICore
 	 */
 	private ExportConfig exportConfig;
 
+	private CoreItemDefinitions itemDefinitions;
+
+	private CoreBlockDefinitions blockDefinitions;
+
 	public AppEngCore()
 	{
 		this.registration = new Registration();
+	}
+
+	@Override
+	public <T> IDefinitions<T> definitions( Class<T> clas )
+	{
+		if( clas == Item.class )
+		{
+			return (IDefinitions<T>) itemDefinitions;
+		}
+		if( clas == Block.class )
+		{
+			return (IDefinitions<T>) blockDefinitions;
+		}
+		return null;
 	}
 
 	@Nonnull
@@ -76,6 +100,10 @@ public class AppEngCore implements ICore
 	@ModuleEventHandler
 	public void preInit( FMLPreInitializationEvent event )
 	{
+		FeatureFactory registry = new FeatureFactory();
+		this.itemDefinitions = new CoreItemDefinitions( registry );
+		this.blockDefinitions = new CoreBlockDefinitions( registry );
+
 		this.recipeDirectory = new File( AppEng.instance().getConfigDirectory(), "recipes" );
 
 		final File versionFile = new File( AppEng.instance().getConfigDirectory(), "VersionChecker.cfg" );
