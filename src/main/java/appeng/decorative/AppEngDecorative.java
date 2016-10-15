@@ -17,18 +17,17 @@ import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 import appeng.api.module.Module;
 import appeng.core.AppEng;
 import appeng.core.lib.AEConfig;
+import appeng.decorative.api.IDecorative;
 
 
-@Module( AppEngDecorative.NAME )
-@Mod( modid = AppEngDecorative.MODID, name = AppEngDecorative.NAME, version = AEConfig.VERSION, dependencies = "required-after:" + AppEng.MOD_ID, acceptedMinecraftVersions = ForgeVersion.mcVersion )
-public class AppEngDecorative
+@Module( IDecorative.NAME )
+@Mod( modid = AppEngDecorative.MODID, name = IDecorative.NAME, version = AEConfig.VERSION, dependencies = "required-after:" + AppEng.MOD_ID, acceptedMinecraftVersions = ForgeVersion.mcVersion )
+public class AppEngDecorative implements IDecorative
 {
 
-	public static final String NAME = "decorative";
+	public static final String MODID = AppEng.MOD_ID + "|" + IDecorative.NAME;
 
-	public static final String MODID = AppEng.MOD_ID + "|" + NAME;
-
-	public static final String MODNAME = AppEng.MOD_NAME + " | " + NAME;
+	public static final String MODNAME = AppEng.MOD_NAME + " | " + IDecorative.NAME;
 
 	@EventHandler
 	public void preInit( final FMLPreInitializationEvent event )

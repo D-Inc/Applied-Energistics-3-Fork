@@ -17,18 +17,17 @@ import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 import appeng.api.module.Module;
 import appeng.core.AppEng;
 import appeng.core.lib.AEConfig;
+import appeng.misc.api.IMisc;
 
 
 @Module( "misc" )
 @Mod( modid = AppEngMisc.MODID, name = AppEngMisc.MODNAME, version = AEConfig.VERSION, dependencies = "required-after:" + AppEng.MOD_ID, acceptedMinecraftVersions = ForgeVersion.mcVersion )
-public class AppEngMisc
+public class AppEngMisc implements IMisc
 {
 
-	public static final String NAME = "misc";
+	public static final String MODID = AppEng.MOD_ID + "|" + IMisc.NAME;
 
-	public static final String MODID = AppEng.MOD_ID + "|" + NAME;
-
-	public static final String MODNAME = AppEng.MOD_NAME + " | " + NAME;
+	public static final String MODNAME = AppEng.MOD_NAME + " | " + IMisc.NAME;
 
 	@EventHandler
 	public void preInit( final FMLPreInitializationEvent event )

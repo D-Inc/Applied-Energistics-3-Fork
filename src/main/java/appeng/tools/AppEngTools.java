@@ -17,18 +17,17 @@ import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 import appeng.api.module.Module;
 import appeng.core.AppEng;
 import appeng.core.lib.AEConfig;
+import appeng.tools.api.ITools;
 
 
-@Module( AppEngTools.NAME )
+@Module( ITools.NAME )
 @Mod( modid = AppEngTools.MODID, name = AppEngTools.MODNAME, version = AEConfig.VERSION, dependencies = "required-after:" + AppEng.MOD_ID, acceptedMinecraftVersions = ForgeVersion.mcVersion )
-public class AppEngTools
+public class AppEngTools implements ITools
 {
 
-	public static final String NAME = "tools";
+	public static final String MODID = AppEng.MOD_ID + "|" + ITools.NAME;
 
-	public static final String MODID = AppEng.MOD_ID + "|" + NAME;
-
-	public static final String MODNAME = AppEng.MOD_NAME + " | " + NAME;
+	public static final String MODNAME = AppEng.MOD_NAME + " | " + ITools.NAME;
 
 	@EventHandler
 	public void preInit( final FMLPreInitializationEvent event )
