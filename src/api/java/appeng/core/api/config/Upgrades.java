@@ -68,7 +68,7 @@ public enum Upgrades
 	 */
 	public void registerItem( final IItemDefinition item, final int maxSupported )
 	{
-		item.maybeStack( 1 ).ifPresent( is -> this.registerItem( is, maxSupported ) );
+		item.maybeStack( 1 ).ifPresent( is -> this.registerItem( (ItemStack) is, maxSupported ) );
 	}
 
 	/**

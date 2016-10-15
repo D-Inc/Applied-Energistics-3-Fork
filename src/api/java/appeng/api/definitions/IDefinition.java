@@ -11,15 +11,14 @@ import org.apache.commons.lang3.tuple.Triple;
 
 import net.minecraft.item.ItemStack;
 
-import appeng.api.definitions.sub.ISubDefinitions;
+import appeng.api.definitions.sub.ISubDefinition;
 
 
 public interface IDefinition<T>
 {
 
 	/**
-	 * @return the unique name of the definition which will be used to register the underlying structure. Will never be
-	 * null
+	 * @return the unique name of the definition which will be used to register the underlying structure. Will never be null.
 	 */
 	@Nonnull
 	String identifier();
@@ -29,7 +28,10 @@ public interface IDefinition<T>
 	 */
 	Optional<T> maybe();
 
-	<D> Optional<ISubDefinitions<T, D>> maybeSubDefinitions();
+	/**
+	 * @return {@linkplain ISubDefinition} representation if applicable
+	 */
+	<D> Optional<ISubDefinition<T, D>> maybeSubDefinition();
 
 	/**
 	 * @return <tt>true</tt> if definition is enabled

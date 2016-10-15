@@ -17,9 +17,13 @@ public interface ISubDefinition<T, D> extends IDefinition<D>
 	IDefinition<T> parent();
 
 	/**
-	 * @return variant of this {@linkplain ISubDefinition}
+	 * Applies property to this sub definition to create a new sub definition.
+	 * 
+	 * @param property property to change
+	 * @param value new value of property
+	 * @return new {@linkplain ISubDefinition} with modified property, or <tt>this</tt> if property and/or value is invalid.
 	 */
 	@Nonnull
-	ISubDefinitionVariant<D, IDefinition<T>> variant();
+	<P> ISubDefinition<T, D> withProperty( ISubDefinitionProperty<T, D, P> property, P value );
 
 }
