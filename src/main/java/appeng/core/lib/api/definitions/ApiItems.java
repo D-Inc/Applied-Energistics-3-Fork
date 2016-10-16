@@ -22,6 +22,8 @@ package appeng.core.lib.api.definitions;
 import appeng.api.definitions.IItemDefinition;
 import appeng.core.api.util.AEColoredItemDefinition;
 import appeng.core.crafting.item.ItemEncodedPattern;
+import appeng.core.item.ItemCrystalSeed;
+import appeng.core.item.ItemCrystalSeedRendering;
 import appeng.core.item.MaterialType;
 import appeng.core.lib.bootstrap.FeatureFactory;
 import appeng.core.lib.features.AEFeature;
@@ -98,6 +100,7 @@ public final class ApiItems// implements IItems
 	private final IItemDefinition spatialCell128;
 
 	private final IItemDefinition facade;
+	private final IItemDefinition crystalSeed;
 
 	// rv1
 	private final IItemDefinition encodedPattern;
@@ -160,6 +163,7 @@ public final class ApiItems// implements IItems
 		this.spatialCell128 = spatialCells.item( "spatial_storage_cell_128_cubed", () -> new ItemSpatialStorageCell( 128 ) ).build();
 
 		this.facade = registry.item( "facade", ItemFacade::new ).features( AEFeature.Facades ).creativeTab( CreativeTabFacade.instance ).build();
+		this.crystalSeed = registry.item( "crystal_seed", ItemCrystalSeed::new ).rendering( new ItemCrystalSeedRendering() ).build();
 
 		// rv1
 		this.encodedPattern = registry.item( "encoded_pattern", ItemEncodedPattern::new ).features( AEFeature.Patterns ).build();
