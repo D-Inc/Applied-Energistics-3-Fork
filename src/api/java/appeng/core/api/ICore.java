@@ -10,6 +10,6 @@ public interface ICore
 
 	String NAME = "core";
 
-	<T> IDefinitions<T> definitions( Class<T> clas );
+	<T, D extends IDefinitions<T>> D definitions( Class<T> clas );
 
 }

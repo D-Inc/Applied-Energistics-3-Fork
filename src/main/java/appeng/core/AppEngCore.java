@@ -8,6 +8,7 @@ import javax.annotation.Nonnull;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -26,6 +27,7 @@ import appeng.api.module.Module.ModuleEventHandler;
 import appeng.core.api.ICore;
 import appeng.core.definitions.CoreBlockDefinitions;
 import appeng.core.definitions.CoreItemDefinitions;
+import appeng.core.definitions.CoreTileDefinitions;
 import appeng.core.hooks.TickHandler;
 import appeng.core.lib.AELog;
 import appeng.core.lib.bootstrap.FeatureFactory;
@@ -69,8 +71,8 @@ public class AppEngCore implements ICore
 	private ExportConfig exportConfig;
 
 	private CoreItemDefinitions itemDefinitions;
-
 	private CoreBlockDefinitions blockDefinitions;
+	private CoreTileDefinitions tileDefinitions;
 
 	public AppEngCore()
 	{
@@ -78,15 +80,19 @@ public class AppEngCore implements ICore
 	}
 
 	@Override
-	public <T> IDefinitions<T> definitions( Class<T> clas )
+	public <T, D extends IDefinitions<T>> D definitions( Class<T> clas )
 	{
 		if( clas == Item.class )
 		{
-			return (IDefinitions<T>) itemDefinitions;
+			return (D) itemDefinitions;
 		}
 		if( clas == Block.class )
 		{
-			return (IDefinitions<T>) blockDefinitions;
+			return (D) blockDefinitions;
+		}
+		if( clas == TileEntity.class )
+		{
+			return (D) tileDefinitions;
 		}
 		return null;
 	}
@@ -103,6 +109,7 @@ public class AppEngCore implements ICore
 		FeatureFactory registry = new FeatureFactory();
 		this.itemDefinitions = new CoreItemDefinitions( registry );
 		this.blockDefinitions = new CoreBlockDefinitions( registry );
+		this.tileDefinitions = new CoreTileDefinitions( registry );
 
 		this.recipeDirectory = new File( AppEng.instance().getConfigDirectory(), "recipes" );
 

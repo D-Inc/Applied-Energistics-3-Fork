@@ -2,6 +2,9 @@
 package appeng.debug;
 
 
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.ForgeVersion;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -14,9 +17,14 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppedEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 
+import appeng.api.definitions.IDefinitions;
 import appeng.api.module.Module;
 import appeng.core.AppEng;
 import appeng.core.lib.AEConfig;
+import appeng.core.lib.bootstrap.FeatureFactory;
+import appeng.debug.definitions.DebugBlockDefinitions;
+import appeng.debug.definitions.DebugItemDefinitions;
+import appeng.debug.definitions.DebugTileDefinitions;
 
 
 /*
@@ -33,10 +41,34 @@ public class AppEngDebug
 
 	public static final String MODNAME = AppEng.MOD_NAME + " | " + NAME;
 
-	@EventHandler
-	public void preInit( final FMLPreInitializationEvent event )
-	{
+	private DebugItemDefinitions itemDefinitions;
+	private DebugBlockDefinitions blockDefinitions;
+	private DebugTileDefinitions tileDefinitions;
 
+	public <T, D extends IDefinitions<T>> D definitions( Class<T> clas )
+	{
+		if( clas == Item.class )
+		{
+			return (D) itemDefinitions;
+		}
+		if( clas == Block.class )
+		{
+			return (D) blockDefinitions;
+		}
+		if( clas == TileEntity.class )
+		{
+			return (D) tileDefinitions;
+		}
+		return null;
+	}
+
+	@EventHandler
+	public void preInit( FMLPreInitializationEvent event )
+	{
+		FeatureFactory registry = new FeatureFactory();
+		this.itemDefinitions = new DebugItemDefinitions( registry );
+		this.blockDefinitions = new DebugBlockDefinitions( registry );
+		this.tileDefinitions = new DebugTileDefinitions( registry );
 	}
 
 	@EventHandler
