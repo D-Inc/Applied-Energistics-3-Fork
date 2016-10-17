@@ -6,7 +6,6 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLInterModComms.IMCEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerAboutToStartEvent;
@@ -17,6 +16,7 @@ import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 import appeng.api.definitions.IDefinitions;
 import appeng.api.module.Module;
 import appeng.api.module.Module.ModuleEventHandler;
+import appeng.api.module.ModuleIMCMessageEvent;
 import appeng.core.crafting.api.ICrafting;
 import appeng.core.crafting.definitions.CraftingBlockDefinitions;
 import appeng.core.crafting.definitions.CraftingItemDefinitions;
@@ -72,7 +72,7 @@ public class AppEngCrafting implements ICrafting
 	}
 
 	@ModuleEventHandler
-	public void handleIMCEvent( IMCEvent event )
+	public void handleIMCEvent( ModuleIMCMessageEvent event )
 	{
 
 	}

@@ -20,6 +20,7 @@ import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 import appeng.api.definitions.IDefinitions;
 import appeng.api.module.Module;
 import appeng.api.module.Module.ModuleEventHandler;
+import appeng.api.module.ModuleIMCMessageEvent;
 import appeng.core.AppEng;
 import appeng.core.crafting.definitions.CraftingBlockDefinitions;
 import appeng.core.crafting.definitions.CraftingItemDefinitions;
@@ -83,6 +84,12 @@ public class AppEngDecorative implements IDecorative
 
 	@EventHandler
 	public void handleIMCEvent( IMCEvent event )
+	{
+
+	}
+
+	@ModuleEventHandler
+	public void handleIMCEvent( ModuleIMCMessageEvent event )
 	{
 
 	}

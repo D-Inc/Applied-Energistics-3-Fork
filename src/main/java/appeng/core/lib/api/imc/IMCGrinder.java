@@ -61,6 +61,8 @@ import appeng.core.api.AEApi;
 import appeng.core.lib.api.IIMCProcessor;
 
 
+//TODO 1.10.2-APIBOOM - Move to modules.
+@Deprecated
 public class IMCGrinder implements IIMCProcessor
 {
 	@Override

@@ -8,7 +8,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLInterModComms.IMCEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerAboutToStartEvent;
@@ -19,6 +18,7 @@ import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 import appeng.api.definitions.IDefinitions;
 import appeng.api.module.Module;
 import appeng.api.module.Module.ModuleEventHandler;
+import appeng.api.module.ModuleIMCMessageEvent;
 import appeng.core.lib.bootstrap.FeatureFactory;
 import appeng.core.spatial.api.ISpatial;
 import appeng.core.spatial.definitions.SpatialBiomeDefinitions;
@@ -88,7 +88,7 @@ public class AppEngSpatial implements ISpatial
 	}
 
 	@ModuleEventHandler
-	public void handleIMCEvent( IMCEvent event )
+	public void handleIMCEvent( ModuleIMCMessageEvent event )
 	{
 
 	}

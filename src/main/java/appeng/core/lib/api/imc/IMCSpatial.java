@@ -32,6 +32,8 @@ import appeng.core.lib.AELog;
 import appeng.core.lib.api.IIMCProcessor;
 
 
+//TODO 1.10.2-APIBOOM - Move to modules.
+@Deprecated
 public class IMCSpatial implements IIMCProcessor
 {
 

@@ -9,7 +9,6 @@ import net.minecraftforge.common.ForgeVersion;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLInterModComms.IMCEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerAboutToStartEvent;
@@ -79,12 +78,6 @@ public class AppEngDebug
 
 	@EventHandler
 	public void postInit( final FMLPostInitializationEvent event )
-	{
-
-	}
-
-	@EventHandler
-	public void handleIMCEvent( IMCEvent event )
 	{
 
 	}

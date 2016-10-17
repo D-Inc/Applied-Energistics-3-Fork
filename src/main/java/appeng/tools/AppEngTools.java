@@ -19,6 +19,8 @@ import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 
 import appeng.api.definitions.IDefinitions;
 import appeng.api.module.Module;
+import appeng.api.module.Module.ModuleEventHandler;
+import appeng.api.module.ModuleIMCMessageEvent;
 import appeng.core.AppEng;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.bootstrap.FeatureFactory;
@@ -82,6 +84,12 @@ public class AppEngTools implements ITools
 
 	@EventHandler
 	public void handleIMCEvent( IMCEvent event )
+	{
+
+	}
+
+	@ModuleEventHandler
+	public void handleIMCEvent( ModuleIMCMessageEvent event )
 	{
 
 	}
