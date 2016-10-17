@@ -61,8 +61,8 @@ public class AppEngTools implements ITools
 		return null;
 	}
 
-	@EventHandler
-	public void preInit( FMLPreInitializationEvent event )
+	@ModuleEventHandler
+	public void preInitAE( FMLPreInitializationEvent event )
 	{
 		FeatureFactory registry = new FeatureFactory();
 		this.itemDefinitions = new ToolsItemDefinitions( registry );
@@ -71,49 +71,91 @@ public class AppEngTools implements ITools
 	}
 
 	@EventHandler
-	public void init( final FMLInitializationEvent event )
-	{
-
-	}
-
-	@EventHandler
-	public void postInit( final FMLPostInitializationEvent event )
-	{
-
-	}
-
-	@EventHandler
-	public void handleIMCEvent( IMCEvent event )
+	public void preInitForge( FMLPreInitializationEvent event )
 	{
 
 	}
 
 	@ModuleEventHandler
-	public void handleIMCEvent( ModuleIMCMessageEvent event )
+	public void initAE( final FMLInitializationEvent event )
 	{
 
 	}
 
 	@EventHandler
-	public void serverAboutToStart( FMLServerAboutToStartEvent event )
+	public void initForge( final FMLInitializationEvent event )
+	{
+
+	}
+
+	@ModuleEventHandler
+	public void postInitAE( final FMLPostInitializationEvent event )
 	{
 
 	}
 
 	@EventHandler
-	public void serverStarting( FMLServerStartingEvent event )
+	public void postInitForge( final FMLPostInitializationEvent event )
+	{
+
+	}
+
+	@ModuleEventHandler
+	public void handleIMCEventAE( ModuleIMCMessageEvent event )
 	{
 
 	}
 
 	@EventHandler
-	public void serverStopping( FMLServerStoppingEvent event )
+	public void handleIMCEventForge( IMCEvent event )
+	{
+
+	}
+
+	@ModuleEventHandler
+	public void serverAboutToStartAE( FMLServerAboutToStartEvent event )
 	{
 
 	}
 
 	@EventHandler
-	public void serverStopped( FMLServerStoppedEvent event )
+	public void serverAboutToStartForge( FMLServerAboutToStartEvent event )
+	{
+
+	}
+
+	@ModuleEventHandler
+	public void serverStartingAE( FMLServerStartingEvent event )
+	{
+
+	}
+
+	@EventHandler
+	public void serverStartingForge( FMLServerStartingEvent event )
+	{
+
+	}
+
+	@ModuleEventHandler
+	public void serverStoppingAE( FMLServerStoppingEvent event )
+	{
+
+	}
+
+	@EventHandler
+	public void serverStoppingForge( FMLServerStoppingEvent event )
+	{
+
+	}
+
+	@ModuleEventHandler
+	public void serverStoppedAE( FMLServerStoppedEvent event )
+	{
+
+	}
+
+	@EventHandler
+	public void serverStoppedForge( FMLServerStoppedEvent event )
 	{
 
 	}
