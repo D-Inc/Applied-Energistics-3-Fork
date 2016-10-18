@@ -163,17 +163,20 @@ public final class AppEng
 		{
 			module = getModule( (Class) module );
 		}
-		for( Method method : module.getClass().getDeclaredMethods() )
+		if( module != null )
 		{
-			if( method.getParameterTypes().length == 1 && method.getParameterTypes()[0].isAssignableFrom( event.getClass() ) && method.getDeclaredAnnotation( Module.ModuleEventHandler.class ) != null )
+			for( Method method : module.getClass().getDeclaredMethods() )
 			{
-				try
+				if( method.getParameterTypes().length == 1 && method.getParameterTypes()[0].isAssignableFrom( event.getClass() ) && method.getDeclaredAnnotation( Module.ModuleEventHandler.class ) != null )
 				{
-					method.invoke( module, event );
-				}
-				catch( Exception e )
-				{
-					// :(
+					try
+					{
+						method.invoke( module, event );
+					}
+					catch( Exception e )
+					{
+						// :(
+					}
 				}
 			}
 		}
