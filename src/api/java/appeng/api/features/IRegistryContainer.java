@@ -24,7 +24,6 @@
 package appeng.api.features;
 
 
-import appeng.api.movable.IMovableRegistry;
 import appeng.api.networking.IGridCacheRegistry;
 import appeng.api.storage.ICellRegistry;
 import appeng.api.storage.IExternalStorageRegistry;
@@ -38,11 +37,6 @@ import appeng.api.storage.IExternalStorageRegistry;
  */
 public interface IRegistryContainer
 {
-
-	/**
-	 * Use the movable registry to white list your tiles.
-	 */
-	IMovableRegistry movable();
 
 	/**
 	 * Add new Grid Caches for use during run time, only use during loading phase.

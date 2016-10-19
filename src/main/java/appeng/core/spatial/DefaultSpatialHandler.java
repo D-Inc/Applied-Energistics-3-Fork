@@ -24,10 +24,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
 
-import appeng.api.movable.IMovableHandler;
 
-
-public class DefaultSpatialHandler implements IMovableHandler
+public class DefaultSpatialHandler
 {
 
 	/**
@@ -37,13 +35,11 @@ public class DefaultSpatialHandler implements IMovableHandler
 	 *
 	 * @return true
 	 */
-	@Override
 	public boolean canHandle( final Class<? extends TileEntity> myClass, final TileEntity tile )
 	{
 		return true;
 	}
 
-	@Override
 	public void moveTile( final TileEntity te, final World w, final BlockPos newPosition )
 	{
 		te.setWorldObj( w );

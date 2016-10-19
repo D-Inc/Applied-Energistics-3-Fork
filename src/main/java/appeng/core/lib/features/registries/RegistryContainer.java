@@ -30,7 +30,6 @@ import appeng.api.features.IRegistryContainer;
 import appeng.api.features.ISpecialComparisonRegistry;
 import appeng.api.features.IWirelessTermRegistry;
 import appeng.api.features.IWorldGen;
-import appeng.api.movable.IMovableRegistry;
 import appeng.api.networking.IGridCacheRegistry;
 import appeng.api.storage.ICellRegistry;
 import appeng.api.storage.IExternalStorageRegistry;
@@ -55,16 +54,9 @@ public class RegistryContainer implements IRegistryContainer
 	private final IWirelessTermRegistry wireless = new WirelessRegistry();
 	private final IGridCacheRegistry gridCache = new GridCacheRegistry();
 	private final IP2PTunnelRegistry p2pTunnel = new P2PTunnelRegistry();
-	private final IMovableRegistry movable = new MovableTileRegistry();
 	private final IMatterCannonAmmoRegistry matterCannonReg = new MatterCannonAmmoRegistry();
 	private final IPlayerRegistry playerRegistry = new PlayerRegistry();
 	private final IRecipeHandlerRegistry recipeReg = new RecipeHandlerRegistry();
-
-	@Override
-	public IMovableRegistry movable()
-	{
-		return this.movable;
-	}
 
 	@Override
 	public IGridCacheRegistry gridCache()

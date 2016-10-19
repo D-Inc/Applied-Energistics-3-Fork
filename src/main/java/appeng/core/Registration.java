@@ -46,7 +46,6 @@ import appeng.api.features.IRecipeHandlerRegistry;
 import appeng.api.features.IRegistryContainer;
 import appeng.api.features.IWirelessTermHandler;
 import appeng.api.features.IWorldGen.WorldGenType;
-import appeng.api.movable.IMovableRegistry;
 import appeng.api.networking.IGridCacheRegistry;
 import appeng.api.networking.crafting.ICraftingGrid;
 import appeng.api.networking.energy.IEnergyGrid;
@@ -69,7 +68,6 @@ import appeng.core.lib.features.registries.entries.CreativeCellHandler;
 import appeng.core.lib.localization.GuiText;
 import appeng.core.lib.localization.PlayerMessages;
 import appeng.core.lib.stats.PlayerStatsRegistration;
-import appeng.core.lib.tile.AEBaseTile;
 import appeng.core.lib.util.Platform;
 import appeng.core.me.block.BlockCableBus;
 import appeng.core.me.grid.cache.CraftingGridCache;
@@ -420,41 +418,6 @@ public final class Registration
 		{
 			GameRegistry.registerWorldGenerator( new MeteoriteWorldGen(), 0 );
 		}
-
-		final IMovableRegistry mr = registries.movable();
-
-		/*
-		 * You can't move bed rock.
-		 */
-		mr.blacklistBlock( net.minecraft.init.Blocks.BEDROCK );
-
-		/*
-		 * White List Vanilla...
-		 */
-		mr.whiteListTileEntity( net.minecraft.tileentity.TileEntityBeacon.class );
-		mr.whiteListTileEntity( net.minecraft.tileentity.TileEntityBrewingStand.class );
-		mr.whiteListTileEntity( net.minecraft.tileentity.TileEntityChest.class );
-		mr.whiteListTileEntity( net.minecraft.tileentity.TileEntityCommandBlock.class );
-		mr.whiteListTileEntity( net.minecraft.tileentity.TileEntityComparator.class );
-		mr.whiteListTileEntity( net.minecraft.tileentity.TileEntityDaylightDetector.class );
-		mr.whiteListTileEntity( net.minecraft.tileentity.TileEntityDispenser.class );
-		mr.whiteListTileEntity( net.minecraft.tileentity.TileEntityDropper.class );
-		mr.whiteListTileEntity( net.minecraft.tileentity.TileEntityEnchantmentTable.class );
-		mr.whiteListTileEntity( net.minecraft.tileentity.TileEntityEnderChest.class );
-		mr.whiteListTileEntity( net.minecraft.tileentity.TileEntityEndPortal.class );
-		mr.whiteListTileEntity( net.minecraft.tileentity.TileEntitySkull.class );
-		mr.whiteListTileEntity( net.minecraft.tileentity.TileEntityFurnace.class );
-		mr.whiteListTileEntity( net.minecraft.tileentity.TileEntityMobSpawner.class );
-		mr.whiteListTileEntity( net.minecraft.tileentity.TileEntitySign.class );
-		mr.whiteListTileEntity( net.minecraft.tileentity.TileEntityPiston.class );
-		mr.whiteListTileEntity( net.minecraft.tileentity.TileEntityFlowerPot.class );
-		mr.whiteListTileEntity( net.minecraft.tileentity.TileEntityNote.class );
-		mr.whiteListTileEntity( net.minecraft.tileentity.TileEntityHopper.class );
-
-		/*
-		 * Whitelist AE2
-		 */
-		mr.whiteListTileEntity( AEBaseTile.class );
 
 		/*
 		 * world gen

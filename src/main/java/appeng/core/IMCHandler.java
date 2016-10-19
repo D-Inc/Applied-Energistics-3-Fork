@@ -28,11 +28,9 @@ import net.minecraftforge.fml.common.event.FMLInterModComms;
 import appeng.api.config.TunnelType;
 import appeng.core.lib.AELog;
 import appeng.core.lib.api.IIMCProcessor;
-import appeng.core.lib.api.imc.IMCBlackListSpatial;
 import appeng.core.lib.api.imc.IMCGrinder;
 import appeng.core.lib.api.imc.IMCMatterCannon;
 import appeng.core.lib.api.imc.IMCP2PAttunement;
-import appeng.core.lib.api.imc.IMCSpatial;
 
 
 /**
@@ -60,8 +58,6 @@ public class IMCHandler
 	{
 		this.processors = new HashMap<String, IIMCProcessor>( INITIAL_PROCESSORS_CAPACITY );
 
-		this.processors.put( "blacklist-block-spatial", new IMCBlackListSpatial() );
-		this.processors.put( "whitelist-spatial", new IMCSpatial() );
 		this.processors.put( "add-grindable", new IMCGrinder() );
 		this.processors.put( "add-mattercannon-ammo", new IMCMatterCannon() );
 
