@@ -370,7 +370,7 @@ public final class AppEng
 					return false;
 				}
 			}
-			else
+			else if( !before && !after ) //Soft dependency
 			{
 				return false; // Syntax error
 			}
