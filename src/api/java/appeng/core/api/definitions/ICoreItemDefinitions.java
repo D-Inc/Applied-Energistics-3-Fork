@@ -16,4 +16,9 @@ public interface ICoreItemDefinitions extends IDefinitions<Item>
 		return get( "crystal_seed" );
 	}
 
+	default IDefinition<Item> multiItem()
+	{
+		return get( "multiItem" );
+	}
+
 }

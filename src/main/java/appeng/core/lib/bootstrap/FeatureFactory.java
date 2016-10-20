@@ -4,6 +4,7 @@ package appeng.core.lib.bootstrap;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Supplier;
 
 import net.minecraft.block.Block;
@@ -71,7 +72,9 @@ public class FeatureFactory
 	{
 		ColoredItemDefinition definition = new ColoredItemDefinition();
 
-		target.maybeItem().ifPresent( targetItem -> {
+		Optional<? extends Item> opt = target.maybe();
+		opt.ifPresent( targetItem ->
+        {
 			for( final AEColor color : AEColor.VALID_COLORS )
 			{
 				final ActivityState state = ActivityState.from( target.isEnabled() );

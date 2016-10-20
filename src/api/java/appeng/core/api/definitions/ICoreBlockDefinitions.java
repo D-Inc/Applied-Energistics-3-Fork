@@ -15,4 +15,25 @@ public interface ICoreBlockDefinitions extends IDefinitions<Block>
 		return get( "crank" );
 	}
 
+	default IDefinition<Block> blockCharger()
+	{
+		return get( "charger" );
+	}
+
+	default IDefinition<Block> blockGrinder()
+	{
+		return get( "grinder" );
+	}
+
+	default IDefinition<Block> blockInscriber()
+	{
+		return get( "inscriber" );
+	}
+
+	default IDefinition<Block> blockVibrationChamber()
+	{
+		return get( "vibration_chamber" );
+	}
+
+
 }
