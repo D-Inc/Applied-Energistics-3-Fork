@@ -26,6 +26,7 @@ import com.google.common.base.Preconditions;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
@@ -36,7 +37,7 @@ public class BlockDefinition<B extends Block> implements IBlockDefinition<B>
 {
 	private final Optional<Block> block;
 
-	public BlockDefinition( String registryName, Block block, ItemBlock item )
+	public BlockDefinition( ResourceLocation registryName, Block block, ItemBlock item )
 	{
 		super( registryName, item );
 		this.block = Optional.ofNullable( block );

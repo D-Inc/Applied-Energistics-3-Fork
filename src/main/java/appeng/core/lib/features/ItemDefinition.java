@@ -28,6 +28,7 @@ import com.google.common.base.Strings;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 
 import appeng.api.definitions.IItemDefinition;
 import appeng.core.lib.util.Platform;
@@ -35,10 +36,10 @@ import appeng.core.lib.util.Platform;
 
 public class ItemDefinition<I extends Item> implements IItemDefinition<I>
 {
-	private final String identifier;
+	private final ResourceLocation identifier;
 	private final Optional<Item> item;
 
-	public ItemDefinition( String registryName, Item item )
+	public ItemDefinition( ResourceLocation registryName, Item item )
 	{
 		Preconditions.checkArgument( !Strings.isNullOrEmpty( registryName ), "registryName" );
 		this.identifier = registryName;

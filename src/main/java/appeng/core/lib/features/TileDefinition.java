@@ -21,10 +21,9 @@ package appeng.core.lib.features;
 
 import java.util.Optional;
 
-import javax.annotation.Nonnull;
-
 import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ResourceLocation;
 
 import appeng.api.definitions.ITileDefinition;
 import appeng.core.lib.block.AEBaseTileBlock;
@@ -35,7 +34,7 @@ public final class TileDefinition<TE extends TileEntity, T extends Class<TE>> im
 
 	private final Optional<AEBaseTileBlock> block;
 
-	public TileDefinition( @Nonnull String registryName, AEBaseTileBlock block, ItemBlock item )
+	public TileDefinition( ResourceLocation registryName, AEBaseTileBlock block, ItemBlock item )
 	{
 		super( registryName, block, item );
 		this.block = Optional.ofNullable( block );

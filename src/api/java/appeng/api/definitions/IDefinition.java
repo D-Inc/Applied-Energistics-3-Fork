@@ -10,6 +10,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.tuple.Triple;
 
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 
 import appeng.api.definitions.sub.ISubDefinition;
 
@@ -21,7 +22,7 @@ public interface IDefinition<T>
 	 * @return the unique name of the definition which will be used to register the underlying structure. Will never be null.
 	 */
 	@Nonnull
-	String identifier();
+	ResourceLocation identifier();
 
 	/**
 	 * @return Implementation if applicable
