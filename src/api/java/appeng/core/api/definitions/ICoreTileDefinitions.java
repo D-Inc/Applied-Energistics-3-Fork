@@ -7,7 +7,7 @@ import net.minecraft.tileentity.TileEntity;
 import appeng.api.definitions.IDefinitions;
 
 
-public interface ICoreTileDefinitions extends IDefinitions<Class<TileEntity>>
+public interface ICoreTileDefinitions extends IDefinitions<Class<? extends TileEntity>>
 {
 
 }

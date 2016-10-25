@@ -9,7 +9,7 @@ import appeng.core.lib.definitions.Definitions;
 import appeng.core.worldgen.api.definitions.IWorldGenTileDefinitions;
 
 
-public class WorldGenTileDefinitions extends Definitions<Class<TileEntity>> implements IWorldGenTileDefinitions
+public class WorldGenTileDefinitions extends Definitions<Class<? extends TileEntity>> implements IWorldGenTileDefinitions
 {
 
 	public WorldGenTileDefinitions( FeatureFactory registry )

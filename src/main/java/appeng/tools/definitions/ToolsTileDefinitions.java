@@ -9,7 +9,7 @@ import appeng.core.lib.definitions.Definitions;
 import appeng.tools.api.definitions.IToolsTileDefinitions;
 
 
-public class ToolsTileDefinitions extends Definitions<Class<TileEntity>> implements IToolsTileDefinitions
+public class ToolsTileDefinitions extends Definitions<Class<? extends TileEntity>> implements IToolsTileDefinitions
 {
 
 	public ToolsTileDefinitions( FeatureFactory registry )

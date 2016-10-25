@@ -9,7 +9,7 @@ import appeng.core.lib.definitions.Definitions;
 import appeng.core.spatial.api.definitions.ISpatialTileDefinitions;
 
 
-public class SpatialTileDefinitions extends Definitions<Class<TileEntity>> implements ISpatialTileDefinitions
+public class SpatialTileDefinitions extends Definitions<Class<? extends TileEntity>> implements ISpatialTileDefinitions
 {
 
 	public SpatialTileDefinitions( FeatureFactory registry )

@@ -9,7 +9,7 @@ import appeng.core.lib.definitions.Definitions;
 import appeng.miscellaneous.api.definitions.IMiscellaneousTileDefinitions;
 
 
-public class MiscellaneousTileDefinitions extends Definitions<Class<TileEntity>> implements IMiscellaneousTileDefinitions
+public class MiscellaneousTileDefinitions extends Definitions<Class<? extends TileEntity>> implements IMiscellaneousTileDefinitions
 {
 
 	public MiscellaneousTileDefinitions( FeatureFactory registry )

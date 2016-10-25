@@ -9,7 +9,7 @@ import appeng.core.lib.bootstrap.FeatureFactory;
 import appeng.core.lib.definitions.Definitions;
 
 
-public class CraftingTileDefinitions extends Definitions<Class<TileEntity>> implements ICraftingTileDefinitions
+public class CraftingTileDefinitions extends Definitions<Class<? extends TileEntity>> implements ICraftingTileDefinitions
 {
 
 	public CraftingTileDefinitions( FeatureFactory registry )
