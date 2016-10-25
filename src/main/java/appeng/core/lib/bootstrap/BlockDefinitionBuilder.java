@@ -17,7 +17,7 @@ import appeng.core.lib.features.BlockDefinition;
 import appeng.core.lib.util.Platform;
 
 
-class BlockDefinitionBuilder<B extends Block> extends DefinitionBuilder<B, IBlockDefinition<B>, BlockDefinitionBuilder<B>> implements IBlockBuilder<B, BlockDefinitionBuilder<B>>
+public class BlockDefinitionBuilder<B extends Block> extends DefinitionBuilder<B, IBlockDefinition<B>, BlockDefinitionBuilder<B>> implements IBlockBuilder<B, BlockDefinitionBuilder<B>>
 {
 
 	private CreativeTabs creativeTab = CreativeTab.instance;
@@ -28,9 +28,9 @@ class BlockDefinitionBuilder<B extends Block> extends DefinitionBuilder<B, IBloc
 	@SideOnly( Side.CLIENT )
 	private ItemRendering itemRendering;
 
-	BlockDefinitionBuilder( FeatureFactory factory, ResourceLocation id, Supplier<B> supplier )
+	BlockDefinitionBuilder( FeatureFactory factory, ResourceLocation id, Supplier<B> block )
 	{
-		super( factory, id, supplier.get() );
+		super( factory, id, block.get() );
 
 		if( Platform.isClient() )
 		{

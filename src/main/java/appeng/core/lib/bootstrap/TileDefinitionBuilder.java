@@ -14,14 +14,14 @@ import appeng.core.lib.definitions.Definitions;
 import appeng.core.lib.features.TileDefinition;
 
 
-class TileDefinitionBuilder<T extends TileEntity> extends DefinitionBuilder<Class<T>, ITileDefinition<T, Class<T>>, TileDefinitionBuilder<T>> implements ITileBuilder<T, TileDefinitionBuilder<T>>
+public class TileDefinitionBuilder<T extends TileEntity> extends DefinitionBuilder<Class<T>, ITileDefinition<T, Class<T>>, TileDefinitionBuilder<T>> implements ITileBuilder<T, TileDefinitionBuilder<T>>
 {
 
 	private Definitions<Block> blockDefinitions;
 
-	public TileDefinitionBuilder( FeatureFactory factory, ResourceLocation registryName, Supplier<Class<T>> supplier, Definitions<Block> blockDefinitions )
+	public TileDefinitionBuilder( FeatureFactory factory, ResourceLocation registryName, Supplier<Class<T>> clas, Definitions<Block> blockDefinitions )
 	{
-		super( factory, registryName, supplier.get() );
+		super( factory, registryName, clas.get() );
 		this.blockDefinitions = blockDefinitions;
 	}
 

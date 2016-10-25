@@ -20,7 +20,7 @@ import appeng.core.lib.features.ItemDefinition;
 import appeng.core.lib.util.Platform;
 
 
-class ItemDefinitionBuilder<I extends Item> extends DefinitionBuilder<I, IItemDefinition<I>, ItemDefinitionBuilder<I>> implements IItemBuilder<I, ItemDefinitionBuilder<I>>
+public class ItemDefinitionBuilder<I extends Item> extends DefinitionBuilder<I, IItemDefinition<I>, ItemDefinitionBuilder<I>> implements IItemBuilder<I, ItemDefinitionBuilder<I>>
 {
 
 	@SideOnly( Side.CLIENT )
@@ -30,9 +30,9 @@ class ItemDefinitionBuilder<I extends Item> extends DefinitionBuilder<I, IItemDe
 
 	private CreativeTabs creativeTab = CreativeTab.instance;
 
-	ItemDefinitionBuilder( FeatureFactory factory, ResourceLocation registryName, Supplier<I> supplier, Definitions<Block> blockDefinitions )
+	ItemDefinitionBuilder( FeatureFactory factory, ResourceLocation registryName, Supplier<I> item, Definitions<Block> blockDefinitions )
 	{
-		super( factory, registryName, supplier.get() );
+		super( factory, registryName, (I) ( item.get() instanceof ItemBlock ? new ItemBlock( blockDefinitions.get( registryName ).maybe().get() ) : item.get() ) );
 		this.blockDefinitions = blockDefinitions;
 		if( Platform.isClient() )
 		{
