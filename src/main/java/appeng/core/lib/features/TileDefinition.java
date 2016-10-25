@@ -30,7 +30,7 @@ import appeng.api.definitions.ITileDefinition;
 import appeng.core.lib.block.AEBaseTileBlock;
 
 
-public final class TileDefinition extends BlockDefinition implements ITileDefinition
+public final class TileDefinition<TE extends TileEntity, T extends Class<TE>> implements ITileDefinition<TE, T>
 {
 
 	private final Optional<AEBaseTileBlock> block;

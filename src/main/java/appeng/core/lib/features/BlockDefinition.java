@@ -32,7 +32,7 @@ import net.minecraft.world.IBlockAccess;
 import appeng.api.definitions.IBlockDefinition;
 
 
-public class BlockDefinition extends ItemDefinition implements IBlockDefinition
+public class BlockDefinition<B extends Block> implements IBlockDefinition<B>
 {
 	private final Optional<Block> block;
 

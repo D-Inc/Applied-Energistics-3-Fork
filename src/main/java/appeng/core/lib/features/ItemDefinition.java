@@ -33,7 +33,7 @@ import appeng.api.definitions.IItemDefinition;
 import appeng.core.lib.util.Platform;
 
 
-public class ItemDefinition implements IItemDefinition
+public class ItemDefinition<I extends Item> implements IItemDefinition<I>
 {
 	private final String identifier;
 	private final Optional<Item> item;
