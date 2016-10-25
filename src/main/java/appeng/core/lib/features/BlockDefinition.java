@@ -21,51 +21,68 @@ package appeng.core.lib.features;
 
 import java.util.Optional;
 
-import com.google.common.base.Preconditions;
+import org.apache.commons.lang3.tuple.Pair;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
 import appeng.api.definitions.IBlockDefinition;
+import appeng.api.definitions.IItemDefinition;
 
 
-public class BlockDefinition<B extends Block> implements IBlockDefinition<B>
+public class BlockDefinition<B extends Block> extends Definition<B> implements IBlockDefinition<B>
 {
-	private final Optional<Block> block;
 
-	public BlockDefinition( ResourceLocation registryName, Block block, ItemBlock item )
+	private IItemDefinition<? extends ItemBlock> item;
+
+	public BlockDefinition( ResourceLocation identifier, B block )
 	{
-		super( registryName, item );
-		this.block = Optional.ofNullable( block );
+		super( identifier, block );
+	}
+
+	<I extends ItemBlock> void setItem( IItemDefinition<I> item )
+	{
+		this.item = item;
 	}
 
 	@Override
-	public final Optional<Block> maybeBlock()
+	public <I extends ItemBlock> Optional<IItemDefinition<I>> maybeItem()
 	{
-		return this.block;
+		return Optional.ofNullable( (IItemDefinition<I>) item );
 	}
 
 	@Override
-	public final Optional<ItemBlock> maybeItem()
+	public boolean isSameAs( Object other )
 	{
-		return this.block.map( ItemBlock::new );
+		if( super.isSameAs( other ) )
+		{
+			return true;
+		}
+		else
+		{
+			if( isEnabled() )
+			{
+				Block block = maybe().get();
+				if( other instanceof IBlockState )
+				{
+					return ( (IBlockState) other ).getBlock() == block;
+				}
+				if( other instanceof Pair )
+				{
+					IBlockAccess world = (IBlockAccess) ( ( (Pair) other ).getLeft() instanceof IBlockAccess ? ( (Pair) other ).getLeft() : ( (Pair) other ).getRight() instanceof IBlockAccess ? ( (Pair) other ).getRight() : null );
+					BlockPos pos = (BlockPos) ( ( (Pair) other ).getLeft() instanceof BlockPos ? ( (Pair) other ).getLeft() : ( (Pair) other ).getRight() instanceof BlockPos ? ( (Pair) other ).getRight() : null );
+					if( world != null && pos != null )
+					{
+						return isSameAs( world.getBlockState( pos ) );
+					}
+				}
+			}
+			return false;
+		}
 	}
 
-	@Override
-	public final Optional<ItemStack> maybeStack( int stackSize )
-	{
-		Preconditions.checkArgument( stackSize > 0 );
-
-		return this.block.map( b -> new ItemStack( b, stackSize ) );
-	}
-
-	@Override
-	public final boolean isSameAs( final IBlockAccess world, final BlockPos pos )
-	{
-		return block.isPresent() && world.getBlockState( pos ).getBlock() == this.block.get();
-	}
 }
