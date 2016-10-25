@@ -9,6 +9,8 @@ import java.util.function.Supplier;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -58,14 +60,19 @@ public class FeatureFactory
 		}
 	}
 
-	public IBlockBuilder block( String id, Supplier<Block> block )
+	public <T extends TileEntity> TileDefinitionBuilder<T> tile( ResourceLocation id, Supplier<Class<T>> tile )
 	{
-		return new BlockDefinitionBuilder( this, id, block ).features( defaultFeatures );
+		return new TileDefinitionBuilder<T>( this, id, tile ).features( defaultFeatures );
 	}
 
-	public IItemBuilder item( String id, Supplier<Item> item )
+	public <B extends Block> BlockDefinitionBuilder<B> block( ResourceLocation id, Supplier<B> block )
 	{
-		return new ItemDefinitionBuilder( this, id, item ).features( defaultFeatures );
+		return new BlockDefinitionBuilder<B>( this, id, block ).features( defaultFeatures );
+	}
+
+	public <I extends Item> ItemDefinitionBuilder<I> item( ResourceLocation id, Supplier<I> item )
+	{
+		return new ItemDefinitionBuilder<I>( this, id, item ).features( defaultFeatures );
 	}
 
 	public AEColoredItemDefinition colored( IItemDefinition target, int offset )

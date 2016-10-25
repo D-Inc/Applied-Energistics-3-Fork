@@ -2,45 +2,31 @@
 package appeng.core.lib.bootstrap;
 
 
-import java.util.Collections;
-import java.util.EnumSet;
 import java.util.function.Supplier;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import appeng.core.AppEng;
+import appeng.api.definitions.IItemDefinition;
 import appeng.core.CreativeTab;
-import appeng.core.lib.AEConfig;
-import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.features.ItemDefinition;
 import appeng.core.lib.util.Platform;
 
 
-class ItemDefinitionBuilder implements IItemBuilder
+class ItemDefinitionBuilder<I extends Item> extends DefinitionBuilder<I, IItemDefinition<I>, ItemDefinitionBuilder<I>> implements IItemBuilder<I, ItemDefinitionBuilder<I>>
 {
-
-	private final FeatureFactory factory;
-
-	private final String registryName;
-
-	private final Supplier<Item> itemSupplier;
-
-	private final EnumSet<AEFeature> features = EnumSet.noneOf( AEFeature.class );
 
 	@SideOnly( Side.CLIENT )
 	private ItemRendering itemRendering;
 
 	private CreativeTabs creativeTab = CreativeTab.instance;
 
-	ItemDefinitionBuilder( FeatureFactory factory, String registryName, Supplier<Item> itemSupplier )
+	ItemDefinitionBuilder( FeatureFactory factory, ResourceLocation registryName, Supplier<I> supplier )
 	{
-		this.factory = factory;
-		this.registryName = registryName;
-		this.itemSupplier = itemSupplier;
+		super( factory, registryName, supplier.get() );
 		if( Platform.isClient() )
 		{
 			itemRendering = new ItemRendering();
@@ -48,29 +34,14 @@ class ItemDefinitionBuilder implements IItemBuilder
 	}
 
 	@Override
-	public IItemBuilder features( AEFeature... features )
-	{
-		this.features.clear();
-		addFeatures( features );
-		return this;
-	}
-
-	@Override
-	public IItemBuilder addFeatures( AEFeature... features )
-	{
-		Collections.addAll( this.features, features );
-		return this;
-	}
-
-	@Override
-	public IItemBuilder creativeTab( CreativeTabs tab )
+	public ItemDefinitionBuilder<I> creativeTab( CreativeTabs tab )
 	{
 		this.creativeTab = tab;
 		return this;
 	}
 
 	@Override
-	public IItemBuilder rendering( ItemRenderingCustomizer callback )
+	public ItemDefinitionBuilder<I> rendering( ItemRenderingCustomizer callback )
 	{
 		if( Platform.isClient() )
 		{
@@ -86,22 +57,13 @@ class ItemDefinitionBuilder implements IItemBuilder
 		callback.customize( itemRendering );
 	}
 
-	public ItemDefinition build()
+	@Override
+	public IItemDefinition<I> def( I item )
 	{
-		if( !AEConfig.instance.areFeaturesEnabled( features ) )
-		{
-			return new ItemDefinition( registryName, null );
-		}
-
-		Item item = itemSupplier.get();
-		item.setRegistryName( AppEng.MOD_ID, registryName );
-
 		ItemDefinition definition = new ItemDefinition( registryName, item );
 
 		item.setUnlocalizedName( "appliedenergistics2." + registryName );
 		item.setCreativeTab( creativeTab );
-
-		factory.addPreInit( side -> GameRegistry.register( item ) );
 
 		if( Platform.isClient() )
 		{
