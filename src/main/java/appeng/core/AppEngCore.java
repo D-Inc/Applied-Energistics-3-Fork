@@ -107,8 +107,8 @@ public class AppEngCore implements ICore
 	public void preInit( FMLPreInitializationEvent event )
 	{
 		FeatureFactory registry = new FeatureFactory();
-		this.itemDefinitions = new CoreItemDefinitions( registry );
 		this.blockDefinitions = new CoreBlockDefinitions( registry );
+		this.itemDefinitions = new CoreItemDefinitions( registry );
 		this.tileDefinitions = new CoreTileDefinitions( registry );
 
 		this.recipeDirectory = new File( AppEng.instance().getConfigDirectory(), "recipes" );
