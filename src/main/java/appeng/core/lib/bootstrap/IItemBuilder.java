@@ -15,8 +15,8 @@ import appeng.api.definitions.IItemDefinition;
 public interface IItemBuilder<I extends Item, II extends IItemBuilder<I, II>> extends IDefinitionBuilder<I, IItemDefinition<I>, II>
 {
 
-	IItemBuilder<I, II> creativeTab( CreativeTabs tab );
+	II creativeTab( CreativeTabs tab );
 
-	IItemBuilder<I, II> rendering( ItemRenderingCustomizer callback );
+	II rendering( ItemRenderingCustomizer callback );
 
 }

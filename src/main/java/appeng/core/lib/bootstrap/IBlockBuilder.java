@@ -13,8 +13,8 @@ import appeng.api.definitions.IBlockDefinition;
 public interface IBlockBuilder<B extends Block, BB extends IBlockBuilder<B, BB>> extends IDefinitionBuilder<B, IBlockDefinition<B>, BB>
 {
 
-	IBlockBuilder<B, BB> rendering( BlockRenderingCustomizer callback );
+	BB rendering( BlockRenderingCustomizer callback );
 
-	IBlockBuilder<B, BB> item( Function<Block, ItemBlock> factory );
+	BB item( Function<Block, ItemBlock> factory );
 
 }
