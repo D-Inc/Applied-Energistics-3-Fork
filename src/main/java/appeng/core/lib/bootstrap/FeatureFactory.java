@@ -14,7 +14,9 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import appeng.api.definitions.IDefinitionsProvider;
 import appeng.api.definitions.IItemDefinition;
+import appeng.core.AppEng;
 import appeng.core.api.util.AEColor;
 import appeng.core.api.util.AEColoredItemDefinition;
 import appeng.core.lib.bootstrap.components.InitComponent;
@@ -62,7 +64,7 @@ public class FeatureFactory
 
 	public <T extends TileEntity> TileDefinitionBuilder<T> tile( ResourceLocation id, Supplier<Class<T>> tile )
 	{
-		return new TileDefinitionBuilder<T>( this, id, tile ).features( defaultFeatures );
+		return new TileDefinitionBuilder<T>( this, id, tile, ( (IDefinitionsProvider) AppEng.instance().getCurrent() ).definitions( Block.class ) ).features( defaultFeatures );
 	}
 
 	public <B extends Block> BlockDefinitionBuilder<B> block( ResourceLocation id, Supplier<B> block )
@@ -72,7 +74,7 @@ public class FeatureFactory
 
 	public <I extends Item> ItemDefinitionBuilder<I> item( ResourceLocation id, Supplier<I> item )
 	{
-		return new ItemDefinitionBuilder<I>( this, id, item ).features( defaultFeatures );
+		return new ItemDefinitionBuilder<I>( this, id, item, ( (IDefinitionsProvider) AppEng.instance().getCurrent() ).definitions( Block.class ) ).features( defaultFeatures );
 	}
 
 	public AEColoredItemDefinition colored( IItemDefinition target, int offset )
@@ -80,8 +82,7 @@ public class FeatureFactory
 		ColoredItemDefinition definition = new ColoredItemDefinition();
 
 		Optional<? extends Item> opt = target.maybe();
-		opt.ifPresent( targetItem ->
-        {
+		opt.ifPresent( targetItem -> {
 			for( final AEColor color : AEColor.VALID_COLORS )
 			{
 				final ActivityState state = ActivityState.from( target.isEnabled() );

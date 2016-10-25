@@ -44,7 +44,7 @@ public class BlockDefinition<B extends Block> extends Definition<B> implements I
 		super( identifier, block );
 	}
 
-	<I extends ItemBlock> void setItem( IItemDefinition<I> item )
+	public <I extends ItemBlock> void setItem( IItemDefinition<I> item )
 	{
 		this.item = item;
 	}

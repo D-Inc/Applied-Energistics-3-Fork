@@ -4,19 +4,25 @@ package appeng.core.lib.bootstrap;
 
 import java.util.function.Supplier;
 
+import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 
+import appeng.api.definitions.IBlockDefinition;
 import appeng.api.definitions.ITileDefinition;
+import appeng.core.lib.definitions.Definitions;
 import appeng.core.lib.features.TileDefinition;
 
 
 class TileDefinitionBuilder<T extends TileEntity> extends DefinitionBuilder<Class<T>, ITileDefinition<T, Class<T>>, TileDefinitionBuilder<T>> implements ITileBuilder<T, TileDefinitionBuilder<T>>
 {
 
-	TileDefinitionBuilder( FeatureFactory factory, ResourceLocation id, Supplier<Class<T>> supplier )
+	private Definitions<Block> blockDefinitions;
+
+	public TileDefinitionBuilder( FeatureFactory factory, ResourceLocation registryName, Supplier<Class<T>> supplier, Definitions<Block> blockDefinitions )
 	{
-		super( factory, id, supplier.get() );
+		super( factory, registryName, supplier.get() );
+		this.blockDefinitions = blockDefinitions;
 	}
 
 	@Override
@@ -29,7 +35,7 @@ class TileDefinitionBuilder<T extends TileEntity> extends DefinitionBuilder<Clas
 
 		TileEntity.addMapping( t, registryName.toString() );
 
-		return new TileDefinition<T, Class<T>>( registryName, t, null );
+		return new TileDefinition<T, Class<T>>( registryName, t, (IBlockDefinition) blockDefinitions.get( registryName ) );
 	}
 
 }
