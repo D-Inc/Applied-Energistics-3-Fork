@@ -116,6 +116,8 @@ public final class AppEng
 	private ImmutableMap<Class<?>, ?> classModule;
 	private ImmutableList<String> moduleOrder;
 	private ImmutableMap<?, Boolean> internal;
+	private Object current;
+
 	private File configDirectory;
 
 	private AppEng()
@@ -138,6 +140,11 @@ public final class AppEng
 	public <M> M getModule( Class<M> clas )
 	{
 		return (M) classModule.get( clas );
+	}
+
+	public <M> M getCurrent()
+	{
+		return (M) current;
 	}
 
 	public File getConfigDirectory()
@@ -169,6 +176,7 @@ public final class AppEng
 			{
 				if( method.getParameterTypes().length == 1 && method.getParameterTypes()[0].isAssignableFrom( event.getClass() ) && method.getDeclaredAnnotation( Module.ModuleEventHandler.class ) != null )
 				{
+					current = module;
 					try
 					{
 						method.invoke( module, event );
@@ -177,6 +185,7 @@ public final class AppEng
 					{
 						// :(
 					}
+					current = null;
 				}
 			}
 		}
