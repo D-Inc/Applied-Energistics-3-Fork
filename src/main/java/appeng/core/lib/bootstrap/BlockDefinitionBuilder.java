@@ -2,12 +2,10 @@
 package appeng.core.lib.bootstrap;
 
 
-import java.util.function.Function;
 import java.util.function.Supplier;
 
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -23,8 +21,6 @@ class BlockDefinitionBuilder<B extends Block> extends DefinitionBuilder<B, IBloc
 {
 
 	private CreativeTabs creativeTab = CreativeTab.instance;
-
-	private Function<Block, ItemBlock> itemFactory;
 
 	@SideOnly( Side.CLIENT )
 	private BlockRendering blockRendering;
@@ -50,13 +46,6 @@ class BlockDefinitionBuilder<B extends Block> extends DefinitionBuilder<B, IBloc
 			customizeForClient( callback );
 		}
 
-		return this;
-	}
-
-	@Override
-	public BlockDefinitionBuilder<B> item( Function<Block, ItemBlock> factory )
-	{
-		this.itemFactory = factory;
 		return this;
 	}
 
