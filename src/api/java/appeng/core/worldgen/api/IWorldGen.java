@@ -2,14 +2,12 @@
 package appeng.core.worldgen.api;
 
 
-import appeng.api.definitions.IDefinitions;
+import appeng.core.api.definitions.IDefinitionsProvider;
 
 
-public interface IWorldGen
+public interface IWorldGen extends IDefinitionsProvider
 {
 
 	String NAME = "worldgen";
-
-	<T, D extends IDefinitions<T>> D definitions( Class<T> clas );
 
 }

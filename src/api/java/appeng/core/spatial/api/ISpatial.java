@@ -2,14 +2,12 @@
 package appeng.core.spatial.api;
 
 
-import appeng.api.definitions.IDefinitions;
+import appeng.core.api.definitions.IDefinitionsProvider;
 
 
-public interface ISpatial
+public interface ISpatial extends IDefinitionsProvider
 {
 
 	String NAME = "spatial";
-
-	<T, D extends IDefinitions<T>> D definitions( Class<T> clas );
 
 }

@@ -2,14 +2,12 @@
 package appeng.miscellaneous.api;
 
 
-import appeng.api.definitions.IDefinitions;
+import appeng.core.api.definitions.IDefinitionsProvider;
 
 
-public interface IMiscellaneous
+public interface IMiscellaneous extends IDefinitionsProvider
 {
 
 	String NAME = "misc";
-
-	<T, D extends IDefinitions<T>> D definitions( Class<T> clas );;
 
 }

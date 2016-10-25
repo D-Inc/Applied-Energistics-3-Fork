@@ -2,14 +2,12 @@
 package appeng.decorative.api;
 
 
-import appeng.api.definitions.IDefinitions;
+import appeng.core.api.definitions.IDefinitionsProvider;
 
 
-public interface IDecorative
+public interface IDecorative extends IDefinitionsProvider
 {
 
 	String NAME = "decorative";
-
-	<T, D extends IDefinitions<T>> D definitions( Class<T> clas );
 
 }

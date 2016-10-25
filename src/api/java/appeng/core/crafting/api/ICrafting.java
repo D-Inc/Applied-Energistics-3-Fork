@@ -2,14 +2,12 @@
 package appeng.core.crafting.api;
 
 
-import appeng.api.definitions.IDefinitions;
+import appeng.core.api.definitions.IDefinitionsProvider;
 
 
-public interface ICrafting
+public interface ICrafting extends IDefinitionsProvider
 {
 
 	String NAME = "crafting";
-
-	<T, D extends IDefinitions<T>> D definitions( Class<T> clas );
 
 }

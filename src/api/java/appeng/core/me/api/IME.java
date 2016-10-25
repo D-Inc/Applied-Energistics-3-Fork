@@ -2,14 +2,12 @@
 package appeng.core.me.api;
 
 
-import appeng.api.definitions.IDefinitions;
+import appeng.core.api.definitions.IDefinitionsProvider;
 
 
-public interface IME
+public interface IME extends IDefinitionsProvider
 {
 
 	String NAME = "me";
-
-	<T, D extends IDefinitions<T>> D definitions( Class<T> clas );
 
 }

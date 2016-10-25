@@ -2,14 +2,12 @@
 package appeng.core.api;
 
 
-import appeng.api.definitions.IDefinitions;
+import appeng.core.api.definitions.IDefinitionsProvider;
 
 
-public interface ICore
+public interface ICore extends IDefinitionsProvider
 {
 
 	String NAME = "core";
-
-	<T, D extends IDefinitions<T>> D definitions( Class<T> clas );
 
 }
