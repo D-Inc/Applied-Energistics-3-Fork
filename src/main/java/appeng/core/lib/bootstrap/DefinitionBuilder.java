@@ -43,11 +43,6 @@ public abstract class DefinitionBuilder<T, D extends IDefinition<T>, B extends D
 		this.instance = instance;
 	}
 
-	public DefinitionBuilder( DefinitionBuilder other, T instance )
-	{
-		this( other.factory, other.registryName, instance );
-	}
-
 	@Override
 	public B features( AEFeature... features )
 	{
