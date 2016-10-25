@@ -10,11 +10,11 @@ import net.minecraft.item.ItemBlock;
 import appeng.api.definitions.IBlockDefinition;
 
 
-public interface IBlockBuilder<B extends Block> extends IDefinitionBuilder<B, IBlockDefinition<B>, IBlockBuilder<B>>
+public interface IBlockBuilder<B extends Block, BB extends IBlockBuilder<B, BB>> extends IDefinitionBuilder<B, IBlockDefinition<B>, BB>
 {
 
-	IBlockBuilder<B> rendering( BlockRenderingCustomizer callback );
+	IBlockBuilder<B, BB> rendering( BlockRenderingCustomizer callback );
 
-	IBlockBuilder<B> item( Function<Block, ItemBlock> factory );
+	IBlockBuilder<B, BB> item( Function<Block, ItemBlock> factory );
 
 }

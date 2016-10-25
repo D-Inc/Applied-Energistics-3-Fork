@@ -12,11 +12,11 @@ import appeng.api.definitions.IItemDefinition;
  * Allows an item to be defined and registered with the game.
  * The item is only registered once build is called.
  */
-public interface IItemBuilder<I extends Item> extends IDefinitionBuilder<I, IItemDefinition<I>, IItemBuilder<I>>
+public interface IItemBuilder<I extends Item, II extends IItemBuilder<I, II>> extends IDefinitionBuilder<I, IItemDefinition<I>, II>
 {
 
-	IItemBuilder<I> creativeTab( CreativeTabs tab );
+	IItemBuilder<I, II> creativeTab( CreativeTabs tab );
 
-	IItemBuilder<I> rendering( ItemRenderingCustomizer callback );
+	IItemBuilder<I, II> rendering( ItemRenderingCustomizer callback );
 
 }
