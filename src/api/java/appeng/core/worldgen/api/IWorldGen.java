@@ -2,7 +2,7 @@
 package appeng.core.worldgen.api;
 
 
-import appeng.core.api.definitions.IDefinitionsProvider;
+import appeng.api.definitions.IDefinitionsProvider;
 
 
 public interface IWorldGen extends IDefinitionsProvider

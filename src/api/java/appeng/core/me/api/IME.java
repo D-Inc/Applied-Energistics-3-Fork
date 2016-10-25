@@ -2,7 +2,7 @@
 package appeng.core.me.api;
 
 
-import appeng.core.api.definitions.IDefinitionsProvider;
+import appeng.api.definitions.IDefinitionsProvider;
 
 
 public interface IME extends IDefinitionsProvider

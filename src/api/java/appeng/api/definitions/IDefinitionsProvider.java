@@ -1,9 +1,5 @@
 
-package appeng.core.api.definitions;
-
-
-import appeng.api.definitions.IDefinitions;
-
+package appeng.api.definitions;
 
 public interface IDefinitionsProvider
 {

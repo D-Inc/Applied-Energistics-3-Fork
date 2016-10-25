@@ -2,7 +2,7 @@
 package appeng.core.crafting.api;
 
 
-import appeng.core.api.definitions.IDefinitionsProvider;
+import appeng.api.definitions.IDefinitionsProvider;
 
 
 public interface ICrafting extends IDefinitionsProvider

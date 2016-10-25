@@ -2,7 +2,7 @@
 package appeng.decorative.api;
 
 
-import appeng.core.api.definitions.IDefinitionsProvider;
+import appeng.api.definitions.IDefinitionsProvider;
 
 
 public interface IDecorative extends IDefinitionsProvider
