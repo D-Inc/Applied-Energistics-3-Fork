@@ -6,6 +6,8 @@ import java.lang.reflect.Field;
 
 import com.google.common.collect.ImmutableMap;
 
+import net.minecraft.util.ResourceLocation;
+
 import appeng.api.definitions.IDefinition;
 import appeng.api.definitions.IDefinitions;
 
@@ -13,7 +15,7 @@ import appeng.api.definitions.IDefinitions;
 public class Definitions<T> implements IDefinitions<T>
 {
 
-	private ImmutableMap<String, IDefinition<T>> map;
+	private ImmutableMap<ResourceLocation, IDefinition<T>> map;
 
 	/**
 	 * Make sure to call in the end of the constructor.
@@ -42,7 +44,7 @@ public class Definitions<T> implements IDefinitions<T>
 	}
 
 	@Override
-	public IDefinition<T> get( String identifier )
+	public IDefinition<T> get( ResourceLocation identifier )
 	{
 		return map.get( identifier );
 	}
