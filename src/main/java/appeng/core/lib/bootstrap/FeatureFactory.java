@@ -5,7 +5,6 @@ package appeng.core.lib.bootstrap;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Supplier;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -62,17 +61,17 @@ public class FeatureFactory
 		}
 	}
 
-	public <T extends TileEntity> TileDefinitionBuilder<T> tile( ResourceLocation id, Supplier<Class<T>> tile )
+	public <T extends TileEntity> TileDefinitionBuilder<T> tile( ResourceLocation id, Class<T> tile )
 	{
 		return new TileDefinitionBuilder<T>( this, id, tile, ( (IDefinitionsProvider) AppEng.instance().getCurrent() ).definitions( Block.class ) ).features( defaultFeatures );
 	}
 
-	public <B extends Block> BlockDefinitionBuilder<B> block( ResourceLocation id, Supplier<B> block )
+	public <B extends Block> BlockDefinitionBuilder<B> block( ResourceLocation id, B block )
 	{
 		return new BlockDefinitionBuilder<B>( this, id, block ).features( defaultFeatures );
 	}
 
-	public <I extends Item> ItemDefinitionBuilder<I> item( ResourceLocation id, Supplier<I> item )
+	public <I extends Item> ItemDefinitionBuilder<I> item( ResourceLocation id, I item )
 	{
 		return new ItemDefinitionBuilder<I>( this, id, item, ( (IDefinitionsProvider) AppEng.instance().getCurrent() ).definitions( Block.class ) ).features( defaultFeatures );
 	}

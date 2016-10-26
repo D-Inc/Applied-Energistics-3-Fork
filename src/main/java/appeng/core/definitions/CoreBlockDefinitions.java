@@ -25,7 +25,7 @@ public class CoreBlockDefinitions extends Definitions<Block> implements ICoreBlo
 
 	public CoreBlockDefinitions( FeatureFactory registry )
 	{
-		this.crank = registry.block( new ResourceLocation( AppEng.MOD_ID, "crank" ), BlockCrank::new ).features( AEFeature.GrindStone ).build();
+		this.crank = registry.block( new ResourceLocation( AppEng.MOD_ID, "crank" ), new BlockCrank() ).features( AEFeature.GrindStone ).build();
 		// this.charger = registry.block( "charger", BlockCharger::new ).build();
 		// this.grinder = registry.block( "grinder", BlockGrinder::new ).build();
 		// this.inscriber = registry.block( "inscriber", BlockInscriber::new ).build();

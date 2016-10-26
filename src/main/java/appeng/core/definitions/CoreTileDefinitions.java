@@ -21,7 +21,7 @@ public class CoreTileDefinitions extends Definitions<Class<? extends TileEntity>
 
 	public CoreTileDefinitions( FeatureFactory registry )
 	{
-		crank = registry.tile( new ResourceLocation( AppEng.MOD_ID, "crank" ), () -> TileCrank.class ).features( AEFeature.GrindStone ).build();
+		crank = registry.tile( new ResourceLocation( AppEng.MOD_ID, "crank" ), TileCrank.class ).features( AEFeature.GrindStone ).build();
 		init();
 	}
 

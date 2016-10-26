@@ -2,8 +2,6 @@
 package appeng.core.lib.bootstrap;
 
 
-import java.util.function.Supplier;
-
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -30,9 +28,9 @@ public class ItemDefinitionBuilder<I extends Item> extends DefinitionBuilder<I, 
 
 	private CreativeTabs creativeTab = CreativeTab.instance;
 
-	ItemDefinitionBuilder( FeatureFactory factory, ResourceLocation registryName, Supplier<I> item, Definitions<Block> blockDefinitions )
+	ItemDefinitionBuilder( FeatureFactory factory, ResourceLocation registryName, I item, Definitions<Block> blockDefinitions )
 	{
-		super( factory, registryName, (I) ( item.get() instanceof ItemBlock ? new ItemBlock( blockDefinitions.get( registryName ).maybe().get() ) : item.get() ) );
+		super( factory, registryName, (I) ( item instanceof ItemBlock ? new ItemBlock( blockDefinitions.get( registryName ).maybe().get() ) : item ) );
 		this.blockDefinitions = blockDefinitions;
 		if( Platform.isClient() )
 		{

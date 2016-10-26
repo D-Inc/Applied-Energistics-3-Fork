@@ -2,8 +2,6 @@
 package appeng.core.lib.bootstrap;
 
 
-import java.util.function.Supplier;
-
 import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
@@ -19,9 +17,9 @@ public class TileDefinitionBuilder<T extends TileEntity> extends DefinitionBuild
 
 	private Definitions<Block> blockDefinitions;
 
-	public TileDefinitionBuilder( FeatureFactory factory, ResourceLocation registryName, Supplier<Class<T>> clas, Definitions<Block> blockDefinitions )
+	public TileDefinitionBuilder( FeatureFactory factory, ResourceLocation registryName, Class<T> tile, Definitions<Block> blockDefinitions )
 	{
-		super( factory, registryName, clas.get() );
+		super( factory, registryName, tile );
 		this.blockDefinitions = blockDefinitions;
 	}
 

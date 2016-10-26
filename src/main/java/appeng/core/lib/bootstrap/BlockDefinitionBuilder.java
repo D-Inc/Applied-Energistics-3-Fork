@@ -2,8 +2,6 @@
 package appeng.core.lib.bootstrap;
 
 
-import java.util.function.Supplier;
-
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.ResourceLocation;
@@ -28,9 +26,9 @@ public class BlockDefinitionBuilder<B extends Block> extends DefinitionBuilder<B
 	@SideOnly( Side.CLIENT )
 	private ItemRendering itemRendering;
 
-	BlockDefinitionBuilder( FeatureFactory factory, ResourceLocation id, Supplier<B> block )
+	BlockDefinitionBuilder( FeatureFactory factory, ResourceLocation id, B block )
 	{
-		super( factory, id, block.get() );
+		super( factory, id, block );
 
 		if( Platform.isClient() )
 		{

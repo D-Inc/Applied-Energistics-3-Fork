@@ -21,7 +21,7 @@ public class CoreItemDefinitions extends Definitions<Item> implements ICoreItemD
 
 	public CoreItemDefinitions( FeatureFactory registry )
 	{
-		crank = registry.item( new ResourceLocation( AppEng.MOD_ID, "crank" ), () -> new ItemBlock( null ) ).features( AEFeature.GrindStone ).build();
+		crank = registry.item( new ResourceLocation( AppEng.MOD_ID, "crank" ), new ItemBlock( null ) ).features( AEFeature.GrindStone ).build();
 		init();
 	}
 
