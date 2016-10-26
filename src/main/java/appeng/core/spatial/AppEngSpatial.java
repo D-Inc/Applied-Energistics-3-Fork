@@ -68,8 +68,8 @@ public class AppEngSpatial implements ISpatial
 	public void preInit( FMLPreInitializationEvent event )
 	{
 		FeatureFactory registry = new FeatureFactory();
-		this.itemDefinitions = new SpatialItemDefinitions( registry );
 		this.blockDefinitions = new SpatialBlockDefinitions( registry );
+		this.itemDefinitions = new SpatialItemDefinitions( registry );
 		this.tileDefinitions = new SpatialTileDefinitions( registry );
 		this.biomeDefinitions = new SpatialBiomeDefinitions( registry );
 		this.dimensionTypeDefinitions = new SpatialDimensionTypeDefinitions( registry );

@@ -54,8 +54,8 @@ public class AppEngWorldGen implements IWorldGen
 	public void preInit( FMLPreInitializationEvent event )
 	{
 		FeatureFactory registry = new FeatureFactory();
-		this.itemDefinitions = new WorldGenItemDefinitions( registry );
 		this.blockDefinitions = new WorldGenBlockDefinitions( registry );
+		this.itemDefinitions = new WorldGenItemDefinitions( registry );
 		this.tileDefinitions = new WorldGenTileDefinitions( registry );
 	}
 

@@ -60,8 +60,8 @@ public class AppEngME implements IME
 	public void preInit( FMLPreInitializationEvent event )
 	{
 		FeatureFactory registry = new FeatureFactory();
-		this.itemDefinitions = new MEItemDefinitions( registry );
 		this.blockDefinitions = new MEBlockDefinitions( registry );
+		this.itemDefinitions = new MEItemDefinitions( registry );
 		this.tileDefinitions = new METileDefinitions( registry );
 
 		FacadeConfig.instance = new FacadeConfig( new File( AppEng.instance().getConfigDirectory(), "Facades.cfg" ) );

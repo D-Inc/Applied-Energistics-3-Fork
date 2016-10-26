@@ -65,8 +65,8 @@ public class AppEngDecorative implements IDecorative
 	public void preInitAE( FMLPreInitializationEvent event )
 	{
 		FeatureFactory registry = new FeatureFactory();
-		this.itemDefinitions = new CraftingItemDefinitions( registry );
 		this.blockDefinitions = new CraftingBlockDefinitions( registry );
+		this.itemDefinitions = new CraftingItemDefinitions( registry );
 		this.tileDefinitions = new CraftingTileDefinitions( registry );
 	}
 

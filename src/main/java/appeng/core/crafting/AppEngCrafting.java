@@ -54,8 +54,8 @@ public class AppEngCrafting implements ICrafting
 	public void preInit( FMLPreInitializationEvent event )
 	{
 		FeatureFactory registry = new FeatureFactory();
-		this.itemDefinitions = new CraftingItemDefinitions( registry );
 		this.blockDefinitions = new CraftingBlockDefinitions( registry );
+		this.itemDefinitions = new CraftingItemDefinitions( registry );
 		this.tileDefinitions = new CraftingTileDefinitions( registry );
 	}
 
