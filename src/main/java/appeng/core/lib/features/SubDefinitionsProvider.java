@@ -53,12 +53,13 @@ public abstract class SubDefinitionsProvider<T, D, S extends SubDefinition, P ex
 		return (S) instantiate( def.identifier(), (D) fromProperties( map ), ImmutableMap.copyOf( map ) );
 	}
 
-	abstract boolean isValid( P property );
 	public abstract P getProperty( String name );
 
-	abstract D fromProperties( Map<ISubDefinitionProperty<T, D, ?>, ?> properties );
+	public abstract boolean isValid( P property );
 
-	abstract S instantiate( ResourceLocation identifier, D t, ImmutableMap<ISubDefinitionProperty<T, D, ?>, ?> properties );
+	public abstract D fromProperties( Map<ISubDefinitionProperty<T, D, ?>, ?> properties );
+
+	public abstract S instantiate( ResourceLocation identifier, D instance, ImmutableMap<ISubDefinitionProperty<T, D, ?>, ?> properties );
 
 	public class SubDefinition<S extends SubDefinition<S>> extends Definition<D> implements ISubDefinition<T, D, P, S>
 	{
