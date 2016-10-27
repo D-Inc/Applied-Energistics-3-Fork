@@ -16,13 +16,17 @@ public class Definition<T> implements IDefinition<T>
 
 	private final ResourceLocation identifier;
 	private final Optional<T> t;
-	private final Optional<SubDefinitionsProvider> subDefinitionsProvider;
+	private Optional<SubDefinitionsProvider> subDefinitionsProvider = Optional.empty();
 
 	public Definition( ResourceLocation identifier, T t )
 	{
 		this.identifier = identifier;
 		this.t = Optional.ofNullable( t );
-		this.subDefinitionsProvider = Optional.empty();
+	}
+
+	public void setSubDefinitionsProvider( SubDefinitionsProvider subDefinitionsProvider )
+	{
+		this.subDefinitionsProvider = Optional.of( subDefinitionsProvider );
 	}
 
 	@Override
