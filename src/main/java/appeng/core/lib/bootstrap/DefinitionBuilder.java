@@ -17,10 +17,9 @@ import net.minecraftforge.fml.common.registry.IForgeRegistryEntry;
 import appeng.api.definitions.IDefinition;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.features.AEFeature;
-import appeng.core.lib.features.SubDefinitionsProvider;
 
 
-public abstract class DefinitionBuilder<T, D extends IDefinition<T>, S extends SubDefinitionsProvider<T, ?, ?, ?>, B extends DefinitionBuilder<T, D, S, B>> implements IDefinitionBuilder<T, D, S, B>
+public abstract class DefinitionBuilder<T, D extends IDefinition<T>, B extends DefinitionBuilder<T, D, B>> implements IDefinitionBuilder<T, D, B>
 {
 
 	protected final FeatureFactory factory;

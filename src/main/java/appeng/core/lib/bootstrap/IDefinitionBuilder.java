@@ -9,10 +9,10 @@ import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.features.SubDefinitionsProvider;
 
 
-public interface IDefinitionBuilder<T, D extends IDefinition<T>, S extends SubDefinitionsProvider<T, ?, ?, ?>, B extends IDefinitionBuilder<T, D, S, B>>
+public interface IDefinitionBuilder<T, D extends IDefinition<T>, B extends IDefinitionBuilder<T, D, B>>
 {
 
-	B subDefinitionsProvider( S provider );
+	<S extends SubDefinitionsProvider<T, ?, ?, ?>> B subDefinitionsProvider( S provider );
 
 	B features( AEFeature... features );
 
