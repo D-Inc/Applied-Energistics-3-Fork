@@ -21,23 +21,82 @@ package appeng.decorative.item;
 
 import java.util.List;
 
+import com.google.common.collect.ImmutableMap;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 import appeng.core.api.util.AEColor;
 import appeng.core.lib.item.AEBaseItem;
+import appeng.core.lib.item.IStateItem;
+import appeng.core.lib.item.IStateItem.State.Property;
 import appeng.core.lib.localization.GuiText;
 
 
-public class ItemPaintBall extends AEBaseItem
+public class ItemPaintBall extends AEBaseItem implements IStateItem
 {
 
-	private static final int DAMAGE_THRESHOLD = 20;
+	private static final Property<AEColor, ItemPaintBall> COLOR = new Property<AEColor, ItemPaintBall>(){
+
+		@Override
+		public String getName()
+		{
+			return "color";
+		}
+
+		@Override
+		public boolean isValid( AEColor color )
+		{
+			return color != null;
+		}
+
+	};
+
+	private static final Property<Boolean, ItemPaintBall> LUMEN = new Property<Boolean, ItemPaintBall>(){
+
+		@Override
+		public String getName()
+		{
+			return "lumen";
+		}
+
+		@Override
+		public boolean isValid( Boolean lumen )
+		{
+			return lumen != null;
+		}
+	};
 
 	public ItemPaintBall()
 	{
 		this.setHasSubtypes( true );
+	}
+
+	@Override
+	public boolean isValid( Property property )
+	{
+		return property == COLOR || property == LUMEN;
+	}
+
+	@Override
+	public Property getProperty( String name )
+	{
+		return name.equals( COLOR.getName() ) ? COLOR : name.equals( LUMEN.getName() ) ? LUMEN : null;
+	}
+
+	@Override
+	public State getState( ItemStack itemstack )
+	{
+		AEColor color = AEColor.values()[itemstack.getItemDamage() & 15];
+		boolean lumen = ( ( itemstack.getItemDamage() >> 4 ) & 1 ) == 1;
+		return new State( this, ImmutableMap.of( COLOR, color, LUMEN, lumen ) );
+	}
+
+	@Override
+	public ItemStack getItemStack( State state, int amount )
+	{
+		return new ItemStack( this, amount, ( (AEColor) state.getValue( COLOR ) ).ordinal() | ( ( (boolean) state.getValue( LUMEN ) ? 1 : 0 ) << 4 ) );
 	}
 
 	@Override
@@ -48,49 +107,37 @@ public class ItemPaintBall extends AEBaseItem
 
 	private String getExtraName( final ItemStack is )
 	{
-		return ( is.getItemDamage() >= DAMAGE_THRESHOLD ? GuiText.Lumen.getLocal() + ' ' : "" ) + this.getColor( is );
+		return ( isLumen( is ) ? GuiText.Lumen.getLocal() + ' ' : "" ) + this.getColor( is );
 	}
 
 	public AEColor getColor( final ItemStack is )
 	{
-		int dmg = is.getItemDamage();
-		if( dmg >= DAMAGE_THRESHOLD )
-		{
-			dmg -= DAMAGE_THRESHOLD;
-		}
-
-		if( dmg >= AEColor.values().length )
-		{
-			return AEColor.Transparent;
-		}
-
-		return AEColor.values()[dmg];
+		return (AEColor) getState( is ).getValue( COLOR );
 	}
 
 	@Override
 	protected void getCheckedSubItems( final Item sameItem, final CreativeTabs creativeTab, final List<ItemStack> itemStacks )
 	{
-		for( final AEColor c : AEColor.values() )
+		for( final AEColor c : AEColor.VALID_COLORS )
 		{
 			if( c != AEColor.Transparent )
 			{
-				itemStacks.add( new ItemStack( this, 1, c.ordinal() ) );
+				itemStacks.add( getItemStack( new State( this, ImmutableMap.of( COLOR, c, LUMEN, false ) ), 1 ) );
 			}
 		}
 
-		for( final AEColor c : AEColor.values() )
+		for( final AEColor c : AEColor.VALID_COLORS )
 		{
 			if( c != AEColor.Transparent )
 			{
-				itemStacks.add( new ItemStack( this, 1, DAMAGE_THRESHOLD + c.ordinal() ) );
+				itemStacks.add( getItemStack( new State( this, ImmutableMap.of( COLOR, c, LUMEN, true ) ), 1 ) );
 			}
 		}
 	}
 
 	public static boolean isLumen( final ItemStack is )
 	{
-		final int dmg = is.getItemDamage();
-		return dmg >= DAMAGE_THRESHOLD;
+		return (boolean) ( (ItemPaintBall) is.getItem() ).getState( is ).getValue( LUMEN );
 	}
 
 }

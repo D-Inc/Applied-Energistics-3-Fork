@@ -106,10 +106,6 @@ public final class ApiItems// implements IItems
 	private final IItemDefinition encodedPattern;
 	private final IItemDefinition colorApplicator;
 
-	private final IItemDefinition paintBall;
-	private final AEColoredItemDefinition coloredPaintBall;
-	private final AEColoredItemDefinition coloredLumenPaintBall;
-
 	// unsupported dev tools
 	private final IItemDefinition toolEraser;
 	private final IItemDefinition toolMeteoritePlacer;
@@ -167,10 +163,6 @@ public final class ApiItems// implements IItems
 
 		// rv1
 		this.encodedPattern = registry.item( "encoded_pattern", ItemEncodedPattern::new ).features( AEFeature.Patterns ).build();
-
-		this.paintBall = registry.item( "paint_ball", ItemPaintBall::new ).features( AEFeature.PaintBalls ).rendering( new ItemPaintBallRendering() ).build();
-		this.coloredPaintBall = registry.colored( this.paintBall, 0 );
-		this.coloredLumenPaintBall = registry.colored( this.paintBall, 20 );
 
 		FeatureFactory debugTools = registry.features( AEFeature.UnsupportedDeveloperTools, AEFeature.Creative );
 		this.toolEraser = debugTools.item( "debug_eraser", ToolEraser::new ).build();
