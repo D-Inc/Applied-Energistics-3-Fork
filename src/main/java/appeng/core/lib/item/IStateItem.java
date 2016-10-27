@@ -2,40 +2,64 @@
 package appeng.core.lib.item;
 
 
+import java.util.HashMap;
 import java.util.Map;
+
+import com.google.common.collect.ImmutableMap;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 import appeng.api.definitions.sub.ISubDefinitionProperty;
-import appeng.core.lib.item.IStateItem.State;
 import appeng.core.lib.item.IStateItem.State.Property;
 
 
-public interface IStateItem<S extends State<S>>
+public interface IStateItem
 {
 
 	boolean isValid( Property property );
 
 	Property getProperty( String name );
 
-	S getState( ItemStack itemstack );
+	State getState( ItemStack itemstack );
 
-	ItemStack getStack( S state );
+	ItemStack getItemStack( State state );
 
-	default S getDefaultState()
+	default State getDefaultState()
 	{
 		return getState( new ItemStack( (Item) this ) );
 	}
 
-	public interface State<S extends State<S>>
+	public class State<I extends Item & IStateItem>
 	{
 
-		<I extends Item & IStateItem<S>> I getItem();
+		private final I item;
+		private final ImmutableMap<Property, ?> properties;
 
-		Map<Property, ?> getProperties();
+		public State( I item, Map<Property, ?> properties )
+		{
+			this.item = item;
+			this.properties = ImmutableMap.copyOf( properties );
+		}
 
-		<V> S withProperty( Property<V, ?> property, V value );
+		public I getItem()
+		{
+			return item;
+		}
+
+		public Map<Property, ?> getProperties()
+		{
+			return properties;
+		}
+
+		public <V> State withProperty( Property<V, ?> property, V value )
+		{
+			assert item.isValid( property ) && property.isValid( value );
+			Map map = new HashMap<>();
+			map.putAll( properties );
+			map.put( property, value );
+			return (State) new State( item, map );
+		}
 
 		public interface Property<V, I extends Item & IStateItem> extends ISubDefinitionProperty<I, ItemStack, V>
 		{
