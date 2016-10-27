@@ -20,18 +20,13 @@ public abstract class SubDefinitionsProvider<T, D, S extends SubDefinition, P ex
 
 	private Definition<T> defaultD;
 	private S defaultSD;
-	private final ImmutableMap<ISubDefinitionProperty<T, D, ?>, ?> defaultP;
 
-	public SubDefinitionsProvider( Map<ISubDefinitionProperty<T, D, ?>, ?> defaultP )
-	{
-		this.defaultP = ImmutableMap.copyOf( defaultP );
-	}
-
-	void setDefault( Definition<T> def )
+	protected void setDefault( Definition<T> def, Map<ISubDefinitionProperty<T, D, ?>, ?> defaultP )
 	{
 		assert defaultD == null && defaultSD == null;
 		this.defaultD = def;
-		this.defaultSD = instantiate( defaultD.identifier(), fromProperties( defaultP ), defaultP );
+		ImmutableMap<ISubDefinitionProperty<T, D, ?>, ?> defaultPI = ImmutableMap.copyOf( defaultP );
+		this.defaultSD = instantiate( defaultD.identifier(), fromProperties( defaultPI ), defaultPI );
 	}
 
 	public Definition<T> getDefault()
