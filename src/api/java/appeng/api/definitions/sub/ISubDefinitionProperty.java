@@ -6,6 +6,13 @@ public interface ISubDefinitionProperty<T, D, V>
 {
 
 	/**
+	 * Gets the name of this property.
+	 * 
+	 * @return name of this property
+	 */
+	String getName();
+
+	/**
 	 * Checks whether value is a valid value.
 	 * 
 	 * @param value value to check

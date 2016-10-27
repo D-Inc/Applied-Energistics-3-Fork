@@ -54,6 +54,7 @@ public abstract class SubDefinitionsProvider<T, D, S extends SubDefinition, P ex
 	}
 
 	abstract boolean isValid( P property );
+	public abstract P getProperty( String name );
 
 	abstract D fromProperties( Map<ISubDefinitionProperty<T, D, ?>, ?> properties );
 
