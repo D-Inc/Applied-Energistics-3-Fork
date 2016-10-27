@@ -61,7 +61,7 @@ public abstract class SubDefinitionsProvider<T, D, S extends SubDefinition, P ex
 
 	public abstract S instantiate( ResourceLocation identifier, D instance, ImmutableMap<ISubDefinitionProperty<T, D, ?>, ?> properties );
 
-	public class SubDefinition<S extends SubDefinition<S>> extends Definition<D> implements ISubDefinition<T, D, P, S>
+	public class SubDefinition<S extends ISubDefinition<T, D, P, ? extends S>> extends Definition<D> implements ISubDefinition<T, D, P, S>
 	{
 
 		private ImmutableMap<ISubDefinitionProperty<T, D, ?>, ?> properties;
