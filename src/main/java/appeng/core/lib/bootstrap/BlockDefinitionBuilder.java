@@ -20,6 +20,8 @@ public class BlockDefinitionBuilder<B extends Block> extends DefinitionBuilder<B
 
 	private CreativeTabs creativeTab = CreativeTab.instance;
 
+	private BlockSubDefinitionsProvider<B> subDefs;
+
 	@SideOnly( Side.CLIENT )
 	private BlockRendering blockRendering;
 
@@ -77,6 +79,12 @@ public class BlockDefinitionBuilder<B extends Block> extends DefinitionBuilder<B
 			}
 		}
 
-		return new BlockDefinition( registryName, block );
+		BlockDefinition definition = new BlockDefinition<Block>( registryName, block );
+		if( !block.getBlockState().getProperties().isEmpty() )
+		{
+			definition.setSubDefinitionsProvider( new BlockSubDefinitionsProvider( definition ) );
+		}
+		return definition;
 	}
+
 }
