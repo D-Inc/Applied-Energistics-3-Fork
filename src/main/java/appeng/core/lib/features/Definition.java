@@ -15,11 +15,13 @@ public class Definition<T> implements IDefinition<T>
 
 	private final ResourceLocation identifier;
 	private final Optional<T> t;
+	private final Optional<SubDefinitionsProvider> subDefinitionsProvider;
 
 	public Definition( ResourceLocation identifier, T t )
 	{
 		this.identifier = identifier;
 		this.t = Optional.ofNullable( t );
+		this.subDefinitionsProvider = Optional.empty();
 	}
 
 	@Override
@@ -35,9 +37,9 @@ public class Definition<T> implements IDefinition<T>
 	}
 
 	@Override
-	public final <D> Optional<ISubDefinition<T, D>> maybeSubDefinition()
+	public final <D, S extends ISubDefinition<T, D>> Optional<S> maybeSubDefinition()
 	{
-		return null;
+		return subDefinitionsProvider.isPresent() ? (Optional<S>) Optional.of( subDefinitionsProvider.get().getDefaultSub() ) : Optional.empty();
 	}
 
 	@Override
