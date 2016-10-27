@@ -15,6 +15,7 @@ import appeng.core.CreativeTab;
 import appeng.core.lib.definitions.Definitions;
 import appeng.core.lib.features.BlockDefinition;
 import appeng.core.lib.features.ItemDefinition;
+import appeng.core.lib.item.IStateItem;
 import appeng.core.lib.util.Platform;
 
 
@@ -78,6 +79,11 @@ public class ItemDefinitionBuilder<I extends Item> extends DefinitionBuilder<I, 
 		if( item instanceof ItemBlock && blockDefinitions.get( registryName ) != null )
 		{
 			( (BlockDefinition) blockDefinitions.get( registryName ) ).setItem( definition );
+		}
+
+		if( item instanceof IStateItem )
+		{
+			definition.setSubDefinitionsProvider( new ItemSubDefinitionsProvider( definition ) );
 		}
 
 		return definition;
