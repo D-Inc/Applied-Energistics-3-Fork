@@ -46,12 +46,14 @@ public abstract class SubDefinitionsProvider<T, D, S extends SubDefinition>
 
 	<P> S withProperty( SubDefinition def, ISubDefinitionProperty<T, D, P> property, P value )
 	{
-		assert property.isValid( value );
+		assert isValid( property ) && property.isValid( value );
 		Map map = new HashMap();
 		map.putAll( def.properties );
 		map.put( property, value );
 		return (S) instantiate( def.identifier(), (D) fromProperties( map ), ImmutableMap.copyOf( map ) );
 	}
+
+	abstract <P> boolean isValid( ISubDefinitionProperty<T, D, P> property );
 
 	abstract D fromProperties( Map<ISubDefinitionProperty<T, D, ?>, ?> properties );
 
