@@ -20,7 +20,7 @@ import appeng.core.lib.item.IStateItem.State;
 import appeng.core.lib.item.IStateItem.State.Property;
 
 
-public class ItemSubDefinitionsProvider<I extends Item & IStateItem> extends SubDefinitionsProvider<I, ItemStack, IStateItemSubDefinition, IStateItem.State.Property<?, I>>
+public class ItemSubDefinitionsProvider<I extends Item & IStateItem> extends SubDefinitionsProvider<I, State, IStateItemSubDefinition, IStateItem.State.Property<?, I>>
 {
 
 	private final I item;
@@ -43,18 +43,18 @@ public class ItemSubDefinitionsProvider<I extends Item & IStateItem> extends Sub
 	}
 
 	@Override
-	public ItemStack fromProperties( Map<ISubDefinitionProperty<I, ItemStack, ?>, ?> properties )
+	public State fromProperties( Map<ISubDefinitionProperty<I, State, ?>, ?> properties )
 	{
 		State state = item.getDefaultState();
-		for( Entry<ISubDefinitionProperty<I, ItemStack, ?>, ?> e : properties.entrySet() )
+		for( Entry<ISubDefinitionProperty<I, State, ?>, ?> e : properties.entrySet() )
 		{
 			state = state.withProperty( (Property) e.getKey(), e.getValue() );
 		}
-		return item.getStack( state );
+		return state;
 	}
 
 	@Override
-	public IStateItemSubDefinition instantiate( ResourceLocation identifier, ItemStack instance, ImmutableMap<ISubDefinitionProperty<I, ItemStack, ?>, ?> properties )
+	public IStateItemSubDefinition instantiate( ResourceLocation identifier, State instance, ImmutableMap<ISubDefinitionProperty<I, State, ?>, ?> properties )
 	{
 		return new IStateItemSubDefinition( identifier, instance, properties );
 	}
@@ -62,7 +62,7 @@ public class ItemSubDefinitionsProvider<I extends Item & IStateItem> extends Sub
 	public class IStateItemSubDefinition extends SubDefinition<IStateItemSubDefinition>
 	{
 
-		public IStateItemSubDefinition( ResourceLocation identifier, ItemStack itemstack, ImmutableMap<ISubDefinitionProperty<I, ItemStack, ?>, ?> properties )
+		public IStateItemSubDefinition( ResourceLocation identifier, State itemstack, ImmutableMap<ISubDefinitionProperty<I, State, ?>, ?> properties )
 		{
 			super( identifier, itemstack, properties );
 		}

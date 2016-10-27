@@ -47,6 +47,11 @@ public interface IStateItem
 			return item;
 		}
 
+		public ItemStack toItemStack()
+		{
+			return item.getItemStack( this );
+		}
+
 		public Map<Property, ?> getProperties()
 		{
 			return properties;
@@ -61,7 +66,7 @@ public interface IStateItem
 			return (State) new State( item, map );
 		}
 
-		public interface Property<V, I extends Item & IStateItem> extends ISubDefinitionProperty<I, ItemStack, V>
+		public interface Property<V, I extends Item & IStateItem> extends ISubDefinitionProperty<I, State, V>
 		{
 
 		}
