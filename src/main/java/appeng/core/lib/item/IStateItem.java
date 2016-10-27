@@ -23,7 +23,7 @@ public interface IStateItem
 
 	State getState( ItemStack itemstack );
 
-	ItemStack getItemStack( State state );
+	ItemStack getItemStack( State state, int amount );
 
 	default State getDefaultState()
 	{
@@ -47,9 +47,9 @@ public interface IStateItem
 			return item;
 		}
 
-		public ItemStack toItemStack()
+		public ItemStack toItemStack( int amount )
 		{
-			return item.getItemStack( this );
+			return item.getItemStack( this, amount );
 		}
 
 		public Map<Property, ?> getProperties()
@@ -57,7 +57,12 @@ public interface IStateItem
 			return properties;
 		}
 
-		public <V> State withProperty( Property<V, ?> property, V value )
+		public <V> V getValue( Property<V, I> property )
+		{
+			return (V) properties.get( property );
+		}
+
+		public <V> State withProperty( Property<V, I> property, V value )
 		{
 			assert item.isValid( property ) && property.isValid( value );
 			Map map = new HashMap<>();
