@@ -7,7 +7,7 @@ import javax.annotation.Nonnull;
 import appeng.api.definitions.IDefinition;
 
 
-public interface ISubDefinition<T, D> extends IDefinition<D>
+public interface ISubDefinition<T, D, P extends ISubDefinitionProperty<T, D, ?>, S extends ISubDefinition<T, D, P, S>> extends IDefinition<D>
 {
 
 	/**
@@ -24,6 +24,6 @@ public interface ISubDefinition<T, D> extends IDefinition<D>
 	 * @return new {@linkplain ISubDefinition} with modified property, or <tt>this</tt> if property and/or value is invalid.
 	 */
 	@Nonnull
-	<P> ISubDefinition<T, D> withProperty( ISubDefinitionProperty<T, D, P> property, P value );
+	<V> S withProperty( P property, V value );
 
 }

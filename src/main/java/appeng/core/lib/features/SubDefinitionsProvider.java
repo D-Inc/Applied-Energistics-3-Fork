@@ -15,7 +15,7 @@ import appeng.api.definitions.sub.ISubDefinitionProperty;
 import appeng.core.lib.features.SubDefinitionsProvider.SubDefinition;
 
 
-public abstract class SubDefinitionsProvider<T, D, S extends SubDefinition>
+public abstract class SubDefinitionsProvider<T, D, S extends SubDefinition, P extends ISubDefinitionProperty<T, D, ?>>
 {
 
 	private Definition<T> defaultD;
@@ -44,22 +44,22 @@ public abstract class SubDefinitionsProvider<T, D, S extends SubDefinition>
 		return defaultSD;
 	}
 
-	<P> S withProperty( SubDefinition def, ISubDefinitionProperty<T, D, P> property, P value )
+	<V> S withProperty( SubDefinition def, P property, V value )
 	{
-		assert isValid( property ) && property.isValid( value );
+		assert isValid( property ) && ( (ISubDefinitionProperty<T, D, V>) property ).isValid( value );
 		Map map = new HashMap();
 		map.putAll( def.properties );
 		map.put( property, value );
 		return (S) instantiate( def.identifier(), (D) fromProperties( map ), ImmutableMap.copyOf( map ) );
 	}
 
-	abstract <P> boolean isValid( ISubDefinitionProperty<T, D, P> property );
+	abstract boolean isValid( P property );
 
 	abstract D fromProperties( Map<ISubDefinitionProperty<T, D, ?>, ?> properties );
 
 	abstract S instantiate( ResourceLocation identifier, D t, ImmutableMap<ISubDefinitionProperty<T, D, ?>, ?> properties );
 
-	public abstract class SubDefinition extends Definition<D> implements ISubDefinition<T, D>
+	public class SubDefinition<S extends SubDefinition<S>> extends Definition<D> implements ISubDefinition<T, D, P, S>
 	{
 
 		private ImmutableMap<ISubDefinitionProperty<T, D, ?>, ?> properties;
@@ -77,9 +77,9 @@ public abstract class SubDefinitionsProvider<T, D, S extends SubDefinition>
 		}
 
 		@Override
-		public <P> ISubDefinition<T, D> withProperty( ISubDefinitionProperty<T, D, P> property, P value )
+		public <V> S withProperty( P property, V value )
 		{
-			return SubDefinitionsProvider.this.withProperty( this, property, value );
+			return (S) SubDefinitionsProvider.this.withProperty( this, property, value );
 		}
 
 	}

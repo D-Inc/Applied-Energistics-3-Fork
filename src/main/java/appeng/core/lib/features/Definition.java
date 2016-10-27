@@ -8,6 +8,7 @@ import net.minecraft.util.ResourceLocation;
 
 import appeng.api.definitions.IDefinition;
 import appeng.api.definitions.sub.ISubDefinition;
+import appeng.api.definitions.sub.ISubDefinitionProperty;
 
 
 public class Definition<T> implements IDefinition<T>
@@ -37,7 +38,7 @@ public class Definition<T> implements IDefinition<T>
 	}
 
 	@Override
-	public final <D, S extends ISubDefinition<T, D>> Optional<S> maybeSubDefinition()
+	public final <D, P extends ISubDefinitionProperty<T, D, ?>, S extends ISubDefinition<T, D, P, S>> Optional<S> maybeSubDefinition()
 	{
 		return subDefinitionsProvider.isPresent() ? (Optional<S>) Optional.of( subDefinitionsProvider.get().getDefaultSub() ) : Optional.empty();
 	}

@@ -2,7 +2,7 @@
 package appeng.api.definitions.sub;
 
 
-public interface ISubDefinitionProperty<T, D, P>
+public interface ISubDefinitionProperty<T, D, V>
 {
 
 	/**
@@ -11,6 +11,6 @@ public interface ISubDefinitionProperty<T, D, P>
 	 * @param value value to check
 	 * @return Whether value is valid
 	 */
-	boolean isValid( P value );
+	boolean isValid( V value );
 
 }

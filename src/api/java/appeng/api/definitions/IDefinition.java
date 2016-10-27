@@ -13,6 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 import appeng.api.definitions.sub.ISubDefinition;
+import appeng.api.definitions.sub.ISubDefinitionProperty;
 
 
 public interface IDefinition<T>
@@ -32,7 +33,7 @@ public interface IDefinition<T>
 	/**
 	 * @return {@linkplain ISubDefinition} representation if applicable
 	 */
-	<D, S extends ISubDefinition<T, D>> Optional<S> maybeSubDefinition();
+	<D, P extends ISubDefinitionProperty<T, D, ?>, S extends ISubDefinition<T, D, P, S>> Optional<S> maybeSubDefinition();
 
 	/**
 	 * @return <tt>true</tt> if definition is enabled
