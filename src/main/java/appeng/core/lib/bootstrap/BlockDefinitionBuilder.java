@@ -2,8 +2,11 @@
 package appeng.core.lib.bootstrap;
 
 
+import appeng.core.AppEng;
+import appeng.core.lib.features.AEFeature;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -19,6 +22,8 @@ public class BlockDefinitionBuilder<B extends Block> extends DefinitionBuilder<B
 {
 
 	private CreativeTabs creativeTab = CreativeTab.instance;
+
+	private boolean createDefaultItemBlock = false;
 
 	private BlockSubDefinitionsProvider<B> subDefs;
 
@@ -46,6 +51,12 @@ public class BlockDefinitionBuilder<B extends Block> extends DefinitionBuilder<B
 			customizeForClient( callback );
 		}
 
+		return this;
+	}
+
+	public BlockDefinitionBuilder<B> createDefaultItemBlock()
+	{
+		createDefaultItemBlock = true;
 		return this;
 	}
 
@@ -83,6 +94,13 @@ public class BlockDefinitionBuilder<B extends Block> extends DefinitionBuilder<B
 		if( !block.getBlockState().getProperties().isEmpty() )
 		{
 			definition.setSubDefinitionsProvider( new BlockSubDefinitionsProvider( definition ) );
+		}
+
+		if(createDefaultItemBlock)
+		{
+			AEFeature[] itemFeatures = new AEFeature[this.features.size()];
+			this.features.toArray( itemFeatures );
+			definition.setItem( this.factory.item( new ResourceLocation( AppEng.MOD_ID, "crank" ), new ItemBlock( block ) ).features( itemFeatures ).build() ); //ad hoc item definition
 		}
 		return definition;
 	}

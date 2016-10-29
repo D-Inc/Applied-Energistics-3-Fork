@@ -28,7 +28,7 @@ public abstract class DefinitionBuilder<T, D extends IDefinition<T>, B extends D
 
 	private final T instance;
 
-	private final EnumSet<AEFeature> features = EnumSet.noneOf( AEFeature.class );
+	protected final EnumSet<AEFeature> features = EnumSet.noneOf( AEFeature.class );
 
 	private final List<Consumer<T>> preInitCallbacks = new ArrayList<>();
 

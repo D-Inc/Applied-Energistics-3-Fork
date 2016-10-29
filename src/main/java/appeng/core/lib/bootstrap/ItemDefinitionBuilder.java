@@ -76,7 +76,7 @@ public class ItemDefinitionBuilder<I extends Item> extends DefinitionBuilder<I, 
 
 		ItemDefinition definition = new ItemDefinition( registryName, item );
 
-		if( item instanceof ItemBlock && blockDefinitions.get( registryName ) != null )
+		if( item instanceof ItemBlock && blockDefinitions.get( registryName ) != null && !( (BlockDefinition) blockDefinitions.get( registryName ) ).maybeItem().isPresent() )
 		{
 			( (BlockDefinition) blockDefinitions.get( registryName ) ).setItem( definition );
 		}

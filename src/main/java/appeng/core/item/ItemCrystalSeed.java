@@ -35,9 +35,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
-import appeng.api.definitions.IMaterials;
 import appeng.core.AppEng;
-import appeng.core.api.AEApi;
 import appeng.core.api.implementations.items.IGrowableCrystal;
 import appeng.core.api.recipes.ResolverResult;
 import appeng.core.entity.EntityGrowingCrystal;
