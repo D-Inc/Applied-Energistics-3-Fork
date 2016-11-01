@@ -2,8 +2,6 @@
 package appeng.core.lib.bootstrap;
 
 
-import appeng.core.AppEng;
-import appeng.core.lib.features.AEFeature;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemBlock;
@@ -14,6 +12,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import appeng.api.definitions.IBlockDefinition;
 import appeng.core.CreativeTab;
 import appeng.core.lib.block.AEBaseTileBlock;
+import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.features.BlockDefinition;
 import appeng.core.lib.util.Platform;
 
@@ -96,11 +95,9 @@ public class BlockDefinitionBuilder<B extends Block> extends DefinitionBuilder<B
 			definition.setSubDefinitionsProvider( new BlockSubDefinitionsProvider( definition ) );
 		}
 
-		if(createDefaultItemBlock)
+		if( createDefaultItemBlock )
 		{
-			AEFeature[] itemFeatures = new AEFeature[this.features.size()];
-			this.features.toArray( itemFeatures );
-			definition.setItem( this.factory.item( new ResourceLocation( AppEng.MOD_ID, "crank" ), new ItemBlock( block ) ).features( itemFeatures ).build() ); //ad hoc item definition
+			this.factory.addDefaultItemBlock( registryName, this.factory.item( registryName, new ItemBlock( block ) ).features( this.features.toArray( new AEFeature[0] ) ).build( def -> definition.setItem( def ) ) );
 		}
 		return definition;
 	}

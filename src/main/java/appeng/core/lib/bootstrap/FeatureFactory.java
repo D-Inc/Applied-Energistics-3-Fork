@@ -3,10 +3,13 @@ package appeng.core.lib.bootstrap;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
@@ -31,6 +34,8 @@ public class FeatureFactory
 
 	@SideOnly( Side.CLIENT )
 	ModelOverrideComponent modelOverrideComponent;
+
+	private final Map<ResourceLocation, ItemDefinitionBuilder> defaultItemBlocks = new HashMap();
 
 	public FeatureFactory()
 	{
@@ -66,7 +71,17 @@ public class FeatureFactory
 
 	public <I extends Item> ItemDefinitionBuilder<I> item( ResourceLocation id, I item )
 	{
-		return new ItemDefinitionBuilder<I>( this, id, item, ( (IDefinitionsProvider) AppEng.instance().getCurrent() ).definitions( Block.class ) ).features( defaultFeatures );
+		return new ItemDefinitionBuilder<I>( this, id, item ).features( defaultFeatures );
+	}
+
+	void addDefaultItemBlock( ResourceLocation id, ItemDefinitionBuilder def )
+	{
+		defaultItemBlocks.put( id, def );
+	}
+
+	public ItemDefinitionBuilder<ItemBlock> defaultItemBlock( ResourceLocation id )
+	{
+		return defaultItemBlocks.get( id );
 	}
 
 	public FeatureFactory features( AEFeature... features )

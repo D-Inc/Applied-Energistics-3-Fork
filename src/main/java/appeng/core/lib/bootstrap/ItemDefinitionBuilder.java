@@ -2,18 +2,14 @@
 package appeng.core.lib.bootstrap;
 
 
-import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import appeng.api.definitions.IItemDefinition;
 import appeng.core.CreativeTab;
-import appeng.core.lib.definitions.Definitions;
-import appeng.core.lib.features.BlockDefinition;
 import appeng.core.lib.features.ItemDefinition;
 import appeng.core.lib.item.IStateItem;
 import appeng.core.lib.util.Platform;
@@ -25,14 +21,11 @@ public class ItemDefinitionBuilder<I extends Item> extends DefinitionBuilder<I, 
 	@SideOnly( Side.CLIENT )
 	private ItemRendering itemRendering;
 
-	private Definitions<Block> blockDefinitions;
-
 	private CreativeTabs creativeTab = CreativeTab.instance;
 
-	ItemDefinitionBuilder( FeatureFactory factory, ResourceLocation registryName, I item, Definitions<Block> blockDefinitions )
+	ItemDefinitionBuilder( FeatureFactory factory, ResourceLocation registryName, I item )
 	{
-		super( factory, registryName, (I) ( item instanceof ItemBlock ? new ItemBlock( blockDefinitions.get( registryName ).maybe().get() ) : item ) );
-		this.blockDefinitions = blockDefinitions;
+		super( factory, registryName, item );
 		if( Platform.isClient() )
 		{
 			itemRendering = new ItemRendering();
@@ -75,11 +68,6 @@ public class ItemDefinitionBuilder<I extends Item> extends DefinitionBuilder<I, 
 		}
 
 		ItemDefinition definition = new ItemDefinition( registryName, item );
-
-		if( item instanceof ItemBlock && blockDefinitions.get( registryName ) != null && !( (BlockDefinition) blockDefinitions.get( registryName ) ).maybeItem().isPresent() )
-		{
-			( (BlockDefinition) blockDefinitions.get( registryName ) ).setItem( definition );
-		}
 
 		if( item instanceof IStateItem )
 		{
