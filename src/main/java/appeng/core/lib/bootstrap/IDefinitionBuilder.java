@@ -15,11 +15,13 @@ public interface IDefinitionBuilder<T, D extends IDefinition<T>, B extends IDefi
 
 	B addFeatures( AEFeature... features );
 
-	B preInit( Consumer<T> callback );
+	B build( Consumer<D> callback );
 
-	B init( Consumer<T> callback );
+	B preInit( Consumer<D> callback );
 
-	B postInit( Consumer<T> callback );
+	B init( Consumer<D> callback );
+
+	B postInit( Consumer<D> callback );
 
 	D build();
 

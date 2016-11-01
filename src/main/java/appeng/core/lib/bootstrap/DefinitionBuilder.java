@@ -30,11 +30,13 @@ public abstract class DefinitionBuilder<T, D extends IDefinition<T>, B extends D
 
 	protected final EnumSet<AEFeature> features = EnumSet.noneOf( AEFeature.class );
 
-	private final List<Consumer<T>> preInitCallbacks = new ArrayList<>();
+	private final List<Consumer<D>> buildCallbacks = new ArrayList<>();
 
-	private final List<Consumer<T>> initCallbacks = new ArrayList<>();
+	private final List<Consumer<D>> preInitCallbacks = new ArrayList<>();
 
-	private final List<Consumer<T>> postInitCallbacks = new ArrayList<>();
+	private final List<Consumer<D>> initCallbacks = new ArrayList<>();
+
+	private final List<Consumer<D>> postInitCallbacks = new ArrayList<>();
 
 	public DefinitionBuilder( FeatureFactory factory, ResourceLocation registryName, T instance )
 	{
@@ -59,21 +61,28 @@ public abstract class DefinitionBuilder<T, D extends IDefinition<T>, B extends D
 	}
 
 	@Override
-	public B preInit( Consumer<T> callback )
+	public B build( Consumer<D> callback )
+	{
+		buildCallbacks.add( callback );
+		return (B) this;
+	}
+
+	@Override
+	public B preInit( Consumer<D> callback )
 	{
 		preInitCallbacks.add( callback );
 		return (B) this;
 	}
 
 	@Override
-	public B init( Consumer<T> callback )
+	public B init( Consumer<D> callback )
 	{
 		initCallbacks.add( callback );
 		return (B) this;
 	}
 
 	@Override
-	public B postInit( Consumer<T> callback )
+	public B postInit( Consumer<D> callback )
 	{
 		postInitCallbacks.add( callback );
 		return (B) this;
@@ -87,13 +96,16 @@ public abstract class DefinitionBuilder<T, D extends IDefinition<T>, B extends D
 			return def( null );
 		}
 
-		preInitCallbacks.add( t -> register( t ) );
+		D definition = def( setRegistryName( instance ) );
 
-		preInitCallbacks.forEach( consumer -> factory.addPreInit( side -> consumer.accept( instance ) ) );
-		initCallbacks.forEach( consumer -> factory.addInit( side -> consumer.accept( instance ) ) );
-		postInitCallbacks.forEach( consumer -> factory.addPostInit( side -> consumer.accept( instance ) ) );
+		preInitCallbacks.add( t -> register( ( (D) t ).maybe().get() ) );
+		preInitCallbacks.forEach( consumer -> factory.addPreInit( side -> consumer.accept( definition ) ) );
+		initCallbacks.forEach( consumer -> factory.addInit( side -> consumer.accept( definition ) ) );
+		postInitCallbacks.forEach( consumer -> factory.addPostInit( side -> consumer.accept( definition ) ) );
 
-		return def( setRegistryName( instance ) );
+		buildCallbacks.forEach( consumer -> consumer.accept( definition ) );
+
+		return definition;
 	}
 
 	protected T setRegistryName( T t )
