@@ -33,8 +33,8 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 import appeng.api.definitions.IMaterials;
-import appeng.core.api.AEApi;
 import appeng.core.lib.AEConfig;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.CommonHelper;
 import appeng.core.lib.client.EffectType;
 import appeng.core.lib.entity.AEBaseEntityItem;
@@ -103,7 +103,7 @@ public final class EntityChargedQuartz extends AEBaseEntityItem
 	private boolean transform()
 	{
 		final ItemStack item = this.getEntityItem();
-		final IMaterials materials = AEApi.instance().definitions().materials();
+		final IMaterials materials = AppEngApi.internalApi().definitions().materials();
 
 		if( materials.certusQuartzCrystalCharged().isSameAs( item ) )
 		{

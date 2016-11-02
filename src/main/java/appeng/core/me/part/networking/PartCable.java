@@ -24,17 +24,6 @@ import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
 
-import appeng.api.client.BakingPipeline;
-import appeng.core.api.AEApi;
-import appeng.core.api.config.SecurityPermissions;
-import appeng.core.api.implementations.parts.IPartCable;
-import appeng.core.api.util.AECableType;
-import appeng.core.api.util.AEColor;
-import appeng.core.api.util.AEPartLocation;
-import appeng.core.api.util.IReadOnlyCollection;
-import appeng.core.lib.Api;
-import appeng.core.lib.api.ApiPart;
-import appeng.core.lib.api.definitions.ApiParts;
 import com.google.common.collect.ImmutableSet;
 
 import org.lwjgl.util.vector.Matrix4f;
@@ -53,6 +42,15 @@ import net.minecraftforge.common.model.TRSRTransformation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import appeng.api.client.BakingPipeline;
+import appeng.core.api.config.SecurityPermissions;
+import appeng.core.api.implementations.parts.IPartCable;
+import appeng.core.api.util.AECableType;
+import appeng.core.api.util.AEColor;
+import appeng.core.api.util.AEPartLocation;
+import appeng.core.api.util.IReadOnlyCollection;
+import appeng.core.lib.AppEngApi;
+import appeng.core.lib.api.definitions.ApiParts;
 import appeng.core.lib.client.render.model.ModelsCache;
 import appeng.core.lib.client.render.model.pipeline.FacingQuadRotator;
 import appeng.core.lib.client.render.model.pipeline.MatVecApplicator;
@@ -132,7 +130,7 @@ public class PartCable extends AEBasePart implements IPartCable
 		{
 			ItemStack newPart = null;
 
-			final ApiParts parts = Api.internalApi().definitions().parts();
+			final ApiParts parts = AppEngApi.internalApi().definitions().parts();
 
 			if( this.getCableConnectionType() == AECableType.GLASS )
 			{

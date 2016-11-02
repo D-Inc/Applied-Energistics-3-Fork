@@ -32,7 +32,7 @@ import appeng.core.spatial.api.movable.IMovableHandler;
 import appeng.core.spatial.api.movable.IMovableTile;
 
 
-public class MovableTileRegistry// implements IMovableRegistry
+public class MovableTileRegistry
 {
 
 	private final HashSet<Block> blacklisted = new HashSet<Block>();
@@ -44,13 +44,11 @@ public class MovableTileRegistry// implements IMovableRegistry
 
 	private final IMovableHandler nullHandler = new DefaultSpatialHandler();
 
-//	@Override
 	public void blacklistBlock( final Block blk )
 	{
 		this.blacklisted.add( blk );
 	}
 
-//	@Override
 	public void whiteListTileEntity( final Class<? extends TileEntity> c )
 	{
 		if( c.getName().equals( TileEntity.class.getName() ) )
@@ -61,7 +59,6 @@ public class MovableTileRegistry// implements IMovableRegistry
 		this.test.add( c );
 	}
 
-//	@Override
 	public boolean askToMove( final TileEntity te )
 	{
 		final Class myClass = te.getClass();
@@ -128,7 +125,6 @@ public class MovableTileRegistry// implements IMovableRegistry
 		return this.nullHandler;
 	}
 
-//	@Override
 	public void doneMoving( final TileEntity te )
 	{
 		if( te instanceof IMovableTile )
@@ -138,13 +134,11 @@ public class MovableTileRegistry// implements IMovableRegistry
 		}
 	}
 
-//	@Override
 	public void addHandler( final IMovableHandler han )
 	{
 		this.handlers.add( han );
 	}
 
-//	@Override
 	public IMovableHandler getHandler( final TileEntity te )
 	{
 		final Class myClass = te.getClass();
@@ -152,13 +146,11 @@ public class MovableTileRegistry// implements IMovableRegistry
 		return h == null ? this.dsh : h;
 	}
 
-//	@Override
 	public IMovableHandler getDefaultHandler()
 	{
 		return this.dsh;
 	}
 
-//	@Override
 	public boolean isBlacklisted( final Block blk )
 	{
 		return this.blacklisted.contains( blk );

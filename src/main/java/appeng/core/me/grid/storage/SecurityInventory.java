@@ -21,11 +21,11 @@ package appeng.core.me.grid.storage;
 
 import com.mojang.authlib.GameProfile;
 
-import appeng.core.api.AEApi;
 import appeng.core.api.config.AccessRestriction;
 import appeng.core.api.config.Actionable;
 import appeng.core.api.config.SecurityPermissions;
 import appeng.core.api.implementations.items.IBiometricCard;
+import appeng.core.lib.AppEngApi;
 import appeng.core.me.api.networking.security.BaseActionSource;
 import appeng.core.me.api.networking.security.PlayerSource;
 import appeng.core.me.api.storage.IMEInventoryHandler;
@@ -39,7 +39,7 @@ import appeng.core.me.tile.TileSecurity;
 public class SecurityInventory implements IMEInventoryHandler<IAEItemStack>
 {
 
-	private final IItemList<IAEItemStack> storedItems = AEApi.instance().storage().createItemList();
+	private final IItemList<IAEItemStack> storedItems = AppEngApi.internalApi().storage().createItemList();
 	private final TileSecurity securityTile;
 
 	public SecurityInventory( final TileSecurity ts )
@@ -52,7 +52,7 @@ public class SecurityInventory implements IMEInventoryHandler<IAEItemStack>
 	{
 		if( this.hasPermission( src ) )
 		{
-			if( AEApi.instance().definitions().items().biometricCard().isSameAs( input.getItemStack() ) )
+			if( AppEngApi.internalApi().definitions().items().biometricCard().isSameAs( input.getItemStack() ) )
 			{
 				if( this.canAccept( input ) )
 				{
@@ -146,7 +146,7 @@ public class SecurityInventory implements IMEInventoryHandler<IAEItemStack>
 			final IBiometricCard tbc = (IBiometricCard) input.getItem();
 			final GameProfile newUser = tbc.getProfile( input.getItemStack() );
 
-			final int PlayerID = AEApi.instance().registries().players().getID( newUser );
+			final int PlayerID = AppEngApi.internalApi().registries().players().getID( newUser );
 			if( this.securityTile.getOwner() == PlayerID )
 			{
 				return false;

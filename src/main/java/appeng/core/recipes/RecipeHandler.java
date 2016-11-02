@@ -35,11 +35,6 @@ import java.util.zip.ZipOutputStream;
 
 import javax.annotation.Nonnull;
 
-import appeng.core.lib.Api;
-import appeng.core.lib.ApiDefinitions;
-import appeng.core.lib.api.definitions.ApiBlocks;
-import appeng.core.lib.api.definitions.ApiItems;
-import appeng.core.lib.features.registries.RecipeHandlerRegistry;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.HashMultimap;
 
@@ -49,7 +44,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.LoaderState;
 
 import appeng.core.AppEng;
-import appeng.core.api.AEApi;
 import appeng.core.api.exceptions.MissingIngredientError;
 import appeng.core.api.exceptions.RecipeError;
 import appeng.core.api.exceptions.RegistrationError;
@@ -61,7 +55,12 @@ import appeng.core.item.ItemCrystalSeed;
 import appeng.core.item.ItemMultiItem;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.AELog;
+import appeng.core.lib.ApiDefinitions;
+import appeng.core.lib.AppEngApi;
+import appeng.core.lib.api.definitions.ApiBlocks;
+import appeng.core.lib.api.definitions.ApiItems;
 import appeng.core.lib.features.AEFeature;
+import appeng.core.lib.features.registries.RecipeHandlerRegistry;
 import appeng.core.me.item.ItemMultiPart;
 import appeng.core.recipes.handlers.IWebsiteSerializer;
 import appeng.core.recipes.handlers.OreRegistration;
@@ -127,7 +126,7 @@ public class RecipeHandler implements IRecipeHandler
 			throw new RecipeError( "Not applicable for website" );
 		}
 
-		final ApiDefinitions definitions = Api.internalApi().definitions();
+		final ApiDefinitions definitions = AppEngApi.internalApi().definitions();
 		final ApiItems items = definitions.items();
 		final ApiBlocks blocks = definitions.blocks();
 
@@ -540,7 +539,7 @@ public class RecipeHandler implements IRecipeHandler
 	{
 		try
 		{
-			final RecipeHandlerRegistry cr =Api.internalApi().registries().recipes();
+			final RecipeHandlerRegistry cr =AppEngApi.internalApi().registries().recipes();
 
 			if( this.tokens.isEmpty() )
 			{

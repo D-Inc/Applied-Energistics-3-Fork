@@ -19,10 +19,6 @@
 package appeng.core.lib.container.slot;
 
 
-import appeng.core.lib.Api;
-import appeng.core.lib.ApiDefinitions;
-import appeng.core.lib.api.definitions.ApiItems;
-import appeng.core.lib.api.definitions.ApiMaterials;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Items;
@@ -33,7 +29,6 @@ import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
 
-import appeng.core.api.AEApi;
 import appeng.core.api.features.INetworkEncodable;
 import appeng.core.api.implementations.ICraftingPatternItem;
 import appeng.core.api.implementations.items.IBiometricCard;
@@ -41,6 +36,10 @@ import appeng.core.api.implementations.items.ISpatialStorageCell;
 import appeng.core.api.implementations.items.IStorageComponent;
 import appeng.core.api.implementations.items.IUpgradeModule;
 import appeng.core.crafting.item.ItemEncodedPattern;
+import appeng.core.lib.ApiDefinitions;
+import appeng.core.lib.AppEngApi;
+import appeng.core.lib.api.definitions.ApiItems;
+import appeng.core.lib.api.definitions.ApiMaterials;
 import appeng.core.lib.util.Platform;
 import appeng.core.me.api.networking.crafting.ICraftingPatternDetails;
 import appeng.core.me.api.storage.ICellWorkbenchItem;
@@ -121,7 +120,7 @@ public class SlotRestrictedInput extends AppEngSlot
 			return false;
 		}
 
-		final ApiDefinitions definitions = Api.internalApi().definitions();
+		final ApiDefinitions definitions = AppEngApi.internalApi().definitions();
 		final ApiMaterials materials = definitions.materials();
 		final ApiItems items = definitions.items();
 
@@ -169,7 +168,7 @@ public class SlotRestrictedInput extends AppEngSlot
 					return true;
 				}
 
-				for( final ItemStack optional : Api.internalApi().registries().inscriber().getOptionals() )
+				for( final ItemStack optional : AppEngApi.internalApi().registries().inscriber().getOptionals() )
 				{
 					if( Platform.isSameItemPrecise( optional, i ) )
 					{
@@ -193,7 +192,7 @@ public class SlotRestrictedInput extends AppEngSlot
 			case VIEW_CELL:
 				return items.viewCell().isSameAs( i );
 			case ORE:
-				return Api.internalApi().registries().grinder().getRecipeForInput( i ) != null;
+				return AppEngApi.internalApi().registries().grinder().getRecipeForInput( i ) != null;
 			case FUEL:
 				return TileEntityFurnace.getItemBurnTime( i ) > 0;
 			case POWERED_TOOL:
@@ -207,20 +206,20 @@ public class SlotRestrictedInput extends AppEngSlot
 			case SPATIAL_STORAGE_CELLS:
 				return i.getItem() instanceof ISpatialStorageCell && ( (ISpatialStorageCell) i.getItem() ).isSpatialStorage( i );
 			case STORAGE_CELLS:
-				return Api.internalApi().registries().cell().isCellHandled( i );
+				return AppEngApi.internalApi().registries().cell().isCellHandled( i );
 			case WORKBENCH_CELL:
 				return i.getItem() instanceof ICellWorkbenchItem && ( (ICellWorkbenchItem) i.getItem() ).isEditable( i );
 			case STORAGE_COMPONENT:
 				return i.getItem() instanceof IStorageComponent && ( (IStorageComponent) i.getItem() ).isStorageComponent( i );
 			case TRASH:
-				if( Api.internalApi().registries().cell().isCellHandled( i ) )
+				if( AppEngApi.internalApi().registries().cell().isCellHandled( i ) )
 				{
 					return false;
 				}
 
 				return !( i.getItem() instanceof IStorageComponent && ( (IStorageComponent) i.getItem() ).isStorageComponent( i ) );
 			case ENCODABLE_ITEM:
-				return i.getItem() instanceof INetworkEncodable || Api.internalApi().registries().wireless().isWirelessTerminal( i );
+				return i.getItem() instanceof INetworkEncodable || AppEngApi.internalApi().registries().wireless().isWirelessTerminal( i );
 			case BIOMETRIC_CARD:
 				return i.getItem() instanceof IBiometricCard;
 			case UPGRADES:

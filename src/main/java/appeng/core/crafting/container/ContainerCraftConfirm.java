@@ -36,10 +36,10 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 
-import appeng.core.api.AEApi;
 import appeng.core.api.config.Actionable;
 import appeng.core.api.config.SecurityPermissions;
 import appeng.core.lib.AELog;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.container.AEBaseContainer;
 import appeng.core.lib.container.guisync.GuiSync;
 import appeng.core.lib.helpers.WirelessTerminalGuiObject;
@@ -209,7 +209,7 @@ public class ContainerCraftConfirm extends AEBaseContainer
 					final PacketMEInventoryUpdate b = new PacketMEInventoryUpdate( (byte) 1 );
 					final PacketMEInventoryUpdate c = this.result.isSimulation() ? new PacketMEInventoryUpdate( (byte) 2 ) : null;
 
-					final IItemList<IAEItemStack> plan = AEApi.instance().storage().createItemList();
+					final IItemList<IAEItemStack> plan = AppEngApi.internalApi().storage().createItemList();
 					this.result.populatePlan( plan );
 
 					this.setUsedBytes( this.result.getByteTotal() );

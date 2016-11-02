@@ -13,7 +13,6 @@ import appeng.core.item.ItemCrystalSeedRendering;
 import appeng.core.item.ItemMultiItem;
 import appeng.core.lib.bootstrap.FeatureFactory;
 import appeng.core.lib.definitions.Definitions;
-import appeng.core.lib.features.AEFeature;
 
 
 public class CoreItemDefinitions extends Definitions<Item> implements ICoreItemDefinitions

@@ -24,7 +24,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.Vec3d;
 
-import appeng.core.api.AEApi;
 import appeng.core.api.config.Actionable;
 import appeng.core.api.config.FuzzyMode;
 import appeng.core.api.config.PowerMultiplier;
@@ -32,6 +31,7 @@ import appeng.core.api.config.RedstoneMode;
 import appeng.core.api.config.Settings;
 import appeng.core.api.config.Upgrades;
 import appeng.core.api.util.AECableType;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.helpers.Reflected;
 import appeng.core.lib.settings.TickRates;
 import appeng.core.lib.sync.GuiBridge;
@@ -79,7 +79,7 @@ public class PartImportBus extends PartSharedItemBus implements IInventoryDestin
 			return false;
 		}
 
-		final IAEItemStack out = this.destination.injectItems( this.lastItemChecked = AEApi.instance().storage().createItemStack( stack ), Actionable.SIMULATE, this.source );
+		final IAEItemStack out = this.destination.injectItems( this.lastItemChecked = AppEngApi.internalApi().storage().createItemStack( stack ), Actionable.SIMULATE, this.source );
 		if( out == null )
 		{
 			return true;
@@ -215,7 +215,7 @@ public class PartImportBus extends PartSharedItemBus implements IInventoryDestin
 
 			if( this.lastItemChecked == null || !this.lastItemChecked.isSameType( newItems ) )
 			{
-				this.lastItemChecked = AEApi.instance().storage().createItemStack( newItems );
+				this.lastItemChecked = AppEngApi.internalApi().storage().createItemStack( newItems );
 			}
 			else
 			{

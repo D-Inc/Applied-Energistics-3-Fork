@@ -28,9 +28,9 @@ import com.google.common.collect.Lists;
 
 import net.minecraft.world.World;
 
-import appeng.core.api.AEApi;
 import appeng.core.api.config.Actionable;
 import appeng.core.api.config.FuzzyMode;
+import appeng.core.lib.AppEngApi;
 import appeng.core.me.api.networking.crafting.ICraftingGrid;
 import appeng.core.me.api.networking.crafting.ICraftingPatternDetails;
 import appeng.core.me.api.networking.security.BaseActionSource;
@@ -45,7 +45,7 @@ public class CraftingTreeNode
 	// what slot!
 	private final int slot;
 	private final CraftingJob job;
-	private final IItemList<IAEItemStack> used = AEApi.instance().storage().createItemList();
+	private final IItemList<IAEItemStack> used = AppEngApi.internalApi().storage().createItemList();
 	// parent node.
 	private final CraftingTreeProcess parent;
 	private final World world;

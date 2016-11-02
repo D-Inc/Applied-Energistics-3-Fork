@@ -28,11 +28,10 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import appeng.core.api.events.LocatableEventAnnounce;
 import appeng.core.api.events.LocatableEventAnnounce.LocatableEvent;
 import appeng.core.api.features.ILocatable;
-import appeng.core.api.features.ILocatableRegistry;
 import appeng.core.lib.util.Platform;
 
 
-public final class LocatableRegistry implements ILocatableRegistry
+public final class LocatableRegistry
 {
 	private final Map<Long, ILocatable> set;
 
@@ -63,14 +62,12 @@ public final class LocatableRegistry implements ILocatableRegistry
 	/**
 	 * Find a locate-able object by its serial.
 	 */
-	@Override
 	@Deprecated
 	public Object findLocatableBySerial( final long ser )
 	{
 		return this.set.get( ser );
 	}
 
-	@Override
 	public ILocatable getLocatableBy( final long serial )
 	{
 		return this.set.get( serial );

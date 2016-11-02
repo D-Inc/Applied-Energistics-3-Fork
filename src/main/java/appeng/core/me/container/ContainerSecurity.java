@@ -25,11 +25,11 @@ import net.minecraft.inventory.IContainerListener;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 
-import appeng.core.api.AEApi;
 import appeng.core.api.config.SecurityPermissions;
 import appeng.core.api.features.INetworkEncodable;
 import appeng.core.api.features.IWirelessTermHandler;
 import appeng.core.api.implementations.items.IBiometricCard;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.container.guisync.GuiSync;
 import appeng.core.lib.container.slot.SlotOutput;
 import appeng.core.lib.container.slot.SlotRestrictedInput;
@@ -154,7 +154,7 @@ public class ContainerSecurity extends ContainerMEMonitorable implements IAEAppE
 					networkEncodable = (INetworkEncodable) term.getItem();
 				}
 
-				final IWirelessTermHandler wTermHandler = AEApi.instance().registries().wireless().getWirelessTerminalHandler( term );
+				final IWirelessTermHandler wTermHandler = AppEngApi.internalApi().registries().wireless().getWirelessTerminalHandler( term );
 				if( wTermHandler != null )
 				{
 					networkEncodable = wTermHandler;

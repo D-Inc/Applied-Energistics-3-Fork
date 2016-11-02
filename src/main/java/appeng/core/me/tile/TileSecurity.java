@@ -23,7 +23,19 @@ import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.List;
 
-import appeng.core.api.AEApi;
+import io.netty.buffer.ByteBuf;
+
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTBase;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
+
 import appeng.core.api.config.SecurityPermissions;
 import appeng.core.api.config.Settings;
 import appeng.core.api.config.SortDir;
@@ -39,21 +51,8 @@ import appeng.core.api.util.AEColor;
 import appeng.core.api.util.AEPartLocation;
 import appeng.core.api.util.DimensionalCoord;
 import appeng.core.api.util.IConfigManager;
-import appeng.core.lib.Api;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.features.registries.PlayerRegistry;
-import io.netty.buffer.ByteBuf;
-
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTBase;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraftforge.common.MinecraftForge;
-
 import appeng.core.lib.helpers.PlayerSecurityWrapper;
 import appeng.core.lib.tile.TileEvent;
 import appeng.core.lib.tile.events.TileEventType;
@@ -312,7 +311,7 @@ public class TileSecurity extends AENetworkTile implements ITerminalHost, IAEApp
 	@Override
 	public void readPermissions( final HashMap<Integer, EnumSet<SecurityPermissions>> playerPerms )
 	{
-		final PlayerRegistry pr = Api.internalApi().registries().players();
+		final PlayerRegistry pr = AppEngApi.internalApi().registries().players();
 
 		// read permissions
 		for( final IAEItemStack ais : this.inventory.getStoredItems() )

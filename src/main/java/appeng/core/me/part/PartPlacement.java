@@ -23,12 +23,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
-import appeng.api.definitions.IBlockDefinition;
-import appeng.core.api.AEApi;
-import appeng.core.api.util.AEPartLocation;
-import appeng.core.api.util.DimensionalCoord;
-import appeng.core.lib.Api;
-import appeng.core.lib.api.definitions.ApiItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.state.IBlockState;
@@ -51,7 +45,12 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
+import appeng.api.definitions.IBlockDefinition;
+import appeng.core.api.util.AEPartLocation;
+import appeng.core.api.util.DimensionalCoord;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.CommonHelper;
+import appeng.core.lib.api.definitions.ApiItems;
 import appeng.core.lib.sync.network.NetworkHandler;
 import appeng.core.lib.sync.packets.PacketClick;
 import appeng.core.lib.sync.packets.PacketPartPlacement;
@@ -244,7 +243,7 @@ public class PartPlacement
 
 		BlockPos te_pos = pos;
 
-		final IBlockDefinition multiPart = Api.internalApi().definitions().blocks().multiPart();
+		final IBlockDefinition multiPart = AppEngApi.internalApi().definitions().blocks().multiPart();
 		if( host == null && pass == PlaceType.PLACE_ITEM )
 		{
 			EnumFacing offset = null;
@@ -455,7 +454,7 @@ public class PartPlacement
 			else
 			{
 				final ItemStack held = event.getEntityPlayer().getHeldItem( event.getHand() );
-				final ApiItems items = Api.internalApi().definitions().items();
+				final ApiItems items = AppEngApi.internalApi().definitions().items();
 
 				boolean supportedItem = items.memoryCard().isSameAs( held );
 				supportedItem |= items.colorApplicator().isSameAs( held );

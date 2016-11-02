@@ -27,8 +27,8 @@ package appeng.core.lib.api.imc;
 
 import net.minecraftforge.fml.common.event.FMLInterModComms.IMCMessage;
 
-import appeng.core.api.AEApi;
 import appeng.core.lib.AELog;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.api.IIMCProcessor;
 
 
@@ -44,7 +44,7 @@ public class IMCSpatial implements IIMCProcessor
 		try
 		{
 			final Class classInstance = Class.forName( m.getStringValue() );
-			AEApi.instance().registries().movable().whiteListTileEntity( classInstance );
+			AppEngApi.internalApi().registries().movable().whiteListTileEntity( classInstance );
 		}
 		catch( final ClassNotFoundException e )
 		{

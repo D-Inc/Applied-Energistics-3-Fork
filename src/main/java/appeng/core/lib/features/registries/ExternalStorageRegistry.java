@@ -31,7 +31,7 @@ import appeng.core.me.api.storage.IExternalStorageHandler;
 import appeng.core.me.api.storage.StorageChannel;
 
 
-public class ExternalStorageRegistry// implements IExternalStorageRegistry
+public class ExternalStorageRegistry
 {
 
 	private final List<IExternalStorageHandler> Handlers;
@@ -42,13 +42,11 @@ public class ExternalStorageRegistry// implements IExternalStorageRegistry
 		this.Handlers = new ArrayList<IExternalStorageHandler>();
 	}
 
-//	@Override
 	public void addExternalStorageInterface( final IExternalStorageHandler ei )
 	{
 		this.Handlers.add( ei );
 	}
 
-//	@Override
 	public IExternalStorageHandler getHandler( final TileEntity te, final EnumFacing d, final StorageChannel chan, final BaseActionSource mySrc )
 	{
 		for( final IExternalStorageHandler x : this.Handlers )

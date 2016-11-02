@@ -57,7 +57,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.common.event.FMLInterModComms.IMCMessage;
 
-import appeng.core.api.AEApi;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.api.IIMCProcessor;
 
 
@@ -99,11 +99,11 @@ public class IMCGrinder implements IIMCProcessor
 
 			final float chance = msg.getFloat( "chance" );
 
-			AEApi.instance().registries().grinder().addRecipe( in, out, optional, chance, turns );
+			AppEngApi.internalApi().registries().grinder().addRecipe( in, out, optional, chance, turns );
 		}
 		else
 		{
-			AEApi.instance().registries().grinder().addRecipe( in, out, turns );
+			AppEngApi.internalApi().registries().grinder().addRecipe( in, out, turns );
 		}
 	}
 }

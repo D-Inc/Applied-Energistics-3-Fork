@@ -23,11 +23,11 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
-import appeng.core.api.AEApi;
 import appeng.core.api.config.FuzzyMode;
 import appeng.core.api.config.IncludeExclude;
 import appeng.core.api.config.Upgrades;
 import appeng.core.api.implementations.items.IUpgradeModule;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.util.item.AEItemStack;
 import appeng.core.lib.util.prioitylist.FuzzyPriorityList;
@@ -50,7 +50,7 @@ public class CellInventoryHandler extends MEInventoryHandler<IAEItemStack> imple
 		final ICellInventory ci = this.getCellInv();
 		if( ci != null )
 		{
-			final IItemList<IAEItemStack> priorityList = AEApi.instance().storage().createItemList();
+			final IItemList<IAEItemStack> priorityList = AppEngApi.internalApi().storage().createItemList();
 
 			final IInventory upgrades = ci.getUpgradesInventory();
 			final IInventory config = ci.getConfigInventory();

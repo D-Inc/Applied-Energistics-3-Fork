@@ -30,7 +30,6 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 import appeng.core.api.features.IGrinderEntry;
-import appeng.core.api.features.IGrinderRegistry;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.AELog;
 import appeng.core.lib.features.registries.entries.AppEngGrinderRecipe;
@@ -39,7 +38,7 @@ import appeng.core.recipes.ores.IOreListener;
 import appeng.core.recipes.ores.OreDictionaryHandler;
 
 
-public final class GrinderRecipeManager implements IGrinderRegistry, IOreListener
+public final class GrinderRecipeManager implements IOreListener
 {
 	private final List<IGrinderEntry> recipes;
 	private final Map<ItemStack, String> ores;
@@ -75,14 +74,12 @@ public final class GrinderRecipeManager implements IGrinderRegistry, IOreListene
 		OreDictionaryHandler.INSTANCE.observe( this );
 	}
 
-	@Override
 	public List<IGrinderEntry> getRecipes()
 	{
 		this.log( "API - getRecipes" );
 		return this.recipes;
 	}
 
-	@Override
 	public void addRecipe( final ItemStack in, final ItemStack out, final int cost )
 	{
 		if( in == null || out == null )
@@ -95,7 +92,6 @@ public final class GrinderRecipeManager implements IGrinderRegistry, IOreListene
 		this.injectRecipe( new AppEngGrinderRecipe( this.copy( in ), this.copy( out ), cost ) );
 	}
 
-	@Override
 	public void addRecipe( final ItemStack in, final ItemStack out, final ItemStack optional, final float chance, final int cost )
 	{
 		if( in == null || ( optional == null && out == null ) )
@@ -108,7 +104,6 @@ public final class GrinderRecipeManager implements IGrinderRegistry, IOreListene
 		this.injectRecipe( new AppEngGrinderRecipe( this.copy( in ), this.copy( out ), this.copy( optional ), chance, cost ) );
 	}
 
-	@Override
 	public void addRecipe( final ItemStack in, final ItemStack out, final ItemStack optional, final float chance, final ItemStack optional2, final float chance2, final int cost )
 	{
 		if( in == null || ( optional == null && out == null && optional2 == null ) )
@@ -143,7 +138,6 @@ public final class GrinderRecipeManager implements IGrinderRegistry, IOreListene
 		return null;
 	}
 
-	@Override
 	public IGrinderEntry getRecipeForInput( final ItemStack input )
 	{
 		this.log( "Looking up recipe for " + Platform.getItemDisplayName( input ) );
@@ -274,7 +268,6 @@ public final class GrinderRecipeManager implements IGrinderRegistry, IOreListene
 		}
 	}
 
-	@Override
 	public void oreRegistered( final String name, final ItemStack item )
 	{
 		if( name.startsWith( "ore" ) || name.startsWith( "crystal" ) || name.startsWith( "gem" ) || name.startsWith( "ingot" ) || name.startsWith( "dust" ) )

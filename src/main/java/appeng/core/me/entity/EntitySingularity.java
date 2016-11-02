@@ -32,8 +32,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
 
 import appeng.api.definitions.IMaterials;
-import appeng.core.api.AEApi;
 import appeng.core.lib.AEConfig;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.entity.AEBaseEntityItem;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.helpers.Reflected;
@@ -82,7 +82,7 @@ public final class EntitySingularity extends AEBaseEntityItem
 
 		final ItemStack item = this.getEntityItem();
 
-		final IMaterials materials = AEApi.instance().definitions().materials();
+		final IMaterials materials = AppEngApi.internalApi().definitions().materials();
 
 		if( materials.singularity().isSameAs( item ) )
 		{

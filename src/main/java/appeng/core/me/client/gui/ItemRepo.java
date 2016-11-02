@@ -30,13 +30,13 @@ import javax.annotation.Nonnull;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
-import appeng.core.api.AEApi;
 import appeng.core.api.config.SearchBoxMode;
 import appeng.core.api.config.Settings;
 import appeng.core.api.config.SortOrder;
 import appeng.core.api.config.ViewItems;
 import appeng.core.api.config.YesNo;
 import appeng.core.lib.AEConfig;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.client.gui.widgets.IScrollSource;
 import appeng.core.lib.client.gui.widgets.ISortSource;
 import appeng.core.lib.util.ItemSorters;
@@ -50,7 +50,7 @@ import appeng.core.me.item.ItemViewCell;
 public class ItemRepo
 {
 
-	private final IItemList<IAEItemStack> list = AEApi.instance().storage().createItemList();
+	private final IItemList<IAEItemStack> list = AppEngApi.internalApi().storage().createItemList();
 	private final ArrayList<IAEItemStack> view = new ArrayList<IAEItemStack>();
 	private final ArrayList<ItemStack> dsp = new ArrayList<ItemStack>();
 	private final IScrollSource src;

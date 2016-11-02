@@ -34,14 +34,14 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.storage.ExtendedBlockStorage;
 
 import appeng.api.definitions.IBlockDefinition;
-import appeng.core.api.AEApi;
 import appeng.core.api.util.AEPartLocation;
 import appeng.core.api.util.WorldCoord;
 import appeng.core.lib.AELog;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.worlddata.WorldData;
 import appeng.core.spatial.api.movable.IMovableHandler;
-import appeng.core.spatial.api.movable.IMovableRegistry;
+import appeng.core.spatial.api.movable.MovableTileRegistry;
 
 
 public class CachedPlane
@@ -59,9 +59,9 @@ public class CachedPlane
 	private final LinkedList<TileEntity> tiles = new LinkedList<TileEntity>();
 	private final LinkedList<NextTickListEntry> ticks = new LinkedList<NextTickListEntry>();
 	private final World world;
-	private final IMovableRegistry reg = AEApi.instance().registries().movable();
+	private final MovableTileRegistry reg = AppEngApi.internalApi().registries().movable();
 	private final LinkedList<WorldCoord> updates = new LinkedList<WorldCoord>();
-	private final IBlockDefinition matrixFrame = AEApi.instance().definitions().blocks().matrixFrame();
+	private final IBlockDefinition matrixFrame = AppEngApi.internalApi().definitions().blocks().matrixFrame();
 	private int verticalBits;
 
 	public CachedPlane( final World w, final int minX, final int minY, final int minZ, final int maxX, final int maxY, final int maxZ )
@@ -105,7 +105,7 @@ public class CachedPlane
 			}
 		}
 
-		final IMovableRegistry mr = AEApi.instance().registries().movable();
+		final MovableTileRegistry mr = AppEngApi.internalApi().registries().movable();
 
 		for( int cx = 0; cx < this.cx_size; cx++ )
 		{
@@ -188,13 +188,13 @@ public class CachedPlane
 
 	private IMovableHandler getHandler( final TileEntity te )
 	{
-		final IMovableRegistry mr = AEApi.instance().registries().movable();
+		final MovableTileRegistry mr = AppEngApi.internalApi().registries().movable();
 		return mr.getHandler( te );
 	}
 
 	void swap( final CachedPlane dst )
 	{
-		final IMovableRegistry mr = AEApi.instance().registries().movable();
+		final MovableTileRegistry mr = AppEngApi.internalApi().registries().movable();
 
 		if( dst.x_size == this.x_size && dst.y_size == this.y_size && dst.z_size == this.z_size )
 		{
@@ -283,7 +283,7 @@ public class CachedPlane
 		this.world.scheduleUpdate( new BlockPos( x + this.x_offset, y + this.y_offset, z + this.z_offset ), entry.getBlock(), (int) entry.scheduledTime );
 	}
 
-	private void addTile( final int x, final int y, final int z, final TileEntity te, final CachedPlane alternateDestination, final IMovableRegistry mr )
+	private void addTile( final int x, final int y, final int z, final TileEntity te, final CachedPlane alternateDestination, final MovableTileRegistry mr )
 	{
 		try
 		{

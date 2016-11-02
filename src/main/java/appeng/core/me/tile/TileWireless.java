@@ -27,13 +27,13 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 
-import appeng.core.api.AEApi;
 import appeng.core.api.implementations.IPowerChannelState;
 import appeng.core.api.implementations.tiles.IWirelessAccessPoint;
 import appeng.core.api.util.AECableType;
 import appeng.core.api.util.AEPartLocation;
 import appeng.core.api.util.DimensionalCoord;
 import appeng.core.lib.AEConfig;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.tile.TileEvent;
 import appeng.core.lib.tile.events.TileEventType;
 import appeng.core.lib.tile.inventory.AppEngInternalInventory;
@@ -138,7 +138,7 @@ public class TileWireless extends AENetworkInvTile implements IWirelessAccessPoi
 	@Override
 	public boolean isItemValidForSlot( final int i, final ItemStack itemstack )
 	{
-		return AEApi.instance().definitions().materials().wirelessBooster().isSameAs( itemstack );
+		return AppEngApi.internalApi().definitions().materials().wirelessBooster().isSameAs( itemstack );
 	}
 
 	@Override

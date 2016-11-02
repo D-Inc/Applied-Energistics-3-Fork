@@ -26,10 +26,10 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IContainerListener;
 
-import appeng.core.api.AEApi;
 import appeng.core.api.util.AEPartLocation;
 import appeng.core.crafting.tile.TileCraftingTile;
 import appeng.core.lib.AELog;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.container.AEBaseContainer;
 import appeng.core.lib.container.guisync.GuiSync;
 import appeng.core.lib.helpers.ICustomNameObject;
@@ -54,7 +54,7 @@ import appeng.core.me.grid.cluster.implementations.CraftingCPUCluster;
 public class ContainerCraftingCPU extends AEBaseContainer implements IMEMonitorHandlerReceiver<IAEItemStack>, ICustomNameObject
 {
 
-	private final IItemList<IAEItemStack> list = AEApi.instance().storage().createItemList();
+	private final IItemList<IAEItemStack> list = AppEngApi.internalApi().storage().createItemList();
 	private IGrid network;
 	private CraftingCPUCluster monitor = null;
 	private String cpuName = null;

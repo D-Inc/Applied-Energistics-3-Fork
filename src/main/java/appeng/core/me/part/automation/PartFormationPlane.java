@@ -44,7 +44,6 @@ import net.minecraft.world.WorldServer;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.common.IPlantable;
 
-import appeng.core.api.AEApi;
 import appeng.core.api.config.AccessRestriction;
 import appeng.core.api.config.Actionable;
 import appeng.core.api.config.FuzzyMode;
@@ -56,6 +55,7 @@ import appeng.core.api.util.AECableType;
 import appeng.core.api.util.AEPartLocation;
 import appeng.core.api.util.IConfigManager;
 import appeng.core.lib.AEConfig;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.helpers.IPriorityHost;
 import appeng.core.lib.sync.GuiBridge;
 import appeng.core.lib.tile.inventory.AppEngInternalAEInventory;
@@ -105,7 +105,7 @@ public class PartFormationPlane extends PartUpgradeable implements ICellContaine
 		this.myHandler.setWhitelist( this.getInstalledUpgrades( Upgrades.INVERTER ) > 0 ? IncludeExclude.BLACKLIST : IncludeExclude.WHITELIST );
 		this.myHandler.setPriority( this.priority );
 
-		final IItemList<IAEItemStack> priorityList = AEApi.instance().storage().createItemList();
+		final IItemList<IAEItemStack> priorityList = AppEngApi.internalApi().storage().createItemList();
 
 		final int slotsToUse = 18 + this.getInstalledUpgrades( Upgrades.CAPACITY ) * 9;
 		for( int x = 0; x < this.Config.getSizeInventory() && x < slotsToUse; x++ )

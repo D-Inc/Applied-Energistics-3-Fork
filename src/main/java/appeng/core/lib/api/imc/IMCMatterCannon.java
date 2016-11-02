@@ -36,7 +36,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.common.event.FMLInterModComms.IMCMessage;
 
-import appeng.core.api.AEApi;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.api.IIMCProcessor;
 
 
@@ -59,6 +59,6 @@ public class IMCMatterCannon implements IIMCProcessor
 			throw new IllegalStateException( "invalid item in message " + m );
 		}
 
-		AEApi.instance().registries().matterCannon().registerAmmo( ammo, weight );
+		AppEngApi.internalApi().registries().matterCannon().registerAmmo( ammo, weight );
 	}
 }

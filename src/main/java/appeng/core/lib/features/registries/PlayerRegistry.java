@@ -25,14 +25,12 @@ import com.mojang.authlib.GameProfile;
 
 import net.minecraft.entity.player.EntityPlayer;
 
-import appeng.core.api.features.IPlayerRegistry;
 import appeng.core.lib.worlddata.WorldData;
 
 
-public class PlayerRegistry implements IPlayerRegistry
+public class PlayerRegistry
 {
 
-	@Override
 	public int getID( final GameProfile username )
 	{
 		if( username == null || !username.isComplete() )
@@ -43,14 +41,12 @@ public class PlayerRegistry implements IPlayerRegistry
 		return WorldData.instance().playerData().getPlayerID( username );
 	}
 
-	@Override
 	public int getID( final EntityPlayer player )
 	{
 		return this.getID( player.getGameProfile() );
 	}
 
 	@Nullable
-	@Override
 	public EntityPlayer findPlayer( final int playerID )
 	{
 		return WorldData.instance().playerData().getPlayerFromID( playerID );

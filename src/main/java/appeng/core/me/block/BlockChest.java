@@ -30,8 +30,8 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import appeng.core.api.AEApi;
 import appeng.core.api.util.AEPartLocation;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.block.AEBaseTileBlock;
 import appeng.core.lib.localization.PlayerMessages;
 import appeng.core.lib.sync.GuiBridge;
@@ -75,7 +75,7 @@ public class BlockChest extends AEBaseTileBlock
 				final ItemStack cell = tg.getStackInSlot( 1 );
 				if( cell != null )
 				{
-					final ICellHandler ch = AEApi.instance().registries().cell().getHandler( cell );
+					final ICellHandler ch = AppEngApi.internalApi().registries().cell().getHandler( cell );
 
 					tg.openGui( p, ch, cell, side );
 				}

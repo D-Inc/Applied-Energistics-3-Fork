@@ -2,13 +2,17 @@
 package appeng.core.definitions;
 
 
-import appeng.core.block.*;
 import net.minecraft.block.Block;
 import net.minecraft.util.ResourceLocation;
 
 import appeng.api.definitions.IBlockDefinition;
 import appeng.core.AppEng;
 import appeng.core.api.definitions.ICoreBlockDefinitions;
+import appeng.core.block.BlockCharger;
+import appeng.core.block.BlockCrank;
+import appeng.core.block.BlockGrinder;
+import appeng.core.block.BlockInscriber;
+import appeng.core.block.BlockVibrationChamber;
 import appeng.core.lib.bootstrap.FeatureFactory;
 import appeng.core.lib.definitions.Definitions;
 import appeng.core.lib.features.AEFeature;

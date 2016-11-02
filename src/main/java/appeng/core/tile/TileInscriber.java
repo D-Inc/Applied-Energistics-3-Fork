@@ -38,7 +38,6 @@ import net.minecraft.world.World;
 
 import appeng.api.definitions.IComparableDefinition;
 import appeng.api.definitions.ITileDefinition;
-import appeng.core.api.AEApi;
 import appeng.core.api.config.Actionable;
 import appeng.core.api.config.PowerMultiplier;
 import appeng.core.api.config.Upgrades;
@@ -48,6 +47,7 @@ import appeng.core.api.implementations.IUpgradeableHost;
 import appeng.core.api.util.AECableType;
 import appeng.core.api.util.AEPartLocation;
 import appeng.core.api.util.IConfigManager;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.features.registries.entries.InscriberRecipe;
 import appeng.core.lib.helpers.Reflected;
 import appeng.core.lib.settings.TickRates;
@@ -103,7 +103,7 @@ public class TileInscriber extends AENetworkPowerTile implements IGridTickable, 
 		this.getProxy().setIdlePowerUsage( 0 );
 		this.settings = new ConfigManager( this );
 
-		final ITileDefinition inscriberDefinition = AEApi.instance().definitions().blocks().inscriber();
+		final ITileDefinition inscriberDefinition = AppEngApi.internalApi().definitions().blocks().inscriber();
 		this.upgrades = new DefinitionUpgradeInventory( inscriberDefinition, this, this.getUpgradeSlots() );
 	}
 
@@ -238,12 +238,12 @@ public class TileInscriber extends AENetworkPowerTile implements IGridTickable, 
 
 		if( i == 0 || i == 1 )
 		{
-			if( AEApi.instance().definitions().materials().namePress().isSameAs( itemstack ) )
+			if( AppEngApi.internalApi().definitions().materials().namePress().isSameAs( itemstack ) )
 			{
 				return true;
 			}
 
-			for( final ItemStack optionals : AEApi.instance().registries().inscriber().getOptionals() )
+			for( final ItemStack optionals : AppEngApi.internalApi().registries().inscriber().getOptionals() )
 			{
 				if( Platform.isSameItemPrecise( optionals, itemstack ) )
 				{
@@ -347,7 +347,7 @@ public class TileInscriber extends AENetworkPowerTile implements IGridTickable, 
 			return null;
 		}
 
-		final IComparableDefinition namePress = AEApi.instance().definitions().materials().namePress();
+		final IComparableDefinition namePress = AppEngApi.internalApi().definitions().materials().namePress();
 		final boolean isNameA = namePress.isSameAs( plateA );
 		final boolean isNameB = namePress.isSameAs( plateB );
 
@@ -396,7 +396,7 @@ public class TileInscriber extends AENetworkPowerTile implements IGridTickable, 
 			}
 		}
 
-		for( final IInscriberRecipe recipe : AEApi.instance().registries().inscriber().getRecipes() )
+		for( final IInscriberRecipe recipe : AppEngApi.internalApi().registries().inscriber().getRecipes() )
 		{
 
 			final boolean matchA = ( plateA == null && !recipe.getTopOptional().isPresent() ) || ( Platform.isSameItemPrecise( plateA, recipe.getTopOptional().orElse( null ) ) ) && // and...

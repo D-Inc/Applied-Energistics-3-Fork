@@ -35,7 +35,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 
 import appeng.core.api.config.SecurityPermissions;
-import appeng.core.api.features.IPlayerRegistry;
+import appeng.core.api.features.PlayerRegistry;
 import appeng.core.api.implementations.items.IBiometricCard;
 import appeng.core.lib.item.AEBaseItem;
 import appeng.core.lib.localization.GuiText;
@@ -176,7 +176,7 @@ public class ToolBiometricCard extends AEBaseItem implements IBiometricCard
 	}
 
 	@Override
-	public void registerPermissions( final ISecurityRegistry register, final IPlayerRegistry pr, final ItemStack is )
+	public void registerPermissions( final ISecurityRegistry register, final PlayerRegistry pr, final ItemStack is )
 	{
 		register.addPlayer( pr.getID( this.getProfile( is ) ), this.getPermissions( is ) );
 	}

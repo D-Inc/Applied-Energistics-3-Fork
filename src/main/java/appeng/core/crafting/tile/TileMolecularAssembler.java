@@ -37,7 +37,6 @@ import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 
 import appeng.api.definitions.ITileDefinition;
-import appeng.core.api.AEApi;
 import appeng.core.api.config.Actionable;
 import appeng.core.api.config.PowerMultiplier;
 import appeng.core.api.config.RedstoneMode;
@@ -51,6 +50,7 @@ import appeng.core.api.util.AEPartLocation;
 import appeng.core.api.util.DimensionalCoord;
 import appeng.core.api.util.IConfigManager;
 import appeng.core.crafting.item.ItemEncodedPattern;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.container.ContainerNull;
 import appeng.core.lib.sync.network.NetworkHandler;
 import appeng.core.lib.sync.packets.PacketAssemblerAnimation;
@@ -96,7 +96,7 @@ public class TileMolecularAssembler extends AENetworkInvTile implements IUpgrade
 
 	public TileMolecularAssembler()
 	{
-		final ITileDefinition assembler = AEApi.instance().definitions().blocks().molecularAssembler();
+		final ITileDefinition assembler = AppEngApi.internalApi().definitions().blocks().molecularAssembler();
 
 		this.settings = new ConfigManager( this );
 		this.settings.registerSetting( Settings.REDSTONE_CONTROLLED, RedstoneMode.IGNORE );

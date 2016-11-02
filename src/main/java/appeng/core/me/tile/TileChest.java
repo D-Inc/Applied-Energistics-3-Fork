@@ -37,7 +37,6 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 
-import appeng.core.api.AEApi;
 import appeng.core.api.config.AccessRestriction;
 import appeng.core.api.config.Actionable;
 import appeng.core.api.config.PowerMultiplier;
@@ -50,6 +49,7 @@ import appeng.core.api.implementations.tiles.IColorableTile;
 import appeng.core.api.implementations.tiles.IMEChest;
 import appeng.core.api.util.AEColor;
 import appeng.core.api.util.IConfigManager;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.helpers.IPriorityHost;
 import appeng.core.lib.tile.TileEvent;
 import appeng.core.lib.tile.events.TileEventType;
@@ -200,7 +200,7 @@ public class TileChest extends AENetworkPowerTile implements IMEChest, IFluidHan
 			if( is != null )
 			{
 				this.isCached = true;
-				this.cellHandler = AEApi.instance().registries().cell().getHandler( is );
+				this.cellHandler = AppEngApi.internalApi().registries().cell().getHandler( is );
 				if( this.cellHandler != null )
 				{
 					double power = 1.0;
@@ -270,7 +270,7 @@ public class TileChest extends AENetworkPowerTile implements IMEChest, IFluidHan
 		}
 
 		final ItemStack cell = this.inv.getStackInSlot( 1 );
-		final ICellHandler ch = AEApi.instance().registries().cell().getHandler( cell );
+		final ICellHandler ch = AppEngApi.internalApi().registries().cell().getHandler( cell );
 
 		if( ch != null )
 		{
@@ -555,11 +555,11 @@ public class TileChest extends AENetworkPowerTile implements IMEChest, IFluidHan
 	{
 		if( slotIndex == 1 )
 		{
-			if( AEApi.instance().registries().cell().getCellInventory( insertingItem, this, StorageChannel.ITEMS ) != null )
+			if( AppEngApi.internalApi().registries().cell().getCellInventory( insertingItem, this, StorageChannel.ITEMS ) != null )
 			{
 				return true;
 			}
-			if( AEApi.instance().registries().cell().getCellInventory( insertingItem, this, StorageChannel.FLUIDS ) != null )
+			if( AppEngApi.internalApi().registries().cell().getCellInventory( insertingItem, this, StorageChannel.FLUIDS ) != null )
 			{
 				return true;
 			}
@@ -569,7 +569,7 @@ public class TileChest extends AENetworkPowerTile implements IMEChest, IFluidHan
 			try
 			{
 				final IMEInventory<IAEItemStack> cell = this.getHandler( StorageChannel.ITEMS );
-				final IAEItemStack returns = cell.injectItems( AEApi.instance().storage().createItemStack( this.inv.getStackInSlot( 0 ) ), Actionable.SIMULATE, this.mySrc );
+				final IAEItemStack returns = cell.injectItems( AppEngApi.internalApi().storage().createItemStack( this.inv.getStackInSlot( 0 ) ), Actionable.SIMULATE, this.mySrc );
 				return returns == null || returns.getStackSize() != insertingItem.stackSize;
 			}
 			catch( final ChestNoHandler ignored )
@@ -618,7 +618,7 @@ public class TileChest extends AENetworkPowerTile implements IMEChest, IFluidHan
 			{
 				final IMEInventory<IAEItemStack> cell = this.getHandler( StorageChannel.ITEMS );
 
-				final IAEItemStack returns = Platform.poweredInsert( this, cell, AEApi.instance().storage().createItemStack( this.inv.getStackInSlot( 0 ) ), this.mySrc );
+				final IAEItemStack returns = Platform.poweredInsert( this, cell, AppEngApi.internalApi().storage().createItemStack( this.inv.getStackInSlot( 0 ) ), this.mySrc );
 
 				if( returns == null )
 				{

@@ -27,7 +27,7 @@ import java.util.List;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.SetMultimap;
 
-import appeng.core.api.AEApi;
+import appeng.core.lib.AppEngApi;
 import appeng.core.me.api.networking.IGrid;
 import appeng.core.me.api.networking.IGridHost;
 import appeng.core.me.api.networking.IGridNode;
@@ -372,11 +372,11 @@ public class GridStorageCache implements IStorageGrid
 
 			if( channel == StorageChannel.ITEMS )
 			{
-				this.list = ( (IMEInventoryHandler<IAEItemStack>) h ).getAvailableItems( AEApi.instance().storage().createItemList() );
+				this.list = ( (IMEInventoryHandler<IAEItemStack>) h ).getAvailableItems( AppEngApi.internalApi().storage().createItemList() );
 			}
 			else if( channel == StorageChannel.FLUIDS )
 			{
-				this.list = ( (IMEInventoryHandler<IAEFluidStack>) h ).getAvailableItems( AEApi.instance().storage().createFluidList() );
+				this.list = ( (IMEInventoryHandler<IAEFluidStack>) h ).getAvailableItems( AppEngApi.internalApi().storage().createFluidList() );
 			}
 			else
 			{

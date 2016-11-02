@@ -25,9 +25,6 @@ package appeng.core.crafting.client.gui;
 
 import java.io.IOException;
 
-import appeng.core.lib.Api;
-import appeng.core.lib.ApiDefinitions;
-import appeng.core.lib.api.definitions.ApiParts;
 import org.lwjgl.input.Mouse;
 
 import net.minecraft.client.gui.GuiButton;
@@ -36,6 +33,9 @@ import net.minecraft.item.ItemStack;
 
 import appeng.core.crafting.container.ContainerCraftingStatus;
 import appeng.core.lib.AELog;
+import appeng.core.lib.ApiDefinitions;
+import appeng.core.lib.AppEngApi;
+import appeng.core.lib.api.definitions.ApiParts;
 import appeng.core.lib.client.gui.widgets.GuiTabButton;
 import appeng.core.lib.helpers.WirelessTerminalGuiObject;
 import appeng.core.lib.localization.GuiText;
@@ -65,7 +65,7 @@ public class GuiCraftingStatus extends GuiCraftingCPU
 
 		this.status = (ContainerCraftingStatus) this.inventorySlots;
 		final Object target = this.status.getTarget();
-		final ApiDefinitions definitions = Api.internalApi().definitions();
+		final ApiDefinitions definitions = AppEngApi.internalApi().definitions();
 		final ApiParts parts = definitions.parts();
 
 		if( target instanceof WirelessTerminalGuiObject )

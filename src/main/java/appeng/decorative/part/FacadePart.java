@@ -49,8 +49,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import appeng.api.client.BakingPipeline;
 import appeng.core.AppEng;
-import appeng.core.api.AEApi;
 import appeng.core.api.util.AEPartLocation;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.client.render.model.ModelsCache;
 import appeng.core.lib.client.render.model.pipeline.MatVecApplicator;
 import appeng.core.lib.client.render.model.pipeline.ParentQuads;
@@ -157,7 +157,7 @@ public class FacadePart implements IFacadePart, IBoxProvider
 	@Override
 	public boolean isTransparent()
 	{
-		if( AEApi.instance().partHelper().getCableRenderMode().transparentFacades )
+		if( AppEngApi.internalApi().partHelper().getCableRenderMode().transparentFacades )
 		{
 			return true;
 		}

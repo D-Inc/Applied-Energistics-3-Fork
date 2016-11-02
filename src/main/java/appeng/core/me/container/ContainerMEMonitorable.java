@@ -31,7 +31,6 @@ import net.minecraft.inventory.IContainerListener;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 
-import appeng.core.api.AEApi;
 import appeng.core.api.config.Actionable;
 import appeng.core.api.config.PowerMultiplier;
 import appeng.core.api.config.SecurityPermissions;
@@ -46,6 +45,7 @@ import appeng.core.api.util.AEPartLocation;
 import appeng.core.api.util.IConfigManager;
 import appeng.core.api.util.IConfigurableObject;
 import appeng.core.lib.AELog;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.container.AEBaseContainer;
 import appeng.core.lib.container.guisync.GuiSync;
 import appeng.core.lib.container.slot.SlotRestrictedInput;
@@ -76,7 +76,7 @@ public class ContainerMEMonitorable extends AEBaseContainer implements IConfigMa
 
 	private final SlotRestrictedInput[] cellView = new SlotRestrictedInput[5];
 	private final IMEMonitor<IAEItemStack> monitor;
-	private final IItemList<IAEItemStack> items = AEApi.instance().storage().createItemList();
+	private final IItemList<IAEItemStack> items = AppEngApi.internalApi().storage().createItemList();
 	private final IConfigManager clientCM;
 	private final ITerminalHost host;
 	@GuiSync( 99 )

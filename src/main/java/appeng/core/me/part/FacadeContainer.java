@@ -28,8 +28,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
-import appeng.core.api.AEApi;
 import appeng.core.api.util.AEPartLocation;
+import appeng.core.lib.AppEngApi;
 import appeng.core.me.api.parts.IFacadeContainer;
 import appeng.core.me.api.parts.IFacadePart;
 import appeng.core.me.api.parts.IPartHost;
@@ -134,7 +134,7 @@ public class FacadeContainer implements IFacadeContainer
 				ids[1] = out.readInt();
 				ids[0] = Math.abs( ids[0] );
 
-				Optional<Item> maybeFacadeItem = AEApi.instance().definitions().items().facade().maybe();
+				Optional<Item> maybeFacadeItem = AppEngApi.internalApi().definitions().items().facade().maybe();
 				if( maybeFacadeItem.isPresent() )
 				{
 					final ItemFacade ifa = (ItemFacade) maybeFacadeItem.get();

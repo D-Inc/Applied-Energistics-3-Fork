@@ -33,10 +33,10 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 
 import appeng.api.definitions.IBlockDefinition;
-import appeng.core.api.AEApi;
 import appeng.core.api.util.AECableType;
 import appeng.core.api.util.AEPartLocation;
 import appeng.core.api.util.DimensionalCoord;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.tile.TileEvent;
 import appeng.core.lib.tile.events.TileEventType;
 import appeng.core.lib.tile.inventory.AppEngInternalInventory;
@@ -141,7 +141,7 @@ public class TileQuantumBridge extends AENetworkInvTile implements IAEMultiBlock
 
 	private boolean isCenter()
 	{
-		return AEApi.instance().definitions().blocks().quantumLink().maybeBlock().map( link -> getBlockType() == link ).orElse( false );
+		return AppEngApi.internalApi().definitions().blocks().quantumLink().maybeBlock().map( link -> getBlockType() == link ).orElse( false );
 	}
 
 	@MENetworkEventSubscribe
@@ -162,7 +162,7 @@ public class TileQuantumBridge extends AENetworkInvTile implements IAEMultiBlock
 	{
 		super.onReady();
 
-		final IBlockDefinition quantumRing = AEApi.instance().definitions().blocks().quantumRing();
+		final IBlockDefinition quantumRing = AppEngApi.internalApi().definitions().blocks().quantumRing();
 		final Optional<Block> maybeLinkBlock = quantumRing.maybeBlock();
 		final Optional<ItemStack> maybeLinkStack = quantumRing.maybeStack( 1 );
 

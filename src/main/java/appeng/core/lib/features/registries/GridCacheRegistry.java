@@ -27,14 +27,12 @@ import java.util.Map;
 import appeng.core.lib.AELog;
 import appeng.core.me.api.networking.IGrid;
 import appeng.core.me.api.networking.IGridCache;
-import appeng.core.me.api.networking.IGridCacheRegistry;
 
 
-public final class GridCacheRegistry implements IGridCacheRegistry
+public final class GridCacheRegistry
 {
 	private final Map<Class<? extends IGridCache>, Class<? extends IGridCache>> caches = new HashMap<Class<? extends IGridCache>, Class<? extends IGridCache>>();
 
-	@Override
 	public void registerGridCache( final Class<? extends IGridCache> iface, final Class<? extends IGridCache> implementation )
 	{
 		if( iface.isAssignableFrom( implementation ) )
@@ -47,7 +45,6 @@ public final class GridCacheRegistry implements IGridCacheRegistry
 		}
 	}
 
-	@Override
 	public HashMap<Class<? extends IGridCache>, IGridCache> createCacheInstance( final IGrid g )
 	{
 		final HashMap<Class<? extends IGridCache>, IGridCache> map = new HashMap<Class<? extends IGridCache>, IGridCache>();

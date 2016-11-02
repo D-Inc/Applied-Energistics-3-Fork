@@ -25,11 +25,6 @@ import java.util.Set;
 
 import javax.annotation.Nonnull;
 
-import appeng.core.lib.api.ApiPart;
-import appeng.core.lib.api.definitions.ApiBlocks;
-import appeng.core.lib.api.definitions.ApiItems;
-import appeng.core.lib.api.definitions.ApiParts;
-import appeng.core.lib.features.registries.*;
 import com.google.common.base.Preconditions;
 
 import net.minecraft.world.DimensionType;
@@ -49,10 +44,18 @@ import appeng.core.api.features.IWorldGen.WorldGenType;
 import appeng.core.hooks.TickHandler;
 import appeng.core.item.ItemMultiItem;
 import appeng.core.lib.AEConfig;
-import appeng.core.lib.Api;
 import appeng.core.lib.ApiDefinitions;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.RecipeLoader;
+import appeng.core.lib.api.definitions.ApiBlocks;
+import appeng.core.lib.api.definitions.ApiItems;
+import appeng.core.lib.api.definitions.ApiParts;
 import appeng.core.lib.features.AEFeature;
+import appeng.core.lib.features.registries.GridCacheRegistry;
+import appeng.core.lib.features.registries.MovableTileRegistry;
+import appeng.core.lib.features.registries.P2PTunnelRegistry;
+import appeng.core.lib.features.registries.RecipeHandlerRegistry;
+import appeng.core.lib.features.registries.RegistryContainer;
 import appeng.core.lib.features.registries.entries.BasicCellHandler;
 import appeng.core.lib.features.registries.entries.CreativeCellHandler;
 import appeng.core.lib.localization.GuiText;
@@ -127,7 +130,7 @@ public final class Registration
 	{
 		this.registerSpatial( false );
 
-		final Api api = Api.INSTANCE;
+		final AppEngApi api = AppEngApi.INSTANCE;
 		final RecipeHandlerRegistry recipeRegistry = api.registries().recipes();
 		this.registerCraftHandlers( recipeRegistry );
 
@@ -222,7 +225,7 @@ public final class Registration
 		Preconditions.checkArgument( !recipeDirectory.isFile() );
 		Preconditions.checkNotNull( customRecipeConfig );
 
-		final Api api = Api.INSTANCE;
+		final AppEngApi api = AppEngApi.INSTANCE;
 		final IPartHelper partHelper = api.partHelper();
 		final RegistryContainer registries = api.registries();
 
@@ -314,7 +317,7 @@ public final class Registration
 	{
 		this.registerSpatial( true );
 
-		final Api api = Api.INSTANCE;
+		final AppEngApi api = AppEngApi.INSTANCE;
 		final RegistryContainer registries = api.registries();
 		ApiDefinitions definitions = api.definitions();
 		final ApiParts parts = definitions.parts();

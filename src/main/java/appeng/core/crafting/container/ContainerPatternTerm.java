@@ -40,8 +40,8 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.EnumFacing;
 
 import appeng.api.definitions.IDefinitions;
-import appeng.core.api.AEApi;
 import appeng.core.api.config.Actionable;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.container.ContainerNull;
 import appeng.core.lib.container.guisync.GuiSync;
 import appeng.core.lib.container.slot.IOptionalSlotHost;
@@ -216,7 +216,7 @@ public class ContainerPatternTerm extends ContainerMEMonitorable implements IAEA
 			}
 
 			// add a new encoded pattern.
-			Optional<ItemStack> maybePattern = AEApi.instance().definitions().items().encodedPattern().maybeStack( 1 );
+			Optional<ItemStack> maybePattern = AppEngApi.internalApi().definitions().items().encodedPattern().maybeStack( 1 );
 			if( maybePattern.isPresent() )
 			{
 				output = maybePattern.get();
@@ -313,7 +313,7 @@ public class ContainerPatternTerm extends ContainerMEMonitorable implements IAEA
 			return false;
 		}
 
-		final IDefinitions definitions = AEApi.instance().definitions();
+		final IDefinitions definitions = AppEngApi.internalApi().definitions();
 
 		boolean isPattern = definitions.items().encodedPattern().isSameAs( output );
 		isPattern |= definitions.materials().blankPattern().isSameAs( output );

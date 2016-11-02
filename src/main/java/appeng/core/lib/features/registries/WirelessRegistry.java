@@ -22,20 +22,19 @@ package appeng.core.lib.features.registries;
 import java.util.ArrayList;
 import java.util.List;
 
-import appeng.core.api.AEApi;
-import appeng.core.api.features.ILocatable;
-import appeng.core.api.features.IWirelessTermHandler;
-import appeng.core.lib.Api;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+import appeng.core.api.features.ILocatable;
+import appeng.core.api.features.IWirelessTermHandler;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.localization.PlayerMessages;
 import appeng.core.lib.sync.GuiBridge;
 import appeng.core.lib.util.Platform;
 
 
-public final class WirelessRegistry// implements IWirelessTermRegistry
+public final class WirelessRegistry
 {
 	private final List<IWirelessTermHandler> handlers;
 
@@ -44,7 +43,6 @@ public final class WirelessRegistry// implements IWirelessTermRegistry
 		this.handlers = new ArrayList<IWirelessTermHandler>();
 	}
 
-//	@Override
 	public void registerWirelessHandler( final IWirelessTermHandler handler )
 	{
 		if( handler != null )
@@ -53,7 +51,6 @@ public final class WirelessRegistry// implements IWirelessTermRegistry
 		}
 	}
 
-//	@Override
 	public boolean isWirelessTerminal( final ItemStack is )
 	{
 		for( final IWirelessTermHandler h : this.handlers )
@@ -66,7 +63,6 @@ public final class WirelessRegistry// implements IWirelessTermRegistry
 		return false;
 	}
 
-//	@Override
 	public IWirelessTermHandler getWirelessTerminalHandler( final ItemStack is )
 	{
 		for( final IWirelessTermHandler h : this.handlers )
@@ -79,7 +75,6 @@ public final class WirelessRegistry// implements IWirelessTermRegistry
 		return null;
 	}
 
-//	@Override
 	public void openWirelessTerminalGui( final ItemStack item, final World w, final EntityPlayer player )
 	{
 		if( Platform.isClient() )
@@ -102,7 +97,7 @@ public final class WirelessRegistry// implements IWirelessTermRegistry
 		}
 
 		final long parsedKey = Long.parseLong( unparsedKey );
-		final ILocatable securityStation = Api.internalApi().registries().locatable().getLocatableBy( parsedKey );
+		final ILocatable securityStation = AppEngApi.internalApi().registries().locatable().getLocatableBy( parsedKey );
 		if( securityStation == null )
 		{
 			player.addChatMessage( PlayerMessages.StationCanNotBeLocated.get() );

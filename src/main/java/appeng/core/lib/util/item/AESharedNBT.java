@@ -26,8 +26,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
-import appeng.core.api.AEApi;
 import appeng.core.api.features.IItemComparison;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.util.Platform;
 import appeng.core.me.api.storage.data.IAETagCompound;
 
@@ -140,7 +140,7 @@ public class AESharedNBT extends NBTTagCompound implements IAETagCompound
 
 		final ItemStack isc = new ItemStack( itemID, 1, damageValue );
 		isc.setTagCompound( c );
-		x.comp = AEApi.instance().registries().specialComparison().getSpecialComparison( isc );
+		x.comp = AppEngApi.internalApi().registries().specialComparison().getSpecialComparison( isc );
 
 		return x;
 	}

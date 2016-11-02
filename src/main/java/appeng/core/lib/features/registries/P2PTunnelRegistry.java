@@ -36,14 +36,13 @@ import appeng.api.definitions.IBlocks;
 import appeng.api.definitions.IDefinitions;
 import appeng.api.definitions.IItemDefinition;
 import appeng.api.definitions.IParts;
-import appeng.core.api.AEApi;
 import appeng.core.api.config.TunnelType;
-import appeng.core.api.features.IP2PTunnelRegistry;
 import appeng.core.api.util.AEColor;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.util.Platform;
 
 
-public final class P2PTunnelRegistry implements IP2PTunnelRegistry
+public final class P2PTunnelRegistry
 {
 	private static final int INITIAL_CAPACITY = 40;
 
@@ -76,7 +75,7 @@ public final class P2PTunnelRegistry implements IP2PTunnelRegistry
 		/**
 		 * attune based on lots of random item related stuff
 		 */
-		final IDefinitions definitions = AEApi.instance().definitions();
+		final IDefinitions definitions = AppEngApi.internalApi().definitions();
 		final IBlocks blocks = definitions.blocks();
 		final IParts parts = definitions.parts();
 
@@ -117,7 +116,6 @@ public final class P2PTunnelRegistry implements IP2PTunnelRegistry
 		}
 	}
 
-	@Override
 	public void addNewAttunement( @Nullable final ItemStack trigger, @Nullable final TunnelType type )
 	{
 		if( type == null || trigger == null )
@@ -129,7 +127,6 @@ public final class P2PTunnelRegistry implements IP2PTunnelRegistry
 	}
 
 	@Nullable
-	@Override
 	public TunnelType getTunnelTypeByItem( final ItemStack trigger )
 	{
 		if( trigger != null )

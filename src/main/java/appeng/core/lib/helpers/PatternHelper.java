@@ -35,7 +35,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.world.World;
 
-import appeng.core.api.AEApi;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.container.ContainerNull;
 import appeng.core.lib.util.ItemSorters;
 import appeng.core.lib.util.Platform;
@@ -94,7 +94,7 @@ public class PatternHelper implements ICraftingPatternDetails, Comparable<Patter
 				this.markItemAs( x, gs, TestStatus.ACCEPT );
 			}
 
-			in.add( AEApi.instance().storage().createItemStack( gs ) );
+			in.add( AppEngApi.internalApi().storage().createItemStack( gs ) );
 			this.testFrame.setInventorySlotContents( x, gs );
 		}
 
@@ -105,7 +105,7 @@ public class PatternHelper implements ICraftingPatternDetails, Comparable<Patter
 			if( this.standardRecipe != null )
 			{
 				this.correctOutput = this.standardRecipe.getCraftingResult( this.crafting );
-				out.add( AEApi.instance().storage().createItemStack( this.correctOutput ) );
+				out.add( AppEngApi.internalApi().storage().createItemStack( this.correctOutput ) );
 			}
 			else
 			{
@@ -123,7 +123,7 @@ public class PatternHelper implements ICraftingPatternDetails, Comparable<Patter
 
 				if( gs != null )
 				{
-					out.add( AEApi.instance().storage().createItemStack( gs ) );
+					out.add( AppEngApi.internalApi().storage().createItemStack( gs ) );
 				}
 			}
 		}

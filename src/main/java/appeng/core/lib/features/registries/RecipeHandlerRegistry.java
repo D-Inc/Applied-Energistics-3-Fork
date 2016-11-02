@@ -40,25 +40,22 @@ import appeng.core.recipes.RecipeHandler;
  * @version rv3 - 10.08.2015
  * @since rv0
  */
-public class RecipeHandlerRegistry// implements IRecipeHandlerRegistry
+public class RecipeHandlerRegistry
 {
 	private final Map<String, Class<? extends ICraftHandler>> handlers = new HashMap<String, Class<? extends ICraftHandler>>( 20 );
 	private final Collection<ISubItemResolver> resolvers = new LinkedList<ISubItemResolver>();
 
-//	@Override
 	public void addNewCraftHandler( final String name, final Class<? extends ICraftHandler> handler )
 	{
 		this.handlers.put( name.toLowerCase( Locale.ENGLISH ), handler );
 	}
 
-//	@Override
 	public void addNewSubItemResolver( final ISubItemResolver sir )
 	{
 		this.resolvers.add( sir );
 	}
 
 	@Nullable
-//	@Override
 	public ICraftHandler getCraftHandlerFor( final String name )
 	{
 		final Class<? extends ICraftHandler> clz = this.handlers.get( name );
@@ -81,14 +78,12 @@ public class RecipeHandlerRegistry// implements IRecipeHandlerRegistry
 		}
 	}
 
-//	@Override
 	public IRecipeHandler createNewRecipehandler()
 	{
 		return new RecipeHandler();
 	}
 
 	@Nullable
-//	@Override
 	public Object resolveItem( final String nameSpace, final String itemName )
 	{
 		for( final ISubItemResolver sir : this.resolvers )

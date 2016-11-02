@@ -23,7 +23,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-import appeng.core.api.AEApi;
 import appeng.core.api.config.AccessRestriction;
 import appeng.core.api.config.Actionable;
 import appeng.core.api.config.PowerMultiplier;
@@ -35,6 +34,7 @@ import appeng.core.api.util.AECableType;
 import appeng.core.api.util.AEPartLocation;
 import appeng.core.api.util.DimensionalCoord;
 import appeng.core.api.util.IConfigManager;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.container.interfaces.IInventorySlotAware;
 import appeng.core.me.api.networking.IGrid;
 import appeng.core.me.api.networking.IGridHost;
@@ -80,7 +80,7 @@ public class WirelessTerminalGuiObject implements IPortableCell, IActionHost, II
 		try
 		{
 			final long encKey = Long.parseLong( this.encryptionKey );
-			obj = AEApi.instance().registries().locatable().getLocatableBy( encKey );
+			obj = AppEngApi.internalApi().registries().locatable().getLocatableBy( encKey );
 		}
 		catch( final NumberFormatException err )
 		{

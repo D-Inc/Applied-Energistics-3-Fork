@@ -31,7 +31,7 @@ import appeng.api.definitions.IDefinitions;
 import appeng.api.definitions.IItemDefinition;
 import appeng.api.definitions.IItems;
 import appeng.api.definitions.IMaterials;
-import appeng.core.api.AEApi;
+import appeng.core.lib.AppEngApi;
 
 
 public final class CreativeTab extends CreativeTabs
@@ -57,7 +57,7 @@ public final class CreativeTab extends CreativeTabs
 	@Override
 	public ItemStack getIconItemStack()
 	{
-		final IDefinitions definitions = AEApi.instance().definitions();
+		final IDefinitions definitions = AppEngApi.internalApi().definitions();
 		final IBlocks blocks = definitions.blocks();
 		final IItems items = definitions.items();
 		final IMaterials materials = definitions.materials();

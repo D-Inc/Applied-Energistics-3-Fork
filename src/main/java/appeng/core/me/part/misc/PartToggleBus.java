@@ -29,10 +29,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumHand;
 
-import appeng.core.api.AEApi;
 import appeng.core.api.exceptions.FailedConnection;
 import appeng.core.api.util.AECableType;
 import appeng.core.api.util.AEPartLocation;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.helpers.Reflected;
 import appeng.core.lib.util.Platform;
 import appeng.core.me.api.networking.IGridConnection;
@@ -177,7 +177,7 @@ public class PartToggleBus extends PartBasicState
 				{
 					try
 					{
-						this.connection = AEApi.instance().createGridConnection( this.getProxy().getNode(), this.getOuterProxy().getNode() );
+						this.connection = AppEngApi.internalApi().createGridConnection( this.getProxy().getNode(), this.getOuterProxy().getNode() );
 					}
 					catch( final FailedConnection e )
 					{

@@ -25,13 +25,13 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 
-import appeng.core.api.AEApi;
 import appeng.core.api.config.AccessRestriction;
 import appeng.core.api.config.FuzzyMode;
 import appeng.core.api.config.SecurityPermissions;
 import appeng.core.api.config.Settings;
 import appeng.core.api.config.StorageFilter;
 import appeng.core.api.config.Upgrades;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.container.ContainerUpgradeable;
 import appeng.core.lib.container.guisync.GuiSync;
 import appeng.core.lib.container.slot.OptionalSlotFakeTypeOnly;
@@ -152,7 +152,7 @@ public class ContainerStorageBus extends ContainerUpgradeable
 		Iterator<IAEItemStack> i = new NullIterator<IAEItemStack>();
 		if( cellInv != null )
 		{
-			final IItemList<IAEItemStack> list = cellInv.getAvailableItems( AEApi.instance().storage().createItemList() );
+			final IItemList<IAEItemStack> list = cellInv.getAvailableItems( AppEngApi.internalApi().storage().createItemList() );
 			i = list.iterator();
 		}
 

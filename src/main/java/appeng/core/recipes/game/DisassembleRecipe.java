@@ -38,7 +38,7 @@ import appeng.api.definitions.IDefinitions;
 import appeng.api.definitions.IItemDefinition;
 import appeng.api.definitions.IItems;
 import appeng.api.definitions.IMaterials;
-import appeng.core.api.AEApi;
+import appeng.core.lib.AppEngApi;
 import appeng.core.me.api.storage.IMEInventory;
 import appeng.core.me.api.storage.StorageChannel;
 import appeng.core.me.api.storage.data.IAEItemStack;
@@ -54,7 +54,7 @@ public final class DisassembleRecipe implements IRecipe
 
 	public DisassembleRecipe()
 	{
-		final IDefinitions definitions = AEApi.instance().definitions();
+		final IDefinitions definitions = AppEngApi.internalApi().definitions();
 		final IBlocks blocks = definitions.blocks();
 		final IItems items = definitions.items();
 		final IMaterials mats = definitions.materials();
@@ -104,7 +104,7 @@ public final class DisassembleRecipe implements IRecipe
 				{
 					ItemStack storageCellStack = maybeCellOutput.get();
 					// make sure the storage cell stackInSlot empty...
-					final IMEInventory<IAEItemStack> cellInv = AEApi.instance().registries().cell().getCellInventory( stackInSlot, null, StorageChannel.ITEMS );
+					final IMEInventory<IAEItemStack> cellInv = AppEngApi.internalApi().registries().cell().getCellInventory( stackInSlot, null, StorageChannel.ITEMS );
 					if( cellInv != null )
 					{
 						final IItemList<IAEItemStack> list = cellInv.getAvailableItems( StorageChannel.ITEMS.createList() );

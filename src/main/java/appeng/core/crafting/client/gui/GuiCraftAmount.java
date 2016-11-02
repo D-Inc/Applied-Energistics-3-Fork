@@ -27,9 +27,9 @@ import net.minecraft.item.ItemStack;
 
 import appeng.api.definitions.IDefinitions;
 import appeng.api.definitions.IParts;
-import appeng.core.api.AEApi;
 import appeng.core.crafting.container.ContainerCraftAmount;
 import appeng.core.lib.AEConfig;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.client.gui.AEBaseGui;
 import appeng.core.lib.client.gui.widgets.GuiNumberBox;
 import appeng.core.lib.client.gui.widgets.GuiTabButton;
@@ -95,7 +95,7 @@ public class GuiCraftAmount extends AEBaseGui
 
 		ItemStack myIcon = null;
 		final Object target = ( (AEBaseContainer) this.inventorySlots ).getTarget();
-		final IDefinitions definitions = AEApi.instance().definitions();
+		final IDefinitions definitions = AppEngApi.internalApi().definitions();
 		final IParts parts = definitions.parts();
 
 		if( target instanceof WirelessTerminalGuiObject )

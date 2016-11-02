@@ -29,9 +29,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import appeng.core.api.AEApi;
 import appeng.core.api.exceptions.MissingDefinition;
 import appeng.core.lib.AEConfig;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.CommonHelper;
 import appeng.core.lib.client.render.effects.ChargedOreFX;
 
@@ -48,13 +48,13 @@ public final class BlockChargedQuartzOre extends BlockQuartzOre
 	@Override
 	public Item getItemDropped( final IBlockState state, final Random rand, final int fortune )
 	{
-		return AEApi.instance().definitions().materials().certusQuartzCrystalCharged().maybe().orElseThrow( () -> new MissingDefinition( "Tried to access charged certus quartz crystal, even though they are disabled" ) );
+		return AppEngApi.internalApi().definitions().materials().certusQuartzCrystalCharged().maybe().orElseThrow( () -> new MissingDefinition( "Tried to access charged certus quartz crystal, even though they are disabled" ) );
 	}
 
 	@Override
 	public int damageDropped( final IBlockState state )
 	{
-		return AEApi.instance().definitions().materials().certusQuartzCrystalCharged().maybeStack( 1 ).orElseThrow( () -> new MissingDefinition( "Tried to access charged certus quartz crystal, even though they are disabled" ) ).getItemDamage();
+		return AppEngApi.internalApi().definitions().materials().certusQuartzCrystalCharged().maybeStack( 1 ).orElseThrow( () -> new MissingDefinition( "Tried to access charged certus quartz crystal, even though they are disabled" ) ).getItemDamage();
 	}
 
 	@Override

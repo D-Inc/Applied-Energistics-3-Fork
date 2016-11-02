@@ -36,10 +36,6 @@ import java.util.WeakHashMap;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import appeng.core.lib.Api;
-import appeng.core.lib.api.ApiPart;
-import appeng.core.lib.api.definitions.ApiMaterials;
-import appeng.core.lib.api.definitions.ApiParts;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -92,7 +88,6 @@ import net.minecraftforge.oredict.OreDictionary;
 import appeng.api.definitions.IItemDefinition;
 import appeng.core.AppEng;
 import appeng.core.AppEngCore;
-import appeng.core.api.AEApi;
 import appeng.core.api.config.AccessRestriction;
 import appeng.core.api.config.Actionable;
 import appeng.core.api.config.FuzzyMode;
@@ -108,6 +103,9 @@ import appeng.core.api.util.DimensionalCoord;
 import appeng.core.hooks.TickHandler;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.AELog;
+import appeng.core.lib.AppEngApi;
+import appeng.core.lib.api.definitions.ApiMaterials;
+import appeng.core.lib.api.definitions.ApiParts;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.stats.Stats;
 import appeng.core.lib.sync.GuiBridge;
@@ -1663,12 +1661,12 @@ public class Platform
 
 	public static void postChanges( final IStorageGrid gs, final ItemStack removed, final ItemStack added, final BaseActionSource src )
 	{
-		final IItemList<IAEItemStack> itemChanges = AEApi.instance().storage().createItemList();
-		final IItemList<IAEFluidStack> fluidChanges = AEApi.instance().storage().createFluidList();
+		final IItemList<IAEItemStack> itemChanges = AppEngApi.internalApi().storage().createItemList();
+		final IItemList<IAEFluidStack> fluidChanges = AppEngApi.internalApi().storage().createFluidList();
 
 		if( removed != null )
 		{
-			final IMEInventory<IAEItemStack> myItems = Api.internalApi().registries().cell().getCellInventory( removed, null, StorageChannel.ITEMS );
+			final IMEInventory<IAEItemStack> myItems = AppEngApi.internalApi().registries().cell().getCellInventory( removed, null, StorageChannel.ITEMS );
 
 			if( myItems != null )
 			{
@@ -1678,7 +1676,7 @@ public class Platform
 				}
 			}
 
-			final IMEInventory<IAEFluidStack> myFluids = Api.internalApi().registries().cell().getCellInventory( removed, null, StorageChannel.FLUIDS );
+			final IMEInventory<IAEFluidStack> myFluids = AppEngApi.internalApi().registries().cell().getCellInventory( removed, null, StorageChannel.FLUIDS );
 
 			if( myFluids != null )
 			{
@@ -1691,14 +1689,14 @@ public class Platform
 
 		if( added != null )
 		{
-			final IMEInventory<IAEItemStack> myItems = Api.internalApi().registries().cell().getCellInventory( added, null, StorageChannel.ITEMS );
+			final IMEInventory<IAEItemStack> myItems = AppEngApi.internalApi().registries().cell().getCellInventory( added, null, StorageChannel.ITEMS );
 
 			if( myItems != null )
 			{
 				myItems.getAvailableItems( itemChanges );
 			}
 
-			final IMEInventory<IAEFluidStack> myFluids = Api.internalApi().registries().cell().getCellInventory( added, null, StorageChannel.FLUIDS );
+			final IMEInventory<IAEFluidStack> myFluids = AppEngApi.internalApi().registries().cell().getCellInventory( added, null, StorageChannel.FLUIDS );
 
 			if( myFluids != null )
 			{
@@ -2069,7 +2067,7 @@ public class Platform
 
 		if( type == AEFeature.CertusQuartzTools )
 		{
-			final IItemDefinition certusQuartzCrystal = Api.internalApi().definitions().materials().certusQuartzCrystal();
+			final IItemDefinition certusQuartzCrystal = AppEngApi.internalApi().definitions().materials().certusQuartzCrystal();
 
 			return certusQuartzCrystal.isSameAs( b );
 		}
@@ -2084,7 +2082,7 @@ public class Platform
 
 	public static Object findPreferred( final ItemStack[] is )
 	{
-		final ApiParts parts = Api.internalApi().definitions().parts();
+		final ApiParts parts = AppEngApi.internalApi().definitions().parts();
 
 		for( final ItemStack stack : is )
 		{
@@ -2169,7 +2167,7 @@ public class Platform
 
 	public static void addStat( final int playerID, final Achievement achievement )
 	{
-		final EntityPlayer p = Api.internalApi().registries().players().findPlayer( playerID );
+		final EntityPlayer p = AppEngApi.internalApi().registries().players().findPlayer( playerID );
 		if( p != null )
 		{
 			p.addStat( achievement, 1 );
@@ -2178,7 +2176,7 @@ public class Platform
 
 	public static boolean isRecipePrioritized( final ItemStack what )
 	{
-		final ApiMaterials materials = Api.internalApi().definitions().materials();
+		final ApiMaterials materials = AppEngApi.internalApi().definitions().materials();
 
 		boolean isPurified = materials.purifiedCertusQuartzCrystal().isSameAs( what );
 		isPurified |= materials.purifiedFluixCrystal().isSameAs( what );

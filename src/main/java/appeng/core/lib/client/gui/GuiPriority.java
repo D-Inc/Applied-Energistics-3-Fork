@@ -28,9 +28,9 @@ import net.minecraft.item.ItemStack;
 import appeng.api.definitions.IBlocks;
 import appeng.api.definitions.IDefinitions;
 import appeng.api.definitions.IParts;
-import appeng.core.api.AEApi;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.AELog;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.client.gui.widgets.GuiNumberBox;
 import appeng.core.lib.client.gui.widgets.GuiTabButton;
 import appeng.core.lib.container.AEBaseContainer;
@@ -93,7 +93,7 @@ public class GuiPriority extends AEBaseGui
 
 		ItemStack myIcon = null;
 		final Object target = ( (AEBaseContainer) this.inventorySlots ).getTarget();
-		final IDefinitions definitions = AEApi.instance().definitions();
+		final IDefinitions definitions = AppEngApi.internalApi().definitions();
 		final IParts parts = definitions.parts();
 		final IBlocks blocks = definitions.blocks();
 

@@ -2,12 +2,12 @@
 package appeng.util;
 
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 import appeng.core.lib.util.IWideReadableNumberConverter;
 import appeng.core.lib.util.ReadableNumberConverter;
-
-import static org.junit.Assert.assertEquals;
 
 
 /**

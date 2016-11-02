@@ -41,8 +41,8 @@ import net.minecraftforge.oredict.OreDictionary;
 import appeng.api.definitions.IBlockDefinition;
 import appeng.api.definitions.IBlocks;
 import appeng.api.definitions.IMaterials;
-import appeng.core.api.AEApi;
 import appeng.core.lib.AEConfig;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.util.InventoryAdaptor;
 import appeng.core.lib.util.Platform;
@@ -73,7 +73,7 @@ public final class MeteoritePlacer
 
 	public MeteoritePlacer()
 	{
-		final IBlocks blocks = AEApi.instance().definitions().blocks();
+		final IBlocks blocks = AppEngApi.internalApi().definitions().blocks();
 
 		this.skyChestDefinition = blocks.skyStoneChest();
 		this.skyStoneDefinition = blocks.skyStoneBlock();
@@ -252,7 +252,7 @@ public final class MeteoritePlacer
 						}
 
 						ItemStack toAdd = null;
-						final IMaterials materials = AEApi.instance().definitions().materials();
+						final IMaterials materials = AppEngApi.internalApi().definitions().materials();
 
 						switch( r % 4 )
 						{

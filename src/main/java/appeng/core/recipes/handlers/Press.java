@@ -25,11 +25,11 @@ import java.util.List;
 
 import net.minecraft.item.ItemStack;
 
-import appeng.core.api.AEApi;
 import appeng.core.api.exceptions.MissingIngredientError;
 import appeng.core.api.exceptions.RegistrationError;
 import appeng.core.api.features.IInscriberRecipe;
 import appeng.core.api.features.InscriberProcessType;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.features.registries.entries.InscriberRecipe;
 
 
@@ -65,6 +65,6 @@ public final class Press extends InscriberProcess
 
 		final IInscriberRecipe recipe = new InscriberRecipe( inputs, output, top, bot, type );
 
-		AEApi.instance().registries().inscriber().addRecipe( recipe );
+		AppEngApi.internalApi().registries().inscriber().addRecipe( recipe );
 	}
 }

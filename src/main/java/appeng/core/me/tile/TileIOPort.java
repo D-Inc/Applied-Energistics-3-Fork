@@ -29,7 +29,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import appeng.core.api.AEApi;
 import appeng.core.api.config.Actionable;
 import appeng.core.api.config.FullnessMode;
 import appeng.core.api.config.OperationMode;
@@ -42,6 +41,7 @@ import appeng.core.api.util.AECableType;
 import appeng.core.api.util.AEPartLocation;
 import appeng.core.api.util.DimensionalCoord;
 import appeng.core.api.util.IConfigManager;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.helpers.Reflected;
 import appeng.core.lib.settings.TickRates;
 import appeng.core.lib.tile.TileEvent;
@@ -116,7 +116,7 @@ public class TileIOPort extends AENetworkInvTile implements IUpgradeableHost, IC
 		this.mySrc = new MachineSource( this );
 		this.lastRedstoneState = YesNo.UNDECIDED;
 
-		final Block ioPortBlock = AEApi.instance().definitions().blocks().iOPort().maybeBlock().get();
+		final Block ioPortBlock = AppEngApi.internalApi().definitions().blocks().iOPort().maybeBlock().get();
 		this.upgrades = new BlockUpgradeInventory( ioPortBlock, this, 3 );
 	}
 
@@ -406,8 +406,8 @@ public class TileIOPort extends AENetworkInvTile implements IUpgradeableHost, IC
 		if( this.currentCell != is )
 		{
 			this.currentCell = is;
-			this.cachedFluid = AEApi.instance().registries().cell().getCellInventory( is, null, StorageChannel.FLUIDS );
-			this.cachedItem = AEApi.instance().registries().cell().getCellInventory( is, null, StorageChannel.ITEMS );
+			this.cachedFluid = AppEngApi.internalApi().registries().cell().getCellInventory( is, null, StorageChannel.FLUIDS );
+			this.cachedItem = AppEngApi.internalApi().registries().cell().getCellInventory( is, null, StorageChannel.ITEMS );
 		}
 
 		if( StorageChannel.ITEMS == chan )

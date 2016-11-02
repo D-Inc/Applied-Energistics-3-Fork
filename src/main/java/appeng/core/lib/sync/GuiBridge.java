@@ -22,8 +22,6 @@ package appeng.core.lib.sync;
 import java.lang.reflect.Constructor;
 import java.util.List;
 
-import appeng.core.lib.Api;
-import appeng.core.lib.api.definitions.ApiMaterials;
 import com.google.common.collect.Lists;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -37,7 +35,6 @@ import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
 import appeng.api.definitions.IComparableDefinition;
-import appeng.core.api.AEApi;
 import appeng.core.api.config.SecurityPermissions;
 import appeng.core.api.exceptions.AppEngException;
 import appeng.core.api.features.IWirelessTermHandler;
@@ -59,6 +56,8 @@ import appeng.core.crafting.container.ContainerMAC;
 import appeng.core.crafting.container.ContainerPatternTerm;
 import appeng.core.crafting.tile.TileCraftingTile;
 import appeng.core.crafting.tile.TileMolecularAssembler;
+import appeng.core.lib.AppEngApi;
+import appeng.core.lib.api.definitions.ApiMaterials;
 import appeng.core.lib.client.gui.AEBaseGui;
 import appeng.core.lib.client.gui.GuiNull;
 import appeng.core.lib.container.AEBaseContainer;
@@ -303,7 +302,7 @@ public enum GuiBridge implements IGuiHandler
 				return ( (IGuiItem) it.getItem() ).getGuiObject( it, w, new BlockPos( x, y, z ) );
 			}
 
-			final IWirelessTermHandler wh = Api.internalApi().registries().wireless().getWirelessTerminalHandler( it );
+			final IWirelessTermHandler wh = AppEngApi.internalApi().registries().wireless().getWirelessTerminalHandler( it );
 			if( wh != null )
 			{
 				return new WirelessTerminalGuiObject( wh, it, player, w, x, y, z );
@@ -370,7 +369,7 @@ public enum GuiBridge implements IGuiHandler
 					{
 						final ItemStack is = ( (Slot) so ).getStack();
 
-						final ApiMaterials materials = Api.internalApi().definitions().materials();
+						final ApiMaterials materials = AppEngApi.internalApi().definitions().materials();
 						this.addPressAchievementToPlayer( is, materials, inventory.player );
 					}
 				}

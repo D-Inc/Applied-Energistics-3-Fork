@@ -29,11 +29,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 
-import appeng.core.api.AEApi;
 import appeng.core.api.util.AEColor;
 import appeng.core.api.util.DimensionalCoord;
 import appeng.core.api.util.IOrientable;
 import appeng.core.hooks.TickHandler;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.tile.AEBaseTile;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.worlddata.WorldData;
@@ -147,7 +147,7 @@ public class AENetworkProxy implements IGridBlock
 	{
 		if( this.node == null && Platform.isServer() && this.isReady )
 		{
-			this.node = AEApi.instance().createGridNode( this );
+			this.node = AppEngApi.internalApi().createGridNode( this );
 			this.readFromNBT( this.data );
 			this.node.updateState();
 		}

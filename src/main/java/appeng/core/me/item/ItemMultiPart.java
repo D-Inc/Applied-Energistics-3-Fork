@@ -44,10 +44,10 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import appeng.core.api.AEApi;
 import appeng.core.api.implementations.items.IItemGroup;
 import appeng.core.api.util.AEColor;
 import appeng.core.lib.AEConfig;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.features.ActivityState;
 import appeng.core.lib.features.ItemStackSrc;
@@ -168,7 +168,7 @@ public final class ItemMultiPart extends AEBaseItem implements IPartItem, IItemG
 			return EnumActionResult.PASS;
 		}
 
-		return AEApi.instance().partHelper().placeBus( is, pos, side, player, hand, w );
+		return AppEngApi.internalApi().partHelper().placeBus( is, pos, side, player, hand, w );
 	}
 
 	@Override

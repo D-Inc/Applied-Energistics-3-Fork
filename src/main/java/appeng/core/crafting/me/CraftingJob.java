@@ -28,11 +28,11 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
-import appeng.core.api.AEApi;
 import appeng.core.api.config.Actionable;
 import appeng.core.api.util.DimensionalCoord;
 import appeng.core.hooks.TickHandler;
 import appeng.core.lib.AELog;
+import appeng.core.lib.AppEngApi;
 import appeng.core.me.api.networking.IGrid;
 import appeng.core.me.api.networking.IGridHost;
 import appeng.core.me.api.networking.IGridNode;
@@ -56,8 +56,8 @@ public class CraftingJob implements Runnable, ICraftingJob
 
 	private final MECraftingInventory original;
 	private final World world;
-	private final IItemList<IAEItemStack> crafting = AEApi.instance().storage().createItemList();
-	private final IItemList<IAEItemStack> missing = AEApi.instance().storage().createItemList();
+	private final IItemList<IAEItemStack> crafting = AppEngApi.internalApi().storage().createItemList();
+	private final IItemList<IAEItemStack> missing = AppEngApi.internalApi().storage().createItemList();
 	private final HashMap<String, TwoIntegers> opsAndMultiplier = new HashMap<String, TwoIntegers>();
 	private final Object monitor = new Object();
 	private final Stopwatch watch = Stopwatch.createUnstarted();

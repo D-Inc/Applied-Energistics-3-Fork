@@ -27,9 +27,9 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 
-import appeng.core.api.AEApi;
 import appeng.core.api.features.IGrinderEntry;
 import appeng.core.api.implementations.tiles.ICrankable;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.tile.AEBaseInvTile;
 import appeng.core.lib.tile.inventory.AppEngInternalInventory;
 import appeng.core.lib.tile.inventory.InvOperation;
@@ -69,7 +69,7 @@ public class TileGrinder extends AEBaseInvTile implements ICrankable
 	@Override
 	public boolean canInsertItem( final int slotIndex, final ItemStack insertingItem, final EnumFacing side )
 	{
-		if( AEApi.instance().registries().grinder().getRecipeForInput( insertingItem ) == null )
+		if( AppEngApi.internalApi().registries().grinder().getRecipeForInput( insertingItem ) == null )
 		{
 			return false;
 		}
@@ -108,7 +108,7 @@ public class TileGrinder extends AEBaseInvTile implements ICrankable
 					continue;
 				}
 
-				final IGrinderEntry r = AEApi.instance().registries().grinder().getRecipeForInput( item );
+				final IGrinderEntry r = AppEngApi.internalApi().registries().grinder().getRecipeForInput( item );
 				if( r != null )
 				{
 					if( item.stackSize >= r.getInput().stackSize )
@@ -144,7 +144,7 @@ public class TileGrinder extends AEBaseInvTile implements ICrankable
 		this.points++;
 
 		final ItemStack processing = this.getStackInSlot( 6 );
-		final IGrinderEntry r = AEApi.instance().registries().grinder().getRecipeForInput( processing );
+		final IGrinderEntry r = AppEngApi.internalApi().registries().grinder().getRecipeForInput( processing );
 		if( r != null )
 		{
 			if( r.getEnergyCost() > this.points )

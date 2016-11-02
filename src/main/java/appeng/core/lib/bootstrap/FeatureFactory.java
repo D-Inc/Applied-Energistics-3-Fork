@@ -15,7 +15,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import appeng.api.definitions.IDefinitionsProvider;
+import appeng.api.definitions.ApiDefinitionsProvider;
 import appeng.core.AppEng;
 import appeng.core.lib.bootstrap.components.InitComponent;
 import appeng.core.lib.bootstrap.components.ModelOverrideComponent;
@@ -61,7 +61,7 @@ public class FeatureFactory
 
 	public <T extends TileEntity> TileDefinitionBuilder<T> tile( ResourceLocation id, Class<T> tile )
 	{
-		return new TileDefinitionBuilder<T>( this, id, tile, ( (IDefinitionsProvider) AppEng.instance().getCurrent() ).definitions( Block.class ) ).features( defaultFeatures );
+		return new TileDefinitionBuilder<T>( this, id, tile, ( (ApiDefinitionsProvider) AppEng.instance().getCurrent() ).definitions( Block.class ) ).features( defaultFeatures );
 	}
 
 	public <B extends Block> BlockDefinitionBuilder<B> block( ResourceLocation id, B block )

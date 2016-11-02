@@ -35,9 +35,9 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
 
-import appeng.core.api.AEApi;
 import appeng.core.crafting.container.ContainerCraftConfirm;
 import appeng.core.lib.AELog;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.client.gui.AEBaseGui;
 import appeng.core.lib.client.gui.widgets.GuiScrollbar;
 import appeng.core.lib.helpers.WirelessTerminalGuiObject;
@@ -62,9 +62,9 @@ public class GuiCraftConfirm extends AEBaseGui
 
 	private final int rows = 5;
 
-	private final IItemList<IAEItemStack> storage = AEApi.instance().storage().createItemList();
-	private final IItemList<IAEItemStack> pending = AEApi.instance().storage().createItemList();
-	private final IItemList<IAEItemStack> missing = AEApi.instance().storage().createItemList();
+	private final IItemList<IAEItemStack> storage = AppEngApi.internalApi().storage().createItemList();
+	private final IItemList<IAEItemStack> pending = AppEngApi.internalApi().storage().createItemList();
+	private final IItemList<IAEItemStack> missing = AppEngApi.internalApi().storage().createItemList();
 
 	private final List<IAEItemStack> visual = new ArrayList<IAEItemStack>();
 

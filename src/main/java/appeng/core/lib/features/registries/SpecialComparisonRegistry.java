@@ -28,7 +28,7 @@ import appeng.core.api.features.IItemComparison;
 import appeng.core.api.features.IItemComparisonProvider;
 
 
-public class SpecialComparisonRegistry// implements ISpecialComparisonRegistry
+public class SpecialComparisonRegistry
 {
 
 	private final List<IItemComparisonProvider> CompRegistry;
@@ -38,7 +38,6 @@ public class SpecialComparisonRegistry// implements ISpecialComparisonRegistry
 		this.CompRegistry = new ArrayList<IItemComparisonProvider>();
 	}
 
-//	@Override
 	public IItemComparison getSpecialComparison( final ItemStack stack )
 	{
 		for( final IItemComparisonProvider i : this.CompRegistry )
@@ -53,7 +52,6 @@ public class SpecialComparisonRegistry// implements ISpecialComparisonRegistry
 		return null;
 	}
 
-//	@Override
 	public void addComparisonProvider( final IItemComparisonProvider prov )
 	{
 		this.CompRegistry.add( prov );

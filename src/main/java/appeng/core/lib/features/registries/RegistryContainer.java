@@ -30,7 +30,8 @@ import appeng.core.api.features.IWorldGen;
  * @version rv2
  * @since rv0
  */
-public class RegistryContainer// implements IRegistryContainer
+@Deprecated
+public class RegistryContainer
 {
 	private final GrinderRecipeManager grinder = new GrinderRecipeManager();
 	private final InscriberRegistry inscriber = new InscriberRegistry();
@@ -46,85 +47,71 @@ public class RegistryContainer// implements IRegistryContainer
 	private final PlayerRegistry playerRegistry = new PlayerRegistry();
 	private final RecipeHandlerRegistry recipeReg = new RecipeHandlerRegistry();
 
-//	@Override
 	public MovableTileRegistry movable()
 	{
 		return this.movable;
 	}
 
-//	@Override
 	public GridCacheRegistry gridCache()
 	{
 		return this.gridCache;
 	}
 
-//	@Override
 	public ExternalStorageRegistry externalStorage()
 	{
 		return this.storage;
 	}
 
-//	@Override
 	public SpecialComparisonRegistry specialComparison()
 	{
 		return this.comparison;
 	}
 
-//	@Override
 	public WirelessRegistry wireless()
 	{
 		return this.wireless;
 	}
 
-//	@Override
 	public CellRegistry cell()
 	{
 		return this.cell;
 	}
 
-//	@Override
 	public GrinderRecipeManager grinder()
 	{
 		return this.grinder;
 	}
 
-//	@Override
 	public InscriberRegistry inscriber()
 	{
 		return this.inscriber;
 	}
 
-//	@Override
 	public LocatableRegistry locatable()
 	{
 		return this.locatable;
 	}
 
-//	@Override
 	public P2PTunnelRegistry p2pTunnel()
 	{
 		return this.p2pTunnel;
 	}
 
-//	@Override
 	public MatterCannonAmmoRegistry matterCannon()
 	{
 		return this.matterCannonReg;
 	}
 
-//	@Override
 	public PlayerRegistry players()
 	{
 		return this.playerRegistry;
 	}
 
-//	@Override
 	public RecipeHandlerRegistry recipes()
 	{
 		return this.recipeReg;
 	}
 
-//	@Override
 	public IWorldGen worldgen()
 	{
 		return WorldGenRegistry.INSTANCE;

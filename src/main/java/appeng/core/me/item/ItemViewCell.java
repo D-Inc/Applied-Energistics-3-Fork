@@ -22,10 +22,10 @@ package appeng.core.me.item;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 
-import appeng.core.api.AEApi;
 import appeng.core.api.config.FuzzyMode;
 import appeng.core.api.config.Upgrades;
 import appeng.core.api.implementations.items.IUpgradeModule;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.item.AEBaseItem;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.util.item.AEItemStack;
@@ -60,7 +60,7 @@ public class ItemViewCell extends AEBaseItem implements ICellWorkbenchItem
 
 			if( ( currentViewCell.getItem() instanceof ItemViewCell ) )
 			{
-				final IItemList<IAEItemStack> priorityList = AEApi.instance().storage().createItemList();
+				final IItemList<IAEItemStack> priorityList = AppEngApi.internalApi().storage().createItemList();
 
 				final ICellWorkbenchItem vc = (ICellWorkbenchItem) currentViewCell.getItem();
 				final IInventory upgrades = vc.getUpgradesInventory( currentViewCell );

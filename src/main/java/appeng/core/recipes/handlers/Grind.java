@@ -23,12 +23,12 @@ import java.util.List;
 
 import net.minecraft.item.ItemStack;
 
-import appeng.core.api.AEApi;
 import appeng.core.api.exceptions.MissingIngredientError;
 import appeng.core.api.exceptions.RecipeError;
 import appeng.core.api.exceptions.RegistrationError;
 import appeng.core.api.recipes.ICraftHandler;
 import appeng.core.api.recipes.IIngredient;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.util.Platform;
 import appeng.core.recipes.RecipeHandler;
 
@@ -60,7 +60,7 @@ public class Grind implements ICraftHandler, IWebsiteSerializer
 	{
 		for( final ItemStack is : this.pro_input.getItemStackSet() )
 		{
-			AEApi.instance().registries().grinder().addRecipe( is, this.pro_output[0].getItemStack(), 8 );
+			AppEngApi.internalApi().registries().grinder().addRecipe( is, this.pro_output[0].getItemStack(), 8 );
 		}
 	}
 

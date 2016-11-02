@@ -30,11 +30,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 
-import appeng.core.api.AEApi;
 import appeng.core.api.implementations.tiles.IChestOrDrive;
 import appeng.core.api.util.AECableType;
 import appeng.core.api.util.AEPartLocation;
 import appeng.core.api.util.DimensionalCoord;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.helpers.IPriorityHost;
 import appeng.core.lib.tile.TileEvent;
 import appeng.core.lib.tile.events.TileEventType;
@@ -268,7 +268,7 @@ public class TileDrive extends AENetworkInvTile implements IChestOrDrive, IPrior
 	@Override
 	public boolean isItemValidForSlot( final int i, final ItemStack itemstack )
 	{
-		return itemstack != null && AEApi.instance().registries().cell().isCellHandled( itemstack );
+		return itemstack != null && AppEngApi.internalApi().registries().cell().isCellHandled( itemstack );
 	}
 
 	@Override
@@ -317,7 +317,7 @@ public class TileDrive extends AENetworkInvTile implements IChestOrDrive, IPrior
 
 				if( is != null )
 				{
-					this.handlersBySlot[x] = AEApi.instance().registries().cell().getHandler( is );
+					this.handlersBySlot[x] = AppEngApi.internalApi().registries().cell().getHandler( is );
 
 					if( this.handlersBySlot[x] != null )
 					{

@@ -27,7 +27,7 @@ import com.google.common.collect.ImmutableSet;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
-import appeng.core.api.AEApi;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.util.InventoryAdaptor;
 import appeng.core.me.api.networking.IGrid;
 import appeng.core.me.api.networking.crafting.ICraftingGrid;
@@ -61,7 +61,7 @@ public class MultiCraftingTracker
 
 			if( link != null && !link.hasNoTags() )
 			{
-				this.setLink( x, AEApi.instance().storage().loadCraftingLink( link, this.owner ) );
+				this.setLink( x, AppEngApi.internalApi().storage().loadCraftingLink( link, this.owner ) );
 			}
 		}
 	}

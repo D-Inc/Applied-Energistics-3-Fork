@@ -22,8 +22,8 @@ package appeng.core.crafting.block;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 
-import appeng.core.api.AEApi;
 import appeng.core.lib.AEConfig;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.item.AEBaseItemBlock;
 
@@ -39,7 +39,7 @@ public class ItemCraftingStorage extends AEBaseItemBlock
 	@Override
 	public ItemStack getContainerItem( final ItemStack itemStack )
 	{
-		return AEApi.instance().definitions().blocks().craftingUnit().maybeStack( 1 ).orElse( null );
+		return AppEngApi.internalApi().definitions().blocks().craftingUnit().maybeStack( 1 ).orElse( null );
 	}
 
 	@Override

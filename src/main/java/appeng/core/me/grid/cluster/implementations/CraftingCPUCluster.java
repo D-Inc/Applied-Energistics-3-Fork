@@ -37,7 +37,6 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 
-import appeng.core.api.AEApi;
 import appeng.core.api.config.Actionable;
 import appeng.core.api.config.FuzzyMode;
 import appeng.core.api.config.PowerMultiplier;
@@ -51,6 +50,7 @@ import appeng.core.crafting.me.MECraftingInventory;
 import appeng.core.crafting.tile.TileCraftingMonitorTile;
 import appeng.core.crafting.tile.TileCraftingTile;
 import appeng.core.lib.AELog;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.container.ContainerNull;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.util.item.AEItemStack;
@@ -102,7 +102,7 @@ public final class CraftingCPUCluster implements IAECluster, ICraftingCPU
 	private MECraftingInventory inventory = new MECraftingInventory();
 	private IAEItemStack finalOutput;
 	private boolean waiting = false;
-	private IItemList<IAEItemStack> waitingFor = AEApi.instance().storage().createItemList();
+	private IItemList<IAEItemStack> waitingFor = AppEngApi.internalApi().storage().createItemList();
 	private long availableStorage = 0;
 	private MachineSource machineSrc = null;
 	private int accelerator = 0;
@@ -542,7 +542,7 @@ public final class CraftingCPUCluster implements IAECluster, ICraftingCPU
 		}
 
 		final IItemList<IAEItemStack> list;
-		this.getListOfItem( list = AEApi.instance().storage().createItemList(), CraftingItemList.ALL );
+		this.getListOfItem( list = AppEngApi.internalApi().storage().createItemList(), CraftingItemList.ALL );
 		for( final IAEItemStack is : list )
 		{
 			this.postChange( is, this.machineSrc );
@@ -888,7 +888,7 @@ public final class CraftingCPUCluster implements IAECluster, ICraftingCPU
 				this.submitLink( this.myLastLink );
 				this.submitLink( whatLink );
 
-				final IItemList<IAEItemStack> list = AEApi.instance().storage().createItemList();
+				final IItemList<IAEItemStack> list = AppEngApi.internalApi().storage().createItemList();
 				this.getListOfItem( list, CraftingItemList.ALL );
 				for( final IAEItemStack ge : list )
 				{
@@ -1255,7 +1255,7 @@ public final class CraftingCPUCluster implements IAECluster, ICraftingCPU
 
 	private IItemList<IAEItemStack> readList( final NBTTagList tag )
 	{
-		final IItemList<IAEItemStack> out = AEApi.instance().storage().createItemList();
+		final IItemList<IAEItemStack> out = AppEngApi.internalApi().storage().createItemList();
 
 		if( tag == null )
 		{
@@ -1300,7 +1300,7 @@ public final class CraftingCPUCluster implements IAECluster, ICraftingCPU
 		this.lastTime = System.nanoTime();
 		this.elapsedTime = 0;
 
-		final IItemList<IAEItemStack> list = AEApi.instance().storage().createItemList();
+		final IItemList<IAEItemStack> list = AppEngApi.internalApi().storage().createItemList();
 
 		this.getListOfItem( list, CraftingItemList.ACTIVE );
 		this.getListOfItem( list, CraftingItemList.PENDING );

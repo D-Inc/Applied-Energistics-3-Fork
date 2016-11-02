@@ -19,7 +19,6 @@
 package appeng.core.lib;
 
 
-import appeng.core.api.IAppEngApi;
 import appeng.core.api.exceptions.FailedConnection;
 import appeng.core.api.util.AEPartLocation;
 import appeng.core.lib.api.ApiPart;
@@ -35,9 +34,10 @@ import appeng.core.me.grid.GridConnection;
 import appeng.core.me.grid.GridNode;
 
 
-public final class Api implements IAppEngApi
+@Deprecated
+public final class AppEngApi
 {
-	public static final Api INSTANCE = new Api();
+	public static final AppEngApi INSTANCE = new AppEngApi();
 
 	private final ApiPart partHelper;
 
@@ -46,7 +46,7 @@ public final class Api implements IAppEngApi
 	private final IStorageHelper storageHelper;
 	private final ApiDefinitions definitions;
 
-	private Api()
+	private AppEngApi()
 	{
 		this.storageHelper = new ApiStorage();
 		this.registryContainer = new RegistryContainer();
@@ -54,31 +54,26 @@ public final class Api implements IAppEngApi
 		this.definitions = new ApiDefinitions( this.partHelper );
 	}
 
-//	@Override
 	public RegistryContainer registries()
 	{
 		return this.registryContainer;
 	}
 
-	@Override
 	public IStorageHelper storage()
 	{
 		return this.storageHelper;
 	}
 
-	@Override
 	public ApiPart partHelper()
 	{
 		return this.partHelper;
 	}
 
-//	@Override
 	public ApiDefinitions definitions()
 	{
 		return this.definitions;
 	}
 
-	@Override
 	public IGridNode createGridNode( final IGridBlock blk )
 	{
 		if( Platform.isClient() )
@@ -89,13 +84,13 @@ public final class Api implements IAppEngApi
 		return new GridNode( blk );
 	}
 
-	@Override
 	public IGridConnection createGridConnection( final IGridNode a, final IGridNode b ) throws FailedConnection
 	{
 		return new GridConnection( a, b, AEPartLocation.INTERNAL );
 	}
 
-	public static Api internalApi(){
+	public static AppEngApi internalApi()
+	{
 		return INSTANCE;
 	}
 }

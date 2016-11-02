@@ -28,19 +28,6 @@ import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import appeng.api.client.BakingPipeline;
-import appeng.core.api.AEApi;
-import appeng.core.api.config.Upgrades;
-import appeng.core.api.implementations.IUpgradeableHost;
-import appeng.core.api.implementations.items.IMemoryCard;
-import appeng.core.api.implementations.items.MemoryCardMessages;
-import appeng.core.api.util.AECableType;
-import appeng.core.api.util.AEColor;
-import appeng.core.api.util.AEPartLocation;
-import appeng.core.api.util.DimensionalCoord;
-import appeng.core.api.util.IConfigManager;
-import appeng.core.lib.Api;
-import appeng.core.lib.ApiDefinitions;
 import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableMap;
@@ -67,6 +54,18 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import appeng.api.client.BakingPipeline;
+import appeng.core.api.config.Upgrades;
+import appeng.core.api.implementations.IUpgradeableHost;
+import appeng.core.api.implementations.items.IMemoryCard;
+import appeng.core.api.implementations.items.MemoryCardMessages;
+import appeng.core.api.util.AECableType;
+import appeng.core.api.util.AEColor;
+import appeng.core.api.util.AEPartLocation;
+import appeng.core.api.util.DimensionalCoord;
+import appeng.core.api.util.IConfigManager;
+import appeng.core.lib.ApiDefinitions;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.client.render.model.ModelsCache;
 import appeng.core.lib.helpers.ICustomNameObject;
 import appeng.core.lib.helpers.IPriorityHost;
@@ -478,7 +477,7 @@ public abstract class AEBasePart implements IPart, IGridProxyable, IActionHost, 
 			ItemStack is = this.getItemStack( PartItemStack.Network );
 
 			// Blocks and parts share the same soul!
-			final ApiDefinitions definitions = Api.internalApi().definitions();
+			final ApiDefinitions definitions = AppEngApi.internalApi().definitions();
 			if( definitions.parts().iface().isSameAs( is ) )
 			{
 				Optional<ItemStack> iface = definitions.blocks().iface().maybeStack( 1 );

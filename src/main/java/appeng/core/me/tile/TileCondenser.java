@@ -19,14 +19,6 @@
 package appeng.core.me.tile;
 
 
-import appeng.core.api.AEApi;
-import appeng.core.api.config.CondenserOutput;
-import appeng.core.api.config.Settings;
-import appeng.core.api.implementations.items.IStorageComponent;
-import appeng.core.api.util.IConfigManager;
-import appeng.core.api.util.IConfigurableObject;
-import appeng.core.lib.Api;
-import appeng.core.lib.api.definitions.ApiMaterials;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -36,6 +28,13 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 
+import appeng.core.api.config.CondenserOutput;
+import appeng.core.api.config.Settings;
+import appeng.core.api.implementations.items.IStorageComponent;
+import appeng.core.api.util.IConfigManager;
+import appeng.core.api.util.IConfigurableObject;
+import appeng.core.lib.AppEngApi;
+import appeng.core.lib.api.definitions.ApiMaterials;
 import appeng.core.lib.tile.AEBaseInvTile;
 import appeng.core.lib.tile.TileEvent;
 import appeng.core.lib.tile.events.TileEventType;
@@ -140,7 +139,7 @@ public class TileCondenser extends AEBaseInvTile implements IFluidHandler, IConf
 
 	private ItemStack getOutput()
 	{
-		final ApiMaterials materials = Api.internalApi().definitions().materials();
+		final ApiMaterials materials = AppEngApi.internalApi().definitions().materials();
 
 		switch( (CondenserOutput) this.cm.getSetting( Settings.CONDENSER_OUTPUT ) )
 		{

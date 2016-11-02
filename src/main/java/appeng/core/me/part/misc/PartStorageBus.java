@@ -31,7 +31,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.Vec3d;
 
-import appeng.core.api.AEApi;
 import appeng.core.api.config.AccessRestriction;
 import appeng.core.api.config.FuzzyMode;
 import appeng.core.api.config.IncludeExclude;
@@ -41,6 +40,7 @@ import appeng.core.api.config.Upgrades;
 import appeng.core.api.util.AECableType;
 import appeng.core.api.util.AEPartLocation;
 import appeng.core.api.util.IConfigManager;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.helpers.IInterfaceHost;
 import appeng.core.lib.helpers.IPriorityHost;
 import appeng.core.lib.helpers.Reflected;
@@ -316,7 +316,7 @@ public class PartStorageBus extends PartUpgradeable implements IGridTickable, IC
 		this.resetCacheLogic = 0;
 
 		final IMEInventory<IAEItemStack> in = this.getInternalHandler();
-		IItemList<IAEItemStack> before = AEApi.instance().storage().createItemList();
+		IItemList<IAEItemStack> before = AppEngApi.internalApi().storage().createItemList();
 		if( in != null )
 		{
 			before = in.getAvailableItems( before );
@@ -335,7 +335,7 @@ public class PartStorageBus extends PartUpgradeable implements IGridTickable, IC
 			this.monitor.onTick();
 		}
 
-		IItemList<IAEItemStack> after = AEApi.instance().storage().createItemList();
+		IItemList<IAEItemStack> after = AppEngApi.internalApi().storage().createItemList();
 		if( out != null )
 		{
 			after = out.getAvailableItems( after );
@@ -368,7 +368,7 @@ public class PartStorageBus extends PartUpgradeable implements IGridTickable, IC
 		this.monitor = null;
 		if( target != null )
 		{
-			final IExternalStorageHandler esh = AEApi.instance().registries().externalStorage().getHandler( target, this.getSide().getFacing().getOpposite(), StorageChannel.ITEMS, this.mySrc );
+			final IExternalStorageHandler esh = AppEngApi.internalApi().registries().externalStorage().getHandler( target, this.getSide().getFacing().getOpposite(), StorageChannel.ITEMS, this.mySrc );
 			if( esh != null )
 			{
 				final IMEInventory inv = esh.getInventory( target, this.getSide().getFacing().getOpposite(), StorageChannel.ITEMS, this.mySrc );
@@ -395,7 +395,7 @@ public class PartStorageBus extends PartUpgradeable implements IGridTickable, IC
 					this.handler.setWhitelist( this.getInstalledUpgrades( Upgrades.INVERTER ) > 0 ? IncludeExclude.BLACKLIST : IncludeExclude.WHITELIST );
 					this.handler.setPriority( this.priority );
 
-					final IItemList<IAEItemStack> priorityList = AEApi.instance().storage().createItemList();
+					final IItemList<IAEItemStack> priorityList = AppEngApi.internalApi().storage().createItemList();
 
 					final int slotsToUse = 18 + this.getInstalledUpgrades( Upgrades.CAPACITY ) * 9;
 					for( int x = 0; x < this.Config.getSizeInventory() && x < slotsToUse; x++ )

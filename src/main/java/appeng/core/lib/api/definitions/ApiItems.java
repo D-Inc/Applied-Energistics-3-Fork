@@ -38,8 +38,6 @@ import appeng.debug.ToolEraser;
 import appeng.debug.ToolMeteoritePlacer;
 import appeng.debug.ToolReplicatorCard;
 import appeng.decorative.item.ItemFacade;
-import appeng.decorative.item.ItemPaintBall;
-import appeng.decorative.item.ItemPaintBallRendering;
 import appeng.tools.item.ToolBiometricCard;
 import appeng.tools.item.ToolChargedStaff;
 import appeng.tools.item.ToolColorApplicator;

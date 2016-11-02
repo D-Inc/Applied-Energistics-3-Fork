@@ -29,13 +29,13 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import appeng.core.api.AEApi;
 import appeng.core.api.events.LocatableEventAnnounce;
 import appeng.core.api.events.LocatableEventAnnounce.LocatableEvent;
 import appeng.core.api.exceptions.FailedConnection;
 import appeng.core.api.features.ILocatable;
 import appeng.core.api.util.AEPartLocation;
 import appeng.core.api.util.WorldCoord;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.util.iterators.ChainedIterator;
 import appeng.core.me.api.networking.IGridHost;
 import appeng.core.me.api.networking.IGridNode;
@@ -112,7 +112,7 @@ public class QuantumCluster implements ILocatable, IAECluster
 			}
 		}
 
-		final ILocatable myOtherSide = this.otherSide == 0 ? null : AEApi.instance().registries().locatable().getLocatableBy( this.otherSide );
+		final ILocatable myOtherSide = this.otherSide == 0 ? null : AppEngApi.internalApi().registries().locatable().getLocatableBy( this.otherSide );
 
 		boolean shutdown = false;
 
@@ -155,7 +155,7 @@ public class QuantumCluster implements ILocatable, IAECluster
 						}
 					}
 
-					sideA.connection = sideB.connection = new ConnectionWrapper( AEApi.instance().createGridConnection( sideA.getNode(), sideB.getNode() ) );
+					sideA.connection = sideB.connection = new ConnectionWrapper( AppEngApi.internalApi().createGridConnection( sideA.getNode(), sideB.getNode() ) );
 				}
 				catch( final FailedConnection e )
 				{
@@ -185,7 +185,7 @@ public class QuantumCluster implements ILocatable, IAECluster
 
 	private boolean canUseNode( final long qe )
 	{
-		final QuantumCluster qc = (QuantumCluster) AEApi.instance().registries().locatable().getLocatableBy( qe );
+		final QuantumCluster qc = (QuantumCluster) AppEngApi.internalApi().registries().locatable().getLocatableBy( qe );
 		if( qc != null )
 		{
 			final World theWorld = qc.center.getWorld();

@@ -34,8 +34,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
-import appeng.core.api.AEApi;
 import appeng.core.api.implementations.ICraftingPatternItem;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.CommonHelper;
 import appeng.core.lib.helpers.PatternHelper;
 import appeng.core.lib.item.AEBaseItem;
@@ -80,7 +80,7 @@ public class ItemEncodedPattern extends AEBaseItem implements ICraftingPatternIt
 
 			final InventoryPlayer inv = player.inventory;
 
-			ItemStack is = AEApi.instance().definitions().materials().blankPattern().maybeStack( stack.stackSize ).orElse( null );
+			ItemStack is = AppEngApi.internalApi().definitions().materials().blankPattern().maybeStack( stack.stackSize ).orElse( null );
 			if( is != null )
 			{
 				for( int s = 0; s < player.inventory.getSizeInventory(); s++ )

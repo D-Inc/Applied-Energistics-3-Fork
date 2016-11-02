@@ -44,7 +44,6 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-import appeng.core.api.AEApi;
 import appeng.core.api.config.Actionable;
 import appeng.core.api.config.Settings;
 import appeng.core.api.config.Upgrades;
@@ -56,6 +55,7 @@ import appeng.core.api.util.AECableType;
 import appeng.core.api.util.AEPartLocation;
 import appeng.core.api.util.DimensionalCoord;
 import appeng.core.api.util.IConfigManager;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.settings.TickRates;
 import appeng.core.lib.tile.inventory.AppEngInternalAEInventory;
 import appeng.core.lib.tile.inventory.AppEngInternalInventory;
@@ -406,7 +406,7 @@ public class DualityInterface implements IGridTickable, IStorageMonitorable, IIn
 
 		if( req == null && Stored != null )
 		{
-			final IAEItemStack work = AEApi.instance().storage().createItemStack( Stored );
+			final IAEItemStack work = AppEngApi.internalApi().storage().createItemStack( Stored );
 			this.requireWork[slot] = work.setStackSize( -work.getStackSize() );
 			return;
 		}
@@ -429,7 +429,7 @@ public class DualityInterface implements IGridTickable, IStorageMonitorable, IIn
 			else
 			// Stored != null; dispose!
 			{
-				final IAEItemStack work = AEApi.instance().storage().createItemStack( Stored );
+				final IAEItemStack work = AppEngApi.internalApi().storage().createItemStack( Stored );
 				this.requireWork[slot] = work.setStackSize( -work.getStackSize() );
 				return;
 			}
@@ -494,7 +494,7 @@ public class DualityInterface implements IGridTickable, IStorageMonitorable, IIn
 	@Override
 	public boolean canInsert( final ItemStack stack )
 	{
-		final IAEItemStack out = this.destination.injectItems( AEApi.instance().storage().createItemStack( stack ), Actionable.SIMULATE, null );
+		final IAEItemStack out = this.destination.injectItems( AppEngApi.internalApi().storage().createItemStack( stack ), Actionable.SIMULATE, null );
 		if( out == null )
 		{
 			return true;

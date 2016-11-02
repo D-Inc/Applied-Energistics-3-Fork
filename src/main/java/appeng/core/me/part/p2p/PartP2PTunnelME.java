@@ -29,12 +29,12 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumHand;
 
-import appeng.core.api.AEApi;
 import appeng.core.api.exceptions.FailedConnection;
 import appeng.core.api.util.AECableType;
 import appeng.core.api.util.AEPartLocation;
 import appeng.core.hooks.TickHandler;
 import appeng.core.lib.AELog;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.settings.TickRates;
 import appeng.core.me.api.networking.GridFlags;
 import appeng.core.me.api.networking.IGridNode;
@@ -228,7 +228,7 @@ public class PartP2PTunnelME extends PartP2PTunnel<PartP2PTunnelME> implements I
 				{
 					try
 					{
-						connections.getConnections().put( me.getGridNode(), new TunnelConnection( me, AEApi.instance().createGridConnection( this.outerProxy.getNode(), me.outerProxy.getNode() ) ) );
+						connections.getConnections().put( me.getGridNode(), new TunnelConnection( me, AppEngApi.internalApi().createGridConnection( this.outerProxy.getNode(), me.outerProxy.getNode() ) ) );
 					}
 					catch( final FailedConnection e )
 					{

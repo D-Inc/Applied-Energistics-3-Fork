@@ -2,10 +2,9 @@
 package appeng.core.api.definitions;
 
 
-import appeng.api.definitions.IDefinition;
-import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntity;
 
+import appeng.api.definitions.IDefinition;
 import appeng.api.definitions.IDefinitions;
 
 

@@ -30,7 +30,8 @@ import appeng.core.me.api.parts.IPartHelper;
 /**
  * Internal implementation of the definitions for the API
  */
-public final class ApiDefinitions// implements IDefinitions
+@Deprecated
+public final class ApiDefinitions
 {
 	private final ApiBlocks blocks;
 	private final ApiItems items;
@@ -52,25 +53,21 @@ public final class ApiDefinitions// implements IDefinitions
 		return registry;
 	}
 
-//	@Override
 	public ApiBlocks blocks()
 	{
 		return this.blocks;
 	}
 
-//	@Override
 	public ApiItems items()
 	{
 		return this.items;
 	}
 
-//	@Override
 	public ApiMaterials materials()
 	{
 		return this.materials;
 	}
 
-//	@Override
 	public ApiParts parts()
 	{
 		return this.parts;

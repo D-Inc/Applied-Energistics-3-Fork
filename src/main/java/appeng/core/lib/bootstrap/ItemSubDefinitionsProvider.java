@@ -8,7 +8,6 @@ import java.util.Map.Entry;
 import com.google.common.collect.ImmutableMap;
 
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 import appeng.api.definitions.IItemDefinition;

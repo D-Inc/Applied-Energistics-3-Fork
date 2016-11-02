@@ -23,15 +23,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Optional;
 
-import appeng.core.lib.Api;
-import appeng.core.lib.api.definitions.ApiParts;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.Vec3d;
 
-import appeng.core.api.AEApi;
 import appeng.core.api.config.Actionable;
 import appeng.core.api.config.PowerMultiplier;
 import appeng.core.api.config.PowerUnits;
@@ -41,6 +38,8 @@ import appeng.core.api.implementations.items.MemoryCardMessages;
 import appeng.core.api.util.AECableType;
 import appeng.core.api.util.AEPartLocation;
 import appeng.core.lib.AEConfig;
+import appeng.core.lib.AppEngApi;
+import appeng.core.lib.api.definitions.ApiParts;
 import appeng.core.lib.util.Platform;
 import appeng.core.me.api.parts.IPart;
 import appeng.core.me.api.parts.IPartCollisionHelper;
@@ -121,7 +120,7 @@ public abstract class PartP2PTunnel<T extends PartP2PTunnel> extends PartBasicSt
 			return super.getItemStack( type );
 		}
 
-		final Optional<ItemStack> maybeMEStack = Api.internalApi().definitions().parts().p2PTunnelME().maybeStack( 1 );
+		final Optional<ItemStack> maybeMEStack = AppEngApi.internalApi().definitions().parts().p2PTunnelME().maybeStack( 1 );
 		if( maybeMEStack.isPresent() )
 		{
 			return maybeMEStack.get();
@@ -166,7 +165,7 @@ public abstract class PartP2PTunnel<T extends PartP2PTunnel> extends PartBasicSt
 		// UniqueIdentifier id = GameRegistry.findUniqueIdentifierFor( is.getItem() );
 		// AELog.info( "ID:" + id.toString() + " : " + is.getItemDamage() );
 
-		final TunnelType tt = Api.internalApi().registries().p2pTunnel().getTunnelTypeByItem( is );
+		final TunnelType tt = AppEngApi.internalApi().registries().p2pTunnel().getTunnelTypeByItem( is );
 		if( is != null && is.getItem() instanceof IMemoryCard )
 		{
 			final IMemoryCard mc = (IMemoryCard) is.getItem();
@@ -215,7 +214,7 @@ public abstract class PartP2PTunnel<T extends PartP2PTunnel> extends PartBasicSt
 		{
 			final ItemStack newType;
 
-			final ApiParts parts = Api.internalApi().definitions().parts();
+			final ApiParts parts = AppEngApi.internalApi().definitions().parts();
 
 			switch( tt )
 			{

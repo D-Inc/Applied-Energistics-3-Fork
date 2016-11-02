@@ -55,7 +55,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import appeng.core.api.util.AEColor;
 import appeng.core.lib.AEConfig;
-import appeng.core.lib.Api;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.block.AEBaseTileBlock;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.helpers.AEGlassMaterial;
@@ -342,7 +342,7 @@ public class BlockCableBus extends AEBaseTileBlock
 
 	public void setupTile()
 	{
-		noTesrTile = Api.INSTANCE.partHelper().getCombinedInstance( TileCableBus.class.getName() );
+		noTesrTile = AppEngApi.INSTANCE.partHelper().getCombinedInstance( TileCableBus.class.getName() );
 		this.setTileEntity( noTesrTile );
 		GameRegistry.registerTileEntity( noTesrTile, "BlockCableBus" );
 	}
