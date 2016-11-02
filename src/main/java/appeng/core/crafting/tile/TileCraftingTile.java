@@ -31,6 +31,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 
+import appeng.api.definitions.IItemDefinition;
 import appeng.core.api.config.Actionable;
 import appeng.core.api.implementations.IPowerChannelState;
 import appeng.core.api.util.AEPartLocation;
@@ -84,7 +85,7 @@ public class TileCraftingTile extends AENetworkTile implements IAEMultiBlock, IP
 
 		if( ( (TileCraftingTile) obj ).isAccelerator() )
 		{
-			is = AppEngApi.internalApi().definitions().blocks().craftingAccelerator().maybeStack( 1 );
+			is = ( (IItemDefinition) AppEngApi.internalApi().definitions().blocks().craftingAccelerator().block().maybeItem().get() ).maybeStack( 1 );
 		}
 
 		return is.orElseGet( () -> super.getItemFromTile( obj ) );

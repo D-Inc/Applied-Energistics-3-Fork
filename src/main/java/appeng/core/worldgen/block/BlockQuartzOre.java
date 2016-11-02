@@ -24,6 +24,7 @@ import java.util.Random;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -93,7 +94,7 @@ public class BlockQuartzOre extends AEBaseBlock
 	public Item getItemDropped( final IBlockState state, /* is null */
 			final Random rand, final int fortune )
 	{
-		return AppEngApi.internalApi().definitions().materials().certusQuartzCrystal().maybe().orElseThrow( () -> new MissingDefinition( "Tried to access certus quartz crystal, even though they are disabled" ) );
+		return (Item) AppEngApi.internalApi().definitions().materials().certusQuartzCrystal().maybe().orElseThrow( () -> new MissingDefinition( "Tried to access certus quartz crystal, even though they are disabled" ) );
 	}
 
 	@Override
@@ -112,7 +113,7 @@ public class BlockQuartzOre extends AEBaseBlock
 	@Override
 	public int damageDropped( final IBlockState state )
 	{
-		return AppEngApi.internalApi().definitions().materials().certusQuartzCrystal().maybeStack( 1 ).orElseThrow( () -> new MissingDefinition( "Tried to access certus quartz crystal, even though they are disabled" ) ).getItemDamage();
+		return ( (ItemStack) AppEngApi.internalApi().definitions().materials().certusQuartzCrystal().maybeStack( 1 ).orElseThrow( () -> new MissingDefinition( "Tried to access certus quartz crystal, even though they are disabled" ) ) ).getItemDamage();
 	}
 
 	@Override

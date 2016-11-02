@@ -25,11 +25,11 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
 
-import appeng.api.definitions.IDefinitions;
-import appeng.api.definitions.IParts;
 import appeng.core.crafting.container.ContainerCraftAmount;
 import appeng.core.lib.AEConfig;
+import appeng.core.lib.ApiDefinitions;
 import appeng.core.lib.AppEngApi;
+import appeng.core.lib.api.definitions.ApiParts;
 import appeng.core.lib.client.gui.AEBaseGui;
 import appeng.core.lib.client.gui.widgets.GuiNumberBox;
 import appeng.core.lib.client.gui.widgets.GuiTabButton;
@@ -95,31 +95,31 @@ public class GuiCraftAmount extends AEBaseGui
 
 		ItemStack myIcon = null;
 		final Object target = ( (AEBaseContainer) this.inventorySlots ).getTarget();
-		final IDefinitions definitions = AppEngApi.internalApi().definitions();
-		final IParts parts = definitions.parts();
+		final ApiDefinitions definitions = AppEngApi.internalApi().definitions();
+		final ApiParts parts = definitions.parts();
 
 		if( target instanceof WirelessTerminalGuiObject )
 		{
-			myIcon = definitions.items().wirelessTerminal().maybeStack( 1 ).orElse( myIcon );
+			myIcon = (ItemStack) definitions.items().wirelessTerminal().maybeStack( 1 ).orElse( myIcon );
 
 			this.originalGui = GuiBridge.GUI_WIRELESS_TERM;
 		}
 
 		if( target instanceof PartTerminal )
 		{
-			myIcon = parts.terminal().maybeStack( 1 ).orElse( null );
+			myIcon = (ItemStack) parts.terminal().maybeStack( 1 ).orElse( null );
 			this.originalGui = GuiBridge.GUI_ME;
 		}
 
 		if( target instanceof PartCraftingTerminal )
 		{
-			myIcon = parts.craftingTerminal().maybeStack( 1 ).orElse( null );
+			myIcon = (ItemStack) parts.craftingTerminal().maybeStack( 1 ).orElse( null );
 			this.originalGui = GuiBridge.GUI_CRAFTING_TERMINAL;
 		}
 
 		if( target instanceof PartPatternTerminal )
 		{
-			myIcon = parts.patternTerminal().maybeStack( 1 ).orElse( null );
+			myIcon = (ItemStack) parts.patternTerminal().maybeStack( 1 ).orElse( null );
 			this.originalGui = GuiBridge.GUI_PATTERN_TERMINAL;
 		}
 

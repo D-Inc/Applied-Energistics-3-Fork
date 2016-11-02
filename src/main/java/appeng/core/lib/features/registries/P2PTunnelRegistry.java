@@ -32,13 +32,14 @@ import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 
-import appeng.api.definitions.IBlocks;
-import appeng.api.definitions.IDefinitions;
+import appeng.api.definitions.IDefinition;
 import appeng.api.definitions.IItemDefinition;
-import appeng.api.definitions.IParts;
 import appeng.core.api.config.TunnelType;
 import appeng.core.api.util.AEColor;
+import appeng.core.lib.ApiDefinitions;
 import appeng.core.lib.AppEngApi;
+import appeng.core.lib.api.definitions.ApiBlocks;
+import appeng.core.lib.api.definitions.ApiParts;
 import appeng.core.lib.util.Platform;
 
 
@@ -75,11 +76,11 @@ public final class P2PTunnelRegistry
 		/**
 		 * attune based on lots of random item related stuff
 		 */
-		final IDefinitions definitions = AppEngApi.internalApi().definitions();
-		final IBlocks blocks = definitions.blocks();
-		final IParts parts = definitions.parts();
+		final ApiDefinitions definitions = AppEngApi.internalApi().definitions();
+		final ApiBlocks blocks = definitions.blocks();
+		final ApiParts parts = definitions.parts();
 
-		this.addNewAttunement( blocks.iface(), TunnelType.ITEM );
+		this.addNewAttunement( (IItemDefinition) blocks.iface().block().maybeItem().get(), TunnelType.ITEM );
 		this.addNewAttunement( parts.iface(), TunnelType.ITEM );
 		this.addNewAttunement( parts.storageBus(), TunnelType.ITEM );
 		this.addNewAttunement( parts.importBus(), TunnelType.ITEM );
@@ -169,6 +170,6 @@ public final class P2PTunnelRegistry
 
 	private void addNewAttunement( final IItemDefinition definition, final TunnelType type )
 	{
-		definition.maybeStack( 1 ).ifPresent( definitionStack -> addNewAttunement( definitionStack, type ) );
+		definition.maybeStack( 1 ).ifPresent( definitionStack -> addNewAttunement( (ItemStack) definitionStack, type ) );
 	}
 }

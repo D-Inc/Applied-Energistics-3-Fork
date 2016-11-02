@@ -33,6 +33,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 
 import appeng.api.definitions.IBlockDefinition;
+import appeng.api.definitions.IItemDefinition;
 import appeng.core.api.util.AECableType;
 import appeng.core.api.util.AEPartLocation;
 import appeng.core.api.util.DimensionalCoord;
@@ -141,7 +142,7 @@ public class TileQuantumBridge extends AENetworkInvTile implements IAEMultiBlock
 
 	private boolean isCenter()
 	{
-		return AppEngApi.internalApi().definitions().blocks().quantumLink().maybeBlock().map( link -> getBlockType() == link ).orElse( false );
+		return (boolean) AppEngApi.internalApi().definitions().blocks().quantumLink().block().maybe().map( link -> getBlockType() == link ).orElse( false );
 	}
 
 	@MENetworkEventSubscribe
@@ -162,9 +163,9 @@ public class TileQuantumBridge extends AENetworkInvTile implements IAEMultiBlock
 	{
 		super.onReady();
 
-		final IBlockDefinition quantumRing = AppEngApi.internalApi().definitions().blocks().quantumRing();
-		final Optional<Block> maybeLinkBlock = quantumRing.maybeBlock();
-		final Optional<ItemStack> maybeLinkStack = quantumRing.maybeStack( 1 );
+		final IBlockDefinition quantumRing = AppEngApi.internalApi().definitions().blocks().quantumRing().block();
+		final Optional<Block> maybeLinkBlock = quantumRing.maybe();
+		final Optional<ItemStack> maybeLinkStack = ( (IItemDefinition) quantumRing.maybeItem().get() ).maybeStack( 1 );
 
 		final boolean isPresent = maybeLinkBlock.isPresent() && maybeLinkStack.isPresent();
 

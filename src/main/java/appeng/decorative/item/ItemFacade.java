@@ -250,7 +250,7 @@ public class ItemFacade extends AEBaseItem implements IFacadeItem, IAlphaPassIte
 
 	public ItemStack createFromIDs( final int[] ids )
 	{
-		ItemStack facadeStack = AppEngApi.internalApi().definitions().items().facade().maybeStack( 1 ).orElseThrow( () -> new MissingDefinition( "Tried to create a facade, while facades are being deactivated." ) );
+		ItemStack facadeStack = (ItemStack) AppEngApi.internalApi().definitions().items().facade().maybeStack( 1 ).orElseThrow( () -> new MissingDefinition( "Tried to create a facade, while facades are being deactivated." ) );
 
 		final NBTTagCompound facadeTag = new NBTTagCompound();
 		facadeTag.setIntArray( "x", ids.clone() );

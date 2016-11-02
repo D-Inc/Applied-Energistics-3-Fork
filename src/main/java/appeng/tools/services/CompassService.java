@@ -132,7 +132,7 @@ public final class CompassService
 		// lower level...
 		final Chunk c = w.getChunkFromChunkCoords( cx, cz );
 
-		Optional<Block> maybeBlock = AppEngApi.internalApi().definitions().blocks().skyStoneBlock().maybeBlock();
+		Optional<Block> maybeBlock = AppEngApi.internalApi().definitions().blocks().skyStoneBlock().maybe();
 		if( maybeBlock.isPresent() )
 		{
 			Block skyStoneBlock = maybeBlock.get();

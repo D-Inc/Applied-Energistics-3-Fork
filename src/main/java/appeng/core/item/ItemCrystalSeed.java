@@ -40,6 +40,7 @@ import appeng.core.api.implementations.items.IGrowableCrystal;
 import appeng.core.api.recipes.ResolverResult;
 import appeng.core.entity.EntityGrowingCrystal;
 import appeng.core.lib.AppEngApi;
+import appeng.core.lib.api.definitions.ApiMaterials;
 import appeng.core.lib.entity.EntityIds;
 import appeng.core.lib.item.AEBaseItem;
 import appeng.core.lib.localization.ButtonToolTips;
@@ -103,7 +104,7 @@ public class ItemCrystalSeed extends AEBaseItem implements IGrowableCrystal
 	public ItemStack triggerGrowth( final ItemStack is )
 	{
 		final int newDamage = getProgress( is ) + 1;
-		final IMaterials materials = AppEngApi.internalApi().definitions().materials();
+		final ApiMaterials materials = AppEngApi.internalApi().definitions().materials();
 		final int size = is.stackSize;
 
 		if( newDamage == CERTUS + SINGLE_OFFSET )

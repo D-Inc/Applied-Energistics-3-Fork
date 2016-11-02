@@ -55,6 +55,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import appeng.api.client.BakingPipeline;
+import appeng.api.definitions.IItemDefinition;
 import appeng.core.api.config.Upgrades;
 import appeng.core.api.implementations.IUpgradeableHost;
 import appeng.core.api.implementations.items.IMemoryCard;
@@ -480,7 +481,7 @@ public abstract class AEBasePart implements IPart, IGridProxyable, IActionHost, 
 			final ApiDefinitions definitions = AppEngApi.internalApi().definitions();
 			if( definitions.parts().iface().isSameAs( is ) )
 			{
-				Optional<ItemStack> iface = definitions.blocks().iface().maybeStack( 1 );
+				Optional<ItemStack> iface = ( (IItemDefinition) definitions.blocks().iface().block().maybeItem().get() ).maybeStack( 1 );
 				if( iface.isPresent() )
 				{
 					is = iface.get();

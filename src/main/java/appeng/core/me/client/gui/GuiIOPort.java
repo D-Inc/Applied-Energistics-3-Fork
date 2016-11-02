@@ -25,12 +25,14 @@ import org.lwjgl.input.Mouse;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.item.ItemStack;
 
-import appeng.api.definitions.IDefinitions;
+import appeng.api.definitions.IItemDefinition;
 import appeng.core.api.config.FullnessMode;
 import appeng.core.api.config.OperationMode;
 import appeng.core.api.config.RedstoneMode;
 import appeng.core.api.config.Settings;
+import appeng.core.lib.ApiDefinitions;
 import appeng.core.lib.AppEngApi;
 import appeng.core.lib.client.gui.GuiUpgradeable;
 import appeng.core.lib.client.gui.widgets.GuiImgButton;
@@ -92,11 +94,11 @@ public class GuiIOPort extends GuiUpgradeable
 	{
 		super.drawBG( offsetX, offsetY, mouseX, mouseY );
 
-		final IDefinitions definitions = AppEngApi.internalApi().definitions();
+		final ApiDefinitions definitions = AppEngApi.internalApi().definitions();
 
-		definitions.items().cell1k().maybeStack( 1 ).ifPresent( cell1kStack -> this.drawItem( offsetX + 66 - 8, offsetY + 17, cell1kStack ) );
+		definitions.items().cell1k().maybeStack( 1 ).ifPresent( cell1kStack -> this.drawItem( offsetX + 66 - 8, offsetY + 17, (ItemStack) cell1kStack ) );
 
-		definitions.blocks().drive().maybeStack( 1 ).ifPresent( driveStack -> this.drawItem( offsetX + 94 + 8, offsetY + 17, driveStack ) );
+		( (IItemDefinition) definitions.blocks().drive().block().maybeItem().get() ).maybeStack( 1 ).ifPresent( driveStack -> this.drawItem( offsetX + 94 + 8, offsetY + 17, (ItemStack) driveStack ) );
 	}
 
 	@Override

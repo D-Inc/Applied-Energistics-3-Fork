@@ -23,6 +23,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -39,10 +40,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.oredict.OreDictionary;
 
 import appeng.api.definitions.IBlockDefinition;
-import appeng.api.definitions.IBlocks;
-import appeng.api.definitions.IMaterials;
+import appeng.api.definitions.IItemDefinition;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.AppEngApi;
+import appeng.core.lib.api.definitions.ApiBlocks;
+import appeng.core.lib.api.definitions.ApiMaterials;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.util.InventoryAdaptor;
 import appeng.core.lib.util.Platform;
@@ -73,7 +75,7 @@ public final class MeteoritePlacer
 
 	public MeteoritePlacer()
 	{
-		final IBlocks blocks = AppEngApi.internalApi().definitions().blocks();
+		final ApiBlocks blocks = AppEngApi.internalApi().definitions().blocks();
 
 		this.skyChestDefinition = blocks.skyStoneChest();
 		this.skyStoneDefinition = blocks.skyStoneBlock();
@@ -94,7 +96,7 @@ public final class MeteoritePlacer
 		this.validSpawn.add( Blocks.SNOW );
 		this.validSpawn.add( Blocks.STAINED_HARDENED_CLAY );
 
-		this.skyStoneDefinition.maybeBlock().ifPresent( this.invalidSpawn::add );
+		((Optional<Block>)this.skyStoneDefinition.maybe()).ifPresent( this.invalidSpawn::add );
 		this.invalidSpawn.add( Blocks.PLANKS );
 		this.invalidSpawn.add( Blocks.IRON_DOOR );
 		this.invalidSpawn.add( Blocks.IRON_BARS );
@@ -215,11 +217,11 @@ public final class MeteoritePlacer
 	{
 
 		// spawn meteor
-		this.skyStoneDefinition.maybeBlock().ifPresent( block -> placeMeteoriteSkyStone( w, x, y, z, block ) );
+		this.skyStoneDefinition.maybe().ifPresent( block -> placeMeteoriteSkyStone( w, x, y, z, (Block) block ) );
 
 		if( AEConfig.instance.isFeatureEnabled( AEFeature.SpawnPressesInMeteorites ) )
 		{
-			this.skyChestDefinition.maybeBlock().ifPresent( block -> this.putter.put( w, x, y, z, block ) );
+			this.skyChestDefinition.maybe().ifPresent( block -> this.putter.put( w, x, y, z, (Block) block ) );
 
 			final TileEntity te = w.getTileEntity( x, y, z );
 			if( te instanceof IInventory )
@@ -252,21 +254,21 @@ public final class MeteoritePlacer
 						}
 
 						ItemStack toAdd = null;
-						final IMaterials materials = AppEngApi.internalApi().definitions().materials();
+						final ApiMaterials materials = AppEngApi.internalApi().definitions().materials();
 
 						switch( r % 4 )
 						{
 							case 0:
-								toAdd = materials.calcProcessorPress().maybeStack( 1 ).orElse( null );
+								toAdd = (ItemStack) materials.calcProcessorPress().maybeStack( 1 ).orElse( null );
 								break;
 							case 1:
-								toAdd = materials.engProcessorPress().maybeStack( 1 ).orElse( null );
+								toAdd = (ItemStack) materials.engProcessorPress().maybeStack( 1 ).orElse( null );
 								break;
 							case 2:
-								toAdd = materials.logicProcessorPress().maybeStack( 1 ).orElse( null );
+								toAdd = (ItemStack) materials.logicProcessorPress().maybeStack( 1 ).orElse( null );
 								break;
 							case 3:
-								toAdd = materials.siliconPress().maybeStack( 1 ).orElse( null );
+								toAdd = (ItemStack) materials.siliconPress().maybeStack( 1 ).orElse( null );
 								break;
 							default:
 						}
@@ -293,7 +295,7 @@ public final class MeteoritePlacer
 					{
 						case 0:
 							final int amount = (int) ( ( Math.random() * SKYSTONE_SPAWN_LIMIT ) + 1 );
-							this.skyStoneDefinition.maybeStack( amount ).ifPresent( ap::addItems );
+							((Optional<ItemStack>)( (IItemDefinition) this.skyStoneDefinition.maybeItem().get() ).maybeStack( amount )).ifPresent( ap::addItems );
 							break;
 						case 1:
 							final List<ItemStack> possibles = new LinkedList<ItemStack>();

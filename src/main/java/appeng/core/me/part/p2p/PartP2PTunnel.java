@@ -219,7 +219,7 @@ public abstract class PartP2PTunnel<T extends PartP2PTunnel> extends PartBasicSt
 			switch( tt )
 			{
 				case LIGHT:
-					newType = parts.p2PTunnelLight().maybeStack( 1 ).orElse( null );
+					newType = (ItemStack) parts.p2PTunnelLight().maybeStack( 1 ).orElse( null );
 					break;
 
 				/*
@@ -232,7 +232,7 @@ public abstract class PartP2PTunnel<T extends PartP2PTunnel> extends PartBasicSt
 				 */
 
 				case FLUID:
-					newType = parts.p2PTunnelLiquids().maybeStack( 1 ).orElse( null );
+					newType = (ItemStack) parts.p2PTunnelLiquids().maybeStack( 1 ).orElse( null );
 					break;
 
 				/*
@@ -245,15 +245,15 @@ public abstract class PartP2PTunnel<T extends PartP2PTunnel> extends PartBasicSt
 				 */
 
 				case ITEM:
-					newType = parts.p2PTunnelItems().maybeStack( 1 ).orElse( null );
+					newType = (ItemStack) parts.p2PTunnelItems().maybeStack( 1 ).orElse( null );
 					break;
 
 				case ME:
-					newType = parts.p2PTunnelME().maybeStack( 1 ).orElse( null );
+					newType = (ItemStack) parts.p2PTunnelME().maybeStack( 1 ).orElse( null );
 					break;
 
 				case REDSTONE:
-					newType = parts.p2PTunnelRedstone().maybeStack( 1 ).orElse( null );
+					newType = (ItemStack) parts.p2PTunnelRedstone().maybeStack( 1 ).orElse( null );
 					break;
 
 				/*

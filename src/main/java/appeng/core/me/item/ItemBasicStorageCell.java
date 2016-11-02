@@ -258,7 +258,7 @@ public final class ItemBasicStorageCell extends AEBaseItem implements IStorageCe
 
 					// drop empty storage cell case
 					AppEngApi.internalApi().definitions().materials().emptyStorageCell().maybeStack( 1 ).ifPresent( is -> {
-						final ItemStack extraA = ia.addItems( is );
+						final ItemStack extraA = ia.addItems( (ItemStack) is );
 						if( extraA != null )
 						{
 							player.dropItem( extraA, false );

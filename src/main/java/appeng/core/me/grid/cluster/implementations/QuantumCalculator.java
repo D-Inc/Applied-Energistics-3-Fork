@@ -90,14 +90,14 @@ public class QuantumCalculator extends MBCalculator
 					final ApiBlocks blocks = AppEngApi.internalApi().definitions().blocks();
 					if( num == 5 )
 					{
-						if( !this.isBlockAtLocation( w, p, blocks.quantumLink() ) )
+						if( !this.isBlockAtLocation( w, p, blocks.quantumLink().block() ) )
 						{
 							return false;
 						}
 					}
 					else
 					{
-						if( !this.isBlockAtLocation( w, p, blocks.quantumRing() ) )
+						if( !this.isBlockAtLocation( w, p, blocks.quantumRing().block() ) )
 						{
 							return false;
 						}
@@ -164,6 +164,6 @@ public class QuantumCalculator extends MBCalculator
 
 	private boolean isBlockAtLocation( final IBlockAccess w, final BlockPos pos, final IBlockDefinition def )
 	{
-		return def.maybeBlock().map( block -> block == w.getBlockState( pos ).getBlock() ).orElse( false );
+		return (boolean) def.maybe().map( block -> block == w.getBlockState( pos ).getBlock() ).orElse( false );
 	}
 }

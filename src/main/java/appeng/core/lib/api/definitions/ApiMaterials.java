@@ -22,6 +22,7 @@ package appeng.core.lib.api.definitions;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
+import net.minecraft.item.Item;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -275,7 +276,7 @@ public final class ApiMaterials// implements IMaterials
 	}
 
 	/*@Override*/
-	public IItemDefinition namePress()
+	public IItemDefinition<? extends Item> namePress()
 	{
 		return this.namePress;
 	}

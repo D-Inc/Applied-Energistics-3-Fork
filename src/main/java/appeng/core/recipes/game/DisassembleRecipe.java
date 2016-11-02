@@ -33,12 +33,12 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 
-import appeng.api.definitions.IBlocks;
-import appeng.api.definitions.IDefinitions;
 import appeng.api.definitions.IItemDefinition;
-import appeng.api.definitions.IItems;
-import appeng.api.definitions.IMaterials;
+import appeng.core.lib.ApiDefinitions;
 import appeng.core.lib.AppEngApi;
+import appeng.core.lib.api.definitions.ApiBlocks;
+import appeng.core.lib.api.definitions.ApiItems;
+import appeng.core.lib.api.definitions.ApiMaterials;
 import appeng.core.me.api.storage.IMEInventory;
 import appeng.core.me.api.storage.StorageChannel;
 import appeng.core.me.api.storage.data.IAEItemStack;
@@ -54,10 +54,10 @@ public final class DisassembleRecipe implements IRecipe
 
 	public DisassembleRecipe()
 	{
-		final IDefinitions definitions = AppEngApi.internalApi().definitions();
-		final IBlocks blocks = definitions.blocks();
-		final IItems items = definitions.items();
-		final IMaterials mats = definitions.materials();
+		final ApiDefinitions definitions = AppEngApi.internalApi().definitions();
+		final ApiBlocks blocks = definitions.blocks();
+		final ApiItems items = definitions.items();
+		final ApiMaterials mats = definitions.materials();
 
 		this.cellMappings = new HashMap<IItemDefinition, IItemDefinition>( 4 );
 		this.nonCellMappings = new HashMap<IItemDefinition, IItemDefinition>( 5 );
@@ -68,10 +68,10 @@ public final class DisassembleRecipe implements IRecipe
 		this.cellMappings.put( items.cell64k(), mats.cell64kPart() );
 
 		this.nonCellMappings.put( items.encodedPattern(), mats.blankPattern() );
-		this.nonCellMappings.put( blocks.craftingStorage1k(), mats.cell1kPart() );
-		this.nonCellMappings.put( blocks.craftingStorage4k(), mats.cell4kPart() );
-		this.nonCellMappings.put( blocks.craftingStorage16k(), mats.cell16kPart() );
-		this.nonCellMappings.put( blocks.craftingStorage64k(), mats.cell64kPart() );
+		this.nonCellMappings.put( (IItemDefinition) blocks.craftingStorage1k().block().maybeItem().get(), mats.cell1kPart() );
+		this.nonCellMappings.put( (IItemDefinition) blocks.craftingStorage4k().block().maybeItem().get(), mats.cell4kPart() );
+		this.nonCellMappings.put( (IItemDefinition) blocks.craftingStorage16k().block().maybeItem().get(), mats.cell16kPart() );
+		this.nonCellMappings.put( (IItemDefinition) blocks.craftingStorage64k().block().maybeItem().get(), mats.cell64kPart() );
 	}
 
 	@Override

@@ -37,6 +37,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import appeng.api.definitions.IComparableDefinition;
+import appeng.api.definitions.IItemDefinition;
 import appeng.api.definitions.ITileDefinition;
 import appeng.core.api.config.Actionable;
 import appeng.core.api.config.PowerMultiplier;
@@ -104,7 +105,7 @@ public class TileInscriber extends AENetworkPowerTile implements IGridTickable, 
 		this.settings = new ConfigManager( this );
 
 		final ITileDefinition inscriberDefinition = AppEngApi.internalApi().definitions().blocks().inscriber();
-		this.upgrades = new DefinitionUpgradeInventory( inscriberDefinition, this, this.getUpgradeSlots() );
+		this.upgrades = new DefinitionUpgradeInventory( (IItemDefinition) inscriberDefinition.block().maybeItem().get(), this, this.getUpgradeSlots() );
 	}
 
 	private int getUpgradeSlots()

@@ -23,6 +23,7 @@ import java.util.Optional;
 
 import net.minecraft.item.ItemStack;
 
+import appeng.api.definitions.IItemDefinition;
 import appeng.core.crafting.block.BlockCraftingUnit;
 import appeng.core.lib.AppEngApi;
 import appeng.core.lib.api.definitions.ApiBlocks;
@@ -43,13 +44,13 @@ public class TileCraftingStorageTile extends TileCraftingTile
 		switch( storage )
 		{
 			case 4:
-				is = blocks.craftingStorage4k().maybeStack( 1 );
+				is = ( (IItemDefinition) blocks.craftingStorage4k().block().maybeItem().get() ).maybeStack( 1 );
 				break;
 			case 16:
-				is = blocks.craftingStorage16k().maybeStack( 1 );
+				is = ( (IItemDefinition) blocks.craftingStorage16k().block().maybeItem().get() ).maybeStack( 1 );
 				break;
 			case 64:
-				is = blocks.craftingStorage64k().maybeStack( 1 );
+				is = ( (IItemDefinition) blocks.craftingStorage64k().block().maybeItem().get() ).maybeStack( 1 );
 				break;
 			default:
 				is = Optional.empty();

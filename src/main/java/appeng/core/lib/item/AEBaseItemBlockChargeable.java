@@ -67,8 +67,8 @@ public class AEBaseItemBlockChargeable extends AEBaseItemBlock implements IAEIte
 	private double getMaxEnergyCapacity()
 	{
 		final Block blockID = Block.getBlockFromItem( this );
-		final IBlockDefinition energyCell = AppEngApi.INSTANCE.definitions().blocks().energyCell();
-		return energyCell.maybeBlock().map( block -> {
+		final IBlockDefinition energyCell = AppEngApi.INSTANCE.definitions().blocks().energyCell().block();
+		return (double) energyCell.maybe().map( block -> {
 			if( blockID == block )
 			{
 				return 200000;

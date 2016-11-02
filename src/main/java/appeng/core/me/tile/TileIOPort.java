@@ -116,7 +116,7 @@ public class TileIOPort extends AENetworkInvTile implements IUpgradeableHost, IC
 		this.mySrc = new MachineSource( this );
 		this.lastRedstoneState = YesNo.UNDECIDED;
 
-		final Block ioPortBlock = AppEngApi.internalApi().definitions().blocks().iOPort().maybeBlock().get();
+		final Block ioPortBlock = (Block) AppEngApi.internalApi().definitions().blocks().iOPort().block().maybe().get();
 		this.upgrades = new BlockUpgradeInventory( ioPortBlock, this, 3 );
 	}
 

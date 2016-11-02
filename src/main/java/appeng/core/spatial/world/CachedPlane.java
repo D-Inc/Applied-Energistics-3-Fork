@@ -38,10 +38,10 @@ import appeng.core.api.util.AEPartLocation;
 import appeng.core.api.util.WorldCoord;
 import appeng.core.lib.AELog;
 import appeng.core.lib.AppEngApi;
+import appeng.core.lib.features.registries.MovableTileRegistry;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.worlddata.WorldData;
 import appeng.core.spatial.api.movable.IMovableHandler;
-import appeng.core.spatial.api.movable.MovableTileRegistry;
 
 
 public class CachedPlane
@@ -403,7 +403,7 @@ public class CachedPlane
 
 		private void setBlockIDWithMetadata( final int y, final Object[] blk )
 		{
-			CachedPlane.this.matrixFrame.maybeBlock().ifPresent( matrixFrameBlock -> {
+			CachedPlane.this.matrixFrame.maybe().ifPresent( matrixFrameBlock -> {
 				if( blk[0] == matrixFrameBlock )
 				{
 					blk[0] = Platform.AIR_BLOCK;

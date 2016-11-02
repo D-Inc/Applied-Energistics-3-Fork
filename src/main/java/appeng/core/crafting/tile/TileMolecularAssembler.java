@@ -36,6 +36,7 @@ import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 
+import appeng.api.definitions.IItemDefinition;
 import appeng.api.definitions.ITileDefinition;
 import appeng.core.api.config.Actionable;
 import appeng.core.api.config.PowerMultiplier;
@@ -102,7 +103,7 @@ public class TileMolecularAssembler extends AENetworkInvTile implements IUpgrade
 		this.settings.registerSetting( Settings.REDSTONE_CONTROLLED, RedstoneMode.IGNORE );
 		this.inv.setMaxStackSize( 1 );
 		this.getProxy().setIdlePowerUsage( 0.0 );
-		this.upgrades = new DefinitionUpgradeInventory( assembler, this, this.getUpgradeSlots() );
+		this.upgrades = new DefinitionUpgradeInventory( (IItemDefinition) assembler.block().maybeItem().get(), this, this.getUpgradeSlots() );
 		this.craftingInv = new InventoryCrafting( new ContainerNull(), 3, 3 );
 	}
 

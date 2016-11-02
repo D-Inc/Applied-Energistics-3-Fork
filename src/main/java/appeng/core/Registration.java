@@ -27,6 +27,7 @@ import javax.annotation.Nonnull;
 
 import com.google.common.base.Preconditions;
 
+import net.minecraft.item.ItemStack;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.MinecraftForge;
@@ -38,6 +39,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.RecipeSorter;
 import net.minecraftforge.oredict.RecipeSorter.Category;
 
+import appeng.api.definitions.IItemDefinition;
 import appeng.core.api.config.Upgrades;
 import appeng.core.api.features.IWirelessTermHandler;
 import appeng.core.api.features.IWorldGen.WorldGenType;
@@ -291,7 +293,7 @@ public final class Registration
 		api.definitions().materials().matterBall().maybeStack( 1 ).ifPresent( ammoStack -> {
 			final double weight = 32;
 
-			registries.matterCannon().registerAmmo( ammoStack, weight );
+			registries.matterCannon().registerAmmo( (ItemStack) ammoStack, weight );
 		} );
 
 		this.recipeHandler.injectRecipes();
@@ -331,17 +333,17 @@ public final class Registration
 		PlayerMessages.values();
 		GuiText.values();
 
-		blocks.multiPart().maybeBlock().ifPresent( block -> ( (BlockCableBus) block ).setupTile() );
+		blocks.multiPart().block().maybe().ifPresent( block -> ( (BlockCableBus) block ).setupTile() );
 
 		definitions.getRegistry().getBootstrapComponents().forEach( b -> b.postInitialize( event.getSide() ) );
 
 		// Interface
 		Upgrades.CRAFTING.registerItem( parts.iface(), 1 );
-		Upgrades.CRAFTING.registerItem( blocks.iface(), 1 );
+		Upgrades.CRAFTING.registerItem( (IItemDefinition) blocks.iface().block().maybeItem().get(), 1 );
 
 		// IO Port!
-		Upgrades.SPEED.registerItem( blocks.iOPort(), 3 );
-		Upgrades.REDSTONE.registerItem( blocks.iOPort(), 1 );
+		Upgrades.SPEED.registerItem( (IItemDefinition) blocks.iOPort().block().maybeItem().get(), 3 );
+		Upgrades.REDSTONE.registerItem( (IItemDefinition) blocks.iOPort().block().maybeItem().get(), 1 );
 
 		// Level Emitter!
 		Upgrades.FUZZY.registerItem( parts.levelEmitter(), 1 );
@@ -395,13 +397,13 @@ public final class Registration
 		Upgrades.SPEED.registerItem( items.massCannon(), 4 );
 
 		// Molecular Assembler
-		Upgrades.SPEED.registerItem( blocks.molecularAssembler(), 5 );
+		Upgrades.SPEED.registerItem( (IItemDefinition) blocks.molecularAssembler().block().maybeItem().get(), 5 );
 
 		// Inscriber
-		Upgrades.SPEED.registerItem( blocks.inscriber(), 3 );
+		Upgrades.SPEED.registerItem( (IItemDefinition) blocks.inscriber().block().maybeItem().get(), 3 );
 
-		items.wirelessTerminal().maybeItem().ifPresent( terminal -> {
-			registries.wireless().registerWirelessHandler( (IWirelessTermHandler ) terminal );
+		items.wirelessTerminal().maybe().ifPresent( terminal -> {
+			registries.wireless().registerWirelessHandler( (IWirelessTermHandler) terminal );
 		} );
 
 		// add villager trading to black smiths for a few basic materials

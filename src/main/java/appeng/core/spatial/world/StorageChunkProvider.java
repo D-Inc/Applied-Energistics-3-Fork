@@ -42,10 +42,10 @@ public class StorageChunkProvider extends ChunkProviderOverworld
 	{
 		BLOCKS = new Block[255 * SQUARE_CHUNK_SIZE];
 
-		AppEngApi.internalApi().definitions().blocks().matrixFrame().maybeBlock().ifPresent( matrixFrameBlock -> {
+		AppEngApi.internalApi().definitions().blocks().matrixFrame().maybe().ifPresent( matrixFrameBlock -> {
 			for( int x = 0; x < BLOCKS.length; x++ )
 			{
-				BLOCKS[x] = matrixFrameBlock;
+				BLOCKS[x] = (Block) matrixFrameBlock;
 			}
 		} );
 	}

@@ -43,6 +43,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.LoaderState;
 
+import appeng.api.definitions.IDefinition;
+import appeng.api.definitions.IItemDefinition;
 import appeng.core.AppEng;
 import appeng.core.api.exceptions.MissingIngredientError;
 import appeng.core.api.exceptions.RecipeError;
@@ -131,10 +133,10 @@ public class RecipeHandler implements IRecipeHandler
 		final ApiBlocks blocks = definitions.blocks();
 
 		final Optional<Item> maybeCrystalSeedItem = items.crystalSeed().maybeItem();
-		final Optional<Item> maybeSkyStoneItem = blocks.skyStoneBlock().maybeItem();
-		final Optional<Item> maybeCStorageItem = blocks.craftingStorage1k().maybeItem();
-		final Optional<Item> maybeCUnitItem = blocks.craftingUnit().maybeItem();
-		final Optional<Item> maybeSkyChestItem = blocks.skyStoneChest().maybeItem();
+		final Optional<Item> maybeSkyStoneItem = ( (IItemDefinition) blocks.skyStoneBlock().maybeItem().get() ).maybe();
+		final Optional<Item> maybeCStorageItem = ( (IItemDefinition) blocks.craftingStorage1k().block().maybeItem().get() ).maybe();
+		final Optional<Item> maybeCUnitItem = ( (IItemDefinition) blocks.craftingUnit().block().maybeItem().get() ).maybe();
+		final Optional<Item> maybeSkyChestItem = ( (IDefinition) blocks.skyStoneChest().maybeItem().get() ).maybe();
 
 		if( maybeCrystalSeedItem.isPresent() && is.getItem() == maybeCrystalSeedItem.get() )
 		{

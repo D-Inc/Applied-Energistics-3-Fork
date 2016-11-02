@@ -19,8 +19,10 @@
 package appeng.core.lib.api.definitions;
 
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -515,7 +517,7 @@ public final class ApiBlocks// implements IBlocks
 	}
 
 	/* @Override */
-	public IBlockDefinition tinyTNT()
+	public IBlockDefinition<? extends Block> tinyTNT()
 	{
 		return this.tinyTNT;
 	}
@@ -689,7 +691,7 @@ public final class ApiBlocks// implements IBlocks
 	}
 
 	/* @Override */
-	public ITileDefinition paint()
+	public ITileDefinition<? extends TileEntity, Class<? extends TileEntity>> paint()
 	{
 		return this.paint;
 	}

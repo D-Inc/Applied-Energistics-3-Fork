@@ -24,21 +24,19 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.stats.Achievement;
 
 import appeng.api.definitions.IItemDefinition;
-import appeng.core.api.util.AEColor;
-import appeng.core.api.util.AEColoredItemDefinition;
 import appeng.core.lib.AppEngApi;
 
 
 public enum Achievements
 {
 	// done
-	Compass( -2, -4, AppEngApi.internalApi().definitions().blocks().skyCompass(), AchievementType.Craft ),
+	Compass( -2, -4, (IItemDefinition) AppEngApi.internalApi().definitions().blocks().skyCompass().maybeItem().get(), AchievementType.Craft ),
 
 	// done
 	Presses( -2, -2, AppEngApi.internalApi().definitions().materials().logicProcessorPress(), AchievementType.Custom ),
 
 	// done
-	SpatialIO( -4, -4, AppEngApi.internalApi().definitions().blocks().spatialIOPort(), AchievementType.Craft ),
+	SpatialIO( -4, -4, (IItemDefinition) AppEngApi.internalApi().definitions().blocks().spatialIOPort().block().maybeItem().get(), AchievementType.Craft ),
 
 	// done
 	SpatialIOExplorer( -4, -2, AppEngApi.internalApi().definitions().items().spatialCell128(), AchievementType.Custom ),
@@ -47,7 +45,7 @@ public enum Achievements
 	StorageCell( -6, -4, AppEngApi.internalApi().definitions().items().cell64k(), AchievementType.CraftItem ),
 
 	// done
-	IOPort( -6, -2, AppEngApi.internalApi().definitions().blocks().iOPort(), AchievementType.Craft ),
+	IOPort( -6, -2, (IItemDefinition) AppEngApi.internalApi().definitions().blocks().iOPort().block().maybeItem().get(), AchievementType.Craft ),
 
 	// done
 	CraftingTerminal( -8, -4, AppEngApi.internalApi().definitions().parts().craftingTerminal(), AchievementType.Craft ),
@@ -62,10 +60,10 @@ public enum Achievements
 	Fluix( 0, -2, AppEngApi.internalApi().definitions().materials().fluixCrystal(), AchievementType.Pickup ),
 
 	// done
-	Charger( 0, 0, AppEngApi.internalApi().definitions().blocks().charger(), AchievementType.Craft ),
+	Charger( 0, 0, (IItemDefinition) AppEngApi.internalApi().definitions().blocks().charger().block().maybeItem().get(), AchievementType.Craft ),
 
 	// done
-	CrystalGrowthAccelerator( -2, 0, AppEngApi.internalApi().definitions().blocks().quartzGrowthAccelerator(), AchievementType.Craft ),
+	CrystalGrowthAccelerator( -2, 0, (IItemDefinition) AppEngApi.internalApi().definitions().blocks().quartzGrowthAccelerator().block().maybeItem().get(), AchievementType.Craft ),
 
 	// done
 	GlassCable( 2, 0, AppEngApi.internalApi().definitions().parts().cableGlass(), AchievementType.Craft ),
@@ -74,7 +72,7 @@ public enum Achievements
 	Networking1( 4, -6, AppEngApi.internalApi().definitions().parts().cableCovered(), AchievementType.Custom ),
 
 	// done
-	Controller( 4, -4, AppEngApi.internalApi().definitions().blocks().controller(), AchievementType.Craft ),
+	Controller( 4, -4, AppEngApi.internalApi().definitions().blocks().controller().block().maybeItem().get(), AchievementType.Craft ),
 
 	// done
 	Networking2( 4, 0, AppEngApi.internalApi().definitions().parts().cableSmart(), AchievementType.Custom ),
@@ -86,10 +84,10 @@ public enum Achievements
 	P2P( 2, -2, AppEngApi.internalApi().definitions().parts().p2PTunnelME(), AchievementType.Craft ),
 
 	// done
-	Recursive( 6, -2, AppEngApi.internalApi().definitions().blocks().iface(), AchievementType.Craft ),
+	Recursive( 6, -2, (IItemDefinition) AppEngApi.internalApi().definitions().blocks().iface(), AchievementType.Craft ),
 
 	// done
-	CraftingCPU( 6, 0, AppEngApi.internalApi().definitions().blocks().craftingStorage64k(), AchievementType.CraftItem ),
+	CraftingCPU( 6, 0, (IItemDefinition) AppEngApi.internalApi().definitions().blocks().craftingStorage64k(), AchievementType.CraftItem ),
 
 	// done
 	Facade( 6, 2, AppEngApi.internalApi().definitions().items().facade(), AchievementType.CraftItem ),
@@ -104,7 +102,7 @@ public enum Achievements
 	StorageBus( 10, 0, AppEngApi.internalApi().definitions().parts().storageBus(), AchievementType.Craft ),
 
 	// done
-	QNB( 10, 2, AppEngApi.internalApi().definitions().blocks().quantumLink(), AchievementType.Craft );
+	QNB( 10, 2, (IItemDefinition) AppEngApi.internalApi().definitions().blocks().quantumLink().block().maybeItem().get(), AchievementType.Craft );
 
 	private final ItemStack stack;
 	private final AchievementType type;
@@ -114,17 +112,9 @@ public enum Achievements
 	private Achievement parent;
 	private Achievement stat;
 
-	Achievements( final int x, final int y, final AEColoredItemDefinition which, final AchievementType type )
-	{
-		this.stack = ( which != null ) ? which.stack( AEColor.Transparent, 1 ) : null;
-		this.type = type;
-		this.x = x;
-		this.y = y;
-	}
-
 	Achievements( final int x, final int y, final IItemDefinition which, final AchievementType type )
 	{
-		this.stack = which.maybeStack( 1 ).orElse( null );
+		this.stack = (ItemStack) which.maybeStack( 1 ).orElse( null );
 		this.type = type;
 		this.x = x;
 		this.y = y;

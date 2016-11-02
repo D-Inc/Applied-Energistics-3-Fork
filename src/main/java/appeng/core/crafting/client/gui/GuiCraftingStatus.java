@@ -70,28 +70,28 @@ public class GuiCraftingStatus extends GuiCraftingCPU
 
 		if( target instanceof WirelessTerminalGuiObject )
 		{
-			myIcon = definitions.items().wirelessTerminal().maybeStack( 1 ).orElse( null );
+			myIcon = (ItemStack) definitions.items().wirelessTerminal().maybeStack( 1 ).orElse( null );
 
 			this.originalGui = GuiBridge.GUI_WIRELESS_TERM;
 		}
 
 		if( target instanceof PartTerminal )
 		{
-			myIcon = parts.terminal().maybeStack( 1 ).orElse( null );
+			myIcon = (ItemStack) parts.terminal().maybeStack( 1 ).orElse( null );
 
 			this.originalGui = GuiBridge.GUI_ME;
 		}
 
 		if( target instanceof PartCraftingTerminal )
 		{
-			myIcon = parts.craftingTerminal().maybeStack( 1 ).orElse( null );
+			myIcon = (ItemStack) parts.craftingTerminal().maybeStack( 1 ).orElse( null );
 
 			this.originalGui = GuiBridge.GUI_CRAFTING_TERMINAL;
 		}
 
 		if( target instanceof PartPatternTerminal )
 		{
-			myIcon = parts.patternTerminal().maybeStack( 1 ).orElse( null );
+			myIcon = (ItemStack) parts.patternTerminal().maybeStack( 1 ).orElse( null );
 
 			this.originalGui = GuiBridge.GUI_PATTERN_TERMINAL;
 		}

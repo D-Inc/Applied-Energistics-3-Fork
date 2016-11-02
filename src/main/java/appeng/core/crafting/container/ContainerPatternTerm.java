@@ -39,8 +39,8 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.EnumFacing;
 
-import appeng.api.definitions.IDefinitions;
 import appeng.core.api.config.Actionable;
+import appeng.core.lib.ApiDefinitions;
 import appeng.core.lib.AppEngApi;
 import appeng.core.lib.container.ContainerNull;
 import appeng.core.lib.container.guisync.GuiSync;
@@ -313,7 +313,7 @@ public class ContainerPatternTerm extends ContainerMEMonitorable implements IAEA
 			return false;
 		}
 
-		final IDefinitions definitions = AppEngApi.internalApi().definitions();
+		final ApiDefinitions definitions = AppEngApi.internalApi().definitions();
 
 		boolean isPattern = definitions.items().encodedPattern().isSameAs( output );
 		isPattern |= definitions.materials().blankPattern().isSameAs( output );

@@ -30,10 +30,10 @@ import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraftforge.fml.common.IWorldGenerator;
 
 import appeng.api.definitions.IBlockDefinition;
-import appeng.api.definitions.IBlocks;
 import appeng.core.api.features.IWorldGen.WorldGenType;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.AppEngApi;
+import appeng.core.lib.api.definitions.ApiBlocks;
 import appeng.core.lib.features.registries.WorldGenRegistry;
 
 
@@ -44,12 +44,12 @@ public final class QuartzWorldGen implements IWorldGenerator
 
 	public QuartzWorldGen()
 	{
-		final IBlocks blocks = AppEngApi.internalApi().definitions().blocks();
-		final IBlockDefinition oreDefinition = blocks.quartzOre();
-		final IBlockDefinition chargedDefinition = blocks.quartzOreCharged();
+		final ApiBlocks blocks = AppEngApi.internalApi().definitions().blocks();
+		final IBlockDefinition<Block> oreDefinition = blocks.quartzOre();
+		final IBlockDefinition<Block> chargedDefinition = blocks.quartzOreCharged();
 
-		final Block ore = oreDefinition.maybeBlock().orElse( null );
-		final Block charged = chargedDefinition.maybeBlock().orElse( null );
+		final Block ore = oreDefinition.maybe().orElse( null );
+		final Block charged = chargedDefinition.maybe().orElse( null );
 
 		this.oreNormal = new WorldGenMinable( ore.getDefaultState(), AEConfig.instance.quartzOresPerCluster );
 		this.oreCharged = new WorldGenMinable( charged.getDefaultState(), AEConfig.instance.quartzOresPerCluster );
