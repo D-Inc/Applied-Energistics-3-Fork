@@ -70,7 +70,7 @@ public class BlockDefinitionBuilder<B extends Block> extends DefinitionBuilder<B
 	{
 		if( block == null )
 		{
-			return new BlockDefinition<B>( registryName, block );
+			return new BlockDefinition<B>( registryName, null );
 		}
 
 		block.setCreativeTab( creativeTab );
@@ -89,7 +89,7 @@ public class BlockDefinitionBuilder<B extends Block> extends DefinitionBuilder<B
 			}
 		}
 
-		BlockDefinition definition = new BlockDefinition<Block>( registryName, block );
+		BlockDefinition definition = new BlockDefinition<B>( registryName, block );
 		if( !block.getBlockState().getProperties().isEmpty() )
 		{
 			definition.setSubDefinitionsProvider( new BlockSubDefinitionsProvider( definition ) );
@@ -97,7 +97,7 @@ public class BlockDefinitionBuilder<B extends Block> extends DefinitionBuilder<B
 
 		if( createDefaultItemBlock )
 		{
-			this.factory.addDefaultItemBlock( registryName, this.factory.item( registryName, new ItemBlock( block ) ).features( this.features.toArray( new AEFeature[0] ) ).build( def -> definition.setItem( def ) ) );
+			this.factory.addDefaultItemBlock( registryName, definition );
 		}
 		return definition;
 	}

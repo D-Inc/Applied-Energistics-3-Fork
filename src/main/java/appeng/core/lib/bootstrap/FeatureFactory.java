@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import appeng.core.lib.features.BlockDefinition;
+import com.google.common.collect.Maps;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -35,7 +37,7 @@ public class FeatureFactory
 	@SideOnly( Side.CLIENT )
 	ModelOverrideComponent modelOverrideComponent;
 
-	private final Map<ResourceLocation, ItemDefinitionBuilder> defaultItemBlocks = new HashMap();
+	private final Map<ResourceLocation, BlockDefinition<? extends Block>> defaultItemBlocks = Maps.newHashMap();
 
 	public FeatureFactory()
 	{
@@ -74,14 +76,14 @@ public class FeatureFactory
 		return new ItemDefinitionBuilder<I>( this, id, item ).features( defaultFeatures );
 	}
 
-	void addDefaultItemBlock( ResourceLocation id, ItemDefinitionBuilder def )
+	<B extends Block> void addDefaultItemBlock( ResourceLocation id, BlockDefinition<B> def)
 	{
 		defaultItemBlocks.put( id, def );
 	}
 
-	public ItemDefinitionBuilder<ItemBlock> defaultItemBlock( ResourceLocation id )
+	public void buildDefaultItemBlocks()
 	{
-		return defaultItemBlocks.get( id );
+		this.defaultItemBlocks.forEach( ( id, def ) -> def.maybe().ifPresent( (block) -> def.setItem( this.item( id, new ItemBlock( block ) ).features().build() ) ) );
 	}
 
 	public FeatureFactory features( AEFeature... features )
