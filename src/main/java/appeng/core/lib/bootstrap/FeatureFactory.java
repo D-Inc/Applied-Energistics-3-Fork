@@ -7,8 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import appeng.api.definitions.*;
-import appeng.core.lib.definitions.Definitions;
+import appeng.api.definitions.IDefinition;
+import appeng.api.definitions.IItemDefinition;
 import appeng.core.lib.features.BlockDefinition;
 import appeng.core.lib.features.ItemDefinition;
 import com.google.common.collect.Maps;
@@ -20,6 +20,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import appeng.api.definitions.IDefinitionsProvider;
 import appeng.core.AppEng;
 import appeng.core.lib.bootstrap.components.InitComponent;
 import appeng.core.lib.bootstrap.components.ModelOverrideComponent;
@@ -65,7 +66,7 @@ public class FeatureFactory
 
 	public <T extends TileEntity> TileDefinitionBuilder<T> tile( ResourceLocation id, Class<T> tile )
 	{
-		return new TileDefinitionBuilder<T>( this, id, tile, ( ( IDefinitions<IBlockDefinition<?>>  ) ( (IDefinitionsProvider) AppEng.instance().getCurrent() ).definitions( Block.class ) ) ).features( defaultFeatures );
+		return new TileDefinitionBuilder<T>( this, id, tile, ( (IDefinitionsProvider) AppEng.instance().getCurrent() ).definitions( Block.class ) ).features( defaultFeatures );
 	}
 
 	public <B extends Block> BlockDefinitionBuilder<B> block( ResourceLocation id, B block )
@@ -83,9 +84,9 @@ public class FeatureFactory
 		defaultItemBlocks.put( id, def );
 	}
 
-	public Map<ResourceLocation, IItemDefinition<? extends Item>> buildDefaultItemBlocks()
+	public Map<ResourceLocation, IDefinition<? extends Item>> buildDefaultItemBlocks()
 	{
-		Map<ResourceLocation, IItemDefinition<? extends Item>> result = Maps.newHashMap();
+		Map<ResourceLocation, IDefinition<? extends Item>> result = Maps.newHashMap();
 		this.defaultItemBlocks.forEach( ( id, def ) -> def.maybe().ifPresent( (block) -> 
 		{
 			IItemDefinition itemDef = this.item( id, new ItemBlock( block ) ).features().build();

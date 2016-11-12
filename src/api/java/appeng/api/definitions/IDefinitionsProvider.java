@@ -4,6 +4,6 @@ package appeng.api.definitions;
 public interface IDefinitionsProvider
 {
 
-	<T> IDefinitions definitions( Class<T> clas );
+	<T, D extends IDefinitions<T>> D definitions( Class<T> clas );
 
 }

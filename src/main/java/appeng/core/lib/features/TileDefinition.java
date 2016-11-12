@@ -31,12 +31,12 @@ import appeng.api.definitions.IBlockDefinition;
 import appeng.api.definitions.ITileDefinition;
 
 
-public final class TileDefinition<TE extends TileEntity> extends Definition<Class<TE>> implements ITileDefinition<TE>
+public final class TileDefinition<TE extends TileEntity, T extends Class<TE>> extends Definition<T> implements ITileDefinition<TE, T>
 {
 
 	private final IBlockDefinition block;
 
-	public TileDefinition( ResourceLocation identifier, Class<TE> tile, IBlockDefinition block )
+	public TileDefinition( ResourceLocation identifier, T tile, IBlockDefinition block )
 	{
 		super( identifier, tile );
 		this.block = block;

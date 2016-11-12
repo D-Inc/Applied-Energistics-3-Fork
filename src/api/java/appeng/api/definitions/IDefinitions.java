@@ -5,12 +5,12 @@ package appeng.api.definitions;
 import net.minecraft.util.ResourceLocation;
 
 
-public interface IDefinitions<T extends IDefinition<?>>
+public interface IDefinitions<T>
 {
 
-	T get( ResourceLocation identifier );
+	IDefinition<T> get( ResourceLocation identifier );
 
-	default T get( String identifier )
+	default IDefinition<? extends T> get( String identifier )
 	{
 		return get( new ResourceLocation( "appliedenergistics2", identifier ) );
 	}

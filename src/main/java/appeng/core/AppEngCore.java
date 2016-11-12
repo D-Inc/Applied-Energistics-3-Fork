@@ -6,10 +6,8 @@ import java.io.File;
 
 import javax.annotation.Nonnull;
 
-import appeng.api.definitions.IDefinition;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -82,19 +80,19 @@ public class AppEngCore implements ICore
 	}
 
 	@Override
-	public <T> IDefinitions definitions( Class<T> clas )
+	public <T, D extends IDefinitions<T>> D definitions( Class<T> clas )
 	{
 		if( clas == Item.class )
 		{
-			return itemDefinitions;
+			return (D) itemDefinitions;
 		}
 		if( clas == Block.class )
 		{
-			return blockDefinitions;
+			return (D) blockDefinitions;
 		}
 		if( clas == TileEntity.class )
 		{
-			return tileDefinitions;
+			return (D) tileDefinitions;
 		}
 		return null;
 	}
@@ -112,14 +110,6 @@ public class AppEngCore implements ICore
 		this.blockDefinitions = new CoreBlockDefinitions( registry );
 		this.itemDefinitions = new CoreItemDefinitions( registry );
 		this.tileDefinitions = new CoreTileDefinitions( registry );
-		///* test code - should not generate an exception
-		Item i = itemDefinitions.crystalSeed().maybe().get();
-		ItemBlock ib = itemDefinitions.blockCharger().maybe().get();
-		ItemBlock ib2 = blockDefinitions.blockCharger().maybeItem().get().maybe().get();
-		Block b = blockDefinitions.blockCharger().maybe().get();
-		Class c = tileDefinitions.tileCharger().maybe().get();
-		//*/
-
 
 		this.recipeDirectory = new File( AppEng.instance().getConfigDirectory(), "recipes" );
 

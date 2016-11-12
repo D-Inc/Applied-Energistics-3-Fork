@@ -18,7 +18,7 @@ import appeng.core.lib.definitions.Definitions;
 import appeng.core.lib.features.AEFeature;
 
 
-public class CoreBlockDefinitions extends Definitions<IBlockDefinition<Block>> implements ICoreBlockDefinitions
+public class CoreBlockDefinitions extends Definitions<Block> implements ICoreBlockDefinitions
 {
 
 	private final IBlockDefinition crank;

@@ -20,7 +20,7 @@ import appeng.core.lib.definitions.Definitions;
 import java.util.Map;
 
 
-public class CoreItemDefinitions extends Definitions<IItemDefinition<? extends Item>> implements ICoreItemDefinitions
+public class CoreItemDefinitions extends Definitions<Item> implements ICoreItemDefinitions
 {
 
 	private final IItemDefinition crystalSeed;
