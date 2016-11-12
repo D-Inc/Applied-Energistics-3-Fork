@@ -3,6 +3,7 @@ package appeng.core.lib.definitions;
 
 
 import java.lang.reflect.Field;
+import java.util.Map;
 
 import com.google.common.collect.ImmutableMap;
 
@@ -22,6 +23,11 @@ public class Definitions<T> implements IDefinitions<T>
 	 */
 	protected final void init()
 	{
+		init( null );
+	}
+
+	protected final void init( Map<ResourceLocation, IDefinition<? extends T>> extraEntries )
+	{
 		assert map == null;
 		ImmutableMap.Builder builder = ImmutableMap.builder();
 		for( Field field : this.getClass().getDeclaredFields() )
@@ -39,6 +45,10 @@ public class Definitions<T> implements IDefinitions<T>
 					// ;(
 				}
 			}
+		}
+		if( extraEntries != null )
+		{
+			builder.putAll( extraEntries );
 		}
 		map = builder.build();
 	}

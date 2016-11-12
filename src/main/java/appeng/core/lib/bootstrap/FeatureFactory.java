@@ -7,7 +7,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import appeng.api.definitions.IDefinition;
+import appeng.api.definitions.IItemDefinition;
 import appeng.core.lib.features.BlockDefinition;
+import appeng.core.lib.features.ItemDefinition;
 import com.google.common.collect.Maps;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -81,9 +84,17 @@ public class FeatureFactory
 		defaultItemBlocks.put( id, def );
 	}
 
-	public void buildDefaultItemBlocks()
+	public Map<ResourceLocation, IDefinition<? extends Item>> buildDefaultItemBlocks()
 	{
-		this.defaultItemBlocks.forEach( ( id, def ) -> def.maybe().ifPresent( (block) -> def.setItem( this.item( id, new ItemBlock( block ) ).features().build() ) ) );
+		Map<ResourceLocation, IDefinition<? extends Item>> result = Maps.newHashMap();
+		this.defaultItemBlocks.forEach( ( id, def ) -> def.maybe().ifPresent( (block) -> 
+		{
+			IItemDefinition itemDef = this.item( id, new ItemBlock( block ) ).features().build();
+			def.setItem( itemDef );
+			result.put( id, itemDef );
+		} ) );
+		this.defaultItemBlocks.clear();
+		return result;
 	}
 
 	public FeatureFactory features( AEFeature... features )
