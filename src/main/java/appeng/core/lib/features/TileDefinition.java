@@ -30,22 +30,24 @@ import net.minecraft.world.IBlockAccess;
 import appeng.api.definitions.IBlockDefinition;
 import appeng.api.definitions.ITileDefinition;
 
+import java.util.Optional;
 
-public final class TileDefinition<TE extends TileEntity, T extends Class<TE>> extends Definition<T> implements ITileDefinition<TE, T>
+
+public final class TileDefinition<TE extends TileEntity> extends Definition<Class<TE>> implements ITileDefinition<TE>
 {
 
 	private final IBlockDefinition block;
 
-	public TileDefinition( ResourceLocation identifier, T tile, IBlockDefinition block )
+	public TileDefinition( ResourceLocation identifier, Class<TE> tile, IBlockDefinition block )
 	{
 		super( identifier, tile );
 		this.block = block;
 	}
 
 	@Override
-	public <B extends Block> IBlockDefinition<B> block()
+	public <B extends Block> Optional<IBlockDefinition<B>> maybeBlock()
 	{
-		return block;
+		return Optional.of( block );
 	}
 
 	@Override

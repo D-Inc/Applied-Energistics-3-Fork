@@ -18,7 +18,7 @@ public interface IBlockDefinition<B extends Block> extends IDefinition<B>
 	/**
 	 * @return the {@link ItemBlock} implementation if applicable
 	 */
-	<I extends ItemBlock> Optional<IItemDefinition<I>> maybeItem();
+	Optional<IItemDefinition<ItemBlock>> maybeItem();
 
 	/**
 	 * Compare block in world with this.

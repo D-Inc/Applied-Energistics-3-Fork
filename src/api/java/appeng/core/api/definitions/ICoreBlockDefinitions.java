@@ -2,36 +2,37 @@
 package appeng.core.api.definitions;
 
 
+import appeng.api.definitions.IBlockDefinition;
 import net.minecraft.block.Block;
 
 import appeng.api.definitions.IDefinition;
 import appeng.api.definitions.IDefinitions;
 
 
-public interface ICoreBlockDefinitions extends IDefinitions<Block>
+public interface ICoreBlockDefinitions extends IDefinitions<Block, IBlockDefinition<Block> >
 {
 
-	default IDefinition<? extends Block> blockCrank()
+	default IBlockDefinition<Block> blockCrank()
 	{
 		return get( "crank" );
 	}
 
-	default IDefinition<? extends Block> blockCharger()
+	default IBlockDefinition<Block> blockCharger()
 	{
 		return get( "charger" );
 	}
 
-	default IDefinition<? extends Block> blockGrinder()
+	default IBlockDefinition<Block> blockGrinder()
 	{
 		return get( "grinder" );
 	}
 
-	default IDefinition<? extends Block> blockInscriber()
+	default IBlockDefinition<Block> blockInscriber()
 	{
 		return get( "inscriber" );
 	}
 
-	default IDefinition<? extends Block> blockVibrationChamber()
+	default IBlockDefinition<Block> blockVibrationChamber()
 	{
 		return get( "vibration_chamber" );
 	}

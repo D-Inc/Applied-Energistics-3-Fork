@@ -11,15 +11,17 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
+import java.util.Optional;
 
-public interface ITileDefinition<TE extends TileEntity, T extends Class<TE>> extends IDefinition<T>
+
+public interface ITileDefinition<T extends TileEntity> extends IDefinition< Class<T> >
 {
 
 	/**
 	 * @return block of this tile
 	 */
 	@Nonnull
-	<B extends Block> IBlockDefinition<B> block();
+	<B extends Block> Optional<IBlockDefinition<B>> maybeBlock();
 
 	/**
 	 * Compare tile in world with this.
