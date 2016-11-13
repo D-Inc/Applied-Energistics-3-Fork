@@ -4,47 +4,46 @@ package appeng.core.api.definitions;
 
 import net.minecraft.item.Item;
 
-import appeng.api.definitions.IDefinition;
 import appeng.api.definitions.IDefinitions;
-import net.minecraft.item.ItemBlock;
+import appeng.api.definitions.IItemDefinition;
 
 
-public interface ICoreItemDefinitions extends IDefinitions<Item>
+public interface ICoreItemDefinitions extends IDefinitions<Item, IItemDefinition<Item>>
 {
 
-	default IDefinition<? extends Item> crystalSeed()
+	default IItemDefinition<? extends Item> crystalSeed()
 	{
 		return get( "crystal_seed" );
 	}
 
-	default IDefinition<? extends Item> multiItem()
+	default IItemDefinition<? extends Item> multiItem()
 	{
 		return get( "multiItem" );
 	}
 
-	default IDefinition<ItemBlock> blockCrank()
+	default IItemDefinition<? extends Item> blockCrank()
 	{
-		return ( IDefinition<ItemBlock> ) get( "crank" );
+		return get( "crank" );
 	}
 
-	default IDefinition<ItemBlock> blockCharger()
+	default IItemDefinition<? extends Item> blockCharger()
 	{
-		return ( IDefinition<ItemBlock> ) get( "charger" );
+		return get( "charger" );
 	}
 
-	default IDefinition<ItemBlock> blockGrinder()
+	default IItemDefinition<? extends Item> blockGrinder()
 	{
-		return ( IDefinition<ItemBlock> ) get( "grinder" );
+		return get( "grinder" );
 	}
 
-	default IDefinition<ItemBlock> blockInscriber()
+	default IItemDefinition<? extends Item> blockInscriber()
 	{
-		return ( IDefinition<ItemBlock> ) get( "inscriber" );
+		return get( "inscriber" );
 	}
 
-	default IDefinition<ItemBlock> blockVibrationChamber()
+	default IItemDefinition<? extends Item> blockVibrationChamber()
 	{
-		return ( IDefinition<ItemBlock> ) get( "vibration_chamber" );
+		return get( "vibration_chamber" );
 	}
 
 }

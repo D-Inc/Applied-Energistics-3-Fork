@@ -13,10 +13,10 @@ import appeng.api.definitions.IDefinition;
 import appeng.api.definitions.IDefinitions;
 
 
-public class Definitions<T> implements IDefinitions<T>
+public class Definitions<T, D extends IDefinition<T>> implements IDefinitions<T, D>
 {
 
-	private ImmutableMap<ResourceLocation, IDefinition<T>> map;
+	private ImmutableMap<ResourceLocation, D> map;
 
 	/**
 	 * Make sure to call in the end of the constructor.
@@ -54,7 +54,7 @@ public class Definitions<T> implements IDefinitions<T>
 	}
 
 	@Override
-	public IDefinition<T> get( ResourceLocation identifier )
+	public D get( ResourceLocation identifier )
 	{
 		return map.get( identifier );
 	}

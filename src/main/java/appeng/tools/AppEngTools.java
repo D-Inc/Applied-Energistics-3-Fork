@@ -17,6 +17,7 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppedEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 
+import appeng.api.definitions.IDefinition;
 import appeng.api.definitions.IDefinitions;
 import appeng.api.module.Module;
 import appeng.api.module.Module.ModuleEventHandler;
@@ -44,7 +45,7 @@ public class AppEngTools implements ITools
 	private ToolsTileDefinitions tileDefinitions;
 
 	@Override
-	public <T, D extends IDefinitions<T>> D definitions( Class<T> clas )
+	public <T, D extends IDefinitions<T, ? extends IDefinition<T>>> D definitions( Class<T> clas )
 	{
 		if( clas == Item.class )
 		{

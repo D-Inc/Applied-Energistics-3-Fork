@@ -15,7 +15,7 @@ import appeng.decorative.item.ItemPaintBall;
 import appeng.decorative.item.ItemPaintBallRendering;
 
 
-public class DecorativeItemDefinitions extends Definitions<Item> implements IDecorativeItemDefinitions
+public class DecorativeItemDefinitions extends Definitions<Item, IItemDefinition<Item>> implements IDecorativeItemDefinitions
 {
 
 	private final IItemDefinition paintBall;

@@ -15,9 +15,9 @@ import appeng.core.lib.features.TileDefinition;
 public class TileDefinitionBuilder<T extends TileEntity> extends DefinitionBuilder<Class<T>, ITileDefinition<T, Class<T>>, TileDefinitionBuilder<T>> implements ITileBuilder<T, TileDefinitionBuilder<T>>
 {
 
-	private Definitions<Block> blockDefinitions;
+	private Definitions<Block, IBlockDefinition<Block>> blockDefinitions;
 
-	public TileDefinitionBuilder( FeatureFactory factory, ResourceLocation registryName, Class<T> tile, Definitions<Block> blockDefinitions )
+	public TileDefinitionBuilder( FeatureFactory factory, ResourceLocation registryName, Class<T> tile, Definitions<Block, IBlockDefinition<Block>> blockDefinitions )
 	{
 		super( factory, registryName, tile );
 		this.blockDefinitions = blockDefinitions;

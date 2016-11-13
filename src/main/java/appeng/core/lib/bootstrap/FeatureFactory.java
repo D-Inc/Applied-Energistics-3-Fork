@@ -3,15 +3,11 @@ package appeng.core.lib.bootstrap;
 
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import appeng.api.definitions.IDefinition;
-import appeng.api.definitions.IItemDefinition;
-import appeng.core.lib.features.BlockDefinition;
-import appeng.core.lib.features.ItemDefinition;
 import com.google.common.collect.Maps;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -20,13 +16,16 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import appeng.api.definitions.IDefinition;
 import appeng.api.definitions.IDefinitionsProvider;
+import appeng.api.definitions.IItemDefinition;
 import appeng.core.AppEng;
 import appeng.core.lib.bootstrap.components.InitComponent;
 import appeng.core.lib.bootstrap.components.ModelOverrideComponent;
 import appeng.core.lib.bootstrap.components.PostInitComponent;
 import appeng.core.lib.bootstrap.components.PreInitComponent;
 import appeng.core.lib.features.AEFeature;
+import appeng.core.lib.features.BlockDefinition;
 import appeng.core.lib.util.Platform;
 
 

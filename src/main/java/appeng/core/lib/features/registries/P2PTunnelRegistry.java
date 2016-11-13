@@ -32,7 +32,6 @@ import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 
-import appeng.api.definitions.IDefinition;
 import appeng.api.definitions.IItemDefinition;
 import appeng.core.api.config.TunnelType;
 import appeng.core.api.util.AEColor;

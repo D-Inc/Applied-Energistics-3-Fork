@@ -4,12 +4,13 @@ package appeng.miscellaneous.definitions;
 
 import net.minecraft.block.Block;
 
+import appeng.api.definitions.IBlockDefinition;
 import appeng.core.lib.bootstrap.FeatureFactory;
 import appeng.core.lib.definitions.Definitions;
 import appeng.miscellaneous.api.definitions.IMiscellaneousBlockDefinitions;
 
 
-public class MiscellaneousBlockDefinitions extends Definitions<Block> implements IMiscellaneousBlockDefinitions
+public class MiscellaneousBlockDefinitions extends Definitions<Block, IBlockDefinition<Block>> implements IMiscellaneousBlockDefinitions
 {
 
 	public MiscellaneousBlockDefinitions( FeatureFactory registry )

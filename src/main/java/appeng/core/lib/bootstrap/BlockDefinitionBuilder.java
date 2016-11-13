@@ -4,7 +4,6 @@ package appeng.core.lib.bootstrap;
 
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -12,7 +11,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import appeng.api.definitions.IBlockDefinition;
 import appeng.core.CreativeTab;
 import appeng.core.lib.block.AEBaseTileBlock;
-import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.features.BlockDefinition;
 import appeng.core.lib.util.Platform;
 
