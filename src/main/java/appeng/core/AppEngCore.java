@@ -138,6 +138,20 @@ public class AppEngCore implements ICore
 
 			this.startService( "AE2 VersionChecker", versionCheckerThread );
 		}
+		
+		/*
+		 * ###################################
+		 * TEST CODE
+		 * WITH ANY TYPE ARGS CHANGES TO DEFINITIONS, SHOULD COMPILE WITHOUT PROBLEMS
+		 */
+		IItemDefinition<Item> quartz = itemDefinitions.get( "quartz" );
+		Class<? extends TileEntity> tile = definitions( TileEntity.class.getClass() ).get( "grinder" ).maybe().get();
+		IDefinitions<Block, IBlockDefinition<Block>> bdefs = definitions( Block.class );
+		IBlockDefinition<Block> chargerDef = bdefs.get( "charger" );
+		chargerDef = (IBlockDefinition<Block>) definitions( Block.class ).get( "charger" );
+		/*
+		 * ###################################
+		 */
 	}
 
 	private void startService( final String serviceName, final Thread thread )
