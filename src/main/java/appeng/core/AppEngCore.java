@@ -3,17 +3,11 @@ package appeng.core;
 
 
 import java.io.File;
-import java.util.Optional;
 
 import javax.annotation.Nonnull;
 
-import appeng.api.definitions.IDefinition;
-import appeng.api.definitions.IItemDefinition;
-import appeng.core.api.definitions.ICoreItemDefinitions;
-import appeng.core.api.definitions.ICoreTileDefinitions;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -86,19 +80,19 @@ public class AppEngCore implements ICore
 	}
 
 	@Override
-	public <I, D extends IDefinitions<I, IDefinition<I>>> D definition( Class<I> clazz )
+	public <T, D extends IDefinitions<T>> D definitions( Class<T> clas )
 	{
-		if( clazz == Item.class )
+		if( clas == Item.class )
 		{
-			return (D)((IDefinitions)itemDefinitions);
+			return (D) itemDefinitions;
 		}
-		if( clazz == Block.class )
+		if( clas == Block.class )
 		{
-			return (D)((IDefinitions)blockDefinitions);
+			return (D) blockDefinitions;
 		}
-		if( clazz == TileEntity.class.getClass() )
+		if( clas == TileEntity.class )
 		{
-			return (D)((IDefinitions)tileDefinitions);
+			return (D) tileDefinitions;
 		}
 		return null;
 	}
@@ -116,8 +110,6 @@ public class AppEngCore implements ICore
 		this.blockDefinitions = new CoreBlockDefinitions( registry );
 		this.itemDefinitions = new CoreItemDefinitions( registry );
 		this.tileDefinitions = new CoreTileDefinitions( registry );
-
-		
 
 		this.recipeDirectory = new File( AppEng.instance().getConfigDirectory(), "recipes" );
 

@@ -13,10 +13,10 @@ import appeng.api.definitions.IDefinition;
 import appeng.api.definitions.IDefinitions;
 
 
-public class Definitions<T, D extends IDefinition<T>> implements IDefinitions<T, D>
+public class Definitions<T> implements IDefinitions<T>
 {
 
-	private ImmutableMap<ResourceLocation, D> map;
+	private ImmutableMap<ResourceLocation, IDefinition<T>> map;
 
 	/**
 	 * Make sure to call in the end of the constructor.
@@ -26,7 +26,7 @@ public class Definitions<T, D extends IDefinition<T>> implements IDefinitions<T,
 		init( null );
 	}
 
-	protected final void init( Map<ResourceLocation, D> extraEntries )
+	protected final void init( Map<ResourceLocation, IDefinition<? extends T>> extraEntries )
 	{
 		assert map == null;
 		ImmutableMap.Builder builder = ImmutableMap.builder();
@@ -37,7 +37,7 @@ public class Definitions<T, D extends IDefinition<T>> implements IDefinitions<T,
 				try
 				{
 					field.setAccessible( true );
-					D def = (D) field.get( this );
+					IDefinition<T> def = (IDefinition<T>) field.get( this );
 					builder.put( def.identifier(), def );
 				}
 				catch( ReflectiveOperationException e )
@@ -54,7 +54,7 @@ public class Definitions<T, D extends IDefinition<T>> implements IDefinitions<T,
 	}
 
 	@Override
-	public D get( ResourceLocation identifier )
+	public IDefinition<T> get( ResourceLocation identifier )
 	{
 		return map.get( identifier );
 	}

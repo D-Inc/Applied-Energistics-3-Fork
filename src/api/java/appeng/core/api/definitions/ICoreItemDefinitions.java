@@ -2,7 +2,6 @@
 package appeng.core.api.definitions;
 
 
-import appeng.api.definitions.IItemDefinition;
 import net.minecraft.item.Item;
 
 import appeng.api.definitions.IDefinition;
@@ -10,42 +9,42 @@ import appeng.api.definitions.IDefinitions;
 import net.minecraft.item.ItemBlock;
 
 
-public interface ICoreItemDefinitions extends IDefinitions<Item, IItemDefinition<Item>>
+public interface ICoreItemDefinitions extends IDefinitions<Item>
 {
 
-	default IItemDefinition<Item> crystalSeed()
+	default IDefinition<? extends Item> crystalSeed()
 	{
 		return get( "crystal_seed" );
 	}
 
-	default IItemDefinition<Item> multiItem()
+	default IDefinition<? extends Item> multiItem()
 	{
 		return get( "multiItem" );
 	}
 
-	default IItemDefinition<ItemBlock> blockCrank()
+	default IDefinition<ItemBlock> blockCrank()
 	{
-		return ( IItemDefinition<ItemBlock> ) get( "crank" );
+		return ( IDefinition<ItemBlock> ) get( "crank" );
 	}
 
-	default IItemDefinition<ItemBlock> blockCharger()
+	default IDefinition<ItemBlock> blockCharger()
 	{
-		return ( IItemDefinition<ItemBlock> ) get( "charger" );
+		return ( IDefinition<ItemBlock> ) get( "charger" );
 	}
 
-	default IItemDefinition<ItemBlock> blockGrinder()
+	default IDefinition<ItemBlock> blockGrinder()
 	{
-		return ( IItemDefinition<ItemBlock> ) get( "grinder" );
+		return ( IDefinition<ItemBlock> ) get( "grinder" );
 	}
 
-	default IItemDefinition<ItemBlock> blockInscriber()
+	default IDefinition<ItemBlock> blockInscriber()
 	{
-		return ( IItemDefinition<ItemBlock> ) get( "inscriber" );
+		return ( IDefinition<ItemBlock> ) get( "inscriber" );
 	}
 
-	default IItemDefinition<ItemBlock> blockVibrationChamber()
+	default IDefinition<ItemBlock> blockVibrationChamber()
 	{
-		return ( IItemDefinition<ItemBlock> ) get( "vibration_chamber" );
+		return ( IDefinition<ItemBlock> ) get( "vibration_chamber" );
 	}
 
 }

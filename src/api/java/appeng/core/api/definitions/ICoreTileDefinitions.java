@@ -2,38 +2,36 @@
 package appeng.core.api.definitions;
 
 
-import appeng.api.definitions.ITileDefinition;
 import net.minecraft.tileentity.TileEntity;
 
 import appeng.api.definitions.IDefinition;
 import appeng.api.definitions.IDefinitions;
-import net.minecraft.tileentity.TileEntityBanner;
 
 
-public interface ICoreTileDefinitions extends IDefinitions<Class<TileEntity>, ITileDefinition<TileEntity>>
+public interface ICoreTileDefinitions extends IDefinitions<Class<? extends TileEntity>>
 {
 
-    default ITileDefinition<TileEntity> tileCrank()
+    default IDefinition<? extends Class<? extends TileEntity>> blockCrank()
     {
         return get( "crank" );
     }
 
-    default ITileDefinition<TileEntity> tileCharger()
+    default IDefinition<? extends Class<? extends TileEntity>> blockCharger()
     {
         return get( "charger" );
     }
 
-    default ITileDefinition<TileEntity> tileGrinder()
+    default IDefinition<? extends Class<? extends TileEntity>> blockGrinder()
     {
         return get( "grinder" );
     }
 
-    default ITileDefinition<TileEntity> tileInscriber()
+    default IDefinition<? extends Class<? extends TileEntity>> blockInscriber()
     {
         return get( "inscriber" );
     }
 
-    default ITileDefinition<TileEntity> tileVibrationChamber()
+    default IDefinition<? extends Class<? extends TileEntity>> blockVibrationChamber()
     {
         return get( "vibration_chamber" );
     }

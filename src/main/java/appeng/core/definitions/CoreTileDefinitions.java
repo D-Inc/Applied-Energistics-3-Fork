@@ -18,7 +18,7 @@ import appeng.core.tile.TileInscriber;
 import appeng.core.tile.TileVibrationChamber;
 
 
-public class CoreTileDefinitions extends Definitions<Class<TileEntity>, ITileDefinition<TileEntity>> implements ICoreTileDefinitions
+public class CoreTileDefinitions extends Definitions<Class<? extends TileEntity>> implements ICoreTileDefinitions
 {
 
 	private final ITileDefinition crank;
