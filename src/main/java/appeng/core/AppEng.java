@@ -39,6 +39,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
 import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.mutable.MutableObject;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 
@@ -283,11 +284,21 @@ public final class AppEng
 			try
 			{
 				Class<?> moduleClass = modules.get( name );
-				Object module = moduleClass.newInstance();
+				boolean mod = moduleClass.isAnnotationPresent( Mod.class );
+				MutableObject<Object> moduleHolder = new MutableObject<>();
+				if( mod )
+				{
+					Loader.instance().getModObjectList().entrySet().stream().filter( entry -> entry.getValue().getClass() == moduleClass ).findFirst().ifPresent( instance -> moduleHolder.setValue( instance ) );
+				}
+				if( moduleHolder.getValue() == null )
+				{
+					moduleHolder.setValue( moduleClass.newInstance() );
+				}
+				Object module = moduleHolder.getValue();
 				orderBuilder.add( name );
 				modulesBuilder.put( name, module );
 				classModuleBuilder.put( moduleClass, module );
-				internalBuilder.put( module, !moduleClass.isAnnotationPresent( Mod.class ) );
+				internalBuilder.put( module, !mod );
 			}
 			catch( ReflectiveOperationException e )
 			{
@@ -396,7 +407,7 @@ public final class AppEng
 					return false;
 				}
 			}
-			else
+			else if( !before && !after ) // Soft dependency
 			{
 				return false; // Syntax error
 			}
