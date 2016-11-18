@@ -42,15 +42,9 @@ public class RegistryContainer
 	private final WirelessRegistry wireless = new WirelessRegistry();
 	private final GridCacheRegistry gridCache = new GridCacheRegistry();
 	private final P2PTunnelRegistry p2pTunnel = new P2PTunnelRegistry();
-	private final MovableTileRegistry movable = new MovableTileRegistry();
 	private final MatterCannonAmmoRegistry matterCannonReg = new MatterCannonAmmoRegistry();
 	private final PlayerRegistry playerRegistry = new PlayerRegistry();
 	private final RecipeHandlerRegistry recipeReg = new RecipeHandlerRegistry();
-
-	public MovableTileRegistry movable()
-	{
-		return this.movable;
-	}
 
 	public GridCacheRegistry gridCache()
 	{

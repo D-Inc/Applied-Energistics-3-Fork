@@ -38,10 +38,9 @@ import appeng.core.api.util.AEPartLocation;
 import appeng.core.api.util.WorldCoord;
 import appeng.core.lib.AELog;
 import appeng.core.lib.AppEngApi;
-import appeng.core.lib.features.registries.MovableTileRegistry;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.worlddata.WorldData;
-import appeng.core.spatial.api.movable.IMovableHandler;
+import appeng.core.spatial.DefaultSpatialHandler;
 
 
 public class CachedPlane
@@ -59,10 +58,10 @@ public class CachedPlane
 	private final LinkedList<TileEntity> tiles = new LinkedList<TileEntity>();
 	private final LinkedList<NextTickListEntry> ticks = new LinkedList<NextTickListEntry>();
 	private final World world;
-	private final MovableTileRegistry reg = AppEngApi.internalApi().registries().movable();
 	private final LinkedList<WorldCoord> updates = new LinkedList<WorldCoord>();
 	private final IBlockDefinition matrixFrame = AppEngApi.internalApi().definitions().blocks().matrixFrame();
 	private int verticalBits;
+	private final DefaultSpatialHandler handler = new DefaultSpatialHandler();
 
 	public CachedPlane( final World w, final int minX, final int minY, final int minZ, final int maxX, final int maxY, final int maxZ )
 	{
@@ -105,8 +104,6 @@ public class CachedPlane
 			}
 		}
 
-		final MovableTileRegistry mr = AppEngApi.internalApi().registries().movable();
-
 		for( int cx = 0; cx < this.cx_size; cx++ )
 		{
 			for( int cz = 0; cz < this.cz_size; cz++ )
@@ -126,25 +123,17 @@ public class CachedPlane
 					final BlockPos tePOS = te.getPos();
 					if( tePOS.getX() >= minX && tePOS.getX() <= maxX && tePOS.getY() >= minY && tePOS.getY() <= maxY && tePOS.getZ() >= minZ && tePOS.getZ() <= maxZ )
 					{
-						if( mr.askToMove( te ) )
+						final Object[] details = this.myColumns[tePOS.getX() - minX][tePOS.getZ() - minZ].getDetails( tePOS.getY() );
+						final Block blk = (Block) details[0];
+
+						// don't skip air, just let the code replace it...
+						if( blk != null && blk.isAir( c.getWorld().getBlockState( tePOS ), c.getWorld(), tePOS ) && blk.isReplaceable( c.getWorld(), tePOS ) )
 						{
-							this.tiles.add( te );
-							deadTiles.add( cp );
+							c.getWorld().setBlockToAir( tePOS );
 						}
 						else
 						{
-							final Object[] details = this.myColumns[tePOS.getX() - minX][tePOS.getZ() - minZ].getDetails( tePOS.getY() );
-							final Block blk = (Block) details[0];
-
-							// don't skip air, just let the code replace it...
-							if( blk != null && blk.isAir( c.getWorld().getBlockState( tePOS ), c.getWorld(), tePOS ) && blk.isReplaceable( c.getWorld(), tePOS ) )
-							{
-								c.getWorld().setBlockToAir( tePOS );
-							}
-							else
-							{
-								this.myColumns[tePOS.getX() - minX][tePOS.getZ() - minZ].setSkip( tePOS.getY() );
-							}
+							this.myColumns[tePOS.getX() - minX][tePOS.getZ() - minZ].setSkip( tePOS.getY() );
 						}
 					}
 				}
@@ -186,16 +175,8 @@ public class CachedPlane
 		}
 	}
 
-	private IMovableHandler getHandler( final TileEntity te )
-	{
-		final MovableTileRegistry mr = AppEngApi.internalApi().registries().movable();
-		return mr.getHandler( te );
-	}
-
 	void swap( final CachedPlane dst )
 	{
-		final MovableTileRegistry mr = AppEngApi.internalApi().registries().movable();
-
 		if( dst.x_size == this.x_size && dst.y_size == this.y_size && dst.z_size == this.z_size )
 		{
 			AELog.info( "Block Copy Scale: " + this.x_size + ", " + this.y_size + ", " + this.z_size );
@@ -238,13 +219,13 @@ public class CachedPlane
 			for( final TileEntity te : this.tiles )
 			{
 				final BlockPos tePOS = te.getPos();
-				dst.addTile( tePOS.getX() - this.x_offset, tePOS.getY() - this.y_offset, tePOS.getZ() - this.z_offset, te, this, mr );
+				dst.addTile( tePOS.getX() - this.x_offset, tePOS.getY() - this.y_offset, tePOS.getZ() - this.z_offset, te, this );
 			}
 
 			for( final TileEntity te : dst.tiles )
 			{
 				final BlockPos tePOS = te.getPos();
-				this.addTile( tePOS.getX() - dst.x_offset, tePOS.getY() - dst.y_offset, tePOS.getZ() - dst.z_offset, te, dst, mr );
+				this.addTile( tePOS.getX() - dst.x_offset, tePOS.getY() - dst.y_offset, tePOS.getZ() - dst.z_offset, te, dst );
 			}
 
 			for( final NextTickListEntry entry : this.ticks )
@@ -283,7 +264,7 @@ public class CachedPlane
 		this.world.scheduleUpdate( new BlockPos( x + this.x_offset, y + this.y_offset, z + this.z_offset ), entry.getBlock(), (int) entry.scheduledTime );
 	}
 
-	private void addTile( final int x, final int y, final int z, final TileEntity te, final CachedPlane alternateDestination, final MovableTileRegistry mr )
+	private void addTile( final int x, final int y, final int z, final TileEntity te, final CachedPlane alternateDestination )
 	{
 		try
 		{
@@ -291,8 +272,6 @@ public class CachedPlane
 
 			if( c.doNotSkip( y + this.y_offset ) || alternateDestination == null )
 			{
-				final IMovableHandler handler = this.getHandler( te );
-
 				try
 				{
 					handler.moveTile( te, this.world, new BlockPos( x + this.x_offset, y + this.y_offset, z + this.z_offset ) );
@@ -315,12 +294,10 @@ public class CachedPlane
 						this.world.notifyBlockUpdate( pos, this.world.getBlockState( pos ), this.world.getBlockState( pos ), z );
 					}
 				}
-
-				mr.doneMoving( te );
 			}
 			else
 			{
-				alternateDestination.addTile( x, y, z, te, null, mr );
+				alternateDestination.addTile( x, y, z, te, null );
 			}
 		}
 		catch( final Throwable e )
@@ -427,11 +404,6 @@ public class CachedPlane
 		private boolean doNotSkip( final int y )
 		{
 			final ExtendedBlockStorage extendedblockstorage = this.storage[y >> 4];
-			if( CachedPlane.this.reg.isBlacklisted( extendedblockstorage.get( this.x, y & 15, this.z ).getBlock() ) )
-			{
-				return false;
-			}
-
 			return this.skipThese == null || !this.skipThese.contains( y );
 		}
 
