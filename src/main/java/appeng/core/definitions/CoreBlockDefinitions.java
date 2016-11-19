@@ -31,9 +31,10 @@ public class CoreBlockDefinitions extends Definitions<Block, IBlockDefinition<Bl
 	{
 		this.crank = registry.block( new ResourceLocation( AppEng.MOD_ID, "crank" ), new BlockCrank() ).createDefaultItemBlock().features( AEFeature.GrindStone ).build();
 		this.charger = registry.block( new ResourceLocation( AppEng.MOD_ID, "charger" ), new BlockCharger() ).createDefaultItemBlock().build();
-		this.grinder = registry.block( new ResourceLocation( AppEng.MOD_ID, "grinder" ), new BlockGrinder() ).createDefaultItemBlock().build();
-		this.inscriber = registry.block( new ResourceLocation( AppEng.MOD_ID, "inscriber"), new BlockInscriber() ).createDefaultItemBlock().build();
+		this.grinder = registry.block( new ResourceLocation( AppEng.MOD_ID, "grinder" ), new BlockGrinder() ).features( AEFeature.GrindStone ).createDefaultItemBlock().build();
+		this.inscriber = registry.block( new ResourceLocation( AppEng.MOD_ID, "inscriber"), new BlockInscriber() ).features( AEFeature.Inscriber ).createDefaultItemBlock().build();
 		this.vibrationChamber = registry.block( new ResourceLocation( AppEng.MOD_ID, "vibration_chamber"), new BlockVibrationChamber() ).createDefaultItemBlock().build();
+		
 		init();
 	}
 

@@ -101,28 +101,9 @@ import appeng.tools.hooks.DispenserBehaviorTinyTNT;
  */
 public final class ApiBlocks// implements IBlocks
 {
-	private final IBlockDefinition quartzOre;
-	private final IBlockDefinition quartzOreCharged;
-	private final IBlockDefinition matrixFrame;
-	private final IBlockDefinition quartzBlock;
-	private final IBlockDefinition quartzPillar;
-	private final IBlockDefinition chiseledQuartzBlock;
-	private final IBlockDefinition quartzGlass;
-	private final IBlockDefinition quartzVibrantGlass;
-	private final IBlockDefinition quartzFixture;
-	private final IBlockDefinition fluixBlock;
-	private final IBlockDefinition skyStoneBlock;
-	private final IBlockDefinition smoothSkyStoneBlock;
-	private final IBlockDefinition skyStoneBrick;
-	private final IBlockDefinition skyStoneSmallBrick;
-	private final IBlockDefinition skyStoneChest;
-	private final IBlockDefinition smoothSkyStoneChest;
-	private final IBlockDefinition skyCompass;
-	private final ITileDefinition grindstone;
-	private final ITileDefinition inscriber;
+
 	private final ITileDefinition wirelessAccessPoint;
 	private final ITileDefinition charger;
-	private final IBlockDefinition tinyTNT;
 	private final ITileDefinition securityStation;
 	private final ITileDefinition quantumRing;
 	private final ITileDefinition quantumLink;
@@ -152,114 +133,50 @@ public final class ApiBlocks// implements IBlocks
 	private final ITileDefinition molecularAssembler;
 	private final ITileDefinition lightDetector;
 	private final ITileDefinition paint;
-	private final IBlockDefinition skyStoneStairs;
-	private final IBlockDefinition smoothSkyStoneStairs;
-	private final IBlockDefinition skyStoneBrickStairs;
-	private final IBlockDefinition skyStoneSmallBrickStairs;
-	private final IBlockDefinition fluixStairs;
-	private final IBlockDefinition quartzStairs;
-	private final IBlockDefinition chiseledQuartzStairs;
-	private final IBlockDefinition quartzPillarStairs;
-	/*
-	 * private final IBlockDefinition skyStoneSlab;
-	 * private final IBlockDefinition skyStoneBlockSlab;
-	 * private final IBlockDefinition skyStoneBrickSlab;
-	 * private final IBlockDefinition skyStoneSmallBrickSlab;
-	 * private final IBlockDefinition fluixSlab;
-	 * private final IBlockDefinition quartzSlab;
-	 * private final IBlockDefinition chiseledQuartzSlab;
-	 * private final IBlockDefinition quartzPillarSlab;
-	 */
-
-	private final IBlockDefinition itemGen;
-	private final IBlockDefinition chunkLoader;
-	private final IBlockDefinition phantomNode;
-	private final IBlockDefinition cubeGenerator;
 
 	public ApiBlocks( FeatureFactory registry )
 	{
-		// this.quartzOre = new BlockDefinition( "ore.quartz", new OreQuartz() );
-		this.quartzOre = registry.block( "quartz_ore", BlockQuartzOre::new ).postInit( ( block, item ) -> {
-			OreDictionary.registerOre( "oreCertusQuartz", new ItemStack( block ) );
-		} ).build();
-		this.quartzOreCharged = registry.block( "charged_quartz_ore", BlockChargedQuartzOre::new ).postInit( ( block, item ) -> {
-			OreDictionary.registerOre( "oreCertusQuartz", new ItemStack( block ) );
-		} ).build();
-		this.matrixFrame = registry.block( "matrix_frame", BlockMatrixFrame::new ).features( AEFeature.SpatialIO ).build();
-
-		FeatureFactory deco = registry.features( AEFeature.DecorativeQuartzBlocks );
-		this.quartzBlock = deco.block( "quartz_block", BlockQuartz::new ).build();
-		this.quartzPillar = deco.block( "quartz_pillar", BlockQuartzPillar::new ).build();
-		this.chiseledQuartzBlock = deco.block( "chiseled_quartz_block", BlockChiseledQuartz::new ).build();
-		this.quartzGlass = deco.block( "quartz_glass", BlockQuartzGlass::new ).build();
-		this.quartzVibrantGlass = deco.block( "quartz_vibrant_glass", BlockQuartzLamp::new ).addFeatures( AEFeature.DecorativeLights ).build();
-		this.quartzFixture = registry.block( "quartz_fixture", BlockQuartzTorch::new ).features( AEFeature.DecorativeLights ).build();
-
-		this.fluixBlock = deco.block( "fluix_block", BlockFluix::new ).build();
-		this.skyStoneBlock = deco.block( "sky_stone_block", () -> new BlockSkyStone( SkystoneType.STONE ) ).build();
-		this.smoothSkyStoneBlock = deco.block( "smooth_skystone", () -> new BlockSkyStone( SkystoneType.BLOCK ) ).build();
-		this.skyStoneBrick = deco.block( "skystone_brick", () -> new BlockSkyStone( SkystoneType.BRICK ) ).build();
-		this.skyStoneSmallBrick = deco.block( "skystone_small_brick", () -> new BlockSkyStone( SkystoneType.SMALL_BRICK ) ).build();
-
-		this.skyStoneChest = registry.block( "skystone_chest", () -> new BlockSkyChest( SkyChestType.STONE ) ).features( AEFeature.SkyStoneChests ).rendering( new SkyChestRenderingCustomizer( SkyChestType.STONE ) ).build();
-		this.smoothSkyStoneChest = registry.block( "smooth_skystone_chest", () -> new BlockSkyChest( SkyChestType.BLOCK ) ).features( AEFeature.SkyStoneChests ).rendering( new SkyChestRenderingCustomizer( SkyChestType.BLOCK ) ).build();
-
-		this.skyCompass = registry.block( "sky_compass", BlockSkyCompass::new ).features( AEFeature.MeteoriteCompass ).build();
-		this.grindstone = registry.block( "grindstone", BlockGrinder::new ).features( AEFeature.GrindStone ).build();
-		this.inscriber = registry.block( "inscriber", BlockInscriber::new ).features( AEFeature.Inscriber ).build();
-		this.wirelessAccessPoint = registry.block( "wireless_access_point", BlockWireless::new ).features( AEFeature.WirelessAccessTerminal ).build();
-		this.charger = registry.block( "charger", BlockCharger::new ).rendering( new BlockRenderingCustomizer(){
+		this.wirelessAccessPoint = registry.block( "wireless_access_point", new BlockWireless() ).features( AEFeature.WirelessAccessTerminal ).build();
+		this.charger = registry.block( "charger", new BlockCharger() ).rendering( new BlockRenderingCustomizer(){
 			@Override
 			public void customize( IBlockRendering rendering, IItemRendering itemRendering )
 			{
 				rendering.tesr( BlockCharger.createTesr() );
 			}
 		} ).build();
-		this.tinyTNT = registry.block( "tiny_tnt", BlockTinyTNT::new ).features( AEFeature.TinyTNT ).postInit( ( block, item ) -> {
-			BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject( item, new DispenserBehaviorTinyTNT() );
-		} ).build();
-		this.securityStation = registry.block( "security_station", BlockSecurity::new ).features( AEFeature.Security ).build();
-		this.quantumRing = registry.block( "quantum_ring", BlockQuantumRing::new ).features( AEFeature.QuantumNetworkBridge ).build();
-		this.quantumLink = registry.block( "quantum_link", BlockQuantumLinkChamber::new ).features( AEFeature.QuantumNetworkBridge ).build();
-		this.spatialPylon = registry.block( "spatial_pylon", BlockSpatialPylon::new ).features( AEFeature.SpatialIO ).build();
-		this.spatialIOPort = registry.block( "spatial_ioport", BlockSpatialIOPort::new ).features( AEFeature.SpatialIO ).build();
-		this.controller = registry.block( "controller", BlockController::new ).features( AEFeature.Channels ).build();
-		this.drive = registry.block( "drive", BlockDrive::new ).features( AEFeature.StorageCells, AEFeature.MEDrive ).build();
-		this.chest = registry.block( "chest", BlockChest::new ).features( AEFeature.StorageCells, AEFeature.MEChest ).build();
-		this.iface = registry.block( "interface", BlockInterface::new ).build();
-		this.cellWorkbench = registry.block( "cell_workbench", BlockCellWorkbench::new ).features( AEFeature.StorageCells ).build();
-		this.iOPort = registry.block( "ioport", BlockIOPort::new ).features( AEFeature.StorageCells, AEFeature.IOPort ).build();
-		this.condenser = registry.block( "condenser", BlockCondenser::new ).build();
-		this.energyAcceptor = registry.block( "energy_acceptor", BlockEnergyAcceptor::new ).build();
-		this.vibrationChamber = registry.block( "vibration_chamber", BlockVibrationChamber::new ).features( AEFeature.PowerGen ).build();
-		this.quartzGrowthAccelerator = registry.block( "quartz_growth_accelerator", BlockQuartzGrowthAccelerator::new ).build();
-		this.energyCell = registry.block( "energy_cell", BlockEnergyCell::new ).item( AEBaseItemBlockChargeable::new ).rendering( new BlockEnergyCellRendering( new ResourceLocation( AppEng.MOD_ID, "energy_cell" ) ) ).build();
-		this.energyCellDense = registry.block( "dense_energy_cell", BlockDenseEnergyCell::new ).features( AEFeature.DenseEnergyCells ).item( AEBaseItemBlockChargeable::new ).rendering( new BlockEnergyCellRendering( new ResourceLocation( AppEng.MOD_ID, "dense_energy_cell" ) ) ).build();
-		this.energyCellCreative = registry.block( "creative_energy_cell", BlockCreativeEnergyCell::new ).features( AEFeature.Creative ).item( AEBaseItemBlockChargeable::new ).build();
+		this.securityStation = registry.block( "security_station", new BlockSecurity() ).features( AEFeature.Security ).build();
+		this.quantumRing = registry.block( "quantum_ring", new BlockQuantumRing() ).features( AEFeature.QuantumNetworkBridge ).build();
+		this.quantumLink = registry.block( "quantum_link", new BlockQuantumLinkChamber() ).features( AEFeature.QuantumNetworkBridge ).build();
+		this.spatialPylon = registry.block( "spatial_pylon", new BlockSpatialPylon() ).features( AEFeature.SpatialIO ).build();
+		this.spatialIOPort = registry.block( "spatial_ioport", new BlockSpatialIOPort() ).features( AEFeature.SpatialIO ).build();
+		this.controller = registry.block( "controller", new BlockController() ).features( AEFeature.Channels ).build();
+		this.drive = registry.block( "drive", new BlockDrive() ).features( AEFeature.StorageCells, AEFeature.MEDrive ).build();
+		this.chest = registry.block( "chest", new BlockChest() ).features( AEFeature.StorageCells, AEFeature.MEChest ).build();
+		this.iface = registry.block( "interface", new BlockInterface() ).build();
+		this.cellWorkbench = registry.block( "cell_workbench", new BlockCellWorkbench() ).features( AEFeature.StorageCells ).build();
+		this.iOPort = registry.block( "ioport", new BlockIOPort() ).features( AEFeature.StorageCells, AEFeature.IOPort ).build();
+		this.condenser = registry.block( "condenser", new BlockCondenser() ).build();
+		this.energyAcceptor = registry.block( "energy_acceptor", new BlockEnergyAcceptor() ).build();
+		this.vibrationChamber = registry.block( "vibration_chamber", new BlockVibrationChamber() ).features( AEFeature.PowerGen ).build();
+		this.quartzGrowthAccelerator = registry.block( "quartz_growth_accelerator", new BlockQuartzGrowthAccelerator() ).build();
+		this.energyCell = registry.block( "energy_cell", new BlockEnergyCell::new ).item( AEBaseItemBlockChargeable() ).rendering( new BlockEnergyCellRendering( new ResourceLocation( AppEng.MOD_ID, "energy_cell" ) ) ).build();
+		this.energyCellDense = registry.block( "dense_energy_cell", new BlockDenseEnergyCell::new ).features( AEFeature.DenseEnergyCells ).item( AEBaseItemBlockChargeable() ).rendering( new BlockEnergyCellRendering( new ResourceLocation( AppEng.MOD_ID, "dense_energy_cell" ) ) ).build();
+		this.energyCellCreative = registry.block( "creative_energy_cell", new BlockCreativeEnergyCell::new ).features( AEFeature.Creative ).item( AEBaseItemBlockChargeable() ).build();
 
 		FeatureFactory crafting = registry.features( AEFeature.CraftingCPU );
-		this.craftingUnit = crafting.block( "crafting_unit", () -> new BlockCraftingUnit( CraftingUnitType.UNIT ) ).build();
-		this.craftingAccelerator = crafting.block( "crafting_accelerator", () -> new BlockCraftingUnit( CraftingUnitType.ACCELERATOR ) ).build();
-		this.craftingStorage1k = crafting.block( "crafting_storage_1k", () -> new BlockCraftingStorage( CraftingUnitType.STORAGE_1K ) ).item( ItemCraftingStorage::new ).build();
-		this.craftingStorage4k = crafting.block( "crafting_storage_4k", () -> new BlockCraftingStorage( CraftingUnitType.STORAGE_4K ) ).item( ItemCraftingStorage::new ).build();
-		this.craftingStorage16k = crafting.block( "crafting_storage_16k", () -> new BlockCraftingStorage( CraftingUnitType.STORAGE_16K ) ).item( ItemCraftingStorage::new ).build();
-		this.craftingStorage64k = crafting.block( "crafting_storage_64k", () -> new BlockCraftingStorage( CraftingUnitType.STORAGE_64K ) ).item( ItemCraftingStorage::new ).build();
-		this.craftingMonitor = crafting.block( "crafting_monitor", BlockCraftingMonitor::new ).build();
+		this.craftingUnit = crafting.block( "crafting_unit", new BlockCraftingUnit( CraftingUnitType.UNIT ) ).build();
+		this.craftingAccelerator = crafting.block( "crafting_accelerator", new BlockCraftingUnit( CraftingUnitType.ACCELERATOR ) ).build();
+		this.craftingStorage1k = crafting.block( "crafting_storage_1k", new new BlockCraftingStorage( CraftingUnitType.STORAGE_1K ) ).item( ItemCraftingStorage() ).build();
+		this.craftingStorage4k = crafting.block( "crafting_storage_4k", new new BlockCraftingStorage( CraftingUnitType.STORAGE_4K ) ).item( ItemCraftingStorage() ).build();
+		this.craftingStorage16k = crafting.block( "crafting_storage_16k", new new BlockCraftingStorage( CraftingUnitType.STORAGE_16K ) ).item( ItemCraftingStorage() ).build();
+		this.craftingStorage64k = crafting.block( "crafting_storage_64k", new new BlockCraftingStorage( CraftingUnitType.STORAGE_64K ) ).item( ItemCraftingStorage() ).build();
+		this.craftingMonitor = crafting.block( "crafting_monitor", new BlockCraftingMonitor() ).build();
 
-		this.molecularAssembler = registry.block( "molecular_assembler", BlockMolecularAssembler::new ).features( AEFeature.MolecularAssembler ).build();
-		this.lightDetector = registry.block( "light_detector", BlockLightDetector::new ).features( AEFeature.LightDetector ).build();
-		this.paint = registry.block( "paint", BlockPaint::new ).features( AEFeature.PaintBalls ).build();
+		this.molecularAssembler = registry.block( "molecular_assembler", new BlockMolecularAssembler() ).features( AEFeature.MolecularAssembler ).build();
+		this.lightDetector = registry.block( "light_detector", new BlockLightDetector() ).features( AEFeature.LightDetector ).build();
+		this.paint = registry.block( "paint", new BlockPaint() ).features( AEFeature.PaintBalls ).build();
 
-		this.skyStoneStairs = makeStairs( "skystone_stairs", registry, this.skyStoneBlock() );
-		this.smoothSkyStoneStairs = makeStairs( "smooth_skystone_stairs", registry, this.smoothSkyStoneBlock() );
-		this.skyStoneBrickStairs = makeStairs( "skystone_brick_stairs", registry, this.skyStoneBrick() );
-		this.skyStoneSmallBrickStairs = makeStairs( "skystone_small_brick_stairs", registry, this.skyStoneSmallBrick() );
-		this.fluixStairs = makeStairs( "fluix_stairs", registry, this.fluixBlock() );
-		this.quartzStairs = makeStairs( "quartz_stairs", registry, this.quartzBlock() );
-		this.chiseledQuartzStairs = makeStairs( "chiseled_quartz_stairs", registry, this.chiseledQuartzBlock() );
-		this.quartzPillarStairs = makeStairs( "quartz_pillar_stairs", registry, this.quartzPillar() );
-
-		this.multiPart = registry.block( "multipart_block", BlockCableBus::new ).rendering( new BlockRenderingCustomizer(){
+		this.multiPart = registry.block( "multipart_block", new BlockCableBus() ).rendering( new BlockRenderingCustomizer(){
 			@Override
 			@SideOnly( Side.CLIENT )
 			public void customize( IBlockRendering rendering, IItemRendering itemRendering )
@@ -288,15 +205,6 @@ public final class ApiBlocks// implements IBlocks
 		 * EnumSet.of(AEFeature.DecorativeQuartzBlocks), false, "QuartzPillarSlabBlock" ) )
 		 */
 
-		this.itemGen = registry.block( "debug_item_gen", BlockItemGen::new ).features( AEFeature.UnsupportedDeveloperTools, AEFeature.Creative ).build();
-		this.chunkLoader = registry.block( "debug_chunk_loader", BlockChunkloader::new ).features( AEFeature.UnsupportedDeveloperTools, AEFeature.Creative ).build();
-		this.phantomNode = registry.block( "debug_phantom_node", BlockPhantomNode::new ).features( AEFeature.UnsupportedDeveloperTools, AEFeature.Creative ).build();
-		this.cubeGenerator = registry.block( "debug_cube_gen", BlockCubeGenerator::new ).features( AEFeature.UnsupportedDeveloperTools, AEFeature.Creative ).build();
-	}
-
-	private static IBlockDefinition makeStairs( String registryName, FeatureFactory registry, IBlockDefinition block )
-	{
-		return registry.block( registryName, () -> new BlockStairCommon( block.maybeBlock().get(), block.identifier() ) ).features( AEFeature.DecorativeQuartzBlocks ).build();
 	}
 
 	/* @Override */

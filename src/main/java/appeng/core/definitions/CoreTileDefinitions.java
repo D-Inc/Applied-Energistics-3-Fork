@@ -31,9 +31,10 @@ public class CoreTileDefinitions extends Definitions<Class<? extends TileEntity>
 	{
 		this.crank = registry.tile( new ResourceLocation( AppEng.MOD_ID, "crank" ), TileCrank.class ).features( AEFeature.GrindStone ).build();
 		this.charger = registry.tile( new ResourceLocation( AppEng.MOD_ID, "charger" ), TileCharger.class ).build();
-		this.grinder = registry.tile( new ResourceLocation( AppEng.MOD_ID, "grinder" ), TileGrinder.class ).build();
-		this.inscriber = registry.tile( new ResourceLocation( AppEng.MOD_ID, "inscriber"), TileInscriber.class ).build();
+		this.grinder = registry.tile( new ResourceLocation( AppEng.MOD_ID, "grinder" ), TileGrinder.class ).features( AEFeature.GrindStone ).build();
+		this.inscriber = registry.tile( new ResourceLocation( AppEng.MOD_ID, "inscriber"), TileInscriber.class ).features( AEFeature.Inscriber ).build();
 		this.vibrationChamber = registry.tile( new ResourceLocation( AppEng.MOD_ID, "vibration_chamber"), TileVibrationChamber.class ).build();
+		
 		init();
 	}
 
