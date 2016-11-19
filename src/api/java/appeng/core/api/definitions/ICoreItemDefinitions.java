@@ -18,7 +18,7 @@ public interface ICoreItemDefinitions extends IDefinitions<Item, IItemDefinition
 
 	default IItemDefinition<? extends Item> multiItem()
 	{
-		return get( "multiItem" );
+		return get( "multi_item" );
 	}
 
 	default IItemDefinition<? extends Item> blockCrank()

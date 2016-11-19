@@ -18,13 +18,13 @@ import appeng.core.lib.definitions.Definitions;
 public class CoreItemDefinitions extends Definitions<Item, IItemDefinition<Item>> implements ICoreItemDefinitions
 {
 
-	private final IItemDefinition crystalSeed;
-	private final IItemDefinition multi;
+	private final IItemDefinition crystal_seed;
+	private final IItemDefinition multi_item;
 
 	public CoreItemDefinitions( FeatureFactory registry )
 	{
-		this.crystalSeed = registry.item( new ResourceLocation( AppEng.MOD_NAME, "crystal_seed" ), new ItemCrystalSeed() ).rendering( new ItemCrystalSeedRendering() ).build();
-		this.multi = registry.item( new ResourceLocation( AppEng.MOD_NAME, "multiItem" ), new ItemMultiItem() ).build();
+		this.crystal_seed = registry.item( new ResourceLocation( AppEng.MOD_NAME, "crystal_seed" ), new ItemCrystalSeed() ).rendering( new ItemCrystalSeedRendering() ).build();
+		this.multi_item = registry.item( new ResourceLocation( AppEng.MOD_NAME, "multi_tem" ), new ItemMultiItem() ).build();
 		init( registry.buildDefaultItemBlocks() );
 	}
 
