@@ -63,9 +63,21 @@ public class FeatureFactory
 		}
 	}
 
+	@Deprecated
+	public <T extends TileEntity> TileDefinitionBuilder<T> tile( String id, Class<T> tile )
+	{
+		return tile( new ResourceLocation( AppEng.MOD_ID, id ), tile );
+	}
+
 	public <T extends TileEntity> TileDefinitionBuilder<T> tile( ResourceLocation id, Class<T> tile )
 	{
 		return new TileDefinitionBuilder<T>( this, id, tile, ( (IDefinitionsProvider) AppEng.instance().getCurrent() ).definitions( Block.class ) ).features( defaultFeatures );
+	}
+
+	@Deprecated
+	public <B extends Block> BlockDefinitionBuilder<B> block( String id, B block )
+	{
+		return block( new ResourceLocation( AppEng.MOD_ID, id ), block );
 	}
 
 	public <B extends Block> BlockDefinitionBuilder<B> block( ResourceLocation id, B block )
@@ -73,12 +85,18 @@ public class FeatureFactory
 		return new BlockDefinitionBuilder<B>( this, id, block ).features( defaultFeatures );
 	}
 
+	@Deprecated
+	public <I extends Item> ItemDefinitionBuilder<I> item( String id, I item )
+	{
+		return item( new ResourceLocation( AppEng.MOD_ID, id ), item );
+	}
+
 	public <I extends Item> ItemDefinitionBuilder<I> item( ResourceLocation id, I item )
 	{
 		return new ItemDefinitionBuilder<I>( this, id, item ).features( defaultFeatures );
 	}
 
-	<B extends Block> void addDefaultItemBlock( ResourceLocation id, BlockDefinition<B> def)
+	<B extends Block> void addDefaultItemBlock( ResourceLocation id, BlockDefinition<B> def )
 	{
 		defaultItemBlocks.put( id, def );
 	}
@@ -86,8 +104,7 @@ public class FeatureFactory
 	public Map<ResourceLocation, IDefinition<? extends Item>> buildDefaultItemBlocks()
 	{
 		Map<ResourceLocation, IDefinition<? extends Item>> result = Maps.newHashMap();
-		this.defaultItemBlocks.forEach( ( id, def ) -> def.maybe().ifPresent( (block) -> 
-		{
+		this.defaultItemBlocks.forEach( ( id, def ) -> def.maybe().ifPresent( ( block ) -> {
 			IItemDefinition itemDef = this.item( id, new ItemBlock( block ) ).features().build();
 			def.setItem( itemDef );
 			result.put( id, itemDef );
