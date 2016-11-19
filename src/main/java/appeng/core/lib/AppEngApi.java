@@ -23,7 +23,6 @@ import appeng.core.api.exceptions.FailedConnection;
 import appeng.core.api.util.AEPartLocation;
 import appeng.core.lib.api.ApiPart;
 import appeng.core.lib.api.ApiStorage;
-import appeng.core.lib.features.registries.MovableTileRegistry;
 import appeng.core.lib.features.registries.RegistryContainer;
 import appeng.core.lib.util.Platform;
 import appeng.core.me.api.networking.IGridBlock;
@@ -41,7 +40,6 @@ public final class AppEngApi
 
 	private final ApiPart partHelper;
 
-	private MovableTileRegistry MovableRegistry = new MovableTileRegistry();
 	private final RegistryContainer registryContainer;
 	private final IStorageHelper storageHelper;
 	private final ApiDefinitions definitions;

@@ -21,27 +21,23 @@ package appeng.core.lib.api.definitions;
 
 import appeng.api.definitions.IItemDefinition;
 import appeng.core.api.exceptions.MissingDefinition;
-import appeng.core.api.util.AEColor;
-import appeng.core.api.util.AEColoredItemDefinition;
 import appeng.core.lib.bootstrap.FeatureFactory;
-import appeng.core.lib.features.ColoredItemDefinition;
 import appeng.core.lib.features.DamagedItemDefinition;
-import appeng.core.lib.features.ItemStackSrc;
 import appeng.core.me.api.parts.IPartHelper;
 import appeng.core.me.item.ItemMultiPart;
 import appeng.core.me.item.ItemMultipartRendering;
 import appeng.core.me.item.PartType;
 
-
+//TODO 1.11-CN:A - @Elix_x has plans...
 /**
  * Internal implementation for the API parts
  */
 public final class ApiParts// implements IParts
 {
-	private final AEColoredItemDefinition cableSmart;
-	private final AEColoredItemDefinition cableCovered;
-	private final AEColoredItemDefinition cableGlass;
-	private final AEColoredItemDefinition cableDense;
+	private final IItemDefinition cableSmart;
+	private final IItemDefinition cableCovered;
+	private final IItemDefinition cableGlass;
+	private final IItemDefinition cableDense;
 	// private final AEColoredItemDefinition lumenCableSmart;
 	// private final AEColoredItemDefinition lumenCableCovered;
 	// private final AEColoredItemDefinition lumenCableGlass;
@@ -124,9 +120,10 @@ public final class ApiParts// implements IParts
 		this.conversionMonitor = new DamagedItemDefinition( "part.monitor.conversion", itemMultiPart.createPart( PartType.ConversionMonitor ) );
 	}
 
-	private static AEColoredItemDefinition constructColoredDefinition( final ItemMultiPart target, final PartType type )
+	private static IItemDefinition constructColoredDefinition( final ItemMultiPart target, final PartType type )
 	{
-		final ColoredItemDefinition definition = new ColoredItemDefinition();
+		return null;
+		/*final ColoredItemDefinition definition = new ColoredItemDefinition();
 
 		for( final AEColor color : AEColor.values() )
 		{
@@ -135,56 +132,56 @@ public final class ApiParts// implements IParts
 			definition.add( color, multiPartSource );
 		}
 
-		return definition;
+		return definition;*/
 	}
 
 	/*@Override*/
-	public AEColoredItemDefinition cableSmart()
+	public IItemDefinition cableSmart()
 	{
 		return this.cableSmart;
 	}
 
 	/*@Override*/
-	public AEColoredItemDefinition cableCovered()
+	public IItemDefinition cableCovered()
 	{
 		return this.cableCovered;
 	}
 
 	/*@Override*/
-	public AEColoredItemDefinition cableGlass()
+	public IItemDefinition cableGlass()
 	{
 		return this.cableGlass;
 	}
 
 	/*@Override*/
-	public AEColoredItemDefinition cableDense()
+	public IItemDefinition cableDense()
 	{
 		return this.cableDense;
 	}
 
 	/*@Override*/
-	public AEColoredItemDefinition lumenCableSmart()
+	public IItemDefinition lumenCableSmart()
 	{
 		throw new MissingDefinition( "Lumen Smart Cable has yet to be implemented." );
 		// return this.lumenCableSmart;
 	}
 
 	/*@Override*/
-	public AEColoredItemDefinition lumenCableCovered()
+	public IItemDefinition lumenCableCovered()
 	{
 		throw new MissingDefinition( "Lumen Covered Cable has yet to be implemented." );
 		// return this.lumenCableCovered;
 	}
 
 	/*@Override*/
-	public AEColoredItemDefinition lumenCableGlass()
+	public IItemDefinition lumenCableGlass()
 	{
 		throw new MissingDefinition( "Lumen Glass Cable has yet to be implemented." );
 		// return this.lumenCableGlass;
 	}
 
 	/*@Override*/
-	public AEColoredItemDefinition lumenCableDense()
+	public IItemDefinition lumenCableDense()
 	{
 		throw new MissingDefinition( "Lumen Dense Cable has yet to be implemented." );
 		// return this.lumenCableDense;
