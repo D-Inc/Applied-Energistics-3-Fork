@@ -34,22 +34,6 @@ public class CraftingItemDefinitions extends Definitions<Item, IItemDefinition<I
 		this.encoded_pattern = registry.item( new ResourceLocation( AppEng.MOD_NAME, "encoded_pattern" ), new ItemEncodedPattern() ).build();
 
 		CraftingBlockDefinitions blocks = ( ( IDefinitionsProvider ) (AppEng.instance().getCurrent() ) ).definitions( Block.class );
-		blocks.blockCraftingStorage1k().maybe().ifPresent( (block) -> {
-			crafting_storage_1k = registry.item( new ResourceLocation( AppEng.MOD_NAME, "crafting_storage_1k" ), new ItemCraftingStorage( block ) ).build();
-			blocks.crafting_storage_1k.setItem( crafting_storage_1k );
-		} );
-		blocks.blockCraftingStorage4k().maybe().ifPresent( (block) -> {
-			crafting_storage_4k = registry.item( new ResourceLocation( AppEng.MOD_NAME, "crafting_storage_4k" ), new ItemCraftingStorage( block ) ).build();
-			blocks.crafting_storage_4k.setItem( crafting_storage_4k );
-		} );
-		blocks.blockCraftingStorage16k().maybe().ifPresent( (block) -> {
-			crafting_storage_16k = registry.item( new ResourceLocation( AppEng.MOD_NAME, "crafting_storage_16k" ), new ItemCraftingStorage( block ) ).build();
-			blocks.crafting_storage_16k.setItem( crafting_storage_16k );
-		} );
-		blocks.blockCraftingStorage64k().maybe().ifPresent( (block) -> {
-			crafting_storage_64k = registry.item( new ResourceLocation( AppEng.MOD_NAME, "crafting_storage_64k" ), new ItemCraftingStorage( block ) ).build();
-			blocks.crafting_storage_64k.setItem( crafting_storage_64k );
-		} );
 		init( registry.buildDefaultItemBlocks() );
 	}
 
