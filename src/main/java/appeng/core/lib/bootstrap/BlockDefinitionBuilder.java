@@ -4,6 +4,7 @@ package appeng.core.lib.bootstrap;
 
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -20,7 +21,7 @@ public class BlockDefinitionBuilder<B extends Block> extends DefinitionBuilder<B
 
 	private CreativeTabs creativeTab = CreativeTab.instance;
 
-	private boolean createDefaultItemBlock = false;
+	private IItemBlockCustomizer itemBlock = null;
 
 	private BlockSubDefinitionsProvider<B> subDefs;
 
@@ -53,7 +54,13 @@ public class BlockDefinitionBuilder<B extends Block> extends DefinitionBuilder<B
 
 	public BlockDefinitionBuilder<B> createDefaultItemBlock()
 	{
-		createDefaultItemBlock = true;
+		itemBlock = ItemBlock::new;
+		return this;
+	}
+
+	public BlockDefinitionBuilder<B> withItemBlock(IItemBlockCustomizer ib)
+	{
+		itemBlock = ib;
 		return this;
 	}
 
@@ -93,10 +100,11 @@ public class BlockDefinitionBuilder<B extends Block> extends DefinitionBuilder<B
 			definition.setSubDefinitionsProvider( new BlockSubDefinitionsProvider( definition ) );
 		}
 
-		if( createDefaultItemBlock )
+		if( itemBlock != null )
 		{
 			this.factory.addDefaultItemBlock( registryName, definition );
-		}
+			definition.setItemBlockCustomizer(itemBlock);
+		};
 		return definition;
 	}
 

@@ -31,7 +31,6 @@ import appeng.core.lib.util.Platform;
 
 public class FeatureFactory
 {
-
 	private final AEFeature[] defaultFeatures;
 
 	private final List<IBootstrapComponent> bootstrapComponents;
@@ -104,11 +103,11 @@ public class FeatureFactory
 	public Map<ResourceLocation, IDefinition<? extends Item>> buildDefaultItemBlocks()
 	{
 		Map<ResourceLocation, IDefinition<? extends Item>> result = Maps.newHashMap();
-		this.defaultItemBlocks.forEach( ( id, def ) -> def.maybe().ifPresent( ( block ) -> {
-			IItemDefinition itemDef = this.item( id, new ItemBlock( block ) ).features().build();
+		this.defaultItemBlocks.forEach( ( id, def ) -> {
+			IItemDefinition itemDef = def.buildItemBlock( this );
 			def.setItem( itemDef );
 			result.put( id, itemDef );
-		} ) );
+		} );
 		this.defaultItemBlocks.clear();
 		return result;
 	}

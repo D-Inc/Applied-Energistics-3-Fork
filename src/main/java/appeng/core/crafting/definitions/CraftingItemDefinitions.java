@@ -16,6 +16,7 @@ import appeng.core.crafting.item.ItemEncodedPattern;
 import appeng.core.lib.bootstrap.FeatureFactory;
 import appeng.core.lib.definitions.Definitions;
 import appeng.core.lib.features.AEFeature;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.util.ResourceLocation;
 
 
@@ -49,7 +50,6 @@ public class CraftingItemDefinitions extends Definitions<Item, IItemDefinition<I
 			crafting_storage_64k = registry.item( new ResourceLocation( AppEng.MOD_NAME, "crafting_storage_64k" ), new ItemCraftingStorage( block ) ).build();
 			blocks.crafting_storage_64k.setItem( crafting_storage_64k );
 		} );
-
 		init( registry.buildDefaultItemBlocks() );
 	}
 
