@@ -66,44 +66,44 @@ public interface IDecorativeBlockDefinitions extends IDefinitions<Block, IBlockD
         return get( "skystone_small_brick" );
     }
 
-    default IBlockDefinition<? extends BlockStairCommon> skyStoneStairs()
+    default IBlockDefinition<? extends Block> skyStoneStairs()
     {
-        return ( IBlockDefinition< ? extends BlockStairCommon > ) get( "skystone_stairs" );
+        return get( "skystone_stairs" );
     }
 
-    default IBlockDefinition<? extends BlockStairCommon> smoothSkyStoneStairs()
+    default IBlockDefinition<? extends Block> smoothSkyStoneStairs()
     {
-        return ( IBlockDefinition< ? extends BlockStairCommon > ) get( "smooth_skystone_stairs" );
+        return get( "smooth_skystone_stairs" );
     }
 
-    default IBlockDefinition<? extends BlockStairCommon> skyStoneBrickStairs()
+    default IBlockDefinition<? extends Block> skyStoneBrickStairs()
     {
-        return ( IBlockDefinition< ? extends BlockStairCommon > ) get( "skystone_brick_stairs" );
+        return get( "skystone_brick_stairs" );
     }
 
-    default IBlockDefinition<? extends BlockStairCommon> skyStoneSmallBrickStairs()
+    default IBlockDefinition<? extends Block> skyStoneSmallBrickStairs()
     {
-        return ( IBlockDefinition< ? extends BlockStairCommon > ) get( "skystone_small_brick_stairs" );
+        return get( "skystone_small_brick_stairs" );
     }
 
-    default IBlockDefinition<? extends BlockStairCommon> fluixStairs()
+    default IBlockDefinition<? extends Block> fluixStairs()
     {
-        return ( IBlockDefinition< ? extends BlockStairCommon > ) get( "fluix_stairs" );
+        return get( "fluix_stairs" );
     }
 
-    default IBlockDefinition<? extends BlockStairCommon> quartzStairs()
+    default IBlockDefinition<? extends Block> quartzStairs()
     {
-        return ( IBlockDefinition< ? extends BlockStairCommon > ) get( "quartz_stairs" );
+        return get( "quartz_stairs" );
     }
 
-    default IBlockDefinition<? extends BlockStairCommon> chiseledQuartzStairs()
+    default IBlockDefinition<? extends Block> chiseledQuartzStairs()
     {
-        return ( IBlockDefinition< ? extends BlockStairCommon > ) get( "chiseled_quartz_stairs" );
+        return get( "chiseled_quartz_stairs" );
     }
 
-    default IBlockDefinition<? extends BlockStairCommon> quartzPillarStairs()
+    default IBlockDefinition<? extends Block> quartzPillarStairs()
     {
-        return ( IBlockDefinition< ? extends BlockStairCommon > ) get( "quartz_pillar_stairs" );
+        return get( "quartz_pillar_stairs" );
     }
 
 

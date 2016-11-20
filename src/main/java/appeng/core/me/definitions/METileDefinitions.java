@@ -53,7 +53,7 @@ import appeng.core.me.tile.TileWireless;
 import scala.App;
 
 
-public class METileDefinitions extends Definitions<Class<? extends TileEntity>, ITileDefinition<? extends TileEntity>> implements IMETileDefinitions
+public class METileDefinitions extends Definitions<Class<TileEntity>, ITileDefinition<TileEntity>> implements IMETileDefinitions
 {
 
 	private final ITileDefinition multiPart;

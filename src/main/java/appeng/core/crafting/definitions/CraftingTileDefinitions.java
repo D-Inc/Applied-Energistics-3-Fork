@@ -23,7 +23,7 @@ import appeng.core.lib.definitions.Definitions;
 import net.minecraft.util.ResourceLocation;
 
 
-public class CraftingTileDefinitions extends Definitions<Class<? extends TileEntity>, ITileDefinition<? extends TileEntity>> implements ICraftingTileDefinitions
+public class CraftingTileDefinitions extends Definitions<Class<TileEntity>, ITileDefinition<TileEntity>> implements ICraftingTileDefinitions
 {
 
 	private final ITileDefinition craftingMonitor;

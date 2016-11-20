@@ -7,7 +7,7 @@ import net.minecraft.item.Item;
 
 import appeng.api.definitions.IDefinitions;
 import appeng.api.definitions.IItemDefinition;
-import net.minecraft.item.ItemBlock;
+import net.minecraft.item.Item;
 
 
 public interface IMEItemDefinitions extends IDefinitions<Item, IItemDefinition<Item>>
@@ -44,84 +44,84 @@ public interface IMEItemDefinitions extends IDefinitions<Item, IItemDefinition<I
     }
 
 
-    default IItemDefinition<? extends ItemBlock> blockMultiPart()
+    default IItemDefinition<? extends Item> blockMultiPart()
     {
-        return ( IItemDefinition< ? extends ItemBlock > ) get( "multipart_block" );
+        return get( "multipart_block" );
     }
 
-    default IItemDefinition<? extends ItemBlock> blockWirelessAccessPoint()
+    default IItemDefinition<? extends Item> blockWirelessAccessPoint()
     {
-        return ( IItemDefinition< ? extends ItemBlock > ) get( "wireless_access_point" );
+        return get( "wireless_access_point" );
     }
 
-    default IItemDefinition<? extends ItemBlock> blockSecurityStation()
+    default IItemDefinition<? extends Item> blockSecurityStation()
     {
-        return ( IItemDefinition< ? extends ItemBlock > ) get( "security_station" );
+        return get( "security_station" );
     }
 
-    default IItemDefinition<? extends ItemBlock> blockQuantumRing()
+    default IItemDefinition<? extends Item> blockQuantumRing()
     {
-        return ( IItemDefinition< ? extends ItemBlock > ) get( "quantum_ring" );
+        return get( "quantum_ring" );
     }
 
-    default IItemDefinition<? extends ItemBlock> blockQuantumLink()
+    default IItemDefinition<? extends Item> blockQuantumLink()
     {
-        return ( IItemDefinition< ? extends ItemBlock > ) get( "quantum_link" );
+        return get( "quantum_link" );
     }
 
-    default IItemDefinition<? extends ItemBlock> blockController()
+    default IItemDefinition<? extends Item> blockController()
     {
-        return ( IItemDefinition< ? extends ItemBlock > ) get( "controller" );
+        return get( "controller" );
     }
 
-    default IItemDefinition<? extends ItemBlock> blockDrive()
+    default IItemDefinition<? extends Item> blockDrive()
     {
-        return ( IItemDefinition< ? extends ItemBlock > ) get( "drive" );
+        return get( "drive" );
     }
 
-    default IItemDefinition<? extends ItemBlock> blockChest()
+    default IItemDefinition<? extends Item> blockChest()
     {
-        return ( IItemDefinition< ? extends ItemBlock > ) get( "chest" );
+        return get( "chest" );
     }
 
-    default IItemDefinition<? extends ItemBlock> blockInterface()
+    default IItemDefinition<? extends Item> blockInterface()
     {
-        return ( IItemDefinition< ? extends ItemBlock > ) get( "interface" );
+        return get( "interface" );
     }
 
-    default IItemDefinition<? extends ItemBlock> blockCellWorkbench()
+    default IItemDefinition<? extends Item> blockCellWorkbench()
     {
-        return ( IItemDefinition< ? extends ItemBlock > ) get( "cell_workbench" );
+        return get( "cell_workbench" );
     }
 
-    default IItemDefinition<? extends ItemBlock> blockIOPort()
+    default IItemDefinition<? extends Item> blockIOPort()
     {
-        return ( IItemDefinition< ? extends ItemBlock > ) get( "ioport" );
+        return get( "ioport" );
     }
 
-    default IItemDefinition<? extends ItemBlock> blockCondenser()
+    default IItemDefinition<? extends Item> blockCondenser()
     {
-        return ( IItemDefinition< ? extends ItemBlock > ) get( "condenser" );
+        return get( "condenser" );
     }
 
-    default IItemDefinition<? extends ItemBlock> blockEnergyAcceptor()
+    default IItemDefinition<? extends Item> blockEnergyAcceptor()
     {
-        return ( IItemDefinition< ? extends ItemBlock > ) get( "energy_acceptor" );
+        return get( "energy_acceptor" );
     }
 
-    default IItemDefinition<? extends ItemBlock> blockEnergyCell()
+    default IItemDefinition<? extends Item> blockEnergyCell()
     {
-        return ( IItemDefinition< ? extends ItemBlock > ) get( "energy_cell" );
+        return get( "energy_cell" );
     }
 
-    default IItemDefinition<? extends ItemBlock> blockEnergyCellDense()
+    default IItemDefinition<? extends Item> blockEnergyCellDense()
     {
-        return ( IItemDefinition< ? extends ItemBlock > ) get( "dense_energy_cell" );
+        return get( "dense_energy_cell" );
     }
 
-    default IItemDefinition<? extends ItemBlock> blockEnergyCellCreative()
+    default IItemDefinition<? extends Item> blockEnergyCellCreative()
     {
-        return ( IItemDefinition< ? extends ItemBlock > ) get( "creative_energy_cell" );
+        return get( "creative_energy_cell" );
     }
     
 }

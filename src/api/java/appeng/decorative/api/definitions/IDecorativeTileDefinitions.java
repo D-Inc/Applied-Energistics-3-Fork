@@ -8,7 +8,7 @@ import appeng.api.definitions.IDefinitions;
 import appeng.api.definitions.ITileDefinition;
 
 
-public interface IDecorativeTileDefinitions extends IDefinitions<Class<? extends TileEntity>, ITileDefinition<? extends TileEntity>>
+public interface IDecorativeTileDefinitions extends IDefinitions<Class<TileEntity>, ITileDefinition<TileEntity>>
 {
 
 }

@@ -12,7 +12,7 @@ import appeng.core.lib.definitions.Definitions;
 import net.minecraft.util.ResourceLocation;
 
 
-public class DebugTileDefinitions extends Definitions<Class<? extends TileEntity>, ITileDefinition<? extends TileEntity>>
+public class DebugTileDefinitions extends Definitions<Class<TileEntity>, ITileDefinition<TileEntity>>
 {
 
 	private final ITileDefinition itemGen;

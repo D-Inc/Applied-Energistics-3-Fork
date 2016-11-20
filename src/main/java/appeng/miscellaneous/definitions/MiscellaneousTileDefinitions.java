@@ -20,7 +20,7 @@ import appeng.miscellaneous.tile.TileQuartzGrowthAccelerator;
 import net.minecraft.util.ResourceLocation;
 
 
-public class MiscellaneousTileDefinitions extends Definitions<Class<? extends TileEntity>, ITileDefinition<? extends TileEntity>> implements IMiscellaneousTileDefinitions
+public class MiscellaneousTileDefinitions extends Definitions<Class<TileEntity>, ITileDefinition<TileEntity>> implements IMiscellaneousTileDefinitions
 {
 
 	private final ITileDefinition quartzGrowthAccelerator;
