@@ -24,14 +24,13 @@ import java.util.List;
 
 import net.minecraft.item.ItemStack;
 
-import appeng.api.storage.ICellHandler;
-import appeng.api.storage.ICellRegistry;
-import appeng.api.storage.IMEInventoryHandler;
-import appeng.api.storage.ISaveProvider;
-import appeng.api.storage.StorageChannel;
+import appeng.core.me.api.storage.ICellHandler;
+import appeng.core.me.api.storage.IMEInventoryHandler;
+import appeng.core.me.api.storage.ISaveProvider;
+import appeng.core.me.api.storage.StorageChannel;
 
 
-public class CellRegistry implements ICellRegistry
+public class CellRegistry
 {
 
 	private final List<ICellHandler> handlers;
@@ -41,7 +40,6 @@ public class CellRegistry implements ICellRegistry
 		this.handlers = new ArrayList<ICellHandler>();
 	}
 
-	@Override
 	public void addCellHandler( final ICellHandler h )
 	{
 		if( h != null )
@@ -50,7 +48,6 @@ public class CellRegistry implements ICellRegistry
 		}
 	}
 
-	@Override
 	public boolean isCellHandled( final ItemStack is )
 	{
 		if( is == null )
@@ -67,7 +64,6 @@ public class CellRegistry implements ICellRegistry
 		return false;
 	}
 
-	@Override
 	public ICellHandler getHandler( final ItemStack is )
 	{
 		if( is == null )
@@ -84,7 +80,6 @@ public class CellRegistry implements ICellRegistry
 		return null;
 	}
 
-	@Override
 	public IMEInventoryHandler getCellInventory( final ItemStack is, final ISaveProvider container, final StorageChannel chan )
 	{
 		if( is == null )

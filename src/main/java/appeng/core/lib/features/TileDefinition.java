@@ -19,31 +19,63 @@
 package appeng.core.lib.features;
 
 
-import java.util.Optional;
+import org.apache.commons.lang3.tuple.Pair;
 
-import javax.annotation.Nonnull;
-
-import net.minecraft.item.ItemBlock;
+import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 
+import appeng.api.definitions.IBlockDefinition;
 import appeng.api.definitions.ITileDefinition;
-import appeng.core.lib.block.AEBaseTileBlock;
 
 
-public final class TileDefinition extends BlockDefinition implements ITileDefinition
+public final class TileDefinition<TE extends TileEntity, T extends Class<TE>> extends Definition<T> implements ITileDefinition<TE, T>
 {
 
-	private final Optional<AEBaseTileBlock> block;
+	private final IBlockDefinition block;
 
-	public TileDefinition( @Nonnull String registryName, AEBaseTileBlock block, ItemBlock item )
+	public TileDefinition( ResourceLocation identifier, T tile, IBlockDefinition block )
 	{
-		super( registryName, block, item );
-		this.block = Optional.ofNullable( block );
+		super( identifier, tile );
+		this.block = block;
 	}
 
 	@Override
-	public Optional<? extends Class<? extends TileEntity>> maybeEntity()
+	public <B extends Block> IBlockDefinition<B> block()
 	{
-		return this.block.map( AEBaseTileBlock::getTileEntityClass );
+		return block;
 	}
+
+	@Override
+	public boolean isSameAs( Object other )
+	{
+		if( super.isSameAs( other ) )
+		{
+			return true;
+		}
+		else
+		{
+			if( isEnabled() )
+			{
+				Class<TE> clas = maybe().get();
+				if( other instanceof TileEntity )
+				{
+					return other.getClass() == clas;
+				}
+				if( other instanceof Pair )
+				{
+					IBlockAccess world = (IBlockAccess) ( ( (Pair) other ).getLeft() instanceof IBlockAccess ? ( (Pair) other ).getLeft() : ( (Pair) other ).getRight() instanceof IBlockAccess ? ( (Pair) other ).getRight() : null );
+					BlockPos pos = (BlockPos) ( ( (Pair) other ).getLeft() instanceof BlockPos ? ( (Pair) other ).getLeft() : ( (Pair) other ).getRight() instanceof BlockPos ? ( (Pair) other ).getRight() : null );
+					if( world != null && pos != null )
+					{
+						return isSameAs( world.getTileEntity( pos ) );
+					}
+				}
+			}
+			return false;
+		}
+	}
+
 }

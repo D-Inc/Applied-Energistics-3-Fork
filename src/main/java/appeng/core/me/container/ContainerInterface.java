@@ -21,10 +21,10 @@ package appeng.core.me.container;
 
 import net.minecraft.entity.player.InventoryPlayer;
 
-import appeng.api.config.SecurityPermissions;
-import appeng.api.config.Settings;
-import appeng.api.config.YesNo;
-import appeng.api.util.IConfigManager;
+import appeng.core.api.config.SecurityPermissions;
+import appeng.core.api.config.Settings;
+import appeng.core.api.config.YesNo;
+import appeng.core.api.util.IConfigManager;
 import appeng.core.lib.container.ContainerUpgradeable;
 import appeng.core.lib.container.guisync.GuiSync;
 import appeng.core.lib.container.slot.SlotFake;

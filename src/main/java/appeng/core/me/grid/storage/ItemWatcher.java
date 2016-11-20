@@ -23,9 +23,9 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 
-import appeng.api.networking.storage.IStackWatcher;
-import appeng.api.networking.storage.IStackWatcherHost;
-import appeng.api.storage.data.IAEStack;
+import appeng.core.me.api.networking.storage.IStackWatcher;
+import appeng.core.me.api.networking.storage.IStackWatcherHost;
+import appeng.core.me.api.storage.data.IAEStack;
 import appeng.core.me.grid.cache.GridStorageCache;
 
 

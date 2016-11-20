@@ -29,22 +29,22 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.Vec3d;
 
-import appeng.api.AEApi;
-import appeng.api.config.Actionable;
-import appeng.api.config.PowerMultiplier;
-import appeng.api.config.PowerUnits;
-import appeng.api.config.TunnelType;
-import appeng.api.definitions.IParts;
-import appeng.api.implementations.items.IMemoryCard;
-import appeng.api.implementations.items.MemoryCardMessages;
-import appeng.api.parts.IPart;
-import appeng.api.parts.IPartCollisionHelper;
-import appeng.api.parts.IPartItem;
-import appeng.api.parts.PartItemStack;
-import appeng.api.util.AECableType;
-import appeng.api.util.AEPartLocation;
+import appeng.core.api.config.Actionable;
+import appeng.core.api.config.PowerMultiplier;
+import appeng.core.api.config.PowerUnits;
+import appeng.core.api.config.TunnelType;
+import appeng.core.api.implementations.items.IMemoryCard;
+import appeng.core.api.implementations.items.MemoryCardMessages;
+import appeng.core.api.util.AECableType;
+import appeng.core.api.util.AEPartLocation;
 import appeng.core.lib.AEConfig;
+import appeng.core.lib.AppEngApi;
+import appeng.core.lib.api.definitions.ApiParts;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.parts.IPart;
+import appeng.core.me.api.parts.IPartCollisionHelper;
+import appeng.core.me.api.parts.IPartItem;
+import appeng.core.me.api.parts.PartItemStack;
 import appeng.core.me.grid.GridAccessException;
 import appeng.core.me.grid.cache.P2PCache;
 import appeng.core.me.grid.cache.helpers.TunnelCollection;
@@ -120,7 +120,7 @@ public abstract class PartP2PTunnel<T extends PartP2PTunnel> extends PartBasicSt
 			return super.getItemStack( type );
 		}
 
-		final Optional<ItemStack> maybeMEStack = AEApi.instance().definitions().parts().p2PTunnelME().maybeStack( 1 );
+		final Optional<ItemStack> maybeMEStack = AppEngApi.internalApi().definitions().parts().p2PTunnelME().maybeStack( 1 );
 		if( maybeMEStack.isPresent() )
 		{
 			return maybeMEStack.get();
@@ -165,7 +165,7 @@ public abstract class PartP2PTunnel<T extends PartP2PTunnel> extends PartBasicSt
 		// UniqueIdentifier id = GameRegistry.findUniqueIdentifierFor( is.getItem() );
 		// AELog.info( "ID:" + id.toString() + " : " + is.getItemDamage() );
 
-		final TunnelType tt = AEApi.instance().registries().p2pTunnel().getTunnelTypeByItem( is );
+		final TunnelType tt = AppEngApi.internalApi().registries().p2pTunnel().getTunnelTypeByItem( is );
 		if( is != null && is.getItem() instanceof IMemoryCard )
 		{
 			final IMemoryCard mc = (IMemoryCard) is.getItem();
@@ -214,12 +214,12 @@ public abstract class PartP2PTunnel<T extends PartP2PTunnel> extends PartBasicSt
 		{
 			final ItemStack newType;
 
-			final IParts parts = AEApi.instance().definitions().parts();
+			final ApiParts parts = AppEngApi.internalApi().definitions().parts();
 
 			switch( tt )
 			{
 				case LIGHT:
-					newType = parts.p2PTunnelLight().maybeStack( 1 ).orElse( null );
+					newType = (ItemStack) parts.p2PTunnelLight().maybeStack( 1 ).orElse( null );
 					break;
 
 				/*
@@ -232,7 +232,7 @@ public abstract class PartP2PTunnel<T extends PartP2PTunnel> extends PartBasicSt
 				 */
 
 				case FLUID:
-					newType = parts.p2PTunnelLiquids().maybeStack( 1 ).orElse( null );
+					newType = (ItemStack) parts.p2PTunnelLiquids().maybeStack( 1 ).orElse( null );
 					break;
 
 				/*
@@ -245,15 +245,15 @@ public abstract class PartP2PTunnel<T extends PartP2PTunnel> extends PartBasicSt
 				 */
 
 				case ITEM:
-					newType = parts.p2PTunnelItems().maybeStack( 1 ).orElse( null );
+					newType = (ItemStack) parts.p2PTunnelItems().maybeStack( 1 ).orElse( null );
 					break;
 
 				case ME:
-					newType = parts.p2PTunnelME().maybeStack( 1 ).orElse( null );
+					newType = (ItemStack) parts.p2PTunnelME().maybeStack( 1 ).orElse( null );
 					break;
 
 				case REDSTONE:
-					newType = parts.p2PTunnelRedstone().maybeStack( 1 ).orElse( null );
+					newType = (ItemStack) parts.p2PTunnelRedstone().maybeStack( 1 ).orElse( null );
 					break;
 
 				/*

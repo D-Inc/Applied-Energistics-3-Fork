@@ -19,10 +19,10 @@
 package appeng.core.me.grid.helpers;
 
 
-import appeng.api.config.Actionable;
-import appeng.api.config.PowerMultiplier;
-import appeng.api.networking.IGridNode;
-import appeng.api.networking.energy.IEnergySource;
+import appeng.core.api.config.Actionable;
+import appeng.core.api.config.PowerMultiplier;
+import appeng.core.me.api.networking.IGridNode;
+import appeng.core.me.api.networking.energy.IEnergySource;
 
 
 public class ChannelPowerSrc implements IEnergySource

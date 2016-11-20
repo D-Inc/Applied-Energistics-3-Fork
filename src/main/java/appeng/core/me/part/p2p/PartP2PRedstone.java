@@ -28,11 +28,11 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import appeng.api.networking.events.MENetworkBootingStatusChange;
-import appeng.api.networking.events.MENetworkChannelsChanged;
-import appeng.api.networking.events.MENetworkEventSubscribe;
-import appeng.api.networking.events.MENetworkPowerStatusChange;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.networking.events.MENetworkBootingStatusChange;
+import appeng.core.me.api.networking.events.MENetworkChannelsChanged;
+import appeng.core.me.api.networking.events.MENetworkEventSubscribe;
+import appeng.core.me.api.networking.events.MENetworkPowerStatusChange;
 import appeng.core.me.grid.GridAccessException;
 
 

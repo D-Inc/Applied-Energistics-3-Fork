@@ -47,9 +47,9 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import appeng.api.util.AECableType;
-import appeng.api.util.AEColor;
 import appeng.core.AppEng;
+import appeng.core.api.util.AECableType;
+import appeng.core.api.util.AEColor;
 import appeng.core.hooks.TickHandler;
 import appeng.core.hooks.TickHandler.PlayerColor;
 import appeng.core.lib.AELog;
@@ -72,8 +72,8 @@ import appeng.core.lib.util.Platform;
 import appeng.core.me.item.PartType;
 import appeng.core.me.part.AEBasePart;
 import appeng.core.server.AppEngCoreServerProxy;
-import appeng.misc.client.render.RenderTinyTNTPrimed;
-import appeng.misc.entity.EntityTinyTNTPrimed;
+import appeng.miscellaneous.client.render.RenderTinyTNTPrimed;
+import appeng.miscellaneous.entity.EntityTinyTNTPrimed;
 import appeng.tools.client.render.texture.ParticleTextures;
 
 

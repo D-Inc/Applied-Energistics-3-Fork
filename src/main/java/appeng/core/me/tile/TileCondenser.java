@@ -28,13 +28,13 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 
-import appeng.api.AEApi;
-import appeng.api.config.CondenserOutput;
-import appeng.api.config.Settings;
-import appeng.api.definitions.IMaterials;
-import appeng.api.implementations.items.IStorageComponent;
-import appeng.api.util.IConfigManager;
-import appeng.api.util.IConfigurableObject;
+import appeng.core.api.config.CondenserOutput;
+import appeng.core.api.config.Settings;
+import appeng.core.api.implementations.items.IStorageComponent;
+import appeng.core.api.util.IConfigManager;
+import appeng.core.api.util.IConfigurableObject;
+import appeng.core.lib.AppEngApi;
+import appeng.core.lib.api.definitions.ApiMaterials;
 import appeng.core.lib.tile.AEBaseInvTile;
 import appeng.core.lib.tile.TileEvent;
 import appeng.core.lib.tile.events.TileEventType;
@@ -139,15 +139,15 @@ public class TileCondenser extends AEBaseInvTile implements IFluidHandler, IConf
 
 	private ItemStack getOutput()
 	{
-		final IMaterials materials = AEApi.instance().definitions().materials();
+		final ApiMaterials materials = AppEngApi.internalApi().definitions().materials();
 
 		switch( (CondenserOutput) this.cm.getSetting( Settings.CONDENSER_OUTPUT ) )
 		{
 			case MATTER_BALLS:
-				return materials.matterBall().maybeStack( 1 ).orElse( null );
+				return (ItemStack) materials.matterBall().maybeStack( 1 ).orElse( null );
 
 			case SINGULARITY:
-				return materials.singularity().maybeStack( 1 ).orElse( null );
+				return (ItemStack) materials.singularity().maybeStack( 1 ).orElse( null );
 
 			case TRASH:
 			default:

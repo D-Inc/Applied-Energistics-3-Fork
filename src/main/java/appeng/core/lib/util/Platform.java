@@ -85,46 +85,27 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 
-import appeng.api.AEApi;
-import appeng.api.config.AccessRestriction;
-import appeng.api.config.Actionable;
-import appeng.api.config.FuzzyMode;
-import appeng.api.config.PowerMultiplier;
-import appeng.api.config.PowerUnits;
-import appeng.api.config.SecurityPermissions;
 import appeng.api.definitions.IItemDefinition;
-import appeng.api.definitions.IMaterials;
-import appeng.api.definitions.IParts;
-import appeng.api.implementations.items.IAEItemPowerStorage;
-import appeng.api.implementations.items.IAEWrench;
-import appeng.api.implementations.tiles.ITileStorageMonitorable;
-import appeng.api.networking.IGrid;
-import appeng.api.networking.IGridNode;
-import appeng.api.networking.energy.IEnergyGrid;
-import appeng.api.networking.energy.IEnergySource;
-import appeng.api.networking.security.BaseActionSource;
-import appeng.api.networking.security.IActionHost;
-import appeng.api.networking.security.ISecurityGrid;
-import appeng.api.networking.security.MachineSource;
-import appeng.api.networking.security.PlayerSource;
-import appeng.api.networking.storage.IStorageGrid;
-import appeng.api.storage.IMEInventory;
-import appeng.api.storage.IMEMonitor;
-import appeng.api.storage.IMEMonitorHandlerReceiver;
-import appeng.api.storage.StorageChannel;
-import appeng.api.storage.data.IAEFluidStack;
-import appeng.api.storage.data.IAEItemStack;
-import appeng.api.storage.data.IAEStack;
-import appeng.api.storage.data.IAETagCompound;
-import appeng.api.storage.data.IItemList;
-import appeng.api.util.AEColor;
-import appeng.api.util.AEPartLocation;
-import appeng.api.util.DimensionalCoord;
 import appeng.core.AppEng;
 import appeng.core.AppEngCore;
+import appeng.core.api.config.AccessRestriction;
+import appeng.core.api.config.Actionable;
+import appeng.core.api.config.FuzzyMode;
+import appeng.core.api.config.PowerMultiplier;
+import appeng.core.api.config.PowerUnits;
+import appeng.core.api.config.SecurityPermissions;
+import appeng.core.api.implementations.items.IAEItemPowerStorage;
+import appeng.core.api.implementations.items.IAEWrench;
+import appeng.core.api.implementations.tiles.ITileStorageMonitorable;
+import appeng.core.api.util.AEColor;
+import appeng.core.api.util.AEPartLocation;
+import appeng.core.api.util.DimensionalCoord;
 import appeng.core.hooks.TickHandler;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.AELog;
+import appeng.core.lib.AppEngApi;
+import appeng.core.lib.api.definitions.ApiMaterials;
+import appeng.core.lib.api.definitions.ApiParts;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.stats.Stats;
 import appeng.core.lib.sync.GuiBridge;
@@ -134,6 +115,25 @@ import appeng.core.lib.util.item.AESharedNBT;
 import appeng.core.lib.util.item.OreHelper;
 import appeng.core.lib.util.item.OreReference;
 import appeng.core.lib.util.prioitylist.IPartitionList;
+import appeng.core.me.api.networking.IGrid;
+import appeng.core.me.api.networking.IGridNode;
+import appeng.core.me.api.networking.energy.IEnergyGrid;
+import appeng.core.me.api.networking.energy.IEnergySource;
+import appeng.core.me.api.networking.security.BaseActionSource;
+import appeng.core.me.api.networking.security.IActionHost;
+import appeng.core.me.api.networking.security.ISecurityGrid;
+import appeng.core.me.api.networking.security.MachineSource;
+import appeng.core.me.api.networking.security.PlayerSource;
+import appeng.core.me.api.networking.storage.IStorageGrid;
+import appeng.core.me.api.storage.IMEInventory;
+import appeng.core.me.api.storage.IMEMonitor;
+import appeng.core.me.api.storage.IMEMonitorHandlerReceiver;
+import appeng.core.me.api.storage.StorageChannel;
+import appeng.core.me.api.storage.data.IAEFluidStack;
+import appeng.core.me.api.storage.data.IAEItemStack;
+import appeng.core.me.api.storage.data.IAEStack;
+import appeng.core.me.api.storage.data.IAETagCompound;
+import appeng.core.me.api.storage.data.IItemList;
 import appeng.core.me.grid.GridAccessException;
 import appeng.core.me.grid.GridNode;
 import appeng.core.me.grid.helpers.AENetworkProxy;
@@ -1661,12 +1661,12 @@ public class Platform
 
 	public static void postChanges( final IStorageGrid gs, final ItemStack removed, final ItemStack added, final BaseActionSource src )
 	{
-		final IItemList<IAEItemStack> itemChanges = AEApi.instance().storage().createItemList();
-		final IItemList<IAEFluidStack> fluidChanges = AEApi.instance().storage().createFluidList();
+		final IItemList<IAEItemStack> itemChanges = AppEngApi.internalApi().storage().createItemList();
+		final IItemList<IAEFluidStack> fluidChanges = AppEngApi.internalApi().storage().createFluidList();
 
 		if( removed != null )
 		{
-			final IMEInventory<IAEItemStack> myItems = AEApi.instance().registries().cell().getCellInventory( removed, null, StorageChannel.ITEMS );
+			final IMEInventory<IAEItemStack> myItems = AppEngApi.internalApi().registries().cell().getCellInventory( removed, null, StorageChannel.ITEMS );
 
 			if( myItems != null )
 			{
@@ -1676,7 +1676,7 @@ public class Platform
 				}
 			}
 
-			final IMEInventory<IAEFluidStack> myFluids = AEApi.instance().registries().cell().getCellInventory( removed, null, StorageChannel.FLUIDS );
+			final IMEInventory<IAEFluidStack> myFluids = AppEngApi.internalApi().registries().cell().getCellInventory( removed, null, StorageChannel.FLUIDS );
 
 			if( myFluids != null )
 			{
@@ -1689,14 +1689,14 @@ public class Platform
 
 		if( added != null )
 		{
-			final IMEInventory<IAEItemStack> myItems = AEApi.instance().registries().cell().getCellInventory( added, null, StorageChannel.ITEMS );
+			final IMEInventory<IAEItemStack> myItems = AppEngApi.internalApi().registries().cell().getCellInventory( added, null, StorageChannel.ITEMS );
 
 			if( myItems != null )
 			{
 				myItems.getAvailableItems( itemChanges );
 			}
 
-			final IMEInventory<IAEFluidStack> myFluids = AEApi.instance().registries().cell().getCellInventory( added, null, StorageChannel.FLUIDS );
+			final IMEInventory<IAEFluidStack> myFluids = AppEngApi.internalApi().registries().cell().getCellInventory( added, null, StorageChannel.FLUIDS );
 
 			if( myFluids != null )
 			{
@@ -2067,7 +2067,7 @@ public class Platform
 
 		if( type == AEFeature.CertusQuartzTools )
 		{
-			final IItemDefinition certusQuartzCrystal = AEApi.instance().definitions().materials().certusQuartzCrystal();
+			final IItemDefinition certusQuartzCrystal = AppEngApi.internalApi().definitions().materials().certusQuartzCrystal();
 
 			return certusQuartzCrystal.isSameAs( b );
 		}
@@ -2082,7 +2082,7 @@ public class Platform
 
 	public static Object findPreferred( final ItemStack[] is )
 	{
-		final IParts parts = AEApi.instance().definitions().parts();
+		final ApiParts parts = AppEngApi.internalApi().definitions().parts();
 
 		for( final ItemStack stack : is )
 		{
@@ -2167,7 +2167,7 @@ public class Platform
 
 	public static void addStat( final int playerID, final Achievement achievement )
 	{
-		final EntityPlayer p = AEApi.instance().registries().players().findPlayer( playerID );
+		final EntityPlayer p = AppEngApi.internalApi().registries().players().findPlayer( playerID );
 		if( p != null )
 		{
 			p.addStat( achievement, 1 );
@@ -2176,7 +2176,7 @@ public class Platform
 
 	public static boolean isRecipePrioritized( final ItemStack what )
 	{
-		final IMaterials materials = AEApi.instance().definitions().materials();
+		final ApiMaterials materials = AppEngApi.internalApi().definitions().materials();
 
 		boolean isPurified = materials.purifiedCertusQuartzCrystal().isSameAs( what );
 		isPurified |= materials.purifiedFluixCrystal().isSameAs( what );

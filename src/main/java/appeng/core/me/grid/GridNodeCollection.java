@@ -23,9 +23,9 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-import appeng.api.networking.IGridHost;
-import appeng.api.networking.IGridNode;
-import appeng.api.util.IReadOnlyCollection;
+import appeng.core.api.util.IReadOnlyCollection;
+import appeng.core.me.api.networking.IGridHost;
+import appeng.core.me.api.networking.IGridNode;
 
 
 public class GridNodeCollection implements IReadOnlyCollection<IGridNode>

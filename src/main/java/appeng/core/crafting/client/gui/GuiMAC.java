@@ -21,8 +21,8 @@ package appeng.core.crafting.client.gui;
 
 import net.minecraft.entity.player.InventoryPlayer;
 
-import appeng.api.config.RedstoneMode;
-import appeng.api.config.Settings;
+import appeng.core.api.config.RedstoneMode;
+import appeng.core.api.config.Settings;
 import appeng.core.crafting.container.ContainerMAC;
 import appeng.core.crafting.tile.TileMolecularAssembler;
 import appeng.core.lib.client.gui.GuiUpgradeable;

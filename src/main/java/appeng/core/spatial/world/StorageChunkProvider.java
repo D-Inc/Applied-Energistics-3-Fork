@@ -29,8 +29,8 @@ import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.gen.ChunkProviderOverworld;
 
-import appeng.api.AEApi;
 import appeng.core.lib.AEConfig;
+import appeng.core.lib.AppEngApi;
 
 
 public class StorageChunkProvider extends ChunkProviderOverworld
@@ -42,10 +42,10 @@ public class StorageChunkProvider extends ChunkProviderOverworld
 	{
 		BLOCKS = new Block[255 * SQUARE_CHUNK_SIZE];
 
-		AEApi.instance().definitions().blocks().matrixFrame().maybeBlock().ifPresent( matrixFrameBlock -> {
+		AppEngApi.internalApi().definitions().blocks().matrixFrame().maybe().ifPresent( matrixFrameBlock -> {
 			for( int x = 0; x < BLOCKS.length; x++ )
 			{
-				BLOCKS[x] = matrixFrameBlock;
+				BLOCKS[x] = (Block) matrixFrameBlock;
 			}
 		} );
 	}

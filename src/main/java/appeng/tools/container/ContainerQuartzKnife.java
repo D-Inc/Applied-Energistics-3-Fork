@@ -28,7 +28,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerDestroyItemEvent;
 
-import appeng.api.AEApi;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.container.AEBaseContainer;
 import appeng.core.lib.container.slot.SlotRestrictedInput;
 import appeng.core.lib.tile.inventory.AppEngInternalInventory;
@@ -136,7 +136,7 @@ public class ContainerQuartzKnife extends AEBaseContainer implements IAEAppEngIn
 		{
 			if( this.myName.length() > 0 )
 			{
-				return AEApi.instance().definitions().materials().namePress().maybeStack( 1 ).map( namePressStack -> {
+				return AppEngApi.internalApi().definitions().materials().namePress().maybeStack( 1 ).map( namePressStack -> {
 					final NBTTagCompound compound = Platform.openNbtData( namePressStack );
 					compound.setString( "InscribeName", this.myName );
 

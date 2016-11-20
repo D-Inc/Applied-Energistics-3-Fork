@@ -21,10 +21,10 @@ package appeng.core.me.part;
 
 import javax.annotation.Nullable;
 
-import appeng.api.implementations.parts.IPartCable;
-import appeng.api.parts.IFacadePart;
-import appeng.api.parts.IPart;
-import appeng.api.util.AEPartLocation;
+import appeng.core.api.implementations.parts.IPartCable;
+import appeng.core.api.util.AEPartLocation;
+import appeng.core.me.api.parts.IFacadePart;
+import appeng.core.me.api.parts.IPart;
 
 
 /**

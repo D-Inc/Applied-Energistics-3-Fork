@@ -21,7 +21,7 @@ package appeng.core.me.client.gui;
 
 import net.minecraft.item.ItemStack;
 
-import appeng.api.storage.data.IAEItemStack;
+import appeng.core.me.api.storage.data.IAEItemStack;
 
 
 public class InternalSlotME

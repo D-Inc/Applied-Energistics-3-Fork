@@ -27,20 +27,20 @@ import java.util.List;
 import java.util.NavigableMap;
 import java.util.TreeMap;
 
-import appeng.api.config.AccessRestriction;
-import appeng.api.config.Actionable;
-import appeng.api.config.SecurityPermissions;
-import appeng.api.networking.IGrid;
-import appeng.api.networking.IGridNode;
-import appeng.api.networking.security.BaseActionSource;
-import appeng.api.networking.security.ISecurityGrid;
-import appeng.api.networking.security.MachineSource;
-import appeng.api.networking.security.PlayerSource;
-import appeng.api.storage.IMEInventoryHandler;
-import appeng.api.storage.StorageChannel;
-import appeng.api.storage.data.IAEStack;
-import appeng.api.storage.data.IItemList;
+import appeng.core.api.config.AccessRestriction;
+import appeng.core.api.config.Actionable;
+import appeng.core.api.config.SecurityPermissions;
 import appeng.core.lib.util.ItemSorters;
+import appeng.core.me.api.networking.IGrid;
+import appeng.core.me.api.networking.IGridNode;
+import appeng.core.me.api.networking.security.BaseActionSource;
+import appeng.core.me.api.networking.security.ISecurityGrid;
+import appeng.core.me.api.networking.security.MachineSource;
+import appeng.core.me.api.networking.security.PlayerSource;
+import appeng.core.me.api.storage.IMEInventoryHandler;
+import appeng.core.me.api.storage.StorageChannel;
+import appeng.core.me.api.storage.data.IAEStack;
+import appeng.core.me.api.storage.data.IItemList;
 import appeng.core.me.grid.cache.SecurityCache;
 
 

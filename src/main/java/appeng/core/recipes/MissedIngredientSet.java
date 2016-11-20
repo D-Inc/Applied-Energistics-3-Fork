@@ -19,7 +19,7 @@
 package appeng.core.recipes;
 
 
-import appeng.api.recipes.ResolverResultSet;
+import appeng.core.api.recipes.ResolverResultSet;
 
 
 public class MissedIngredientSet extends Throwable

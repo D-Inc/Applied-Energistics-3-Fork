@@ -21,8 +21,8 @@ package appeng.core.me.container;
 
 import net.minecraft.entity.player.InventoryPlayer;
 
-import appeng.api.config.CondenserOutput;
-import appeng.api.config.Settings;
+import appeng.core.api.config.CondenserOutput;
+import appeng.core.api.config.Settings;
 import appeng.core.lib.container.AEBaseContainer;
 import appeng.core.lib.container.guisync.GuiSync;
 import appeng.core.lib.container.interfaces.IProgressProvider;

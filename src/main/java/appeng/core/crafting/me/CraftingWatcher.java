@@ -25,9 +25,9 @@ import java.util.Iterator;
 
 import javax.annotation.Nonnull;
 
-import appeng.api.networking.crafting.ICraftingWatcher;
-import appeng.api.networking.crafting.ICraftingWatcherHost;
-import appeng.api.storage.data.IAEStack;
+import appeng.core.me.api.networking.crafting.ICraftingWatcher;
+import appeng.core.me.api.networking.crafting.ICraftingWatcherHost;
+import appeng.core.me.api.storage.data.IAEStack;
 import appeng.core.me.grid.cache.CraftingGridCache;
 
 

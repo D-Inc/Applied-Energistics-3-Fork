@@ -29,12 +29,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import appeng.api.storage.data.IAEItemStack;
 import appeng.core.lib.CommonHelper;
 import appeng.core.lib.client.EffectType;
 import appeng.core.lib.sync.AppEngPacket;
 import appeng.core.lib.sync.network.INetworkInfo;
 import appeng.core.lib.util.item.AEItemStack;
+import appeng.core.me.api.storage.data.IAEItemStack;
 
 
 public class PacketAssemblerAnimation extends AppEngPacket

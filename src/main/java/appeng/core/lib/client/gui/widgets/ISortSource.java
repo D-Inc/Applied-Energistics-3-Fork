@@ -19,8 +19,8 @@
 package appeng.core.lib.client.gui.widgets;
 
 
-import appeng.api.config.SortDir;
-import appeng.api.config.ViewItems;
+import appeng.core.api.config.SortDir;
+import appeng.core.api.config.ViewItems;
 
 
 public interface ISortSource

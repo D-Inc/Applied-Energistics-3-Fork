@@ -28,21 +28,21 @@ import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.oredict.OreDictionary;
 
-import appeng.api.AEApi;
-import appeng.api.config.Actionable;
-import appeng.api.config.FuzzyMode;
-import appeng.api.exceptions.AppEngException;
-import appeng.api.implementations.items.IStorageCell;
-import appeng.api.networking.security.BaseActionSource;
-import appeng.api.storage.ICellInventory;
-import appeng.api.storage.IMEInventory;
-import appeng.api.storage.IMEInventoryHandler;
-import appeng.api.storage.ISaveProvider;
-import appeng.api.storage.StorageChannel;
-import appeng.api.storage.data.IAEItemStack;
-import appeng.api.storage.data.IItemList;
+import appeng.core.api.config.Actionable;
+import appeng.core.api.config.FuzzyMode;
+import appeng.core.api.exceptions.AppEngException;
+import appeng.core.api.implementations.items.IStorageCell;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.util.item.AEItemStack;
+import appeng.core.me.api.networking.security.BaseActionSource;
+import appeng.core.me.api.storage.ICellInventory;
+import appeng.core.me.api.storage.IMEInventory;
+import appeng.core.me.api.storage.IMEInventoryHandler;
+import appeng.core.me.api.storage.ISaveProvider;
+import appeng.core.me.api.storage.StorageChannel;
+import appeng.core.me.api.storage.data.IAEItemStack;
+import appeng.core.me.api.storage.data.IItemList;
 
 
 public class CellInventory implements ICellInventory
@@ -196,7 +196,7 @@ public class CellInventory implements ICellInventory
 
 	private boolean isEmpty( final IMEInventory meInventory )
 	{
-		return meInventory.getAvailableItems( AEApi.instance().storage().createItemList() ).isEmpty();
+		return meInventory.getAvailableItems( AppEngApi.internalApi().storage().createItemList() ).isEmpty();
 	}
 
 	@Override
@@ -342,7 +342,7 @@ public class CellInventory implements ICellInventory
 	{
 		if( this.cellItems == null )
 		{
-			this.cellItems = AEApi.instance().storage().createItemList();
+			this.cellItems = AppEngApi.internalApi().storage().createItemList();
 			this.loadCellItems();
 		}
 
@@ -435,7 +435,7 @@ public class CellInventory implements ICellInventory
 	{
 		if( this.cellItems == null )
 		{
-			this.cellItems = AEApi.instance().storage().createItemList();
+			this.cellItems = AppEngApi.internalApi().storage().createItemList();
 		}
 
 		this.cellItems.resetStatus(); // clears totals and stuff.

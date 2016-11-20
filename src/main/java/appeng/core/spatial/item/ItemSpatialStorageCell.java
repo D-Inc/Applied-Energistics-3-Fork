@@ -27,9 +27,9 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.common.DimensionManager;
 
-import appeng.api.implementations.TransitionResult;
-import appeng.api.implementations.items.ISpatialStorageCell;
-import appeng.api.util.WorldCoord;
+import appeng.core.api.implementations.TransitionResult;
+import appeng.core.api.implementations.items.ISpatialStorageCell;
+import appeng.core.api.util.WorldCoord;
 import appeng.core.lib.item.AEBaseItem;
 import appeng.core.lib.localization.GuiText;
 import appeng.core.lib.util.Platform;

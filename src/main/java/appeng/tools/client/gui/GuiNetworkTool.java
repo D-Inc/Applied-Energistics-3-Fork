@@ -24,7 +24,7 @@ import java.io.IOException;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.player.InventoryPlayer;
 
-import appeng.api.implementations.guiobjects.INetworkTool;
+import appeng.core.api.implementations.guiobjects.INetworkTool;
 import appeng.core.lib.AELog;
 import appeng.core.lib.client.gui.AEBaseGui;
 import appeng.core.lib.client.gui.widgets.GuiToggleButton;

@@ -21,8 +21,8 @@ package appeng.core.me.grid.pathfinding;
 
 import java.util.EnumSet;
 
-import appeng.api.networking.GridFlags;
-import appeng.api.util.IReadOnlyCollection;
+import appeng.core.api.util.IReadOnlyCollection;
+import appeng.core.me.api.networking.GridFlags;
 
 
 public interface IPathItem

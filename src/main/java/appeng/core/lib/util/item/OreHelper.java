@@ -34,7 +34,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
-import appeng.api.storage.data.IAEItemStack;
+import appeng.core.me.api.storage.data.IAEItemStack;
 
 
 public class OreHelper

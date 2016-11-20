@@ -34,26 +34,16 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
-import appeng.api.AEApi;
-import appeng.api.config.SecurityPermissions;
 import appeng.api.definitions.IComparableDefinition;
-import appeng.api.definitions.IMaterials;
-import appeng.api.exceptions.AppEngException;
-import appeng.api.features.IWirelessTermHandler;
-import appeng.api.implementations.IUpgradeableHost;
-import appeng.api.implementations.guiobjects.IGuiItem;
-import appeng.api.implementations.guiobjects.INetworkTool;
-import appeng.api.implementations.guiobjects.IPortableCell;
-import appeng.api.networking.IGrid;
-import appeng.api.networking.IGridNode;
-import appeng.api.networking.energy.IEnergyGrid;
-import appeng.api.networking.security.IActionHost;
-import appeng.api.networking.security.ISecurityGrid;
-import appeng.api.parts.IPart;
-import appeng.api.parts.IPartHost;
-import appeng.api.storage.ITerminalHost;
-import appeng.api.util.AEPartLocation;
-import appeng.api.util.DimensionalCoord;
+import appeng.core.api.config.SecurityPermissions;
+import appeng.core.api.exceptions.AppEngException;
+import appeng.core.api.features.IWirelessTermHandler;
+import appeng.core.api.implementations.IUpgradeableHost;
+import appeng.core.api.implementations.guiobjects.IGuiItem;
+import appeng.core.api.implementations.guiobjects.INetworkTool;
+import appeng.core.api.implementations.guiobjects.IPortableCell;
+import appeng.core.api.util.AEPartLocation;
+import appeng.core.api.util.DimensionalCoord;
 import appeng.core.container.ContainerGrinder;
 import appeng.core.container.ContainerInscriber;
 import appeng.core.container.ContainerVibrationChamber;
@@ -66,6 +56,8 @@ import appeng.core.crafting.container.ContainerMAC;
 import appeng.core.crafting.container.ContainerPatternTerm;
 import appeng.core.crafting.tile.TileCraftingTile;
 import appeng.core.crafting.tile.TileMolecularAssembler;
+import appeng.core.lib.AppEngApi;
+import appeng.core.lib.api.definitions.ApiMaterials;
 import appeng.core.lib.client.gui.AEBaseGui;
 import appeng.core.lib.client.gui.GuiNull;
 import appeng.core.lib.container.AEBaseContainer;
@@ -78,6 +70,14 @@ import appeng.core.lib.helpers.IPriorityHost;
 import appeng.core.lib.helpers.WirelessTerminalGuiObject;
 import appeng.core.lib.stats.Achievements;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.networking.IGrid;
+import appeng.core.me.api.networking.IGridNode;
+import appeng.core.me.api.networking.energy.IEnergyGrid;
+import appeng.core.me.api.networking.security.IActionHost;
+import appeng.core.me.api.networking.security.ISecurityGrid;
+import appeng.core.me.api.parts.IPart;
+import appeng.core.me.api.parts.IPartHost;
+import appeng.core.me.api.storage.ITerminalHost;
 import appeng.core.me.container.ContainerCellWorkbench;
 import appeng.core.me.container.ContainerChest;
 import appeng.core.me.container.ContainerCondenser;
@@ -302,7 +302,7 @@ public enum GuiBridge implements IGuiHandler
 				return ( (IGuiItem) it.getItem() ).getGuiObject( it, w, new BlockPos( x, y, z ) );
 			}
 
-			final IWirelessTermHandler wh = AEApi.instance().registries().wireless().getWirelessTerminalHandler( it );
+			final IWirelessTermHandler wh = AppEngApi.internalApi().registries().wireless().getWirelessTerminalHandler( it );
 			if( wh != null )
 			{
 				return new WirelessTerminalGuiObject( wh, it, player, w, x, y, z );
@@ -369,7 +369,7 @@ public enum GuiBridge implements IGuiHandler
 					{
 						final ItemStack is = ( (Slot) so ).getStack();
 
-						final IMaterials materials = AEApi.instance().definitions().materials();
+						final ApiMaterials materials = AppEngApi.internalApi().definitions().materials();
 						this.addPressAchievementToPlayer( is, materials, inventory.player );
 					}
 				}
@@ -409,7 +409,7 @@ public enum GuiBridge implements IGuiHandler
 		return inventory.getClass().getName();
 	}
 
-	private void addPressAchievementToPlayer( final ItemStack newItem, final IMaterials possibleMaterials, final EntityPlayer player )
+	private void addPressAchievementToPlayer( final ItemStack newItem, final ApiMaterials possibleMaterials, final EntityPlayer player )
 	{
 		final IComparableDefinition logic = possibleMaterials.logicProcessorPress();
 		final IComparableDefinition eng = possibleMaterials.engProcessorPress();

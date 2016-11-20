@@ -28,13 +28,13 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-import appeng.api.networking.IGridNode;
-import appeng.api.networking.events.MENetworkChannelsChanged;
-import appeng.api.networking.events.MENetworkPowerStatusChange;
-import appeng.api.networking.ticking.IGridTickable;
-import appeng.api.networking.ticking.TickRateModulation;
-import appeng.api.networking.ticking.TickingRequest;
 import appeng.core.lib.settings.TickRates;
+import appeng.core.me.api.networking.IGridNode;
+import appeng.core.me.api.networking.events.MENetworkChannelsChanged;
+import appeng.core.me.api.networking.events.MENetworkPowerStatusChange;
+import appeng.core.me.api.networking.ticking.IGridTickable;
+import appeng.core.me.api.networking.ticking.TickRateModulation;
+import appeng.core.me.api.networking.ticking.TickingRequest;
 import appeng.core.me.grid.GridAccessException;
 
 

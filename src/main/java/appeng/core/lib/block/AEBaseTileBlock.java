@@ -49,11 +49,11 @@ import net.minecraftforge.common.property.ExtendedBlockState;
 import net.minecraftforge.common.property.IExtendedBlockState;
 import net.minecraftforge.common.property.IUnlistedProperty;
 
-import appeng.api.implementations.items.IMemoryCard;
-import appeng.api.implementations.items.MemoryCardMessages;
-import appeng.api.implementations.tiles.IColorableTile;
-import appeng.api.util.AEColor;
-import appeng.api.util.IOrientable;
+import appeng.core.api.implementations.items.IMemoryCard;
+import appeng.core.api.implementations.items.MemoryCardMessages;
+import appeng.core.api.implementations.tiles.IColorableTile;
+import appeng.core.api.util.AEColor;
+import appeng.core.api.util.IOrientable;
 import appeng.core.lib.helpers.ICustomCollision;
 import appeng.core.lib.tile.AEBaseTile;
 import appeng.core.lib.util.Platform;

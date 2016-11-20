@@ -32,9 +32,9 @@ import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
 
-import appeng.api.util.WorldCoord;
 import appeng.core.AppEng;
 import appeng.core.AppEngCore;
+import appeng.core.api.util.WorldCoord;
 import appeng.core.hooks.TickHandler;
 import appeng.core.lib.sync.network.NetworkHandler;
 import appeng.core.lib.sync.packets.PacketNewStorageDimension;

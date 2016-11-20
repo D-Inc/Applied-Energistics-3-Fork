@@ -4,8 +4,8 @@ package appeng.core.me.part.automation;
 
 import net.minecraft.item.ItemStack;
 
-import appeng.api.config.Upgrades;
 import appeng.api.definitions.IItemDefinition;
+import appeng.core.api.config.Upgrades;
 import appeng.core.lib.tile.inventory.IAEAppEngInventory;
 
 

@@ -27,10 +27,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.ITextComponent;
 
-import appeng.api.storage.IMEInventory;
 import appeng.core.lib.AELog;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.util.iterators.InvIterator;
+import appeng.core.me.api.storage.IMEInventory;
 import appeng.core.me.grid.storage.MEIInventoryWrapper;
 
 

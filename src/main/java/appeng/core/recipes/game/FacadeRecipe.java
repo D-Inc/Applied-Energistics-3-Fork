@@ -31,9 +31,9 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 
-import appeng.api.AEApi;
 import appeng.api.definitions.IComparableDefinition;
-import appeng.api.definitions.IDefinitions;
+import appeng.core.lib.ApiDefinitions;
+import appeng.core.lib.AppEngApi;
 import appeng.decorative.item.ItemFacade;
 
 
@@ -44,9 +44,9 @@ public final class FacadeRecipe implements IRecipe
 
 	public FacadeRecipe()
 	{
-		final IDefinitions definitions = AEApi.instance().definitions();
+		final ApiDefinitions definitions = AppEngApi.internalApi().definitions();
 
-		this.maybeFacade = definitions.items().facade().maybeItem();
+		this.maybeFacade = definitions.items().facade().maybe();
 		this.anchor = definitions.parts().cableAnchor();
 	}
 

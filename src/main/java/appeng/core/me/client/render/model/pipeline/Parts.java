@@ -12,9 +12,9 @@ import net.minecraftforge.common.property.IExtendedBlockState;
 
 import appeng.api.client.BakingPipeline;
 import appeng.api.client.BakingPipelineElement;
-import appeng.api.parts.IPart;
-import appeng.api.util.AEPartLocation;
+import appeng.core.api.util.AEPartLocation;
 import appeng.core.lib.client.render.model.pipeline.TintIndexModifier;
+import appeng.core.me.api.parts.IPart;
 import appeng.core.me.block.BlockCableBus;
 import appeng.core.me.part.CableBusContainer;
 

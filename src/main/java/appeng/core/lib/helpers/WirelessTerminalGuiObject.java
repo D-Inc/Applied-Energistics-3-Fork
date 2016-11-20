@@ -23,32 +23,32 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-import appeng.api.AEApi;
-import appeng.api.config.AccessRestriction;
-import appeng.api.config.Actionable;
-import appeng.api.config.PowerMultiplier;
-import appeng.api.features.ILocatable;
-import appeng.api.features.IWirelessTermHandler;
-import appeng.api.implementations.guiobjects.IPortableCell;
-import appeng.api.implementations.tiles.IWirelessAccessPoint;
-import appeng.api.networking.IGrid;
-import appeng.api.networking.IGridHost;
-import appeng.api.networking.IGridNode;
-import appeng.api.networking.IMachineSet;
-import appeng.api.networking.security.BaseActionSource;
-import appeng.api.networking.security.IActionHost;
-import appeng.api.networking.storage.IStorageGrid;
-import appeng.api.storage.IMEMonitor;
-import appeng.api.storage.IMEMonitorHandlerReceiver;
-import appeng.api.storage.StorageChannel;
-import appeng.api.storage.data.IAEFluidStack;
-import appeng.api.storage.data.IAEItemStack;
-import appeng.api.storage.data.IItemList;
-import appeng.api.util.AECableType;
-import appeng.api.util.AEPartLocation;
-import appeng.api.util.DimensionalCoord;
-import appeng.api.util.IConfigManager;
+import appeng.core.api.config.AccessRestriction;
+import appeng.core.api.config.Actionable;
+import appeng.core.api.config.PowerMultiplier;
+import appeng.core.api.features.ILocatable;
+import appeng.core.api.features.IWirelessTermHandler;
+import appeng.core.api.implementations.guiobjects.IPortableCell;
+import appeng.core.api.implementations.tiles.IWirelessAccessPoint;
+import appeng.core.api.util.AECableType;
+import appeng.core.api.util.AEPartLocation;
+import appeng.core.api.util.DimensionalCoord;
+import appeng.core.api.util.IConfigManager;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.container.interfaces.IInventorySlotAware;
+import appeng.core.me.api.networking.IGrid;
+import appeng.core.me.api.networking.IGridHost;
+import appeng.core.me.api.networking.IGridNode;
+import appeng.core.me.api.networking.IMachineSet;
+import appeng.core.me.api.networking.security.BaseActionSource;
+import appeng.core.me.api.networking.security.IActionHost;
+import appeng.core.me.api.networking.storage.IStorageGrid;
+import appeng.core.me.api.storage.IMEMonitor;
+import appeng.core.me.api.storage.IMEMonitorHandlerReceiver;
+import appeng.core.me.api.storage.StorageChannel;
+import appeng.core.me.api.storage.data.IAEFluidStack;
+import appeng.core.me.api.storage.data.IAEItemStack;
+import appeng.core.me.api.storage.data.IItemList;
 import appeng.core.me.tile.TileWireless;
 
 
@@ -80,7 +80,7 @@ public class WirelessTerminalGuiObject implements IPortableCell, IActionHost, II
 		try
 		{
 			final long encKey = Long.parseLong( this.encryptionKey );
-			obj = AEApi.instance().registries().locatable().getLocatableBy( encKey );
+			obj = AppEngApi.internalApi().registries().locatable().getLocatableBy( encKey );
 		}
 		catch( final NumberFormatException err )
 		{

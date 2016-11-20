@@ -32,19 +32,20 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 
-import appeng.api.AEApi;
 import appeng.api.definitions.IBlockDefinition;
-import appeng.api.networking.GridFlags;
-import appeng.api.networking.events.MENetworkEventSubscribe;
-import appeng.api.networking.events.MENetworkPowerStatusChange;
-import appeng.api.util.AECableType;
-import appeng.api.util.AEPartLocation;
-import appeng.api.util.DimensionalCoord;
+import appeng.api.definitions.IItemDefinition;
+import appeng.core.api.util.AECableType;
+import appeng.core.api.util.AEPartLocation;
+import appeng.core.api.util.DimensionalCoord;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.tile.TileEvent;
 import appeng.core.lib.tile.events.TileEventType;
 import appeng.core.lib.tile.inventory.AppEngInternalInventory;
 import appeng.core.lib.tile.inventory.InvOperation;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.networking.GridFlags;
+import appeng.core.me.api.networking.events.MENetworkEventSubscribe;
+import appeng.core.me.api.networking.events.MENetworkPowerStatusChange;
 import appeng.core.me.grid.GridAccessException;
 import appeng.core.me.grid.cluster.IAECluster;
 import appeng.core.me.grid.cluster.IAEMultiBlock;
@@ -141,7 +142,7 @@ public class TileQuantumBridge extends AENetworkInvTile implements IAEMultiBlock
 
 	private boolean isCenter()
 	{
-		return AEApi.instance().definitions().blocks().quantumLink().maybeBlock().map( link -> getBlockType() == link ).orElse( false );
+		return (boolean) AppEngApi.internalApi().definitions().blocks().quantumLink().block().maybe().map( link -> getBlockType() == link ).orElse( false );
 	}
 
 	@MENetworkEventSubscribe
@@ -162,9 +163,9 @@ public class TileQuantumBridge extends AENetworkInvTile implements IAEMultiBlock
 	{
 		super.onReady();
 
-		final IBlockDefinition quantumRing = AEApi.instance().definitions().blocks().quantumRing();
-		final Optional<Block> maybeLinkBlock = quantumRing.maybeBlock();
-		final Optional<ItemStack> maybeLinkStack = quantumRing.maybeStack( 1 );
+		final IBlockDefinition quantumRing = AppEngApi.internalApi().definitions().blocks().quantumRing().block();
+		final Optional<Block> maybeLinkBlock = quantumRing.maybe();
+		final Optional<ItemStack> maybeLinkStack = ( (IItemDefinition) quantumRing.maybeItem().get() ).maybeStack( 1 );
 
 		final boolean isPresent = maybeLinkBlock.isPresent() && maybeLinkStack.isPresent();
 

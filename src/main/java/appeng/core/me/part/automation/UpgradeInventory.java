@@ -24,8 +24,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
-import appeng.api.config.Upgrades;
-import appeng.api.implementations.items.IUpgradeModule;
+import appeng.core.api.config.Upgrades;
+import appeng.core.api.implementations.items.IUpgradeModule;
 import appeng.core.lib.tile.inventory.AppEngInternalInventory;
 import appeng.core.lib.tile.inventory.IAEAppEngInventory;
 import appeng.core.lib.tile.inventory.InvOperation;

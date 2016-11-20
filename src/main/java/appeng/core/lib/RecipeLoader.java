@@ -29,7 +29,7 @@ import com.google.common.base.Preconditions;
 
 import org.apache.commons.io.FileUtils;
 
-import appeng.api.recipes.IRecipeHandler;
+import appeng.core.api.recipes.IRecipeHandler;
 import appeng.core.recipes.CustomRecipeConfig;
 import appeng.core.recipes.loader.ConfigLoader;
 import appeng.core.recipes.loader.JarLoader;

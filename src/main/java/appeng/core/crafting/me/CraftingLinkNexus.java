@@ -19,8 +19,8 @@
 package appeng.core.crafting.me;
 
 
-import appeng.api.networking.IGrid;
-import appeng.api.networking.IGridHost;
+import appeng.core.me.api.networking.IGrid;
+import appeng.core.me.api.networking.IGridHost;
 import appeng.core.me.grid.cache.CraftingGridCache;
 
 

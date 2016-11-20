@@ -42,22 +42,11 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 
-import appeng.api.AEApi;
-import appeng.api.config.Actionable;
-import appeng.api.config.SecurityPermissions;
-import appeng.api.implementations.guiobjects.IGuiItemObject;
-import appeng.api.networking.IGrid;
-import appeng.api.networking.IGridNode;
-import appeng.api.networking.energy.IEnergyGrid;
-import appeng.api.networking.energy.IEnergySource;
-import appeng.api.networking.security.BaseActionSource;
-import appeng.api.networking.security.IActionHost;
-import appeng.api.networking.security.ISecurityGrid;
-import appeng.api.networking.security.PlayerSource;
-import appeng.api.parts.IPart;
-import appeng.api.storage.IMEInventoryHandler;
-import appeng.api.storage.data.IAEItemStack;
+import appeng.core.api.config.Actionable;
+import appeng.core.api.config.SecurityPermissions;
+import appeng.core.api.implementations.guiobjects.IGuiItemObject;
 import appeng.core.lib.AELog;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.container.guisync.GuiSync;
 import appeng.core.lib.container.guisync.SyncData;
 import appeng.core.lib.container.slot.AppEngSlot;
@@ -76,6 +65,17 @@ import appeng.core.lib.util.InventoryAdaptor;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.util.inv.AdaptorPlayerHand;
 import appeng.core.lib.util.item.AEItemStack;
+import appeng.core.me.api.networking.IGrid;
+import appeng.core.me.api.networking.IGridNode;
+import appeng.core.me.api.networking.energy.IEnergyGrid;
+import appeng.core.me.api.networking.energy.IEnergySource;
+import appeng.core.me.api.networking.security.BaseActionSource;
+import appeng.core.me.api.networking.security.IActionHost;
+import appeng.core.me.api.networking.security.ISecurityGrid;
+import appeng.core.me.api.networking.security.PlayerSource;
+import appeng.core.me.api.parts.IPart;
+import appeng.core.me.api.storage.IMEInventoryHandler;
+import appeng.core.me.api.storage.data.IAEItemStack;
 import appeng.core.me.client.gui.InternalSlotME;
 import appeng.core.me.client.gui.SlotME;
 import appeng.core.me.container.SlotCraftingMatrix;
@@ -203,7 +203,7 @@ public abstract class AEBaseContainer extends Container
 			final NBTTagCompound data = CompressedStreamTools.readCompressed( new ByteArrayInputStream( buffer ) );
 			if( data != null )
 			{
-				this.setTargetStack( AEApi.instance().storage().createItemStack( ItemStack.loadItemStackFromNBT( data ) ) );
+				this.setTargetStack( AppEngApi.internalApi().storage().createItemStack( ItemStack.loadItemStackFromNBT( data ) ) );
 			}
 		}
 		catch( final IOException e )
@@ -891,7 +891,7 @@ public abstract class AEBaseContainer extends Container
 
 				if( isg != null && releaseQty > 0 )
 				{
-					IAEItemStack ais = AEApi.instance().storage().createItemStack( isg );
+					IAEItemStack ais = AppEngApi.internalApi().storage().createItemStack( isg );
 					ais.setStackSize( 1 );
 					final IAEItemStack extracted = ais.copy();
 
@@ -981,7 +981,7 @@ public abstract class AEBaseContainer extends Container
 				}
 				else
 				{
-					IAEItemStack ais = AEApi.instance().storage().createItemStack( player.inventory.getItemStack() );
+					IAEItemStack ais = AppEngApi.internalApi().storage().createItemStack( player.inventory.getItemStack() );
 					ais = Platform.poweredInsert( this.getPowerSource(), this.getCellInventory(), ais, this.getActionSource() );
 					if( ais != null )
 					{
@@ -1030,7 +1030,7 @@ public abstract class AEBaseContainer extends Container
 				}
 				else
 				{
-					IAEItemStack ais = AEApi.instance().storage().createItemStack( player.inventory.getItemStack() );
+					IAEItemStack ais = AppEngApi.internalApi().storage().createItemStack( player.inventory.getItemStack() );
 					ais.setStackSize( 1 );
 					ais = Platform.poweredInsert( this.getPowerSource(), this.getCellInventory(), ais, this.getActionSource() );
 					if( ais == null )
@@ -1120,7 +1120,7 @@ public abstract class AEBaseContainer extends Container
 		{
 			return input;
 		}
-		final IAEItemStack ais = Platform.poweredInsert( this.getPowerSource(), this.getCellInventory(), AEApi.instance().storage().createItemStack( input ), this.getActionSource() );
+		final IAEItemStack ais = Platform.poweredInsert( this.getPowerSource(), this.getCellInventory(), AppEngApi.internalApi().storage().createItemStack( input ), this.getActionSource() );
 		if( ais == null )
 		{
 			return null;

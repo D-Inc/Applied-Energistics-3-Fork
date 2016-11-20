@@ -43,16 +43,16 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import appeng.api.client.BakingPipeline;
-import appeng.api.networking.IGridNode;
-import appeng.api.parts.BusSupport;
-import appeng.api.parts.IPart;
-import appeng.api.parts.IPartCollisionHelper;
-import appeng.api.parts.IPartHost;
-import appeng.api.parts.PartItemStack;
-import appeng.api.util.AECableType;
-import appeng.api.util.AEPartLocation;
 import appeng.core.AppEng;
+import appeng.core.api.util.AECableType;
+import appeng.core.api.util.AEPartLocation;
 import appeng.core.lib.client.render.model.ModelsCache;
+import appeng.core.me.api.networking.IGridNode;
+import appeng.core.me.api.parts.BusSupport;
+import appeng.core.me.api.parts.IPart;
+import appeng.core.me.api.parts.IPartCollisionHelper;
+import appeng.core.me.api.parts.IPartHost;
+import appeng.core.me.api.parts.PartItemStack;
 
 
 public class PartCableAnchor implements IPart

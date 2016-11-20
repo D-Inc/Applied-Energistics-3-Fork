@@ -39,8 +39,8 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import appeng.api.AEApi;
-import appeng.api.util.DimensionalCoord;
+import appeng.core.api.util.DimensionalCoord;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.util.Platform;
 
 
@@ -132,7 +132,7 @@ public final class CompassService
 		// lower level...
 		final Chunk c = w.getChunkFromChunkCoords( cx, cz );
 
-		Optional<Block> maybeBlock = AEApi.instance().definitions().blocks().skyStoneBlock().maybeBlock();
+		Optional<Block> maybeBlock = AppEngApi.internalApi().definitions().blocks().skyStoneBlock().maybe();
 		if( maybeBlock.isPresent() )
 		{
 			Block skyStoneBlock = maybeBlock.get();

@@ -27,9 +27,9 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
-import appeng.api.storage.data.IAEItemStack;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.localization.ButtonToolTips;
+import appeng.core.me.api.storage.data.IAEItemStack;
 import appeng.core.me.client.gui.SlotME;
 
 

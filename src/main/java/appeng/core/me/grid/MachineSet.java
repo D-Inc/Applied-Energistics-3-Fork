@@ -21,9 +21,9 @@ package appeng.core.me.grid;
 
 import java.util.HashSet;
 
-import appeng.api.networking.IGridHost;
-import appeng.api.networking.IGridNode;
-import appeng.api.networking.IMachineSet;
+import appeng.core.me.api.networking.IGridHost;
+import appeng.core.me.api.networking.IGridNode;
+import appeng.core.me.api.networking.IMachineSet;
 
 
 public class MachineSet extends HashSet<IGridNode> implements IMachineSet

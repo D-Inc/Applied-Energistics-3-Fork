@@ -21,8 +21,8 @@ package appeng.core.crafting.container;
 
 import javax.annotation.Nonnull;
 
-import appeng.api.networking.crafting.ICraftingCPU;
 import appeng.core.lib.util.ItemSorters;
+import appeng.core.me.api.networking.crafting.ICraftingCPU;
 
 
 public class CraftingCPURecord implements Comparable<CraftingCPURecord>

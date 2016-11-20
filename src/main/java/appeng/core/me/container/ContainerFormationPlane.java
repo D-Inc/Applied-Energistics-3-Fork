@@ -22,11 +22,11 @@ package appeng.core.me.container;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IInventory;
 
-import appeng.api.config.FuzzyMode;
-import appeng.api.config.SecurityPermissions;
-import appeng.api.config.Settings;
-import appeng.api.config.Upgrades;
-import appeng.api.config.YesNo;
+import appeng.core.api.config.FuzzyMode;
+import appeng.core.api.config.SecurityPermissions;
+import appeng.core.api.config.Settings;
+import appeng.core.api.config.Upgrades;
+import appeng.core.api.config.YesNo;
 import appeng.core.lib.container.ContainerUpgradeable;
 import appeng.core.lib.container.guisync.GuiSync;
 import appeng.core.lib.container.slot.OptionalSlotFakeTypeOnly;

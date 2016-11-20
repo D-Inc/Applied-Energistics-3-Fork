@@ -27,8 +27,8 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
-import appeng.api.util.IOrientable;
-import appeng.api.util.IOrientableBlock;
+import appeng.core.api.util.IOrientable;
+import appeng.core.api.util.IOrientableBlock;
 import appeng.core.lib.block.AEBaseBlock;
 import appeng.core.lib.helpers.MetaRotation;
 

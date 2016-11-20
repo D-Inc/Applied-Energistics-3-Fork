@@ -29,8 +29,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
-import appeng.api.implementations.items.IGrowableCrystal;
-import appeng.api.implementations.tiles.ICrystalGrowthAccelerator;
+import appeng.core.api.implementations.items.IGrowableCrystal;
+import appeng.core.api.implementations.tiles.ICrystalGrowthAccelerator;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.CommonHelper;
 import appeng.core.lib.client.EffectType;

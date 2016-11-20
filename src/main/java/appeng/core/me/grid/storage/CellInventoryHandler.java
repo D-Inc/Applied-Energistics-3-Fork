@@ -23,21 +23,21 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
-import appeng.api.AEApi;
-import appeng.api.config.FuzzyMode;
-import appeng.api.config.IncludeExclude;
-import appeng.api.config.Upgrades;
-import appeng.api.implementations.items.IUpgradeModule;
-import appeng.api.storage.ICellInventory;
-import appeng.api.storage.ICellInventoryHandler;
-import appeng.api.storage.IMEInventory;
-import appeng.api.storage.StorageChannel;
-import appeng.api.storage.data.IAEItemStack;
-import appeng.api.storage.data.IItemList;
+import appeng.core.api.config.FuzzyMode;
+import appeng.core.api.config.IncludeExclude;
+import appeng.core.api.config.Upgrades;
+import appeng.core.api.implementations.items.IUpgradeModule;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.util.item.AEItemStack;
 import appeng.core.lib.util.prioitylist.FuzzyPriorityList;
 import appeng.core.lib.util.prioitylist.PrecisePriorityList;
+import appeng.core.me.api.storage.ICellInventory;
+import appeng.core.me.api.storage.ICellInventoryHandler;
+import appeng.core.me.api.storage.IMEInventory;
+import appeng.core.me.api.storage.StorageChannel;
+import appeng.core.me.api.storage.data.IAEItemStack;
+import appeng.core.me.api.storage.data.IItemList;
 
 
 public class CellInventoryHandler extends MEInventoryHandler<IAEItemStack> implements ICellInventoryHandler
@@ -50,7 +50,7 @@ public class CellInventoryHandler extends MEInventoryHandler<IAEItemStack> imple
 		final ICellInventory ci = this.getCellInv();
 		if( ci != null )
 		{
-			final IItemList<IAEItemStack> priorityList = AEApi.instance().storage().createItemList();
+			final IItemList<IAEItemStack> priorityList = AppEngApi.internalApi().storage().createItemList();
 
 			final IInventory upgrades = ci.getUpgradesInventory();
 			final IInventory config = ci.getConfigInventory();

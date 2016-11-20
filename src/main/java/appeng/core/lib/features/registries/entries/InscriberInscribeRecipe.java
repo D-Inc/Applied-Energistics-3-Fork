@@ -9,7 +9,7 @@ import javax.annotation.Nullable;
 
 import net.minecraft.item.ItemStack;
 
-import appeng.api.features.InscriberProcessType;
+import appeng.core.api.features.InscriberProcessType;
 
 
 /**

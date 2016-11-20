@@ -5,7 +5,7 @@ package appeng.decorative.item;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.ItemStack;
 
-import appeng.api.util.AEColor;
+import appeng.core.api.util.AEColor;
 import appeng.core.lib.bootstrap.IItemRendering;
 import appeng.core.lib.bootstrap.ItemRenderingCustomizer;
 

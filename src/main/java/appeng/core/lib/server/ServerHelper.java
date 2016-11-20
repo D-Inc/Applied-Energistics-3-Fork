@@ -34,13 +34,13 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 
-import appeng.api.parts.CableRenderMode;
 import appeng.core.lib.CommonHelper;
 import appeng.core.lib.block.AEBaseBlock;
 import appeng.core.lib.client.EffectType;
 import appeng.core.lib.sync.AppEngPacket;
 import appeng.core.lib.sync.network.NetworkHandler;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.parts.CableRenderMode;
 import appeng.tools.item.ToolNetworkTool;
 
 

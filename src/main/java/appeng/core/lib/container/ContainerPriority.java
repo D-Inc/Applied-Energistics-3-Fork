@@ -26,11 +26,11 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import appeng.api.config.SecurityPermissions;
-import appeng.api.parts.IPart;
+import appeng.core.api.config.SecurityPermissions;
 import appeng.core.lib.container.guisync.GuiSync;
 import appeng.core.lib.helpers.IPriorityHost;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.parts.IPart;
 
 
 public class ContainerPriority extends AEBaseContainer

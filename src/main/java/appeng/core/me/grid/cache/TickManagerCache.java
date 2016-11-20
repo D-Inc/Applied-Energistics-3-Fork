@@ -26,14 +26,14 @@ import net.minecraft.crash.CrashReport;
 import net.minecraft.crash.CrashReportCategory;
 import net.minecraft.util.ReportedException;
 
-import appeng.api.networking.IGrid;
-import appeng.api.networking.IGridHost;
-import appeng.api.networking.IGridNode;
-import appeng.api.networking.IGridStorage;
-import appeng.api.networking.ticking.IGridTickable;
-import appeng.api.networking.ticking.ITickManager;
-import appeng.api.networking.ticking.TickRateModulation;
-import appeng.api.networking.ticking.TickingRequest;
+import appeng.core.me.api.networking.IGrid;
+import appeng.core.me.api.networking.IGridHost;
+import appeng.core.me.api.networking.IGridNode;
+import appeng.core.me.api.networking.IGridStorage;
+import appeng.core.me.api.networking.ticking.IGridTickable;
+import appeng.core.me.api.networking.ticking.ITickManager;
+import appeng.core.me.api.networking.ticking.TickRateModulation;
+import appeng.core.me.api.networking.ticking.TickingRequest;
 import appeng.core.me.grid.cache.helpers.TickTracker;
 
 

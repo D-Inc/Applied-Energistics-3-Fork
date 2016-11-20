@@ -2,58 +2,28 @@
 package appeng.core.lib.bootstrap;
 
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
-
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
-import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import appeng.api.definitions.IBlockDefinition;
-import appeng.core.AppEng;
 import appeng.core.CreativeTab;
-import appeng.core.lib.AEConfig;
-import appeng.core.lib.block.AEBaseBlock;
 import appeng.core.lib.block.AEBaseTileBlock;
-import appeng.core.lib.features.AEFeature;
-import appeng.core.lib.features.ActivityState;
 import appeng.core.lib.features.BlockDefinition;
-import appeng.core.lib.features.BlockStackSrc;
-import appeng.core.lib.features.TileDefinition;
-import appeng.core.lib.item.AEBaseItemBlock;
-import appeng.core.lib.tile.AEBaseTile;
 import appeng.core.lib.util.Platform;
 
 
-class BlockDefinitionBuilder implements IBlockBuilder
+public class BlockDefinitionBuilder<B extends Block> extends DefinitionBuilder<B, IBlockDefinition<B>, BlockDefinitionBuilder<B>> implements IBlockBuilder<B, BlockDefinitionBuilder<B>>
 {
-
-	private final FeatureFactory factory;
-
-	private final String registryName;
-
-	private final Supplier<? extends Block> blockSupplier;
-
-	private final List<BiConsumer<Block, Item>> preInitCallbacks = new ArrayList<>();
-
-	private final List<BiConsumer<Block, Item>> initCallbacks = new ArrayList<>();
-
-	private final List<BiConsumer<Block, Item>> postInitCallbacks = new ArrayList<>();
-
-	private final EnumSet<AEFeature> features = EnumSet.noneOf( AEFeature.class );
 
 	private CreativeTabs creativeTab = CreativeTab.instance;
 
-	private Function<Block, ItemBlock> itemFactory;
+	private IItemBlockCustomizer itemBlock = null;
+
+	private BlockSubDefinitionsProvider<B> subDefs;
 
 	@SideOnly( Side.CLIENT )
 	private BlockRendering blockRendering;
@@ -61,11 +31,9 @@ class BlockDefinitionBuilder implements IBlockBuilder
 	@SideOnly( Side.CLIENT )
 	private ItemRendering itemRendering;
 
-	BlockDefinitionBuilder( FeatureFactory factory, String id, Supplier<? extends Block> blockSupplier )
+	BlockDefinitionBuilder( FeatureFactory factory, ResourceLocation id, B block )
 	{
-		this.factory = factory;
-		this.registryName = id;
-		this.blockSupplier = blockSupplier;
+		super( factory, id, block );
 
 		if( Platform.isClient() )
 		{
@@ -74,43 +42,7 @@ class BlockDefinitionBuilder implements IBlockBuilder
 		}
 	}
 
-	@Override
-	public BlockDefinitionBuilder preInit( BiConsumer<Block, Item> callback )
-	{
-		preInitCallbacks.add( callback );
-		return this;
-	}
-
-	@Override
-	public BlockDefinitionBuilder init( BiConsumer<Block, Item> callback )
-	{
-		initCallbacks.add( callback );
-		return this;
-	}
-
-	@Override
-	public BlockDefinitionBuilder postInit( BiConsumer<Block, Item> callback )
-	{
-		postInitCallbacks.add( callback );
-		return this;
-	}
-
-	@Override
-	public IBlockBuilder features( AEFeature... features )
-	{
-		this.features.clear();
-		addFeatures( features );
-		return this;
-	}
-
-	@Override
-	public IBlockBuilder addFeatures( AEFeature... features )
-	{
-		Collections.addAll( this.features, features );
-		return this;
-	}
-
-	public BlockDefinitionBuilder rendering( BlockRenderingCustomizer callback )
+	public BlockDefinitionBuilder<B> rendering( BlockRenderingCustomizer callback )
 	{
 		if( Platform.isClient() )
 		{
@@ -120,10 +52,15 @@ class BlockDefinitionBuilder implements IBlockBuilder
 		return this;
 	}
 
-	@Override
-	public IBlockBuilder item( Function<Block, ItemBlock> factory )
+	public BlockDefinitionBuilder<B> createDefaultItemBlock()
 	{
-		this.itemFactory = factory;
+		itemBlock = ItemBlock::new;
+		return this;
+	}
+
+	public BlockDefinitionBuilder<B> withItemBlock(IItemBlockCustomizer ib)
+	{
+		itemBlock = ib;
 		return this;
 	}
 
@@ -133,35 +70,16 @@ class BlockDefinitionBuilder implements IBlockBuilder
 		callback.customize( blockRendering, itemRendering );
 	}
 
-	@SuppressWarnings( "unchecked" )
 	@Override
-	public <T extends IBlockDefinition> T build()
+	public IBlockDefinition<B> def( B block )
 	{
-		if( !AEConfig.instance.areFeaturesEnabled( features ) )
+		if( block == null )
 		{
-			return (T) new TileDefinition( registryName, null, null );
+			return new BlockDefinition<B>( registryName, null );
 		}
-
-		// Create block and matching item, and set factory name of both
-		Block block = blockSupplier.get();
-		block.setRegistryName( AppEng.MOD_ID, registryName );
-
-		ItemBlock item = constructItemFromBlock( block );
-		item.setRegistryName( AppEng.MOD_ID, registryName );
-
-		// Register the item and block with the game
-		factory.addPreInit( side -> {
-			GameRegistry.register( block );
-			GameRegistry.register( item );
-		} );
 
 		block.setCreativeTab( creativeTab );
 		block.setUnlocalizedName( "appliedenergistics2." + registryName );
-
-		// Register all extra handlers
-		preInitCallbacks.forEach( consumer -> factory.addPreInit( side -> consumer.accept( block, item ) ) );
-		initCallbacks.forEach( consumer -> factory.addInit( side -> consumer.accept( block, item ) ) );
-		postInitCallbacks.forEach( consumer -> factory.addPostInit( side -> consumer.accept( block, item ) ) );
 
 		if( Platform.isClient() )
 		{
@@ -174,42 +92,19 @@ class BlockDefinitionBuilder implements IBlockBuilder
 			{
 				blockRendering.apply( factory, block, null );
 			}
-
-			itemRendering.apply( factory, item );
 		}
 
-		if( block instanceof AEBaseTileBlock )
+		BlockDefinition definition = new BlockDefinition<B>( registryName, block );
+		if( !block.getBlockState().getProperties().isEmpty() )
 		{
-			AEBaseTileBlock tileBlock = (AEBaseTileBlock) block;
-
-			factory.addPreInit( side -> {
-				Class<? extends AEBaseTile> tileEntityClass = tileBlock.getTileEntityClass();
-				AEBaseTile.registerTileItem( tileEntityClass, new BlockStackSrc( block, 0, ActivityState.Enabled ) );
-
-				GameRegistry.registerTileEntity( tileEntityClass, registryName );
-			} );
-
-			return (T) new TileDefinition( registryName, (AEBaseTileBlock) block, item );
+			definition.setSubDefinitionsProvider( new BlockSubDefinitionsProvider( definition ) );
 		}
-		else
+
+		if( itemBlock != null )
 		{
-			return (T) new BlockDefinition( registryName, block, item );
+			this.factory.addItemBlock( definition, itemBlock );
 		}
+		return definition;
 	}
 
-	private ItemBlock constructItemFromBlock( Block block )
-	{
-		if( itemFactory != null )
-		{
-			return itemFactory.apply( block );
-		}
-		else if( block instanceof AEBaseBlock )
-		{
-			return new AEBaseItemBlock( block );
-		}
-		else
-		{
-			return new ItemBlock( block );
-		}
-	}
 }

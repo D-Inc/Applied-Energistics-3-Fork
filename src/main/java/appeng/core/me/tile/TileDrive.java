@@ -30,30 +30,30 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 
-import appeng.api.AEApi;
-import appeng.api.implementations.tiles.IChestOrDrive;
-import appeng.api.networking.GridFlags;
-import appeng.api.networking.events.MENetworkCellArrayUpdate;
-import appeng.api.networking.events.MENetworkChannelsChanged;
-import appeng.api.networking.events.MENetworkEventSubscribe;
-import appeng.api.networking.events.MENetworkPowerStatusChange;
-import appeng.api.networking.security.BaseActionSource;
-import appeng.api.networking.security.MachineSource;
-import appeng.api.networking.storage.IStorageGrid;
-import appeng.api.storage.ICellHandler;
-import appeng.api.storage.IMEInventory;
-import appeng.api.storage.IMEInventoryHandler;
-import appeng.api.storage.StorageChannel;
-import appeng.api.storage.data.IAEItemStack;
-import appeng.api.util.AECableType;
-import appeng.api.util.AEPartLocation;
-import appeng.api.util.DimensionalCoord;
+import appeng.core.api.implementations.tiles.IChestOrDrive;
+import appeng.core.api.util.AECableType;
+import appeng.core.api.util.AEPartLocation;
+import appeng.core.api.util.DimensionalCoord;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.helpers.IPriorityHost;
 import appeng.core.lib.tile.TileEvent;
 import appeng.core.lib.tile.events.TileEventType;
 import appeng.core.lib.tile.inventory.AppEngInternalInventory;
 import appeng.core.lib.tile.inventory.InvOperation;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.networking.GridFlags;
+import appeng.core.me.api.networking.events.MENetworkCellArrayUpdate;
+import appeng.core.me.api.networking.events.MENetworkChannelsChanged;
+import appeng.core.me.api.networking.events.MENetworkEventSubscribe;
+import appeng.core.me.api.networking.events.MENetworkPowerStatusChange;
+import appeng.core.me.api.networking.security.BaseActionSource;
+import appeng.core.me.api.networking.security.MachineSource;
+import appeng.core.me.api.networking.storage.IStorageGrid;
+import appeng.core.me.api.storage.ICellHandler;
+import appeng.core.me.api.storage.IMEInventory;
+import appeng.core.me.api.storage.IMEInventoryHandler;
+import appeng.core.me.api.storage.StorageChannel;
+import appeng.core.me.api.storage.data.IAEItemStack;
 import appeng.core.me.grid.GridAccessException;
 import appeng.core.me.grid.storage.DriveWatcher;
 import appeng.core.me.grid.storage.MEInventoryHandler;
@@ -268,7 +268,7 @@ public class TileDrive extends AENetworkInvTile implements IChestOrDrive, IPrior
 	@Override
 	public boolean isItemValidForSlot( final int i, final ItemStack itemstack )
 	{
-		return itemstack != null && AEApi.instance().registries().cell().isCellHandled( itemstack );
+		return itemstack != null && AppEngApi.internalApi().registries().cell().isCellHandled( itemstack );
 	}
 
 	@Override
@@ -317,7 +317,7 @@ public class TileDrive extends AENetworkInvTile implements IChestOrDrive, IPrior
 
 				if( is != null )
 				{
-					this.handlersBySlot[x] = AEApi.instance().registries().cell().getHandler( is );
+					this.handlersBySlot[x] = AppEngApi.internalApi().registries().cell().getHandler( is );
 
 					if( this.handlersBySlot[x] != null )
 					{

@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
 
 import net.minecraft.network.NetworkManager;
 
-import appeng.api.util.WorldCoord;
+import appeng.core.api.util.WorldCoord;
 
 
 /**

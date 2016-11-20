@@ -25,7 +25,7 @@ import java.util.Map;
 
 import net.minecraftforge.fml.common.event.FMLInterModComms;
 
-import appeng.api.config.TunnelType;
+import appeng.core.api.config.TunnelType;
 import appeng.core.lib.AELog;
 import appeng.core.lib.api.IIMCProcessor;
 import appeng.core.lib.api.imc.IMCGrinder;
@@ -40,6 +40,8 @@ import appeng.core.lib.api.imc.IMCP2PAttunement;
  * @version rv3 - 10.08.2015
  * @since rv1
  */
+//TODO 1.10.2-APIBOOM - Move to modules.
+@Deprecated
 public class IMCHandler
 {
 	private static final int INITIAL_PROCESSORS_CAPACITY = 20;

@@ -29,27 +29,27 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 
-import appeng.api.AEApi;
-import appeng.api.networking.GridFlags;
-import appeng.api.networking.GridNotification;
-import appeng.api.networking.IGrid;
-import appeng.api.networking.IGridBlock;
-import appeng.api.networking.IGridHost;
-import appeng.api.networking.IGridNode;
-import appeng.api.networking.crafting.ICraftingGrid;
-import appeng.api.networking.energy.IEnergyGrid;
-import appeng.api.networking.events.MENetworkPowerIdleChange;
-import appeng.api.networking.pathing.IPathingGrid;
-import appeng.api.networking.security.ISecurityGrid;
-import appeng.api.networking.storage.IStorageGrid;
-import appeng.api.networking.ticking.ITickManager;
-import appeng.api.util.AEColor;
-import appeng.api.util.DimensionalCoord;
-import appeng.api.util.IOrientable;
+import appeng.core.api.util.AEColor;
+import appeng.core.api.util.DimensionalCoord;
+import appeng.core.api.util.IOrientable;
 import appeng.core.hooks.TickHandler;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.tile.AEBaseTile;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.worlddata.WorldData;
+import appeng.core.me.api.networking.GridFlags;
+import appeng.core.me.api.networking.GridNotification;
+import appeng.core.me.api.networking.IGrid;
+import appeng.core.me.api.networking.IGridBlock;
+import appeng.core.me.api.networking.IGridHost;
+import appeng.core.me.api.networking.IGridNode;
+import appeng.core.me.api.networking.crafting.ICraftingGrid;
+import appeng.core.me.api.networking.energy.IEnergyGrid;
+import appeng.core.me.api.networking.events.MENetworkPowerIdleChange;
+import appeng.core.me.api.networking.pathing.IPathingGrid;
+import appeng.core.me.api.networking.security.ISecurityGrid;
+import appeng.core.me.api.networking.storage.IStorageGrid;
+import appeng.core.me.api.networking.ticking.ITickManager;
 import appeng.core.me.grid.GridAccessException;
 import appeng.core.me.grid.cache.P2PCache;
 import appeng.core.me.part.networking.PartCable;
@@ -147,7 +147,7 @@ public class AENetworkProxy implements IGridBlock
 	{
 		if( this.node == null && Platform.isServer() && this.isReady )
 		{
-			this.node = AEApi.instance().createGridNode( this );
+			this.node = AppEngApi.internalApi().createGridNode( this );
 			this.readFromNBT( this.data );
 			this.node.updateState();
 		}

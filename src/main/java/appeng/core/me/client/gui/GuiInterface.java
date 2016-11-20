@@ -26,8 +26,8 @@ import org.lwjgl.input.Mouse;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.player.InventoryPlayer;
 
-import appeng.api.config.Settings;
-import appeng.api.config.YesNo;
+import appeng.core.api.config.Settings;
+import appeng.core.api.config.YesNo;
 import appeng.core.lib.client.gui.GuiUpgradeable;
 import appeng.core.lib.client.gui.widgets.GuiImgButton;
 import appeng.core.lib.client.gui.widgets.GuiTabButton;

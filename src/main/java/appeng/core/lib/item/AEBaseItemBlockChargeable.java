@@ -29,11 +29,11 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import appeng.api.config.AccessRestriction;
-import appeng.api.config.PowerUnits;
 import appeng.api.definitions.IBlockDefinition;
-import appeng.api.implementations.items.IAEItemPowerStorage;
-import appeng.core.lib.Api;
+import appeng.core.api.config.AccessRestriction;
+import appeng.core.api.config.PowerUnits;
+import appeng.core.api.implementations.items.IAEItemPowerStorage;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.localization.GuiText;
 import appeng.core.lib.util.Platform;
 
@@ -67,8 +67,8 @@ public class AEBaseItemBlockChargeable extends AEBaseItemBlock implements IAEIte
 	private double getMaxEnergyCapacity()
 	{
 		final Block blockID = Block.getBlockFromItem( this );
-		final IBlockDefinition energyCell = Api.INSTANCE.definitions().blocks().energyCell();
-		return energyCell.maybeBlock().map( block -> {
+		final IBlockDefinition energyCell = AppEngApi.INSTANCE.definitions().blocks().energyCell().block();
+		return (double) energyCell.maybe().map( block -> {
 			if( blockID == block )
 			{
 				return 200000;

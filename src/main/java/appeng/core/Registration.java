@@ -27,6 +27,7 @@ import javax.annotation.Nonnull;
 
 import com.google.common.base.Preconditions;
 
+import net.minecraft.item.ItemStack;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.MinecraftForge;
@@ -38,37 +39,38 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.RecipeSorter;
 import net.minecraftforge.oredict.RecipeSorter.Category;
 
-import appeng.api.config.Upgrades;
-import appeng.api.definitions.IBlocks;
-import appeng.api.definitions.IItems;
-import appeng.api.definitions.IParts;
-import appeng.api.features.IRecipeHandlerRegistry;
-import appeng.api.features.IRegistryContainer;
-import appeng.api.features.IWirelessTermHandler;
-import appeng.api.features.IWorldGen.WorldGenType;
-import appeng.api.networking.IGridCacheRegistry;
-import appeng.api.networking.crafting.ICraftingGrid;
-import appeng.api.networking.energy.IEnergyGrid;
-import appeng.api.networking.pathing.IPathingGrid;
-import appeng.api.networking.security.ISecurityGrid;
-import appeng.api.networking.spatial.ISpatialCache;
-import appeng.api.networking.storage.IStorageGrid;
-import appeng.api.networking.ticking.ITickManager;
-import appeng.api.parts.IPartHelper;
+import appeng.api.definitions.IItemDefinition;
+import appeng.core.api.config.Upgrades;
+import appeng.core.api.features.IWirelessTermHandler;
+import appeng.core.api.features.IWorldGen.WorldGenType;
 import appeng.core.hooks.TickHandler;
 import appeng.core.item.ItemMultiItem;
 import appeng.core.lib.AEConfig;
-import appeng.core.lib.Api;
 import appeng.core.lib.ApiDefinitions;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.RecipeLoader;
+import appeng.core.lib.api.definitions.ApiBlocks;
+import appeng.core.lib.api.definitions.ApiItems;
+import appeng.core.lib.api.definitions.ApiParts;
 import appeng.core.lib.features.AEFeature;
+import appeng.core.lib.features.registries.GridCacheRegistry;
 import appeng.core.lib.features.registries.P2PTunnelRegistry;
+import appeng.core.lib.features.registries.RecipeHandlerRegistry;
+import appeng.core.lib.features.registries.RegistryContainer;
 import appeng.core.lib.features.registries.entries.BasicCellHandler;
 import appeng.core.lib.features.registries.entries.CreativeCellHandler;
 import appeng.core.lib.localization.GuiText;
 import appeng.core.lib.localization.PlayerMessages;
 import appeng.core.lib.stats.PlayerStatsRegistration;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.networking.crafting.ICraftingGrid;
+import appeng.core.me.api.networking.energy.IEnergyGrid;
+import appeng.core.me.api.networking.pathing.IPathingGrid;
+import appeng.core.me.api.networking.security.ISecurityGrid;
+import appeng.core.me.api.networking.spatial.ISpatialCache;
+import appeng.core.me.api.networking.storage.IStorageGrid;
+import appeng.core.me.api.networking.ticking.ITickManager;
+import appeng.core.me.api.parts.IPartHelper;
 import appeng.core.me.block.BlockCableBus;
 import appeng.core.me.grid.cache.CraftingGridCache;
 import appeng.core.me.grid.cache.EnergyGridCache;
@@ -128,8 +130,8 @@ public final class Registration
 	{
 		this.registerSpatial( false );
 
-		final Api api = Api.INSTANCE;
-		final IRecipeHandlerRegistry recipeRegistry = api.registries().recipes();
+		final AppEngApi api = AppEngApi.INSTANCE;
+		final RecipeHandlerRegistry recipeRegistry = api.registries().recipes();
 		this.registerCraftHandlers( recipeRegistry );
 
 		RecipeSorter.register( "AE2-Facade", FacadeRecipe.class, Category.SHAPED, "" );
@@ -200,7 +202,7 @@ public final class Registration
 		}
 	}
 
-	private void registerCraftHandlers( final IRecipeHandlerRegistry registry )
+	private void registerCraftHandlers( final RecipeHandlerRegistry registry )
 	{
 		registry.addNewSubItemResolver( new AEItemResolver() );
 
@@ -223,9 +225,9 @@ public final class Registration
 		Preconditions.checkArgument( !recipeDirectory.isFile() );
 		Preconditions.checkNotNull( customRecipeConfig );
 
-		final Api api = Api.INSTANCE;
+		final AppEngApi api = AppEngApi.INSTANCE;
 		final IPartHelper partHelper = api.partHelper();
-		final IRegistryContainer registries = api.registries();
+		final RegistryContainer registries = api.registries();
 
 		ApiDefinitions definitions = api.definitions();
 		definitions.getRegistry().getBootstrapComponents().forEach( b -> b.initialize( event.getSide() ) );
@@ -271,7 +273,7 @@ public final class Registration
 			MinecraftForge.EVENT_BUS.register( new ChestLoot() );
 		}
 
-		final IGridCacheRegistry gcr = registries.gridCache();
+		final GridCacheRegistry gcr = registries.gridCache();
 		gcr.registerGridCache( ITickManager.class, TickManagerCache.class );
 		gcr.registerGridCache( IEnergyGrid.class, EnergyGridCache.class );
 		gcr.registerGridCache( IPathingGrid.class, PathGridCache.class );
@@ -289,7 +291,7 @@ public final class Registration
 		api.definitions().materials().matterBall().maybeStack( 1 ).ifPresent( ammoStack -> {
 			final double weight = 32;
 
-			registries.matterCannon().registerAmmo( ammoStack, weight );
+			registries.matterCannon().registerAmmo( (ItemStack) ammoStack, weight );
 		} );
 
 		this.recipeHandler.injectRecipes();
@@ -315,12 +317,12 @@ public final class Registration
 	{
 		this.registerSpatial( true );
 
-		final Api api = Api.INSTANCE;
-		final IRegistryContainer registries = api.registries();
+		final AppEngApi api = AppEngApi.INSTANCE;
+		final RegistryContainer registries = api.registries();
 		ApiDefinitions definitions = api.definitions();
-		final IParts parts = definitions.parts();
-		final IBlocks blocks = definitions.blocks();
-		final IItems items = definitions.items();
+		final ApiParts parts = definitions.parts();
+		final ApiBlocks blocks = definitions.blocks();
+		final ApiItems items = definitions.items();
 
 		// default settings..
 		( (P2PTunnelRegistry) registries.p2pTunnel() ).configure();
@@ -329,17 +331,17 @@ public final class Registration
 		PlayerMessages.values();
 		GuiText.values();
 
-		blocks.multiPart().maybeBlock().ifPresent( block -> ( (BlockCableBus) block ).setupTile() );
+		blocks.multiPart().block().maybe().ifPresent( block -> ( (BlockCableBus) block ).setupTile() );
 
 		definitions.getRegistry().getBootstrapComponents().forEach( b -> b.postInitialize( event.getSide() ) );
 
 		// Interface
 		Upgrades.CRAFTING.registerItem( parts.iface(), 1 );
-		Upgrades.CRAFTING.registerItem( blocks.iface(), 1 );
+		Upgrades.CRAFTING.registerItem( (IItemDefinition) blocks.iface().block().maybeItem().get(), 1 );
 
 		// IO Port!
-		Upgrades.SPEED.registerItem( blocks.iOPort(), 3 );
-		Upgrades.REDSTONE.registerItem( blocks.iOPort(), 1 );
+		Upgrades.SPEED.registerItem( (IItemDefinition) blocks.iOPort().block().maybeItem().get(), 3 );
+		Upgrades.REDSTONE.registerItem( (IItemDefinition) blocks.iOPort().block().maybeItem().get(), 1 );
 
 		// Level Emitter!
 		Upgrades.FUZZY.registerItem( parts.levelEmitter(), 1 );
@@ -393,12 +395,12 @@ public final class Registration
 		Upgrades.SPEED.registerItem( items.massCannon(), 4 );
 
 		// Molecular Assembler
-		Upgrades.SPEED.registerItem( blocks.molecularAssembler(), 5 );
+		Upgrades.SPEED.registerItem( (IItemDefinition) blocks.molecularAssembler().block().maybeItem().get(), 5 );
 
 		// Inscriber
-		Upgrades.SPEED.registerItem( blocks.inscriber(), 3 );
+		Upgrades.SPEED.registerItem( (IItemDefinition) blocks.inscriber().block().maybeItem().get(), 3 );
 
-		items.wirelessTerminal().maybeItem().ifPresent( terminal -> {
+		items.wirelessTerminal().maybe().ifPresent( terminal -> {
 			registries.wireless().registerWirelessHandler( (IWirelessTermHandler) terminal );
 		} );
 

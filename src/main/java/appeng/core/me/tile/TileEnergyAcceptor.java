@@ -24,12 +24,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 
-import appeng.api.config.Actionable;
-import appeng.api.networking.energy.IEnergyGrid;
-import appeng.api.util.AECableType;
-import appeng.api.util.AEPartLocation;
+import appeng.core.api.config.Actionable;
+import appeng.core.api.util.AECableType;
+import appeng.core.api.util.AEPartLocation;
 import appeng.core.lib.tile.inventory.AppEngInternalInventory;
 import appeng.core.lib.tile.inventory.InvOperation;
+import appeng.core.me.api.networking.energy.IEnergyGrid;
 import appeng.core.me.grid.GridAccessException;
 
 

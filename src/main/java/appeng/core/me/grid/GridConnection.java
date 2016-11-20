@@ -22,23 +22,23 @@ package appeng.core.me.grid;
 import java.util.Arrays;
 import java.util.EnumSet;
 
-import appeng.api.exceptions.ExistingConnectionException;
-import appeng.api.exceptions.FailedConnection;
-import appeng.api.exceptions.NullNodeConnectionException;
-import appeng.api.exceptions.SecurityConnectionException;
-import appeng.api.networking.GridFlags;
-import appeng.api.networking.IGridConnection;
-import appeng.api.networking.IGridNode;
-import appeng.api.networking.events.MENetworkChannelsChanged;
-import appeng.api.networking.pathing.IPathingGrid;
-import appeng.api.util.AEPartLocation;
-import appeng.api.util.DimensionalCoord;
-import appeng.api.util.IReadOnlyCollection;
+import appeng.core.api.exceptions.ExistingConnectionException;
+import appeng.core.api.exceptions.FailedConnection;
+import appeng.core.api.exceptions.NullNodeConnectionException;
+import appeng.core.api.exceptions.SecurityConnectionException;
+import appeng.core.api.util.AEPartLocation;
+import appeng.core.api.util.DimensionalCoord;
+import appeng.core.api.util.IReadOnlyCollection;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.AELog;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.util.ReadOnlyCollection;
+import appeng.core.me.api.networking.GridFlags;
+import appeng.core.me.api.networking.IGridConnection;
+import appeng.core.me.api.networking.IGridNode;
+import appeng.core.me.api.networking.events.MENetworkChannelsChanged;
+import appeng.core.me.api.networking.pathing.IPathingGrid;
 import appeng.core.me.grid.pathfinding.IPathItem;
 
 

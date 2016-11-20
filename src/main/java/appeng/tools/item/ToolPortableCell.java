@@ -33,23 +33,23 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import appeng.api.AEApi;
-import appeng.api.config.FuzzyMode;
-import appeng.api.implementations.guiobjects.IGuiItem;
-import appeng.api.implementations.guiobjects.IGuiItemObject;
-import appeng.api.implementations.items.IItemGroup;
-import appeng.api.implementations.items.IStorageCell;
-import appeng.api.storage.ICellInventory;
-import appeng.api.storage.ICellInventoryHandler;
-import appeng.api.storage.IMEInventory;
-import appeng.api.storage.StorageChannel;
-import appeng.api.storage.data.IAEItemStack;
-import appeng.api.util.AEPartLocation;
+import appeng.core.api.config.FuzzyMode;
+import appeng.core.api.implementations.guiobjects.IGuiItem;
+import appeng.core.api.implementations.guiobjects.IGuiItemObject;
+import appeng.core.api.implementations.items.IItemGroup;
+import appeng.core.api.implementations.items.IStorageCell;
+import appeng.core.api.util.AEPartLocation;
 import appeng.core.lib.AEConfig;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.item.powered.AEBasePoweredItem;
 import appeng.core.lib.localization.GuiText;
 import appeng.core.lib.sync.GuiBridge;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.storage.ICellInventory;
+import appeng.core.me.api.storage.ICellInventoryHandler;
+import appeng.core.me.api.storage.IMEInventory;
+import appeng.core.me.api.storage.StorageChannel;
+import appeng.core.me.api.storage.data.IAEItemStack;
 import appeng.core.me.grid.storage.CellInventoryHandler;
 import appeng.core.me.item.CellConfig;
 import appeng.core.me.item.CellUpgrades;
@@ -82,7 +82,7 @@ public class ToolPortableCell extends AEBasePoweredItem implements IStorageCell,
 	{
 		super.addCheckedInformation( stack, player, lines, displayMoreInfo );
 
-		final IMEInventory<IAEItemStack> cdi = AEApi.instance().registries().cell().getCellInventory( stack, null, StorageChannel.ITEMS );
+		final IMEInventory<IAEItemStack> cdi = AppEngApi.internalApi().registries().cell().getCellInventory( stack, null, StorageChannel.ITEMS );
 
 		if( cdi instanceof CellInventoryHandler )
 		{

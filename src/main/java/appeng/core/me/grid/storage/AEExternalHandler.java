@@ -22,14 +22,14 @@ package appeng.core.me.grid.storage;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 
-import appeng.api.implementations.tiles.ITileStorageMonitorable;
-import appeng.api.networking.security.BaseActionSource;
-import appeng.api.storage.IExternalStorageHandler;
-import appeng.api.storage.IMEInventory;
-import appeng.api.storage.IStorageMonitorable;
-import appeng.api.storage.StorageChannel;
-import appeng.api.storage.data.IAEFluidStack;
-import appeng.api.storage.data.IAEItemStack;
+import appeng.core.api.implementations.tiles.ITileStorageMonitorable;
+import appeng.core.me.api.networking.security.BaseActionSource;
+import appeng.core.me.api.storage.IExternalStorageHandler;
+import appeng.core.me.api.storage.IMEInventory;
+import appeng.core.me.api.storage.IStorageMonitorable;
+import appeng.core.me.api.storage.StorageChannel;
+import appeng.core.me.api.storage.data.IAEFluidStack;
+import appeng.core.me.api.storage.data.IAEItemStack;
 import appeng.core.me.tile.TileCondenser;
 
 

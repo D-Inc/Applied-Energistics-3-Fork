@@ -29,7 +29,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 
-import appeng.api.util.AEPartLocation;
+import appeng.core.api.util.AEPartLocation;
 import appeng.core.lib.util.Platform;
 import appeng.tools.item.ToolMassCannon;
 

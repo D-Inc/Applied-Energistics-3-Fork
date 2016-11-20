@@ -4,36 +4,39 @@ package appeng.core.lib.bootstrap;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Supplier;
+import java.util.Map;
+
+import com.google.common.collect.Maps;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import appeng.api.definitions.IItemDefinition;
-import appeng.api.util.AEColor;
-import appeng.api.util.AEColoredItemDefinition;
+import appeng.api.definitions.IDefinition;
+import appeng.api.definitions.IDefinitionsProvider;
+import appeng.core.AppEng;
 import appeng.core.lib.bootstrap.components.InitComponent;
 import appeng.core.lib.bootstrap.components.ModelOverrideComponent;
 import appeng.core.lib.bootstrap.components.PostInitComponent;
 import appeng.core.lib.bootstrap.components.PreInitComponent;
 import appeng.core.lib.features.AEFeature;
-import appeng.core.lib.features.ActivityState;
-import appeng.core.lib.features.ColoredItemDefinition;
-import appeng.core.lib.features.ItemStackSrc;
+import appeng.core.lib.features.BlockDefinition;
 import appeng.core.lib.util.Platform;
 
 
 public class FeatureFactory
 {
-
 	private final AEFeature[] defaultFeatures;
 
 	private final List<IBootstrapComponent> bootstrapComponents;
 
 	@SideOnly( Side.CLIENT )
 	ModelOverrideComponent modelOverrideComponent;
+
+	private final Map<BlockDefinition<? extends Block>, IItemBlockCustomizer> defaultItemBlocks = Maps.newHashMap();
 
 	public FeatureFactory()
 	{
@@ -57,30 +60,50 @@ public class FeatureFactory
 		}
 	}
 
-	public IBlockBuilder block( String id, Supplier<Block> block )
+	@Deprecated
+	public <T extends TileEntity> TileDefinitionBuilder<T> tile( String id, Class<T> tile )
 	{
-		return new BlockDefinitionBuilder( this, id, block ).features( defaultFeatures );
+		return tile( new ResourceLocation( AppEng.MOD_ID, id ), tile );
 	}
 
-	public IItemBuilder item( String id, Supplier<Item> item )
+	public <T extends TileEntity> TileDefinitionBuilder<T> tile( ResourceLocation id, Class<T> tile )
 	{
-		return new ItemDefinitionBuilder( this, id, item ).features( defaultFeatures );
+		return new TileDefinitionBuilder<T>( this, id, tile, ( (IDefinitionsProvider) AppEng.instance().getCurrent() ).definitions( Block.class ) ).features( defaultFeatures );
 	}
 
-	public AEColoredItemDefinition colored( IItemDefinition target, int offset )
+	@Deprecated
+	public <B extends Block> BlockDefinitionBuilder<B> block( String id, B block )
 	{
-		ColoredItemDefinition definition = new ColoredItemDefinition();
+		return block( new ResourceLocation( AppEng.MOD_ID, id ), block );
+	}
 
-		target.maybeItem().ifPresent( targetItem -> {
-			for( final AEColor color : AEColor.VALID_COLORS )
-			{
-				final ActivityState state = ActivityState.from( target.isEnabled() );
+	public <B extends Block> BlockDefinitionBuilder<B> block( ResourceLocation id, B block )
+	{
+		return new BlockDefinitionBuilder<B>( this, id, block ).features( defaultFeatures );
+	}
 
-				definition.add( color, new ItemStackSrc( targetItem, offset + color.ordinal(), state ) );
-			}
-		} );
+	@Deprecated
+	public <I extends Item> ItemDefinitionBuilder<I> item( String id, I item )
+	{
+		return item( new ResourceLocation( AppEng.MOD_ID, id ), item );
+	}
 
-		return definition;
+	public <I extends Item> ItemDefinitionBuilder<I> item( ResourceLocation id, I item )
+	{
+		return new ItemDefinitionBuilder<I>( this, id, item ).features( defaultFeatures );
+	}
+
+	<B extends Block> void addItemBlock( BlockDefinition<B> def, IItemBlockCustomizer itemBlock )
+	{
+		defaultItemBlocks.put( def, itemBlock );
+	}
+
+	public Map<ResourceLocation, IDefinition<? extends Item>> buildDefaultItemBlocks()
+	{
+		Map<ResourceLocation, IDefinition<? extends Item>> result = Maps.newHashMap();
+		this.defaultItemBlocks.forEach( ( def, item ) -> result.put( def.identifier(), item.customize( item( def.identifier(), item.createItemBlock( def.maybe().get() ) ) ).build() ) );
+		this.defaultItemBlocks.clear();
+		return result;
 	}
 
 	public FeatureFactory features( AEFeature... features )

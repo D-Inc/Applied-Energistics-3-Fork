@@ -25,12 +25,13 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
 
-import appeng.api.AEApi;
-import appeng.api.definitions.IBlocks;
-import appeng.api.definitions.IDefinitions;
-import appeng.api.definitions.IParts;
+import appeng.api.definitions.IItemDefinition;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.AELog;
+import appeng.core.lib.ApiDefinitions;
+import appeng.core.lib.AppEngApi;
+import appeng.core.lib.api.definitions.ApiBlocks;
+import appeng.core.lib.api.definitions.ApiParts;
 import appeng.core.lib.client.gui.widgets.GuiNumberBox;
 import appeng.core.lib.client.gui.widgets.GuiTabButton;
 import appeng.core.lib.container.AEBaseContainer;
@@ -93,43 +94,43 @@ public class GuiPriority extends AEBaseGui
 
 		ItemStack myIcon = null;
 		final Object target = ( (AEBaseContainer) this.inventorySlots ).getTarget();
-		final IDefinitions definitions = AEApi.instance().definitions();
-		final IParts parts = definitions.parts();
-		final IBlocks blocks = definitions.blocks();
+		final ApiDefinitions definitions = AppEngApi.internalApi().definitions();
+		final ApiParts parts = definitions.parts();
+		final ApiBlocks blocks = definitions.blocks();
 
 		if( target instanceof PartStorageBus )
 		{
-			myIcon = parts.storageBus().maybeStack( 1 ).orElse( myIcon );
+			myIcon = (ItemStack) parts.storageBus().maybeStack( 1 ).orElse( myIcon );
 			this.OriginalGui = GuiBridge.GUI_STORAGEBUS;
 		}
 
 		if( target instanceof PartFormationPlane )
 		{
-			myIcon = parts.formationPlane().maybeStack( 1 ).orElse( myIcon );
+			myIcon = (ItemStack) parts.formationPlane().maybeStack( 1 ).orElse( myIcon );
 			this.OriginalGui = GuiBridge.GUI_FORMATION_PLANE;
 		}
 
 		if( target instanceof TileDrive )
 		{
-			myIcon = blocks.drive().maybeStack( 1 ).orElse( myIcon );
+			myIcon = (ItemStack) ( (IItemDefinition) blocks.drive().block().maybeItem().get() ).maybeStack( 1 ).orElse( myIcon );
 			this.OriginalGui = GuiBridge.GUI_DRIVE;
 		}
 
 		if( target instanceof TileChest )
 		{
-			myIcon = blocks.chest().maybeStack( 1 ).orElse( myIcon );
+			myIcon = (ItemStack) ( (IItemDefinition) blocks.chest().block().maybeItem().get() ).maybeStack( 1 ).orElse( myIcon );
 			this.OriginalGui = GuiBridge.GUI_CHEST;
 		}
 
 		if( target instanceof TileInterface )
 		{
-			myIcon = blocks.iface().maybeStack( 1 ).orElse( myIcon );
+			myIcon = (ItemStack) ( (IItemDefinition) blocks.iface().block().maybeItem().get() ).maybeStack( 1 ).orElse( myIcon );
 			this.OriginalGui = GuiBridge.GUI_INTERFACE;
 		}
 
 		if( target instanceof PartInterface )
 		{
-			myIcon = parts.iface().maybeStack( 1 ).orElse( myIcon );
+			myIcon = (ItemStack) parts.iface().maybeStack( 1 ).orElse( myIcon );
 			this.OriginalGui = GuiBridge.GUI_INTERFACE;
 		}
 

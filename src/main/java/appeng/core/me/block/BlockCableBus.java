@@ -53,17 +53,17 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import appeng.api.parts.IPartHost;
-import appeng.api.parts.PartItemStack;
-import appeng.api.parts.SelectedPart;
-import appeng.api.util.AEColor;
+import appeng.core.api.util.AEColor;
 import appeng.core.lib.AEConfig;
-import appeng.core.lib.Api;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.block.AEBaseTileBlock;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.helpers.AEGlassMaterial;
 import appeng.core.lib.tile.AEBaseTile;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.parts.IPartHost;
+import appeng.core.me.api.parts.PartItemStack;
+import appeng.core.me.api.parts.SelectedPart;
 import appeng.core.me.part.ICableBusContainer;
 import appeng.core.me.part.NullCableBusContainer;
 import appeng.core.me.tile.TileCableBus;
@@ -342,7 +342,7 @@ public class BlockCableBus extends AEBaseTileBlock
 
 	public void setupTile()
 	{
-		noTesrTile = Api.INSTANCE.partHelper().getCombinedInstance( TileCableBus.class.getName() );
+		noTesrTile = AppEngApi.INSTANCE.partHelper().getCombinedInstance( TileCableBus.class.getName() );
 		this.setTileEntity( noTesrTile );
 		GameRegistry.registerTileEntity( noTesrTile, "BlockCableBus" );
 	}

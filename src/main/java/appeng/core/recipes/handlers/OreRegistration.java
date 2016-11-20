@@ -24,11 +24,11 @@ import java.util.List;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
-import appeng.api.exceptions.MissingIngredientError;
-import appeng.api.exceptions.RecipeError;
-import appeng.api.exceptions.RegistrationError;
-import appeng.api.recipes.ICraftHandler;
-import appeng.api.recipes.IIngredient;
+import appeng.core.api.exceptions.MissingIngredientError;
+import appeng.core.api.exceptions.RecipeError;
+import appeng.core.api.exceptions.RegistrationError;
+import appeng.core.api.recipes.ICraftHandler;
+import appeng.core.api.recipes.IIngredient;
 
 
 public class OreRegistration implements ICraftHandler

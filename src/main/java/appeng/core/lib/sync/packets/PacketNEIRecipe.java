@@ -40,17 +40,9 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.oredict.OreDictionary;
 
-import appeng.api.config.Actionable;
-import appeng.api.config.FuzzyMode;
-import appeng.api.config.SecurityPermissions;
-import appeng.api.networking.IGrid;
-import appeng.api.networking.IGridNode;
-import appeng.api.networking.energy.IEnergyGrid;
-import appeng.api.networking.security.ISecurityGrid;
-import appeng.api.networking.storage.IStorageGrid;
-import appeng.api.storage.IMEMonitor;
-import appeng.api.storage.data.IAEItemStack;
-import appeng.api.storage.data.IItemList;
+import appeng.core.api.config.Actionable;
+import appeng.core.api.config.FuzzyMode;
+import appeng.core.api.config.SecurityPermissions;
 import appeng.core.lib.container.ContainerNull;
 import appeng.core.lib.helpers.IContainerCraftingPacket;
 import appeng.core.lib.sync.AppEngPacket;
@@ -59,6 +51,14 @@ import appeng.core.lib.util.InventoryAdaptor;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.util.item.AEItemStack;
 import appeng.core.lib.util.prioitylist.IPartitionList;
+import appeng.core.me.api.networking.IGrid;
+import appeng.core.me.api.networking.IGridNode;
+import appeng.core.me.api.networking.energy.IEnergyGrid;
+import appeng.core.me.api.networking.security.ISecurityGrid;
+import appeng.core.me.api.networking.storage.IStorageGrid;
+import appeng.core.me.api.storage.IMEMonitor;
+import appeng.core.me.api.storage.data.IAEItemStack;
+import appeng.core.me.api.storage.data.IItemList;
 import appeng.core.me.item.ItemViewCell;
 
 

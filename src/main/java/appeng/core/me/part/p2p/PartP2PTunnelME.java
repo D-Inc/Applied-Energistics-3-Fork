@@ -29,19 +29,19 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumHand;
 
-import appeng.api.AEApi;
-import appeng.api.exceptions.FailedConnection;
-import appeng.api.networking.GridFlags;
-import appeng.api.networking.IGridNode;
-import appeng.api.networking.ticking.IGridTickable;
-import appeng.api.networking.ticking.TickRateModulation;
-import appeng.api.networking.ticking.TickingRequest;
-import appeng.api.parts.IPartHost;
-import appeng.api.util.AECableType;
-import appeng.api.util.AEPartLocation;
+import appeng.core.api.exceptions.FailedConnection;
+import appeng.core.api.util.AECableType;
+import appeng.core.api.util.AEPartLocation;
 import appeng.core.hooks.TickHandler;
 import appeng.core.lib.AELog;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.settings.TickRates;
+import appeng.core.me.api.networking.GridFlags;
+import appeng.core.me.api.networking.IGridNode;
+import appeng.core.me.api.networking.ticking.IGridTickable;
+import appeng.core.me.api.networking.ticking.TickRateModulation;
+import appeng.core.me.api.networking.ticking.TickingRequest;
+import appeng.core.me.api.parts.IPartHost;
 import appeng.core.me.grid.GridAccessException;
 import appeng.core.me.grid.cache.helpers.Connections;
 import appeng.core.me.grid.cache.helpers.TunnelConnection;
@@ -228,7 +228,7 @@ public class PartP2PTunnelME extends PartP2PTunnel<PartP2PTunnelME> implements I
 				{
 					try
 					{
-						connections.getConnections().put( me.getGridNode(), new TunnelConnection( me, AEApi.instance().createGridConnection( this.outerProxy.getNode(), me.outerProxy.getNode() ) ) );
+						connections.getConnections().put( me.getGridNode(), new TunnelConnection( me, AppEngApi.internalApi().createGridConnection( this.outerProxy.getNode(), me.outerProxy.getNode() ) ) );
 					}
 					catch( final FailedConnection e )
 					{

@@ -23,9 +23,9 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
-import appeng.api.AEApi;
 import appeng.api.definitions.IItemDefinition;
-import appeng.api.features.IInscriberRecipe;
+import appeng.core.api.features.IInscriberRecipe;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.container.ContainerUpgradeable;
 import appeng.core.lib.container.guisync.GuiSync;
 import appeng.core.lib.container.interfaces.IProgressProvider;
@@ -115,7 +115,7 @@ public class ContainerInscriber extends ContainerUpgradeable implements IProgres
 
 		if( s == this.middle )
 		{
-			for( final ItemStack optional : AEApi.instance().registries().inscriber().getOptionals() )
+			for( final ItemStack optional : AppEngApi.internalApi().registries().inscriber().getOptionals() )
 			{
 				if( Platform.isSameItemPrecise( optional, is ) )
 				{
@@ -126,7 +126,7 @@ public class ContainerInscriber extends ContainerUpgradeable implements IProgres
 			boolean matches = false;
 			boolean found = false;
 
-			for( final IInscriberRecipe recipe : AEApi.instance().registries().inscriber().getRecipes() )
+			for( final IInscriberRecipe recipe : AppEngApi.internalApi().registries().inscriber().getRecipes() )
 			{
 				final boolean matchA = ( top == null && !recipe.getTopOptional().isPresent() ) || ( Platform.isSameItemPrecise( top, recipe.getTopOptional().orElse( null ) ) ) && // and...
 						( bot == null && !recipe.getBottomOptional().isPresent() ) | ( Platform.isSameItemPrecise( bot, recipe.getBottomOptional().orElse( null ) ) );
@@ -166,7 +166,7 @@ public class ContainerInscriber extends ContainerUpgradeable implements IProgres
 			}
 
 			// name presses
-			final IItemDefinition namePress = AEApi.instance().definitions().materials().namePress();
+			final IItemDefinition namePress = AppEngApi.internalApi().definitions().materials().namePress();
 			if( namePress.isSameAs( otherSlot ) )
 			{
 				return namePress.isSameAs( is );
@@ -174,7 +174,7 @@ public class ContainerInscriber extends ContainerUpgradeable implements IProgres
 
 			// everything else
 			boolean isValid = false;
-			for( final IInscriberRecipe recipe : AEApi.instance().registries().inscriber().getRecipes() )
+			for( final IInscriberRecipe recipe : AppEngApi.internalApi().registries().inscriber().getRecipes() )
 			{
 				if( Platform.isSameItemPrecise( recipe.getTopOptional().orElse( null ), otherSlot ) )
 				{

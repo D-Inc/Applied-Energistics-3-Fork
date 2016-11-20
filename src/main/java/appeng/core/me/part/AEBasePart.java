@@ -54,31 +54,32 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import appeng.api.AEApi;
 import appeng.api.client.BakingPipeline;
-import appeng.api.config.Upgrades;
-import appeng.api.definitions.IDefinitions;
-import appeng.api.implementations.IUpgradeableHost;
-import appeng.api.implementations.items.IMemoryCard;
-import appeng.api.implementations.items.MemoryCardMessages;
-import appeng.api.networking.IGridNode;
-import appeng.api.networking.security.IActionHost;
-import appeng.api.parts.BusSupport;
-import appeng.api.parts.IPart;
-import appeng.api.parts.IPartCollisionHelper;
-import appeng.api.parts.IPartHost;
-import appeng.api.parts.PartItemStack;
-import appeng.api.util.AECableType;
-import appeng.api.util.AEColor;
-import appeng.api.util.AEPartLocation;
-import appeng.api.util.DimensionalCoord;
-import appeng.api.util.IConfigManager;
+import appeng.api.definitions.IItemDefinition;
+import appeng.core.api.config.Upgrades;
+import appeng.core.api.implementations.IUpgradeableHost;
+import appeng.core.api.implementations.items.IMemoryCard;
+import appeng.core.api.implementations.items.MemoryCardMessages;
+import appeng.core.api.util.AECableType;
+import appeng.core.api.util.AEColor;
+import appeng.core.api.util.AEPartLocation;
+import appeng.core.api.util.DimensionalCoord;
+import appeng.core.api.util.IConfigManager;
+import appeng.core.lib.ApiDefinitions;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.client.render.model.ModelsCache;
 import appeng.core.lib.helpers.ICustomNameObject;
 import appeng.core.lib.helpers.IPriorityHost;
 import appeng.core.lib.tile.inventory.AppEngInternalAEInventory;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.util.SettingsFrom;
+import appeng.core.me.api.networking.IGridNode;
+import appeng.core.me.api.networking.security.IActionHost;
+import appeng.core.me.api.parts.BusSupport;
+import appeng.core.me.api.parts.IPart;
+import appeng.core.me.api.parts.IPartCollisionHelper;
+import appeng.core.me.api.parts.IPartHost;
+import appeng.core.me.api.parts.PartItemStack;
 import appeng.core.me.grid.helpers.AENetworkProxy;
 import appeng.core.me.grid.helpers.IGridProxyable;
 import appeng.core.me.item.ItemMultiPart;
@@ -477,10 +478,10 @@ public abstract class AEBasePart implements IPart, IGridProxyable, IActionHost, 
 			ItemStack is = this.getItemStack( PartItemStack.Network );
 
 			// Blocks and parts share the same soul!
-			final IDefinitions definitions = AEApi.instance().definitions();
+			final ApiDefinitions definitions = AppEngApi.internalApi().definitions();
 			if( definitions.parts().iface().isSameAs( is ) )
 			{
-				Optional<ItemStack> iface = definitions.blocks().iface().maybeStack( 1 );
+				Optional<ItemStack> iface = ( (IItemDefinition) definitions.blocks().iface().block().maybeItem().get() ).maybeStack( 1 );
 				if( iface.isPresent() )
 				{
 					is = iface.get();

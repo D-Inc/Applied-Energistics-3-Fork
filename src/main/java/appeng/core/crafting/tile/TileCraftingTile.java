@@ -31,23 +31,24 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 
-import appeng.api.AEApi;
-import appeng.api.config.Actionable;
-import appeng.api.implementations.IPowerChannelState;
-import appeng.api.networking.GridFlags;
-import appeng.api.networking.IGridHost;
-import appeng.api.networking.events.MENetworkChannelsChanged;
-import appeng.api.networking.events.MENetworkEventSubscribe;
-import appeng.api.networking.events.MENetworkPowerStatusChange;
-import appeng.api.storage.IMEInventory;
-import appeng.api.storage.data.IAEItemStack;
-import appeng.api.util.AEPartLocation;
-import appeng.api.util.WorldCoord;
+import appeng.api.definitions.IItemDefinition;
+import appeng.core.api.config.Actionable;
+import appeng.core.api.implementations.IPowerChannelState;
+import appeng.core.api.util.AEPartLocation;
+import appeng.core.api.util.WorldCoord;
 import appeng.core.crafting.block.BlockCraftingUnit;
 import appeng.core.crafting.block.BlockCraftingUnit.CraftingUnitType;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.tile.TileEvent;
 import appeng.core.lib.tile.events.TileEventType;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.networking.GridFlags;
+import appeng.core.me.api.networking.IGridHost;
+import appeng.core.me.api.networking.events.MENetworkChannelsChanged;
+import appeng.core.me.api.networking.events.MENetworkEventSubscribe;
+import appeng.core.me.api.networking.events.MENetworkPowerStatusChange;
+import appeng.core.me.api.storage.IMEInventory;
+import appeng.core.me.api.storage.data.IAEItemStack;
 import appeng.core.me.grid.cluster.IAECluster;
 import appeng.core.me.grid.cluster.IAEMultiBlock;
 import appeng.core.me.grid.cluster.implementations.CraftingCPUCalculator;
@@ -84,7 +85,7 @@ public class TileCraftingTile extends AENetworkTile implements IAEMultiBlock, IP
 
 		if( ( (TileCraftingTile) obj ).isAccelerator() )
 		{
-			is = AEApi.instance().definitions().blocks().craftingAccelerator().maybeStack( 1 );
+			is = ( (IItemDefinition) AppEngApi.internalApi().definitions().blocks().craftingAccelerator().block().maybeItem().get() ).maybeStack( 1 );
 		}
 
 		return is.orElseGet( () -> super.getItemFromTile( obj ) );
@@ -306,7 +307,7 @@ public class TileCraftingTile extends AENetworkTile implements IAEMultiBlock, IP
 				throw new IllegalStateException( this.cluster + " does not contain any kind of blocks, which were destroyed." );
 			}
 
-			for( IAEItemStack ais : inv.getAvailableItems( AEApi.instance().storage().createItemList() ) )
+			for( IAEItemStack ais : inv.getAvailableItems( AppEngApi.internalApi().storage().createItemList() ) )
 			{
 				ais = ais.copy();
 				ais.setStackSize( ais.getItemStack().getMaxStackSize() );

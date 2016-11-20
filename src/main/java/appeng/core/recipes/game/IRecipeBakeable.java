@@ -19,7 +19,7 @@
 package appeng.core.recipes.game;
 
 
-import appeng.api.exceptions.RegistrationError;
+import appeng.core.api.exceptions.RegistrationError;
 
 
 public interface IRecipeBakeable

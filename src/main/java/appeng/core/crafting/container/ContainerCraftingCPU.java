@@ -26,20 +26,10 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IContainerListener;
 
-import appeng.api.AEApi;
-import appeng.api.networking.IGrid;
-import appeng.api.networking.IGridHost;
-import appeng.api.networking.IGridNode;
-import appeng.api.networking.crafting.CraftingItemList;
-import appeng.api.networking.crafting.ICraftingCPU;
-import appeng.api.networking.security.BaseActionSource;
-import appeng.api.networking.storage.IBaseMonitor;
-import appeng.api.storage.IMEMonitorHandlerReceiver;
-import appeng.api.storage.data.IAEItemStack;
-import appeng.api.storage.data.IItemList;
-import appeng.api.util.AEPartLocation;
+import appeng.core.api.util.AEPartLocation;
 import appeng.core.crafting.tile.TileCraftingTile;
 import appeng.core.lib.AELog;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.container.AEBaseContainer;
 import appeng.core.lib.container.guisync.GuiSync;
 import appeng.core.lib.helpers.ICustomNameObject;
@@ -47,6 +37,16 @@ import appeng.core.lib.sync.network.NetworkHandler;
 import appeng.core.lib.sync.packets.PacketMEInventoryUpdate;
 import appeng.core.lib.sync.packets.PacketValueConfig;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.networking.IGrid;
+import appeng.core.me.api.networking.IGridHost;
+import appeng.core.me.api.networking.IGridNode;
+import appeng.core.me.api.networking.crafting.CraftingItemList;
+import appeng.core.me.api.networking.crafting.ICraftingCPU;
+import appeng.core.me.api.networking.security.BaseActionSource;
+import appeng.core.me.api.networking.storage.IBaseMonitor;
+import appeng.core.me.api.storage.IMEMonitorHandlerReceiver;
+import appeng.core.me.api.storage.data.IAEItemStack;
+import appeng.core.me.api.storage.data.IItemList;
 import appeng.core.me.grid.cluster.IAEMultiBlock;
 import appeng.core.me.grid.cluster.implementations.CraftingCPUCluster;
 
@@ -54,7 +54,7 @@ import appeng.core.me.grid.cluster.implementations.CraftingCPUCluster;
 public class ContainerCraftingCPU extends AEBaseContainer implements IMEMonitorHandlerReceiver<IAEItemStack>, ICustomNameObject
 {
 
-	private final IItemList<IAEItemStack> list = AEApi.instance().storage().createItemList();
+	private final IItemList<IAEItemStack> list = AppEngApi.internalApi().storage().createItemList();
 	private IGrid network;
 	private CraftingCPUCluster monitor = null;
 	private String cpuName = null;

@@ -36,11 +36,13 @@ import java.util.Locale;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.event.FMLInterModComms.IMCMessage;
 
-import appeng.api.AEApi;
-import appeng.api.config.TunnelType;
+import appeng.core.api.config.TunnelType;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.api.IIMCProcessor;
 
 
+//TODO 1.10.2-APIBOOM - Move to modules.
+@Deprecated
 public class IMCP2PAttunement implements IIMCProcessor
 {
 
@@ -56,7 +58,7 @@ public class IMCP2PAttunement implements IIMCProcessor
 			final ItemStack is = m.getItemStackValue();
 			if( is != null )
 			{
-				AEApi.instance().registries().p2pTunnel().addNewAttunement( is, type );
+				AppEngApi.internalApi().registries().p2pTunnel().addNewAttunement( is, type );
 			}
 			else
 			{

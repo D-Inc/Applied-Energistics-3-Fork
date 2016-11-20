@@ -24,10 +24,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-import appeng.api.AEApi;
 import appeng.api.definitions.IBlockDefinition;
-import appeng.api.definitions.IBlocks;
-import appeng.api.util.WorldCoord;
+import appeng.core.api.util.WorldCoord;
+import appeng.core.lib.AppEngApi;
+import appeng.core.lib.api.definitions.ApiBlocks;
 import appeng.core.me.grid.cluster.IAECluster;
 import appeng.core.me.grid.cluster.IAEMultiBlock;
 import appeng.core.me.grid.cluster.MBCalculator;
@@ -87,17 +87,17 @@ public class QuantumCalculator extends MBCalculator
 					}
 
 					num++;
-					final IBlocks blocks = AEApi.instance().definitions().blocks();
+					final ApiBlocks blocks = AppEngApi.internalApi().definitions().blocks();
 					if( num == 5 )
 					{
-						if( !this.isBlockAtLocation( w, p, blocks.quantumLink() ) )
+						if( !this.isBlockAtLocation( w, p, blocks.quantumLink().block() ) )
 						{
 							return false;
 						}
 					}
 					else
 					{
-						if( !this.isBlockAtLocation( w, p, blocks.quantumRing() ) )
+						if( !this.isBlockAtLocation( w, p, blocks.quantumRing().block() ) )
 						{
 							return false;
 						}
@@ -164,6 +164,6 @@ public class QuantumCalculator extends MBCalculator
 
 	private boolean isBlockAtLocation( final IBlockAccess w, final BlockPos pos, final IBlockDefinition def )
 	{
-		return def.maybeBlock().map( block -> block == w.getBlockState( pos ).getBlock() ).orElse( false );
+		return (boolean) def.maybe().map( block -> block == w.getBlockState( pos ).getBlock() ).orElse( false );
 	}
 }

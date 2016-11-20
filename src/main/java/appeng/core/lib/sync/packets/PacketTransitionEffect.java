@@ -33,7 +33,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import appeng.api.util.AEPartLocation;
+import appeng.core.api.util.AEPartLocation;
 import appeng.core.lib.CommonHelper;
 import appeng.core.lib.client.ClientHelper;
 import appeng.core.lib.client.render.effects.EnergyFx;

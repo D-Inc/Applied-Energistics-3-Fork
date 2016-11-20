@@ -29,15 +29,15 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 
-import appeng.api.AEApi;
-import appeng.api.config.Actionable;
-import appeng.api.networking.crafting.ICraftingGrid;
-import appeng.api.networking.crafting.ICraftingPatternDetails;
-import appeng.api.networking.security.BaseActionSource;
-import appeng.api.storage.data.IAEItemStack;
-import appeng.api.storage.data.IItemList;
+import appeng.core.api.config.Actionable;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.container.ContainerNull;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.networking.crafting.ICraftingGrid;
+import appeng.core.me.api.networking.crafting.ICraftingPatternDetails;
+import appeng.core.me.api.networking.security.BaseActionSource;
+import appeng.core.me.api.storage.data.IAEItemStack;
+import appeng.core.me.api.storage.data.IItemList;
 import appeng.core.me.grid.cluster.implementations.CraftingCPUCluster;
 
 
@@ -207,7 +207,7 @@ public class CraftingTreeProcess
 				ItemStack is = ic.getStackInSlot( x );
 				is = Platform.getContainerItem( is );
 
-				final IAEItemStack o = AEApi.instance().storage().createItemStack( is );
+				final IAEItemStack o = AppEngApi.internalApi().storage().createItemStack( is );
 				if( o != null )
 				{
 					this.bytes++;
@@ -226,7 +226,7 @@ public class CraftingTreeProcess
 				if( this.containerItems )
 				{
 					final ItemStack is = Platform.getContainerItem( stack.getItemStack() );
-					final IAEItemStack o = AEApi.instance().storage().createItemStack( is );
+					final IAEItemStack o = AppEngApi.internalApi().storage().createItemStack( is );
 					if( o != null )
 					{
 						this.bytes++;

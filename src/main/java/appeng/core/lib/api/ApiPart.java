@@ -48,11 +48,11 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import appeng.api.parts.CableRenderMode;
-import appeng.api.parts.IPartHelper;
-import appeng.api.parts.LayerBase;
 import appeng.core.lib.AELog;
 import appeng.core.lib.CommonHelper;
+import appeng.core.me.api.parts.CableRenderMode;
+import appeng.core.me.api.parts.IPartHelper;
+import appeng.core.me.api.parts.LayerBase;
 import appeng.core.me.part.PartPlacement;
 import appeng.core.me.tile.TileCableBus;
 

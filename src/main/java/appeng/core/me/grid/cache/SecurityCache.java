@@ -29,16 +29,16 @@ import com.mojang.authlib.GameProfile;
 
 import net.minecraft.entity.player.EntityPlayer;
 
-import appeng.api.config.SecurityPermissions;
-import appeng.api.networking.IGrid;
-import appeng.api.networking.IGridHost;
-import appeng.api.networking.IGridNode;
-import appeng.api.networking.IGridStorage;
-import appeng.api.networking.events.MENetworkEventSubscribe;
-import appeng.api.networking.events.MENetworkSecurityChange;
-import appeng.api.networking.security.ISecurityGrid;
-import appeng.api.networking.security.ISecurityProvider;
+import appeng.core.api.config.SecurityPermissions;
 import appeng.core.lib.worlddata.WorldData;
+import appeng.core.me.api.networking.IGrid;
+import appeng.core.me.api.networking.IGridHost;
+import appeng.core.me.api.networking.IGridNode;
+import appeng.core.me.api.networking.IGridStorage;
+import appeng.core.me.api.networking.events.MENetworkEventSubscribe;
+import appeng.core.me.api.networking.events.MENetworkSecurityChange;
+import appeng.core.me.api.networking.security.ISecurityGrid;
+import appeng.core.me.api.networking.security.ISecurityProvider;
 import appeng.core.me.grid.GridNode;
 
 

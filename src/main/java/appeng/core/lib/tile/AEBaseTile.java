@@ -47,11 +47,11 @@ import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import appeng.api.implementations.tiles.ISegmentedInventory;
-import appeng.api.util.ICommonTile;
-import appeng.api.util.IConfigManager;
-import appeng.api.util.IConfigurableObject;
-import appeng.api.util.IOrientable;
+import appeng.core.api.implementations.tiles.ISegmentedInventory;
+import appeng.core.api.util.ICommonTile;
+import appeng.core.api.util.IConfigManager;
+import appeng.core.api.util.IConfigurableObject;
+import appeng.core.api.util.IOrientable;
 import appeng.core.lib.AELog;
 import appeng.core.lib.features.IStackSrc;
 import appeng.core.lib.helpers.ICustomNameObject;

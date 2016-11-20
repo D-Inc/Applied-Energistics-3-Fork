@@ -36,15 +36,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-import appeng.api.networking.IGridNode;
-import appeng.api.parts.IFacadeContainer;
-import appeng.api.parts.IPart;
-import appeng.api.parts.LayerFlags;
-import appeng.api.parts.SelectedPart;
-import appeng.api.util.AECableType;
-import appeng.api.util.AEColor;
-import appeng.api.util.AEPartLocation;
-import appeng.api.util.DimensionalCoord;
+import appeng.core.api.util.AECableType;
+import appeng.core.api.util.AEColor;
+import appeng.core.api.util.AEPartLocation;
+import appeng.core.api.util.DimensionalCoord;
 import appeng.core.hooks.TickHandler;
 import appeng.core.lib.helpers.AEMultiTile;
 import appeng.core.lib.helpers.ICustomCollision;
@@ -52,6 +47,11 @@ import appeng.core.lib.tile.AEBaseTile;
 import appeng.core.lib.tile.TileEvent;
 import appeng.core.lib.tile.events.TileEventType;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.networking.IGridNode;
+import appeng.core.me.api.parts.IFacadeContainer;
+import appeng.core.me.api.parts.IPart;
+import appeng.core.me.api.parts.LayerFlags;
+import appeng.core.me.api.parts.SelectedPart;
 import appeng.core.me.part.CableBusContainer;
 
 

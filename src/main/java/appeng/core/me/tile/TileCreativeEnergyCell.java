@@ -19,12 +19,12 @@
 package appeng.core.me.tile;
 
 
-import appeng.api.config.AccessRestriction;
-import appeng.api.config.Actionable;
-import appeng.api.config.PowerMultiplier;
-import appeng.api.networking.energy.IAEPowerStorage;
-import appeng.api.util.AECableType;
-import appeng.api.util.AEPartLocation;
+import appeng.core.api.config.AccessRestriction;
+import appeng.core.api.config.Actionable;
+import appeng.core.api.config.PowerMultiplier;
+import appeng.core.api.util.AECableType;
+import appeng.core.api.util.AEPartLocation;
+import appeng.core.me.api.networking.energy.IAEPowerStorage;
 
 
 public class TileCreativeEnergyCell extends AENetworkTile implements IAEPowerStorage

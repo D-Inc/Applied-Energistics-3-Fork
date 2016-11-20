@@ -24,15 +24,15 @@ import java.util.EnumSet;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 
-import appeng.api.config.AccessRestriction;
-import appeng.api.config.Actionable;
-import appeng.api.config.PowerMultiplier;
-import appeng.api.config.PowerUnits;
-import appeng.api.networking.energy.IAEPowerStorage;
-import appeng.api.networking.events.MENetworkPowerStorage.PowerEventType;
+import appeng.core.api.config.AccessRestriction;
+import appeng.core.api.config.Actionable;
+import appeng.core.api.config.PowerMultiplier;
+import appeng.core.api.config.PowerUnits;
 import appeng.core.lib.tile.AEBaseInvTile;
 import appeng.core.lib.tile.TileEvent;
 import appeng.core.lib.tile.events.TileEventType;
+import appeng.core.me.api.networking.energy.IAEPowerStorage;
+import appeng.core.me.api.networking.events.MENetworkPowerStorage.PowerEventType;
 
 
 public abstract class AERootPoweredTile extends AEBaseInvTile implements IAEPowerStorage

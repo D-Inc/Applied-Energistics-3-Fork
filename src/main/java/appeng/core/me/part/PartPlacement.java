@@ -45,22 +45,23 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
-import appeng.api.AEApi;
 import appeng.api.definitions.IBlockDefinition;
-import appeng.api.definitions.IItems;
-import appeng.api.parts.IFacadePart;
-import appeng.api.parts.IPartHost;
-import appeng.api.parts.IPartItem;
-import appeng.api.parts.PartItemStack;
-import appeng.api.parts.SelectedPart;
-import appeng.api.util.AEPartLocation;
-import appeng.api.util.DimensionalCoord;
+import appeng.api.definitions.IItemDefinition;
+import appeng.core.api.util.AEPartLocation;
+import appeng.core.api.util.DimensionalCoord;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.CommonHelper;
+import appeng.core.lib.api.definitions.ApiItems;
 import appeng.core.lib.sync.network.NetworkHandler;
 import appeng.core.lib.sync.packets.PacketClick;
 import appeng.core.lib.sync.packets.PacketPartPlacement;
 import appeng.core.lib.util.LookDirection;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.parts.IFacadePart;
+import appeng.core.me.api.parts.IPartHost;
+import appeng.core.me.api.parts.IPartItem;
+import appeng.core.me.api.parts.PartItemStack;
+import appeng.core.me.api.parts.SelectedPart;
 import appeng.decorative.part.IFacadeItem;
 
 
@@ -243,7 +244,7 @@ public class PartPlacement
 
 		BlockPos te_pos = pos;
 
-		final IBlockDefinition multiPart = AEApi.instance().definitions().blocks().multiPart();
+		final IBlockDefinition multiPart = AppEngApi.internalApi().definitions().blocks().multiPart().block();
 		if( host == null && pass == PlaceType.PLACE_ITEM )
 		{
 			EnumFacing offset = null;
@@ -283,9 +284,9 @@ public class PartPlacement
 			 * }
 			 */
 
-			final Optional<ItemStack> maybeMultiPartStack = multiPart.maybeStack( 1 );
-			final Optional<Block> maybeMultiPartBlock = multiPart.maybeBlock();
-			final Optional<ItemBlock> maybeMultiPartItemBlock = multiPart.maybeItemBlock();
+			final Optional<ItemStack> maybeMultiPartStack = ( (IItemDefinition) multiPart.maybeItem().get() ).maybeStack( 1 );
+			final Optional<Block> maybeMultiPartBlock = multiPart.maybe();
+			final Optional<ItemBlock> maybeMultiPartItemBlock = multiPart.maybeItem();
 
 			final boolean hostIsNotPresent = host == null;
 			final boolean multiPartPresent = maybeMultiPartBlock.isPresent() && maybeMultiPartStack.isPresent() && maybeMultiPartItemBlock.isPresent();
@@ -369,8 +370,8 @@ public class PartPlacement
 			final AEPartLocation mySide = host.addPart( held, AEPartLocation.fromFacing( side ), player, hand );
 			if( mySide != null )
 			{
-				multiPart.maybeBlock().ifPresent( multiPartBlock -> {
-					final SoundType ss = multiPartBlock.getSoundType();
+				multiPart.maybe().ifPresent( multiPartBlock -> {
+					final SoundType ss = ( (Block) multiPartBlock ).getSoundType();
 
 					world.playSound( player, 0.5 + pos.getX(), 0.5 + pos.getY(), 0.5 + pos.getZ(), ss.getPlaceSound(), SoundCategory.BLOCKS, ( ss.getVolume() + 1.0F ) / 2.0F, ss.getPitch() * 0.8F );
 				} );
@@ -454,7 +455,7 @@ public class PartPlacement
 			else
 			{
 				final ItemStack held = event.getEntityPlayer().getHeldItem( event.getHand() );
-				final IItems items = AEApi.instance().definitions().items();
+				final ApiItems items = AppEngApi.internalApi().definitions().items();
 
 				boolean supportedItem = items.memoryCard().isSameAs( held );
 				supportedItem |= items.colorApplicator().isSameAs( held );

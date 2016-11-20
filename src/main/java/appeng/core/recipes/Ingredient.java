@@ -30,13 +30,13 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 
-import appeng.api.AEApi;
-import appeng.api.exceptions.MissingIngredientError;
-import appeng.api.exceptions.RecipeError;
-import appeng.api.exceptions.RegistrationError;
-import appeng.api.recipes.IIngredient;
-import appeng.api.recipes.ResolverResult;
-import appeng.api.recipes.ResolverResultSet;
+import appeng.core.api.exceptions.MissingIngredientError;
+import appeng.core.api.exceptions.RecipeError;
+import appeng.core.api.exceptions.RegistrationError;
+import appeng.core.api.recipes.IIngredient;
+import appeng.core.api.recipes.ResolverResult;
+import appeng.core.api.recipes.ResolverResultSet;
+import appeng.core.lib.AppEngApi;
 
 
 public class Ingredient implements IIngredient
@@ -91,7 +91,7 @@ public class Ingredient implements IIngredient
 				{
 					try
 					{
-						final Object ro = AEApi.instance().registries().recipes().resolveItem( this.nameSpace, tmpName );
+						final Object ro = AppEngApi.internalApi().registries().recipes().resolveItem( this.nameSpace, tmpName );
 						if( ro instanceof ResolverResult )
 						{
 							final ResolverResult rr = (ResolverResult) ro;

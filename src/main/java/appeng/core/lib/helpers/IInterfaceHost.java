@@ -24,9 +24,9 @@ import java.util.EnumSet;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 
-import appeng.api.implementations.IUpgradeableHost;
-import appeng.api.networking.crafting.ICraftingProvider;
-import appeng.api.networking.crafting.ICraftingRequester;
+import appeng.core.api.implementations.IUpgradeableHost;
+import appeng.core.me.api.networking.crafting.ICraftingProvider;
+import appeng.core.me.api.networking.crafting.ICraftingRequester;
 
 
 public interface IInterfaceHost extends ICraftingProvider, IUpgradeableHost, ICraftingRequester

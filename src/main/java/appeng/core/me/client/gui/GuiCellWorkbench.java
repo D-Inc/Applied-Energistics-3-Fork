@@ -28,12 +28,12 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 
-import appeng.api.config.ActionItems;
-import appeng.api.config.CopyMode;
-import appeng.api.config.FuzzyMode;
-import appeng.api.config.Settings;
-import appeng.api.config.Upgrades;
-import appeng.api.implementations.items.IUpgradeModule;
+import appeng.core.api.config.ActionItems;
+import appeng.core.api.config.CopyMode;
+import appeng.core.api.config.FuzzyMode;
+import appeng.core.api.config.Settings;
+import appeng.core.api.config.Upgrades;
+import appeng.core.api.implementations.items.IUpgradeModule;
 import appeng.core.lib.client.gui.GuiUpgradeable;
 import appeng.core.lib.client.gui.widgets.GuiImgButton;
 import appeng.core.lib.client.gui.widgets.GuiToggleButton;

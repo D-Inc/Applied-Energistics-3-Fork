@@ -27,10 +27,10 @@ import com.google.common.collect.ImmutableSet;
 
 import net.minecraft.entity.player.InventoryPlayer;
 
-import appeng.api.networking.crafting.ICraftingCPU;
-import appeng.api.networking.crafting.ICraftingGrid;
-import appeng.api.storage.ITerminalHost;
 import appeng.core.lib.container.guisync.GuiSync;
+import appeng.core.me.api.networking.crafting.ICraftingCPU;
+import appeng.core.me.api.networking.crafting.ICraftingGrid;
+import appeng.core.me.api.storage.ITerminalHost;
 
 
 public class ContainerCraftingStatus extends ContainerCraftingCPU

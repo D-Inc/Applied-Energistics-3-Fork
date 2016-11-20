@@ -21,12 +21,12 @@ package appeng.core.me.tile;
 
 import net.minecraft.nbt.NBTTagCompound;
 
-import appeng.api.networking.IGridNode;
-import appeng.api.networking.security.IActionHost;
-import appeng.api.util.AEPartLocation;
+import appeng.core.api.util.AEPartLocation;
 import appeng.core.lib.tile.AEBaseInvTile;
 import appeng.core.lib.tile.TileEvent;
 import appeng.core.lib.tile.events.TileEventType;
+import appeng.core.me.api.networking.IGridNode;
+import appeng.core.me.api.networking.security.IActionHost;
 import appeng.core.me.grid.helpers.AENetworkProxy;
 import appeng.core.me.grid.helpers.IGridProxyable;
 

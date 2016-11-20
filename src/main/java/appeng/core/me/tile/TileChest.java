@@ -37,48 +37,19 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 
-import appeng.api.AEApi;
-import appeng.api.config.AccessRestriction;
-import appeng.api.config.Actionable;
-import appeng.api.config.PowerMultiplier;
-import appeng.api.config.SecurityPermissions;
-import appeng.api.config.Settings;
-import appeng.api.config.SortDir;
-import appeng.api.config.SortOrder;
-import appeng.api.config.ViewItems;
-import appeng.api.implementations.tiles.IColorableTile;
-import appeng.api.implementations.tiles.IMEChest;
-import appeng.api.networking.GridFlags;
-import appeng.api.networking.IGrid;
-import appeng.api.networking.IGridNode;
-import appeng.api.networking.energy.IEnergyGrid;
-import appeng.api.networking.events.MENetworkCellArrayUpdate;
-import appeng.api.networking.events.MENetworkChannelsChanged;
-import appeng.api.networking.events.MENetworkEventSubscribe;
-import appeng.api.networking.events.MENetworkPowerStatusChange;
-import appeng.api.networking.events.MENetworkPowerStorage;
-import appeng.api.networking.events.MENetworkPowerStorage.PowerEventType;
-import appeng.api.networking.security.BaseActionSource;
-import appeng.api.networking.security.IActionHost;
-import appeng.api.networking.security.ISecurityGrid;
-import appeng.api.networking.security.MachineSource;
-import appeng.api.networking.security.PlayerSource;
-import appeng.api.networking.storage.IBaseMonitor;
-import appeng.api.networking.storage.IStorageGrid;
-import appeng.api.storage.ICellHandler;
-import appeng.api.storage.IMEInventory;
-import appeng.api.storage.IMEInventoryHandler;
-import appeng.api.storage.IMEMonitor;
-import appeng.api.storage.IMEMonitorHandlerReceiver;
-import appeng.api.storage.IStorageMonitorable;
-import appeng.api.storage.ITerminalHost;
-import appeng.api.storage.MEMonitorHandler;
-import appeng.api.storage.StorageChannel;
-import appeng.api.storage.data.IAEFluidStack;
-import appeng.api.storage.data.IAEItemStack;
-import appeng.api.storage.data.IAEStack;
-import appeng.api.util.AEColor;
-import appeng.api.util.IConfigManager;
+import appeng.core.api.config.AccessRestriction;
+import appeng.core.api.config.Actionable;
+import appeng.core.api.config.PowerMultiplier;
+import appeng.core.api.config.SecurityPermissions;
+import appeng.core.api.config.Settings;
+import appeng.core.api.config.SortDir;
+import appeng.core.api.config.SortOrder;
+import appeng.core.api.config.ViewItems;
+import appeng.core.api.implementations.tiles.IColorableTile;
+import appeng.core.api.implementations.tiles.IMEChest;
+import appeng.core.api.util.AEColor;
+import appeng.core.api.util.IConfigManager;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.helpers.IPriorityHost;
 import appeng.core.lib.tile.TileEvent;
 import appeng.core.lib.tile.events.TileEventType;
@@ -88,6 +59,35 @@ import appeng.core.lib.util.ConfigManager;
 import appeng.core.lib.util.IConfigManagerHost;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.util.item.AEFluidStack;
+import appeng.core.me.api.networking.GridFlags;
+import appeng.core.me.api.networking.IGrid;
+import appeng.core.me.api.networking.IGridNode;
+import appeng.core.me.api.networking.energy.IEnergyGrid;
+import appeng.core.me.api.networking.events.MENetworkCellArrayUpdate;
+import appeng.core.me.api.networking.events.MENetworkChannelsChanged;
+import appeng.core.me.api.networking.events.MENetworkEventSubscribe;
+import appeng.core.me.api.networking.events.MENetworkPowerStatusChange;
+import appeng.core.me.api.networking.events.MENetworkPowerStorage;
+import appeng.core.me.api.networking.events.MENetworkPowerStorage.PowerEventType;
+import appeng.core.me.api.networking.security.BaseActionSource;
+import appeng.core.me.api.networking.security.IActionHost;
+import appeng.core.me.api.networking.security.ISecurityGrid;
+import appeng.core.me.api.networking.security.MachineSource;
+import appeng.core.me.api.networking.security.PlayerSource;
+import appeng.core.me.api.networking.storage.IBaseMonitor;
+import appeng.core.me.api.networking.storage.IStorageGrid;
+import appeng.core.me.api.storage.ICellHandler;
+import appeng.core.me.api.storage.IMEInventory;
+import appeng.core.me.api.storage.IMEInventoryHandler;
+import appeng.core.me.api.storage.IMEMonitor;
+import appeng.core.me.api.storage.IMEMonitorHandlerReceiver;
+import appeng.core.me.api.storage.IStorageMonitorable;
+import appeng.core.me.api.storage.ITerminalHost;
+import appeng.core.me.api.storage.MEMonitorHandler;
+import appeng.core.me.api.storage.StorageChannel;
+import appeng.core.me.api.storage.data.IAEFluidStack;
+import appeng.core.me.api.storage.data.IAEItemStack;
+import appeng.core.me.api.storage.data.IAEStack;
 import appeng.core.me.grid.GridAccessException;
 import appeng.core.me.grid.storage.MEInventoryHandler;
 
@@ -200,7 +200,7 @@ public class TileChest extends AENetworkPowerTile implements IMEChest, IFluidHan
 			if( is != null )
 			{
 				this.isCached = true;
-				this.cellHandler = AEApi.instance().registries().cell().getHandler( is );
+				this.cellHandler = AppEngApi.internalApi().registries().cell().getHandler( is );
 				if( this.cellHandler != null )
 				{
 					double power = 1.0;
@@ -270,7 +270,7 @@ public class TileChest extends AENetworkPowerTile implements IMEChest, IFluidHan
 		}
 
 		final ItemStack cell = this.inv.getStackInSlot( 1 );
-		final ICellHandler ch = AEApi.instance().registries().cell().getHandler( cell );
+		final ICellHandler ch = AppEngApi.internalApi().registries().cell().getHandler( cell );
 
 		if( ch != null )
 		{
@@ -555,11 +555,11 @@ public class TileChest extends AENetworkPowerTile implements IMEChest, IFluidHan
 	{
 		if( slotIndex == 1 )
 		{
-			if( AEApi.instance().registries().cell().getCellInventory( insertingItem, this, StorageChannel.ITEMS ) != null )
+			if( AppEngApi.internalApi().registries().cell().getCellInventory( insertingItem, this, StorageChannel.ITEMS ) != null )
 			{
 				return true;
 			}
-			if( AEApi.instance().registries().cell().getCellInventory( insertingItem, this, StorageChannel.FLUIDS ) != null )
+			if( AppEngApi.internalApi().registries().cell().getCellInventory( insertingItem, this, StorageChannel.FLUIDS ) != null )
 			{
 				return true;
 			}
@@ -569,7 +569,7 @@ public class TileChest extends AENetworkPowerTile implements IMEChest, IFluidHan
 			try
 			{
 				final IMEInventory<IAEItemStack> cell = this.getHandler( StorageChannel.ITEMS );
-				final IAEItemStack returns = cell.injectItems( AEApi.instance().storage().createItemStack( this.inv.getStackInSlot( 0 ) ), Actionable.SIMULATE, this.mySrc );
+				final IAEItemStack returns = cell.injectItems( AppEngApi.internalApi().storage().createItemStack( this.inv.getStackInSlot( 0 ) ), Actionable.SIMULATE, this.mySrc );
 				return returns == null || returns.getStackSize() != insertingItem.stackSize;
 			}
 			catch( final ChestNoHandler ignored )
@@ -618,7 +618,7 @@ public class TileChest extends AENetworkPowerTile implements IMEChest, IFluidHan
 			{
 				final IMEInventory<IAEItemStack> cell = this.getHandler( StorageChannel.ITEMS );
 
-				final IAEItemStack returns = Platform.poweredInsert( this, cell, AEApi.instance().storage().createItemStack( this.inv.getStackInSlot( 0 ) ), this.mySrc );
+				final IAEItemStack returns = Platform.poweredInsert( this, cell, AppEngApi.internalApi().storage().createItemStack( this.inv.getStackInSlot( 0 ) ), this.mySrc );
 
 				if( returns == null )
 				{

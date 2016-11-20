@@ -23,10 +23,10 @@ import java.util.Iterator;
 
 import net.minecraft.item.ItemStack;
 
-import appeng.api.networking.IGridMultiblock;
-import appeng.api.networking.IGridNode;
 import appeng.core.lib.util.iterators.ChainedIterator;
 import appeng.core.lib.util.iterators.ProxyNodeIterator;
+import appeng.core.me.api.networking.IGridMultiblock;
+import appeng.core.me.api.networking.IGridNode;
 import appeng.core.me.grid.cluster.IAECluster;
 import appeng.core.me.grid.cluster.IAEMultiBlock;
 

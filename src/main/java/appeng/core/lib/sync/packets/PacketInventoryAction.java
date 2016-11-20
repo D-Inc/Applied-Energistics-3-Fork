@@ -28,7 +28,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.tileentity.TileEntity;
 
-import appeng.api.storage.data.IAEItemStack;
 import appeng.core.crafting.container.ContainerCraftAmount;
 import appeng.core.lib.client.ClientHelper;
 import appeng.core.lib.container.AEBaseContainer;
@@ -39,6 +38,7 @@ import appeng.core.lib.sync.GuiBridge;
 import appeng.core.lib.sync.network.INetworkInfo;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.util.item.AEItemStack;
+import appeng.core.me.api.storage.data.IAEItemStack;
 
 
 public class PacketInventoryAction extends AppEngPacket

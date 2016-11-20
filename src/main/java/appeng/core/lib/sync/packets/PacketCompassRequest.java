@@ -25,7 +25,7 @@ import io.netty.buffer.Unpooled;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 
-import appeng.api.util.DimensionalCoord;
+import appeng.core.api.util.DimensionalCoord;
 import appeng.core.lib.sync.AppEngPacket;
 import appeng.core.lib.sync.network.INetworkInfo;
 import appeng.core.lib.sync.network.NetworkHandler;

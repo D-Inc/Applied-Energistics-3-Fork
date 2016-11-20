@@ -30,9 +30,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.oredict.OreDictionary;
 
-import appeng.api.exceptions.MissingIngredientError;
-import appeng.api.exceptions.RegistrationError;
-import appeng.api.recipes.IIngredient;
+import appeng.core.api.exceptions.MissingIngredientError;
+import appeng.core.api.exceptions.RegistrationError;
+import appeng.core.api.recipes.IIngredient;
 
 
 public class ShapedRecipe implements IRecipe, IRecipeBakeable

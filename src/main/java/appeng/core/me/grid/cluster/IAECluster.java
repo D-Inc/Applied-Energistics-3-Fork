@@ -21,7 +21,7 @@ package appeng.core.me.grid.cluster;
 
 import java.util.Iterator;
 
-import appeng.api.networking.IGridHost;
+import appeng.core.me.api.networking.IGridHost;
 
 
 public interface IAECluster

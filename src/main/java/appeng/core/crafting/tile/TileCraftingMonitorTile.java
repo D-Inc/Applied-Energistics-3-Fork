@@ -29,12 +29,12 @@ import net.minecraft.util.EnumFacing;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import appeng.api.implementations.tiles.IColorableTile;
-import appeng.api.storage.data.IAEItemStack;
-import appeng.api.util.AEColor;
+import appeng.core.api.implementations.tiles.IColorableTile;
+import appeng.core.api.util.AEColor;
 import appeng.core.lib.tile.TileEvent;
 import appeng.core.lib.tile.events.TileEventType;
 import appeng.core.lib.util.item.AEItemStack;
+import appeng.core.me.api.storage.data.IAEItemStack;
 
 
 public class TileCraftingMonitorTile extends TileCraftingTile implements IColorableTile

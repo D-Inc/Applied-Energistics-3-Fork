@@ -25,8 +25,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 
-import appeng.api.parts.IPartCollisionHelper;
-import appeng.api.util.AEPartLocation;
+import appeng.core.api.util.AEPartLocation;
+import appeng.core.me.api.parts.IPartCollisionHelper;
 
 
 public class BusCollisionHelper implements IPartCollisionHelper

@@ -41,12 +41,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-import appeng.api.AEApi;
-import appeng.api.exceptions.MissingDefinition;
-import appeng.api.parts.IAlphaPassItem;
-import appeng.api.util.AEPartLocation;
+import appeng.core.api.exceptions.MissingDefinition;
+import appeng.core.api.util.AEPartLocation;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.FacadeConfig;
 import appeng.core.lib.item.AEBaseItem;
+import appeng.core.me.api.parts.IAlphaPassItem;
 import appeng.decorative.part.FacadePart;
 import appeng.decorative.part.IFacadeItem;
 
@@ -64,7 +64,7 @@ public class ItemFacade extends AEBaseItem implements IFacadeItem, IAlphaPassIte
 	@Override
 	public EnumActionResult onItemUseFirst( final ItemStack is, final EntityPlayer player, final World world, final BlockPos pos, final EnumFacing side, final float hitX, final float hitY, final float hitZ, final EnumHand hand )
 	{
-		return AEApi.instance().partHelper().placeBus( is, pos, side, player, hand, world );
+		return AppEngApi.internalApi().partHelper().placeBus( is, pos, side, player, hand, world );
 	}
 
 	@Override
@@ -250,7 +250,7 @@ public class ItemFacade extends AEBaseItem implements IFacadeItem, IAlphaPassIte
 
 	public ItemStack createFromIDs( final int[] ids )
 	{
-		ItemStack facadeStack = AEApi.instance().definitions().items().facade().maybeStack( 1 ).orElseThrow( () -> new MissingDefinition( "Tried to create a facade, while facades are being deactivated." ) );
+		ItemStack facadeStack = (ItemStack) AppEngApi.internalApi().definitions().items().facade().maybeStack( 1 ).orElseThrow( () -> new MissingDefinition( "Tried to create a facade, while facades are being deactivated." ) );
 
 		final NBTTagCompound facadeTag = new NBTTagCompound();
 		facadeTag.setIntArray( "x", ids.clone() );

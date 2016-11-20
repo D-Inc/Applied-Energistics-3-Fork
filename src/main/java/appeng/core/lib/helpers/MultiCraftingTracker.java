@@ -27,15 +27,15 @@ import com.google.common.collect.ImmutableSet;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
-import appeng.api.AEApi;
-import appeng.api.networking.IGrid;
-import appeng.api.networking.crafting.ICraftingGrid;
-import appeng.api.networking.crafting.ICraftingJob;
-import appeng.api.networking.crafting.ICraftingLink;
-import appeng.api.networking.crafting.ICraftingRequester;
-import appeng.api.networking.security.BaseActionSource;
-import appeng.api.storage.data.IAEItemStack;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.util.InventoryAdaptor;
+import appeng.core.me.api.networking.IGrid;
+import appeng.core.me.api.networking.crafting.ICraftingGrid;
+import appeng.core.me.api.networking.crafting.ICraftingJob;
+import appeng.core.me.api.networking.crafting.ICraftingLink;
+import appeng.core.me.api.networking.crafting.ICraftingRequester;
+import appeng.core.me.api.networking.security.BaseActionSource;
+import appeng.core.me.api.storage.data.IAEItemStack;
 
 
 public class MultiCraftingTracker
@@ -61,7 +61,7 @@ public class MultiCraftingTracker
 
 			if( link != null && !link.hasNoTags() )
 			{
-				this.setLink( x, AEApi.instance().storage().loadCraftingLink( link, this.owner ) );
+				this.setLink( x, AppEngApi.internalApi().storage().loadCraftingLink( link, this.owner ) );
 			}
 		}
 	}

@@ -34,7 +34,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.FakePlayer;
 
-import appeng.api.implementations.tiles.ICrankable;
+import appeng.core.api.implementations.tiles.ICrankable;
 import appeng.core.lib.block.AEBaseTileBlock;
 import appeng.core.lib.stats.Stats;
 import appeng.core.lib.tile.AEBaseTile;

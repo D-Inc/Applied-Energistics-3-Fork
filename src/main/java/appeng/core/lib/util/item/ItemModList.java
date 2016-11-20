@@ -21,17 +21,17 @@ package appeng.core.lib.util.item;
 
 import java.util.Collection;
 
-import appeng.api.AEApi;
-import appeng.api.config.FuzzyMode;
-import appeng.api.storage.data.IAEItemStack;
-import appeng.api.storage.data.IItemContainer;
+import appeng.core.api.config.FuzzyMode;
+import appeng.core.lib.AppEngApi;
+import appeng.core.me.api.storage.data.IAEItemStack;
+import appeng.core.me.api.storage.data.IItemContainer;
 
 
 public class ItemModList implements IItemContainer<IAEItemStack>
 {
 
 	private final IItemContainer<IAEItemStack> backingStore;
-	private final IItemContainer<IAEItemStack> overrides = AEApi.instance().storage().createItemList();
+	private final IItemContainer<IAEItemStack> overrides = AppEngApi.internalApi().storage().createItemList();
 
 	public ItemModList( final IItemContainer<IAEItemStack> backend )
 	{

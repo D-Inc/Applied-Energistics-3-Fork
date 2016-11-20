@@ -21,11 +21,11 @@ package appeng.core.me.part.layers;
 
 import net.minecraft.util.EnumFacing;
 
-import appeng.api.implementations.tiles.ITileStorageMonitorable;
-import appeng.api.networking.security.BaseActionSource;
-import appeng.api.parts.IPart;
-import appeng.api.parts.LayerBase;
-import appeng.api.storage.IStorageMonitorable;
+import appeng.core.api.implementations.tiles.ITileStorageMonitorable;
+import appeng.core.me.api.networking.security.BaseActionSource;
+import appeng.core.me.api.parts.IPart;
+import appeng.core.me.api.parts.LayerBase;
+import appeng.core.me.api.storage.IStorageMonitorable;
 
 
 public class LayerITileStorageMonitorable extends LayerBase implements ITileStorageMonitorable

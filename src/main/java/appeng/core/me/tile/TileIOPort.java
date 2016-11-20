@@ -29,34 +29,19 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import appeng.api.AEApi;
-import appeng.api.config.Actionable;
-import appeng.api.config.FullnessMode;
-import appeng.api.config.OperationMode;
-import appeng.api.config.RedstoneMode;
-import appeng.api.config.Settings;
-import appeng.api.config.Upgrades;
-import appeng.api.config.YesNo;
-import appeng.api.implementations.IUpgradeableHost;
-import appeng.api.networking.GridFlags;
-import appeng.api.networking.IGridNode;
-import appeng.api.networking.energy.IEnergySource;
-import appeng.api.networking.security.BaseActionSource;
-import appeng.api.networking.security.MachineSource;
-import appeng.api.networking.ticking.IGridTickable;
-import appeng.api.networking.ticking.TickRateModulation;
-import appeng.api.networking.ticking.TickingRequest;
-import appeng.api.storage.IMEInventory;
-import appeng.api.storage.IMEMonitor;
-import appeng.api.storage.StorageChannel;
-import appeng.api.storage.data.IAEFluidStack;
-import appeng.api.storage.data.IAEItemStack;
-import appeng.api.storage.data.IAEStack;
-import appeng.api.storage.data.IItemList;
-import appeng.api.util.AECableType;
-import appeng.api.util.AEPartLocation;
-import appeng.api.util.DimensionalCoord;
-import appeng.api.util.IConfigManager;
+import appeng.core.api.config.Actionable;
+import appeng.core.api.config.FullnessMode;
+import appeng.core.api.config.OperationMode;
+import appeng.core.api.config.RedstoneMode;
+import appeng.core.api.config.Settings;
+import appeng.core.api.config.Upgrades;
+import appeng.core.api.config.YesNo;
+import appeng.core.api.implementations.IUpgradeableHost;
+import appeng.core.api.util.AECableType;
+import appeng.core.api.util.AEPartLocation;
+import appeng.core.api.util.DimensionalCoord;
+import appeng.core.api.util.IConfigManager;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.helpers.Reflected;
 import appeng.core.lib.settings.TickRates;
 import appeng.core.lib.tile.TileEvent;
@@ -68,6 +53,21 @@ import appeng.core.lib.util.IConfigManagerHost;
 import appeng.core.lib.util.InventoryAdaptor;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.util.inv.WrapperInventoryRange;
+import appeng.core.me.api.networking.GridFlags;
+import appeng.core.me.api.networking.IGridNode;
+import appeng.core.me.api.networking.energy.IEnergySource;
+import appeng.core.me.api.networking.security.BaseActionSource;
+import appeng.core.me.api.networking.security.MachineSource;
+import appeng.core.me.api.networking.ticking.IGridTickable;
+import appeng.core.me.api.networking.ticking.TickRateModulation;
+import appeng.core.me.api.networking.ticking.TickingRequest;
+import appeng.core.me.api.storage.IMEInventory;
+import appeng.core.me.api.storage.IMEMonitor;
+import appeng.core.me.api.storage.StorageChannel;
+import appeng.core.me.api.storage.data.IAEFluidStack;
+import appeng.core.me.api.storage.data.IAEItemStack;
+import appeng.core.me.api.storage.data.IAEStack;
+import appeng.core.me.api.storage.data.IItemList;
 import appeng.core.me.grid.GridAccessException;
 import appeng.core.me.part.automation.BlockUpgradeInventory;
 import appeng.core.me.part.automation.UpgradeInventory;
@@ -116,7 +116,7 @@ public class TileIOPort extends AENetworkInvTile implements IUpgradeableHost, IC
 		this.mySrc = new MachineSource( this );
 		this.lastRedstoneState = YesNo.UNDECIDED;
 
-		final Block ioPortBlock = AEApi.instance().definitions().blocks().iOPort().maybeBlock().get();
+		final Block ioPortBlock = (Block) AppEngApi.internalApi().definitions().blocks().iOPort().block().maybe().get();
 		this.upgrades = new BlockUpgradeInventory( ioPortBlock, this, 3 );
 	}
 
@@ -406,8 +406,8 @@ public class TileIOPort extends AENetworkInvTile implements IUpgradeableHost, IC
 		if( this.currentCell != is )
 		{
 			this.currentCell = is;
-			this.cachedFluid = AEApi.instance().registries().cell().getCellInventory( is, null, StorageChannel.FLUIDS );
-			this.cachedItem = AEApi.instance().registries().cell().getCellInventory( is, null, StorageChannel.ITEMS );
+			this.cachedFluid = AppEngApi.internalApi().registries().cell().getCellInventory( is, null, StorageChannel.FLUIDS );
+			this.cachedItem = AppEngApi.internalApi().registries().cell().getCellInventory( is, null, StorageChannel.ITEMS );
 		}
 
 		if( StorageChannel.ITEMS == chan )

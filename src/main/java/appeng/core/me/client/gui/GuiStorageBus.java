@@ -26,11 +26,11 @@ import org.lwjgl.input.Mouse;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.player.InventoryPlayer;
 
-import appeng.api.config.AccessRestriction;
-import appeng.api.config.ActionItems;
-import appeng.api.config.FuzzyMode;
-import appeng.api.config.Settings;
-import appeng.api.config.StorageFilter;
+import appeng.core.api.config.AccessRestriction;
+import appeng.core.api.config.ActionItems;
+import appeng.core.api.config.FuzzyMode;
+import appeng.core.api.config.Settings;
+import appeng.core.api.config.StorageFilter;
 import appeng.core.lib.AELog;
 import appeng.core.lib.client.gui.GuiUpgradeable;
 import appeng.core.lib.client.gui.widgets.GuiImgButton;

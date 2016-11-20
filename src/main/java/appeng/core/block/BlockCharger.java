@@ -44,9 +44,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import appeng.api.AEApi;
-import appeng.api.util.AEAxisAlignedBB;
+import appeng.core.api.util.AEAxisAlignedBB;
 import appeng.core.lib.AEConfig;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.CommonHelper;
 import appeng.core.lib.block.AEBaseTileBlock;
 import appeng.core.lib.client.render.effects.LightningFX;
@@ -109,7 +109,7 @@ public class BlockCharger extends AEBaseTileBlock implements ICustomCollision
 		{
 			final TileCharger tc = (TileCharger) tile;
 
-			if( AEApi.instance().definitions().materials().certusQuartzCrystalCharged().isSameAs( tc.getStackInSlot( 0 ) ) )
+			if( AppEngApi.internalApi().definitions().materials().certusQuartzCrystalCharged().isSameAs( tc.getStackInSlot( 0 ) ) )
 			{
 				final double xOff = 0.0;
 				final double yOff = 0.0;

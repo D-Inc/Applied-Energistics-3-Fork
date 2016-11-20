@@ -23,11 +23,11 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
 
-import appeng.api.implementations.guiobjects.INetworkTool;
-import appeng.api.implementations.items.IUpgradeModule;
-import appeng.api.networking.IGridHost;
+import appeng.core.api.implementations.guiobjects.INetworkTool;
+import appeng.core.api.implementations.items.IUpgradeModule;
 import appeng.core.lib.tile.inventory.AppEngInternalInventory;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.networking.IGridHost;
 
 
 public class NetworkToolViewer implements INetworkTool

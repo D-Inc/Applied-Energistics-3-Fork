@@ -6,7 +6,7 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
-import appeng.api.implementations.items.IAEItemPowerStorage;
+import appeng.core.api.implementations.items.IAEItemPowerStorage;
 import appeng.core.lib.bootstrap.BlockRenderingCustomizer;
 import appeng.core.lib.bootstrap.IBlockRendering;
 import appeng.core.lib.bootstrap.IItemRendering;

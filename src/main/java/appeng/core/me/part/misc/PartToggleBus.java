@@ -29,16 +29,16 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumHand;
 
-import appeng.api.AEApi;
-import appeng.api.exceptions.FailedConnection;
-import appeng.api.networking.IGridConnection;
-import appeng.api.networking.IGridNode;
-import appeng.api.parts.IPartCollisionHelper;
-import appeng.api.parts.IPartHost;
-import appeng.api.util.AECableType;
-import appeng.api.util.AEPartLocation;
+import appeng.core.api.exceptions.FailedConnection;
+import appeng.core.api.util.AECableType;
+import appeng.core.api.util.AEPartLocation;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.helpers.Reflected;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.networking.IGridConnection;
+import appeng.core.me.api.networking.IGridNode;
+import appeng.core.me.api.parts.IPartCollisionHelper;
+import appeng.core.me.api.parts.IPartHost;
 import appeng.core.me.grid.helpers.AENetworkProxy;
 import appeng.core.me.part.PartBasicState;
 
@@ -177,7 +177,7 @@ public class PartToggleBus extends PartBasicState
 				{
 					try
 					{
-						this.connection = AEApi.instance().createGridConnection( this.getProxy().getNode(), this.getOuterProxy().getNode() );
+						this.connection = AppEngApi.internalApi().createGridConnection( this.getProxy().getNode(), this.getOuterProxy().getNode() );
 					}
 					catch( final FailedConnection e )
 					{

@@ -35,10 +35,10 @@ import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 
-import appeng.api.config.FuzzyMode;
-import appeng.api.config.Settings;
-import appeng.api.util.IConfigManager;
-import appeng.api.util.IConfigurableObject;
+import appeng.core.api.config.FuzzyMode;
+import appeng.core.api.config.Settings;
+import appeng.core.api.util.IConfigManager;
+import appeng.core.api.util.IConfigurableObject;
 import appeng.core.crafting.client.gui.GuiCraftingCPU;
 import appeng.core.crafting.container.ContainerCraftConfirm;
 import appeng.core.crafting.container.ContainerCraftingCPU;

@@ -46,36 +46,36 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
 
-import appeng.api.AEApi;
-import appeng.api.config.Actionable;
-import appeng.api.config.FuzzyMode;
-import appeng.api.implementations.items.IItemGroup;
-import appeng.api.implementations.items.IStorageCell;
-import appeng.api.implementations.tiles.IColorableTile;
-import appeng.api.networking.security.BaseActionSource;
-import appeng.api.storage.ICellInventory;
-import appeng.api.storage.ICellInventoryHandler;
-import appeng.api.storage.IMEInventory;
-import appeng.api.storage.StorageChannel;
-import appeng.api.storage.data.IAEItemStack;
-import appeng.api.storage.data.IItemList;
-import appeng.api.util.AEColor;
-import appeng.api.util.DimensionalCoord;
+import appeng.core.api.config.Actionable;
+import appeng.core.api.config.FuzzyMode;
+import appeng.core.api.implementations.items.IItemGroup;
+import appeng.core.api.implementations.items.IStorageCell;
+import appeng.core.api.implementations.tiles.IColorableTile;
+import appeng.core.api.util.AEColor;
+import appeng.core.api.util.DimensionalCoord;
 import appeng.core.hooks.IBlockTool;
 import appeng.core.lib.AEConfig;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.helpers.IMouseWheelItem;
 import appeng.core.lib.item.powered.AEBasePoweredItem;
 import appeng.core.lib.localization.GuiText;
 import appeng.core.lib.util.ItemSorters;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.util.item.AEItemStack;
+import appeng.core.me.api.networking.security.BaseActionSource;
+import appeng.core.me.api.storage.ICellInventory;
+import appeng.core.me.api.storage.ICellInventoryHandler;
+import appeng.core.me.api.storage.IMEInventory;
+import appeng.core.me.api.storage.StorageChannel;
+import appeng.core.me.api.storage.data.IAEItemStack;
+import appeng.core.me.api.storage.data.IItemList;
 import appeng.core.me.block.BlockCableBus;
 import appeng.core.me.grid.storage.CellInventoryHandler;
 import appeng.core.me.item.CellConfig;
 import appeng.core.me.item.CellUpgrades;
 import appeng.decorative.item.ItemPaintBall;
-import appeng.misc.block.BlockPaint;
-import appeng.misc.tile.TilePaint;
+import appeng.miscellaneous.block.BlockPaint;
+import appeng.miscellaneous.tile.TilePaint;
 import appeng.tools.hooks.DispenserBlockTool;
 
 
@@ -121,7 +121,7 @@ public class ToolColorApplicator extends AEBasePoweredItem implements IStorageCe
 
 		ItemStack paintBall = this.getColor( is );
 
-		final IMEInventory<IAEItemStack> inv = AEApi.instance().registries().cell().getCellInventory( is, null, StorageChannel.ITEMS );
+		final IMEInventory<IAEItemStack> inv = AppEngApi.internalApi().registries().cell().getCellInventory( is, null, StorageChannel.ITEMS );
 		if( inv != null )
 		{
 			final IAEItemStack option = inv.extractItems( AEItemStack.create( paintBall ), Actionable.SIMULATE, new BaseActionSource() );
@@ -267,10 +267,10 @@ public class ToolColorApplicator extends AEBasePoweredItem implements IStorageCe
 	{
 		ItemStack newColor = null;
 
-		final IMEInventory<IAEItemStack> inv = AEApi.instance().registries().cell().getCellInventory( is, null, StorageChannel.ITEMS );
+		final IMEInventory<IAEItemStack> inv = AppEngApi.internalApi().registries().cell().getCellInventory( is, null, StorageChannel.ITEMS );
 		if( inv != null )
 		{
-			final IItemList<IAEItemStack> itemList = inv.getAvailableItems( AEApi.instance().storage().createItemList() );
+			final IItemList<IAEItemStack> itemList = inv.getAvailableItems( AppEngApi.internalApi().storage().createItemList() );
 			if( anchor == null )
 			{
 				final IAEItemStack firstItem = itemList.getFirstItem();
@@ -429,7 +429,7 @@ public class ToolColorApplicator extends AEBasePoweredItem implements IStorageCe
 	{
 		super.addCheckedInformation( stack, player, lines, displayMoreInfo );
 
-		final IMEInventory<IAEItemStack> cdi = AEApi.instance().registries().cell().getCellInventory( stack, null, StorageChannel.ITEMS );
+		final IMEInventory<IAEItemStack> cdi = AppEngApi.internalApi().registries().cell().getCellInventory( stack, null, StorageChannel.ITEMS );
 
 		if( cdi instanceof CellInventoryHandler )
 		{

@@ -35,16 +35,14 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
 
-import appeng.api.AEApi;
-import appeng.api.config.SortDir;
-import appeng.api.config.SortOrder;
-import appeng.api.config.ViewItems;
-import appeng.api.storage.data.IAEItemStack;
-import appeng.api.storage.data.IItemList;
-import appeng.api.util.AEColor;
+import appeng.core.api.config.SortDir;
+import appeng.core.api.config.SortOrder;
+import appeng.core.api.config.ViewItems;
+import appeng.core.api.util.AEColor;
 import appeng.core.crafting.container.ContainerCraftingCPU;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.AELog;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.client.gui.AEBaseGui;
 import appeng.core.lib.client.gui.widgets.GuiScrollbar;
 import appeng.core.lib.client.gui.widgets.ISortSource;
@@ -53,6 +51,8 @@ import appeng.core.lib.sync.network.NetworkHandler;
 import appeng.core.lib.sync.packets.PacketValueConfig;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.util.ReadableNumberConverter;
+import appeng.core.me.api.storage.data.IAEItemStack;
+import appeng.core.me.api.storage.data.IItemList;
 
 
 public class GuiCraftingCPU extends AEBaseGui implements ISortSource
@@ -84,9 +84,9 @@ public class GuiCraftingCPU extends AEBaseGui implements ISortSource
 
 	private final ContainerCraftingCPU craftingCpu;
 
-	private IItemList<IAEItemStack> storage = AEApi.instance().storage().createItemList();
-	private IItemList<IAEItemStack> active = AEApi.instance().storage().createItemList();
-	private IItemList<IAEItemStack> pending = AEApi.instance().storage().createItemList();
+	private IItemList<IAEItemStack> storage = AppEngApi.internalApi().storage().createItemList();
+	private IItemList<IAEItemStack> active = AppEngApi.internalApi().storage().createItemList();
+	private IItemList<IAEItemStack> pending = AppEngApi.internalApi().storage().createItemList();
 
 	private List<IAEItemStack> visual = new ArrayList<IAEItemStack>();
 	private GuiButton cancel;
@@ -110,9 +110,9 @@ public class GuiCraftingCPU extends AEBaseGui implements ISortSource
 
 	public void clearItems()
 	{
-		this.storage = AEApi.instance().storage().createItemList();
-		this.active = AEApi.instance().storage().createItemList();
-		this.pending = AEApi.instance().storage().createItemList();
+		this.storage = AppEngApi.internalApi().storage().createItemList();
+		this.active = AppEngApi.internalApi().storage().createItemList();
+		this.pending = AppEngApi.internalApi().storage().createItemList();
 		this.visual = new ArrayList<IAEItemStack>();
 	}
 

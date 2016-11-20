@@ -3,9 +3,13 @@ package appeng.core;
 
 
 import java.io.File;
+import java.util.Optional;
 
 import javax.annotation.Nonnull;
 
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -18,10 +22,19 @@ import net.minecraftforge.fml.common.event.FMLServerStoppedEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 
+import appeng.api.definitions.IBlockDefinition;
+import appeng.api.definitions.IDefinition;
+import appeng.api.definitions.IDefinitions;
+import appeng.api.definitions.IItemDefinition;
 import appeng.api.module.Module;
 import appeng.api.module.Module.ModuleEventHandler;
+import appeng.core.api.ICore;
+import appeng.core.definitions.CoreBlockDefinitions;
+import appeng.core.definitions.CoreItemDefinitions;
+import appeng.core.definitions.CoreTileDefinitions;
 import appeng.core.hooks.TickHandler;
 import appeng.core.lib.AELog;
+import appeng.core.lib.bootstrap.FeatureFactory;
 import appeng.core.lib.sync.GuiBridge;
 import appeng.core.lib.sync.network.NetworkHandler;
 import appeng.core.lib.worlddata.WorldData;
@@ -38,11 +51,9 @@ import appeng.core.services.version.VersionCheckerConfig;
 /*
  * TODO 1.10.2-MODUSEP - Dat giant mess though. Move all stuff that belongs to specific modules into these specific modules. Yes, you can boom the API.
  */
-@Module( value = AppEngCore.NAME, dependencies = "hard-before:module-*" )
-public class AppEngCore
+@Module( value = ICore.NAME, dependencies = "hard-before:module-*" )
+public class AppEngCore implements ICore
 {
-
-	public static final String NAME = "core";
 
 	@SidedProxy( clientSide = "appeng.core.client.AppEngCoreClientProxy", serverSide = "appeng.core.server.AppEngCoreServerProxy" )
 	private static AppEngCoreProxy proxy;
@@ -63,9 +74,31 @@ public class AppEngCore
 	 */
 	private ExportConfig exportConfig;
 
+	private CoreItemDefinitions itemDefinitions;
+	private CoreBlockDefinitions blockDefinitions;
+	private CoreTileDefinitions tileDefinitions;
+
 	public AppEngCore()
 	{
 		this.registration = new Registration();
+	}
+
+	@Override
+	public <T, D extends IDefinitions<T, ? extends IDefinition<T>>> D definitions( Class<T> clas )
+	{
+		if( clas == Item.class )
+		{
+			return (D) itemDefinitions;
+		}
+		if( clas == Block.class )
+		{
+			return (D) blockDefinitions;
+		}
+		if( clas == TileEntity.class )
+		{
+			return (D) tileDefinitions;
+		}
+		return null;
 	}
 
 	@Nonnull
@@ -77,6 +110,11 @@ public class AppEngCore
 	@ModuleEventHandler
 	public void preInit( FMLPreInitializationEvent event )
 	{
+		FeatureFactory registry = new FeatureFactory();
+		this.blockDefinitions = new CoreBlockDefinitions( registry );
+		this.itemDefinitions = new CoreItemDefinitions( registry );
+		this.tileDefinitions = new CoreTileDefinitions( registry );
+
 		this.recipeDirectory = new File( AppEng.instance().getConfigDirectory(), "recipes" );
 
 		final File versionFile = new File( AppEng.instance().getConfigDirectory(), "VersionChecker.cfg" );
@@ -100,6 +138,20 @@ public class AppEngCore
 
 			this.startService( "AE2 VersionChecker", versionCheckerThread );
 		}
+		
+		/*
+		 * ###################################
+		 * TEST CODE
+		 * WITH ANY TYPE ARGS CHANGES TO DEFINITIONS, SHOULD COMPILE WITHOUT PROBLEMS
+		 */
+		IItemDefinition<Item> quartz = itemDefinitions.get( "quartz" );
+		Class<? extends TileEntity> tile = definitions( TileEntity.class.getClass() ).get( "grinder" ).maybe().get();
+		IDefinitions<Block, IBlockDefinition<Block>> bdefs = definitions( Block.class );
+		IBlockDefinition<Block> chargerDef = bdefs.get( "charger" );
+		chargerDef = (IBlockDefinition<Block>) definitions( Block.class ).get( "charger" );
+		/*
+		 * ###################################
+		 */
 	}
 
 	private void startService( final String serviceName, final Thread thread )

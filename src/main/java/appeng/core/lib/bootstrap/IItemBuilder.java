@@ -3,26 +3,20 @@ package appeng.core.lib.bootstrap;
 
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 
-import appeng.core.lib.features.AEFeature;
-import appeng.core.lib.features.ItemDefinition;
+import appeng.api.definitions.IItemDefinition;
 
 
 /**
  * Allows an item to be defined and registered with the game.
  * The item is only registered once build is called.
  */
-public interface IItemBuilder
+public interface IItemBuilder<I extends Item, II extends IItemBuilder<I, II>> extends IDefinitionBuilder<I, IItemDefinition<I>, II>
 {
 
-	IItemBuilder features( AEFeature... features );
+	II creativeTab( CreativeTabs tab );
 
-	IItemBuilder addFeatures( AEFeature... features );
-
-	IItemBuilder creativeTab( CreativeTabs tab );
-
-	IItemBuilder rendering( ItemRenderingCustomizer callback );
-
-	ItemDefinition build();
+	II rendering( ItemRenderingCustomizer callback );
 
 }

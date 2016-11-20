@@ -42,29 +42,29 @@ import net.minecraftforge.common.model.TRSRTransformation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import appeng.api.AEApi;
 import appeng.api.client.BakingPipeline;
-import appeng.api.config.SecurityPermissions;
-import appeng.api.definitions.IParts;
-import appeng.api.implementations.parts.IPartCable;
-import appeng.api.networking.GridFlags;
-import appeng.api.networking.IGridConnection;
-import appeng.api.networking.IGridHost;
-import appeng.api.networking.IGridNode;
-import appeng.api.parts.BusSupport;
-import appeng.api.parts.ICustomCableConnection;
-import appeng.api.parts.IPart;
-import appeng.api.parts.IPartCollisionHelper;
-import appeng.api.parts.IPartHost;
-import appeng.api.util.AECableType;
-import appeng.api.util.AEColor;
-import appeng.api.util.AEPartLocation;
-import appeng.api.util.IReadOnlyCollection;
+import appeng.core.api.config.SecurityPermissions;
+import appeng.core.api.implementations.parts.IPartCable;
+import appeng.core.api.util.AECableType;
+import appeng.core.api.util.AEColor;
+import appeng.core.api.util.AEPartLocation;
+import appeng.core.api.util.IReadOnlyCollection;
+import appeng.core.lib.AppEngApi;
+import appeng.core.lib.api.definitions.ApiParts;
 import appeng.core.lib.client.render.model.ModelsCache;
 import appeng.core.lib.client.render.model.pipeline.FacingQuadRotator;
 import appeng.core.lib.client.render.model.pipeline.MatVecApplicator;
 import appeng.core.lib.client.render.model.pipeline.TypeTransformer;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.networking.GridFlags;
+import appeng.core.me.api.networking.IGridConnection;
+import appeng.core.me.api.networking.IGridHost;
+import appeng.core.me.api.networking.IGridNode;
+import appeng.core.me.api.parts.BusSupport;
+import appeng.core.me.api.parts.ICustomCableConnection;
+import appeng.core.me.api.parts.IPart;
+import appeng.core.me.api.parts.IPartCollisionHelper;
+import appeng.core.me.api.parts.IPartHost;
 import appeng.core.me.grid.GridAccessException;
 import appeng.core.me.item.ItemMultiPart;
 import appeng.core.me.part.AEBasePart;
@@ -130,7 +130,7 @@ public class PartCable extends AEBasePart implements IPartCable
 		{
 			ItemStack newPart = null;
 
-			final IParts parts = AEApi.instance().definitions().parts();
+			final ApiParts parts = AppEngApi.internalApi().definitions().parts();
 
 			if( this.getCableConnectionType() == AECableType.GLASS )
 			{

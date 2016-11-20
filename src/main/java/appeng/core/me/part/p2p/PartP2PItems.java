@@ -31,19 +31,19 @@ import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.text.ITextComponent;
 
-import appeng.api.networking.IGridNode;
-import appeng.api.networking.events.MENetworkBootingStatusChange;
-import appeng.api.networking.events.MENetworkChannelsChanged;
-import appeng.api.networking.events.MENetworkEventSubscribe;
-import appeng.api.networking.events.MENetworkPowerStatusChange;
-import appeng.api.networking.ticking.IGridTickable;
-import appeng.api.networking.ticking.TickRateModulation;
-import appeng.api.networking.ticking.TickingRequest;
 import appeng.core.lib.settings.TickRates;
 import appeng.core.lib.tile.inventory.AppEngNullInventory;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.util.inv.WrapperChainedInventory;
 import appeng.core.lib.util.inv.WrapperMCISidedInventory;
+import appeng.core.me.api.networking.IGridNode;
+import appeng.core.me.api.networking.events.MENetworkBootingStatusChange;
+import appeng.core.me.api.networking.events.MENetworkChannelsChanged;
+import appeng.core.me.api.networking.events.MENetworkEventSubscribe;
+import appeng.core.me.api.networking.events.MENetworkPowerStatusChange;
+import appeng.core.me.api.networking.ticking.IGridTickable;
+import appeng.core.me.api.networking.ticking.TickRateModulation;
+import appeng.core.me.api.networking.ticking.TickingRequest;
 import appeng.core.me.grid.GridAccessException;
 import appeng.core.me.grid.cache.helpers.TunnelCollection;
 

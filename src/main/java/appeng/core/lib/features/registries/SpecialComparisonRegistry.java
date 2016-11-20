@@ -24,12 +24,11 @@ import java.util.List;
 
 import net.minecraft.item.ItemStack;
 
-import appeng.api.features.IItemComparison;
-import appeng.api.features.IItemComparisonProvider;
-import appeng.api.features.ISpecialComparisonRegistry;
+import appeng.core.api.features.IItemComparison;
+import appeng.core.api.features.IItemComparisonProvider;
 
 
-public class SpecialComparisonRegistry implements ISpecialComparisonRegistry
+public class SpecialComparisonRegistry
 {
 
 	private final List<IItemComparisonProvider> CompRegistry;
@@ -39,7 +38,6 @@ public class SpecialComparisonRegistry implements ISpecialComparisonRegistry
 		this.CompRegistry = new ArrayList<IItemComparisonProvider>();
 	}
 
-	@Override
 	public IItemComparison getSpecialComparison( final ItemStack stack )
 	{
 		for( final IItemComparisonProvider i : this.CompRegistry )
@@ -54,7 +52,6 @@ public class SpecialComparisonRegistry implements ISpecialComparisonRegistry
 		return null;
 	}
 
-	@Override
 	public void addComparisonProvider( final IItemComparisonProvider prov )
 	{
 		this.CompRegistry.add( prov );

@@ -21,11 +21,11 @@ package appeng.core.crafting.me;
 
 import net.minecraft.nbt.NBTTagCompound;
 
-import appeng.api.config.Actionable;
-import appeng.api.networking.crafting.ICraftingCPU;
-import appeng.api.networking.crafting.ICraftingLink;
-import appeng.api.networking.crafting.ICraftingRequester;
-import appeng.api.storage.data.IAEItemStack;
+import appeng.core.api.config.Actionable;
+import appeng.core.me.api.networking.crafting.ICraftingCPU;
+import appeng.core.me.api.networking.crafting.ICraftingLink;
+import appeng.core.me.api.networking.crafting.ICraftingRequester;
+import appeng.core.me.api.storage.data.IAEItemStack;
 
 
 public class CraftingLink implements ICraftingLink

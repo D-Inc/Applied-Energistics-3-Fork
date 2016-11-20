@@ -25,14 +25,14 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 
-import appeng.api.AEApi;
-import appeng.api.networking.energy.IEnergySource;
-import appeng.api.networking.security.BaseActionSource;
-import appeng.api.storage.IStorageMonitorable;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.container.slot.IOptionalSlotHost;
 import appeng.core.lib.helpers.IContainerCraftingPacket;
 import appeng.core.lib.sync.AppEngPacket;
 import appeng.core.lib.sync.packets.PacketPatternSlot;
+import appeng.core.me.api.networking.energy.IEnergySource;
+import appeng.core.me.api.networking.security.BaseActionSource;
+import appeng.core.me.api.storage.IStorageMonitorable;
 import appeng.core.me.container.SlotCraftingTerm;
 
 
@@ -52,7 +52,7 @@ public class SlotPatternTerm extends SlotCraftingTerm
 
 	public AppEngPacket getRequest( final boolean shift ) throws IOException
 	{
-		return new PacketPatternSlot( this.getPattern(), AEApi.instance().storage().createItemStack( this.getStack() ), shift );
+		return new PacketPatternSlot( this.getPattern(), AppEngApi.internalApi().storage().createItemStack( this.getStack() ), shift );
 	}
 
 	@Override

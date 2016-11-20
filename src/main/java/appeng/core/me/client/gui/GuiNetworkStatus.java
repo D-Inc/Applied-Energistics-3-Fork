@@ -30,12 +30,11 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
-import appeng.api.config.Settings;
-import appeng.api.config.SortDir;
-import appeng.api.config.SortOrder;
-import appeng.api.config.ViewItems;
-import appeng.api.implementations.guiobjects.INetworkTool;
-import appeng.api.storage.data.IAEItemStack;
+import appeng.core.api.config.Settings;
+import appeng.core.api.config.SortDir;
+import appeng.core.api.config.SortOrder;
+import appeng.core.api.config.ViewItems;
+import appeng.core.api.implementations.guiobjects.INetworkTool;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.client.gui.AEBaseGui;
 import appeng.core.lib.client.gui.widgets.GuiImgButton;
@@ -43,6 +42,7 @@ import appeng.core.lib.client.gui.widgets.GuiScrollbar;
 import appeng.core.lib.client.gui.widgets.ISortSource;
 import appeng.core.lib.localization.GuiText;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.storage.data.IAEItemStack;
 import appeng.core.me.container.ContainerNetworkStatus;
 
 

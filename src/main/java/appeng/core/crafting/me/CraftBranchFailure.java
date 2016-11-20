@@ -19,7 +19,7 @@
 package appeng.core.crafting.me;
 
 
-import appeng.api.storage.data.IAEItemStack;
+import appeng.core.me.api.storage.data.IAEItemStack;
 
 
 public class CraftBranchFailure extends Exception

@@ -22,23 +22,23 @@ package appeng.core.me.item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
-import appeng.api.config.Actionable;
-import appeng.api.config.PowerMultiplier;
-import appeng.api.config.Settings;
-import appeng.api.config.SortDir;
-import appeng.api.config.SortOrder;
-import appeng.api.config.ViewItems;
-import appeng.api.implementations.guiobjects.IPortableCell;
-import appeng.api.implementations.items.IAEItemPowerStorage;
-import appeng.api.storage.IMEMonitor;
-import appeng.api.storage.MEMonitorHandler;
-import appeng.api.storage.data.IAEFluidStack;
-import appeng.api.storage.data.IAEItemStack;
-import appeng.api.util.IConfigManager;
+import appeng.core.api.config.Actionable;
+import appeng.core.api.config.PowerMultiplier;
+import appeng.core.api.config.Settings;
+import appeng.core.api.config.SortDir;
+import appeng.core.api.config.SortOrder;
+import appeng.core.api.config.ViewItems;
+import appeng.core.api.implementations.guiobjects.IPortableCell;
+import appeng.core.api.implementations.items.IAEItemPowerStorage;
+import appeng.core.api.util.IConfigManager;
 import appeng.core.lib.container.interfaces.IInventorySlotAware;
 import appeng.core.lib.util.ConfigManager;
 import appeng.core.lib.util.IConfigManagerHost;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.storage.IMEMonitor;
+import appeng.core.me.api.storage.MEMonitorHandler;
+import appeng.core.me.api.storage.data.IAEFluidStack;
+import appeng.core.me.api.storage.data.IAEItemStack;
 import appeng.core.me.grid.storage.CellInventory;
 
 

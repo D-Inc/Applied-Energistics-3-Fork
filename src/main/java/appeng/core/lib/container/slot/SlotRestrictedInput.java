@@ -29,20 +29,20 @@ import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
 
-import appeng.api.AEApi;
-import appeng.api.definitions.IDefinitions;
-import appeng.api.definitions.IItems;
-import appeng.api.definitions.IMaterials;
-import appeng.api.features.INetworkEncodable;
-import appeng.api.implementations.ICraftingPatternItem;
-import appeng.api.implementations.items.IBiometricCard;
-import appeng.api.implementations.items.ISpatialStorageCell;
-import appeng.api.implementations.items.IStorageComponent;
-import appeng.api.implementations.items.IUpgradeModule;
-import appeng.api.networking.crafting.ICraftingPatternDetails;
-import appeng.api.storage.ICellWorkbenchItem;
+import appeng.core.api.features.INetworkEncodable;
+import appeng.core.api.implementations.ICraftingPatternItem;
+import appeng.core.api.implementations.items.IBiometricCard;
+import appeng.core.api.implementations.items.ISpatialStorageCell;
+import appeng.core.api.implementations.items.IStorageComponent;
+import appeng.core.api.implementations.items.IUpgradeModule;
 import appeng.core.crafting.item.ItemEncodedPattern;
+import appeng.core.lib.ApiDefinitions;
+import appeng.core.lib.AppEngApi;
+import appeng.core.lib.api.definitions.ApiItems;
+import appeng.core.lib.api.definitions.ApiMaterials;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.networking.crafting.ICraftingPatternDetails;
+import appeng.core.me.api.storage.ICellWorkbenchItem;
 
 
 /**
@@ -120,9 +120,9 @@ public class SlotRestrictedInput extends AppEngSlot
 			return false;
 		}
 
-		final IDefinitions definitions = AEApi.instance().definitions();
-		final IMaterials materials = definitions.materials();
-		final IItems items = definitions.items();
+		final ApiDefinitions definitions = AppEngApi.internalApi().definitions();
+		final ApiMaterials materials = definitions.materials();
+		final ApiItems items = definitions.items();
 
 		switch( this.which )
 		{
@@ -168,7 +168,7 @@ public class SlotRestrictedInput extends AppEngSlot
 					return true;
 				}
 
-				for( final ItemStack optional : AEApi.instance().registries().inscriber().getOptionals() )
+				for( final ItemStack optional : AppEngApi.internalApi().registries().inscriber().getOptionals() )
 				{
 					if( Platform.isSameItemPrecise( optional, i ) )
 					{
@@ -192,7 +192,7 @@ public class SlotRestrictedInput extends AppEngSlot
 			case VIEW_CELL:
 				return items.viewCell().isSameAs( i );
 			case ORE:
-				return appeng.api.AEApi.instance().registries().grinder().getRecipeForInput( i ) != null;
+				return AppEngApi.internalApi().registries().grinder().getRecipeForInput( i ) != null;
 			case FUEL:
 				return TileEntityFurnace.getItemBurnTime( i ) > 0;
 			case POWERED_TOOL:
@@ -206,20 +206,20 @@ public class SlotRestrictedInput extends AppEngSlot
 			case SPATIAL_STORAGE_CELLS:
 				return i.getItem() instanceof ISpatialStorageCell && ( (ISpatialStorageCell) i.getItem() ).isSpatialStorage( i );
 			case STORAGE_CELLS:
-				return AEApi.instance().registries().cell().isCellHandled( i );
+				return AppEngApi.internalApi().registries().cell().isCellHandled( i );
 			case WORKBENCH_CELL:
 				return i.getItem() instanceof ICellWorkbenchItem && ( (ICellWorkbenchItem) i.getItem() ).isEditable( i );
 			case STORAGE_COMPONENT:
 				return i.getItem() instanceof IStorageComponent && ( (IStorageComponent) i.getItem() ).isStorageComponent( i );
 			case TRASH:
-				if( AEApi.instance().registries().cell().isCellHandled( i ) )
+				if( AppEngApi.internalApi().registries().cell().isCellHandled( i ) )
 				{
 					return false;
 				}
 
 				return !( i.getItem() instanceof IStorageComponent && ( (IStorageComponent) i.getItem() ).isStorageComponent( i ) );
 			case ENCODABLE_ITEM:
-				return i.getItem() instanceof INetworkEncodable || AEApi.instance().registries().wireless().isWirelessTerminal( i );
+				return i.getItem() instanceof INetworkEncodable || AppEngApi.internalApi().registries().wireless().isWirelessTerminal( i );
 			case BIOMETRIC_CARD:
 				return i.getItem() instanceof IBiometricCard;
 			case UPGRADES:

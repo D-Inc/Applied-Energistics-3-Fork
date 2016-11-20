@@ -23,15 +23,15 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 
-import appeng.api.implementations.tiles.IChestOrDrive;
-import appeng.api.storage.ICellHandler;
-import appeng.api.storage.IMEInventory;
-import appeng.api.storage.IMEInventoryHandler;
-import appeng.api.storage.ISaveProvider;
-import appeng.api.storage.StorageChannel;
-import appeng.api.util.AEPartLocation;
+import appeng.core.api.implementations.tiles.IChestOrDrive;
+import appeng.core.api.util.AEPartLocation;
 import appeng.core.lib.sync.GuiBridge;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.storage.ICellHandler;
+import appeng.core.me.api.storage.IMEInventory;
+import appeng.core.me.api.storage.IMEInventoryHandler;
+import appeng.core.me.api.storage.ISaveProvider;
+import appeng.core.me.api.storage.StorageChannel;
 import appeng.core.me.grid.storage.CreativeCellInventory;
 import appeng.core.me.item.ItemCreativeStorageCell;
 

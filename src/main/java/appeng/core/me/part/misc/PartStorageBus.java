@@ -31,39 +31,16 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.Vec3d;
 
-import appeng.api.AEApi;
-import appeng.api.config.AccessRestriction;
-import appeng.api.config.FuzzyMode;
-import appeng.api.config.IncludeExclude;
-import appeng.api.config.Settings;
-import appeng.api.config.StorageFilter;
-import appeng.api.config.Upgrades;
-import appeng.api.networking.IGridNode;
-import appeng.api.networking.events.MENetworkCellArrayUpdate;
-import appeng.api.networking.events.MENetworkChannelsChanged;
-import appeng.api.networking.events.MENetworkEventSubscribe;
-import appeng.api.networking.events.MENetworkPowerStatusChange;
-import appeng.api.networking.security.BaseActionSource;
-import appeng.api.networking.security.MachineSource;
-import appeng.api.networking.storage.IBaseMonitor;
-import appeng.api.networking.ticking.IGridTickable;
-import appeng.api.networking.ticking.ITickManager;
-import appeng.api.networking.ticking.TickRateModulation;
-import appeng.api.networking.ticking.TickingRequest;
-import appeng.api.parts.IPartCollisionHelper;
-import appeng.api.parts.IPartHost;
-import appeng.api.storage.ICellContainer;
-import appeng.api.storage.IExternalStorageHandler;
-import appeng.api.storage.IMEInventory;
-import appeng.api.storage.IMEInventoryHandler;
-import appeng.api.storage.IMEMonitor;
-import appeng.api.storage.IMEMonitorHandlerReceiver;
-import appeng.api.storage.StorageChannel;
-import appeng.api.storage.data.IAEItemStack;
-import appeng.api.storage.data.IItemList;
-import appeng.api.util.AECableType;
-import appeng.api.util.AEPartLocation;
-import appeng.api.util.IConfigManager;
+import appeng.core.api.config.AccessRestriction;
+import appeng.core.api.config.FuzzyMode;
+import appeng.core.api.config.IncludeExclude;
+import appeng.core.api.config.Settings;
+import appeng.core.api.config.StorageFilter;
+import appeng.core.api.config.Upgrades;
+import appeng.core.api.util.AECableType;
+import appeng.core.api.util.AEPartLocation;
+import appeng.core.api.util.IConfigManager;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.helpers.IInterfaceHost;
 import appeng.core.lib.helpers.IPriorityHost;
 import appeng.core.lib.helpers.Reflected;
@@ -75,6 +52,29 @@ import appeng.core.lib.tile.inventory.InvOperation;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.util.prioitylist.FuzzyPriorityList;
 import appeng.core.lib.util.prioitylist.PrecisePriorityList;
+import appeng.core.me.api.networking.IGridNode;
+import appeng.core.me.api.networking.events.MENetworkCellArrayUpdate;
+import appeng.core.me.api.networking.events.MENetworkChannelsChanged;
+import appeng.core.me.api.networking.events.MENetworkEventSubscribe;
+import appeng.core.me.api.networking.events.MENetworkPowerStatusChange;
+import appeng.core.me.api.networking.security.BaseActionSource;
+import appeng.core.me.api.networking.security.MachineSource;
+import appeng.core.me.api.networking.storage.IBaseMonitor;
+import appeng.core.me.api.networking.ticking.IGridTickable;
+import appeng.core.me.api.networking.ticking.ITickManager;
+import appeng.core.me.api.networking.ticking.TickRateModulation;
+import appeng.core.me.api.networking.ticking.TickingRequest;
+import appeng.core.me.api.parts.IPartCollisionHelper;
+import appeng.core.me.api.parts.IPartHost;
+import appeng.core.me.api.storage.ICellContainer;
+import appeng.core.me.api.storage.IExternalStorageHandler;
+import appeng.core.me.api.storage.IMEInventory;
+import appeng.core.me.api.storage.IMEInventoryHandler;
+import appeng.core.me.api.storage.IMEMonitor;
+import appeng.core.me.api.storage.IMEMonitorHandlerReceiver;
+import appeng.core.me.api.storage.StorageChannel;
+import appeng.core.me.api.storage.data.IAEItemStack;
+import appeng.core.me.api.storage.data.IItemList;
 import appeng.core.me.grid.GridAccessException;
 import appeng.core.me.grid.storage.MEInventoryHandler;
 import appeng.core.me.grid.storage.MEMonitorIInventory;
@@ -316,7 +316,7 @@ public class PartStorageBus extends PartUpgradeable implements IGridTickable, IC
 		this.resetCacheLogic = 0;
 
 		final IMEInventory<IAEItemStack> in = this.getInternalHandler();
-		IItemList<IAEItemStack> before = AEApi.instance().storage().createItemList();
+		IItemList<IAEItemStack> before = AppEngApi.internalApi().storage().createItemList();
 		if( in != null )
 		{
 			before = in.getAvailableItems( before );
@@ -335,7 +335,7 @@ public class PartStorageBus extends PartUpgradeable implements IGridTickable, IC
 			this.monitor.onTick();
 		}
 
-		IItemList<IAEItemStack> after = AEApi.instance().storage().createItemList();
+		IItemList<IAEItemStack> after = AppEngApi.internalApi().storage().createItemList();
 		if( out != null )
 		{
 			after = out.getAvailableItems( after );
@@ -368,7 +368,7 @@ public class PartStorageBus extends PartUpgradeable implements IGridTickable, IC
 		this.monitor = null;
 		if( target != null )
 		{
-			final IExternalStorageHandler esh = AEApi.instance().registries().externalStorage().getHandler( target, this.getSide().getFacing().getOpposite(), StorageChannel.ITEMS, this.mySrc );
+			final IExternalStorageHandler esh = AppEngApi.internalApi().registries().externalStorage().getHandler( target, this.getSide().getFacing().getOpposite(), StorageChannel.ITEMS, this.mySrc );
 			if( esh != null )
 			{
 				final IMEInventory inv = esh.getInventory( target, this.getSide().getFacing().getOpposite(), StorageChannel.ITEMS, this.mySrc );
@@ -395,7 +395,7 @@ public class PartStorageBus extends PartUpgradeable implements IGridTickable, IC
 					this.handler.setWhitelist( this.getInstalledUpgrades( Upgrades.INVERTER ) > 0 ? IncludeExclude.BLACKLIST : IncludeExclude.WHITELIST );
 					this.handler.setPriority( this.priority );
 
-					final IItemList<IAEItemStack> priorityList = AEApi.instance().storage().createItemList();
+					final IItemList<IAEItemStack> priorityList = AppEngApi.internalApi().storage().createItemList();
 
 					final int slotsToUse = 18 + this.getInstalledUpgrades( Upgrades.CAPACITY ) * 9;
 					for( int x = 0; x < this.Config.getSizeInventory() && x < slotsToUse; x++ )

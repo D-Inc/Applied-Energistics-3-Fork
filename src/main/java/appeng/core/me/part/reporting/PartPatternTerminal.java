@@ -26,13 +26,13 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
-import appeng.api.implementations.ICraftingPatternItem;
-import appeng.api.networking.crafting.ICraftingPatternDetails;
-import appeng.api.storage.data.IAEItemStack;
+import appeng.core.api.implementations.ICraftingPatternItem;
 import appeng.core.lib.helpers.Reflected;
 import appeng.core.lib.sync.GuiBridge;
 import appeng.core.lib.tile.inventory.AppEngInternalInventory;
 import appeng.core.lib.tile.inventory.InvOperation;
+import appeng.core.me.api.networking.crafting.ICraftingPatternDetails;
+import appeng.core.me.api.storage.data.IAEItemStack;
 
 
 public class PartPatternTerminal extends AbstractPartTerminal

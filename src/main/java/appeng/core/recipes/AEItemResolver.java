@@ -21,19 +21,19 @@ package appeng.core.recipes;
 
 import net.minecraft.item.ItemStack;
 
-import appeng.api.AEApi;
-import appeng.api.definitions.IDefinitions;
-import appeng.api.definitions.IItems;
-import appeng.api.definitions.IParts;
-import appeng.api.recipes.ISubItemResolver;
-import appeng.api.recipes.ResolverResult;
-import appeng.api.recipes.ResolverResultSet;
-import appeng.api.util.AEColor;
-import appeng.api.util.AEColoredItemDefinition;
 import appeng.core.AppEng;
+import appeng.core.api.recipes.ISubItemResolver;
+import appeng.core.api.recipes.ResolverResult;
+import appeng.core.api.recipes.ResolverResultSet;
+import appeng.core.api.util.AEColor;
+import appeng.core.api.util.AEColoredItemDefinition;
 import appeng.core.item.ItemCrystalSeed;
 import appeng.core.item.ItemMultiItem;
 import appeng.core.item.MaterialType;
+import appeng.core.lib.ApiDefinitions;
+import appeng.core.lib.AppEngApi;
+import appeng.core.lib.api.definitions.ApiItems;
+import appeng.core.lib.api.definitions.ApiParts;
 import appeng.core.me.item.ItemMultiPart;
 import appeng.core.me.item.PartType;
 
@@ -47,9 +47,9 @@ public class AEItemResolver implements ISubItemResolver
 
 		if( nameSpace.equals( AppEng.MOD_ID ) )
 		{
-			final IDefinitions definitions = AEApi.instance().definitions();
-			final IItems items = definitions.items();
-			final IParts parts = definitions.parts();
+			final ApiDefinitions definitions = AppEngApi.internalApi().definitions();
+			final ApiItems items = definitions.items();
+			final ApiParts parts = definitions.parts();
 
 			if( itemName.startsWith( "PaintBall." ) )
 			{

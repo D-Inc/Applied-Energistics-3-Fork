@@ -36,29 +36,22 @@ import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 
-import appeng.api.AEApi;
-import appeng.api.config.Actionable;
-import appeng.api.config.PowerMultiplier;
-import appeng.api.config.RedstoneMode;
-import appeng.api.config.Settings;
-import appeng.api.config.Upgrades;
+import appeng.api.definitions.IItemDefinition;
 import appeng.api.definitions.ITileDefinition;
-import appeng.api.implementations.IPowerChannelState;
-import appeng.api.implementations.IUpgradeableHost;
-import appeng.api.implementations.tiles.ICraftingMachine;
-import appeng.api.networking.IGridNode;
-import appeng.api.networking.crafting.ICraftingPatternDetails;
-import appeng.api.networking.events.MENetworkEventSubscribe;
-import appeng.api.networking.events.MENetworkPowerStatusChange;
-import appeng.api.networking.ticking.IGridTickable;
-import appeng.api.networking.ticking.TickRateModulation;
-import appeng.api.networking.ticking.TickingRequest;
-import appeng.api.storage.data.IAEItemStack;
-import appeng.api.util.AECableType;
-import appeng.api.util.AEPartLocation;
-import appeng.api.util.DimensionalCoord;
-import appeng.api.util.IConfigManager;
+import appeng.core.api.config.Actionable;
+import appeng.core.api.config.PowerMultiplier;
+import appeng.core.api.config.RedstoneMode;
+import appeng.core.api.config.Settings;
+import appeng.core.api.config.Upgrades;
+import appeng.core.api.implementations.IPowerChannelState;
+import appeng.core.api.implementations.IUpgradeableHost;
+import appeng.core.api.implementations.tiles.ICraftingMachine;
+import appeng.core.api.util.AECableType;
+import appeng.core.api.util.AEPartLocation;
+import appeng.core.api.util.DimensionalCoord;
+import appeng.core.api.util.IConfigManager;
 import appeng.core.crafting.item.ItemEncodedPattern;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.container.ContainerNull;
 import appeng.core.lib.sync.network.NetworkHandler;
 import appeng.core.lib.sync.packets.PacketAssemblerAnimation;
@@ -71,6 +64,14 @@ import appeng.core.lib.util.IConfigManagerHost;
 import appeng.core.lib.util.InventoryAdaptor;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.util.item.AEItemStack;
+import appeng.core.me.api.networking.IGridNode;
+import appeng.core.me.api.networking.crafting.ICraftingPatternDetails;
+import appeng.core.me.api.networking.events.MENetworkEventSubscribe;
+import appeng.core.me.api.networking.events.MENetworkPowerStatusChange;
+import appeng.core.me.api.networking.ticking.IGridTickable;
+import appeng.core.me.api.networking.ticking.TickRateModulation;
+import appeng.core.me.api.networking.ticking.TickingRequest;
+import appeng.core.me.api.storage.data.IAEItemStack;
 import appeng.core.me.grid.GridAccessException;
 import appeng.core.me.part.automation.DefinitionUpgradeInventory;
 import appeng.core.me.part.automation.UpgradeInventory;
@@ -96,13 +97,13 @@ public class TileMolecularAssembler extends AENetworkInvTile implements IUpgrade
 
 	public TileMolecularAssembler()
 	{
-		final ITileDefinition assembler = AEApi.instance().definitions().blocks().molecularAssembler();
+		final ITileDefinition assembler = AppEngApi.internalApi().definitions().blocks().molecularAssembler();
 
 		this.settings = new ConfigManager( this );
 		this.settings.registerSetting( Settings.REDSTONE_CONTROLLED, RedstoneMode.IGNORE );
 		this.inv.setMaxStackSize( 1 );
 		this.getProxy().setIdlePowerUsage( 0.0 );
-		this.upgrades = new DefinitionUpgradeInventory( assembler, this, this.getUpgradeSlots() );
+		this.upgrades = new DefinitionUpgradeInventory( (IItemDefinition) assembler.block().maybeItem().get(), this, this.getUpgradeSlots() );
 		this.craftingInv = new InventoryCrafting( new ContainerNull(), 3, 3 );
 	}
 

@@ -22,15 +22,15 @@ package appeng.core.me.grid;
 import java.util.Iterator;
 import java.util.Map;
 
-import appeng.api.networking.IGridHost;
-import appeng.api.networking.IGridNode;
+import appeng.core.me.api.networking.IGridHost;
+import appeng.core.me.api.networking.IGridNode;
 
 
 /**
  * Nested iterator for {@link appeng.core.me.grid.MachineSet}
  *
  * Traverses first over the {@link appeng.core.me.grid.MachineSet} and then over every containing
- * {@link appeng.api.networking.IGridNode}
+ * {@link appeng.core.me.api.networking.IGridNode}
  */
 public class GridNodeIterator implements Iterator<IGridNode>
 {

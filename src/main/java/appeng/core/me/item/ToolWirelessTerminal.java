@@ -32,14 +32,14 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import appeng.api.AEApi;
-import appeng.api.config.Settings;
-import appeng.api.config.SortDir;
-import appeng.api.config.SortOrder;
-import appeng.api.config.ViewItems;
-import appeng.api.features.IWirelessTermHandler;
-import appeng.api.util.IConfigManager;
+import appeng.core.api.config.Settings;
+import appeng.core.api.config.SortDir;
+import appeng.core.api.config.SortOrder;
+import appeng.core.api.config.ViewItems;
+import appeng.core.api.features.IWirelessTermHandler;
+import appeng.core.api.util.IConfigManager;
 import appeng.core.lib.AEConfig;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.item.powered.AEBasePoweredItem;
 import appeng.core.lib.localization.GuiText;
 import appeng.core.lib.util.ConfigManager;
@@ -58,7 +58,7 @@ public class ToolWirelessTerminal extends AEBasePoweredItem implements IWireless
 	@Override
 	public ActionResult<ItemStack> onItemRightClick( final ItemStack item, final World w, final EntityPlayer player, final EnumHand hand )
 	{
-		AEApi.instance().registries().wireless().openWirelessTerminalGui( item, w, player );
+		AppEngApi.internalApi().registries().wireless().openWirelessTerminalGui( item, w, player );
 		return new ActionResult<ItemStack>( EnumActionResult.SUCCESS, item );
 	}
 
@@ -100,7 +100,7 @@ public class ToolWirelessTerminal extends AEBasePoweredItem implements IWireless
 	@Override
 	public boolean canHandle( final ItemStack is )
 	{
-		return AEApi.instance().definitions().items().wirelessTerminal().isSameAs( is );
+		return AppEngApi.internalApi().definitions().items().wirelessTerminal().isSameAs( is );
 	}
 
 	@Override

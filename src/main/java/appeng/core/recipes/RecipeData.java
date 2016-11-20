@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import appeng.api.recipes.ICraftHandler;
+import appeng.core.api.recipes.ICraftHandler;
 
 
 public class RecipeData

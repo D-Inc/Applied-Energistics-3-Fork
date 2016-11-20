@@ -23,10 +23,10 @@ import javax.annotation.Nonnull;
 
 import net.minecraft.crash.CrashReportCategory;
 
-import appeng.api.networking.IGridNode;
-import appeng.api.networking.ticking.IGridTickable;
-import appeng.api.networking.ticking.TickingRequest;
-import appeng.api.util.DimensionalCoord;
+import appeng.core.api.util.DimensionalCoord;
+import appeng.core.me.api.networking.IGridNode;
+import appeng.core.me.api.networking.ticking.IGridTickable;
+import appeng.core.me.api.networking.ticking.TickingRequest;
 import appeng.core.me.grid.cache.TickManagerCache;
 import appeng.core.me.part.AEBasePart;
 

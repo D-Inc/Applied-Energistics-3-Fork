@@ -43,24 +43,26 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.LoaderState;
 
-import appeng.api.AEApi;
-import appeng.api.definitions.IBlocks;
-import appeng.api.definitions.IDefinitions;
-import appeng.api.definitions.IItems;
-import appeng.api.exceptions.MissingIngredientError;
-import appeng.api.exceptions.RecipeError;
-import appeng.api.exceptions.RegistrationError;
-import appeng.api.features.IRecipeHandlerRegistry;
-import appeng.api.recipes.ICraftHandler;
-import appeng.api.recipes.IIngredient;
-import appeng.api.recipes.IRecipeHandler;
-import appeng.api.recipes.IRecipeLoader;
+import appeng.api.definitions.IDefinition;
+import appeng.api.definitions.IItemDefinition;
 import appeng.core.AppEng;
+import appeng.core.api.exceptions.MissingIngredientError;
+import appeng.core.api.exceptions.RecipeError;
+import appeng.core.api.exceptions.RegistrationError;
+import appeng.core.api.recipes.ICraftHandler;
+import appeng.core.api.recipes.IIngredient;
+import appeng.core.api.recipes.IRecipeHandler;
+import appeng.core.api.recipes.IRecipeLoader;
 import appeng.core.item.ItemCrystalSeed;
 import appeng.core.item.ItemMultiItem;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.AELog;
+import appeng.core.lib.ApiDefinitions;
+import appeng.core.lib.AppEngApi;
+import appeng.core.lib.api.definitions.ApiBlocks;
+import appeng.core.lib.api.definitions.ApiItems;
 import appeng.core.lib.features.AEFeature;
+import appeng.core.lib.features.registries.RecipeHandlerRegistry;
 import appeng.core.me.item.ItemMultiPart;
 import appeng.core.recipes.handlers.IWebsiteSerializer;
 import appeng.core.recipes.handlers.OreRegistration;
@@ -126,15 +128,15 @@ public class RecipeHandler implements IRecipeHandler
 			throw new RecipeError( "Not applicable for website" );
 		}
 
-		final IDefinitions definitions = AEApi.instance().definitions();
-		final IItems items = definitions.items();
-		final IBlocks blocks = definitions.blocks();
+		final ApiDefinitions definitions = AppEngApi.internalApi().definitions();
+		final ApiItems items = definitions.items();
+		final ApiBlocks blocks = definitions.blocks();
 
 		final Optional<Item> maybeCrystalSeedItem = items.crystalSeed().maybeItem();
-		final Optional<Item> maybeSkyStoneItem = blocks.skyStoneBlock().maybeItem();
-		final Optional<Item> maybeCStorageItem = blocks.craftingStorage1k().maybeItem();
-		final Optional<Item> maybeCUnitItem = blocks.craftingUnit().maybeItem();
-		final Optional<Item> maybeSkyChestItem = blocks.skyStoneChest().maybeItem();
+		final Optional<Item> maybeSkyStoneItem = ( (IItemDefinition) blocks.skyStoneBlock().maybeItem().get() ).maybe();
+		final Optional<Item> maybeCStorageItem = ( (IItemDefinition) blocks.craftingStorage1k().block().maybeItem().get() ).maybe();
+		final Optional<Item> maybeCUnitItem = ( (IItemDefinition) blocks.craftingUnit().block().maybeItem().get() ).maybe();
+		final Optional<Item> maybeSkyChestItem = ( (IDefinition) blocks.skyStoneChest().maybeItem().get() ).maybe();
 
 		if( maybeCrystalSeedItem.isPresent() && is.getItem() == maybeCrystalSeedItem.get() )
 		{
@@ -539,7 +541,7 @@ public class RecipeHandler implements IRecipeHandler
 	{
 		try
 		{
-			final IRecipeHandlerRegistry cr = AEApi.instance().registries().recipes();
+			final RecipeHandlerRegistry cr =AppEngApi.internalApi().registries().recipes();
 
 			if( this.tokens.isEmpty() )
 			{

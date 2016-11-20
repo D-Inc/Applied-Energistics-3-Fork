@@ -44,40 +44,18 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-import appeng.api.AEApi;
-import appeng.api.config.Actionable;
-import appeng.api.config.Settings;
-import appeng.api.config.Upgrades;
-import appeng.api.config.YesNo;
-import appeng.api.implementations.ICraftingPatternItem;
-import appeng.api.implementations.IUpgradeableHost;
-import appeng.api.implementations.tiles.ICraftingMachine;
-import appeng.api.networking.GridFlags;
-import appeng.api.networking.IGrid;
-import appeng.api.networking.IGridNode;
-import appeng.api.networking.crafting.ICraftingLink;
-import appeng.api.networking.crafting.ICraftingPatternDetails;
-import appeng.api.networking.crafting.ICraftingProvider;
-import appeng.api.networking.crafting.ICraftingProviderHelper;
-import appeng.api.networking.energy.IEnergySource;
-import appeng.api.networking.events.MENetworkCraftingPatternChange;
-import appeng.api.networking.security.BaseActionSource;
-import appeng.api.networking.security.IActionHost;
-import appeng.api.networking.security.MachineSource;
-import appeng.api.networking.ticking.IGridTickable;
-import appeng.api.networking.ticking.TickRateModulation;
-import appeng.api.networking.ticking.TickingRequest;
-import appeng.api.parts.IPart;
-import appeng.api.storage.IMEInventory;
-import appeng.api.storage.IMEMonitor;
-import appeng.api.storage.IStorageMonitorable;
-import appeng.api.storage.StorageChannel;
-import appeng.api.storage.data.IAEFluidStack;
-import appeng.api.storage.data.IAEItemStack;
-import appeng.api.util.AECableType;
-import appeng.api.util.AEPartLocation;
-import appeng.api.util.DimensionalCoord;
-import appeng.api.util.IConfigManager;
+import appeng.core.api.config.Actionable;
+import appeng.core.api.config.Settings;
+import appeng.core.api.config.Upgrades;
+import appeng.core.api.config.YesNo;
+import appeng.core.api.implementations.ICraftingPatternItem;
+import appeng.core.api.implementations.IUpgradeableHost;
+import appeng.core.api.implementations.tiles.ICraftingMachine;
+import appeng.core.api.util.AECableType;
+import appeng.core.api.util.AEPartLocation;
+import appeng.core.api.util.DimensionalCoord;
+import appeng.core.api.util.IConfigManager;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.settings.TickRates;
 import appeng.core.lib.tile.inventory.AppEngInternalAEInventory;
 import appeng.core.lib.tile.inventory.AppEngInternalInventory;
@@ -91,6 +69,28 @@ import appeng.core.lib.util.inv.AdaptorIInventory;
 import appeng.core.lib.util.inv.IInventoryDestination;
 import appeng.core.lib.util.inv.WrapperInvSlot;
 import appeng.core.lib.util.item.AEItemStack;
+import appeng.core.me.api.networking.GridFlags;
+import appeng.core.me.api.networking.IGrid;
+import appeng.core.me.api.networking.IGridNode;
+import appeng.core.me.api.networking.crafting.ICraftingLink;
+import appeng.core.me.api.networking.crafting.ICraftingPatternDetails;
+import appeng.core.me.api.networking.crafting.ICraftingProvider;
+import appeng.core.me.api.networking.crafting.ICraftingProviderHelper;
+import appeng.core.me.api.networking.energy.IEnergySource;
+import appeng.core.me.api.networking.events.MENetworkCraftingPatternChange;
+import appeng.core.me.api.networking.security.BaseActionSource;
+import appeng.core.me.api.networking.security.IActionHost;
+import appeng.core.me.api.networking.security.MachineSource;
+import appeng.core.me.api.networking.ticking.IGridTickable;
+import appeng.core.me.api.networking.ticking.TickRateModulation;
+import appeng.core.me.api.networking.ticking.TickingRequest;
+import appeng.core.me.api.parts.IPart;
+import appeng.core.me.api.storage.IMEInventory;
+import appeng.core.me.api.storage.IMEMonitor;
+import appeng.core.me.api.storage.IStorageMonitorable;
+import appeng.core.me.api.storage.StorageChannel;
+import appeng.core.me.api.storage.data.IAEFluidStack;
+import appeng.core.me.api.storage.data.IAEItemStack;
 import appeng.core.me.grid.GridAccessException;
 import appeng.core.me.grid.helpers.AENetworkProxy;
 import appeng.core.me.grid.storage.MEMonitorIInventory;
@@ -406,7 +406,7 @@ public class DualityInterface implements IGridTickable, IStorageMonitorable, IIn
 
 		if( req == null && Stored != null )
 		{
-			final IAEItemStack work = AEApi.instance().storage().createItemStack( Stored );
+			final IAEItemStack work = AppEngApi.internalApi().storage().createItemStack( Stored );
 			this.requireWork[slot] = work.setStackSize( -work.getStackSize() );
 			return;
 		}
@@ -429,7 +429,7 @@ public class DualityInterface implements IGridTickable, IStorageMonitorable, IIn
 			else
 			// Stored != null; dispose!
 			{
-				final IAEItemStack work = AEApi.instance().storage().createItemStack( Stored );
+				final IAEItemStack work = AppEngApi.internalApi().storage().createItemStack( Stored );
 				this.requireWork[slot] = work.setStackSize( -work.getStackSize() );
 				return;
 			}
@@ -494,7 +494,7 @@ public class DualityInterface implements IGridTickable, IStorageMonitorable, IIn
 	@Override
 	public boolean canInsert( final ItemStack stack )
 	{
-		final IAEItemStack out = this.destination.injectItems( AEApi.instance().storage().createItemStack( stack ), Actionable.SIMULATE, null );
+		final IAEItemStack out = this.destination.injectItems( AppEngApi.internalApi().storage().createItemStack( stack ), Actionable.SIMULATE, null );
 		if( out == null )
 		{
 			return true;
@@ -832,7 +832,7 @@ public class DualityInterface implements IGridTickable, IStorageMonitorable, IIn
 	}
 
 	@Override
-	public appeng.api.util.IConfigManager getConfigManager()
+	public appeng.core.api.util.IConfigManager getConfigManager()
 	{
 		return this.cm;
 	}

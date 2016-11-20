@@ -32,24 +32,24 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 
-import appeng.api.AEApi;
-import appeng.api.config.Actionable;
-import appeng.api.config.PowerMultiplier;
-import appeng.api.config.PowerUnits;
 import appeng.api.definitions.IItemDefinition;
-import appeng.api.definitions.IMaterials;
-import appeng.api.implementations.items.IAEItemPowerStorage;
-import appeng.api.implementations.tiles.ICrankable;
-import appeng.api.storage.data.IAEItemStack;
-import appeng.api.util.AECableType;
-import appeng.api.util.AEPartLocation;
-import appeng.api.util.DimensionalCoord;
+import appeng.core.api.config.Actionable;
+import appeng.core.api.config.PowerMultiplier;
+import appeng.core.api.config.PowerUnits;
+import appeng.core.api.implementations.items.IAEItemPowerStorage;
+import appeng.core.api.implementations.tiles.ICrankable;
+import appeng.core.api.util.AECableType;
+import appeng.core.api.util.AEPartLocation;
+import appeng.core.api.util.DimensionalCoord;
+import appeng.core.lib.AppEngApi;
+import appeng.core.lib.api.definitions.ApiMaterials;
 import appeng.core.lib.tile.TileEvent;
 import appeng.core.lib.tile.events.TileEventType;
 import appeng.core.lib.tile.inventory.AppEngInternalInventory;
 import appeng.core.lib.tile.inventory.InvOperation;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.util.item.AEItemStack;
+import appeng.core.me.api.storage.data.IAEItemStack;
 import appeng.core.me.grid.GridAccessException;
 import appeng.core.me.tile.AENetworkPowerTile;
 
@@ -143,7 +143,7 @@ public class TileCharger extends AENetworkPowerTile implements ICrankable, ITick
 			return;
 		}
 
-		final IMaterials materials = AEApi.instance().definitions().materials();
+		final ApiMaterials materials = AppEngApi.internalApi().definitions().materials();
 
 		if( this.getInternalCurrentPower() > 149 && Platform.isChargeable( myItem ) )
 		{
@@ -167,7 +167,7 @@ public class TileCharger extends AENetworkPowerTile implements ICrankable, ITick
 			{
 				this.extractAEPower( this.getInternalMaxPower(), Actionable.MODULATE, PowerMultiplier.CONFIG );// 1500
 
-				materials.certusQuartzCrystalCharged().maybeStack( myItem.stackSize ).ifPresent( charged -> this.setInventorySlotContents( 0, charged ) );
+				materials.certusQuartzCrystalCharged().maybeStack( myItem.stackSize ).ifPresent( charged -> this.setInventorySlotContents( 0, (ItemStack) charged ) );
 			}
 		}
 	}
@@ -200,13 +200,13 @@ public class TileCharger extends AENetworkPowerTile implements ICrankable, ITick
 		final ItemStack myItem = this.getStackInSlot( 0 );
 		if( this.getInternalCurrentPower() > 1499 )
 		{
-			final IMaterials materials = AEApi.instance().definitions().materials();
+			final ApiMaterials materials = AppEngApi.internalApi().definitions().materials();
 
 			if( materials.certusQuartzCrystal().isSameAs( myItem ) )
 			{
 				this.extractAEPower( this.getInternalMaxPower(), Actionable.MODULATE, PowerMultiplier.CONFIG );// 1500
 
-				materials.certusQuartzCrystalCharged().maybeStack( myItem.stackSize ).ifPresent( charged -> this.setInventorySlotContents( 0, charged ) );
+				materials.certusQuartzCrystalCharged().maybeStack( myItem.stackSize ).ifPresent( charged -> this.setInventorySlotContents( 0, (ItemStack) charged ) );
 			}
 		}
 	}
@@ -232,7 +232,7 @@ public class TileCharger extends AENetworkPowerTile implements ICrankable, ITick
 	@Override
 	public boolean isItemValidForSlot( final int i, final ItemStack itemstack )
 	{
-		final IItemDefinition cert = AEApi.instance().definitions().materials().certusQuartzCrystal();
+		final IItemDefinition cert = AppEngApi.internalApi().definitions().materials().certusQuartzCrystal();
 
 		return Platform.isChargeable( itemstack ) || cert.isSameAs( itemstack );
 	}
@@ -255,7 +255,7 @@ public class TileCharger extends AENetworkPowerTile implements ICrankable, ITick
 			}
 		}
 
-		return AEApi.instance().definitions().materials().certusQuartzCrystalCharged().isSameAs( extractedItem );
+		return AppEngApi.internalApi().definitions().materials().certusQuartzCrystalCharged().isSameAs( extractedItem );
 	}
 
 	@Override
@@ -276,7 +276,7 @@ public class TileCharger extends AENetworkPowerTile implements ICrankable, ITick
 		{
 			ItemStack held = player.inventory.getCurrentItem();
 
-			if( AEApi.instance().definitions().materials().certusQuartzCrystal().isSameAs( held ) || Platform.isChargeable( held ) )
+			if( AppEngApi.internalApi().definitions().materials().certusQuartzCrystal().isSameAs( held ) || Platform.isChargeable( held ) )
 			{
 				held = player.inventory.decrStackSize( player.inventory.currentItem, 1 );
 				this.setInventorySlotContents( 0, held );

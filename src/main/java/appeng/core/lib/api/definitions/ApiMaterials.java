@@ -22,11 +22,11 @@ package appeng.core.lib.api.definitions;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
+import net.minecraft.item.Item;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import appeng.api.definitions.IItemDefinition;
-import appeng.api.definitions.IMaterials;
 import appeng.core.item.ItemMultiItem;
 import appeng.core.item.MaterialType;
 import appeng.core.lib.bootstrap.FeatureFactory;
@@ -38,7 +38,7 @@ import appeng.core.lib.features.DamagedItemDefinition;
 /**
  * Internal implementation for the API materials
  */
-public final class ApiMaterials implements IMaterials
+public final class ApiMaterials// implements IMaterials
 {
 	private final IItemDefinition cell2SpatialPart;
 	private final IItemDefinition cell16SpatialPart;
@@ -197,325 +197,325 @@ public final class ApiMaterials implements IMaterials
 		this.blankPattern = new DamagedItemDefinition( "material.pattern.blank", materials.createMaterial( MaterialType.BlankPattern ) );
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition cell2SpatialPart()
 	{
 		return this.cell2SpatialPart;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition cell16SpatialPart()
 	{
 		return this.cell16SpatialPart;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition cell128SpatialPart()
 	{
 		return this.cell128SpatialPart;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition silicon()
 	{
 		return this.silicon;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition skyDust()
 	{
 		return this.skyDust;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition calcProcessorPress()
 	{
 		return this.calcProcessorPress;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition engProcessorPress()
 	{
 		return this.engProcessorPress;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition logicProcessorPress()
 	{
 		return this.logicProcessorPress;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition calcProcessorPrint()
 	{
 		return this.calcProcessorPrint;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition engProcessorPrint()
 	{
 		return this.engProcessorPrint;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition logicProcessorPrint()
 	{
 		return this.logicProcessorPrint;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition siliconPress()
 	{
 		return this.siliconPress;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition siliconPrint()
 	{
 		return this.siliconPrint;
 	}
 
-	@Override
-	public IItemDefinition namePress()
+	/*@Override*/
+	public IItemDefinition<? extends Item> namePress()
 	{
 		return this.namePress;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition logicProcessor()
 	{
 		return this.logicProcessor;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition calcProcessor()
 	{
 		return this.calcProcessor;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition engProcessor()
 	{
 		return this.engProcessor;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition basicCard()
 	{
 		return this.basicCard;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition advCard()
 	{
 		return this.advCard;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition purifiedCertusQuartzCrystal()
 	{
 		return this.purifiedCertusQuartzCrystal;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition purifiedNetherQuartzCrystal()
 	{
 		return this.purifiedNetherQuartzCrystal;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition purifiedFluixCrystal()
 	{
 		return this.purifiedFluixCrystal;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition cell1kPart()
 	{
 		return this.cell1kPart;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition cell4kPart()
 	{
 		return this.cell4kPart;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition cell16kPart()
 	{
 		return this.cell16kPart;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition cell64kPart()
 	{
 		return this.cell64kPart;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition emptyStorageCell()
 	{
 		return this.emptyStorageCell;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition cardRedstone()
 	{
 		return this.cardRedstone;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition cardSpeed()
 	{
 		return this.cardSpeed;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition cardCapacity()
 	{
 		return this.cardCapacity;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition cardFuzzy()
 	{
 		return this.cardFuzzy;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition cardInverter()
 	{
 		return this.cardInverter;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition cardCrafting()
 	{
 		return this.cardCrafting;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition enderDust()
 	{
 		return this.enderDust;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition flour()
 	{
 		return this.flour;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition goldDust()
 	{
 		return this.goldDust;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition ironDust()
 	{
 		return this.ironDust;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition fluixDust()
 	{
 		return this.fluixDust;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition certusQuartzDust()
 	{
 		return this.certusQuartzDust;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition netherQuartzDust()
 	{
 		return this.netherQuartzDust;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition matterBall()
 	{
 		return this.matterBall;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition ironNugget()
 	{
 		return this.ironNugget;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition certusQuartzCrystal()
 	{
 		return this.certusQuartzCrystal;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition certusQuartzCrystalCharged()
 	{
 		return this.certusQuartzCrystalCharged;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition fluixCrystal()
 	{
 		return this.fluixCrystal;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition fluixPearl()
 	{
 		return this.fluixPearl;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition woodenGear()
 	{
 		return this.woodenGear;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition wirelessReceiver()
 	{
 		return this.wirelessReceiver;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition wirelessBooster()
 	{
 		return this.wirelessBooster;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition annihilationCore()
 	{
 		return this.annihilationCore;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition formationCore()
 	{
 		return this.formationCore;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition singularity()
 	{
 		return this.singularity;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition qESingularity()
 	{
 		return this.qESingularity;
 	}
 
-	@Override
+	/*@Override*/
 	public IItemDefinition blankPattern()
 	{
 		return this.blankPattern;

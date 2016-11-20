@@ -28,7 +28,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.EnumFacing;
 
-import appeng.api.config.FuzzyMode;
+import appeng.core.api.config.FuzzyMode;
 import appeng.core.lib.util.inv.AdaptorIInventory;
 import appeng.core.lib.util.inv.AdaptorList;
 import appeng.core.lib.util.inv.AdaptorPlayerInventory;

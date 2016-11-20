@@ -21,59 +21,46 @@ package appeng.core.lib.features;
 
 import java.util.Optional;
 
-import javax.annotation.Nonnull;
-
-import com.google.common.base.Preconditions;
-import com.google.common.base.Strings;
-
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 
 import appeng.api.definitions.IItemDefinition;
-import appeng.core.lib.util.Platform;
 
 
-public class ItemDefinition implements IItemDefinition
+public class ItemDefinition<I extends Item> extends Definition<I> implements IItemDefinition<I>
 {
-	private final String identifier;
-	private final Optional<Item> item;
 
-	public ItemDefinition( String registryName, Item item )
+	public ItemDefinition( ResourceLocation identifier, I item )
 	{
-		Preconditions.checkArgument( !Strings.isNullOrEmpty( registryName ), "registryName" );
-		this.identifier = registryName;
-		this.item = Optional.ofNullable( item );
-	}
-
-	@Nonnull
-	@Override
-	public String identifier()
-	{
-		return this.identifier;
+		super( identifier, item );
 	}
 
 	@Override
-	public final Optional<Item> maybeItem()
+	public Optional<ItemStack> maybeStack( int stackSize )
 	{
-		return this.item;
+		return isEnabled() ? Optional.of( new ItemStack( maybe().get(), stackSize ) ) : Optional.empty();
 	}
 
 	@Override
-	public Optional<ItemStack> maybeStack( final int stackSize )
+	public boolean isSameAs( Object other )
 	{
-		return this.item.map( item -> new ItemStack( item, stackSize ) );
-	}
-
-	@Override
-	public boolean isEnabled()
-	{
-		return this.item.isPresent();
-	}
-
-	@Override
-	public final boolean isSameAs( final ItemStack comparableStack )
-	{
-		return isEnabled() && Platform.isSameItemType( comparableStack, this.maybeStack( 1 ).get() );
+		if( super.isSameAs( other ) )
+		{
+			return true;
+		}
+		else
+		{
+			if( isEnabled() )
+			{
+				Item item = maybe().get();
+				if( other instanceof ItemStack )
+				{
+					return ( (ItemStack) other ).getItem() == item;
+				}
+			}
+			return false;
+		}
 	}
 
 }

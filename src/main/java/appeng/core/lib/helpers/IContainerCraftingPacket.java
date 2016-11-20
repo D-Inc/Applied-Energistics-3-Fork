@@ -22,8 +22,8 @@ package appeng.core.lib.helpers;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 
-import appeng.api.networking.IGridNode;
-import appeng.api.networking.security.BaseActionSource;
+import appeng.core.me.api.networking.IGridNode;
+import appeng.core.me.api.networking.security.BaseActionSource;
 
 
 public interface IContainerCraftingPacket

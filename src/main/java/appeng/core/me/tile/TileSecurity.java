@@ -36,35 +36,23 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 
-import appeng.api.AEApi;
-import appeng.api.config.SecurityPermissions;
-import appeng.api.config.Settings;
-import appeng.api.config.SortDir;
-import appeng.api.config.SortOrder;
-import appeng.api.config.ViewItems;
-import appeng.api.events.LocatableEventAnnounce;
-import appeng.api.events.LocatableEventAnnounce.LocatableEvent;
-import appeng.api.features.ILocatable;
-import appeng.api.features.IPlayerRegistry;
-import appeng.api.implementations.items.IBiometricCard;
-import appeng.api.implementations.tiles.IColorableTile;
-import appeng.api.networking.GridFlags;
-import appeng.api.networking.events.MENetworkChannelsChanged;
-import appeng.api.networking.events.MENetworkEventSubscribe;
-import appeng.api.networking.events.MENetworkPowerStatusChange;
-import appeng.api.networking.events.MENetworkSecurityChange;
-import appeng.api.networking.security.ISecurityProvider;
-import appeng.api.storage.IMEInventoryHandler;
-import appeng.api.storage.IMEMonitor;
-import appeng.api.storage.ITerminalHost;
-import appeng.api.storage.MEMonitorHandler;
-import appeng.api.storage.data.IAEFluidStack;
-import appeng.api.storage.data.IAEItemStack;
-import appeng.api.util.AECableType;
-import appeng.api.util.AEColor;
-import appeng.api.util.AEPartLocation;
-import appeng.api.util.DimensionalCoord;
-import appeng.api.util.IConfigManager;
+import appeng.core.api.config.SecurityPermissions;
+import appeng.core.api.config.Settings;
+import appeng.core.api.config.SortDir;
+import appeng.core.api.config.SortOrder;
+import appeng.core.api.config.ViewItems;
+import appeng.core.api.events.LocatableEventAnnounce;
+import appeng.core.api.events.LocatableEventAnnounce.LocatableEvent;
+import appeng.core.api.features.ILocatable;
+import appeng.core.api.implementations.items.IBiometricCard;
+import appeng.core.api.implementations.tiles.IColorableTile;
+import appeng.core.api.util.AECableType;
+import appeng.core.api.util.AEColor;
+import appeng.core.api.util.AEPartLocation;
+import appeng.core.api.util.DimensionalCoord;
+import appeng.core.api.util.IConfigManager;
+import appeng.core.lib.AppEngApi;
+import appeng.core.lib.features.registries.PlayerRegistry;
 import appeng.core.lib.helpers.PlayerSecurityWrapper;
 import appeng.core.lib.tile.TileEvent;
 import appeng.core.lib.tile.events.TileEventType;
@@ -75,6 +63,18 @@ import appeng.core.lib.util.ConfigManager;
 import appeng.core.lib.util.IConfigManagerHost;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.util.item.AEItemStack;
+import appeng.core.me.api.networking.GridFlags;
+import appeng.core.me.api.networking.events.MENetworkChannelsChanged;
+import appeng.core.me.api.networking.events.MENetworkEventSubscribe;
+import appeng.core.me.api.networking.events.MENetworkPowerStatusChange;
+import appeng.core.me.api.networking.events.MENetworkSecurityChange;
+import appeng.core.me.api.networking.security.ISecurityProvider;
+import appeng.core.me.api.storage.IMEInventoryHandler;
+import appeng.core.me.api.storage.IMEMonitor;
+import appeng.core.me.api.storage.ITerminalHost;
+import appeng.core.me.api.storage.MEMonitorHandler;
+import appeng.core.me.api.storage.data.IAEFluidStack;
+import appeng.core.me.api.storage.data.IAEItemStack;
 import appeng.core.me.grid.GridAccessException;
 import appeng.core.me.grid.storage.SecurityInventory;
 
@@ -311,7 +311,7 @@ public class TileSecurity extends AENetworkTile implements ITerminalHost, IAEApp
 	@Override
 	public void readPermissions( final HashMap<Integer, EnumSet<SecurityPermissions>> playerPerms )
 	{
-		final IPlayerRegistry pr = AEApi.instance().registries().players();
+		final PlayerRegistry pr = AppEngApi.internalApi().registries().players();
 
 		// read permissions
 		for( final IAEItemStack ais : this.inventory.getStoredItems() )

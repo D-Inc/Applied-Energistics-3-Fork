@@ -35,7 +35,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import appeng.api.util.AEPartLocation;
+import appeng.core.api.util.AEPartLocation;
 import appeng.core.lib.CommonHelper;
 import appeng.core.lib.client.EffectType;
 import appeng.core.lib.helpers.AEGlassMaterial;

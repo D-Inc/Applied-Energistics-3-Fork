@@ -45,25 +45,17 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-import appeng.api.AEApi;
-import appeng.api.config.Actionable;
-import appeng.api.config.FuzzyMode;
-import appeng.api.config.Upgrades;
-import appeng.api.implementations.items.IStorageCell;
-import appeng.api.networking.security.PlayerSource;
-import appeng.api.storage.ICellInventory;
-import appeng.api.storage.ICellInventoryHandler;
-import appeng.api.storage.IMEInventory;
-import appeng.api.storage.StorageChannel;
-import appeng.api.storage.data.IAEItemStack;
-import appeng.api.storage.data.IAEStack;
-import appeng.api.storage.data.IItemList;
-import appeng.api.util.AEColor;
-import appeng.api.util.DimensionalCoord;
+import appeng.core.api.config.Actionable;
+import appeng.core.api.config.FuzzyMode;
+import appeng.core.api.config.Upgrades;
+import appeng.core.api.implementations.items.IStorageCell;
+import appeng.core.api.util.AEColor;
+import appeng.core.api.util.DimensionalCoord;
 import appeng.core.hooks.TickHandler;
 import appeng.core.hooks.TickHandler.PlayerColor;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.AELog;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.CommonHelper;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.item.powered.AEBasePoweredItem;
@@ -73,11 +65,19 @@ import appeng.core.lib.sync.network.NetworkHandler;
 import appeng.core.lib.sync.packets.PacketMatterCannon;
 import appeng.core.lib.util.LookDirection;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.networking.security.PlayerSource;
+import appeng.core.me.api.storage.ICellInventory;
+import appeng.core.me.api.storage.ICellInventoryHandler;
+import appeng.core.me.api.storage.IMEInventory;
+import appeng.core.me.api.storage.StorageChannel;
+import appeng.core.me.api.storage.data.IAEItemStack;
+import appeng.core.me.api.storage.data.IAEStack;
+import appeng.core.me.api.storage.data.IItemList;
 import appeng.core.me.grid.storage.CellInventoryHandler;
 import appeng.core.me.item.CellConfig;
 import appeng.core.me.item.CellUpgrades;
 import appeng.decorative.item.ItemPaintBall;
-import appeng.misc.tile.TilePaint;
+import appeng.miscellaneous.tile.TilePaint;
 import appeng.tools.hooks.DispenserMatterCannon;
 
 
@@ -100,7 +100,7 @@ public class ToolMassCannon extends AEBasePoweredItem implements IStorageCell
 	{
 		super.addCheckedInformation( stack, player, lines, displayMoreInfo );
 
-		final IMEInventory<IAEItemStack> cdi = AEApi.instance().registries().cell().getCellInventory( stack, null, StorageChannel.ITEMS );
+		final IMEInventory<IAEItemStack> cdi = AppEngApi.internalApi().registries().cell().getCellInventory( stack, null, StorageChannel.ITEMS );
 
 		if( cdi instanceof CellInventoryHandler )
 		{
@@ -126,10 +126,10 @@ public class ToolMassCannon extends AEBasePoweredItem implements IStorageCell
 				shots += cu.getInstalledUpgrades( Upgrades.SPEED );
 			}
 
-			final IMEInventory inv = AEApi.instance().registries().cell().getCellInventory( item, null, StorageChannel.ITEMS );
+			final IMEInventory inv = AppEngApi.internalApi().registries().cell().getCellInventory( item, null, StorageChannel.ITEMS );
 			if( inv != null )
 			{
-				final IItemList itemList = inv.getAvailableItems( AEApi.instance().storage().createItemList() );
+				final IItemList itemList = inv.getAvailableItems( AppEngApi.internalApi().storage().createItemList() );
 				IAEStack aeAmmo = itemList.getFirstItem();
 				if( aeAmmo instanceof IAEItemStack )
 				{
@@ -168,7 +168,7 @@ public class ToolMassCannon extends AEBasePoweredItem implements IStorageCell
 						final double d1 = Vec3d.yCoord;
 						final double d2 = Vec3d.zCoord;
 
-						final float penetration = AEApi.instance().registries().matterCannon().getPenetration( ammo ); // 196.96655f;
+						final float penetration = AppEngApi.internalApi().registries().matterCannon().getPenetration( ammo ); // 196.96655f;
 						if( penetration <= 0 )
 						{
 							final ItemStack type = ( (IAEItemStack) aeAmmo ).getItemStack();
@@ -294,7 +294,7 @@ public class ToolMassCannon extends AEBasePoweredItem implements IStorageCell
 				final Block whatsThere = w.getBlockState( hitPos ).getBlock();
 				if( whatsThere.isReplaceable( w, hitPos ) && w.isAirBlock( hitPos ) )
 				{
-					AEApi.instance().definitions().blocks().paint().maybeBlock().ifPresent( paintBlock -> {
+					AppEngApi.internalApi().definitions().blocks().paint().block().maybe().ifPresent( paintBlock -> {
 						w.setBlockState( hitPos, paintBlock.getDefaultState(), 3 );
 					} );
 				}
@@ -494,7 +494,7 @@ public class ToolMassCannon extends AEBasePoweredItem implements IStorageCell
 	@Override
 	public boolean isBlackListed( final ItemStack cellItem, final IAEItemStack requestedAddition )
 	{
-		final float pen = AEApi.instance().registries().matterCannon().getPenetration( requestedAddition.getItemStack() );
+		final float pen = AppEngApi.internalApi().registries().matterCannon().getPenetration( requestedAddition.getItemStack() );
 		if( pen > 0 )
 		{
 			return false;

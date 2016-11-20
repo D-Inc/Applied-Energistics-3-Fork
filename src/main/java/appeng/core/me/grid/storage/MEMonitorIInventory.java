@@ -28,27 +28,27 @@ import java.util.concurrent.ConcurrentSkipListMap;
 
 import net.minecraft.item.ItemStack;
 
-import appeng.api.AEApi;
-import appeng.api.config.AccessRestriction;
-import appeng.api.config.Actionable;
-import appeng.api.config.StorageFilter;
-import appeng.api.networking.security.BaseActionSource;
-import appeng.api.networking.ticking.TickRateModulation;
-import appeng.api.storage.IMEMonitor;
-import appeng.api.storage.IMEMonitorHandlerReceiver;
-import appeng.api.storage.StorageChannel;
-import appeng.api.storage.data.IAEItemStack;
-import appeng.api.storage.data.IItemList;
+import appeng.core.api.config.AccessRestriction;
+import appeng.core.api.config.Actionable;
+import appeng.core.api.config.StorageFilter;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.util.InventoryAdaptor;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.util.inv.ItemSlot;
+import appeng.core.me.api.networking.security.BaseActionSource;
+import appeng.core.me.api.networking.ticking.TickRateModulation;
+import appeng.core.me.api.storage.IMEMonitor;
+import appeng.core.me.api.storage.IMEMonitorHandlerReceiver;
+import appeng.core.me.api.storage.StorageChannel;
+import appeng.core.me.api.storage.data.IAEItemStack;
+import appeng.core.me.api.storage.data.IItemList;
 
 
 public class MEMonitorIInventory implements IMEMonitor<IAEItemStack>
 {
 
 	private final InventoryAdaptor adaptor;
-	private final IItemList<IAEItemStack> list = AEApi.instance().storage().createItemList();
+	private final IItemList<IAEItemStack> list = AppEngApi.internalApi().storage().createItemList();
 	private final HashMap<IMEMonitorHandlerReceiver<IAEItemStack>, Object> listeners = new HashMap<IMEMonitorHandlerReceiver<IAEItemStack>, Object>();
 	private final NavigableMap<Integer, CachedItemStack> memory;
 	private BaseActionSource mySource;
@@ -179,7 +179,7 @@ public class MEMonitorIInventory implements IMEMonitor<IAEItemStack>
 				final int newSize = ( newIS == null ? 0 : newIS.stackSize );
 				final int diff = newSize - ( oldIS == null ? 0 : oldIS.stackSize );
 
-				final IAEItemStack stack = ( old == null || old.aeStack == null ? AEApi.instance().storage().createItemStack( newIS ) : old.aeStack.copy() );
+				final IAEItemStack stack = ( old == null || old.aeStack == null ? AppEngApi.internalApi().storage().createItemStack( newIS ) : old.aeStack.copy() );
 				if( stack != null )
 				{
 					stack.setStackSize( newSize );
@@ -350,7 +350,7 @@ public class MEMonitorIInventory implements IMEMonitor<IAEItemStack>
 			else
 			{
 				this.itemStack = is.copy();
-				this.aeStack = AEApi.instance().storage().createItemStack( is );
+				this.aeStack = AppEngApi.internalApi().storage().createItemStack( is );
 			}
 		}
 	}

@@ -29,7 +29,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import appeng.api.util.AEPartLocation;
+import appeng.core.api.util.AEPartLocation;
 import appeng.core.lib.block.AEBaseTileBlock;
 import appeng.core.lib.sync.GuiBridge;
 import appeng.core.lib.util.Platform;

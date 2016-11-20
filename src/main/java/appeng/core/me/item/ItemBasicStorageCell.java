@@ -33,26 +33,26 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import appeng.api.AEApi;
-import appeng.api.config.FuzzyMode;
-import appeng.api.config.IncludeExclude;
-import appeng.api.exceptions.MissingDefinition;
-import appeng.api.implementations.items.IItemGroup;
-import appeng.api.implementations.items.IStorageCell;
-import appeng.api.implementations.items.IUpgradeModule;
-import appeng.api.storage.ICellInventory;
-import appeng.api.storage.ICellInventoryHandler;
-import appeng.api.storage.IMEInventoryHandler;
-import appeng.api.storage.StorageChannel;
-import appeng.api.storage.data.IAEItemStack;
-import appeng.api.storage.data.IItemList;
+import appeng.core.api.config.FuzzyMode;
+import appeng.core.api.config.IncludeExclude;
+import appeng.core.api.exceptions.MissingDefinition;
+import appeng.core.api.implementations.items.IItemGroup;
+import appeng.core.api.implementations.items.IStorageCell;
+import appeng.core.api.implementations.items.IUpgradeModule;
 import appeng.core.item.MaterialType;
 import appeng.core.lib.AEConfig;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.item.AEBaseItem;
 import appeng.core.lib.localization.GuiText;
 import appeng.core.lib.util.InventoryAdaptor;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.storage.ICellInventory;
+import appeng.core.me.api.storage.ICellInventoryHandler;
+import appeng.core.me.api.storage.IMEInventoryHandler;
+import appeng.core.me.api.storage.StorageChannel;
+import appeng.core.me.api.storage.data.IAEItemStack;
+import appeng.core.me.api.storage.data.IItemList;
 
 
 public final class ItemBasicStorageCell extends AEBaseItem implements IStorageCell, IItemGroup
@@ -95,7 +95,7 @@ public final class ItemBasicStorageCell extends AEBaseItem implements IStorageCe
 	@Override
 	public void addCheckedInformation( final ItemStack stack, final EntityPlayer player, final List<String> lines, final boolean displayMoreInfo )
 	{
-		final IMEInventoryHandler<?> inventory = AEApi.instance().registries().cell().getCellInventory( stack, null, StorageChannel.ITEMS );
+		final IMEInventoryHandler<?> inventory = AppEngApi.internalApi().registries().cell().getCellInventory( stack, null, StorageChannel.ITEMS );
 
 		if( inventory instanceof ICellInventoryHandler )
 		{
@@ -228,7 +228,7 @@ public final class ItemBasicStorageCell extends AEBaseItem implements IStorageCe
 			}
 
 			final InventoryPlayer playerInventory = player.inventory;
-			final IMEInventoryHandler inv = AEApi.instance().registries().cell().getCellInventory( stack, null, StorageChannel.ITEMS );
+			final IMEInventoryHandler inv = AppEngApi.internalApi().registries().cell().getCellInventory( stack, null, StorageChannel.ITEMS );
 			if( inv != null && playerInventory.getCurrentItem() == stack )
 			{
 				final InventoryAdaptor ia = InventoryAdaptor.getAdaptor( player, EnumFacing.UP );
@@ -257,8 +257,8 @@ public final class ItemBasicStorageCell extends AEBaseItem implements IStorageCe
 					}
 
 					// drop empty storage cell case
-					AEApi.instance().definitions().materials().emptyStorageCell().maybeStack( 1 ).ifPresent( is -> {
-						final ItemStack extraA = ia.addItems( is );
+					AppEngApi.internalApi().definitions().materials().emptyStorageCell().maybeStack( 1 ).ifPresent( is -> {
+						final ItemStack extraA = ia.addItems( (ItemStack) is );
 						if( extraA != null )
 						{
 							player.dropItem( extraA, false );
@@ -286,7 +286,7 @@ public final class ItemBasicStorageCell extends AEBaseItem implements IStorageCe
 	@Override
 	public ItemStack getContainerItem( final ItemStack itemStack )
 	{
-		return AEApi.instance().definitions().materials().emptyStorageCell().maybeStack( 1 ).orElseThrow( () -> new MissingDefinition( "Tried to use empty storage cells while basic storage cells are defined." ) );
+		return AppEngApi.internalApi().definitions().materials().emptyStorageCell().maybeStack( 1 ).orElseThrow( () -> new MissingDefinition( "Tried to use empty storage cells while basic storage cells are defined." ) );
 	}
 
 	@Override

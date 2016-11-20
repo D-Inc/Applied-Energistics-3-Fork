@@ -19,19 +19,19 @@
 package appeng.core.lib;
 
 
-import appeng.api.definitions.IDefinitions;
-import appeng.api.parts.IPartHelper;
 import appeng.core.lib.api.definitions.ApiBlocks;
 import appeng.core.lib.api.definitions.ApiItems;
 import appeng.core.lib.api.definitions.ApiMaterials;
 import appeng.core.lib.api.definitions.ApiParts;
 import appeng.core.lib.bootstrap.FeatureFactory;
+import appeng.core.me.api.parts.IPartHelper;
 
 
 /**
  * Internal implementation of the definitions for the API
  */
-public final class ApiDefinitions implements IDefinitions
+@Deprecated
+public final class ApiDefinitions
 {
 	private final ApiBlocks blocks;
 	private final ApiItems items;
@@ -53,25 +53,21 @@ public final class ApiDefinitions implements IDefinitions
 		return registry;
 	}
 
-	@Override
 	public ApiBlocks blocks()
 	{
 		return this.blocks;
 	}
 
-	@Override
 	public ApiItems items()
 	{
 		return this.items;
 	}
 
-	@Override
 	public ApiMaterials materials()
 	{
 		return this.materials;
 	}
 
-	@Override
 	public ApiParts parts()
 	{
 		return this.parts;

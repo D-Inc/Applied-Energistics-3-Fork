@@ -19,8 +19,8 @@
 package appeng.core.me.grid.energy;
 
 
-import appeng.api.networking.energy.IEnergyWatcher;
 import appeng.core.lib.util.ItemSorters;
+import appeng.core.me.api.networking.energy.IEnergyWatcher;
 
 
 public class EnergyThreshold implements Comparable<EnergyThreshold>

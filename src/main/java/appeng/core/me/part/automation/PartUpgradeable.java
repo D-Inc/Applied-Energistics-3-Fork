@@ -24,9 +24,9 @@ import java.util.List;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 
-import appeng.api.config.RedstoneMode;
-import appeng.api.config.Upgrades;
-import appeng.api.util.IConfigManager;
+import appeng.core.api.config.RedstoneMode;
+import appeng.core.api.config.Upgrades;
+import appeng.core.api.util.IConfigManager;
 import appeng.core.lib.tile.inventory.IAEAppEngInventory;
 import appeng.core.lib.tile.inventory.InvOperation;
 import appeng.core.lib.util.ConfigManager;

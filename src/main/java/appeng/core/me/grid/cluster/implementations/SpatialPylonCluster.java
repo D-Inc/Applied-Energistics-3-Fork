@@ -23,8 +23,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import appeng.api.networking.IGridHost;
-import appeng.api.util.DimensionalCoord;
+import appeng.core.api.util.DimensionalCoord;
+import appeng.core.me.api.networking.IGridHost;
 import appeng.core.me.grid.cluster.IAECluster;
 import appeng.core.spatial.tile.TileSpatialPylon;
 

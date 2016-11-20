@@ -28,11 +28,11 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 
-import appeng.api.AEApi;
 import appeng.api.definitions.IComparableDefinition;
-import appeng.api.definitions.IItems;
-import appeng.api.implementations.items.IMemoryCard;
-import appeng.api.implementations.items.MemoryCardMessages;
+import appeng.core.api.implementations.items.IMemoryCard;
+import appeng.core.api.implementations.items.MemoryCardMessages;
+import appeng.core.lib.AppEngApi;
+import appeng.core.lib.api.definitions.ApiItems;
 import appeng.core.lib.sync.AppEngPacket;
 import appeng.core.lib.sync.network.INetworkInfo;
 import appeng.tools.item.ToolColorApplicator;
@@ -87,7 +87,7 @@ public class PacketClick extends AppEngPacket
 	public void serverPacketData( final INetworkInfo manager, final AppEngPacket packet, final EntityPlayer player )
 	{
 		final ItemStack is = player.inventory.getCurrentItem();
-		final IItems items = AEApi.instance().definitions().items();
+		final ApiItems items = AppEngApi.internalApi().definitions().items();
 		final IComparableDefinition maybeMemoryCard = items.memoryCard();
 		final IComparableDefinition maybeColorApplicator = items.colorApplicator();
 

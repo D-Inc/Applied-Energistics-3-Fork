@@ -31,9 +31,9 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
 
-import appeng.api.AEApi;
-import appeng.api.definitions.IMaterials;
 import appeng.core.lib.AEConfig;
+import appeng.core.lib.AppEngApi;
+import appeng.core.lib.api.definitions.ApiMaterials;
 import appeng.core.lib.entity.AEBaseEntityItem;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.helpers.Reflected;
@@ -82,7 +82,7 @@ public final class EntitySingularity extends AEBaseEntityItem
 
 		final ItemStack item = this.getEntityItem();
 
-		final IMaterials materials = AEApi.instance().definitions().materials();
+		final ApiMaterials materials = AppEngApi.internalApi().definitions().materials();
 
 		if( materials.singularity().isSameAs( item ) )
 		{
@@ -130,12 +130,12 @@ public final class EntitySingularity extends AEBaseEntityItem
 								}
 
 								materials.qESingularity().maybeStack( 2 ).ifPresent( singularityStack -> {
-									final NBTTagCompound cmp = Platform.openNbtData( singularityStack );
+									final NBTTagCompound cmp = Platform.openNbtData( (ItemStack) singularityStack );
 									cmp.setLong( "freq", ( new Date() ).getTime() * 100 + ( randTickSeed ) % 100 );
 									randTickSeed++;
 									item.stackSize--;
 
-									final EntitySingularity entity = new EntitySingularity( this.worldObj, this.posX, this.posY, this.posZ, singularityStack );
+									final EntitySingularity entity = new EntitySingularity( this.worldObj, this.posX, this.posY, this.posZ, (ItemStack) singularityStack );
 									this.worldObj.spawnEntityInWorld( entity );
 								} );
 							}

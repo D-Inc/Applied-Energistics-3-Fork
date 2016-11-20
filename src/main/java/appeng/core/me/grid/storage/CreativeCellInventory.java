@@ -21,22 +21,22 @@ package appeng.core.me.grid.storage;
 
 import net.minecraft.item.ItemStack;
 
-import appeng.api.AEApi;
-import appeng.api.config.AccessRestriction;
-import appeng.api.config.Actionable;
-import appeng.api.networking.security.BaseActionSource;
-import appeng.api.storage.IMEInventoryHandler;
-import appeng.api.storage.StorageChannel;
-import appeng.api.storage.data.IAEItemStack;
-import appeng.api.storage.data.IItemList;
+import appeng.core.api.config.AccessRestriction;
+import appeng.core.api.config.Actionable;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.util.item.AEItemStack;
+import appeng.core.me.api.networking.security.BaseActionSource;
+import appeng.core.me.api.storage.IMEInventoryHandler;
+import appeng.core.me.api.storage.StorageChannel;
+import appeng.core.me.api.storage.data.IAEItemStack;
+import appeng.core.me.api.storage.data.IItemList;
 import appeng.core.me.item.CellConfig;
 
 
 public class CreativeCellInventory implements IMEInventoryHandler<IAEItemStack>
 {
 
-	private final IItemList<IAEItemStack> itemListCache = AEApi.instance().storage().createItemList();
+	private final IItemList<IAEItemStack> itemListCache = AppEngApi.internalApi().storage().createItemList();
 
 	protected CreativeCellInventory( final ItemStack o )
 	{

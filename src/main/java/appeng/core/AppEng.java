@@ -54,6 +54,7 @@ import net.minecraftforge.fml.common.discovery.ASMDataTable.ASMData;
 import net.minecraftforge.fml.common.event.FMLEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLInterModComms;
+import net.minecraftforge.fml.common.event.FMLInterModComms.IMCMessage;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerAboutToStartEvent;
@@ -63,6 +64,7 @@ import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
 import appeng.api.module.Module;
+import appeng.api.module.ModuleIMCMessageEvent;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.AELog;
 import appeng.core.lib.CommonHelper;
@@ -115,6 +117,8 @@ public final class AppEng
 	private ImmutableMap<Class<?>, ?> classModule;
 	private ImmutableList<String> moduleOrder;
 	private ImmutableMap<?, Boolean> internal;
+	private Object current;
+
 	private File configDirectory;
 
 	private AppEng()
@@ -139,6 +143,11 @@ public final class AppEng
 		return (M) classModule.get( clas );
 	}
 
+	public <M> M getCurrent()
+	{
+		return (M) current;
+	}
+
 	public File getConfigDirectory()
 	{
 		return configDirectory;
@@ -148,11 +157,27 @@ public final class AppEng
 	{
 		for( String name : moduleOrder )
 		{
-			Object module = getModule( name );
+			fireModuleEvent( name, event );
+		}
+	}
+
+	private void fireModuleEvent( Object module, final FMLEvent event )
+	{
+		if( module instanceof String )
+		{
+			module = getModule( (String) module );
+		}
+		if( module instanceof Class )
+		{
+			module = getModule( (Class) module );
+		}
+		if( module != null )
+		{
 			for( Method method : module.getClass().getDeclaredMethods() )
 			{
 				if( method.getParameterTypes().length == 1 && method.getParameterTypes()[0].isAssignableFrom( event.getClass() ) && method.getDeclaredAnnotation( Module.ModuleEventHandler.class ) != null )
 				{
+					current = module;
 					try
 					{
 						method.invoke( module, event );
@@ -161,6 +186,7 @@ public final class AppEng
 					{
 						// :(
 					}
+					current = null;
 				}
 			}
 		}
@@ -507,7 +533,10 @@ public final class AppEng
 	@EventHandler
 	private void handleIMCEvent( final FMLInterModComms.IMCEvent event )
 	{
-		fireModulesEvent( event );
+		for( IMCMessage message : event.getMessages() )
+		{
+			fireModuleEvent( message.key, new ModuleIMCMessageEvent( message ) );
+		}
 	}
 
 	@EventHandler

@@ -28,9 +28,9 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import appeng.api.implementations.guiobjects.IGuiItem;
-import appeng.api.implementations.guiobjects.IGuiItemObject;
-import appeng.api.util.AEPartLocation;
+import appeng.core.api.implementations.guiobjects.IGuiItem;
+import appeng.core.api.implementations.guiobjects.IGuiItemObject;
+import appeng.core.api.util.AEPartLocation;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.item.AEBaseItem;
 import appeng.core.lib.sync.GuiBridge;

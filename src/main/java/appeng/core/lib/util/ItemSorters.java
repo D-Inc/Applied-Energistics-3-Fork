@@ -21,9 +21,9 @@ package appeng.core.lib.util;
 
 import java.util.Comparator;
 
-import appeng.api.config.SortDir;
-import appeng.api.storage.data.IAEItemStack;
+import appeng.core.api.config.SortDir;
 import appeng.core.lib.util.item.AEItemStack;
+import appeng.core.me.api.storage.data.IAEItemStack;
 
 
 public class ItemSorters

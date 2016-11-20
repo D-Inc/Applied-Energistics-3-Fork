@@ -33,11 +33,11 @@ import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.storage.ExtendedBlockStorage;
 
-import appeng.api.AEApi;
 import appeng.api.definitions.IBlockDefinition;
-import appeng.api.util.AEPartLocation;
-import appeng.api.util.WorldCoord;
+import appeng.core.api.util.AEPartLocation;
+import appeng.core.api.util.WorldCoord;
 import appeng.core.lib.AELog;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.worlddata.WorldData;
 import appeng.core.spatial.DefaultSpatialHandler;
@@ -59,7 +59,7 @@ public class CachedPlane
 	private final LinkedList<NextTickListEntry> ticks = new LinkedList<NextTickListEntry>();
 	private final World world;
 	private final LinkedList<WorldCoord> updates = new LinkedList<WorldCoord>();
-	private final IBlockDefinition matrixFrame = AEApi.instance().definitions().blocks().matrixFrame();
+	private final IBlockDefinition matrixFrame = AppEngApi.internalApi().definitions().blocks().matrixFrame();
 	private int verticalBits;
 	private final DefaultSpatialHandler handler = new DefaultSpatialHandler();
 
@@ -380,7 +380,7 @@ public class CachedPlane
 
 		private void setBlockIDWithMetadata( final int y, final Object[] blk )
 		{
-			CachedPlane.this.matrixFrame.maybeBlock().ifPresent( matrixFrameBlock -> {
+			CachedPlane.this.matrixFrame.maybe().ifPresent( matrixFrameBlock -> {
 				if( blk[0] == matrixFrameBlock )
 				{
 					blk[0] = Platform.AIR_BLOCK;

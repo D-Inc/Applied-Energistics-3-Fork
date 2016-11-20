@@ -21,10 +21,10 @@ package appeng.core.lib.util.inv;
 
 import net.minecraft.item.ItemStack;
 
-import appeng.api.config.Actionable;
-import appeng.api.storage.IMEInventory;
-import appeng.api.storage.data.IAEItemStack;
+import appeng.core.api.config.Actionable;
 import appeng.core.lib.util.item.AEItemStack;
+import appeng.core.me.api.storage.IMEInventory;
+import appeng.core.me.api.storage.data.IAEItemStack;
 
 
 public class IMEInventoryDestination implements IInventoryDestination

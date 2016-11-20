@@ -28,9 +28,9 @@ import java.util.concurrent.ConcurrentSkipListMap;
 
 import net.minecraftforge.oredict.OreDictionary;
 
-import appeng.api.config.FuzzyMode;
-import appeng.api.storage.data.IAEItemStack;
-import appeng.api.storage.data.IItemList;
+import appeng.core.api.config.FuzzyMode;
+import appeng.core.me.api.storage.data.IAEItemStack;
+import appeng.core.me.api.storage.data.IItemList;
 
 
 public final class ItemList implements IItemList<IAEItemStack>

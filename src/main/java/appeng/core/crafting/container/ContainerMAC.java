@@ -24,10 +24,9 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-import appeng.api.config.RedstoneMode;
-import appeng.api.config.SecurityPermissions;
-import appeng.api.config.Settings;
-import appeng.api.networking.crafting.ICraftingPatternDetails;
+import appeng.core.api.config.RedstoneMode;
+import appeng.core.api.config.SecurityPermissions;
+import appeng.core.api.config.Settings;
 import appeng.core.crafting.item.ItemEncodedPattern;
 import appeng.core.crafting.tile.TileMolecularAssembler;
 import appeng.core.lib.container.ContainerUpgradeable;
@@ -37,6 +36,7 @@ import appeng.core.lib.container.slot.SlotMACPattern;
 import appeng.core.lib.container.slot.SlotOutput;
 import appeng.core.lib.container.slot.SlotRestrictedInput;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.api.networking.crafting.ICraftingPatternDetails;
 
 
 public class ContainerMAC extends ContainerUpgradeable implements IProgressProvider

@@ -19,8 +19,8 @@
 package appeng.core.me.grid;
 
 
-import appeng.api.networking.IGridNode;
-import appeng.api.networking.IGridVisitor;
+import appeng.core.me.api.networking.IGridNode;
+import appeng.core.me.api.networking.IGridVisitor;
 
 
 public class GridPropagator implements IGridVisitor

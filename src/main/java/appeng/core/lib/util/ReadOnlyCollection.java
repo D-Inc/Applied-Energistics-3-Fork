@@ -22,7 +22,7 @@ package appeng.core.lib.util;
 import java.util.Collection;
 import java.util.Iterator;
 
-import appeng.api.util.IReadOnlyCollection;
+import appeng.core.api.util.IReadOnlyCollection;
 
 
 public class ReadOnlyCollection<T> implements IReadOnlyCollection<T>

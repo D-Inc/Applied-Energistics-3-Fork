@@ -33,7 +33,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import appeng.api.implementations.tiles.ICrankable;
+import appeng.core.api.implementations.tiles.ICrankable;
 import appeng.core.lib.helpers.ICustomCollision;
 import appeng.core.lib.tile.AEBaseTile;
 import appeng.core.lib.tile.TileEvent;
