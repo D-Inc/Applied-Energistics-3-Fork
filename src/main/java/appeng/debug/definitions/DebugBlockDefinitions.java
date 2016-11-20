@@ -2,16 +2,14 @@
 package appeng.debug.definitions;
 
 
+import appeng.debug.*;
 import net.minecraft.block.Block;
 
 import appeng.api.definitions.IBlockDefinition;
 import appeng.core.lib.bootstrap.FeatureFactory;
 import appeng.core.lib.definitions.Definitions;
 import appeng.core.lib.features.AEFeature;
-import appeng.debug.BlockChunkloader;
-import appeng.debug.BlockCubeGenerator;
-import appeng.debug.BlockItemGen;
-import appeng.debug.BlockPhantomNode;
+import net.minecraft.util.ResourceLocation;
 
 
 public class DebugBlockDefinitions extends Definitions<Block, IBlockDefinition<Block>>
@@ -24,11 +22,10 @@ public class DebugBlockDefinitions extends Definitions<Block, IBlockDefinition<B
 
 	public DebugBlockDefinitions( FeatureFactory registry )
 	{
-		this.itemGen = registry.block( "debug_item_gen", new BlockItemGen() ).features( AEFeature.UnsupportedDeveloperTools, AEFeature.Creative ).build();
-		this.chunkLoader = registry.block( "debug_chunk_loader", new BlockChunkloader() ).features( AEFeature.UnsupportedDeveloperTools, AEFeature.Creative ).build();
-		this.phantomNode = registry.block( "debug_phantom_node", new BlockPhantomNode() ).features( AEFeature.UnsupportedDeveloperTools, AEFeature.Creative ).build();
-		this.cubeGenerator = registry.block( "debug_cube_gen", new BlockCubeGenerator() ).features( AEFeature.UnsupportedDeveloperTools, AEFeature.Creative ).build();
-		
+		this.itemGen = registry.block( new ResourceLocation( AppEngDebug.MODID, "debug_item_gen"), new BlockItemGen() ).features( AEFeature.UnsupportedDeveloperTools, AEFeature.Creative ).createDefaultItemBlock().build();
+		this.chunkLoader = registry.block( new ResourceLocation( AppEngDebug.MODID, "debug_chunk_loader" ), new BlockChunkloader() ).features( AEFeature.UnsupportedDeveloperTools, AEFeature.Creative ).createDefaultItemBlock().build();
+		this.phantomNode = registry.block( new ResourceLocation( AppEngDebug.MODID, "debug_phantom_node" ), new BlockPhantomNode() ).features( AEFeature.UnsupportedDeveloperTools, AEFeature.Creative ).createDefaultItemBlock().build();
+		this.cubeGenerator = registry.block( new ResourceLocation( AppEngDebug.MODID, "debug_cube_gen" ), new BlockCubeGenerator() ).features( AEFeature.UnsupportedDeveloperTools, AEFeature.Creative ).createDefaultItemBlock().build();
 		init();
 	}
 

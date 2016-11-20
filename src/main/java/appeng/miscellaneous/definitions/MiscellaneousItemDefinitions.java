@@ -15,7 +15,7 @@ public class MiscellaneousItemDefinitions extends Definitions<Item, IItemDefinit
 
 	public MiscellaneousItemDefinitions( FeatureFactory registry )
 	{
-		init();
+		init( registry.buildDefaultItemBlocks() );
 	}
 
 }

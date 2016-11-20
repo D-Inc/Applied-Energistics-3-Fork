@@ -2,6 +2,7 @@
 package appeng.decorative.definitions;
 
 
+import appeng.decorative.AppEngDecorative;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 
@@ -21,16 +22,15 @@ public class DecorativeItemDefinitions extends Definitions<Item, IItemDefinition
 {
 
 	private final IItemDefinition paintBall;
-	
 	private final IItemDefinition facade;
 
 	public DecorativeItemDefinitions( FeatureFactory registry )
 	{
 		this.paintBall = registry.item( new ResourceLocation( AppEng.MOD_ID, "paint_ball" ), new ItemPaintBall() ).features( AEFeature.PaintBalls ).rendering( new ItemPaintBallRendering() ).build();
 		
-		this.facade = registry.item( "facade", new ItemFacade() ).features( AEFeature.Facades ).creativeTab( CreativeTabFacade.instance ).build();
+		this.facade = registry.item( new ResourceLocation( AppEngDecorative.MODID, "facade" ), new ItemFacade() ).features( AEFeature.Facades ).creativeTab( CreativeTabFacade.instance ).build();
 		
-		init();
+		init( registry.buildDefaultItemBlocks() );
 	}
 
 }

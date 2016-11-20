@@ -33,7 +33,7 @@ import net.minecraft.world.World;
 
 import appeng.core.lib.block.AEBaseTileBlock;
 import appeng.core.lib.helpers.ICustomCollision;
-import appeng.tools.tile.TileSkyCompass;
+import appeng.miscellaneous.tile.TileSkyCompass;
 
 
 public class BlockSkyCompass extends AEBaseTileBlock implements ICustomCollision
