@@ -27,7 +27,7 @@ public class CraftingItemDefinitions extends Definitions<Item, IItemDefinition<I
 
 	public CraftingItemDefinitions( FeatureFactory registry )
 	{
-		this.encodedPattern = registry.item( new ResourceLocation( AppEng.MOD_NAME, "encoded_pattern" ), new ItemEncodedPattern() ).build();
+		this.encodedPattern = registry.item( new ResourceLocation( AppEng.NAME, "encoded_pattern" ), new ItemEncodedPattern() ).build();
 		init( registry.buildDefaultItemBlocks() );
 	}
 

@@ -50,7 +50,7 @@ public class AppEngNullInventory implements IInventory
 	}
 
 	@Override
-	public ItemStack decrStackSize( final int slot, final int qty )
+	public ItemStack decStackSize( final int slot, final int qty )
 	{
 		return null;
 	}

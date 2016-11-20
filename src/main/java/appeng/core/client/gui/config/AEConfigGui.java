@@ -37,7 +37,7 @@ public class AEConfigGui extends GuiConfig
 
 	public AEConfigGui( final GuiScreen parent )
 	{
-		super( parent, getConfigElements(), AppEng.MOD_ID, false, false, GuiConfig.getAbridgedConfigPath( AEConfig.instance.getFilePath() ) );
+		super( parent, getConfigElements(), AppEng.MODID, false, false, GuiConfig.getAbridgedConfigPath( AEConfig.instance.getFilePath() ) );
 	}
 
 	private static List<IConfigElement> getConfigElements()

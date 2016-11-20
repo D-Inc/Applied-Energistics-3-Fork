@@ -181,7 +181,7 @@ public final class VersionChecker implements Runnable
 		if( Loader.isModLoaded( "VersionChecker" ) )
 		{
 			final NBTTagCompound versionInf = new NBTTagCompound();
-			versionInf.setString( "modDisplayName", AppEng.MOD_NAME );
+			versionInf.setString( "modDisplayName", AppEng.NAME );
 			versionInf.setString( "oldVersion", modFormatted );
 			versionInf.setString( "newVersion", ghFormatted );
 			versionInf.setString( "updateUrl", "http://ae-mod.info/builds/appliedenergistics2-" + ghFormatted + ".jar" );

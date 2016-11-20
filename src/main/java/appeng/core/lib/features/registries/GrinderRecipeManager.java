@@ -197,7 +197,7 @@ public final class GrinderRecipeManager implements IOreListener
 			if( ratio > 1 )
 			{
 				final ItemStack extra = is.copy();
-				extra.stackSize = ratio - 1;
+				extra.func_190920_e(ratio - 1);
 				this.addRecipe( item, is, extra, (float) ( AEConfig.instance.oreDoublePercentage / 100.0 ), 8 );
 			}
 			else
@@ -244,12 +244,12 @@ public final class GrinderRecipeManager implements IOreListener
 			if( name.equals( d.getValue() ) )
 			{
 				final ItemStack is = item.copy();
-				is.stackSize = 1;
+				is.func_190920_e(1);
 				final int ratio = this.getDustToOreRatio( name );
 				if( ratio > 1 )
 				{
 					final ItemStack extra = is.copy();
-					extra.stackSize = ratio - 1;
+					extra.func_190920_e(ratio - 1);
 					this.addRecipe( d.getKey(), is, extra, (float) ( AEConfig.instance.oreDoublePercentage / 100.0 ), 8 );
 				}
 				else

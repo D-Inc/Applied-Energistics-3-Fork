@@ -118,7 +118,7 @@ public final class EntityChargedQuartz extends AEBaseEntityItem
 				if( e instanceof EntityItem && !e.isDead )
 				{
 					final ItemStack other = ( (EntityItem) e ).getEntityItem();
-					if( other != null && other.stackSize > 0 )
+					if( other != null && other.func_190916_E() > 0 )
 					{
 						if( Platform.isSameItem( other, new ItemStack( Items.REDSTONE ) ) )
 						{
@@ -135,21 +135,21 @@ public final class EntityChargedQuartz extends AEBaseEntityItem
 
 			if( redstone != null && netherQuartz != null )
 			{
-				this.getEntityItem().stackSize--;
-				redstone.getEntityItem().stackSize--;
-				netherQuartz.getEntityItem().stackSize--;
+				this.getEntityItem().func_190918_g( 1 );
+				redstone.getEntityItem().func_190918_g(1);
+				netherQuartz.getEntityItem().func_190918_g(1);
 
-				if( this.getEntityItem().stackSize <= 0 )
+				if( this.getEntityItem().func_190916_E() <= 0 )
 				{
 					this.setDead();
 				}
 
-				if( redstone.getEntityItem().stackSize <= 0 )
+				if( redstone.getEntityItem().func_190916_E() <= 0 )
 				{
 					redstone.setDead();
 				}
 
-				if( netherQuartz.getEntityItem().stackSize <= 0 )
+				if( netherQuartz.getEntityItem().func_190916_E() <= 0 )
 				{
 					netherQuartz.setDead();
 				}

@@ -241,7 +241,7 @@ public class PartCableAnchor implements IPart
 	@SideOnly( Side.CLIENT )
 	public List<BakedQuad> getOrBakeQuads( BakingPipeline<BakedQuad, BakedQuad> rotatingPipeline, IBlockState state, EnumFacing side, long rand )
 	{
-		return rotatingPipeline.pipe( ModelsCache.INSTANCE.getOrLoadBakedModel( new ResourceLocation( AppEng.MOD_ID, "part/cable_anchor" ) ).getQuads( state, side, rand ), null, state, mySide.getFacing(), rand );
+		return rotatingPipeline.pipe( ModelsCache.INSTANCE.getOrLoadBakedModel( new ResourceLocation( AppEng.MODID, "part/cable_anchor" ) ).getQuads( state, side, rand ), null, state, mySide.getFacing(), rand );
 	}
 
 }

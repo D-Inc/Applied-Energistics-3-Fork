@@ -21,6 +21,6 @@ package appeng.core.lib.tile.inventory;
 
 public enum InvOperation
 {
-	decreaseStackSize, setInventorySlotContents, markDirty
+	decreasestackSize, setInventorySlotContents, markDirty
 
 }

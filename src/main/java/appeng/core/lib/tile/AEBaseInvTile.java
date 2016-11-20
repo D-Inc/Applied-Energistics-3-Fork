@@ -54,7 +54,7 @@ public abstract class AEBaseInvTile extends AEBaseTile implements ISidedInventor
 		for( int x = 0; x < inv.getSizeInventory(); x++ )
 		{
 			final NBTTagCompound item = opt.getCompoundTag( "item" + x );
-			inv.setInventorySlotContents( x, ItemStack.loadItemStackFromNBT( item ) );
+			inv.setInventorySlotContents( x, new ItemStack( item ) );
 		}
 	}
 
@@ -91,9 +91,9 @@ public abstract class AEBaseInvTile extends AEBaseTile implements ISidedInventor
 	}
 
 	@Override
-	public ItemStack decrStackSize( final int i, final int j )
+	public ItemStack decStackSize( final int i, final int j )
 	{
-		return this.getInternalInventory().decrStackSize( i, j );
+		return this.getInternalInventory().decStackSize( i, j );
 	}
 
 	@Override

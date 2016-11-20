@@ -23,8 +23,8 @@ public class CoreItemDefinitions extends Definitions<Item, IItemDefinition<Item>
 
 	public CoreItemDefinitions( FeatureFactory registry )
 	{
-		this.crystalSeed = registry.item( new ResourceLocation( AppEng.MOD_NAME, "crystal_seed" ), new ItemCrystalSeed() ).rendering( new ItemCrystalSeedRendering() ).build();
-		this.multiItem = registry.item( new ResourceLocation( AppEng.MOD_NAME, "multi_tem" ), new ItemMultiItem() ).build();
+		this.crystalSeed = registry.item( new ResourceLocation( AppEng.NAME, "crystal_seed" ), new ItemCrystalSeed() ).rendering( new ItemCrystalSeedRendering() ).build();
+		this.multiItem = registry.item( new ResourceLocation( AppEng.NAME, "multi_tem" ), new ItemMultiItem() ).build();
 		init( registry.buildDefaultItemBlocks() );
 	}
 

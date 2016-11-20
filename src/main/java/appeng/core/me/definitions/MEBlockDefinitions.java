@@ -65,7 +65,7 @@ public class MEBlockDefinitions extends Definitions<Block, IBlockDefinition<Bloc
 
 	public MEBlockDefinitions( FeatureFactory registry )
 	{
-		this.multiPart = registry.block( new ResourceLocation( AppEng.MOD_ID, "multipart_block" ), new BlockCableBus() ).rendering( new BlockRenderingCustomizer(){
+		this.multiPart = registry.block( new ResourceLocation( AppEng.MODID, "multipart_block" ), new BlockCableBus() ).rendering( new BlockRenderingCustomizer(){
 			@Override
 			@SideOnly( Side.CLIENT )
 			public void customize( IBlockRendering rendering, IItemRendering itemRendering )
@@ -74,24 +74,24 @@ public class MEBlockDefinitions extends Definitions<Block, IBlockDefinition<Bloc
 			}
 		} ).createDefaultItemBlock().build();
 		
-		this.wirelessAccessPoint = registry.block( new ResourceLocation( AppEng.MOD_ID, "wireless_access_point" ), new BlockWireless() ).features( AEFeature.WirelessAccessTerminal ).createDefaultItemBlock().build();
+		this.wirelessAccessPoint = registry.block( new ResourceLocation( AppEng.MODID, "wireless_access_point" ), new BlockWireless() ).features( AEFeature.WirelessAccessTerminal ).createDefaultItemBlock().build();
 
-		this.securityStation = registry.block( new ResourceLocation( AppEng.MOD_ID, "security_station" ), new BlockSecurity() ).features( AEFeature.Security ).createDefaultItemBlock().build();
-		this.quantumRing = registry.block( new ResourceLocation( AppEng.MOD_ID, "quantum_ring" ), new BlockQuantumRing() ).features( AEFeature.QuantumNetworkBridge ).createDefaultItemBlock().build();
-		this.quantumLink = registry.block( new ResourceLocation( AppEng.MOD_ID, "quantum_link" ), new BlockQuantumLinkChamber() ).features( AEFeature.QuantumNetworkBridge ).createDefaultItemBlock().build();
+		this.securityStation = registry.block( new ResourceLocation( AppEng.MODID, "security_station" ), new BlockSecurity() ).features( AEFeature.Security ).createDefaultItemBlock().build();
+		this.quantumRing = registry.block( new ResourceLocation( AppEng.MODID, "quantum_ring" ), new BlockQuantumRing() ).features( AEFeature.QuantumNetworkBridge ).createDefaultItemBlock().build();
+		this.quantumLink = registry.block( new ResourceLocation( AppEng.MODID, "quantum_link" ), new BlockQuantumLinkChamber() ).features( AEFeature.QuantumNetworkBridge ).createDefaultItemBlock().build();
 		
-		this.controller = registry.block( new ResourceLocation( AppEng.MOD_ID, "controller" ), new BlockController() ).features( AEFeature.Channels ).createDefaultItemBlock().build();
-		this.drive = registry.block( new ResourceLocation( AppEng.MOD_ID, "drive" ), new BlockDrive() ).features( AEFeature.StorageCells, AEFeature.MEDrive ).createDefaultItemBlock().build();
-		this.chest = registry.block( new ResourceLocation( AppEng.MOD_ID, "chest" ), new BlockChest() ).features( AEFeature.StorageCells, AEFeature.MEChest ).createDefaultItemBlock().build();
-		this.iface = registry.block( new ResourceLocation( AppEng.MOD_ID, "interface" ), new BlockInterface() ).createDefaultItemBlock().build();
-		this.cellWorkbench = registry.block( new ResourceLocation( AppEng.MOD_ID, "cell_workbench" ), new BlockCellWorkbench() ).features( AEFeature.StorageCells ).createDefaultItemBlock().build();
-		this.iOPort = registry.block( new ResourceLocation( AppEng.MOD_ID, "ioport" ), new BlockIOPort() ).features( AEFeature.StorageCells, AEFeature.IOPort ).createDefaultItemBlock().build();
-		this.condenser = registry.block( new ResourceLocation( AppEng.MOD_ID, "condenser" ), new BlockCondenser() ).createDefaultItemBlock().build();
-		this.energyAcceptor = registry.block( new ResourceLocation( AppEng.MOD_ID, "energy_acceptor" ), new BlockEnergyAcceptor() ).createDefaultItemBlock().build();
+		this.controller = registry.block( new ResourceLocation( AppEng.MODID, "controller" ), new BlockController() ).features( AEFeature.Channels ).createDefaultItemBlock().build();
+		this.drive = registry.block( new ResourceLocation( AppEng.MODID, "drive" ), new BlockDrive() ).features( AEFeature.StorageCells, AEFeature.MEDrive ).createDefaultItemBlock().build();
+		this.chest = registry.block( new ResourceLocation( AppEng.MODID, "chest" ), new BlockChest() ).features( AEFeature.StorageCells, AEFeature.MEChest ).createDefaultItemBlock().build();
+		this.iface = registry.block( new ResourceLocation( AppEng.MODID, "interface" ), new BlockInterface() ).createDefaultItemBlock().build();
+		this.cellWorkbench = registry.block( new ResourceLocation( AppEng.MODID, "cell_workbench" ), new BlockCellWorkbench() ).features( AEFeature.StorageCells ).createDefaultItemBlock().build();
+		this.iOPort = registry.block( new ResourceLocation( AppEng.MODID, "ioport" ), new BlockIOPort() ).features( AEFeature.StorageCells, AEFeature.IOPort ).createDefaultItemBlock().build();
+		this.condenser = registry.block( new ResourceLocation( AppEng.MODID, "condenser" ), new BlockCondenser() ).createDefaultItemBlock().build();
+		this.energyAcceptor = registry.block( new ResourceLocation( AppEng.MODID, "energy_acceptor" ), new BlockEnergyAcceptor() ).createDefaultItemBlock().build();
 		
-		this.energyCell = registry.block( new ResourceLocation( AppEng.MOD_ID, "energy_cell" ), new BlockEnergyCell() ).withItemBlock( AEBaseItemBlockChargeable::new ).rendering( new BlockEnergyCellRendering( new ResourceLocation( AppEng.MOD_ID, "energy_cell" ) ) ).build();
-		this.energyCellDense = registry.block( new ResourceLocation( AppEng.MOD_ID, "dense_energy_cell" ), new BlockDenseEnergyCell() ).features( AEFeature.DenseEnergyCells ).withItemBlock( AEBaseItemBlockChargeable::new ).rendering( new BlockEnergyCellRendering( new ResourceLocation( AppEng.MOD_ID, "dense_energy_cell" ) ) ).build();
-		this.energyCellCreative = registry.block( new ResourceLocation( AppEng.MOD_ID, "creative_energy_cell" ), new BlockCreativeEnergyCell() ).features( AEFeature.Creative ).withItemBlock( AEBaseItemBlockChargeable::new ).build();
+		this.energyCell = registry.block( new ResourceLocation( AppEng.MODID, "energy_cell" ), new BlockEnergyCell() ).withItemBlock( AEBaseItemBlockChargeable::new ).rendering( new BlockEnergyCellRendering( new ResourceLocation( AppEng.MODID, "energy_cell" ) ) ).build();
+		this.energyCellDense = registry.block( new ResourceLocation( AppEng.MODID, "dense_energy_cell" ), new BlockDenseEnergyCell() ).features( AEFeature.DenseEnergyCells ).withItemBlock( AEBaseItemBlockChargeable::new ).rendering( new BlockEnergyCellRendering( new ResourceLocation( AppEng.MODID, "dense_energy_cell" ) ) ).build();
+		this.energyCellCreative = registry.block( new ResourceLocation( AppEng.MODID, "creative_energy_cell" ), new BlockCreativeEnergyCell() ).features( AEFeature.Creative ).withItemBlock( AEBaseItemBlockChargeable::new ).build();
 
 		init();
 	}

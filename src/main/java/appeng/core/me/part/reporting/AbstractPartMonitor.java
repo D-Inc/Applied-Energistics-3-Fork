@@ -99,7 +99,7 @@ public abstract class AbstractPartMonitor extends AbstractPartDisplay implements
 		this.isLocked = data.getBoolean( "isLocked" );
 
 		final NBTTagCompound myItem = data.getCompoundTag( "configuredItem" );
-		this.configuredItem = AEItemStack.loadItemStackFromNBT( myItem );
+		this.configuredItem = AEnew ItemStack( myItem );
 	}
 
 	@Override
@@ -344,12 +344,12 @@ public abstract class AbstractPartMonitor extends AbstractPartDisplay implements
 		GL11.glScalef( 1.0f / 62.0f, 1.0f / 62.0f, 1.0f / 62.0f );
 
 		final long stackSize = ais.getStackSize();
-		final String renderedStackSize = NUMBER_CONVERTER.toWideReadableForm( stackSize );
+		final String renderedstackSize = NUMBER_CONVERTER.toWideReadableForm( stackSize );
 
 		final FontRenderer fr = Minecraft.getMinecraft().fontRendererObj;
-		final int width = fr.getStringWidth( renderedStackSize );
+		final int width = fr.getStringWidth( renderedstackSize );
 		GL11.glTranslatef( -0.5f * width, 0.0f, -1.0f );
-		fr.drawString( renderedStackSize, 0, 0, 0 );
+		fr.drawString( renderedstackSize, 0, 0, 0 );
 
 		// GL11.glPopAttrib();
 	}

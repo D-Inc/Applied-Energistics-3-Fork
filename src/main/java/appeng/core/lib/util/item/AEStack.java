@@ -113,7 +113,7 @@ public abstract class AEStack<StackType extends IAEStack> implements IAEStack<St
 	}
 
 	@Override
-	public void incStackSize( final long i )
+	public void incstackSize( final long i )
 	{
 		this.stackSize += i;
 	}

@@ -121,7 +121,7 @@ public class AppEngInternalAEInventory implements IInventory, Iterable<ItemStack
 
 				if( c != null )
 				{
-					this.inv[x] = AEItemStack.loadItemStackFromNBT( c );
+					this.inv[x] = AEnew ItemStack( c );
 				}
 			}
 			catch( final Exception e )
@@ -149,14 +149,14 @@ public class AppEngInternalAEInventory implements IInventory, Iterable<ItemStack
 	}
 
 	@Override
-	public ItemStack decrStackSize( final int slot, final int qty )
+	public ItemStack decStackSize( final int slot, final int qty )
 	{
 		if( this.inv[slot] != null )
 		{
 			final ItemStack split = this.getStackInSlot( slot );
 			ItemStack ns = null;
 
-			if( qty >= split.stackSize )
+			if( qty >= split.func_190916_E() )
 			{
 				ns = this.getStackInSlot( slot );
 				this.inv[slot] = null;
@@ -168,7 +168,7 @@ public class AppEngInternalAEInventory implements IInventory, Iterable<ItemStack
 
 			if( this.te != null && Platform.isServer() )
 			{
-				this.te.onChangeInventory( this, slot, InvOperation.decreaseStackSize, ns, null );
+				this.te.onChangeInventory( this, slot, InvOperation.decreasestackSize, ns, null );
 			}
 
 			return ns;
@@ -196,16 +196,16 @@ public class AppEngInternalAEInventory implements IInventory, Iterable<ItemStack
 
 			if( oldStack != null && newItemStack != null && Platform.isSameItem( oldStack, newItemStack ) )
 			{
-				if( oldStack.stackSize > newItemStack.stackSize )
+				if( oldStack.func_190916_E() > newItemStack.func_190916_E() )
 				{
 					removed = removed.copy();
-					removed.stackSize -= newItemStack.stackSize;
+					removed.stackSize -= newItemStack.func_190916_E();
 					added = null;
 				}
-				else if( oldStack.stackSize < newItemStack.stackSize )
+				else if( oldStack.func_190916_E() < newItemStack.func_190916_E() )
 				{
 					added = added.copy();
-					added.stackSize -= oldStack.stackSize;
+					added.stackSize -= oldStack.func_190916_E();
 					removed = null;
 				}
 				else

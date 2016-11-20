@@ -32,13 +32,13 @@ import appeng.decorative.api.IDecorative;
 
 
 @Module( IDecorative.NAME )
-@Mod( modid = AppEngDecorative.MODID, name = IDecorative.NAME, version = AEConfig.VERSION, dependencies = "required-after:" + AppEng.MOD_ID, acceptedMinecraftVersions = ForgeVersion.mcVersion )
+@Mod( modid = AppEngDecorative.MODID, name = IDecorative.NAME, version = AEConfig.VERSION, dependencies = "required-after:" + AppEng.MODID, acceptedMinecraftVersions = ForgeVersion.mcVersion )
 public class AppEngDecorative implements IDecorative
 {
 
-	public static final String MODID = AppEng.MOD_ID + "|" + IDecorative.NAME;
+	public static final String MODID = AppEng.MODID + "|" + IDecorative.NAME;
 
-	public static final String MODNAME = AppEng.MOD_NAME + " | " + IDecorative.NAME;
+	public static final String MODNAME = AppEng.NAME + " | " + IDecorative.NAME;
 
 	private CraftingItemDefinitions itemDefinitions;
 	private CraftingBlockDefinitions blockDefinitions;

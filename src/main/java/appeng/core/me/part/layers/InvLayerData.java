@@ -45,11 +45,11 @@ public class InvLayerData
 		this.slots = c;
 	}
 
-	public ItemStack decreaseStackSize( final int slot, final int amount )
+	public ItemStack decreasestackSize( final int slot, final int amount )
 	{
 		if( this.isSlotValid( slot ) )
 		{
-			return this.slots.get( slot ).decreaseStackSize( amount );
+			return this.slots.get( slot ).decreasestackSize( amount );
 		}
 
 		return null;

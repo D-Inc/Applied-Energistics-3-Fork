@@ -45,7 +45,7 @@ public class AEItemResolver implements ISubItemResolver
 	public Object resolveItemByName( final String nameSpace, final String itemName )
 	{
 
-		if( nameSpace.equals( AppEng.MOD_ID ) )
+		if( nameSpace.equals( AppEng.MODID ) )
 		{
 			final ApiDefinitions definitions = AppEngApi.internalApi().definitions();
 			final ApiItems items = definitions.items();

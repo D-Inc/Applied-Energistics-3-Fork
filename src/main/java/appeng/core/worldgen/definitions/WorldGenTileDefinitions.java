@@ -21,7 +21,7 @@ public class WorldGenTileDefinitions extends Definitions<Class<? extends TileEnt
 
 	public WorldGenTileDefinitions( FeatureFactory registry )
 	{
-		skyStoneChest = registry.tile( new ResourceLocation( AppEng.MOD_ID, "skystone_chest" ), TileSkyChest.class ).features( AEFeature.SkyStoneChests ).build();
+		skyStoneChest = registry.tile( new ResourceLocation( AppEng.MODID, "skystone_chest" ), TileSkyChest.class ).features( AEFeature.SkyStoneChests ).build();
 		init();
 	}
 

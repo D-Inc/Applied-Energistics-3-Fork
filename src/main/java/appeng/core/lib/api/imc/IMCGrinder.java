@@ -72,8 +72,8 @@ public class IMCGrinder implements IIMCProcessor
 		final NBTTagCompound inTag = (NBTTagCompound) msg.getTag( "in" );
 		final NBTTagCompound outTag = (NBTTagCompound) msg.getTag( "out" );
 
-		final ItemStack in = ItemStack.loadItemStackFromNBT( inTag );
-		final ItemStack out = ItemStack.loadItemStackFromNBT( outTag );
+		final ItemStack in = new ItemStack( inTag );
+		final ItemStack out = new ItemStack( outTag );
 
 		final int turns = msg.getInteger( "turns" );
 
@@ -90,7 +90,7 @@ public class IMCGrinder implements IIMCProcessor
 		if( msg.hasKey( "optional" ) )
 		{
 			final NBTTagCompound optionalTag = (NBTTagCompound) msg.getTag( "optional" );
-			final ItemStack optional = ItemStack.loadItemStackFromNBT( optionalTag );
+			final ItemStack optional = new ItemStack( optionalTag );
 
 			if( optional == null )
 			{

@@ -45,7 +45,7 @@ public class ModelOverrideComponent implements PreInitComponent
 
 		for( ModelResourceLocation location : keys )
 		{
-			if( !location.getResourceDomain().equals( AppEng.MOD_ID ) )
+			if( !location.getResourceDomain().equals( AppEng.MODID ) )
 			{
 				continue;
 			}

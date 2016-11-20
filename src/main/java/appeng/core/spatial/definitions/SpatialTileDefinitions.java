@@ -25,8 +25,8 @@ public class SpatialTileDefinitions extends Definitions<Class<? extends TileEnti
 
 	public SpatialTileDefinitions( FeatureFactory registry )
 	{
-		this.spatialPylon = registry.tile( new ResourceLocation( AppEng.MOD_ID, "spatial_pylon" ), TileSpatialPylon.class ).features( AEFeature.SpatialIO ).build();
-		this.spatialIOPort = registry.tile( new ResourceLocation( AppEng.MOD_ID, "spatial_ioport" ), TileSpatialIOPort.class ).features( AEFeature.SpatialIO ).build();
+		this.spatialPylon = registry.tile( new ResourceLocation( AppEng.MODID, "spatial_pylon" ), TileSpatialPylon.class ).features( AEFeature.SpatialIO ).build();
+		this.spatialIOPort = registry.tile( new ResourceLocation( AppEng.MODID, "spatial_ioport" ), TileSpatialIOPort.class ).features( AEFeature.SpatialIO ).build();
 		
 		init();
 	}

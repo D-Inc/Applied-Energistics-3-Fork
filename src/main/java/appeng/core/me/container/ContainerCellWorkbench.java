@@ -279,10 +279,10 @@ public class ContainerCellWorkbench extends ContainerUpgradeable
 		}
 
 		@Override
-		public ItemStack decrStackSize( final int i, final int j )
+		public ItemStack decStackSize( final int i, final int j )
 		{
 			final IInventory inv = ContainerCellWorkbench.this.getCellUpgradeInventory();
-			final ItemStack is = inv.decrStackSize( i, j );
+			final ItemStack is = inv.decStackSize( i, j );
 			inv.markDirty();
 			return is;
 		}

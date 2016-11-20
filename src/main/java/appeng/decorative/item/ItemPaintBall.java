@@ -116,7 +116,7 @@ public class ItemPaintBall extends AEBaseItem implements IStateItem
 	}
 
 	@Override
-	protected void getCheckedSubItems( final Item sameItem, final CreativeTabs creativeTab, final List<ItemStack> itemStacks )
+	protected void getCheckedSubItems( final Item sameItem, final CreativeTabs creativeTab, final NonNullList<ItemStack> itemStacks )
 	{
 		for( final AEColor c : AEColor.VALID_COLORS )
 		{

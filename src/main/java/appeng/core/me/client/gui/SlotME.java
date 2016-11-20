@@ -91,7 +91,7 @@ public class SlotME extends Slot
 	}
 
 	@Override
-	public ItemStack decrStackSize( final int par1 )
+	public ItemStack decStackSize( final int par1 )
 	{
 		return null;
 	}

@@ -83,7 +83,7 @@ public class TileItemGen extends AEBaseTile implements IInventory
 	}
 
 	@Override
-	public ItemStack decrStackSize( final int i, final int j )
+	public ItemStack decStackSize( final int i, final int j )
 	{
 		final ItemStack a = POSSIBLE_ITEMS.poll();
 		final ItemStack out = a.copy();

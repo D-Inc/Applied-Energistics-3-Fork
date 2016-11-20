@@ -766,7 +766,7 @@ public class Platform
 			{
 				if( i != null )
 				{
-					if( i.stackSize > 0 )
+					if( i.func_190916_E() > 0 )
 					{
 						final double offset_x = ( getRandomInt() % 32 - 16 ) / 82;
 						final double offset_y = ( getRandomInt() % 32 - 16 ) / 82;
@@ -1976,7 +1976,7 @@ public class Platform
 					if( ( Platform.isSameItemType( providedTemplate, sh ) || ae_req.sameOre( x ) ) && !Platform.isSameItem( sh, output ) )
 					{ // Platform.isSameItemType( sh, providedTemplate )
 						final ItemStack cp = Platform.cloneItemStack( sh );
-						cp.stackSize = 1;
+						cp.func_190920_e(1);
 						ci.setInventorySlotContents( slot, cp );
 						if( r.matches( ci, w ) && Platform.isSameItem( r.getCraftingResult( ci ), output ) )
 						{
@@ -2033,7 +2033,7 @@ public class Platform
 		final Item i = stackInSlot.getItem();
 		if( i == null || !i.hasContainerItem( stackInSlot ) )
 		{
-			if( stackInSlot.stackSize > 1 )
+			if( stackInSlot.func_190916_E() > 1 )
 			{
 				stackInSlot.stackSize--;
 				return stackInSlot;

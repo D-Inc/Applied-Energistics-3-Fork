@@ -359,7 +359,7 @@ public final class AEConfig extends Configuration implements IConfigurableObject
 	@SubscribeEvent
 	public void onConfigChanged( final ConfigChangedEvent.OnConfigChangedEvent eventArgs )
 	{
-		if( eventArgs.getModID().equals( AppEng.MOD_ID ) )
+		if( eventArgs.getModID().equals( AppEng.MODID ) )
 		{
 			this.clientSync();
 		}

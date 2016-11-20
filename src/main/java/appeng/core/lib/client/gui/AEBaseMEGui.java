@@ -81,10 +81,10 @@ public abstract class AEBaseMEGui extends AEBaseGui
 						currentToolTip.add( "\u00a77" + format );
 					}
 				}
-				else if( stack.stackSize > BigNumber || ( stack.stackSize > 1 && stack.isItemDamaged() ) )
+				else if( stack.func_190916_E() > BigNumber || ( stack.func_190916_E() > 1 && stack.isItemDamaged() ) )
 				{
 					final String local = ButtonToolTips.ItemsStored.getLocal();
-					final String formattedAmount = NumberFormat.getNumberInstance( Locale.US ).format( stack.stackSize );
+					final String formattedAmount = NumberFormat.getNumberInstance( Locale.US ).format( stack.func_190916_E() );
 					final String format = String.format( local, formattedAmount );
 
 					currentToolTip.add( "\u00a77" + format );
@@ -132,10 +132,10 @@ public abstract class AEBaseMEGui extends AEBaseGui
 
 				this.drawTooltip( x, y, 0, join( currentToolTip, "\n" ) );
 			}
-			else if( stack.stackSize > BigNumber )
+			else if( stack.func_190916_E() > BigNumber )
 			{
 				final List var4 = stack.getTooltip( this.mc.thePlayer, this.mc.gameSettings.advancedItemTooltips );
-				var4.add( "Items Stored: " + NumberFormat.getNumberInstance( Locale.US ).format( stack.stackSize ) );
+				var4.add( "Items Stored: " + NumberFormat.getNumberInstance( Locale.US ).format( stack.func_190916_E() ) );
 				this.drawTooltip( x, y, 0, join( var4, "\n" ) );
 				return;
 			}

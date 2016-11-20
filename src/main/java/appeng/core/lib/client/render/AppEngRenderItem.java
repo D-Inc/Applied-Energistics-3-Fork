@@ -95,7 +95,7 @@ public class AppEngRenderItem extends RenderItem
 				GL11.glColor4f( 1.0F, 1.0F, 1.0F, 1.0F );
 			}
 
-			if( is.stackSize == 0 )
+			if( is.func_190916_E() == 0 )
 			{
 				final String craftLabelText = AEConfig.instance.useTerminalUseLargeFont() ? GuiText.LargeFontCraft.getLocal() : GuiText.SmallFontCraft.getLocal();
 				GL11.glDisable( GL11.GL_LIGHTING );
@@ -110,10 +110,10 @@ public class AppEngRenderItem extends RenderItem
 				GL11.glEnable( GL11.GL_DEPTH_TEST );
 			}
 
-			final long amount = this.aeStack != null ? this.aeStack.getStackSize() : is.stackSize;
+			final long amount = this.aeStack != null ? this.aeStack.getStackSize() : is.func_190916_E();
 			if( amount != 0 )
 			{
-				final String stackSize = this.getToBeRenderedStackSize( amount );
+				final String stackSize = this.getToBeRenderedstackSize( amount );
 
 				GL11.glDisable( GL11.GL_LIGHTING );
 				GL11.glDisable( GL11.GL_DEPTH_TEST );
@@ -145,7 +145,7 @@ public class AppEngRenderItem extends RenderItem
 		par1Tessellator.draw();
 	}
 
-	private String getToBeRenderedStackSize( final long originalSize )
+	private String getToBeRenderedstackSize( final long originalSize )
 	{
 		if( AEConfig.instance.useTerminalUseLargeFont() )
 		{

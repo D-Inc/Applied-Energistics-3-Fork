@@ -34,10 +34,10 @@ public class CraftingTileDefinitions extends Definitions<Class<? extends TileEnt
 	public CraftingTileDefinitions( FeatureFactory registry )
 	{
 		FeatureFactory crafting = registry.features( AEFeature.CraftingCPU );
-		craftingMonitor = crafting.tile( new ResourceLocation( AppEng.MOD_NAME, "crafting_monitor" ) , TileCraftingMonitorTile.class ).build();
-		craftingStorage = crafting.tile( new ResourceLocation( AppEng.MOD_NAME, "crafting_storage" ) , TileCraftingStorageTile.class ).build();
-		craftingUnit = crafting.tile( new ResourceLocation( AppEng.MOD_NAME, "crafting_unit" ) , TileCraftingTile.class ).build();
-		molecularAssembler = registry.tile( new ResourceLocation( AppEng.MOD_NAME, "molecular_assembler" ) , TileMolecularAssembler.class).build();
+		craftingMonitor = crafting.tile( new ResourceLocation( AppEng.NAME, "crafting_monitor" ) , TileCraftingMonitorTile.class ).build();
+		craftingStorage = crafting.tile( new ResourceLocation( AppEng.NAME, "crafting_storage" ) , TileCraftingStorageTile.class ).build();
+		craftingUnit = crafting.tile( new ResourceLocation( AppEng.NAME, "crafting_unit" ) , TileCraftingTile.class ).build();
+		molecularAssembler = registry.tile( new ResourceLocation( AppEng.NAME, "molecular_assembler" ) , TileMolecularAssembler.class).build();
 		init();
 	}
 

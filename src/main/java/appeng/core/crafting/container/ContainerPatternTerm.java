@@ -38,6 +38,8 @@ import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.EnumFacing;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import appeng.core.api.config.Actionable;
 import appeng.core.lib.ApiDefinitions;
@@ -148,11 +150,11 @@ public class ContainerPatternTerm extends ContainerMEMonitorable implements IAEA
 		super.putStackInSlot( par1, par2ItemStack );
 		this.getAndUpdateOutput();
 	}
-
-	@Override
-	public void putStacksInSlots( final ItemStack[] par1ArrayOfItemStack )
+	
+	@SideOnly(Side.CLIENT)
+    public void func_190896_a(List<ItemStack> p_190896_1_)
 	{
-		super.putStacksInSlots( par1ArrayOfItemStack );
+		super.func_190896_a( p_190896_1_ );
 		this.getAndUpdateOutput();
 	}
 
@@ -209,8 +211,8 @@ public class ContainerPatternTerm extends ContainerMEMonitorable implements IAEA
 			}
 
 			// remove one, and clear the input slot.
-			output.stackSize--;
-			if( output.stackSize == 0 )
+			output.func_190918_g(1);
+			if( output.func_190916_E() == 0 )
 			{
 				this.patternSlotIN.putStack( null );
 			}
@@ -276,7 +278,7 @@ public class ContainerPatternTerm extends ContainerMEMonitorable implements IAEA
 		{
 			final ItemStack out = this.getAndUpdateOutput();
 
-			if( out != null && out.stackSize > 0 )
+			if( out != null && out.func_190916_E() > 0 )
 			{
 				return new ItemStack[] { out };
 			}
@@ -290,7 +292,7 @@ public class ContainerPatternTerm extends ContainerMEMonitorable implements IAEA
 			{
 				final ItemStack out = outputSlot.getStack();
 
-				if( out != null && out.stackSize > 0 )
+				if( out != null && out.func_190916_E() > 0 )
 				{
 					list.add( out );
 					hasValue = true;
@@ -416,7 +418,7 @@ public class ContainerPatternTerm extends ContainerMEMonitorable implements IAEA
 			if( rr == r && Platform.isSameItemPrecise( rr.getCraftingResult( real ), is ) )
 			{
 				final SlotCrafting sc = new SlotCrafting( p, real, this.cOut, 0, 0, 0 );
-				sc.onPickupFromSlot( p, is );
+				sc.func_190901_a( p, is );
 
 				for( int x = 0; x < real.getSizeInventory(); x++ )
 				{

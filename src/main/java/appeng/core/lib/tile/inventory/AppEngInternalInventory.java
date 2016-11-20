@@ -80,14 +80,14 @@ public class AppEngInternalInventory implements IInventory, Iterable<ItemStack>
 	}
 
 	@Override
-	public ItemStack decrStackSize( final int slot, final int qty )
+	public ItemStack decStackSize( final int slot, final int qty )
 	{
 		if( this.inv[slot] != null )
 		{
 			final ItemStack split = this.getStackInSlot( slot );
 			ItemStack ns = null;
 
-			if( qty >= split.stackSize )
+			if( qty >= split.func_190916_E() )
 			{
 				ns = this.inv[slot];
 				this.inv[slot] = null;
@@ -99,7 +99,7 @@ public class AppEngInternalInventory implements IInventory, Iterable<ItemStack>
 
 			if( this.getTileEntity() != null && this.eventsEnabled() )
 			{
-				this.getTileEntity().onChangeInventory( this, slot, InvOperation.decreaseStackSize, ns, null );
+				this.getTileEntity().onChangeInventory( this, slot, InvOperation.decreasestackSize, ns, null );
 			}
 
 			this.markDirty();
@@ -133,16 +133,16 @@ public class AppEngInternalInventory implements IInventory, Iterable<ItemStack>
 
 			if( oldStack != null && newItemStack != null && Platform.isSameItem( oldStack, newItemStack ) )
 			{
-				if( oldStack.stackSize > newItemStack.stackSize )
+				if( oldStack.func_190916_E() > newItemStack.func_190916_E() )
 				{
 					removed = removed.copy();
-					removed.stackSize -= newItemStack.stackSize;
+					removed.stackSize -= newItemStack.func_190916_E();
 					added = null;
 				}
-				else if( oldStack.stackSize < newItemStack.stackSize )
+				else if( oldStack.func_190916_E() < newItemStack.func_190916_E() )
 				{
 					added = added.copy();
-					added.stackSize -= oldStack.stackSize;
+					added.stackSize -= oldStack.func_190916_E();
 					removed = null;
 				}
 				else
@@ -257,7 +257,7 @@ public class AppEngInternalInventory implements IInventory, Iterable<ItemStack>
 
 				if( c != null )
 				{
-					this.inv[x] = ItemStack.loadItemStackFromNBT( c );
+					this.inv[x] = new ItemStack( c );
 				}
 			}
 			catch( final Exception e )

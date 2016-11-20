@@ -278,7 +278,7 @@ public class TileCharger extends AENetworkPowerTile implements ICrankable, ITick
 
 			if( AppEngApi.internalApi().definitions().materials().certusQuartzCrystal().isSameAs( held ) || Platform.isChargeable( held ) )
 			{
-				held = player.inventory.decrStackSize( player.inventory.currentItem, 1 );
+				held = player.inventory.decStackSize( player.inventory.currentItem, 1 );
 				this.setInventorySlotContents( 0, held );
 			}
 		}

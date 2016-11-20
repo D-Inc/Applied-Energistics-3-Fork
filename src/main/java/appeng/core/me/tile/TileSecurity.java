@@ -193,7 +193,7 @@ public class TileSecurity extends AENetworkTile implements ITerminalHost, IAEApp
 			final NBTBase obj = storedItems.getTag( (String) key );
 			if( obj instanceof NBTTagCompound )
 			{
-				this.inventory.getStoredItems().add( AEItemStack.create( ItemStack.loadItemStackFromNBT( (NBTTagCompound) obj ) ) );
+				this.inventory.getStoredItems().add( AEItemStack.create( new ItemStack( (NBTTagCompound) obj ) ) );
 			}
 		}
 	}

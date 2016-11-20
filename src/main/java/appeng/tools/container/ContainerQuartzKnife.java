@@ -149,7 +149,7 @@ public class ContainerQuartzKnife extends AEBaseContainer implements IAEAppEngIn
 	}
 
 	@Override
-	public ItemStack decrStackSize( final int var1, final int var2 )
+	public ItemStack decStackSize( final int var1, final int var2 )
 	{
 		final ItemStack is = this.getStackInSlot( 0 );
 		if( is != null )
@@ -164,7 +164,7 @@ public class ContainerQuartzKnife extends AEBaseContainer implements IAEAppEngIn
 
 	private boolean makePlate()
 	{
-		if( this.inSlot.decrStackSize( 0, 1 ) != null )
+		if( this.inSlot.decStackSize( 0, 1 ) != null )
 		{
 			final ItemStack item = this.toolInv.getItemStack();
 			item.damageItem( 1, this.getPlayerInv().player );

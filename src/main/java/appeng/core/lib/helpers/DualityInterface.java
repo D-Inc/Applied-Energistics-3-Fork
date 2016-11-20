@@ -235,7 +235,7 @@ public class DualityInterface implements IGridTickable, IStorageMonitorable, IIn
 				final NBTTagCompound c = waitingList.getCompoundTagAt( x );
 				if( c != null )
 				{
-					final ItemStack is = ItemStack.loadItemStackFromNBT( c );
+					final ItemStack is = new ItemStack( c );
 					this.addToSendList( is );
 				}
 			}
@@ -419,10 +419,10 @@ public class DualityInterface implements IGridTickable, IStorageMonitorable, IIn
 			}
 			else if( req.isSameType( Stored ) ) // same type ( qty different? )!
 			{
-				if( req.getStackSize() != Stored.stackSize )
+				if( req.getStackSize() != Stored.func_190916_E() )
 				{
 					this.requireWork[slot] = req.copy();
-					this.requireWork[slot].setStackSize( req.getStackSize() - Stored.stackSize );
+					this.requireWork[slot].setStackSize( req.getStackSize() - Stored.func_190916_E() );
 					return;
 				}
 			}
@@ -499,7 +499,7 @@ public class DualityInterface implements IGridTickable, IStorageMonitorable, IIn
 		{
 			return true;
 		}
-		return out.getStackSize() != stack.stackSize;
+		return out.getStackSize() != stack.func_190916_E();
 		// ItemStack after = adaptor.simulateAdd( stack );
 		// if ( after == null )
 		// return true;
@@ -702,7 +702,7 @@ public class DualityInterface implements IGridTickable, IStorageMonitorable, IIn
 
 				// make sure strange things didn't happen...
 				final ItemStack canExtract = adaptor.simulateRemove( (int) diff, toStore.getItemStack(), null );
-				if( canExtract == null || canExtract.stackSize != diff )
+				if( canExtract == null || canExtract.func_190916_E() != diff )
 				{
 					changed = true;
 					throw new GridAccessException();
@@ -724,7 +724,7 @@ public class DualityInterface implements IGridTickable, IStorageMonitorable, IIn
 					{
 						throw new IllegalStateException( "bad attempt at managing inventory. ( removeItems )" );
 					}
-					else if( removed.stackSize != diff )
+					else if( removed.func_190916_E() != diff )
 					{
 						throw new IllegalStateException( "bad attempt at managing inventory. ( removeItems )" );
 					}

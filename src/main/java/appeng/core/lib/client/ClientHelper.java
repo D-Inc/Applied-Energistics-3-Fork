@@ -173,7 +173,7 @@ public class ClientHelper extends ServerHelper
 		if( itemstack != null )
 		{
 			final EntityItem entityitem = new EntityItem( w, 0.0D, 0.0D, 0.0D, itemstack );
-			entityitem.getEntityItem().stackSize = 1;
+			entityitem.getEntityItem().func_190920_e(1);
 
 			// set all this stuff and then do shit? meh?
 			entityitem.hoverStart = 0;
@@ -416,7 +416,7 @@ public class ClientHelper extends ServerHelper
 			}
 		}
 
-		for( ResourceLocation location : ModelsCache.INSTANCE.getOrLoadModel( new ResourceLocation( AppEng.MOD_ID, "part/cable_facade" ) ).getTextures() )
+		for( ResourceLocation location : ModelsCache.INSTANCE.getOrLoadModel( new ResourceLocation( AppEng.MODID, "part/cable_facade" ) ).getTextures() )
 		{
 			event.getMap().registerSprite( location );
 		}

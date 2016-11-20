@@ -275,11 +275,11 @@ public class PartAnnihilationPlane extends PartBasicState implements IGridTickab
 			return true;
 		}
 
-		final int oldStackSize = entityItem.getEntityItem().stackSize;
-		final int newStackSize = (int) overflow.getStackSize();
-		final boolean changed = oldStackSize != newStackSize;
+		final int oldstackSize = entityItem.getEntityItem().stackSize;
+		final int newstackSize = (int) overflow.getStackSize();
+		final boolean changed = oldstackSize != newstackSize;
 
-		entityItem.getEntityItem().stackSize = newStackSize;
+		entityItem.getEntityItem().stackSize = newstackSize;
 
 		return changed;
 	}

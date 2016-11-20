@@ -32,13 +32,13 @@ import appeng.tools.definitions.ToolsTileDefinitions;
 
 
 @Module( ITools.NAME )
-@Mod( modid = AppEngTools.MODID, name = AppEngTools.MODNAME, version = AEConfig.VERSION, dependencies = "required-after:" + AppEng.MOD_ID, acceptedMinecraftVersions = ForgeVersion.mcVersion )
+@Mod( modid = AppEngTools.MODID, name = AppEngTools.MODNAME, version = AEConfig.VERSION, dependencies = "required-after:" + AppEng.MODID, acceptedMinecraftVersions = ForgeVersion.mcVersion )
 public class AppEngTools implements ITools
 {
 
-	public static final String MODID = AppEng.MOD_ID + "|" + ITools.NAME;
+	public static final String MODID = AppEng.MODID + "|" + ITools.NAME;
 
-	public static final String MODNAME = AppEng.MOD_NAME + " | " + ITools.NAME;
+	public static final String MODNAME = AppEng.NAME + " | " + ITools.NAME;
 
 	private ToolsItemDefinitions itemDefinitions;
 	private ToolsBlockDefinitions blockDefinitions;

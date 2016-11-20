@@ -152,14 +152,14 @@ public class LayerISidedInventory extends LayerBase implements ISidedInventory
 	}
 
 	@Override
-	public ItemStack decrStackSize( final int slot, final int amount )
+	public ItemStack decStackSize( final int slot, final int amount )
 	{
 		if( this.invLayer == null )
 		{
 			return null;
 		}
 
-		return this.invLayer.decreaseStackSize( slot, amount );
+		return this.invLayer.decreasestackSize( slot, amount );
 	}
 
 	@Override

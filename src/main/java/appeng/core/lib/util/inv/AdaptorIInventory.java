@@ -250,7 +250,7 @@ public class AdaptorIInventory extends InventoryAdaptor
 	 * Adds an {@link ItemStack} to the adapted {@link IInventory}.
 	 *
 	 * It respects the inventories stack limit, which can result in not all items added and some left ones are returned.
-	 * The ItemStack next is required for inventories, which will fail on isItemValidForSlot() for stacksizes larger
+	 * The ItemStack next is required for inventories, which will fail on isItemValidForSlot() for stackSizes larger
 	 * than the limit.
 	 *
 	 * @param itemsToAdd itemStack to add to the inventory

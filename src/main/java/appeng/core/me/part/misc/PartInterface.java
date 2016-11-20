@@ -215,9 +215,9 @@ public class PartInterface extends PartBasicState implements IGridTickable, ISto
 	}
 
 	@Override
-	public ItemStack decrStackSize( final int i, final int j )
+	public ItemStack decStackSize( final int i, final int j )
 	{
-		return this.duality.getStorage().decrStackSize( i, j );
+		return this.duality.getStorage().decStackSize( i, j );
 	}
 
 	@Override

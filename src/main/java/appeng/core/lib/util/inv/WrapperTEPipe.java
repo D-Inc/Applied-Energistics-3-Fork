@@ -44,7 +44,7 @@ package appeng.core.lib.util.inv;
 // }
 //
 // @Override
-// public ItemStack decrStackSize( int i, int j )
+// public ItemStack decStackSize( int i, int j )
 // {
 // return null;
 // }

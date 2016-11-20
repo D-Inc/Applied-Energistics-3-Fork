@@ -20,8 +20,8 @@ import appeng.core.worldgen.tile.TileSkyChest;
 public class SkyChestTESR extends TileEntitySpecialRenderer<TileSkyChest>
 {
 
-	private static final ResourceLocation TEXTURE_STONE = new ResourceLocation( AppEng.MOD_ID, "textures/models/skychest.png" );
-	private static final ResourceLocation TEXTURE_BLOCK = new ResourceLocation( AppEng.MOD_ID, "textures/models/skyblockchest.png" );
+	private static final ResourceLocation TEXTURE_STONE = new ResourceLocation( AppEng.MODID, "textures/models/skychest.png" );
+	private static final ResourceLocation TEXTURE_BLOCK = new ResourceLocation( AppEng.MODID, "textures/models/skyblockchest.png" );
 
 	private final ModelChest simpleChest = new ModelChest();
 

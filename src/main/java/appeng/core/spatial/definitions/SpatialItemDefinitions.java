@@ -24,9 +24,9 @@ public class SpatialItemDefinitions extends Definitions<Item, IItemDefinition<It
 	public SpatialItemDefinitions( FeatureFactory registry )
 	{
 		FeatureFactory spatialCells = registry.features( AEFeature.SpatialIO );
-		this.spatialCell2 = spatialCells.item( new ResourceLocation( AppEng.MOD_ID, "spatial_storage_cell_2_cubed" ), new ItemSpatialStorageCell( 2 ) ).build();
-		this.spatialCell16 = spatialCells.item( new ResourceLocation( AppEng.MOD_ID, "spatial_storage_cell_16_cubed" ), new ItemSpatialStorageCell( 16 ) ).build();
-		this.spatialCell128 = spatialCells.item( new ResourceLocation( AppEng.MOD_ID, "spatial_storage_cell_128_cubed" ), new ItemSpatialStorageCell( 128 ) ).build();
+		this.spatialCell2 = spatialCells.item( new ResourceLocation( AppEng.MODID, "spatial_storage_cell_2_cubed" ), new ItemSpatialStorageCell( 2 ) ).build();
+		this.spatialCell16 = spatialCells.item( new ResourceLocation( AppEng.MODID, "spatial_storage_cell_16_cubed" ), new ItemSpatialStorageCell( 16 ) ).build();
+		this.spatialCell128 = spatialCells.item( new ResourceLocation( AppEng.MODID, "spatial_storage_cell_128_cubed" ), new ItemSpatialStorageCell( 128 ) ).build();
 		
 		init( registry.buildDefaultItemBlocks() );
 	}

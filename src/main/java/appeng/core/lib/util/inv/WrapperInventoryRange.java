@@ -87,9 +87,9 @@ public class WrapperInventoryRange implements IInventory
 	}
 
 	@Override
-	public ItemStack decrStackSize( final int var1, final int var2 )
+	public ItemStack decStackSize( final int var1, final int var2 )
 	{
-		return this.src.decrStackSize( this.getSlots()[var1], var2 );
+		return this.src.decStackSize( this.getSlots()[var1], var2 );
 	}
 
 	@Override

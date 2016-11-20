@@ -38,6 +38,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
@@ -66,7 +67,7 @@ public abstract class AEBaseBlock extends Block
 	protected AxisAlignedBB boundingBox = FULL_BLOCK_AABB;
 
 	@Override
-	public boolean isVisuallyOpaque()
+	public boolean isVisuallyOpaque(IBlockState state)
 	{
 		return this.isOpaque() && this.isFullSize();
 	}
@@ -307,11 +308,11 @@ public abstract class AEBaseBlock extends Block
 	{
 		return false;
 	}
-
+	
 	@Override
 	@SideOnly( Side.CLIENT )
 	@SuppressWarnings( "unchecked" )
-	public final void getSubBlocks( final Item item, final CreativeTabs tabs, final List itemStacks )
+	public final void getSubBlocks( final Item item, final CreativeTabs tabs, final NonNullList<ItemStack> itemStacks )
 	{
 		this.getCheckedSubBlocks( item, tabs, itemStacks );
 	}
@@ -400,7 +401,7 @@ public abstract class AEBaseBlock extends Block
 	}
 
 	@SideOnly( Side.CLIENT )
-	public void getCheckedSubBlocks( final Item item, final CreativeTabs tabs, final List<ItemStack> itemStacks )
+	public void getCheckedSubBlocks( final Item item, final CreativeTabs tabs, final NonNullList<ItemStack> itemStacks )
 	{
 		super.getSubBlocks( item, tabs, itemStacks );
 	}

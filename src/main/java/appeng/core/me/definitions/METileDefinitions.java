@@ -80,26 +80,26 @@ public class METileDefinitions extends Definitions<Class<? extends TileEntity>, 
 
 	public METileDefinitions( FeatureFactory registry )
 	{
-		this.multiPart = registry.tile( new ResourceLocation( AppEng.MOD_ID, "multipart_block" ), TileCableBus.class ).build();
+		this.multiPart = registry.tile( new ResourceLocation( AppEng.MODID, "multipart_block" ), TileCableBus.class ).build();
 		
-		this.wirelessAccessPoint = registry.tile( new ResourceLocation( AppEng.MOD_ID, "wireless_access_point" ), TileWireless.class ).features( AEFeature.WirelessAccessTerminal ).build();
+		this.wirelessAccessPoint = registry.tile( new ResourceLocation( AppEng.MODID, "wireless_access_point" ), TileWireless.class ).features( AEFeature.WirelessAccessTerminal ).build();
 		
-		this.securityStation = registry.tile( new ResourceLocation( AppEng.MOD_ID, "security_station" ), TileSecurity.class ).features( AEFeature.Security ).build();
-		this.quantumRing = registry.tile( new ResourceLocation( AppEng.MOD_ID, "quantum_ring" ), TileQuantumBridge.class ).features( AEFeature.QuantumNetworkBridge ).build();
+		this.securityStation = registry.tile( new ResourceLocation( AppEng.MODID, "security_station" ), TileSecurity.class ).features( AEFeature.Security ).build();
+		this.quantumRing = registry.tile( new ResourceLocation( AppEng.MODID, "quantum_ring" ), TileQuantumBridge.class ).features( AEFeature.QuantumNetworkBridge ).build();
 //		this.quantumLink = registry.tile( new ResourceLocation( AppEng.MOD_ID, "quantum_link" ), TileQuantumBridge.class ).features( AEFeature.QuantumNetworkBridge ).build();
 		
-		this.controller = registry.tile( new ResourceLocation( AppEng.MOD_ID, "controller" ), TileController.class ).features( AEFeature.Channels ).build();
-		this.drive = registry.tile( new ResourceLocation( AppEng.MOD_ID, "drive" ), TileDrive.class ).features( AEFeature.StorageCells, AEFeature.MEDrive ).build();
-		this.chest = registry.tile( new ResourceLocation( AppEng.MOD_ID, "chest" ), TileChest.class ).features( AEFeature.StorageCells, AEFeature.MEChest ).build();
-		this.iface = registry.tile( new ResourceLocation( AppEng.MOD_ID, "interface" ), TileInterface.class ).build();
-		this.cellWorkbench = registry.tile( new ResourceLocation( AppEng.MOD_ID, "cell_workbench" ), TileCellWorkbench.class ).features( AEFeature.StorageCells ).build();
-		this.iOPort = registry.tile( new ResourceLocation( AppEng.MOD_ID, "ioport" ), TileIOPort.class ).features( AEFeature.StorageCells, AEFeature.IOPort ).build();
-		this.condenser = registry.tile( new ResourceLocation( AppEng.MOD_ID, "condenser" ), TileCondenser.class ).build();
-		this.energyAcceptor = registry.tile( new ResourceLocation( AppEng.MOD_ID, "energy_acceptor" ), TileEnergyAcceptor.class ).build();
+		this.controller = registry.tile( new ResourceLocation( AppEng.MODID, "controller" ), TileController.class ).features( AEFeature.Channels ).build();
+		this.drive = registry.tile( new ResourceLocation( AppEng.MODID, "drive" ), TileDrive.class ).features( AEFeature.StorageCells, AEFeature.MEDrive ).build();
+		this.chest = registry.tile( new ResourceLocation( AppEng.MODID, "chest" ), TileChest.class ).features( AEFeature.StorageCells, AEFeature.MEChest ).build();
+		this.iface = registry.tile( new ResourceLocation( AppEng.MODID, "interface" ), TileInterface.class ).build();
+		this.cellWorkbench = registry.tile( new ResourceLocation( AppEng.MODID, "cell_workbench" ), TileCellWorkbench.class ).features( AEFeature.StorageCells ).build();
+		this.iOPort = registry.tile( new ResourceLocation( AppEng.MODID, "ioport" ), TileIOPort.class ).features( AEFeature.StorageCells, AEFeature.IOPort ).build();
+		this.condenser = registry.tile( new ResourceLocation( AppEng.MODID, "condenser" ), TileCondenser.class ).build();
+		this.energyAcceptor = registry.tile( new ResourceLocation( AppEng.MODID, "energy_acceptor" ), TileEnergyAcceptor.class ).build();
 
-		this.energyCell = registry.tile( new ResourceLocation( AppEng.MOD_ID, "energy_cell" ), TileEnergyCell.class ).build();
-		this.energyCellDense = registry.tile( new ResourceLocation( AppEng.MOD_ID, "dense_energy_cell" ), TileDenseEnergyCell.class ).features( AEFeature.DenseEnergyCells ).build();
-		this.energyCellCreative = registry.tile( new ResourceLocation( AppEng.MOD_ID, "creative_energy_cell" ), TileCreativeEnergyCell.class ).features( AEFeature.Creative ).build();
+		this.energyCell = registry.tile( new ResourceLocation( AppEng.MODID, "energy_cell" ), TileEnergyCell.class ).build();
+		this.energyCellDense = registry.tile( new ResourceLocation( AppEng.MODID, "dense_energy_cell" ), TileDenseEnergyCell.class ).features( AEFeature.DenseEnergyCells ).build();
+		this.energyCellCreative = registry.tile( new ResourceLocation( AppEng.MODID, "creative_energy_cell" ), TileCreativeEnergyCell.class ).features( AEFeature.Creative ).build();
 
 		init();
 	}

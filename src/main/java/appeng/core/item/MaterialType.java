@@ -101,7 +101,7 @@ public enum MaterialType
 	{
 		this.setDamageValue( metaValue );
 		this.features = EnumSet.of( part );
-		this.model = new ModelResourceLocation( new ResourceLocation( AppEng.MOD_ID, modelName ), "inventory" );
+		this.model = new ModelResourceLocation( new ResourceLocation( AppEng.MODID, modelName ), "inventory" );
 	}
 
 	MaterialType( final int metaValue, String modelName, final AEFeature part, final Class<? extends Entity> c )
@@ -109,7 +109,7 @@ public enum MaterialType
 		this( metaValue, modelName, part );
 		this.droppedEntity = c;
 
-		EntityRegistry.registerModEntity( this.droppedEntity, this.droppedEntity.getSimpleName(), EntityIds.get( this.droppedEntity ), AppEng.instance(), 16, 4, true );
+		EntityRegistry.registerModEntity( new ResourceLocation( AppEng.MODID, this.droppedEntity.getSimpleName() ), this.droppedEntity, this.droppedEntity.getSimpleName(), EntityIds.get( this.droppedEntity ), AppEng.instance(), 16, 4, true );
 	}
 
 	MaterialType( final int metaValue, String modelName, final AEFeature part, final String oreDictionary, final Class<? extends Entity> c )
@@ -117,7 +117,7 @@ public enum MaterialType
 		this( metaValue, modelName, part );
 		this.oreName = oreDictionary;
 		this.droppedEntity = c;
-		EntityRegistry.registerModEntity( this.droppedEntity, this.droppedEntity.getSimpleName(), EntityIds.get( this.droppedEntity ), AppEng.instance(), 16, 4, true );
+		EntityRegistry.registerModEntity( new ResourceLocation( AppEng.MODID, this.droppedEntity.getSimpleName() ), this.droppedEntity, this.droppedEntity.getSimpleName(), EntityIds.get( this.droppedEntity ), AppEng.instance(), 16, 4, true );
 	}
 
 	MaterialType( final int metaValue, String modelName, final AEFeature part, final String oreDictionary )

@@ -127,9 +127,9 @@ public class BlockCrank extends AEBaseTileBlock
 
 		return te instanceof ICrankable && ( (ICrankable) te ).canCrankAttach( offset.getOpposite() );
 	}
-
+	
 	@Override
-	public void neighborChanged( final IBlockState state, final World world, final BlockPos pos, final Block neighborBlock )
+	public void neighborChanged( final IBlockState state, final World world, final BlockPos pos, final Block neighborBlock, BlockPos updated )
 	{
 
 		final AEBaseTile tile = this.getTileEntity( world, pos );

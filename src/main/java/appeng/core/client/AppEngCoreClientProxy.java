@@ -268,7 +268,7 @@ public class AppEngCoreClientProxy extends AppEngCoreServerProxy
 			}
 		}
 
-		for( ResourceLocation location : ModelsCache.INSTANCE.getOrLoadModel( new ResourceLocation( AppEng.MOD_ID, "part/cable_facade" ) ).getTextures() )
+		for( ResourceLocation location : ModelsCache.INSTANCE.getOrLoadModel( new ResourceLocation( AppEng.MODID, "part/cable_facade" ) ).getTextures() )
 		{
 			event.getMap().registerSprite( location );
 		}

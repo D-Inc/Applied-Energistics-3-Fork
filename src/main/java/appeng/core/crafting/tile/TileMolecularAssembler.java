@@ -237,7 +237,7 @@ public class TileMolecularAssembler extends AENetworkInvTile implements IUpgrade
 	{
 		if( data.hasKey( "myPlan" ) )
 		{
-			final ItemStack myPat = ItemStack.loadItemStackFromNBT( data.getCompoundTag( "myPlan" ) );
+			final ItemStack myPat = new ItemStack( data.getCompoundTag( "myPlan" ) );
 
 			if( myPat != null && myPat.getItem() instanceof ItemEncodedPattern )
 			{
@@ -605,9 +605,9 @@ public class TileMolecularAssembler extends AENetworkInvTile implements IUpgrade
 			return output;
 		}
 
-		final int size = output.stackSize;
+		final int size = output.func_190916_E();
 		output = adaptor.addItems( output );
-		final int newSize = output == null ? 0 : output.stackSize;
+		final int newSize = output == null ? 0 : output.func_190916_E();
 
 		if( size != newSize )
 		{

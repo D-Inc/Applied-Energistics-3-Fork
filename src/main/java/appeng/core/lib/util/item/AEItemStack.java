@@ -116,7 +116,7 @@ public final class AEItemStack extends AEStack<IAEItemStack> implements IAEItemS
 			return null;
 		}
 
-		final ItemStack itemstack = ItemStack.loadItemStackFromNBT( i );
+		final ItemStack itemstack = new ItemStack( i );
 		if( itemstack == null )
 		{
 			return null;
@@ -172,7 +172,7 @@ public final class AEItemStack extends AEStack<IAEItemStack> implements IAEItemS
 		final long stackSize = getPacketValue( stackType, data );
 		final long countRequestable = getPacketValue( countReqType, data );
 
-		final ItemStack itemstack = ItemStack.loadItemStackFromNBT( d );
+		final ItemStack itemstack = new ItemStack( d );
 		if( itemstack == null )
 		{
 			return null;
@@ -197,7 +197,7 @@ public final class AEItemStack extends AEStack<IAEItemStack> implements IAEItemS
 		// if ( priority < ((AEItemStack) option).priority )
 		// priority = ((AEItemStack) option).priority;
 
-		this.incStackSize( option.getStackSize() );
+		this.incstackSize( option.getStackSize() );
 		this.setCountRequestable( this.getCountRequestable() + option.getCountRequestable() );
 		this.setCraftable( this.isCraftable() || option.isCraftable() );
 	}

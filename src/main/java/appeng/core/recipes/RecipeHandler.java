@@ -123,7 +123,7 @@ public class RecipeHandler implements IRecipeHandler
 		final ResourceLocation id = Item.REGISTRY.getNameForObject( is.getItem() );
 		String realName = id.toString();
 
-		if( !id.getResourceDomain().equals( AppEng.MOD_ID ) && !id.getResourceDomain().equals( "minecraft" ) )
+		if( !id.getResourceDomain().equals( AppEng.MODID ) && !id.getResourceDomain().equals( "minecraft" ) )
 		{
 			throw new RecipeError( "Not applicable for website" );
 		}

@@ -81,7 +81,7 @@ public class CraftingTreeProcess
 			for( int x = 0; x < ic.getSizeInventory(); x++ )
 			{
 				final ItemStack g = ic.getStackInSlot( x );
-				if( g != null && g.stackSize > 1 )
+				if( g != null && g.func_190916_E() > 1 )
 				{
 					this.fullSimulation = true;
 				}

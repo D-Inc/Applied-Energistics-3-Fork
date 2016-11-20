@@ -36,9 +36,9 @@ public class InvSot
 		this.index = slot;
 	}
 
-	public ItemStack decreaseStackSize( final int j )
+	public ItemStack decreasestackSize( final int j )
 	{
-		return this.partInv.decrStackSize( this.index, j );
+		return this.partInv.decStackSize( this.index, j );
 	}
 
 	ItemStack getStackInSlot()

@@ -22,6 +22,7 @@ package appeng.core;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 
 //TODO 1.10.2-MODUSEP - A tab per module?
@@ -32,7 +33,7 @@ public final class CreativeTab extends CreativeTabs
 
 	public CreativeTab()
 	{
-		super( "appliedenergistics2" );
+		super( "appliedenergistics3" );
 	}
 
 	static void init()
@@ -41,9 +42,9 @@ public final class CreativeTab extends CreativeTabs
 	}
 
 	@Override
-	public Item getTabIconItem()
+	public ItemStack getTabIconItem()
 	{
-		return Item.getItemFromBlock( Blocks.CHEST );
+		return new ItemStack( Blocks.CHEST );
 	}
 
 }

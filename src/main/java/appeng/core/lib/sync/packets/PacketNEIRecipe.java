@@ -84,7 +84,7 @@ public class PacketNEIRecipe extends AppEngPacket
 					this.recipe[x] = new ItemStack[list.tagCount()];
 					for( int y = 0; y < list.tagCount(); y++ )
 					{
-						this.recipe[x][y] = ItemStack.loadItemStackFromNBT( list.getCompoundTagAt( y ) );
+						this.recipe[x][y] = new ItemStack( list.getCompoundTagAt( y ) );
 					}
 				}
 			}

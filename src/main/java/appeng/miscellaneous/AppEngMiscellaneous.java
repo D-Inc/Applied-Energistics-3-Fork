@@ -32,13 +32,13 @@ import appeng.miscellaneous.api.IMiscellaneous;
 
 
 @Module( "misc" )
-@Mod( modid = AppEngMiscellaneous.MODID, name = AppEngMiscellaneous.MODNAME, version = AEConfig.VERSION, dependencies = "required-after:" + AppEng.MOD_ID, acceptedMinecraftVersions = ForgeVersion.mcVersion )
+@Mod( modid = AppEngMiscellaneous.MODID, name = AppEngMiscellaneous.MODNAME, version = AEConfig.VERSION, dependencies = "required-after:" + AppEng.MODID, acceptedMinecraftVersions = ForgeVersion.mcVersion )
 public class AppEngMiscellaneous implements IMiscellaneous
 {
 
-	public static final String MODID = AppEng.MOD_ID + "|" + IMiscellaneous.NAME;
+	public static final String MODID = AppEng.MODID + "|" + IMiscellaneous.NAME;
 
-	public static final String MODNAME = AppEng.MOD_NAME + " | " + IMiscellaneous.NAME;
+	public static final String MODNAME = AppEng.NAME + " | " + IMiscellaneous.NAME;
 
 	private CraftingItemDefinitions itemDefinitions;
 	private CraftingBlockDefinitions blockDefinitions;

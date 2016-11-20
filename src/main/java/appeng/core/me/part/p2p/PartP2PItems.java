@@ -269,9 +269,9 @@ public class PartP2PItems extends PartP2PTunnel<PartP2PItems> implements /* IPip
 	}
 
 	@Override
-	public ItemStack decrStackSize( final int i, final int j )
+	public ItemStack decStackSize( final int i, final int j )
 	{
-		return this.getDestination().decrStackSize( i, j );
+		return this.getDestination().decStackSize( i, j );
 	}
 
 	@Override

@@ -280,7 +280,7 @@ public class FacadePart implements IFacadePart, IBoxProvider
 	public List<BakedQuad> getOrBakeQuads( IPartHost host, BakingPipeline<BakedQuad, BakedQuad> rotatingPipeline, IBlockState state, EnumFacing side, long rand )
 	{
 		List<BakedQuad> elements = new ArrayList();
-		elements.addAll( rotatingPipeline.pipe( ModelsCache.INSTANCE.getOrLoadBakedModel( new ResourceLocation( AppEng.MOD_ID, "part/cable_facade" ) ).getQuads( state, side, rand ), null, state, getSide().getFacing(), rand ) );
+		elements.addAll( rotatingPipeline.pipe( ModelsCache.INSTANCE.getOrLoadBakedModel( new ResourceLocation( AppEng.MODID, "part/cable_facade" ) ).getQuads( state, side, rand ), null, state, getSide().getFacing(), rand ) );
 
 		ItemStack titem = getTexture();
 		if( titem != null && titem.getItem() != null && Block.getBlockFromItem( titem.getItem() ) != null )

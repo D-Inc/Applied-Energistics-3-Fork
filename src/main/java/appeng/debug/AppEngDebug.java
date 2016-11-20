@@ -30,15 +30,15 @@ import appeng.debug.definitions.DebugTileDefinitions;
  * The only module not built with gradle.
  */
 @Module( AppEngDebug.NAME )
-@Mod( modid = AppEngDebug.MODID, name = AppEngDebug.NAME, version = AEConfig.VERSION, dependencies = "required-after:" + AppEng.MOD_ID, acceptedMinecraftVersions = ForgeVersion.mcVersion )
+@Mod( modid = AppEngDebug.MODID, name = AppEngDebug.NAME, version = AEConfig.VERSION, dependencies = "required-after:" + AppEng.MODID, acceptedMinecraftVersions = ForgeVersion.mcVersion )
 public class AppEngDebug
 {
 
 	public static final String NAME = "debug";
 
-	public static final String MODID = AppEng.MOD_ID + "|" + NAME;
+	public static final String MODID = AppEng.MODID + "|" + NAME;
 
-	public static final String MODNAME = AppEng.MOD_NAME + " | " + NAME;
+	public static final String MODNAME = AppEng.NAME + " | " + NAME;
 
 	private DebugItemDefinitions itemDefinitions;
 	private DebugBlockDefinitions blockDefinitions;

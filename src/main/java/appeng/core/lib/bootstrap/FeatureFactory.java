@@ -64,7 +64,7 @@ public class FeatureFactory
 	@Deprecated
 	public <T extends TileEntity> TileDefinitionBuilder<T> tile( String id, Class<T> tile )
 	{
-		return tile( new ResourceLocation( AppEng.MOD_ID, id ), tile );
+		return tile( new ResourceLocation( AppEng.MODID, id ), tile );
 	}
 
 	public <T extends TileEntity> TileDefinitionBuilder<T> tile( ResourceLocation id, Class<T> tile )
@@ -75,7 +75,7 @@ public class FeatureFactory
 	@Deprecated
 	public <B extends Block> BlockDefinitionBuilder<B> block( String id, B block )
 	{
-		return block( new ResourceLocation( AppEng.MOD_ID, id ), block );
+		return block( new ResourceLocation( AppEng.MODID, id ), block );
 	}
 
 	public <B extends Block> BlockDefinitionBuilder<B> block( ResourceLocation id, B block )
@@ -86,7 +86,7 @@ public class FeatureFactory
 	@Deprecated
 	public <I extends Item> ItemDefinitionBuilder<I> item( String id, I item )
 	{
-		return item( new ResourceLocation( AppEng.MOD_ID, id ), item );
+		return item( new ResourceLocation( AppEng.MODID, id ), item );
 	}
 
 	public <I extends Item> ItemDefinitionBuilder<I> item( ResourceLocation id, I item )

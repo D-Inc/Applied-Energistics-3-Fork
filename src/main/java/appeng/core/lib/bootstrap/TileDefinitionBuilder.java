@@ -5,6 +5,7 @@ package appeng.core.lib.bootstrap;
 import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import appeng.api.definitions.IBlockDefinition;
 import appeng.api.definitions.ITileDefinition;
@@ -31,7 +32,7 @@ public class TileDefinitionBuilder<T extends TileEntity> extends DefinitionBuild
 			return new TileDefinition<T>( registryName, null, null );
 		}
 
-		TileEntity.addMapping( t, registryName.toString() );
+		GameRegistry.registerTileEntity( t, registryName.toString() );
 
 		return new TileDefinition<T>( registryName, t, (IBlockDefinition) blockDefinitions.get( registryName ) );
 	}

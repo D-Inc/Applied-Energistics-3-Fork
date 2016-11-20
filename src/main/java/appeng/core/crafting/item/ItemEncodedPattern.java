@@ -54,19 +54,18 @@ public class ItemEncodedPattern extends AEBaseItem implements ICraftingPatternIt
 	{
 		this.setMaxStackSize( 1 );
 	}
-
 	@Override
-	public ActionResult<ItemStack> onItemRightClick( final ItemStack stack, final World w, final EntityPlayer player, final EnumHand hand )
+	public ActionResult<ItemStack> onItemRightClick( final World w, final EntityPlayer player, final EnumHand hand )
 	{
-		this.clearPattern( stack, player );
+		this.clearPattern( player.getHeldItem( hand ), player );
 
-		return new ActionResult<ItemStack>( EnumActionResult.SUCCESS, stack );
+		return new ActionResult<ItemStack>( EnumActionResult.SUCCESS, player.getHeldItem( hand ) );
 	}
 
 	@Override
-	public EnumActionResult onItemUseFirst( final ItemStack stack, final EntityPlayer player, final World world, final BlockPos pos, final EnumFacing side, final float hitX, final float hitY, final float hitZ, final EnumHand hand )
+	public EnumActionResult onItemUseFirst( final EntityPlayer player, final World world, final BlockPos pos, final EnumFacing side, final float hitX, final float hitY, final float hitZ, final EnumHand hand )
 	{
-		return this.clearPattern( stack, player ) ? EnumActionResult.SUCCESS : EnumActionResult.FAIL;
+		return this.clearPattern( player.getHeldItem( hand ), player ) ? EnumActionResult.SUCCESS : EnumActionResult.FAIL;
 	}
 
 	private boolean clearPattern( final ItemStack stack, final EntityPlayer player )
@@ -80,7 +79,7 @@ public class ItemEncodedPattern extends AEBaseItem implements ICraftingPatternIt
 
 			final InventoryPlayer inv = player.inventory;
 
-			ItemStack is = (ItemStack) AppEngApi.internalApi().definitions().materials().blankPattern().maybeStack( stack.stackSize ).orElse( null );
+			ItemStack is = (ItemStack) AppEngApi.internalApi().definitions().materials().blankPattern().maybeStack( stack.func_190916_E() ).orElse( null );
 			if( is != null )
 			{
 				for( int s = 0; s < player.inventory.getSizeInventory(); s++ )

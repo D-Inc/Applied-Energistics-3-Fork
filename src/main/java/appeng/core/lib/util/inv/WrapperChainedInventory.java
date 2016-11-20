@@ -136,12 +136,12 @@ public class WrapperChainedInventory implements IInventory
 	}
 
 	@Override
-	public ItemStack decrStackSize( final int idx, final int var2 )
+	public ItemStack decStackSize( final int idx, final int var2 )
 	{
 		final InvOffset io = this.offsets.get( idx );
 		if( io != null )
 		{
-			return io.i.decrStackSize( idx - io.offset, var2 );
+			return io.i.decStackSize( idx - io.offset, var2 );
 		}
 		return null;
 	}

@@ -73,13 +73,13 @@ import appeng.core.lib.crash.ModCrashEnhancement;
 import appeng.core.lib.module.Toposorter;
 
 
-@Mod( modid = AppEng.MOD_ID, name = AppEng.MOD_NAME, version = AEConfig.VERSION, dependencies = AppEng.MOD_DEPENDENCIES, acceptedMinecraftVersions = ForgeVersion.mcVersion, guiFactory = "appeng.core.client.gui.config.AEConfigGuiFactory" )
+@Mod( modid = AppEng.MODID, name = AppEng.NAME, version = AEConfig.VERSION, dependencies = AppEng.MOD_DEPENDENCIES, acceptedMinecraftVersions = ForgeVersion.mcVersion, guiFactory = "appeng.core.client.gui.config.AEConfigGuiFactory" )
 public final class AppEng
 {
-	public static final String MOD_ID = "appliedenergistics2";
-	public static final String MOD_NAME = "Applied Energistics 2";
+	public static final String MODID = "appliedenergistics3";
+	public static final String NAME = "Applied Energistics 3";
 
-	public static final String ASSETS = "appliedenergistics2:";
+	public static final String ASSETS = MODID + ":";
 
 	public static final String MOD_DEPENDENCIES =
 			// a few mods, AE should load after, probably.

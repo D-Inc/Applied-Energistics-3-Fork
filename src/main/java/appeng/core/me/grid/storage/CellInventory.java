@@ -444,7 +444,7 @@ public class CellInventory implements ICellInventory
 
 		for( int x = 0; x < types; x++ )
 		{
-			final ItemStack t = ItemStack.loadItemStackFromNBT( this.tagCompound.getCompoundTag( itemSlots[x] ) );
+			final ItemStack t = new ItemStack( this.tagCompound.getCompoundTag( itemSlots[x] ) );
 			if( t != null )
 			{
 				t.stackSize = this.tagCompound.getInteger( itemSlotCount[x] );

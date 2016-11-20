@@ -26,7 +26,7 @@ public class DecorativeItemDefinitions extends Definitions<Item, IItemDefinition
 
 	public DecorativeItemDefinitions( FeatureFactory registry )
 	{
-		this.paintBall = registry.item( new ResourceLocation( AppEng.MOD_ID, "paint_ball" ), new ItemPaintBall() ).features( AEFeature.PaintBalls ).rendering( new ItemPaintBallRendering() ).build();
+		this.paintBall = registry.item( new ResourceLocation( AppEng.MODID, "paint_ball" ), new ItemPaintBall() ).features( AEFeature.PaintBalls ).rendering( new ItemPaintBallRendering() ).build();
 		
 		this.facade = registry.item( new ResourceLocation( AppEngDecorative.MODID, "facade" ), new ItemFacade() ).features( AEFeature.Facades ).creativeTab( CreativeTabFacade.instance ).build();
 		

@@ -168,7 +168,7 @@ public class AppEngCraftingSlot extends AppEngSlot
 
 			if( itemstack1 != null )
 			{
-				this.craftMatrix.decrStackSize( i, 1 );
+				this.craftMatrix.decStackSize( i, 1 );
 			}
 
 			if( itemstack2 != null )
@@ -190,13 +190,13 @@ public class AppEngCraftingSlot extends AppEngSlot
 	 * stack.
 	 */
 	@Override
-	public ItemStack decrStackSize( final int par1 )
+	public ItemStack decStackSize( final int par1 )
 	{
 		if( this.getHasStack() )
 		{
 			this.amountCrafted += Math.min( par1, this.getStack().stackSize );
 		}
 
-		return super.decrStackSize( par1 );
+		return super.decStackSize( par1 );
 	}
 }

@@ -26,10 +26,10 @@ public class SpatialBlockDefinitions extends Definitions<Block, IBlockDefinition
 	
 	public SpatialBlockDefinitions( FeatureFactory registry )
 	{
-		this.matrixFrame = registry.block( new ResourceLocation( AppEng.MOD_ID, "matrix_frame" ), new BlockMatrixFrame() ).features( AEFeature.SpatialIO ).createDefaultItemBlock().build();
+		this.matrixFrame = registry.block( new ResourceLocation( AppEng.MODID, "matrix_frame" ), new BlockMatrixFrame() ).features( AEFeature.SpatialIO ).createDefaultItemBlock().build();
 
-		this.spatialPylon = registry.block( new ResourceLocation( AppEng.MOD_ID, "spatial_pylon" ), new BlockSpatialPylon() ).features( AEFeature.SpatialIO ).createDefaultItemBlock().build();
-		this.spatialIOPort = registry.block( new ResourceLocation( AppEng.MOD_ID, "spatial_ioport" ), new BlockSpatialIOPort() ).features( AEFeature.SpatialIO ).createDefaultItemBlock().build();
+		this.spatialPylon = registry.block( new ResourceLocation( AppEng.MODID, "spatial_pylon" ), new BlockSpatialPylon() ).features( AEFeature.SpatialIO ).createDefaultItemBlock().build();
+		this.spatialIOPort = registry.block( new ResourceLocation( AppEng.MODID, "spatial_ioport" ), new BlockSpatialIOPort() ).features( AEFeature.SpatialIO ).createDefaultItemBlock().build();
 		
 		init();
 	}
