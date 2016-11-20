@@ -102,9 +102,8 @@ public class BlockDefinitionBuilder<B extends Block> extends DefinitionBuilder<B
 
 		if( itemBlock != null )
 		{
-			this.factory.addDefaultItemBlock( registryName, definition );
-			definition.setItemBlockCustomizer(itemBlock);
-		};
+			this.factory.addItemBlock( definition, itemBlock );
+		}
 		return definition;
 	}
 

@@ -21,9 +21,6 @@ package appeng.core.lib.features;
 
 import java.util.Optional;
 
-import appeng.core.lib.bootstrap.FeatureFactory;
-import appeng.core.lib.bootstrap.IItemBlockCustomizer;
-import com.sun.xml.internal.ws.config.metro.dev.FeatureReader;
 import org.apache.commons.lang3.tuple.Pair;
 
 import net.minecraft.block.Block;
@@ -41,7 +38,6 @@ public class BlockDefinition<B extends Block> extends Definition<B> implements I
 {
 
 	private IItemDefinition<? extends ItemBlock> item;
-	private IItemBlockCustomizer itemBuilder;
 
 	public BlockDefinition( ResourceLocation identifier, B block )
 	{
@@ -87,15 +83,5 @@ public class BlockDefinition<B extends Block> extends Definition<B> implements I
 			}
 			return false;
 		}
-	}
-
-	public IItemDefinition buildItemBlock( FeatureFactory factory){
-		this.item = itemBuilder.build( factory.item( identifier(), itemBuilder.createItemBlock( maybe().get() ) ) );
-		return item;
-	}
-
-	public void setItemBlockCustomizer( IItemBlockCustomizer itemBlockCustomizer )
-	{
-		this.itemBuilder = itemBlockCustomizer;
 	}
 }
