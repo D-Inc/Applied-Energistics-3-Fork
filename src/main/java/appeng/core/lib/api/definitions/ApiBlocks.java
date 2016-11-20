@@ -159,17 +159,17 @@ public final class ApiBlocks// implements IBlocks
 		this.energyAcceptor = registry.block( "energy_acceptor", new BlockEnergyAcceptor() ).build();
 		this.vibrationChamber = registry.block( "vibration_chamber", new BlockVibrationChamber() ).features( AEFeature.PowerGen ).build();
 		this.quartzGrowthAccelerator = registry.block( "quartz_growth_accelerator", new BlockQuartzGrowthAccelerator() ).build();
-		this.energyCell = registry.block( "energy_cell", new BlockEnergyCell::new ).item( AEBaseItemBlockChargeable() ).rendering( new BlockEnergyCellRendering( new ResourceLocation( AppEng.MOD_ID, "energy_cell" ) ) ).build();
-		this.energyCellDense = registry.block( "dense_energy_cell", new BlockDenseEnergyCell::new ).features( AEFeature.DenseEnergyCells ).item( AEBaseItemBlockChargeable() ).rendering( new BlockEnergyCellRendering( new ResourceLocation( AppEng.MOD_ID, "dense_energy_cell" ) ) ).build();
-		this.energyCellCreative = registry.block( "creative_energy_cell", new BlockCreativeEnergyCell::new ).features( AEFeature.Creative ).item( AEBaseItemBlockChargeable() ).build();
+		this.energyCell = registry.block( "energy_cell", new BlockEnergyCell ).item( AEBaseItemBlockChargeable() ).rendering( new BlockEnergyCellRendering( new ResourceLocation( AppEng.MOD_ID, "energy_cell" ) ) ).build();
+		this.energyCellDense = registry.block( "dense_energy_cell", new BlockDenseEnergyCell ).features( AEFeature.DenseEnergyCells ).item( AEBaseItemBlockChargeable() ).rendering( new BlockEnergyCellRendering( new ResourceLocation( AppEng.MOD_ID, "dense_energy_cell" ) ) ).build();
+		this.energyCellCreative = registry.block( "creative_energy_cell", new BlockCreativeEnergyCell ).features( AEFeature.Creative ).item( AEBaseItemBlockChargeable() ).build();
 
 		FeatureFactory crafting = registry.features( AEFeature.CraftingCPU );
 		this.craftingUnit = crafting.block( "crafting_unit", new BlockCraftingUnit( CraftingUnitType.UNIT ) ).build();
 		this.craftingAccelerator = crafting.block( "crafting_accelerator", new BlockCraftingUnit( CraftingUnitType.ACCELERATOR ) ).build();
-		this.craftingStorage1k = crafting.block( "crafting_storage_1k", new new BlockCraftingStorage( CraftingUnitType.STORAGE_1K ) ).item( ItemCraftingStorage() ).build();
-		this.craftingStorage4k = crafting.block( "crafting_storage_4k", new new BlockCraftingStorage( CraftingUnitType.STORAGE_4K ) ).item( ItemCraftingStorage() ).build();
-		this.craftingStorage16k = crafting.block( "crafting_storage_16k", new new BlockCraftingStorage( CraftingUnitType.STORAGE_16K ) ).item( ItemCraftingStorage() ).build();
-		this.craftingStorage64k = crafting.block( "crafting_storage_64k", new new BlockCraftingStorage( CraftingUnitType.STORAGE_64K ) ).item( ItemCraftingStorage() ).build();
+		this.craftingStorage1k = crafting.block( "crafting_storage_1k", new BlockCraftingStorage( CraftingUnitType.STORAGE_1K ) ).item( ItemCraftingStorage() ).build();
+		this.craftingStorage4k = crafting.block( "crafting_storage_4k", new BlockCraftingStorage( CraftingUnitType.STORAGE_4K ) ).item( ItemCraftingStorage() ).build();
+		this.craftingStorage16k = crafting.block( "crafting_storage_16k", new BlockCraftingStorage( CraftingUnitType.STORAGE_16K ) ).item( ItemCraftingStorage() ).build();
+		this.craftingStorage64k = crafting.block( "crafting_storage_64k", new BlockCraftingStorage( CraftingUnitType.STORAGE_64K ) ).item( ItemCraftingStorage() ).build();
 		this.craftingMonitor = crafting.block( "crafting_monitor", new BlockCraftingMonitor() ).build();
 
 		this.molecularAssembler = registry.block( "molecular_assembler", new BlockMolecularAssembler() ).features( AEFeature.MolecularAssembler ).build();
