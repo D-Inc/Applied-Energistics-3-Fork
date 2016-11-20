@@ -8,7 +8,16 @@ import appeng.api.definitions.IDefinitions;
 import appeng.api.definitions.ITileDefinition;
 
 
-public interface ISpatialTileDefinitions extends IDefinitions<Class<? extends TileEntity>, ITileDefinition<? extends TileEntity, Class<? extends TileEntity>>>
+public interface ISpatialTileDefinitions extends IDefinitions<Class<? extends TileEntity>, ITileDefinition<? extends TileEntity>>
 {
+    default ITileDefinition<? extends TileEntity> spatialPylon()
+    {
+        return get( "spatial_pylon" );
+    }
+
+    default ITileDefinition<? extends TileEntity> spatialIOPort()
+    {
+        return get( "spatial_ioport" );
+    }
 
 }

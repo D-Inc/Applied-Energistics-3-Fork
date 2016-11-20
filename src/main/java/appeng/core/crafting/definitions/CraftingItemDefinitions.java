@@ -23,17 +23,11 @@ import net.minecraft.util.ResourceLocation;
 public class CraftingItemDefinitions extends Definitions<Item, IItemDefinition<Item>> implements ICraftingItemDefinitions
 {
 
-	private final IItemDefinition encoded_pattern;
-	private IItemDefinition crafting_storage_1k;
-	private IItemDefinition crafting_storage_4k;
-	private IItemDefinition crafting_storage_16k;
-	private IItemDefinition crafting_storage_64k;
+	private final IItemDefinition encodedPattern;
 
 	public CraftingItemDefinitions( FeatureFactory registry )
 	{
-		this.encoded_pattern = registry.item( new ResourceLocation( AppEng.MOD_NAME, "encoded_pattern" ), new ItemEncodedPattern() ).build();
-
-		CraftingBlockDefinitions blocks = ( ( IDefinitionsProvider ) (AppEng.instance().getCurrent() ) ).definitions( Block.class );
+		this.encodedPattern = registry.item( new ResourceLocation( AppEng.MOD_NAME, "encoded_pattern" ), new ItemEncodedPattern() ).build();
 		init( registry.buildDefaultItemBlocks() );
 	}
 

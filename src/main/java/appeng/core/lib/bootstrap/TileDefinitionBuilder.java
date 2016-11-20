@@ -12,7 +12,7 @@ import appeng.core.lib.definitions.Definitions;
 import appeng.core.lib.features.TileDefinition;
 
 
-public class TileDefinitionBuilder<T extends TileEntity> extends DefinitionBuilder<Class<T>, ITileDefinition<T, Class<T>>, TileDefinitionBuilder<T>> implements ITileBuilder<T, TileDefinitionBuilder<T>>
+public class TileDefinitionBuilder<T extends TileEntity> extends DefinitionBuilder<Class<T>, ITileDefinition<T>, TileDefinitionBuilder<T>> implements ITileBuilder<T, TileDefinitionBuilder<T>>
 {
 
 	private Definitions<Block, IBlockDefinition<Block>> blockDefinitions;
@@ -24,16 +24,16 @@ public class TileDefinitionBuilder<T extends TileEntity> extends DefinitionBuild
 	}
 
 	@Override
-	protected ITileDefinition<T, Class<T>> def( Class<T> t )
+	protected ITileDefinition<T> def( Class<T> t )
 	{
 		if( t == null )
 		{
-			return new TileDefinition<T, Class<T>>( registryName, null, null );
+			return new TileDefinition<T>( registryName, null, null );
 		}
 
 		TileEntity.addMapping( t, registryName.toString() );
 
-		return new TileDefinition<T, Class<T>>( registryName, t, (IBlockDefinition) blockDefinitions.get( registryName ) );
+		return new TileDefinition<T>( registryName, t, (IBlockDefinition) blockDefinitions.get( registryName ) );
 	}
 
 }

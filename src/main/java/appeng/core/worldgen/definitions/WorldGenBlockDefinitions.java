@@ -23,7 +23,6 @@ public class WorldGenBlockDefinitions extends Definitions<Block, IBlockDefinitio
 
 	private final IBlockDefinition quartzOre;
 	private final IBlockDefinition quartzOreCharged;
-	
 	private final IBlockDefinition skyStoneChest;
 	private final IBlockDefinition smoothSkyStoneChest;
 	
@@ -36,8 +35,8 @@ public class WorldGenBlockDefinitions extends Definitions<Block, IBlockDefinitio
 			OreDictionary.registerOre( "oreCertusQuartz", new ItemStack( block.maybe().get() ) );
 		} ).build();
 		
-		this.skyStoneChest = registry.block( "skystone_chest", new BlockSkyChest( SkyChestType.STONE ) ).features( AEFeature.SkyStoneChests ).rendering( new SkyChestRenderingCustomizer( SkyChestType.STONE ) ).build();
-		this.smoothSkyStoneChest = registry.block( "smooth_skystone_chest", new BlockSkyChest( SkyChestType.BLOCK ) ).features( AEFeature.SkyStoneChests ).rendering( new SkyChestRenderingCustomizer( SkyChestType.BLOCK ) ).build();
+		this.skyStoneChest = registry.block( "skystone_chest", new BlockSkyChest( SkyChestType.STONE ) ).features( AEFeature.SkyStoneChests ).rendering( new SkyChestRenderingCustomizer( SkyChestType.STONE ) ).createDefaultItemBlock().build();
+		this.smoothSkyStoneChest = registry.block( "smooth_skystone_chest", new BlockSkyChest( SkyChestType.BLOCK ) ).features( AEFeature.SkyStoneChests ).rendering( new SkyChestRenderingCustomizer( SkyChestType.BLOCK ) ).createDefaultItemBlock().build();
 		
 		init();
 	}

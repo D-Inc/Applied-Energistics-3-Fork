@@ -2,6 +2,7 @@
 package appeng.core.spatial.definitions;
 
 
+import appeng.core.AppEng;
 import net.minecraft.tileentity.TileEntity;
 
 import appeng.api.definitions.ITileDefinition;
@@ -13,9 +14,10 @@ import appeng.core.spatial.block.BlockSpatialIOPort;
 import appeng.core.spatial.block.BlockSpatialPylon;
 import appeng.core.spatial.tile.TileSpatialIOPort;
 import appeng.core.spatial.tile.TileSpatialPylon;
+import net.minecraft.util.ResourceLocation;
 
 
-public class SpatialTileDefinitions extends Definitions<Class<? extends TileEntity>, ITileDefinition<? extends TileEntity, Class<? extends TileEntity>>> implements ISpatialTileDefinitions
+public class SpatialTileDefinitions extends Definitions<Class<? extends TileEntity>, ITileDefinition<? extends TileEntity>> implements ISpatialTileDefinitions
 {
 
 	private final ITileDefinition spatialPylon;
@@ -23,8 +25,8 @@ public class SpatialTileDefinitions extends Definitions<Class<? extends TileEnti
 
 	public SpatialTileDefinitions( FeatureFactory registry )
 	{
-		this.spatialPylon = registry.tile( "spatial_pylon", TileSpatialPylon.class ).features( AEFeature.SpatialIO ).build();
-		this.spatialIOPort = registry.tile( "spatial_ioport", TileSpatialIOPort.class ).features( AEFeature.SpatialIO ).build();
+		this.spatialPylon = registry.tile( new ResourceLocation( AppEng.MOD_ID, "spatial_pylon" ), TileSpatialPylon.class ).features( AEFeature.SpatialIO ).build();
+		this.spatialIOPort = registry.tile( new ResourceLocation( AppEng.MOD_ID, "spatial_ioport" ), TileSpatialIOPort.class ).features( AEFeature.SpatialIO ).build();
 		
 		init();
 	}
