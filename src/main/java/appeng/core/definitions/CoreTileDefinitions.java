@@ -8,6 +8,7 @@ import net.minecraft.util.ResourceLocation;
 import appeng.api.definitions.ITileDefinition;
 import appeng.core.AppEng;
 import appeng.core.api.definitions.ICoreTileDefinitions;
+import appeng.core.block.BlockCharger;
 import appeng.core.lib.bootstrap.FeatureFactory;
 import appeng.core.lib.definitions.Definitions;
 import appeng.core.lib.features.AEFeature;
@@ -27,13 +28,14 @@ public class CoreTileDefinitions extends Definitions<Class<? extends TileEntity>
 	private final ITileDefinition inscriber;
 	private final ITileDefinition vibrationChamber;
 
+
 	public CoreTileDefinitions( FeatureFactory registry )
 	{
 		this.crank = registry.tile( new ResourceLocation( AppEng.MOD_ID, "crank" ), TileCrank.class ).features( AEFeature.GrindStone ).build();
 		this.charger = registry.tile( new ResourceLocation( AppEng.MOD_ID, "charger" ), TileCharger.class ).build();
 		this.grinder = registry.tile( new ResourceLocation( AppEng.MOD_ID, "grinder" ), TileGrinder.class ).features( AEFeature.GrindStone ).build();
 		this.inscriber = registry.tile( new ResourceLocation( AppEng.MOD_ID, "inscriber"), TileInscriber.class ).features( AEFeature.Inscriber ).build();
-		this.vibrationChamber = registry.tile( new ResourceLocation( AppEng.MOD_ID, "vibration_chamber"), TileVibrationChamber.class ).build();
+		this.vibrationChamber = registry.tile( new ResourceLocation( AppEng.MOD_ID, "vibration_chamber"), TileVibrationChamber.class ).features( AEFeature.PowerGen ).build();
 		
 		init();
 	}

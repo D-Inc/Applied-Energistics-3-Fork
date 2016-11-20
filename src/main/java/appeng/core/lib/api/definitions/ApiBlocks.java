@@ -102,89 +102,8 @@ import appeng.tools.hooks.DispenserBehaviorTinyTNT;
 public final class ApiBlocks// implements IBlocks
 {
 
-	private final ITileDefinition wirelessAccessPoint;
-	private final ITileDefinition charger;
-	private final ITileDefinition securityStation;
-	private final ITileDefinition quantumRing;
-	private final ITileDefinition quantumLink;
-	private final ITileDefinition spatialPylon;
-	private final ITileDefinition spatialIOPort;
-	private final ITileDefinition multiPart;
-	private final ITileDefinition controller;
-	private final ITileDefinition drive;
-	private final ITileDefinition chest;
-	private final ITileDefinition iface;
-	private final ITileDefinition cellWorkbench;
-	private final ITileDefinition iOPort;
-	private final ITileDefinition condenser;
-	private final ITileDefinition energyAcceptor;
-	private final ITileDefinition vibrationChamber;
-	private final ITileDefinition quartzGrowthAccelerator;
-	private final ITileDefinition energyCell;
-	private final ITileDefinition energyCellDense;
-	private final ITileDefinition energyCellCreative;
-	private final ITileDefinition craftingUnit;
-	private final ITileDefinition craftingAccelerator;
-	private final ITileDefinition craftingStorage1k;
-	private final ITileDefinition craftingStorage4k;
-	private final ITileDefinition craftingStorage16k;
-	private final ITileDefinition craftingStorage64k;
-	private final ITileDefinition craftingMonitor;
-	private final ITileDefinition molecularAssembler;
-	private final ITileDefinition lightDetector;
-	private final ITileDefinition paint;
-
 	public ApiBlocks( FeatureFactory registry )
 	{
-		this.wirelessAccessPoint = registry.block( "wireless_access_point", new BlockWireless() ).features( AEFeature.WirelessAccessTerminal ).build();
-		this.charger = registry.block( "charger", new BlockCharger() ).rendering( new BlockRenderingCustomizer(){
-			@Override
-			public void customize( IBlockRendering rendering, IItemRendering itemRendering )
-			{
-				rendering.tesr( BlockCharger.createTesr() );
-			}
-		} ).build();
-		this.securityStation = registry.block( "security_station", new BlockSecurity() ).features( AEFeature.Security ).build();
-		this.quantumRing = registry.block( "quantum_ring", new BlockQuantumRing() ).features( AEFeature.QuantumNetworkBridge ).build();
-		this.quantumLink = registry.block( "quantum_link", new BlockQuantumLinkChamber() ).features( AEFeature.QuantumNetworkBridge ).build();
-		this.spatialPylon = registry.block( "spatial_pylon", new BlockSpatialPylon() ).features( AEFeature.SpatialIO ).build();
-		this.spatialIOPort = registry.block( "spatial_ioport", new BlockSpatialIOPort() ).features( AEFeature.SpatialIO ).build();
-		this.controller = registry.block( "controller", new BlockController() ).features( AEFeature.Channels ).build();
-		this.drive = registry.block( "drive", new BlockDrive() ).features( AEFeature.StorageCells, AEFeature.MEDrive ).build();
-		this.chest = registry.block( "chest", new BlockChest() ).features( AEFeature.StorageCells, AEFeature.MEChest ).build();
-		this.iface = registry.block( "interface", new BlockInterface() ).build();
-		this.cellWorkbench = registry.block( "cell_workbench", new BlockCellWorkbench() ).features( AEFeature.StorageCells ).build();
-		this.iOPort = registry.block( "ioport", new BlockIOPort() ).features( AEFeature.StorageCells, AEFeature.IOPort ).build();
-		this.condenser = registry.block( "condenser", new BlockCondenser() ).build();
-		this.energyAcceptor = registry.block( "energy_acceptor", new BlockEnergyAcceptor() ).build();
-		this.vibrationChamber = registry.block( "vibration_chamber", new BlockVibrationChamber() ).features( AEFeature.PowerGen ).build();
-		this.quartzGrowthAccelerator = registry.block( "quartz_growth_accelerator", new BlockQuartzGrowthAccelerator() ).build();
-		this.energyCell = registry.block( "energy_cell", new BlockEnergyCell ).item( AEBaseItemBlockChargeable() ).rendering( new BlockEnergyCellRendering( new ResourceLocation( AppEng.MOD_ID, "energy_cell" ) ) ).build();
-		this.energyCellDense = registry.block( "dense_energy_cell", new BlockDenseEnergyCell ).features( AEFeature.DenseEnergyCells ).item( AEBaseItemBlockChargeable() ).rendering( new BlockEnergyCellRendering( new ResourceLocation( AppEng.MOD_ID, "dense_energy_cell" ) ) ).build();
-		this.energyCellCreative = registry.block( "creative_energy_cell", new BlockCreativeEnergyCell ).features( AEFeature.Creative ).item( AEBaseItemBlockChargeable() ).build();
-
-		FeatureFactory crafting = registry.features( AEFeature.CraftingCPU );
-		this.craftingUnit = crafting.block( "crafting_unit", new BlockCraftingUnit( CraftingUnitType.UNIT ) ).build();
-		this.craftingAccelerator = crafting.block( "crafting_accelerator", new BlockCraftingUnit( CraftingUnitType.ACCELERATOR ) ).build();
-		this.craftingStorage1k = crafting.block( "crafting_storage_1k", new BlockCraftingStorage( CraftingUnitType.STORAGE_1K ) ).item( ItemCraftingStorage() ).build();
-		this.craftingStorage4k = crafting.block( "crafting_storage_4k", new BlockCraftingStorage( CraftingUnitType.STORAGE_4K ) ).item( ItemCraftingStorage() ).build();
-		this.craftingStorage16k = crafting.block( "crafting_storage_16k", new BlockCraftingStorage( CraftingUnitType.STORAGE_16K ) ).item( ItemCraftingStorage() ).build();
-		this.craftingStorage64k = crafting.block( "crafting_storage_64k", new BlockCraftingStorage( CraftingUnitType.STORAGE_64K ) ).item( ItemCraftingStorage() ).build();
-		this.craftingMonitor = crafting.block( "crafting_monitor", new BlockCraftingMonitor() ).build();
-
-		this.molecularAssembler = registry.block( "molecular_assembler", new BlockMolecularAssembler() ).features( AEFeature.MolecularAssembler ).build();
-		this.lightDetector = registry.block( "light_detector", new BlockLightDetector() ).features( AEFeature.LightDetector ).build();
-		this.paint = registry.block( "paint", new BlockPaint() ).features( AEFeature.PaintBalls ).build();
-
-		this.multiPart = registry.block( "multipart_block", new BlockCableBus() ).rendering( new BlockRenderingCustomizer(){
-			@Override
-			@SideOnly( Side.CLIENT )
-			public void customize( IBlockRendering rendering, IItemRendering itemRendering )
-			{
-				rendering.modelCustomizer( new CableModelCustomizer()::customizeModel ).blockColor( new CableBusColor() );
-			}
-		} ).build();
-
 		// TODO Pre-1.8 - Re-Add Slabs...
 		/*
 		 * this.skyStoneSlab = constructor.registerBlockDefinition( new AEBaseSlabBlock( skyStone_stone,
