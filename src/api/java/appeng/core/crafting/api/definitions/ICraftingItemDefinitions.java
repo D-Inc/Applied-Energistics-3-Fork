@@ -11,7 +11,7 @@ import appeng.api.definitions.IItemDefinition;
 public interface ICraftingItemDefinitions extends IDefinitions<Item, IItemDefinition<Item>>
 {
 
-	default IItemDefinition<? extends Item> itemEncodedPattern()
+	default IItemDefinition<? extends Item> encodedPattern()
 	{
 		return get( "encoded_pattern" );
 	}

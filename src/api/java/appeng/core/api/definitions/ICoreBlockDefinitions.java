@@ -11,27 +11,27 @@ import appeng.api.definitions.IDefinitions;
 public interface ICoreBlockDefinitions extends IDefinitions<Block, IBlockDefinition<Block>>
 {
 
-	default IBlockDefinition<? extends Block> blockCrank()
+	default IBlockDefinition<? extends Block> crank()
 	{
 		return get( "crank" );
 	}
 
-	default IBlockDefinition<? extends Block> blockCharger()
+	default IBlockDefinition<? extends Block> charger()
 	{
 		return get( "charger" );
 	}
 
-	default IBlockDefinition<? extends Block> blockGrinder()
+	default IBlockDefinition<? extends Block> grinder()
 	{
 		return get( "grinder" );
 	}
 
-	default IBlockDefinition<? extends Block> blockInscriber()
+	default IBlockDefinition<? extends Block> inscriber()
 	{
 		return get( "inscriber" );
 	}
 
-	default IBlockDefinition<? extends Block> blockVibrationChamber()
+	default IBlockDefinition<? extends Block> vibrationChamber()
 	{
 		return get( "vibration_chamber" );
 	}

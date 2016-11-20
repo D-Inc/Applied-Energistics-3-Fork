@@ -12,7 +12,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
 
-public interface ITileDefinition<TE extends TileEntity, T extends Class<TE>> extends IDefinition<T>
+public interface ITileDefinition<TE extends TileEntity> extends IDefinition<Class<TE>>
 {
 
 	/**

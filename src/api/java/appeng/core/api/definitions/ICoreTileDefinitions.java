@@ -8,30 +8,30 @@ import appeng.api.definitions.IDefinitions;
 import appeng.api.definitions.ITileDefinition;
 
 
-public interface ICoreTileDefinitions extends IDefinitions<Class<? extends TileEntity>, ITileDefinition<? extends TileEntity, Class<? extends TileEntity>>>
+public interface ICoreTileDefinitions extends IDefinitions<Class<? extends TileEntity>, ITileDefinition<? extends TileEntity>>
 {
 
-    default ITileDefinition<? extends TileEntity, ? extends Class<? extends TileEntity>> blockCrank()
+    default ITileDefinition<? extends TileEntity> crank()
     {
         return get( "crank" );
     }
 
-    default ITileDefinition<? extends TileEntity, ? extends Class<? extends TileEntity>> blockCharger()
+    default ITileDefinition<? extends TileEntity> charger()
     {
         return get( "charger" );
     }
 
-    default ITileDefinition<? extends TileEntity, ? extends Class<? extends TileEntity>> blockGrinder()
+    default ITileDefinition<? extends TileEntity> grinder()
     {
         return get( "grinder" );
     }
 
-    default ITileDefinition<? extends TileEntity, ? extends Class<? extends TileEntity>> blockInscriber()
+    default ITileDefinition<? extends TileEntity> inscriber()
     {
         return get( "inscriber" );
     }
 
-    default ITileDefinition<? extends TileEntity, ? extends Class<? extends TileEntity>> blockVibrationChamber()
+    default ITileDefinition<? extends TileEntity> vibrationChamber()
     {
         return get( "vibration_chamber" );
     }

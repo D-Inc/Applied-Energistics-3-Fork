@@ -23,7 +23,7 @@ import appeng.core.lib.definitions.Definitions;
 import net.minecraft.util.ResourceLocation;
 
 
-public class CraftingTileDefinitions extends Definitions<Class<? extends TileEntity>, ITileDefinition<? extends TileEntity, Class<? extends TileEntity>>> implements ICraftingTileDefinitions
+public class CraftingTileDefinitions extends Definitions<Class<? extends TileEntity>, ITileDefinition<? extends TileEntity>> implements ICraftingTileDefinitions
 {
 
 	private final ITileDefinition craftingMonitor;
@@ -37,7 +37,6 @@ public class CraftingTileDefinitions extends Definitions<Class<? extends TileEnt
 		craftingMonitor = crafting.tile( new ResourceLocation( AppEng.MOD_NAME, "crafting_monitor" ) , TileCraftingMonitorTile.class ).build();
 		craftingStorage = crafting.tile( new ResourceLocation( AppEng.MOD_NAME, "crafting_storage" ) , TileCraftingStorageTile.class ).build();
 		craftingUnit = crafting.tile( new ResourceLocation( AppEng.MOD_NAME, "crafting_unit" ) , TileCraftingTile.class ).build();
-		
 		molecularAssembler = registry.tile( new ResourceLocation( AppEng.MOD_NAME, "molecular_assembler" ) , TileMolecularAssembler.class).build();
 		init();
 	}

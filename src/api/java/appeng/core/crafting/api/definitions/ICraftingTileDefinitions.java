@@ -7,22 +7,22 @@ import appeng.api.definitions.IDefinitions;
 import appeng.api.definitions.ITileDefinition;
 
 
-public interface ICraftingTileDefinitions extends IDefinitions<Class<? extends TileEntity>, ITileDefinition<? extends TileEntity, Class<? extends TileEntity>>>
+public interface ICraftingTileDefinitions extends IDefinitions<Class<? extends TileEntity>, ITileDefinition<? extends TileEntity>>
 {
 
-    default ITileDefinition tileCraftingMonitor(){
+    default ITileDefinition<? extends TileEntity> craftingMonitor(){
         return get( "crafting_monitor ");
     }
 
-    default ITileDefinition tileCraftingStorage(){
+    default ITileDefinition<? extends TileEntity> craftingStorage(){
         return get( "crafting_storage" );
     }
 
-    default ITileDefinition tileCraftingUnit(){
+    default ITileDefinition<? extends TileEntity> craftingUnit(){
         return get( "crafting_unit" );
     }
 
-    default ITileDefinition tileMolecularAssembler(){
+    default ITileDefinition<? extends TileEntity> molecularAssembler(){
         return get( "molecular_assembler" );
     }
 

@@ -10,6 +10,7 @@ import com.google.common.collect.Maps;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
@@ -98,7 +99,7 @@ public class FeatureFactory
 		defaultItemBlocks.put( def, itemBlock );
 	}
 
-	public Map<ResourceLocation, IDefinition<? extends Item>> buildDefaultItemBlocks()
+	public Map< ResourceLocation, IDefinition< ? extends Item > > buildDefaultItemBlocks()
 	{
 		Map<ResourceLocation, IDefinition<? extends Item>> result = Maps.newHashMap();
 		this.defaultItemBlocks.forEach( ( def, item ) -> result.put( def.identifier(), item.customize( item( def.identifier(), item.createItemBlock( def.maybe().get() ) ) ).build() ) );
