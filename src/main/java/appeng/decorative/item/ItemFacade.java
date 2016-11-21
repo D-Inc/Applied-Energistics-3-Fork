@@ -36,6 +36,7 @@ import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -62,9 +63,9 @@ public class ItemFacade extends AEBaseItem implements IFacadeItem, IAlphaPassIte
 	}
 
 	@Override
-	public EnumActionResult onItemUseFirst( final ItemStack is, final EntityPlayer player, final World world, final BlockPos pos, final EnumFacing side, final float hitX, final float hitY, final float hitZ, final EnumHand hand )
+	public EnumActionResult onItemUseFirst( final EntityPlayer player, final World world, final BlockPos pos, final EnumFacing side, final float hitX, final float hitY, final float hitZ, final EnumHand hand )
 	{
-		return AppEngApi.internalApi().partHelper().placeBus( is, pos, side, player, hand, world );
+		return AppEngApi.internalApi().partHelper().placeBus( player.getHeldItem( hand ), pos, side, player, hand, world );
 	}
 
 	@Override
@@ -105,7 +106,7 @@ public class ItemFacade extends AEBaseItem implements IFacadeItem, IAlphaPassIte
 				{
 					final Item item = Item.getItemFromBlock( b );
 
-					final List<ItemStack> tmpList = new ArrayList<ItemStack>( 100 );
+					final NonNullList<ItemStack> tmpList = NonNullList.func_191197_a( 100, null );
 					b.getSubBlocks( item, b.getCreativeTabToDisplayOn(), tmpList );
 					for( final ItemStack l : tmpList )
 					{

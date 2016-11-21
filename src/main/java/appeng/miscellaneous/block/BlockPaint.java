@@ -19,7 +19,6 @@
 package appeng.miscellaneous.block;
 
 
-import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
@@ -30,6 +29,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -63,13 +63,13 @@ public class BlockPaint extends AEBaseTileBlock
 
 	@Override
 	@SideOnly( Side.CLIENT )
-	public void getCheckedSubBlocks( final Item item, final CreativeTabs tabs, final List<ItemStack> itemStacks )
+	public void getCheckedSubBlocks( final Item item, final CreativeTabs tabs, final NonNullList<ItemStack> itemStacks )
 	{
 		// do nothing
 	}
-
+	
 	@Override
-	public AxisAlignedBB getCollisionBoundingBox( final IBlockState state, final World worldIn, final BlockPos pos )
+	public AxisAlignedBB getCollisionBoundingBox( final IBlockState state, final IBlockAccess worldIn, final BlockPos pos )
 	{
 		return null;
 	}
@@ -81,7 +81,7 @@ public class BlockPaint extends AEBaseTileBlock
 	}
 
 	@Override
-	public void neighborChanged( final IBlockState state, final World w, final BlockPos pos, final Block neighborBlock )
+	public void neighborChanged( final IBlockState state, final World w, final BlockPos pos, final Block neighborBlock, final BlockPos updated )
 	{
 		final TilePaint tp = this.getTileEntity( w, pos );
 

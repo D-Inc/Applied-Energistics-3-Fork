@@ -28,6 +28,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.ITextComponent;
 
 import appeng.core.lib.tile.AEBaseTile;
@@ -56,7 +57,7 @@ public class TileItemGen extends AEBaseTile implements IInventory
 					}
 					else
 					{
-						final List<ItemStack> list = new ArrayList<ItemStack>();
+						final NonNullList<ItemStack> list = NonNullList.func_191196_a();
 						mi.getSubItems( mi, mi.getCreativeTab(), list );
 						POSSIBLE_ITEMS.addAll( list );
 					}
@@ -83,7 +84,7 @@ public class TileItemGen extends AEBaseTile implements IInventory
 	}
 
 	@Override
-	public ItemStack decStackSize( final int i, final int j )
+	public ItemStack decrStackSize( final int i, final int j )
 	{
 		final ItemStack a = POSSIBLE_ITEMS.poll();
 		final ItemStack out = a.copy();

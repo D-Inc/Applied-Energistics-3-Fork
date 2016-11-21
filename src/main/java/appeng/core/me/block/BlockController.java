@@ -194,7 +194,7 @@ public class BlockController extends AEBaseTileBlock
 	}
 
 	@Override
-	public void neighborChanged( final IBlockState state, final World w, final BlockPos pos, final Block neighborBlock )
+	public void neighborChanged( final IBlockState state, final World w, final BlockPos pos, final Block neighborBlock, final BlockPos updated )
 	{
 		final TileController tc = this.getTileEntity( w, pos );
 		if( tc != null )

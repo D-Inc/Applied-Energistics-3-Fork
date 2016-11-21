@@ -43,7 +43,7 @@ public final class DispenserMatterCannon extends BehaviorDefaultDispenseItem
 		final Item i = dispensedItem.getItem();
 		if( i instanceof ToolMassCannon )
 		{
-			final EnumFacing enumfacing = dispenser.func_189992_e().getValue( BlockDispenser.FACING );
+			final EnumFacing enumfacing = dispenser.getBlockState().getValue( BlockDispenser.FACING );
 			AEPartLocation dir = AEPartLocation.INTERNAL;
 			for( final AEPartLocation d : AEPartLocation.SIDE_LOCATIONS )
 			{
@@ -65,7 +65,8 @@ public final class DispenserMatterCannon extends BehaviorDefaultDispenseItem
 				p.posY += dir.yOffset;
 				p.posZ += dir.zOffset;
 
-				dispensedItem = tm.onItemRightClick( dispensedItem, w, p, null ).getResult();
+				//TODO 1.11-CN:A - Set item in players hand prior simulation now that you can't pass item
+				dispensedItem = tm.onItemRightClick( w, p, null ).getResult();
 			}
 		}
 		return dispensedItem;

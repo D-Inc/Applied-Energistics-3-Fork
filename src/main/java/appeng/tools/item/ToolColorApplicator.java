@@ -129,7 +129,7 @@ public class ToolColorApplicator extends AEBasePoweredItem implements IStorageCe
 			if( option != null )
 			{
 				paintBall = option.getItemStack();
-				paintBall.stackSize = 1;
+				paintBall.func_190920_e(1);
 			}
 			else
 			{

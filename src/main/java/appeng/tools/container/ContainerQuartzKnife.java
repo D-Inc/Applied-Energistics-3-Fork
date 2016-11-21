@@ -149,7 +149,7 @@ public class ContainerQuartzKnife extends AEBaseContainer implements IAEAppEngIn
 	}
 
 	@Override
-	public ItemStack decStackSize( final int var1, final int var2 )
+	public ItemStack decrStackSize( final int var1, final int var2 )
 	{
 		final ItemStack is = this.getStackInSlot( 0 );
 		if( is != null )
@@ -169,9 +169,9 @@ public class ContainerQuartzKnife extends AEBaseContainer implements IAEAppEngIn
 			final ItemStack item = this.toolInv.getItemStack();
 			item.damageItem( 1, this.getPlayerInv().player );
 
-			if( item.stackSize == 0 )
+			if( item.func_190916_E() == 0 )
 			{
-				this.getPlayerInv().mainInventory[this.getPlayerInv().currentItem] = null;
+				this.getPlayerInv().mainInventory.set( this.getPlayerInv().currentItem, null);
 				MinecraftForge.EVENT_BUS.post( new PlayerDestroyItemEvent( this.getPlayerInv().player, item, null ) );
 			}
 

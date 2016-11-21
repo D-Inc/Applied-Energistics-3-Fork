@@ -217,8 +217,9 @@ public class ToolEntropyManipulator extends AEBasePoweredItem implements IBlockT
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick( final ItemStack item, final World w, final EntityPlayer p, final EnumHand hand )
+	public ActionResult<ItemStack> onItemRightClick( final World w, final EntityPlayer p, final EnumHand hand )
 	{
+		ItemStack item = p.getHeldItem( hand );
 		final RayTraceResult target = this.rayTrace( w, p, true );
 
 		if( target == null )

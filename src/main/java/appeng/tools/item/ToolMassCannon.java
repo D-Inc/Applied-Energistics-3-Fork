@@ -114,8 +114,9 @@ public class ToolMassCannon extends AEBasePoweredItem implements IStorageCell
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick( final ItemStack item, final World w, final EntityPlayer p, final @Nullable EnumHand hand )
+	public ActionResult<ItemStack> onItemRightClick( final World w, final EntityPlayer p, final @Nullable EnumHand hand )
 	{
+		ItemStack item = p.getHeldItem( hand );
 		if( this.getAECurrentPower( item ) > 1600 )
 		{
 			int shots = 1;
@@ -150,7 +151,7 @@ public class ToolMassCannon extends AEBasePoweredItem implements IStorageCell
 							return new ActionResult<ItemStack>( EnumActionResult.SUCCESS, item );
 						}
 
-						ammo.stackSize = 1;
+						ammo.func_190920_e(1);
 						aeAmmo = inv.extractItems( aeAmmo, Actionable.MODULATE, new PlayerSource( p, null ) );
 						if( aeAmmo == null )
 						{

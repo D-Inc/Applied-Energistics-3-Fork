@@ -140,8 +140,9 @@ public class ToolMemoryCard extends AEBaseItem implements IMemoryCard
 	}
 
 	@Override
-	public EnumActionResult onItemUse( final ItemStack is, final EntityPlayer player, final World w, final BlockPos pos, final EnumHand hand, final EnumFacing side, final float hx, final float hy, final float hz )
+	public EnumActionResult onItemUse( final EntityPlayer player, final World w, final BlockPos pos, final EnumHand hand, final EnumFacing side, final float hx, final float hy, final float hz )
 	{
+		ItemStack is = player.getHeldItem( hand );
 		if( player.isSneaking() && !w.isRemote )
 		{
 			final IMemoryCard mem = (IMemoryCard) is.getItem();
@@ -151,7 +152,7 @@ public class ToolMemoryCard extends AEBaseItem implements IMemoryCard
 		}
 		else
 		{
-			return super.onItemUse( is, player, w, pos, hand, side, hx, hy, hz );
+			return super.onItemUse( player, w, pos, hand, side, hx, hy, hz );
 		}
 	}
 

@@ -19,13 +19,12 @@
 package appeng.decorative.item;
 
 
-import java.util.List;
-
 import com.google.common.collect.ImmutableMap;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 
 import appeng.core.api.util.AEColor;
 import appeng.core.lib.item.AEBaseItem;

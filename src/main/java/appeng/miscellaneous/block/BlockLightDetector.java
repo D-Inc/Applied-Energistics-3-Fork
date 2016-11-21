@@ -115,7 +115,7 @@ public class BlockLightDetector extends AEBaseTileBlock implements IOrientableBl
 	}
 
 	@Override
-	public void neighborChanged( IBlockState state, World w, BlockPos pos, Block blockIn )
+	public void neighborChanged( IBlockState state, World w, BlockPos pos, Block blockIn, BlockPos updated )
 	{
 		final EnumFacing up = this.getOrientable( w, pos ).getUp();
 		if( !this.canPlaceAt( (World) w, pos, up.getOpposite() ) )
