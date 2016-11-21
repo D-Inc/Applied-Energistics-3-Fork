@@ -8,7 +8,7 @@ import appeng.api.definitions.IDefinitions;
 import appeng.api.definitions.ITileDefinition;
 
 
-public interface IMiscellaneousTileDefinitions extends IDefinitions<Class<? extends TileEntity>, ITileDefinition<? extends TileEntity>>
+public interface IMiscellaneousTileDefinitions extends IDefinitions<Class<TileEntity>, ITileDefinition<TileEntity>>
 {
     default ITileDefinition<? extends TileEntity> skyCompass()
     {

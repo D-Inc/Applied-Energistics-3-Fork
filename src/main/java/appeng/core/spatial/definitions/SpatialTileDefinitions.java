@@ -17,7 +17,7 @@ import appeng.core.spatial.tile.TileSpatialPylon;
 import net.minecraft.util.ResourceLocation;
 
 
-public class SpatialTileDefinitions extends Definitions<Class<? extends TileEntity>, ITileDefinition<? extends TileEntity>> implements ISpatialTileDefinitions
+public class SpatialTileDefinitions extends Definitions<Class<TileEntity>, ITileDefinition<TileEntity>> implements ISpatialTileDefinitions
 {
 
 	private final ITileDefinition spatialPylon;

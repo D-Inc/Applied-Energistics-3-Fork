@@ -11,23 +11,23 @@ import net.minecraft.item.ItemBlock;
 
 public interface IWorldGenItemDefinitions extends IDefinitions<Item, IItemDefinition<Item>>
 {
-    default IItemDefinition<? extends ItemBlock > quartzOre()
+    default IItemDefinition<? extends Item> quartzOre()
     {
-        return ( IItemDefinition< ? extends ItemBlock > ) get( "quartz_ore" );
+        return get( "quartz_ore" );
     }
 
-    default IItemDefinition<? extends ItemBlock> quartzOreCharged()
+    default IItemDefinition<? extends Item> quartzOreCharged()
     {
-        return ( IItemDefinition< ? extends ItemBlock > ) get( "charged_quartz_ore" );
+        return get( "charged_quartz_ore" );
     }
 
-    default IItemDefinition<? extends ItemBlock> skyStoneChest()
+    default IItemDefinition<? extends Item> skyStoneChest()
     {
-        return ( IItemDefinition< ? extends ItemBlock > ) get( "skystone_chest" );
+        return get( "skystone_chest" );
     }
 
-    default IItemDefinition<? extends ItemBlock> smoothSkyStoneChest()
+    default IItemDefinition<? extends Item> smoothSkyStoneChest()
     {
-        return ( IItemDefinition< ? extends ItemBlock > ) get( "smooth_skystone_chest" );
+        return get( "smooth_skystone_chest" );
     }
 }

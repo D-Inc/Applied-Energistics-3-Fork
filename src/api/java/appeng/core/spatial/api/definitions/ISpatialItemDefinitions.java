@@ -26,18 +26,18 @@ public interface ISpatialItemDefinitions extends IDefinitions<Item, IItemDefinit
         return get( "spatial_storage_cell_128_cubed" );
     }
 
-    default IItemDefinition<? extends ItemBlock> blockMatrixFrame()
+    default IItemDefinition<? extends Item> blockMatrixFrame()
     {
-        return ( IItemDefinition< ? extends ItemBlock > ) get( "matrix_frame" );
+        return get( "matrix_frame" );
     }
 
-    default IItemDefinition<? extends ItemBlock> blockSpatialPylon()
+    default IItemDefinition<? extends Item> blockSpatialPylon()
     {
-        return ( IItemDefinition< ? extends ItemBlock > ) get( "spatial_pylon" );
+        return get( "spatial_pylon" );
     }
 
-    default IItemDefinition<? extends ItemBlock> blockSpatialIOPort()
+    default IItemDefinition<? extends Item> blockSpatialIOPort()
     {
-        return ( IItemDefinition< ? extends ItemBlock > ) get( "spatial_ioport" );
+        return get( "spatial_ioport" );
     }
 }

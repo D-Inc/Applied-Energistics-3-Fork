@@ -14,7 +14,7 @@ import appeng.core.worldgen.api.definitions.IWorldGenTileDefinitions;
 import net.minecraft.util.ResourceLocation;
 
 
-public class WorldGenTileDefinitions extends Definitions<Class<? extends TileEntity>, ITileDefinition<? extends TileEntity>> implements IWorldGenTileDefinitions
+public class WorldGenTileDefinitions extends Definitions<Class<TileEntity>, ITileDefinition<TileEntity>> implements IWorldGenTileDefinitions
 {
 
 	private final ITileDefinition skyStoneChest;
