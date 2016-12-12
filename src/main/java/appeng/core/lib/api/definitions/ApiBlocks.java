@@ -518,6 +518,7 @@ public final class ApiBlocks// implements IBlocks
 	}
 
 	/* @Override */
+	//todo: Number of arguments error at this point. need to check class. -legracen
 	public ITileDefinition<? extends TileEntity, Class<? extends TileEntity>> paint()
 	{
 		return this.paint;

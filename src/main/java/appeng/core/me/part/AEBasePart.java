@@ -164,12 +164,14 @@ public abstract class AEBasePart implements IPart, IGridProxyable, IActionHost, 
 	@Override
 	public void securityBreak()
 	{
+		//todo: 1.11 makes stackSize private. -legracen
 		if( this.getItemStack().stackSize > 0 )
 		{
 			final List<ItemStack> items = new ArrayList<ItemStack>();
 			items.add( this.is.copy() );
 			this.host.removePart( this.side, false );
 			Platform.spawnDrops( this.tile.getWorld(), this.tile.getPos(), items );
+			//todo: 1.11 makes stackSize private. -legracen
 			this.is.stackSize = 0;
 		}
 	}

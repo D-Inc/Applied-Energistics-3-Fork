@@ -33,7 +33,7 @@ import appeng.core.lib.util.iterators.InvIterator;
 import appeng.core.me.api.storage.IMEInventory;
 import appeng.core.me.grid.storage.MEIInventoryWrapper;
 
-
+//todo: error not overiding decrStackSize(int,int) properly here. -legracen
 public class AppEngInternalInventory implements IInventory, Iterable<ItemStack>
 {
 	private final int size;
@@ -79,6 +79,7 @@ public class AppEngInternalInventory implements IInventory, Iterable<ItemStack>
 		return this.inv[var1];
 	}
 
+	//todo: bad override. -legracen
 	@Override
 	public ItemStack decStackSize( final int slot, final int qty )
 	{
@@ -136,12 +137,14 @@ public class AppEngInternalInventory implements IInventory, Iterable<ItemStack>
 				if( oldStack.func_190916_E() > newItemStack.func_190916_E() )
 				{
 					removed = removed.copy();
+					//todo: 1.11 makes stackSize private. -legracen
 					removed.stackSize -= newItemStack.func_190916_E();
 					added = null;
 				}
 				else if( oldStack.func_190916_E() < newItemStack.func_190916_E() )
 				{
 					added = added.copy();
+					//todo: 1.11 makes stackSize private. -legracen
 					added.stackSize -= oldStack.func_190916_E();
 					removed = null;
 				}

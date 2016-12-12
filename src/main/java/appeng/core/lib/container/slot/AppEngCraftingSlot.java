@@ -139,6 +139,7 @@ public class AppEngCraftingSlot extends AppEngSlot
 		}
 	}
 
+	//todo: bad overide. -legracen
 	@Override
 	public void onPickupFromSlot( final EntityPlayer playerIn, final ItemStack stack )
 	{
@@ -152,6 +153,7 @@ public class AppEngCraftingSlot extends AppEngSlot
 			ic.setInventorySlotContents( x, this.craftMatrix.getStackInSlot( x ) );
 		}
 
+		//todo: need to fix implementation of ItemStack. -legracen
 		final ItemStack[] aitemstack = CraftingManager.getInstance().getRemainingItems( ic, playerIn.worldObj );
 
 		for( int x = 0; x < this.craftMatrix.getSizeInventory(); x++ )
@@ -168,6 +170,7 @@ public class AppEngCraftingSlot extends AppEngSlot
 
 			if( itemstack1 != null )
 			{
+				//todo: fix decStackSize in super class. -legracen
 				this.craftMatrix.decStackSize( i, 1 );
 			}
 
@@ -189,14 +192,17 @@ public class AppEngCraftingSlot extends AppEngSlot
 	 * Decrease the size of the stack in slot (first int arg) by the amount of the second int arg. Returns the new
 	 * stack.
 	 */
+	//todo: fix bad override. -legracen
 	@Override
 	public ItemStack decStackSize( final int par1 )
 	{
 		if( this.getHasStack() )
 		{
+			//todo: stackSize is private now. -legracen
 			this.amountCrafted += Math.min( par1, this.getStack().stackSize );
 		}
 
+		//todo: fix decStackSize in super class. -legracen
 		return super.decStackSize( par1 );
 	}
 }

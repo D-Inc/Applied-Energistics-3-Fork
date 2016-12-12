@@ -58,6 +58,7 @@ public class ItemSubDefinitionsProvider<I extends Item & IStateItem> extends Sub
 		return new IStateItemSubDefinition( identifier, instance, properties );
 	}
 
+	//todo: SubDefinition class not validating here. -legracen
 	public class IStateItemSubDefinition extends SubDefinition<IStateItemSubDefinition>
 	{
 
