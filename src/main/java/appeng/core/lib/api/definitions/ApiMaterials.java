@@ -32,6 +32,7 @@ import appeng.core.item.MaterialType;
 import appeng.core.lib.bootstrap.FeatureFactory;
 import appeng.core.lib.bootstrap.IItemRendering;
 import appeng.core.lib.bootstrap.ItemRenderingCustomizer;
+//todo: DamagedItemDefinition class does not curently exist. -legracen
 import appeng.core.lib.features.DamagedItemDefinition;
 
 

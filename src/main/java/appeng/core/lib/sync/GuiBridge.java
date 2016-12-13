@@ -34,6 +34,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
+//todo: IComparableDefinition class not available. -legracen
 import appeng.api.definitions.IComparableDefinition;
 import appeng.core.api.config.SecurityPermissions;
 import appeng.core.api.exceptions.AppEngException;
