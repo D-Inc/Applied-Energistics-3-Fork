@@ -150,8 +150,7 @@ public class PartPatternTerminal extends AbstractPartTerminal
 				final ItemStack is = this.crafting.getStackInSlot( x );
 				if( is != null )
 				{
-					//todo: 1.11 makes stackSize private. -legracen
-					is.stackSize = 1;
+					is.setCount(1);
 				}
 			}
 		}

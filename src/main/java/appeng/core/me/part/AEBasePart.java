@@ -28,6 +28,7 @@ import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import appeng.core.lib.util.item.AEItemStack;
 import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableMap;
@@ -120,7 +121,7 @@ public abstract class AEBasePart implements IPart, IGridProxyable, IActionHost, 
 	}
 
 	private final AENetworkProxy proxy;
-	private final ItemStack is;
+	public final ItemStack is;
 	private TileEntity tile = null;
 	private IPartHost host = null;
 	private AEPartLocation side = null;
@@ -164,15 +165,13 @@ public abstract class AEBasePart implements IPart, IGridProxyable, IActionHost, 
 	@Override
 	public void securityBreak()
 	{
-		//todo: 1.11 makes stackSize private. -legracen
-		if( this.getItemStack().stackSize > 0 )
+		if( this.getItemStack().getCount() > 0)
 		{
 			final List<ItemStack> items = new ArrayList<ItemStack>();
 			items.add( this.is.copy() );
 			this.host.removePart( this.side, false );
 			Platform.spawnDrops( this.tile.getWorld(), this.tile.getPos(), items );
-			//todo: 1.11 makes stackSize private. -legracen
-			this.is.stackSize = 0;
+			this.is.setCount(0);
 		}
 	}
 

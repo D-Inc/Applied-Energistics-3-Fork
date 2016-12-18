@@ -28,7 +28,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-//todo: FluidContainerRegistry has been removed need to find fix. --legracen
+//TODO: FluidContainerRegistry has been removed need to find fix. --legracen
 import net.minecraftforge.fluids.FluidContainerRegistry;
 
 import net.minecraftforge.fml.common.registry.GameRegistry;

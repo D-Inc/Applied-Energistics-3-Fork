@@ -26,7 +26,7 @@ import appeng.core.api.recipes.ISubItemResolver;
 import appeng.core.api.recipes.ResolverResult;
 import appeng.core.api.recipes.ResolverResultSet;
 import appeng.core.api.util.AEColor;
-//todo: AEColoredItemDefinition class is not available. commenting out until it can be implemented. -legracen
+//TODO: AEColoredItemDefinition class is not available. commenting out until it can be implemented. -legracen
 import appeng.core.api.util.AEColoredItemDefinition;
 import appeng.core.item.ItemCrystalSeed;
 import appeng.core.item.ItemMultiItem;

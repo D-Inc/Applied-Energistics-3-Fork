@@ -36,7 +36,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-//todo: IComparableDefinition class not available. commenting out until it is. -legracen
+//TODO: IComparableDefinition class not available. commenting out until it is. -legracen
 import appeng.api.definitions.IComparableDefinition;
 import appeng.api.definitions.IItemDefinition;
 import appeng.api.definitions.ITileDefinition;

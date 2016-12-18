@@ -13,6 +13,7 @@ import net.minecraft.util.ResourceLocation;
 import appeng.api.definitions.IItemDefinition;
 import appeng.api.definitions.sub.ISubDefinitionProperty;
 import appeng.core.lib.bootstrap.ItemSubDefinitionsProvider.IStateItemSubDefinition;
+import appeng.core.lib.features.SubDefinitionsProvider.SubDefinition;
 import appeng.core.lib.features.SubDefinitionsProvider;
 import appeng.core.lib.item.IStateItem;
 import appeng.core.lib.item.IStateItem.State;
@@ -58,7 +59,7 @@ public class ItemSubDefinitionsProvider<I extends Item & IStateItem> extends Sub
 		return new IStateItemSubDefinition( identifier, instance, properties );
 	}
 
-	//todo: SubDefinition class not validating here. -legracen
+	//TODO: SubDefinition class not validating here. -legracen
 	public class IStateItemSubDefinition extends SubDefinition<IStateItemSubDefinition>
 	{
 

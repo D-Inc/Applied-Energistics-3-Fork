@@ -85,7 +85,8 @@ public class AppEngCraftingSlot extends AppEngSlot
 	@Override
 	protected void onCrafting( final ItemStack par1ItemStack )
 	{
-		par1ItemStack.onCrafting( this.thePlayer.worldObj, this.thePlayer, this.amountCrafted );
+		//TODO: worldObj not found attempting to use .getEntityWorld() instead here. -legracen
+		par1ItemStack.onCrafting( this.thePlayer.getEntityWorld(), this.thePlayer, this.amountCrafted );//.worldObj, this.thePlayer, this.amountCrafted );
 		this.amountCrafted = 0;
 
 		if( par1ItemStack.getItem() == Item.getItemFromBlock( Blocks.CRAFTING_TABLE ) )
@@ -139,7 +140,7 @@ public class AppEngCraftingSlot extends AppEngSlot
 		}
 	}
 
-	//todo: bad overide. -legracen
+	//TODO: bad overide possibly fixed need verification. -legracen
 	@Override
 	public void onPickupFromSlot( final EntityPlayer playerIn, final ItemStack stack )
 	{
@@ -153,8 +154,8 @@ public class AppEngCraftingSlot extends AppEngSlot
 			ic.setInventorySlotContents( x, this.craftMatrix.getStackInSlot( x ) );
 		}
 
-		//todo: need to fix implementation of ItemStack. -legracen
-		final ItemStack[] aitemstack = CraftingManager.getInstance().getRemainingItems( ic, playerIn.worldObj );
+		//TODO: worldObj not found attempting to use .world instead here. also error with aitemstack definition possible. -legracen
+		final ItemStack[] aitemstack = CraftingManager.getInstance().getRemainingItems( ic, playerIn.getEntityWorld());
 
 		for( int x = 0; x < this.craftMatrix.getSizeInventory(); x++ )
 		{
@@ -170,8 +171,7 @@ public class AppEngCraftingSlot extends AppEngSlot
 
 			if( itemstack1 != null )
 			{
-				//todo: fix decStackSize in super class. -legracen
-				this.craftMatrix.decStackSize( i, 1 );
+				this.craftMatrix.decrStackSize( i, 1 );
 			}
 
 			if( itemstack2 != null )
@@ -192,17 +192,14 @@ public class AppEngCraftingSlot extends AppEngSlot
 	 * Decrease the size of the stack in slot (first int arg) by the amount of the second int arg. Returns the new
 	 * stack.
 	 */
-	//todo: fix bad override. -legracen
 	@Override
 	public ItemStack decStackSize( final int par1 )
 	{
 		if( this.getHasStack() )
 		{
-			//todo: stackSize is private now. -legracen
-			this.amountCrafted += Math.min( par1, this.getStack().stackSize );
+			this.amountCrafted += Math.min( par1, this.getStack().getCount() );
 		}
 
-		//todo: fix decStackSize in super class. -legracen
-		return super.decStackSize( par1 );
+		return super.decrStackSize( par1 );
 	}
 }

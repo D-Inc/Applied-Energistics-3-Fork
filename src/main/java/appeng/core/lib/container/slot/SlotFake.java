@@ -32,13 +32,13 @@ public class SlotFake extends AppEngSlot
 		super( inv, idx, x, y );
 	}
 
-	//todo: bad override. -legracen
+	//TODO: bad override. -legracen
 	@Override
 	public void onPickupFromSlot( final EntityPlayer par1EntityPlayer, final ItemStack par2ItemStack )
 	{
 	}
 
-	//todo: bad override. -legracen
+	//TODO: bad override. -legracen
 	@Override
 	public ItemStack decStackSize( final int par1 )
 	{
