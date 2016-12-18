@@ -85,8 +85,8 @@ public class AppEngCraftingSlot extends AppEngSlot
 	@Override
 	protected void onCrafting( final ItemStack par1ItemStack )
 	{
-		//TODO: worldObj not found attempting to use .world instead here. -legracen
-		par1ItemStack.onCrafting( this.thePlayer.world, this.thePlayer, this.amountCrafted );//.worldObj, this.thePlayer, this.amountCrafted );
+		//TODO: worldObj not found attempting to use .getEntityWorld() instead here. -legracen
+		par1ItemStack.onCrafting( this.thePlayer.getEntityWorld(), this.thePlayer, this.amountCrafted );//.worldObj, this.thePlayer, this.amountCrafted );
 		this.amountCrafted = 0;
 
 		if( par1ItemStack.getItem() == Item.getItemFromBlock( Blocks.CRAFTING_TABLE ) )
