@@ -22,7 +22,7 @@ package appeng.core.lib.api.definitions;
 import appeng.api.definitions.IItemDefinition;
 import appeng.core.api.exceptions.MissingDefinition;
 import appeng.core.lib.bootstrap.FeatureFactory;
-//todo: DamagedItemDefinition class does not exist. -legracen
+//TODO: DamagedItemDefinition class does not exist. -legracen
 import appeng.core.lib.features.DamagedItemDefinition;
 import appeng.core.me.api.parts.IPartHelper;
 import appeng.core.me.item.ItemMultiPart;

@@ -31,7 +31,7 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 
-//todo: IComparableDefinition class is unavailable commenting out for now. -legracen
+//TODO: IComparableDefinition class is unavailable commenting out for now. -legracen
 import appeng.api.definitions.IComparableDefinition;
 import appeng.core.lib.ApiDefinitions;
 import appeng.core.lib.AppEngApi;
@@ -40,7 +40,7 @@ import appeng.decorative.item.ItemFacade;
 
 public final class FacadeRecipe implements IRecipe
 {
-	//todo: IComparableDefinition class is unavailable commenting out for now. -legracen
+	//TODO: IComparableDefinition class is unavailable commenting out for now. -legracen
 	private final IComparableDefinition anchor;
 	private final Optional<Item> maybeFacade;
 

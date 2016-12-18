@@ -66,6 +66,7 @@ public abstract class AEBaseBlock extends Block
 
 	protected AxisAlignedBB boundingBox = FULL_BLOCK_AABB;
 
+	//TODO: method does not override or implement a method from a supertype. -Legracen
 	@Override
 	public boolean isVisuallyOpaque(IBlockState state)
 	{
@@ -177,10 +178,10 @@ public abstract class AEBaseBlock extends Block
 		{
 			if( Platform.isClient() )
 			{
-				final EntityPlayer player = Minecraft.getMinecraft().thePlayer;
+				final EntityPlayer player = Minecraft.getMinecraft().player;//Renamed in 1.11 Minecraft.getMinecraft().thePlayer;
 				final LookDirection ld = Platform.getPlayerRay( player, Platform.getEyeOffset( player ) );
 
-				final Iterable<AxisAlignedBB> bbs = collisionHandler.getSelectedBoundingBoxesFromPool( w, pos, Minecraft.getMinecraft().thePlayer, true );
+				final Iterable<AxisAlignedBB> bbs = collisionHandler.getSelectedBoundingBoxesFromPool( w, pos, Minecraft.getMinecraft().player, true );
 				AxisAlignedBB br = null;
 
 				double lastDist = 0;

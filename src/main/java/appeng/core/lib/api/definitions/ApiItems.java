@@ -20,7 +20,7 @@ package appeng.core.lib.api.definitions;
 
 
 import appeng.api.definitions.IItemDefinition;
-//todo: AEColoredItemDefinition class does not exist. -legracen
+//TODO: AEColoredItemDefinition class does not exist. -legracen
 import appeng.core.api.util.AEColoredItemDefinition;
 import appeng.core.crafting.item.ItemEncodedPattern;
 import appeng.core.item.ItemCrystalSeed;

@@ -28,7 +28,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 
-//todo: IComparableDefinition does not curently exist. commenting out for now. -legracen
+//TODO: IComparableDefinition does not curently exist. commenting out for now. -legracen
 import appeng.api.definitions.IComparableDefinition;
 import appeng.core.api.implementations.items.IMemoryCard;
 import appeng.core.api.implementations.items.MemoryCardMessages;
