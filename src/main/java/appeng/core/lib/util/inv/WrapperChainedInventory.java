@@ -265,4 +265,11 @@ public class WrapperChainedInventory implements IInventory
 	{
 
 	}
+
+	@Override
+	public boolean isEmpty()
+	{
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

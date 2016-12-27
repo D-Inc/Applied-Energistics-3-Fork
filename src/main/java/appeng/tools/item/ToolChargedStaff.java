@@ -56,7 +56,7 @@ public class ToolChargedStaff extends AEBasePoweredItem
 					CommonHelper.proxy.sendToAllNearExcept( null, dx, dy, dz, 32.0, target.world, new PacketLightning( dx, dy, dz ) );
 				}
 			}
-			target.attackEntityFrom( DamageSource.magic, 6 );
+			target.attackEntityFrom( DamageSource.MAGIC, 6 );
 			return true;
 		}
 

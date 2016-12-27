@@ -57,7 +57,7 @@ public class TileItemGen extends AEBaseTile implements IInventory
 					}
 					else
 					{
-						final NonNullList<ItemStack> list = NonNullList.func_191196_a();
+						final NonNullList<ItemStack> list = NonNullList.create();
 						mi.getSubItems( mi, mi.getCreativeTab(), list );
 						POSSIBLE_ITEMS.addAll( list );
 					}
@@ -175,5 +175,11 @@ public class TileItemGen extends AEBaseTile implements IInventory
 	public void clear()
 	{
 
+	}
+
+	@Override
+	public boolean isEmpty()
+	{
+		return false;
 	}
 }

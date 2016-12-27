@@ -84,6 +84,7 @@ public class SlotCraftingTerm extends AppEngCraftingSlot
 	@Override
 	public ItemStack onTake( final EntityPlayer p, final ItemStack is )
 	{
+		return is;
 	}
 
 	public void doClick( final InventoryAction action, final EntityPlayer who )
@@ -194,7 +195,7 @@ public class SlotCraftingTerm extends AppEngCraftingSlot
 						}
 						if( !isBad )
 						{
-							super.onPickupFromSlot( p, is );
+							super.onTake( p, is );
 							// actually necessary to cleanup this case...
 							p.openContainer.onCraftMatrixChanged( this.craftInv );
 							return request;
@@ -241,7 +242,7 @@ public class SlotCraftingTerm extends AppEngCraftingSlot
 
 	private void makeItem( final EntityPlayer p, final ItemStack is )
 	{
-		super.onPickupFromSlot( p, is );
+		super.onTake( p, is );
 	}
 
 	private void postCraft( final EntityPlayer p, final IMEMonitor<IAEItemStack> inv, final ItemStack[] set, final ItemStack result )

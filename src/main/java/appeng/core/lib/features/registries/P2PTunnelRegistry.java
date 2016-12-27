@@ -28,6 +28,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 //TODO: FluidContainerRegistry has been removed need to find fix. --legracen
 import net.minecraftforge.fluids.FluidContainerRegistry;
 
@@ -158,7 +159,7 @@ public final class P2PTunnelRegistry
 	@Nullable
 	private ItemStack getModItem( final String modID, final String name, final int meta )
 	{
-		final Item item = GameRegistry.findItem( modID, name );
+		final Item item = Item.REGISTRY.getObject( new ResourceLocation( modID, name ));
 
 		if( item == null )
 		{

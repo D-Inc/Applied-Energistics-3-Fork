@@ -109,25 +109,12 @@ public final class AEItemStack extends AEStack<IAEItemStack> implements IAEItemS
 		this.getDefinition().setIsOre( OreHelper.INSTANCE.isOre( is ) );
 	}
 
-	public static IAEItemStack loadItemStackFromNBT( final NBTTagCompound i )
+	public AEItemStack( NBTTagCompound tag )
 	{
-		if( i == null )
-		{
-			return null;
-		}
-
-		final ItemStack itemstack = new ItemStack( i );
-		if( itemstack == null )
-		{
-			return null;
-		}
-
-		final AEItemStack item = AEItemStack.create( itemstack );
-		// item.priority = i.getInteger( "Priority" );
-		item.setStackSize( i.getLong( "Cnt" ) );
-		item.setCountRequestable( i.getLong( "Req" ) );
-		item.setCraftable( i.getBoolean( "Craft" ) );
-		return item;
+		this(new ItemStack( tag ));
+		setStackSize( tag.getLong( "Cnt" ) );
+		setCountRequestable( tag.getLong( "Req" ) );
+		setCraftable( tag.getBoolean( "Craft" ) );
 	}
 
 	@Nullable
@@ -197,7 +184,7 @@ public final class AEItemStack extends AEStack<IAEItemStack> implements IAEItemS
 		// if ( priority < ((AEItemStack) option).priority )
 		// priority = ((AEItemStack) option).priority;
 
-		this.incstackSize( option.getStackSize() );
+		this.incStackSize( option.getStackSize() );
 		this.setCountRequestable( this.getCountRequestable() + option.getCountRequestable() );
 		this.setCraftable( this.isCraftable() || option.isCraftable() );
 	}

@@ -164,5 +164,12 @@ public class WrapperInvSlot
 		{
 			this.inv.setField( id, value );
 		}
+
+		@Override
+		public boolean isEmpty()
+		{
+			// TODO Auto-generated method stub
+			return false;
+		}
 	}
 }

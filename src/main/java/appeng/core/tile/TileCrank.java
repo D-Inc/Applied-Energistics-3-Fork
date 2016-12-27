@@ -108,7 +108,7 @@ public class TileCrank extends AEBaseTile implements ICustomCollision, ITickable
 	{
 		super.setOrientation( inForward, inUp );
 		final IBlockState state = this.world.getBlockState( this.pos );
-		this.getBlockType().neighborChanged( state, this.world, this.pos, state.getBlock() );
+		this.getBlockType().neighborChanged( state, this.world, this.pos, state.getBlock(), this.pos );
 	}
 
 	@Override

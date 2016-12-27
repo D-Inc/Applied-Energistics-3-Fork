@@ -297,4 +297,11 @@ public class LayerISidedInventory extends LayerBase implements ISidedInventory
 	{
 		return null;
 	}
+
+	@Override
+	public boolean isEmpty()
+	{
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

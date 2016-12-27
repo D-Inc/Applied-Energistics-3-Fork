@@ -67,7 +67,7 @@ public class BlockSkyStone extends AEBaseBlock
 
 			if( is != null && is.getItem() != null )
 			{
-				level = is.getItem().getHarvestLevel( is, "pickaxe" );
+				level = is.getItem().getHarvestLevel( is, "pickaxe", event.getEntityPlayer(), event.getState() );
 			}
 
 			if( this.type != SkystoneType.STONE || level >= 3 || event.getOriginalSpeed() > BREAK_SPEAK_THRESHOLD )

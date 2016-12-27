@@ -57,7 +57,7 @@ public class BlockMolecularAssembler extends AEBaseTileBlock
 	}
 
 	@Override
-	public boolean onBlockActivated( final World w, final BlockPos pos, final IBlockState state, final EntityPlayer p, final EnumHand hand, final @Nullable ItemStack heldItem, final EnumFacing side, final float hitX, final float hitY, final float hitZ )
+	public boolean onActivated( final World w, final BlockPos pos, final EntityPlayer p, final EnumHand hand, final @Nullable ItemStack heldItem, final EnumFacing side, final float hitX, final float hitY, final float hitZ )
 	{
 		final TileMolecularAssembler tg = this.getTileEntity( w, pos );
 		if( tg != null && !p.isSneaking() )

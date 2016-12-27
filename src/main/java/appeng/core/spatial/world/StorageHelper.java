@@ -119,11 +119,11 @@ public class StorageHelper
 					Achievements.SpatialIOExplorer.addToPlayer( player );
 				}
 
-				player.mcServer.getPlayers().transferPlayerToDimension( player, link.dim.provider.getDimension(), new METeleporter( newWorld, link ) );
+				player.mcServer.getPlayerList().transferPlayerToDimension( player, link.dim.provider.getDimension(), new METeleporter( newWorld, link ) );
 			}
 			else
 			{
-				entity.getServer().getPlayers().transferEntityToWorld( entity, entity.dimension, entity.getServer().worldServerForDimension( entity.dimension ), (WorldServer) link.dim, new METeleporter( newWorld, link ) );
+				entity.getServer().getPlayerList().transferEntityToWorld( entity, entity.dimension, entity.getServer().worldServerForDimension( entity.dimension ), (WorldServer) link.dim, new METeleporter( newWorld, link ) );
 			}
 		}
 
@@ -204,12 +204,12 @@ public class StorageHelper
 
 		for( final WorldCoord wc : cDst.getUpdates() )
 		{
-			cSrc.getWorld().notifyBlockOfStateChange( wc.getPos(), Platform.AIR_BLOCK );
+			cSrc.getWorld().notifyNeighborsOfStateChange( wc.getPos(), Platform.AIR_BLOCK, false );
 		}
 
 		for( final WorldCoord wc : cSrc.getUpdates() )
 		{
-			cSrc.getWorld().notifyBlockOfStateChange( wc.getPos(), Platform.AIR_BLOCK );
+			cSrc.getWorld().notifyNeighborsOfStateChange( wc.getPos(), Platform.AIR_BLOCK, false );
 		}
 
 		this.transverseEdges( x - 1, y - 1, z - 1, x + scaleX + 1, y + scaleY + 1, z + scaleZ + 1, new TriggerUpdates( src ) );
@@ -241,7 +241,7 @@ public class StorageHelper
 		public void visit( final BlockPos pos )
 		{
 			final Block blk = this.dst.getBlockState( pos ).getBlock();
-			blk.neighborChanged( Platform.AIR_BLOCK.getDefaultState(), this.dst, pos, Platform.AIR_BLOCK );
+			blk.neighborChanged( Platform.AIR_BLOCK.getDefaultState(), this.dst, pos, Platform.AIR_BLOCK, pos );
 		}
 	}
 

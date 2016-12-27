@@ -381,5 +381,12 @@ public class ContainerCellWorkbench extends ContainerUpgradeable
 		{
 			ContainerCellWorkbench.this.getCellUpgradeInventory().clear();
 		}
+
+		@Override
+		public boolean isEmpty()
+		{
+			// TODO Auto-generated method stub
+			return false;
+		}
 	}
 }

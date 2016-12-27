@@ -405,4 +405,10 @@ public class PartInterface extends PartBasicState implements IGridTickable, ISto
 	{
 		return null;
 	}
+
+	@Override
+	public boolean isEmpty()
+	{
+		return false;
+	}
 }

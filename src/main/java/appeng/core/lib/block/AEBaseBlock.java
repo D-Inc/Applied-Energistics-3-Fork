@@ -66,13 +66,6 @@ public abstract class AEBaseBlock extends Block
 
 	protected AxisAlignedBB boundingBox = FULL_BLOCK_AABB;
 
-	//TODO: method does not override or implement a method from a supertype. -Legracen
-	@Override
-	public boolean isVisuallyOpaque(IBlockState state)
-	{
-		return this.isOpaque() && this.isFullSize();
-	}
-
 	protected AEBaseBlock( final Material mat )
 	{
 		super( mat );

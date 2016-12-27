@@ -99,7 +99,7 @@ public abstract class AbstractPartMonitor extends AbstractPartDisplay implements
 		this.isLocked = data.getBoolean( "isLocked" );
 
 		final NBTTagCompound myItem = data.getCompoundTag( "configuredItem" );
-		this.configuredItem = AEItemStack( myItem );
+		this.configuredItem = new AEItemStack( myItem );
 	}
 
 	@Override

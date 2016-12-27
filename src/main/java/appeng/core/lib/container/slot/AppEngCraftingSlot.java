@@ -32,6 +32,7 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.stats.AchievementList;
+import net.minecraft.util.NonNullList;
 
 
 public class AppEngCraftingSlot extends AppEngSlot
@@ -155,7 +156,7 @@ public class AppEngCraftingSlot extends AppEngSlot
 		}
 
 		//TODO: world not found attempting to use .world instead here. also error with aitemstack definition possible. -legracen
-		final ItemStack[] aitemstack = CraftingManager.getInstance().getRemainingItems( ic, playerIn.getEntityWorld());
+		final NonNullList<ItemStack> aitemstack = CraftingManager.getInstance().getRemainingItems( ic, playerIn.getEntityWorld());
 
 		for( int x = 0; x < this.craftMatrix.getSizeInventory(); x++ )
 		{
@@ -164,10 +165,10 @@ public class AppEngCraftingSlot extends AppEngSlot
 
 		net.minecraftforge.common.ForgeHooks.setCraftingPlayer( null );
 
-		for( int i = 0; i < aitemstack.length; ++i )
+		for( int i = 0; i < aitemstack.size(); ++i )
 		{
 			final ItemStack itemstack1 = this.craftMatrix.getStackInSlot( i );
-			final ItemStack itemstack2 = aitemstack[i];
+			final ItemStack itemstack2 = aitemstack.get( i );
 
 			if( itemstack1 != null )
 			{
@@ -186,6 +187,7 @@ public class AppEngCraftingSlot extends AppEngSlot
 				}
 			}
 		}
+		return stack;
 	}
 
 	/**

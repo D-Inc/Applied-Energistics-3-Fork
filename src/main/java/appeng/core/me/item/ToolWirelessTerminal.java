@@ -56,8 +56,9 @@ public class ToolWirelessTerminal extends AEBasePoweredItem implements IWireless
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick( final ItemStack item, final World w, final EntityPlayer player, final EnumHand hand )
+	public ActionResult<ItemStack> onItemRightClick( final World w, final EntityPlayer player, final EnumHand hand )
 	{
+		ItemStack item = player.getHeldItem( hand );
 		AppEngApi.internalApi().registries().wireless().openWirelessTerminalGui( item, w, player );
 		return new ActionResult<ItemStack>( EnumActionResult.SUCCESS, item );
 	}

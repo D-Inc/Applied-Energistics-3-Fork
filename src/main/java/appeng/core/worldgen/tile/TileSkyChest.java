@@ -92,8 +92,8 @@ public class TileSkyChest extends AEBaseInvTile
 		{
 			this.setPlayerOpen( this.getPlayerOpen() + 1 );
 			this.world.addBlockEvent( this.pos, this.getBlockType(), 1, this.numPlayersUsing );
-			this.world.notifyNeighborsOfStateChange( this.pos, this.getBlockType() );
-			this.world.notifyNeighborsOfStateChange( this.pos.down(), this.getBlockType() );
+			this.world.notifyNeighborsOfStateChange( this.pos, this.getBlockType(), false );
+			this.world.notifyNeighborsOfStateChange( this.pos.down(), this.getBlockType(), false );
 
 			if( this.getPlayerOpen() == 1 )
 			{
@@ -110,8 +110,8 @@ public class TileSkyChest extends AEBaseInvTile
 		{
 			this.setPlayerOpen( this.getPlayerOpen() - 1 );
 			this.world.addBlockEvent( this.pos, this.getBlockType(), 1, this.numPlayersUsing );
-			this.world.notifyNeighborsOfStateChange( this.pos, this.getBlockType() );
-			this.world.notifyNeighborsOfStateChange( this.pos.down(), this.getBlockType() );
+			this.world.notifyNeighborsOfStateChange( this.pos, this.getBlockType(), false );
+			this.world.notifyNeighborsOfStateChange( this.pos.down(), this.getBlockType(), false );
 
 			if( this.getPlayerOpen() < 0 )
 			{

@@ -79,6 +79,7 @@ public class SlotDisconnected extends AppEngSlot
 	@Override
 	public ItemStack onTake( final EntityPlayer par1EntityPlayer, final ItemStack par2ItemStack )
 	{
+		return par2ItemStack;
 	}
 
 	@Override

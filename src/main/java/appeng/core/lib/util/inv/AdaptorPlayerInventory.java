@@ -153,4 +153,11 @@ public class AdaptorPlayerInventory implements IInventory
 	{
 		this.src.clear();
 	}
+
+	@Override
+	public boolean isEmpty()
+	{
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

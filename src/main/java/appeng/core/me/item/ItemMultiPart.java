@@ -162,8 +162,9 @@ public final class ItemMultiPart extends AEBaseItem implements IPartItem, IItemG
 	}
 
 	@Override
-	public EnumActionResult onItemUse( final ItemStack is, final EntityPlayer player, final World w, final BlockPos pos, final EnumHand hand, final EnumFacing side, final float hitX, final float hitY, final float hitZ )
+	public EnumActionResult onItemUse( final EntityPlayer player, final World w, final BlockPos pos, final EnumHand hand, final EnumFacing side, final float hitX, final float hitY, final float hitZ )
 	{
+		ItemStack is = player.getHeldItem( hand );
 		if( this.getTypeByStack( is ) == PartType.InvalidType )
 		{
 			return EnumActionResult.PASS;

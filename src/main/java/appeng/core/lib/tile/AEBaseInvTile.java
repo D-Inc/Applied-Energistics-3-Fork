@@ -212,4 +212,11 @@ public abstract class AEBaseInvTile extends AEBaseTile implements ISidedInventor
 	}
 
 	public abstract int[] getAccessibleSlotsBySide( EnumFacing whichSide );
+
+	@Override
+	public boolean isEmpty()
+	{
+		return false;
+	}
+	
 }

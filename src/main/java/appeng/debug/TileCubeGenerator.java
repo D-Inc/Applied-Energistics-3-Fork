@@ -81,7 +81,7 @@ public class TileCubeGenerator extends AEBaseTile implements ITickable
 				for( int z = -half; z < half; z++ )
 				{
 					final BlockPos p = this.pos.add( x, y - 1, z );
-					i.onItemUse( this.is.copy(), this.who, this.world, p, EnumHand.MAIN_HAND, side, 0.5f, 0.0f, 0.5f );
+					i.onItemUse( this.who, this.world, p, EnumHand.MAIN_HAND, side, 0.5f, 0.0f, 0.5f );
 				}
 			}
 		}

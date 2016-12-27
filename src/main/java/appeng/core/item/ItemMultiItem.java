@@ -280,8 +280,9 @@ public final class ItemMultiItem extends AEBaseItem implements IStorageComponent
 	}
 
 	@Override
-	public EnumActionResult onItemUseFirst( final ItemStack is, final EntityPlayer player, final World world, final BlockPos pos, final EnumFacing side, final float hitX, final float hitY, final float hitZ, final EnumHand hand )
+	public EnumActionResult onItemUseFirst( final EntityPlayer player, final World world, final BlockPos pos, final EnumFacing side, final float hitX, final float hitY, final float hitZ, final EnumHand hand )
 	{
+		final ItemStack is = player.getHeldItem( hand );
 		if( player.isSneaking() )
 		{
 			final TileEntity te = world.getTileEntity( pos );
@@ -322,7 +323,7 @@ public final class ItemMultiItem extends AEBaseItem implements IStorageComponent
 			}
 		}
 
-		return super.onItemUseFirst( is, player, world, pos, side, hitX, hitY, hitZ, hand );
+		return super.onItemUseFirst( player, world, pos, side, hitX, hitY, hitZ, hand );
 	}
 
 	@Override

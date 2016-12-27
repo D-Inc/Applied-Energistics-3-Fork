@@ -124,7 +124,7 @@ public final class ItemList implements IItemList<IAEItemStack>
 
 		if( st != null )
 		{
-			st.incstackSize( option.getStackSize() );
+			st.incStackSize( option.getStackSize() );
 			return;
 		}
 

@@ -122,7 +122,7 @@ public class AppEngInternalAEInventory implements IInventory, Iterable<ItemStack
 				if( c != null )
 				{
 					//this
-					this.inv[x] = AEItemStack( c );
+					this.inv[x] = new AEItemStack( c );
 					//vs this
 					this.inv[x] = getNewAEIterator( ItemStack( c ));
 				}

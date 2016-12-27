@@ -96,7 +96,7 @@ public final class FluidList implements IItemList<IAEFluidStack>
 
 		if( st != null )
 		{
-			st.incstackSize( option.getStackSize() );
+			st.incStackSize( option.getStackSize() );
 			return;
 		}
 

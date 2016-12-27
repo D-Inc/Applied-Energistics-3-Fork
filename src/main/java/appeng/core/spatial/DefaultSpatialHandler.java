@@ -42,7 +42,7 @@ public class DefaultSpatialHandler
 
 	public void moveTile( final TileEntity te, final World w, final BlockPos newPosition )
 	{
-		te.setworld( w );
+		te.setWorld( w );
 		te.setPos( newPosition );
 
 		final Chunk c = w.getChunkFromBlockCoords( newPosition );

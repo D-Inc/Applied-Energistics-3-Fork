@@ -20,7 +20,6 @@ package appeng.core.me.block;
 
 
 import java.util.EnumSet;
-import java.util.List;
 import java.util.Random;
 
 import javax.annotation.Nullable;
@@ -41,6 +40,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
@@ -201,7 +201,7 @@ public class BlockCableBus extends AEBaseTileBlock
 	}
 
 	@Override
-	public boolean canRenderInLayer( final BlockRenderLayer layer )
+	public boolean canRenderInLayer( final IBlockState state, final BlockRenderLayer layer )
 	{
 		if( AEConfig.instance.isFeatureEnabled( AEFeature.AlphaPass ) )
 		{
@@ -335,7 +335,7 @@ public class BlockCableBus extends AEBaseTileBlock
 
 	@Override
 	@SideOnly( Side.CLIENT )
-	public void getCheckedSubBlocks( final Item item, final CreativeTabs tabs, final List<ItemStack> itemStacks )
+	public void getCheckedSubBlocks( final Item item, final CreativeTabs tabs, final NonNullList<ItemStack> itemStacks )
 	{
 		// do nothing
 	}

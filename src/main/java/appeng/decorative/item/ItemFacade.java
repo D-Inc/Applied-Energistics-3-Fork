@@ -106,7 +106,7 @@ public class ItemFacade extends AEBaseItem implements IFacadeItem, IAlphaPassIte
 				{
 					final Item item = Item.getItemFromBlock( b );
 
-					final NonNullList<ItemStack> tmpList = NonNullList.func_191197_a( 100, null );
+					final NonNullList<ItemStack> tmpList = NonNullList.withSize( 100, null );
 					b.getSubBlocks( item, b.getCreativeTabToDisplayOn(), tmpList );
 					for( final ItemStack l : tmpList )
 					{
@@ -219,7 +219,7 @@ public class ItemFacade extends AEBaseItem implements IFacadeItem, IAlphaPassIte
 					return Block.getBlockFromName( data.getString( "itemname" ) );
 				}
 
-				return GameRegistry.findBlock( data.getString( "modid" ), data.getString( "itemname" ) );
+				return Block.REGISTRY.getObject( new ResourceLocation( data.getString( "modid" ), data.getString( "itemname" ) ));
 			}
 			else
 			{
@@ -271,7 +271,7 @@ public class ItemFacade extends AEBaseItem implements IFacadeItem, IAlphaPassIte
 		}
 
 		final Block blk = Block.getBlockFromItem( out.getItem() );
-		if( blk != null && blk.canRenderInLayer( BlockRenderLayer.TRANSLUCENT ) )
+		if( blk != null && blk.canRenderInLayer( blk.getDefaultState(), BlockRenderLayer.TRANSLUCENT ) )
 		{
 			return true;
 		}

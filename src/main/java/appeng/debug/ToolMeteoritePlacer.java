@@ -37,7 +37,7 @@ import appeng.core.worldgen.world.meteorite.StandardWorld;
 public class ToolMeteoritePlacer extends AEBaseItem
 {
 	@Override
-	public EnumActionResult onItemUseFirst( final ItemStack heldItem, final EntityPlayer player, final World world, final BlockPos pos, final EnumFacing side, final float hitX, final float hitY, final float hitZ, final EnumHand hand )
+	public EnumActionResult onItemUseFirst( final EntityPlayer player, final World world, final BlockPos pos, final EnumFacing side, final float hitX, final float hitY, final float hitZ, final EnumHand hand )
 	{
 		if( Platform.isClient() )
 		{

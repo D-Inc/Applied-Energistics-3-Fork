@@ -1187,7 +1187,7 @@ public final class CraftingCPUCluster implements IAECluster, ICraftingCPU
 
 	public void readFromNBT( final NBTTagCompound data )
 	{
-		this.finalOutput = AEItemStack( (NBTTagCompound) data.getTag( "finalOutput" ) );
+		this.finalOutput = new AEItemStack( (NBTTagCompound) data.getTag( "finalOutput" ) );
 		for( final IAEItemStack ais : this.readList( (NBTTagList) data.getTag( "inventory" ) ) )
 		{
 			this.inventory.injectItems( ais, Actionable.MODULATE, this.machineSrc );
@@ -1207,7 +1207,7 @@ public final class CraftingCPUCluster implements IAECluster, ICraftingCPU
 		for( int x = 0; x < list.tagCount(); x++ )
 		{
 			final NBTTagCompound item = list.getCompoundTagAt( x );
-			final IAEItemStack pattern = AEItemStack( item );
+			final IAEItemStack pattern = new AEItemStack( item );
 			if( pattern != null && pattern.getItem() instanceof ICraftingPatternItem )
 			{
 				final ICraftingPatternItem cpi = (ICraftingPatternItem) pattern.getItem();
@@ -1264,7 +1264,7 @@ public final class CraftingCPUCluster implements IAECluster, ICraftingCPU
 
 		for( int x = 0; x < tag.tagCount(); x++ )
 		{
-			final IAEItemStack ais = AEItemStack( tag.getCompoundTagAt( x ) );
+			final IAEItemStack ais = new AEItemStack( tag.getCompoundTagAt( x ) );
 			if( ais != null )
 			{
 				out.add( ais );

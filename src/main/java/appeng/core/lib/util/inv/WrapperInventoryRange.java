@@ -206,4 +206,11 @@ public class WrapperInventoryRange implements IInventory
 	{
 		this.slots = slots;
 	}
+
+	@Override
+	public boolean isEmpty()
+	{
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

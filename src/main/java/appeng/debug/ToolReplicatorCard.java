@@ -47,8 +47,9 @@ import appeng.core.me.api.networking.spatial.ISpatialCache;
 public class ToolReplicatorCard extends AEBaseItem
 {
 	@Override
-	public EnumActionResult onItemUseFirst( final ItemStack heldItem, final EntityPlayer player, final World world, final BlockPos pos, final EnumFacing side, final float hitX, final float hitY, final float hitZ, final EnumHand hand )
+	public EnumActionResult onItemUseFirst( final EntityPlayer player, final World world, final BlockPos pos, final EnumFacing side, final float hitX, final float hitY, final float hitZ, final EnumHand hand )
 	{
+		ItemStack heldItem = player.getHeldItem( hand );
 		if( Platform.isClient() )
 		{
 			return EnumActionResult.PASS;

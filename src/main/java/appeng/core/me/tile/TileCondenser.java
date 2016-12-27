@@ -132,7 +132,7 @@ public class TileCondenser extends AEBaseInvTile implements IFluidHandler, IConf
 		}
 		else
 		{
-			outputStack.getCount()++;
+			outputStack.shrink(1);
 			this.setInventorySlotContents( 1, outputStack );
 		}
 	}

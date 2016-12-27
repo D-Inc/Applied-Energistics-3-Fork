@@ -272,4 +272,10 @@ public class ContainerQuartzKnife extends AEBaseContainer implements IAEAppEngIn
 	{
 		this.inSlot.setInventorySlotContents( 0, null );
 	}
+
+	@Override
+	public boolean isEmpty()
+	{
+		return false;
+	}
 }

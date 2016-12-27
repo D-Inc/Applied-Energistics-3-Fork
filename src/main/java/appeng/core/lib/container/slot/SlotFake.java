@@ -36,6 +36,7 @@ public class SlotFake extends AppEngSlot
 	@Override
 	public ItemStack onTake( final EntityPlayer par1EntityPlayer, final ItemStack par2ItemStack )
 	{
+		return par2ItemStack;
 	}
 
 	//TODO: bad override. -legracen

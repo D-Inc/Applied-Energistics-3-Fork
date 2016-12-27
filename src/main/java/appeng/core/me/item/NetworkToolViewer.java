@@ -168,4 +168,11 @@ public class NetworkToolViewer implements INetworkTool
 	{
 		return this.inv.getDisplayName();
 	}
+
+	@Override
+	public boolean isEmpty()
+	{
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
