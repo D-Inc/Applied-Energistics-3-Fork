@@ -1632,7 +1632,7 @@ public class Platform
 			{
 				final long original = input.getStackSize();
 				final StackType split = (StackType) input.copy();
-				split.decrStackSize( itemToAdd );
+				split.shrink( itemToAdd );
 				input.setStackSize( itemToAdd );
 				split.add( cell.injectItems( input, Actionable.MODULATE, src ) );
 

@@ -266,7 +266,7 @@ public final class CraftingCPUCluster implements IAECluster, ICraftingCPU
 				}
 
 				final IAEItemStack leftOver = what.copy();
-				leftOver.decrStackSize( is.getStackSize() );
+				leftOver.shrink( is.getStackSize() );
 
 				final IAEItemStack used = what.copy();
 				used.setStackSize( is.getStackSize() );
@@ -295,7 +295,7 @@ public final class CraftingCPUCluster implements IAECluster, ICraftingCPU
 
 				if( is.getStackSize() >= what.getStackSize() )
 				{
-					is.decrStackSize( what.getStackSize() );
+					is.shrink( what.getStackSize() );
 
 					this.updateElapsedTime( what );
 					this.markDirty();
@@ -305,7 +305,7 @@ public final class CraftingCPUCluster implements IAECluster, ICraftingCPU
 					{
 						IAEStack leftover = what;
 
-						this.finalOutput.decrStackSize( what.getStackSize() );
+						this.finalOutput.shrink( what.getStackSize() );
 
 						if( this.myLastLink != null )
 						{
@@ -328,7 +328,7 @@ public final class CraftingCPUCluster implements IAECluster, ICraftingCPU
 
 				final IAEItemStack insert = what.copy();
 				insert.setStackSize( is.getStackSize() );
-				what.decrStackSize( is.getStackSize() );
+				what.shrink( is.getStackSize() );
 
 				is.setStackSize( 0 );
 
@@ -336,7 +336,7 @@ public final class CraftingCPUCluster implements IAECluster, ICraftingCPU
 				{
 					IAEStack leftover = input;
 
-					this.finalOutput.decrStackSize( insert.getStackSize() );
+					this.finalOutput.shrink( insert.getStackSize() );
 
 					if( this.myLastLink != null )
 					{
@@ -510,7 +510,7 @@ public final class CraftingCPUCluster implements IAECluster, ICraftingCPU
 					else if( is != null )
 					{
 						g = g.copy();
-						g.decrStackSize( is.getCount() );
+						g.shrink( is.getCount() );
 					}
 				}
 

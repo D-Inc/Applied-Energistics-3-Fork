@@ -101,7 +101,7 @@ public class MEMonitorHandler<StackType extends IAEStack> implements IMEMonitor<
 		}
 		else if( leftOvers != null )
 		{
-			diff.decStackSize( leftOvers.getStackSize() );
+			diff.shrink( leftOvers.getStackSize() );
 		}
 
 		if( diff.getStackSize() != 0 )

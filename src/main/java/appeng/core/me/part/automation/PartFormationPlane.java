@@ -491,7 +491,7 @@ public class PartFormationPlane extends PartUpgradeable implements ICellContaine
 		if( worked )
 		{
 			final IAEItemStack out = input.copy();
-			out.decrStackSize( maxStorage );
+			out.shrink( maxStorage );
 			if( out.getStackSize() == 0 )
 			{
 				return null;

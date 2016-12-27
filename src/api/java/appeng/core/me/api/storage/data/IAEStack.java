@@ -103,12 +103,12 @@ public interface IAEStack<StackType extends IAEStack>
 	 *
 	 * @param i additional stack size
 	 */
-	void incStackSize( long i );
+	void grow( long i );
 
 	/**
 	 * removes some from the stack size.
 	 */
-	void decStackSize( long i );
+	void shrink( long i );
 
 	/**
 	 * adds items to the requestable

@@ -184,7 +184,7 @@ public final class AEItemStack extends AEStack<IAEItemStack> implements IAEItemS
 		// if ( priority < ((AEItemStack) option).priority )
 		// priority = ((AEItemStack) option).priority;
 
-		this.incStackSize( option.getStackSize() );
+		this.grow( option.getStackSize() );
 		this.setCountRequestable( this.getCountRequestable() + option.getCountRequestable() );
 		this.setCraftable( this.isCraftable() || option.isCraftable() );
 	}

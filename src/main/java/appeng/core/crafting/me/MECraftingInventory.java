@@ -217,7 +217,7 @@ public class MECraftingInventory implements IMEInventory<IAEItemStack>
 		{
 			if( mode == Actionable.MODULATE )
 			{
-				list.decrStackSize( request.getStackSize() );
+				list.shrink( request.getStackSize() );
 				if( this.logExtracted )
 				{
 					this.extractedCache.add( request );

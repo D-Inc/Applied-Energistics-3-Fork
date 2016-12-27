@@ -171,7 +171,7 @@ public final class AEFluidStack extends AEStack<IAEFluidStack> implements IAEFlu
 		// if ( priority < ((AEFluidStack) option).priority )
 		// priority = ((AEFluidStack) option).priority;
 
-		this.incStackSize( option.getStackSize() );
+		this.grow( option.getStackSize() );
 		this.setCountRequestable( this.getCountRequestable() + option.getCountRequestable() );
 		this.setCraftable( this.isCraftable() || option.isCraftable() );
 	}
