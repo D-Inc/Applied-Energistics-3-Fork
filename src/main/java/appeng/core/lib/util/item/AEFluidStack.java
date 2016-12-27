@@ -200,12 +200,12 @@ public final class AEFluidStack extends AEStack<IAEFluidStack> implements IAEFlu
 		i.setByte( "Count", (byte) 0 );
 
 		/*
-		 * if ( Cnt != null && Cnt instanceof NBTTagLong ) ((NBTTagLong) Cnt).data = this.stackSize; else
+		 * if ( Cnt != null && Cnt instanceof NBTTagLong ) ((NBTTagLong) Cnt).data = this.getCount(); else
 		 */
 		i.setLong( "Cnt", this.getStackSize() );
 
 		/*
-		 * if ( Req != null && Req instanceof NBTTagLong ) ((NBTTagLong) Req).data = this.stackSize; else
+		 * if ( Req != null && Req instanceof NBTTagLong ) ((NBTTagLong) Req).data = this.getCount(); else
 		 */
 		i.setLong( "Req", this.getCountRequestable() );
 

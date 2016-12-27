@@ -172,8 +172,8 @@ public class PartPlacement
 								host.markForUpdate();
 								if( !player.capabilities.isCreativeMode )
 								{
-									held.stackSize--;
-									if( held.stackSize == 0 )
+									held.shrink(1);
+									if( held.getCount() == 0 )
 									{
 										player.inventory.mainInventory[player.inventory.currentItem] = null;
 										MinecraftForge.EVENT_BUS.post( new PlayerDestroyItemEvent( player, held, hand ) );
@@ -378,8 +378,8 @@ public class PartPlacement
 
 				if( !player.capabilities.isCreativeMode )
 				{
-					held.stackSize--;
-					if( held.stackSize == 0 )
+					held.shrink(1);
+					if( held.getCount() == 0 )
 					{
 						player.inventory.mainInventory[player.inventory.currentItem] = null;
 						MinecraftForge.EVENT_BUS.post( new PlayerDestroyItemEvent( player, held, hand ) );

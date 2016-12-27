@@ -121,10 +121,10 @@ public final class EntitySingularity extends AEBaseEntityItem
 
 						if( matches )
 						{
-							while( item.stackSize > 0 && other.stackSize > 0 )
+							while( item.getCount() > 0 && other.getCount() > 0 )
 							{
-								other.stackSize--;
-								if( other.stackSize == 0 )
+								other.shrink(1);
+								if( other.getCount() == 0 )
 								{
 									e.setDead();
 								}
@@ -133,14 +133,14 @@ public final class EntitySingularity extends AEBaseEntityItem
 									final NBTTagCompound cmp = Platform.openNbtData( (ItemStack) singularityStack );
 									cmp.setLong( "freq", ( new Date() ).getTime() * 100 + ( randTickSeed ) % 100 );
 									randTickSeed++;
-									item.stackSize--;
+									item.shrink(1);
 
 									final EntitySingularity entity = new EntitySingularity( this.world, this.posX, this.posY, this.posZ, (ItemStack) singularityStack );
 									this.world.spawnEntity( entity );
 								} );
 							}
 
-							if( item.stackSize <= 0 )
+							if( item.getCount() <= 0 )
 							{
 								this.setDead();
 							}

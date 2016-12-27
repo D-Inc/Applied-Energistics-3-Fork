@@ -315,7 +315,7 @@ public abstract class AbstractPartMonitor extends AbstractPartDisplay implements
 		try
 		{
 			final ItemStack sis = ais.getItemStack();
-			sis.stackSize = 1;
+			sis.setCount(1);
 
 			final int br = 16 << 20 | 16 << 4;
 			final int var11 = br % 65536;

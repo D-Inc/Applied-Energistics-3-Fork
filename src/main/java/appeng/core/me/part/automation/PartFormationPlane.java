@@ -385,7 +385,7 @@ public class PartFormationPlane extends PartUpgradeable implements ICellContaine
 				 * }
 				 */
 
-				maxStorage = is.stackSize;
+				maxStorage = is.getCount();
 				worked = true;
 				if( type == Actionable.MODULATE )
 				{
@@ -413,12 +413,12 @@ public class PartFormationPlane extends PartUpgradeable implements ICellContaine
 							i.onItemUse( is, player, w, tePos, null, side.getFacing().getOpposite(), side.xOffset, side.yOffset, side.zOffset );
 						}
 
-						maxStorage -= is.stackSize;
+						maxStorage -= is.getCount();
 					}
 					else
 					{
 						i.onItemUse( is, player, w, tePos, null, side.getFacing().getOpposite(), side.xOffset, side.yOffset, side.zOffset );
-						maxStorage -= is.stackSize;
+						maxStorage -= is.getCount();
 					}
 				}
 				else
@@ -446,7 +446,7 @@ public class PartFormationPlane extends PartUpgradeable implements ICellContaine
 					if( type == Actionable.MODULATE )
 					{
 
-						is.stackSize = (int) maxStorage;
+						is.setCount((int) maxStorage);
 						final EntityItem ei = new EntityItem( w, // w
 								( ( side.xOffset != 0 ? 0.0 : 0.7 ) * ( Platform.getRandomFloat() - 0.5f ) ) + 0.5 + side.xOffset * -0.3 + tePos.getX(), // spawn
 								( ( side.yOffset != 0 ? 0.0 : 0.7 ) * ( Platform.getRandomFloat() - 0.5f ) ) + 0.5 + side.yOffset * -0.3 + tePos.getY(), // spawn

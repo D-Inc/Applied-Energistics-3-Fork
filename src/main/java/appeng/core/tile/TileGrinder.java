@@ -111,13 +111,13 @@ public class TileGrinder extends AEBaseInvTile implements ICrankable
 				final IGrinderEntry r = AppEngApi.internalApi().registries().grinder().getRecipeForInput( item );
 				if( r != null )
 				{
-					if( item.stackSize >= r.getInput().stackSize )
+					if( item.getCount() >= r.getInput().getCount() )
 					{
-						item.stackSize -= r.getInput().stackSize;
+						item.shrink(r.getInput().getCount());
 						final ItemStack ais = item.copy();
-						ais.stackSize = r.getInput().stackSize;
+						ais.setCount(r.getInput().getCount());
 
-						if( item.stackSize <= 0 )
+						if( item.getCount() <= 0 )
 						{
 							item = null;
 						}

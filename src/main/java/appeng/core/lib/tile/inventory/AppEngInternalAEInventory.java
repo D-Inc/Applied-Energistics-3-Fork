@@ -202,13 +202,13 @@ public class AppEngInternalAEInventory implements IInventory, Iterable<ItemStack
 				if( oldStack.getCount() > newItemStack.getCount() )
 				{
 					removed = removed.copy();
-					removed.stackSize -= newItemStack.getCount();
+					removed.shrink(newItemStack.getCount());
 					added = null;
 				}
 				else if( oldStack.getCount() < newItemStack.getCount() )
 				{
 					added = added.copy();
-					added.stackSize -= oldStack.getCount();
+					added.shrink(oldStack.getCount());
 					removed = null;
 				}
 				else

@@ -44,18 +44,18 @@ public class AETrading
 	 * int multiplier = ( Math.abs( rand.nextInt() ) % 6 );
 	 * final int emeraldCost = emera + ( Math.abs( rand.nextInt() ) % greed ) - multiplier;
 	 * int mood = rand.nextInt() % 2;
-	 * from.stackSize = multiplier + mood;
-	 * to.stackSize = multiplier * emeraldCost - mood;
-	 * if( to.stackSize < 0 )
+	 * from.setCount(multiplier + mood);
+	 * to.setCount(multiplier * emeraldCost - mood);
+	 * if( to.getCount() < 0 )
 	 * {
-	 * from.stackSize -= to.stackSize;
-	 * to.stackSize -= to.stackSize;
+	 * from.shrink(to.getCount());
+	 * to.shrink(to.getCount());
 	 * }
 	 * this.addToList( list, from, to );
 	 * // Buy
 	 * ItemStack reverseTo = from.copy();
 	 * ItemStack reverseFrom = to.copy();
-	 * reverseFrom.stackSize *= rand.nextFloat() * 3.0f + 1.0f;
+	 * reverseFrom.getCount() *= rand.nextFloat() * 3.0f + 1.0f;
 	 * this.addToList( list, reverseFrom, reverseTo );
 	 * }
 	 * }
@@ -69,28 +69,28 @@ public class AETrading
 	 * // Sell
 	 * ItemStack inputStack = maybeInputStack.get().copy();
 	 * ItemStack outputStack = maybeOutputStack.get().copy();
-	 * inputStack.stackSize = 1 + ( Math.abs( rand.nextInt() ) % ( 1 + conversionVariance ) );
-	 * outputStack.stackSize = 1;
+	 * inputStack.setCount(1 + ( Math.abs( rand.nextInt() ) % ( 1 + conversionVariance ) ));
+	 * outputStack.setCount(1);
 	 * this.addToList( list, inputStack, outputStack );
 	 * }
 	 * }
 	 * private void addToList( MerchantRecipeList l, ItemStack a, ItemStack b )
 	 * {
-	 * if( a.stackSize < 1 )
+	 * if( a.getCount() < 1 )
 	 * {
-	 * a.stackSize = 1;
+	 * a.setCount(1);
 	 * }
-	 * if( b.stackSize < 1 )
+	 * if( b.getCount() < 1 )
 	 * {
-	 * b.stackSize = 1;
+	 * b.setCount(1);
 	 * }
-	 * if( a.stackSize > a.getMaxStackSize() )
+	 * if( a.getCount() > a.getMaxStackSize() )
 	 * {
-	 * a.stackSize = a.getMaxStackSize();
+	 * a.setCount(a.getMaxStackSize());
 	 * }
-	 * if( b.stackSize > b.getMaxStackSize() )
+	 * if( b.getCount() > b.getMaxStackSize() )
 	 * {
-	 * b.stackSize = b.getMaxStackSize();
+	 * b.setCount(b.getMaxStackSize());
 	 * }
 	 * l.add( new MerchantRecipe( a, b ) );
 	 * }

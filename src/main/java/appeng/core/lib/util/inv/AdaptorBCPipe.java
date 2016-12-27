@@ -76,7 +76,7 @@ package appeng.core.lib.util.inv;
 // {
 // return null;
 // }
-// if( toBeAdded.stackSize == 0 )
+// if( toBeAdded.getCount() == 0 )
 // {
 // return null;
 // }

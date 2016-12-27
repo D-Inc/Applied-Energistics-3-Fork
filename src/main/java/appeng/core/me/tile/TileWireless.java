@@ -168,7 +168,7 @@ public class TileWireless extends AENetworkInvTile implements IWirelessAccessPoi
 	private int getBoosters()
 	{
 		final ItemStack boosters = this.inv.getStackInSlot( 0 );
-		return boosters == null ? 0 : boosters.stackSize;
+		return boosters == null ? 0 : boosters.getCount();
 	}
 
 	@Override

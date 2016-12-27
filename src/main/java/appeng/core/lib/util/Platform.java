@@ -2035,7 +2035,7 @@ public class Platform
 		{
 			if( stackInSlot.getCount() > 1 )
 			{
-				stackInSlot.stackSize--;
+				stackInSlot.shrink(1);
 				return stackInSlot;
 			}
 			return null;

@@ -60,13 +60,13 @@ public abstract class AEStack<StackType extends IAEStack> implements IAEStack<St
 	@Override
 	public long getStackSize()
 	{
-		return this.stackSize;
+		return this.getCount();
 	}
 
 	@Override
 	public StackType setStackSize( final long ss )
 	{
-		this.stackSize = ss;
+		this.setCount(ss);
 		return (StackType) this;
 	}
 
@@ -99,7 +99,7 @@ public abstract class AEStack<StackType extends IAEStack> implements IAEStack<St
 	@Override
 	public StackType reset()
 	{
-		this.stackSize = 0;
+		this.setCount(0);
 		// priority = Integer.MIN_VALUE;
 		this.setCountRequestable( 0 );
 		this.setCraftable( false );
@@ -109,19 +109,19 @@ public abstract class AEStack<StackType extends IAEStack> implements IAEStack<St
 	@Override
 	public boolean isMeaningful()
 	{
-		return this.stackSize != 0 || this.countRequestable > 0 || this.isCraftable;
+		return this.getCount() != 0 || this.countRequestable > 0 || this.isCraftable;
 	}
 
 	@Override
 	public void incstackSize( final long i )
 	{
-		this.stackSize += i;
+		this.grow(i);
 	}
 
 	@Override
 	public void decrStackSize( final long i )
 	{
-		this.stackSize -= i;
+		this.shrink(i);
 	}
 
 	@Override
@@ -139,7 +139,7 @@ public abstract class AEStack<StackType extends IAEStack> implements IAEStack<St
 	@Override
 	public void writeToPacket( final ByteBuf i ) throws IOException
 	{
-		final byte mask = (byte) ( this.getType( 0 ) | ( this.getType( this.stackSize ) << 2 ) | ( this.getType( this.countRequestable ) << 4 ) | ( (byte) ( this.isCraftable ? 1 : 0 ) << 6 ) | ( this.hasTagCompound() ? 1 : 0 ) << 7 );
+		final byte mask = (byte) ( this.getType( 0 ) | ( this.getType( this.getCount() ) << 2 ) | ( this.getType( this.countRequestable ) << 4 ) | ( (byte) ( this.isCraftable ? 1 : 0 ) << 6 ) | ( this.hasTagCompound() ? 1 : 0 ) << 7 );
 
 		i.writeByte( mask );
 		this.writeIdentity( i );
@@ -147,7 +147,7 @@ public abstract class AEStack<StackType extends IAEStack> implements IAEStack<St
 		this.readNBT( i );
 
 		// putPacketValue( i, priority );
-		this.putPacketValue( i, this.stackSize );
+		this.putPacketValue( i, this.getCount() );
 		this.putPacketValue( i, this.countRequestable );
 	}
 

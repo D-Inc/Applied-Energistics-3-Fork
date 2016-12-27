@@ -84,7 +84,7 @@ public class PartImportBus extends PartSharedItemBus implements IInventoryDestin
 		{
 			return true;
 		}
-		return out.getStackSize() != stack.stackSize;
+		return out.getStackSize() != stack.getCount();
 	}
 
 	@Override
@@ -210,8 +210,8 @@ public class PartImportBus extends PartSharedItemBus implements IInventoryDestin
 
 		if( newItems != null )
 		{
-			newItems.stackSize = (int) ( Math.min( newItems.stackSize, energy.extractAEPower( newItems.stackSize, Actionable.SIMULATE, PowerMultiplier.CONFIG ) ) + 0.01 );
-			this.itemToSend -= newItems.stackSize;
+			newItems.setCount((int) ( Math.min( newItems.getCount(), energy.extractAEPower( newItems.getCount(), Actionable.SIMULATE, PowerMultiplier.CONFIG ) ) + 0.01 ));
+			this.itemToSend -= newItems.getCount();
 
 			if( this.lastItemChecked == null || !this.lastItemChecked.isSameType( newItems ) )
 			{
@@ -219,7 +219,7 @@ public class PartImportBus extends PartSharedItemBus implements IInventoryDestin
 			}
 			else
 			{
-				this.lastItemChecked.setStackSize( newItems.stackSize );
+				this.lastItemChecked.setStackSize( newItems.getCount() );
 			}
 
 			final IAEItemStack failed = Platform.poweredInsert( energy, this.destination, this.lastItemChecked, this.source );
@@ -271,7 +271,7 @@ public class PartImportBus extends PartSharedItemBus implements IInventoryDestin
 
 		if( itemAmountNotStorable != null )
 		{
-			return (int) Math.min( simResult.stackSize - itemAmountNotStorable.getStackSize(), toSend );
+			return (int) Math.min( simResult.getCount() - itemAmountNotStorable.getStackSize(), toSend );
 		}
 
 		return toSend;

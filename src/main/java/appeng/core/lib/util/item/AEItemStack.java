@@ -101,7 +101,7 @@ public final class AEItemStack extends AEStack<IAEItemStack> implements IAEItemS
 			this.getDefinition().setTagCompound( (AESharedNBT) AESharedNBT.getSharedTagCompound( tagCompound, is ) );
 		}
 
-		this.setStackSize( is.stackSize );
+		this.setStackSize( is.getCount() );
 		this.setCraftable( false );
 		this.setCountRequestable( 0 );
 
@@ -225,12 +225,12 @@ public final class AEItemStack extends AEStack<IAEItemStack> implements IAEItemS
 		i.setByte( "Count", (byte) 0 );
 
 		/*
-		 * if ( Cnt != null && Cnt instanceof NBTTagLong ) ((NBTTagLong) Cnt).data = this.stackSize; else
+		 * if ( Cnt != null && Cnt instanceof NBTTagLong ) ((NBTTagLong) Cnt).data = this.getCount(); else
 		 */
 		i.setLong( "Cnt", this.getStackSize() );
 
 		/*
-		 * if ( Req != null && Req instanceof NBTTagLong ) ((NBTTagLong) Req).data = this.stackSize; else
+		 * if ( Req != null && Req instanceof NBTTagLong ) ((NBTTagLong) Req).data = this.getCount(); else
 		 */
 		i.setLong( "Req", this.getCountRequestable() );
 

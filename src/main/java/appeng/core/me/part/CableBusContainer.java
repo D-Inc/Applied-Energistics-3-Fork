@@ -136,7 +136,7 @@ public class CableBusContainer extends CableBusStorage implements AEMultiTile, I
 			final IPartItem bi = (IPartItem) is.getItem();
 
 			is = is.copy();
-			is.stackSize = 1;
+			is.setCount(1);
 
 			final IPart bp = bi.createPartFromItemStack( is );
 			if( bp != null )
@@ -184,7 +184,7 @@ public class CableBusContainer extends CableBusStorage implements AEMultiTile, I
 				final IPartItem bi = (IPartItem) is.getItem();
 
 				is = is.copy();
-				is.stackSize = 1;
+				is.setCount(1);
 
 				final IPart bp = bi.createPartFromItemStack( is );
 				if( bp instanceof IPartCable )

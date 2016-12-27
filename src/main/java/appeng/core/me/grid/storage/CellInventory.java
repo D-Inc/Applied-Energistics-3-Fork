@@ -268,14 +268,14 @@ public class CellInventory implements ICellInventory
 				if( input.getStackSize() > remainingItemCount )
 				{
 					final ItemStack toReturn = Platform.cloneItemStack( sharedItemStack );
-					toReturn.stackSize = sharedItemStack.stackSize - remainingItemCount;
+					toReturn.setCount(sharedItemStack.getCount() - remainingItemCount);
 					if( mode == Actionable.MODULATE )
 					{
 						final ItemStack toWrite = Platform.cloneItemStack( sharedItemStack );
-						toWrite.stackSize = remainingItemCount;
+						toWrite.setCount(remainingItemCount);
 
 						this.cellItems.add( AEItemStack.create( toWrite ) );
-						this.updateItemCount( toWrite.stackSize );
+						this.updateItemCount( toWrite.getCount() );
 
 						this.saveChanges();
 					}
@@ -447,9 +447,9 @@ public class CellInventory implements ICellInventory
 			final ItemStack t = new ItemStack( this.tagCompound.getCompoundTag( itemSlots[x] ) );
 			if( t != null )
 			{
-				t.stackSize = this.tagCompound.getInteger( itemSlotCount[x] );
+				t.setCount(this.tagCompound.getInteger( itemSlotCount[x] ));
 
-				if( t.stackSize > 0 )
+				if( t.getCount() > 0 )
 				{
 					this.cellItems.add( AEItemStack.create( t ) );
 				}

@@ -53,9 +53,9 @@ public class AdaptorIInventory extends InventoryAdaptor
 			if( is != null && this.canRemoveStackFromSlot( x, is ) && ( filter == null || Platform.isSameItemPrecise( is, filter ) ) )
 			{
 				int boundAmounts = amount;
-				if( boundAmounts > is.stackSize )
+				if( boundAmounts > is.getCount() )
 				{
-					boundAmounts = is.stackSize;
+					boundAmounts = is.getCount();
 				}
 				if( destination != null && !destination.canInsert( is ) )
 				{
@@ -68,16 +68,16 @@ public class AdaptorIInventory extends InventoryAdaptor
 					{
 						rv = is.copy();
 						filter = rv;
-						rv.stackSize = boundAmounts;
+						rv.setCount(boundAmounts);
 						amount -= boundAmounts;
 					}
 					else
 					{
-						rv.stackSize += boundAmounts;
+						rv.grow(boundAmounts);
 						amount -= boundAmounts;
 					}
 
-					if( is.stackSize == boundAmounts )
+					if( is.getCount() == boundAmounts )
 					{
 						this.i.setInventorySlotContents( x, null );
 						this.i.markDirty();
@@ -85,7 +85,7 @@ public class AdaptorIInventory extends InventoryAdaptor
 					else
 					{
 						final ItemStack po = is.copy();
-						po.stackSize -= boundAmounts;
+						po.shrink(boundAmounts);
 						this.i.setInventorySlotContents( x, po );
 						this.i.markDirty();
 					}
@@ -111,9 +111,9 @@ public class AdaptorIInventory extends InventoryAdaptor
 			if( is != null && this.canRemoveStackFromSlot( x, is ) && ( filter == null || Platform.isSameItemPrecise( is, filter ) ) )
 			{
 				int boundAmount = amount;
-				if( boundAmount > is.stackSize )
+				if( boundAmount > is.getCount() )
 				{
-					boundAmount = is.stackSize;
+					boundAmount = is.getCount();
 				}
 				if( destination != null && !destination.canInsert( is ) )
 				{
@@ -125,12 +125,12 @@ public class AdaptorIInventory extends InventoryAdaptor
 					if( rv == null )
 					{
 						rv = is.copy();
-						rv.stackSize = boundAmount;
+						rv.setCount(boundAmount);
 						amount -= boundAmount;
 					}
 					else
 					{
-						rv.stackSize += boundAmount;
+						rv.grow(boundAmount);
 						amount -= boundAmount;
 					}
 				}
@@ -150,9 +150,9 @@ public class AdaptorIInventory extends InventoryAdaptor
 			if( is != null && this.canRemoveStackFromSlot( x, is ) && ( filter == null || Platform.isSameItemFuzzy( is, filter, fuzzyMode ) ) )
 			{
 				int newAmount = amount;
-				if( newAmount > is.stackSize )
+				if( newAmount > is.getCount() )
 				{
-					newAmount = is.stackSize;
+					newAmount = is.getCount();
 				}
 				if( destination != null && !destination.canInsert( is ) )
 				{
@@ -163,9 +163,9 @@ public class AdaptorIInventory extends InventoryAdaptor
 				if( newAmount > 0 )
 				{
 					rv = is.copy();
-					rv.stackSize = newAmount;
+					rv.setCount(newAmount);
 
-					if( is.stackSize == rv.stackSize )
+					if( is.getCount() == rv.getCount() )
 					{
 						this.i.setInventorySlotContents( x, null );
 						this.i.markDirty();
@@ -173,7 +173,7 @@ public class AdaptorIInventory extends InventoryAdaptor
 					else
 					{
 						final ItemStack po = is.copy();
-						po.stackSize -= rv.stackSize;
+						po.shrink(rv.getCount());
 						this.i.setInventorySlotContents( x, po );
 						this.i.markDirty();
 					}
@@ -200,9 +200,9 @@ public class AdaptorIInventory extends InventoryAdaptor
 			if( is != null && this.canRemoveStackFromSlot( x, is ) && ( filter == null || Platform.isSameItemFuzzy( is, filter, fuzzyMode ) ) )
 			{
 				int boundAmount = amount;
-				if( boundAmount > is.stackSize )
+				if( boundAmount > is.getCount() )
 				{
-					boundAmount = is.stackSize;
+					boundAmount = is.getCount();
 				}
 				if( destination != null && !destination.canInsert( is ) )
 				{
@@ -212,7 +212,7 @@ public class AdaptorIInventory extends InventoryAdaptor
 				if( boundAmount > 0 )
 				{
 					final ItemStack rv = is.copy();
-					rv.stackSize = boundAmount;
+					rv.setCount(boundAmount);
 					return rv;
 				}
 			}
@@ -260,7 +260,7 @@ public class AdaptorIInventory extends InventoryAdaptor
 	 */
 	private ItemStack addItems( final ItemStack itemsToAdd, final boolean modulate )
 	{
-		if( itemsToAdd == null || itemsToAdd.stackSize == 0 )
+		if( itemsToAdd == null || itemsToAdd.getCount() == 0 )
 		{
 			return null;
 		}
@@ -273,14 +273,14 @@ public class AdaptorIInventory extends InventoryAdaptor
 		for( int slot = 0; slot < inventorySize; slot++ )
 		{
 			final ItemStack next = left.copy();
-			next.stackSize = Math.min( perOperationLimit, next.stackSize );
+			next.setCount(Math.min( perOperationLimit, next.getCount() ));
 
 			if( this.i.isItemValidForSlot( slot, next ) )
 			{
 				final ItemStack is = this.i.getStackInSlot( slot );
 				if( is == null )
 				{
-					left.stackSize -= next.stackSize;
+					left.shrink(next.getCount());
 
 					if( modulate )
 					{
@@ -288,25 +288,25 @@ public class AdaptorIInventory extends InventoryAdaptor
 						this.i.markDirty();
 					}
 
-					if( left.stackSize <= 0 )
+					if( left.getCount() <= 0 )
 					{
 						return null;
 					}
 				}
-				else if( Platform.isSameItemPrecise( is, left ) && is.stackSize < perOperationLimit )
+				else if( Platform.isSameItemPrecise( is, left ) && is.getCount() < perOperationLimit )
 				{
-					final int room = perOperationLimit - is.stackSize;
-					final int used = Math.min( left.stackSize, room );
+					final int room = perOperationLimit - is.getCount();
+					final int used = Math.min( left.getCount(), room );
 
 					if( modulate )
 					{
-						is.stackSize += used;
+						is.grow(used);
 						this.i.setInventorySlotContents( slot, is );
 						this.i.markDirty();
 					}
 
-					left.stackSize -= used;
-					if( left.stackSize <= 0 )
+					left.shrink(used);
+					if( left.getCount() <= 0 )
 					{
 						return null;
 					}

@@ -222,7 +222,7 @@ public class Ingredient implements IIngredient
 			for( int x = 0; x < set.length; x++ )
 			{
 				final ItemStack is = set[x].copy();
-				is.stackSize = this.qty;
+				is.setCount(this.qty);
 				set[x] = is;
 			}
 

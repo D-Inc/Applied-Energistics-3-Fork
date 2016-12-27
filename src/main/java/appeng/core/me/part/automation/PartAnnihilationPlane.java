@@ -275,11 +275,11 @@ public class PartAnnihilationPlane extends PartBasicState implements IGridTickab
 			return true;
 		}
 
-		final int oldstackSize = entityItem.getEntityItem().stackSize;
+		final int oldstackSize = entityItem.getEntityItem().getCount();
 		final int newstackSize = (int) overflow.getStackSize();
 		final boolean changed = oldstackSize != newstackSize;
 
-		entityItem.getEntityItem().stackSize = newstackSize;
+		entityItem.getEntityItem().setCount(newstackSize);
 
 		return changed;
 	}
@@ -434,7 +434,7 @@ public class PartAnnihilationPlane extends PartBasicState implements IGridTickab
 		float requiredEnergy = 1 + hardness;
 		for( final ItemStack is : items )
 		{
-			requiredEnergy += is.stackSize;
+			requiredEnergy += is.getCount();
 		}
 
 		return requiredEnergy;

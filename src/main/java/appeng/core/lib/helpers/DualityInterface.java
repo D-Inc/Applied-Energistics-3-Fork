@@ -503,7 +503,7 @@ public class DualityInterface implements IGridTickable, IStorageMonitorable, IIn
 		// ItemStack after = adaptor.simulateAdd( stack );
 		// if ( after == null )
 		// return true;
-		// return after.stackSize != stack.stackSize;
+		// return after.getCount() != stack.getCount();
 	}
 
 	public IInventory getConfig()
@@ -617,7 +617,7 @@ public class DualityInterface implements IGridTickable, IStorageMonitorable, IIn
 					}
 					else
 					{
-						whatToSend.stackSize -= whatToSend.stackSize - Result.stackSize;
+						whatToSend.shrink(whatToSend.getCount() - Result.getCount());
 					}
 
 					if( whatToSend == null )

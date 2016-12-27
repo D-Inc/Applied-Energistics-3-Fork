@@ -70,24 +70,24 @@ public class MEIInventoryWrapper implements IMEInventory<IAEItemStack>
 
 				if( Platform.isSameItem( t, input ) )
 				{
-					final int oriStack = t.stackSize;
-					t.stackSize += out.stackSize;
+					final int oriStack = t.getCount();
+					t.grow(out.getCount());
 
 					this.target.setInventorySlotContents( x, t );
 
-					if( t.stackSize > this.target.getInventoryStackLimit() )
+					if( t.getCount() > this.target.getInventoryStackLimit() )
 					{
-						t.stackSize = this.target.getInventoryStackLimit();
+						t.setCount(this.target.getInventoryStackLimit());
 					}
 
-					if( t.stackSize > t.getMaxStackSize() )
+					if( t.getCount() > t.getMaxStackSize() )
 					{
-						t.stackSize = t.getMaxStackSize();
+						t.setCount(t.getMaxStackSize());
 					}
 
-					out.stackSize -= t.stackSize - oriStack;
+					out.shrink(t.getCount() - oriStack);
 
-					if( out.stackSize <= 0 )
+					if( out.getCount() <= 0 )
 					{
 						return null;
 					}
@@ -102,20 +102,20 @@ public class MEIInventoryWrapper implements IMEInventory<IAEItemStack>
 			if( t == null )
 			{
 				t = Platform.cloneItemStack( input );
-				t.stackSize = out.stackSize;
+				t.setCount(out.getCount());
 
-				if( t.stackSize > this.target.getInventoryStackLimit() )
+				if( t.getCount() > this.target.getInventoryStackLimit() )
 				{
-					t.stackSize = this.target.getInventoryStackLimit();
+					t.setCount(this.target.getInventoryStackLimit());
 				}
 
-				out.stackSize -= t.stackSize;
+				out.shrink(t.getCount());
 				if( mode == Actionable.MODULATE )
 				{
 					this.target.setInventorySlotContents( x, t );
 				}
 
-				if( out.stackSize <= 0 )
+				if( out.getCount() <= 0 )
 				{
 					return null;
 				}
@@ -130,24 +130,24 @@ public class MEIInventoryWrapper implements IMEInventory<IAEItemStack>
 	{
 		final ItemStack Req = request.getItemStack();
 
-		int request_stackSize = Req.stackSize;
+		int request_stackSize = Req.getCount();
 
 		if( request_stackSize > Req.getMaxStackSize() )
 		{
 			request_stackSize = Req.getMaxStackSize();
 		}
 
-		Req.stackSize = request_stackSize;
+		Req.setCount(request_stackSize);
 
 		ItemStack Gathered = null;
 		if( this.adaptor != null )
 		{
-			Gathered = this.adaptor.removeItems( Req.stackSize, Req, null );
+			Gathered = this.adaptor.removeItems( Req.getCount(), Req, null );
 		}
 		else
 		{
 			Gathered = request.getItemStack();
-			Gathered.stackSize = 0;
+			Gathered.setCount(0);
 
 			// try to find matching inventories that already have it...
 			for( int x = 0; x < this.target.getSizeInventory(); x++ )
@@ -156,26 +156,26 @@ public class MEIInventoryWrapper implements IMEInventory<IAEItemStack>
 
 				if( Platform.isSameItem( sub, Req ) )
 				{
-					int reqNum = Req.stackSize;
+					int reqNum = Req.getCount();
 
-					if( reqNum > sub.stackSize )
+					if( reqNum > sub.getCount() )
 					{
-						reqNum = Req.stackSize;
+						reqNum = Req.getCount();
 					}
 
 					ItemStack retrieved = null;
 
-					if( sub.stackSize < Req.stackSize )
+					if( sub.getCount() < Req.getCount() )
 					{
 						retrieved = Platform.cloneItemStack( sub );
-						sub.stackSize = 0;
+						sub.setCount(0);
 					}
 					else
 					{
-						retrieved = sub.splitStack( Req.stackSize );
+						retrieved = sub.splitStack( Req.getCount() );
 					}
 
-					if( sub.stackSize <= 0 )
+					if( sub.getCount() <= 0 )
 					{
 						this.target.setInventorySlotContents( x, null );
 					}
@@ -186,18 +186,18 @@ public class MEIInventoryWrapper implements IMEInventory<IAEItemStack>
 
 					if( retrieved != null )
 					{
-						Gathered.stackSize += retrieved.stackSize;
-						Req.stackSize -= retrieved.stackSize;
+						Gathered.grow(retrieved.getCount());
+						Req.shrink(retrieved.getCount());
 					}
 
-					if( request_stackSize == Gathered.stackSize )
+					if( request_stackSize == Gathered.getCount() )
 					{
 						return AEItemStack.create( Gathered );
 					}
 				}
 			}
 
-			if( Gathered.stackSize == 0 )
+			if( Gathered.getCount() == 0 )
 			{
 				return null;
 			}

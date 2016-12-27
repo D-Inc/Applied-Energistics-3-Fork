@@ -115,7 +115,7 @@ public class TileCondenser extends AEBaseInvTile implements IFluidHandler, IConf
 	private boolean canAddOutput( final ItemStack output )
 	{
 		final ItemStack outputStack = this.getStackInSlot( 1 );
-		return outputStack == null || ( Platform.isSameItem( outputStack, output ) && outputStack.stackSize < outputStack.getMaxStackSize() );
+		return outputStack == null || ( Platform.isSameItem( outputStack, output ) && outputStack.getCount() < outputStack.getMaxStackSize() );
 	}
 
 	/**
@@ -132,7 +132,7 @@ public class TileCondenser extends AEBaseInvTile implements IFluidHandler, IConf
 		}
 		else
 		{
-			outputStack.stackSize++;
+			outputStack.getCount()++;
 			this.setInventorySlotContents( 1, outputStack );
 		}
 	}
@@ -173,7 +173,7 @@ public class TileCondenser extends AEBaseInvTile implements IFluidHandler, IConf
 		{
 			if( itemstack != null )
 			{
-				this.addPower( itemstack.stackSize );
+				this.addPower( itemstack.getCount() );
 			}
 		}
 		else
@@ -196,7 +196,7 @@ public class TileCondenser extends AEBaseInvTile implements IFluidHandler, IConf
 			final ItemStack is = inv.getStackInSlot( 0 );
 			if( is != null )
 			{
-				this.addPower( is.stackSize );
+				this.addPower( is.getCount() );
 				inv.setInventorySlotContents( 0, null );
 			}
 		}
