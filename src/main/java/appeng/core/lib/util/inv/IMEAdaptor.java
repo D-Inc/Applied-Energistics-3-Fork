@@ -87,7 +87,7 @@ public class IMEAdaptor extends InventoryAdaptor
 
 		if( req != null )
 		{
-			req.setStackSize( amount );
+			req.setCount( amount );
 			out = this.target.extractItems( req, type, this.src );
 		}
 
@@ -129,7 +129,7 @@ public class IMEAdaptor extends InventoryAdaptor
 		{
 			if( req != null )
 			{
-				req.setStackSize( amount );
+				req.setCount( amount );
 				out = this.target.extractItems( req, type, this.src );
 				if( out != null )
 				{

@@ -219,11 +219,11 @@ public class ContainerCraftConfirm extends AEBaseContainer
 
 						IAEItemStack o = out.copy();
 						o.reset();
-						o.setStackSize( out.getStackSize() );
+						o.setCount( out.getCount() );
 
 						final IAEItemStack p = out.copy();
 						p.reset();
-						p.setStackSize( out.getCountRequestable() );
+						p.setCount( out.getCountRequestable() );
 
 						final IStorageGrid sg = this.getGrid().getCache( IStorageGrid.class );
 						final IMEInventory<IAEItemStack> items = sg.getItemInventory();
@@ -237,23 +237,23 @@ public class ContainerCraftConfirm extends AEBaseContainer
 							if( o == null )
 							{
 								o = m.copy();
-								o.setStackSize( 0 );
+								o.setCount( 0 );
 							}
 
-							m.setStackSize( m.getStackSize() - o.getStackSize() );
+							m.setCount( m.getCount() - o.getCount() );
 						}
 
-						if( o.getStackSize() > 0 )
+						if( o.getCount() > 0 )
 						{
 							a.appendItem( o );
 						}
 
-						if( p.getStackSize() > 0 )
+						if( p.getCount() > 0 )
 						{
 							b.appendItem( p );
 						}
 
-						if( c != null && m != null && m.getStackSize() > 0 )
+						if( c != null && m != null && m.getCount() > 0 )
 						{
 							c.appendItem( m );
 						}

@@ -121,7 +121,7 @@ public class ContainerNetworkStatus extends AEBaseContainer
 						if( is != null && is.getItem() != null )
 						{
 							final IAEItemStack ais = AEItemStack.create( is );
-							ais.setStackSize( 1 );
+							ais.setCount( 1 );
 							ais.setCountRequestable( (long) ( blk.getIdlePowerUsage() * 100.0 ) );
 							list.add( ais );
 						}

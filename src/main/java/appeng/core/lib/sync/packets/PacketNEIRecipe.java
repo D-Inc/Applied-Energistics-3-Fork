@@ -204,7 +204,7 @@ public class PacketNEIRecipe extends AppEngPacket
 											{
 												if( filter == null || filter.isListed( request ) )
 												{
-													request.setStackSize( 1 );
+													request.setCount( 1 );
 													final IAEItemStack out = Platform.poweredExtraction( energy, storage, request, cct.getActionSource() );
 													if( out != null )
 													{

@@ -134,7 +134,7 @@ public class ToolMassCannon extends AEBasePoweredItem implements IStorageCell
 				IAEStack aeAmmo = itemList.getFirstItem();
 				if( aeAmmo instanceof IAEItemStack )
 				{
-					shots = Math.min( shots, (int) aeAmmo.getStackSize() );
+					shots = Math.min( shots, (int) aeAmmo.getCount() );
 					for( int sh = 0; sh < shots; sh++ )
 					{
 						this.extractAEPower( item, 1600 );
@@ -144,7 +144,7 @@ public class ToolMassCannon extends AEBasePoweredItem implements IStorageCell
 							return new ActionResult<ItemStack>( EnumActionResult.SUCCESS, item );
 						}
 
-						aeAmmo.setStackSize( 1 );
+						aeAmmo.setCount( 1 );
 						final ItemStack ammo = ( (IAEItemStack) aeAmmo ).getItemStack();
 						if( ammo == null )
 						{

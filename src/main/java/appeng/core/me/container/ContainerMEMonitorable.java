@@ -213,7 +213,7 @@ public class ContainerMEMonitorable extends AEBaseContainer implements IConfigMa
 						final IAEItemStack send = monitorCache.findPrecise( is );
 						if( send == null )
 						{
-							is.setStackSize( 0 );
+							is.setCount( 0 );
 							piu.appendItem( is );
 						}
 						else

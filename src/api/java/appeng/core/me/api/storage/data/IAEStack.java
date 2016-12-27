@@ -49,14 +49,14 @@ public interface IAEStack<StackType extends IAEStack>
 	 *
 	 * @return basically ItemStack.stackSize
 	 */
-	long getStackSize();
+	long getCount();
 
 	/**
 	 * changes the number of items in the stack.
 	 *
 	 * @param stackSize , ItemStack.stackSize = N
 	 */
-	StackType setStackSize( long stackSize );
+	StackType setCount( long stackSize );
 
 	/**
 	 * Same as getStackSize, but for requestable items. ( LP )

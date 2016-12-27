@@ -97,14 +97,14 @@ public class MEMonitorHandler<StackType extends IAEStack> implements IMEMonitor<
 
 		if( extraction )
 		{
-			diff.setStackSize( leftOvers == null ? 0 : -leftOvers.getStackSize() );
+			diff.setCount( leftOvers == null ? 0 : -leftOvers.getCount() );
 		}
 		else if( leftOvers != null )
 		{
-			diff.shrink( leftOvers.getStackSize() );
+			diff.shrink( leftOvers.getCount() );
 		}
 
-		if( diff.getStackSize() != 0 )
+		if( diff.getCount() != 0 )
 		{
 			this.postChangesToListeners( ImmutableList.of( diff ), src );
 		}

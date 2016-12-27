@@ -75,9 +75,9 @@ public class ItemSorters
 		{
 			if( getDirection() == SortDir.ASCENDING )
 			{
-				return compareLong( o2.getStackSize(), o1.getStackSize() );
+				return compareLong( o2.getCount(), o1.getCount() );
 			}
-			return compareLong( o1.getStackSize(), o2.getStackSize() );
+			return compareLong( o1.getCount(), o2.getCount() );
 		}
 	};
 

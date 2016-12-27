@@ -235,11 +235,11 @@ public abstract class AbstractPartMonitor extends AbstractPartDisplay implements
 			final IAEItemStack result = itemInventory.getStorageList().findPrecise( this.configuredItem );
 			if( result == null )
 			{
-				this.configuredItem.setStackSize( 0 );
+				this.configuredItem.setCount( 0 );
 			}
 			else
 			{
-				this.configuredItem.setStackSize( result.getStackSize() );
+				this.configuredItem.setCount( result.getCount() );
 			}
 		}
 	}
@@ -343,7 +343,7 @@ public abstract class AbstractPartMonitor extends AbstractPartDisplay implements
 		GL11.glTranslatef( 0.0f, 0.14f, -0.24f );
 		GL11.glScalef( 1.0f / 62.0f, 1.0f / 62.0f, 1.0f / 62.0f );
 
-		final long stackSize = ais.getStackSize();
+		final long stackSize = ais.getCount();
 		final String renderedstackSize = NUMBER_CONVERTER.toWideReadableForm( stackSize );
 
 		final FontRenderer fr = Minecraft.getMinecraft().fontRendererObj;
@@ -374,14 +374,14 @@ public abstract class AbstractPartMonitor extends AbstractPartDisplay implements
 		{
 			if( fullStack == null )
 			{
-				this.configuredItem.setStackSize( 0 );
+				this.configuredItem.setCount( 0 );
 			}
 			else
 			{
-				this.configuredItem.setStackSize( fullStack.getStackSize() );
+				this.configuredItem.setCount( fullStack.getCount() );
 			}
 
-			final long stackSize = this.configuredItem.getStackSize();
+			final long stackSize = this.configuredItem.getCount();
 			final String humanReadableText = NUMBER_CONVERTER.toWideReadableForm( stackSize );
 
 			if( !humanReadableText.equals( this.lastHumanReadableText ) )

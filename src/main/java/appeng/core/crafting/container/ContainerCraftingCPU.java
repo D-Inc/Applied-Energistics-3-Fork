@@ -243,7 +243,7 @@ public class ContainerCraftingCPU extends AEBaseContainer implements IMEMonitorH
 		for( IAEItemStack is : change )
 		{
 			is = is.copy();
-			is.setStackSize( 1 );
+			is.setCount( 1 );
 			this.list.add( is );
 		}
 	}

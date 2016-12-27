@@ -98,7 +98,7 @@ public class MEMonitorIInventory implements IMEMonitor<IAEItemStack>
 
 		// better then doing construction from scratch :3
 		final IAEItemStack o = input.copy();
-		o.setStackSize( out.getCount() );
+		o.setCount( out.getCount() );
 		return o;
 	}
 
@@ -109,11 +109,11 @@ public class MEMonitorIInventory implements IMEMonitor<IAEItemStack>
 
 		if( type == Actionable.SIMULATE )
 		{
-			out = this.adaptor.simulateRemove( (int) request.getStackSize(), request.getItemStack(), null );
+			out = this.adaptor.simulateRemove( (int) request.getCount(), request.getItemStack(), null );
 		}
 		else
 		{
-			out = this.adaptor.removeItems( (int) request.getStackSize(), request.getItemStack(), null );
+			out = this.adaptor.removeItems( (int) request.getCount(), request.getItemStack(), null );
 		}
 
 		if( out == null )
@@ -123,7 +123,7 @@ public class MEMonitorIInventory implements IMEMonitor<IAEItemStack>
 
 		// better then doing construction from scratch :3
 		final IAEItemStack o = request.copy();
-		o.setStackSize( out.getCount() );
+		o.setCount( out.getCount() );
 
 		if( type == Actionable.MODULATE )
 		{
@@ -162,7 +162,7 @@ public class MEMonitorIInventory implements IMEMonitor<IAEItemStack>
 
 				if( old != null && old.aeStack != null )
 				{
-					old.aeStack.setStackSize( -old.aeStack.getStackSize() );
+					old.aeStack.setCount( -old.aeStack.getCount() );
 					changes.add( old.aeStack );
 				}
 
@@ -182,7 +182,7 @@ public class MEMonitorIInventory implements IMEMonitor<IAEItemStack>
 				final IAEItemStack stack = ( old == null || old.aeStack == null ? AppEngApi.internalApi().storage().createItemStack( newIS ) : old.aeStack.copy() );
 				if( stack != null )
 				{
-					stack.setStackSize( newSize );
+					stack.setCount( newSize );
 					this.list.add( stack );
 				}
 
@@ -192,7 +192,7 @@ public class MEMonitorIInventory implements IMEMonitor<IAEItemStack>
 					this.memory.put( is.getSlot(), cis );
 
 					final IAEItemStack a = stack.copy();
-					a.setStackSize( diff );
+					a.setCount( diff );
 					changes.add( a );
 					changed = true;
 				}
@@ -208,7 +208,7 @@ public class MEMonitorIInventory implements IMEMonitor<IAEItemStack>
 				if( cis != null && cis.aeStack != null )
 				{
 					final IAEItemStack a = cis.aeStack.copy();
-					a.setStackSize( -a.getStackSize() );
+					a.setCount( -a.getCount() );
 					changes.add( a );
 					changed = true;
 				}

@@ -396,7 +396,7 @@ public class DualityInterface implements IGridTickable, IStorageMonitorable, IIn
 	private void updatePlan( final int slot )
 	{
 		IAEItemStack req = this.config.getAEStackInSlot( slot );
-		if( req != null && req.getStackSize() <= 0 )
+		if( req != null && req.getCount() <= 0 )
 		{
 			this.config.setInventorySlotContents( slot, null );
 			req = null;
@@ -407,7 +407,7 @@ public class DualityInterface implements IGridTickable, IStorageMonitorable, IIn
 		if( req == null && Stored != null )
 		{
 			final IAEItemStack work = AppEngApi.internalApi().storage().createItemStack( Stored );
-			this.requireWork[slot] = work.setStackSize( -work.getStackSize() );
+			this.requireWork[slot] = work.setCount( -work.getCount() );
 			return;
 		}
 		else if( req != null )
@@ -419,10 +419,10 @@ public class DualityInterface implements IGridTickable, IStorageMonitorable, IIn
 			}
 			else if( req.isSameType( Stored ) ) // same type ( qty different? )!
 			{
-				if( req.getStackSize() != Stored.getCount() )
+				if( req.getCount() != Stored.getCount() )
 				{
 					this.requireWork[slot] = req.copy();
-					this.requireWork[slot].setStackSize( req.getStackSize() - Stored.getCount() );
+					this.requireWork[slot].setCount( req.getCount() - Stored.getCount() );
 					return;
 				}
 			}
@@ -430,7 +430,7 @@ public class DualityInterface implements IGridTickable, IStorageMonitorable, IIn
 			// Stored != null; dispose!
 			{
 				final IAEItemStack work = AppEngApi.internalApi().storage().createItemStack( Stored );
-				this.requireWork[slot] = work.setStackSize( -work.getStackSize() );
+				this.requireWork[slot] = work.setCount( -work.getCount() );
 				return;
 			}
 		}
@@ -499,7 +499,7 @@ public class DualityInterface implements IGridTickable, IStorageMonitorable, IIn
 		{
 			return true;
 		}
-		return out.getStackSize() != stack.getCount();
+		return out.getCount() != stack.getCount();
 		// ItemStack after = adaptor.simulateAdd( stack );
 		// if ( after == null )
 		// return true;
@@ -669,7 +669,7 @@ public class DualityInterface implements IGridTickable, IStorageMonitorable, IIn
 			{
 				changed = this.handleCrafting( x, adaptor, itemStack ) || changed;
 			}
-			else if( itemStack.getStackSize() > 0 )
+			else if( itemStack.getCount() > 0 )
 			{
 				// make sure strange things didn't happen...
 				if( adaptor.simulateAdd( itemStack.getItemStack() ) != null )
@@ -693,12 +693,12 @@ public class DualityInterface implements IGridTickable, IStorageMonitorable, IIn
 					changed = this.handleCrafting( x, adaptor, itemStack ) || changed;
 				}
 			}
-			else if( itemStack.getStackSize() < 0 )
+			else if( itemStack.getCount() < 0 )
 			{
 				IAEItemStack toStore = itemStack.copy();
-				toStore.setStackSize( -toStore.getStackSize() );
+				toStore.setCount( -toStore.getCount() );
 
-				long diff = toStore.getStackSize();
+				long diff = toStore.getCount();
 
 				// make sure strange things didn't happen...
 				final ItemStack canExtract = adaptor.simulateRemove( (int) diff, toStore.getItemStack(), null );
@@ -712,7 +712,7 @@ public class DualityInterface implements IGridTickable, IStorageMonitorable, IIn
 
 				if( toStore != null )
 				{
-					diff -= toStore.getStackSize();
+					diff -= toStore.getCount();
 				}
 
 				if( diff != 0 )
@@ -757,7 +757,7 @@ public class DualityInterface implements IGridTickable, IStorageMonitorable, IIn
 		{
 			if( this.getInstalledUpgrades( Upgrades.CRAFTING ) > 0 && itemStack != null )
 			{
-				return this.craftingTracker.handleCrafting( x, itemStack.getStackSize(), itemStack, d, this.iHost.getTileEntity().getWorld(), this.gridProxy.getGrid(), this.gridProxy.getCrafting(), this.mySource );
+				return this.craftingTracker.handleCrafting( x, itemStack.getCount(), itemStack, d, this.iHost.getTileEntity().getWorld(), this.gridProxy.getGrid(), this.gridProxy.getCrafting(), this.mySource );
 			}
 		}
 		catch( final GridAccessException e )

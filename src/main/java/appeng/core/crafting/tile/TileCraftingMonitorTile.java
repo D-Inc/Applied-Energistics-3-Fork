@@ -122,7 +122,7 @@ public class TileCraftingMonitorTile extends TileCraftingTile implements IColora
 		}
 		else if( is != null && this.dspPlay != null )
 		{
-			if( is.getStackSize() != this.dspPlay.getStackSize() )
+			if( is.getCount() != this.dspPlay.getCount() )
 			{
 				this.dspPlay = is.copy();
 				this.markForUpdate();

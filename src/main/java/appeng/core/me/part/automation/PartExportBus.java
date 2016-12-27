@@ -241,7 +241,7 @@ public class PartExportBus extends PartSharedItemBus implements ICraftingRequest
 			if( d != null && this.getProxy().isActive() )
 			{
 				final IEnergyGrid energy = this.getProxy().getEnergy();
-				final double power = items.getStackSize();
+				final double power = items.getCount();
 
 				if( energy.extractAEPower( power, mode, PowerMultiplier.CONFIG ) > power - 0.01 )
 				{
@@ -294,17 +294,17 @@ public class PartExportBus extends PartSharedItemBus implements ICraftingRequest
 		if( canFit > 0 )
 		{
 			ais = ais.copy();
-			ais.setStackSize( canFit );
+			ais.setCount( canFit );
 			final IAEItemStack itemsToAdd = Platform.poweredExtraction( energy, inv, ais, this.mySrc );
 
 			if( itemsToAdd != null )
 			{
-				this.itemToSend -= itemsToAdd.getStackSize();
+				this.itemToSend -= itemsToAdd.getCount();
 
 				final ItemStack failed = d.addItems( itemsToAdd.getItemStack() );
 				if( failed != null )
 				{
-					ais.setStackSize( failed.getCount() );
+					ais.setCount( failed.getCount() );
 					inv.injectItems( ais, Actionable.MODULATE, this.mySrc );
 				}
 				else

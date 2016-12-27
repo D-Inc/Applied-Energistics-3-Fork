@@ -293,7 +293,7 @@ public class PartLevelEmitter extends PartUpgradeable implements IEnergyWatcherH
 			this.lastReportedValue = 0;
 			for( final IAEItemStack st : monitor.getStorageList() )
 			{
-				this.lastReportedValue += st.getStackSize();
+				this.lastReportedValue += st.getCount();
 			}
 		}
 		else if( this.getInstalledUpgrades( Upgrades.FUZZY ) > 0 )
@@ -303,7 +303,7 @@ public class PartLevelEmitter extends PartUpgradeable implements IEnergyWatcherH
 			final Collection<IAEItemStack> fuzzyList = monitor.getStorageList().findFuzzy( myStack, fzMode );
 			for( final IAEItemStack st : fuzzyList )
 			{
-				this.lastReportedValue += st.getStackSize();
+				this.lastReportedValue += st.getCount();
 			}
 		}
 		else
@@ -315,7 +315,7 @@ public class PartLevelEmitter extends PartUpgradeable implements IEnergyWatcherH
 			}
 			else
 			{
-				this.lastReportedValue = r.getStackSize();
+				this.lastReportedValue = r.getCount();
 			}
 		}
 
@@ -334,7 +334,7 @@ public class PartLevelEmitter extends PartUpgradeable implements IEnergyWatcherH
 	{
 		if( chan == StorageChannel.ITEMS && fullStack.equals( this.config.getAEStackInSlot( 0 ) ) && this.getInstalledUpgrades( Upgrades.FUZZY ) == 0 )
 		{
-			this.lastReportedValue = fullStack.getStackSize();
+			this.lastReportedValue = fullStack.getCount();
 			this.updateState();
 		}
 	}

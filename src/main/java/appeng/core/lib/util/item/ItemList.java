@@ -124,7 +124,7 @@ public final class ItemList implements IItemList<IAEItemStack>
 
 		if( st != null )
 		{
-			st.grow( option.getStackSize() );
+			st.grow( option.getCount() );
 			return;
 		}
 
@@ -155,7 +155,7 @@ public final class ItemList implements IItemList<IAEItemStack>
 		}
 
 		final IAEItemStack opt = option.copy();
-		opt.setStackSize( 0 );
+		opt.setCount( 0 );
 		opt.setCraftable( true );
 
 		this.putItemRecord( opt );
@@ -178,7 +178,7 @@ public final class ItemList implements IItemList<IAEItemStack>
 		}
 
 		final IAEItemStack opt = option.copy();
-		opt.setStackSize( 0 );
+		opt.setCount( 0 );
 		opt.setCraftable( false );
 		opt.setCountRequestable( option.getCountRequestable() );
 

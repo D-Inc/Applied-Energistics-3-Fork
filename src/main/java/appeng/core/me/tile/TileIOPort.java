@@ -438,7 +438,7 @@ public class TileIOPort extends AENetworkInvTile implements IUpgradeableHost, IC
 
 			for( final IAEStack s : myList )
 			{
-				final long totalstackSize = s.getStackSize();
+				final long totalstackSize = s.getCount();
 				if( totalstackSize > 0 )
 				{
 					final IAEStack stack = destination.injectItems( s, Actionable.SIMULATE, this.mySrc );
@@ -450,23 +450,23 @@ public class TileIOPort extends AENetworkInvTile implements IUpgradeableHost, IC
 					}
 					else
 					{
-						possible = totalstackSize - stack.getStackSize();
+						possible = totalstackSize - stack.getCount();
 					}
 
 					if( possible > 0 )
 					{
 						possible = Math.min( possible, itemsToMove );
-						s.setStackSize( possible );
+						s.setCount( possible );
 
 						final IAEStack extracted = src.extractItems( s, Actionable.MODULATE, this.mySrc );
 						if( extracted != null )
 						{
-							possible = extracted.getStackSize();
+							possible = extracted.getCount();
 							final IAEStack failed = Platform.poweredInsert( energy, destination, extracted, this.mySrc );
 
 							if( failed != null )
 							{
-								possible -= failed.getStackSize();
+								possible -= failed.getCount();
 								src.injectItems( failed, Actionable.MODULATE, this.mySrc );
 							}
 
@@ -547,7 +547,7 @@ public class TileIOPort extends AENetworkInvTile implements IUpgradeableHost, IC
 		final IAEStack test = myList.getFirstItem();
 		if( test != null )
 		{
-			test.setStackSize( 1 );
+			test.setCount( 1 );
 			return src.injectItems( test, Actionable.SIMULATE, this.mySrc ) != null;
 		}
 		return false;

@@ -92,7 +92,7 @@ public class PacketCraftRequest extends AppEngPacket
 					return;
 				}
 
-				cca.getItemToCraft().setStackSize( this.amount );
+				cca.getItemToCraft().setCount( this.amount );
 
 				Future<ICraftingJob> futureJob = null;
 				try

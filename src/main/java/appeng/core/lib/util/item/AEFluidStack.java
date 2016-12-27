@@ -55,7 +55,7 @@ public final class AEFluidStack extends AEStack<IAEFluidStack> implements IAEFlu
 	{
 
 		this.fluid = is.fluid;
-		this.setStackSize( is.getStackSize() );
+		this.setCount( is.getCount() );
 
 		// priority = is.priority;
 		this.setCraftable( is.isCraftable() );
@@ -73,7 +73,7 @@ public final class AEFluidStack extends AEStack<IAEFluidStack> implements IAEFlu
 			throw new IllegalArgumentException( "Fluid is null." );
 		}
 
-		this.setStackSize( is.amount );
+		this.setCount( is.amount );
 		this.setCraftable( false );
 		this.setCountRequestable( 0 );
 
@@ -89,7 +89,7 @@ public final class AEFluidStack extends AEStack<IAEFluidStack> implements IAEFlu
 		}
 		final AEFluidStack fluid = AEFluidStack.create( itemstack );
 		// fluid.priority = i.getInteger( "Priority" );
-		fluid.setStackSize( i.getLong( "Cnt" ) );
+		fluid.setCount( i.getLong( "Cnt" ) );
 		fluid.setCountRequestable( i.getLong( "Req" ) );
 		fluid.setCraftable( i.getBoolean( "Craft" ) );
 		return fluid;
@@ -154,7 +154,7 @@ public final class AEFluidStack extends AEStack<IAEFluidStack> implements IAEFlu
 
 		final AEFluidStack fluid = AEFluidStack.create( fluidStack );
 		// fluid.priority = (int) priority;
-		fluid.setStackSize( stackSize );
+		fluid.setCount( stackSize );
 		fluid.setCountRequestable( countRequestable );
 		fluid.setCraftable( isCraftable );
 		return fluid;
@@ -171,7 +171,7 @@ public final class AEFluidStack extends AEStack<IAEFluidStack> implements IAEFlu
 		// if ( priority < ((AEFluidStack) option).priority )
 		// priority = ((AEFluidStack) option).priority;
 
-		this.grow( option.getStackSize() );
+		this.grow( option.getCount() );
 		this.setCountRequestable( this.getCountRequestable() + option.getCountRequestable() );
 		this.setCraftable( this.isCraftable() || option.isCraftable() );
 	}
@@ -202,7 +202,7 @@ public final class AEFluidStack extends AEStack<IAEFluidStack> implements IAEFlu
 		/*
 		 * if ( Cnt != null && Cnt instanceof NBTTagLong ) ((NBTTagLong) Cnt).data = this.getCount(); else
 		 */
-		i.setLong( "Cnt", this.getStackSize() );
+		i.setLong( "Cnt", this.getCount() );
 
 		/*
 		 * if ( Req != null && Req instanceof NBTTagLong ) ((NBTTagLong) Req).data = this.getCount(); else
@@ -348,7 +348,7 @@ public final class AEFluidStack extends AEStack<IAEFluidStack> implements IAEFlu
 	@Override
 	public FluidStack getFluidStack()
 	{
-		final FluidStack is = new FluidStack( this.fluid, (int) Math.min( Integer.MAX_VALUE, this.getStackSize() ) );
+		final FluidStack is = new FluidStack( this.fluid, (int) Math.min( Integer.MAX_VALUE, this.getCount() ) );
 		if( this.tagCompound != null )
 		{
 			is.tag = this.tagCompound.getNBTTagCompoundCopy();

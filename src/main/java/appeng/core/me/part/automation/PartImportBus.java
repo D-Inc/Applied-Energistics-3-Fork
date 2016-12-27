@@ -84,7 +84,7 @@ public class PartImportBus extends PartSharedItemBus implements IInventoryDestin
 		{
 			return true;
 		}
-		return out.getStackSize() != stack.getCount();
+		return out.getCount() != stack.getCount();
 	}
 
 	@Override
@@ -219,7 +219,7 @@ public class PartImportBus extends PartSharedItemBus implements IInventoryDestin
 			}
 			else
 			{
-				this.lastItemChecked.setStackSize( newItems.getCount() );
+				this.lastItemChecked.setCount( newItems.getCount() );
 			}
 
 			final IAEItemStack failed = Platform.poweredInsert( energy, this.destination, this.lastItemChecked, this.source );
@@ -271,7 +271,7 @@ public class PartImportBus extends PartSharedItemBus implements IInventoryDestin
 
 		if( itemAmountNotStorable != null )
 		{
-			return (int) Math.min( simResult.getCount() - itemAmountNotStorable.getStackSize(), toSend );
+			return (int) Math.min( simResult.getCount() - itemAmountNotStorable.getCount(), toSend );
 		}
 
 		return toSend;

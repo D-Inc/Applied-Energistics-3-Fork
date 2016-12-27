@@ -63,10 +63,10 @@ public abstract class AEBaseMEGui extends AEBaseGui
 
 				if( myStack != null )
 				{
-					if( myStack.getStackSize() > BigNumber || ( myStack.getStackSize() > 1 && stack.isItemDamaged() ) )
+					if( myStack.getCount() > BigNumber || ( myStack.getCount() > 1 && stack.isItemDamaged() ) )
 					{
 						final String local = ButtonToolTips.ItemsStored.getLocal();
-						final String formattedAmount = NumberFormat.getNumberInstance( Locale.US ).format( myStack.getStackSize() );
+						final String formattedAmount = NumberFormat.getNumberInstance( Locale.US ).format( myStack.getCount() );
 						final String format = String.format( local, formattedAmount );
 
 						currentToolTip.add( "\u00a77" + format );
@@ -120,9 +120,9 @@ public abstract class AEBaseMEGui extends AEBaseGui
 				@SuppressWarnings( "unchecked" )
 				final List<String> currentToolTip = stack.getTooltip( this.mc.player, this.mc.gameSettings.advancedItemTooltips );
 
-				if( myStack.getStackSize() > BigNumber || ( myStack.getStackSize() > 1 && stack.isItemDamaged() ) )
+				if( myStack.getCount() > BigNumber || ( myStack.getCount() > 1 && stack.isItemDamaged() ) )
 				{
-					currentToolTip.add( "Items Stored: " + NumberFormat.getNumberInstance( Locale.US ).format( myStack.getStackSize() ) );
+					currentToolTip.add( "Items Stored: " + NumberFormat.getNumberInstance( Locale.US ).format( myStack.getCount() ) );
 				}
 
 				if( myStack.getCountRequestable() > 0 )

@@ -213,14 +213,14 @@ public class NetworkMonitor<T extends IAEStack<T>> implements IMEMonitor<T>
 
 		if( extraction )
 		{
-			diff.setStackSize( leftOvers == null ? 0 : -leftOvers.getStackSize() );
+			diff.setCount( leftOvers == null ? 0 : -leftOvers.getCount() );
 		}
 		else if( leftOvers != null )
 		{
-			diff.shrink( leftOvers.getStackSize() );
+			diff.shrink( leftOvers.getCount() );
 		}
 
-		if( diff.getStackSize() != 0 )
+		if( diff.getCount() != 0 )
 		{
 			this.postChangesToListeners( ImmutableList.of( diff ), src );
 		}
@@ -274,7 +274,7 @@ public class NetworkMonitor<T extends IAEStack<T>> implements IMEMonitor<T>
 			if( !add && changedItem != null )
 			{
 				difference = changedItem.copy();
-				difference.setStackSize( -changedItem.getStackSize() );
+				difference.setCount( -changedItem.getCount() );
 			}
 
 			if( this.myGridCache.getInterestManager().containsKey( changedItem ) )
@@ -288,7 +288,7 @@ public class NetworkMonitor<T extends IAEStack<T>> implements IMEMonitor<T>
 					if( fullStack == null )
 					{
 						fullStack = changedItem.copy();
-						fullStack.setStackSize( 0 );
+						fullStack.setCount( 0 );
 					}
 
 					this.myGridCache.getInterestManager().enableTransactions();

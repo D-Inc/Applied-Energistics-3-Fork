@@ -118,7 +118,7 @@ public class CraftingJob implements Runnable, ICraftingJob
 		if( crafts > 0 )
 		{
 			what = what.copy();
-			what.setStackSize( what.getStackSize() * crafts );
+			what.setCount( what.getCount() * crafts );
 			this.crafting.add( what );
 		}
 	}
@@ -145,7 +145,7 @@ public class CraftingJob implements Runnable, ICraftingJob
 				craftingInventory.ignore( this.output );
 
 				this.availableCheck = new MECraftingInventory( this.original, false, false, false );
-				this.getTree().request( craftingInventory, this.output.getStackSize(), this.actionSrc );
+				this.getTree().request( craftingInventory, this.output.getCount(), this.actionSrc );
 				this.getTree().dive( this );
 
 				for( final String s : this.opsAndMultiplier.keySet() )
@@ -171,7 +171,7 @@ public class CraftingJob implements Runnable, ICraftingJob
 					this.availableCheck = new MECraftingInventory( this.original, false, false, false );
 
 					this.getTree().setSimulate();
-					this.getTree().request( craftingInventory, this.output.getStackSize(), this.actionSrc );
+					this.getTree().request( craftingInventory, this.output.getCount(), this.actionSrc );
 					this.getTree().dive( this );
 
 					for( final String s : this.opsAndMultiplier.keySet() )

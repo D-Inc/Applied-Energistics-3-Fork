@@ -125,7 +125,7 @@ public class ItemEncodedPattern extends AEBaseItem implements ICraftingPatternIt
 				continue;
 			}
 
-			lines.add( ( first ? label : and ) + anOut.getStackSize() + ' ' + Platform.getItemDisplayName( anOut ) );
+			lines.add( ( first ? label : and ) + anOut.getCount() + ' ' + Platform.getItemDisplayName( anOut ) );
 			first = false;
 		}
 
@@ -137,7 +137,7 @@ public class ItemEncodedPattern extends AEBaseItem implements ICraftingPatternIt
 				continue;
 			}
 
-			lines.add( ( first ? with : and ) + anIn.getStackSize() + ' ' + Platform.getItemDisplayName( anIn ) );
+			lines.add( ( first ? with : and ) + anIn.getCount() + ' ' + Platform.getItemDisplayName( anIn ) );
 			first = false;
 		}
 

@@ -160,10 +160,10 @@ public class GuiNetworkStatus extends AEBaseGui implements ISortSource
 				GL11.glPushMatrix();
 				GL11.glScaled( 0.5, 0.5, 0.5 );
 
-				String str = Long.toString( refStack.getStackSize() );
-				if( refStack.getStackSize() >= 10000 )
+				String str = Long.toString( refStack.getCount() );
+				if( refStack.getCount() >= 10000 )
 				{
-					str = Long.toString( refStack.getStackSize() / 1000 ) + 'k';
+					str = Long.toString( refStack.getCount() / 1000 ) + 'k';
 				}
 
 				final int w = this.fontRendererObj.getStringWidth( str );
@@ -177,7 +177,7 @@ public class GuiNetworkStatus extends AEBaseGui implements ISortSource
 				{
 					toolTip = Platform.getItemDisplayName( this.repo.getItem( z ) );
 
-					toolTip += ( '\n' + GuiText.Installed.getLocal() + ": " + ( refStack.getStackSize() ) );
+					toolTip += ( '\n' + GuiText.Installed.getLocal() + ": " + ( refStack.getCount() ) );
 					if( refStack.getCountRequestable() > 0 )
 					{
 						toolTip += ( '\n' + GuiText.EnergyDrain.getLocal() + ": " + Platform.formatPowerLong( refStack.getCountRequestable(), true ) );
@@ -291,7 +291,7 @@ public class GuiNetworkStatus extends AEBaseGui implements ISortSource
 					currentToolTip.remove( 1 );
 				}
 
-				currentToolTip.add( GuiText.Installed.getLocal() + ": " + ( myStack.getStackSize() ) );
+				currentToolTip.add( GuiText.Installed.getLocal() + ": " + ( myStack.getCount() ) );
 				currentToolTip.add( GuiText.EnergyDrain.getLocal() + ": " + Platform.formatPowerLong( myStack.getCountRequestable(), true ) );
 
 				this.drawTooltip( x, y, 0, join( currentToolTip, "\n" ) );

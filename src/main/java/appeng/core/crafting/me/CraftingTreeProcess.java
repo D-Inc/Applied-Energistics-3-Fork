@@ -120,7 +120,7 @@ public class CraftingTreeProcess
 					final IAEItemStack part = list[x];
 					if( part != null )
 					{
-						this.nodes.put( new CraftingTreeNode( cc, job, part.copy(), this, x, depth + 1 ), part.getStackSize() );
+						this.nodes.put( new CraftingTreeNode( cc, job, part.copy(), this, x, depth + 1 ), part.getCount() );
 					}
 				}
 			}
@@ -135,7 +135,7 @@ public class CraftingTreeProcess
 						if( part != null && part.equals( comparePart ) )
 						{
 							// use the first slot...
-							this.nodes.put( new CraftingTreeNode( cc, job, part.copy(), this, x, depth + 1 ), part.getStackSize() );
+							this.nodes.put( new CraftingTreeNode( cc, job, part.copy(), this, x, depth + 1 ), part.getCount() );
 							break;
 						}
 					}
@@ -165,7 +165,7 @@ public class CraftingTreeProcess
 
 			for( final IAEItemStack part : details.getCondensedInputs() )
 			{
-				this.nodes.put( new CraftingTreeNode( cc, job, part.copy(), this, -1, depth + 1 ), part.getStackSize() );
+				this.nodes.put( new CraftingTreeNode( cc, job, part.copy(), this, -1, depth + 1 ), part.getCount() );
 			}
 		}
 	}
@@ -195,7 +195,7 @@ public class CraftingTreeProcess
 			for( final Entry<CraftingTreeNode, Long> entry : this.nodes.entrySet() )
 			{
 				final IAEItemStack item = entry.getKey().getStack( entry.getValue() );
-				final IAEItemStack stack = entry.getKey().request( inv, item.getStackSize(), src );
+				final IAEItemStack stack = entry.getKey().request( inv, item.getCount(), src );
 
 				ic.setInventorySlotContents( entry.getKey().getSlot(), stack.getItemStack() );
 			}
@@ -221,7 +221,7 @@ public class CraftingTreeProcess
 			for( final Entry<CraftingTreeNode, Long> entry : this.nodes.entrySet() )
 			{
 				final IAEItemStack item = entry.getKey().getStack( entry.getValue() );
-				final IAEItemStack stack = entry.getKey().request( inv, item.getStackSize() * i, src );
+				final IAEItemStack stack = entry.getKey().request( inv, item.getCount() * i, src );
 
 				if( this.containerItems )
 				{
@@ -242,7 +242,7 @@ public class CraftingTreeProcess
 		for( final IAEItemStack out : this.details.getCondensedOutputs() )
 		{
 			final IAEItemStack o = out.copy();
-			o.setStackSize( o.getStackSize() * i );
+			o.setCount( o.getCount() * i );
 			inv.injectItems( o, Actionable.MODULATE, src );
 		}
 
@@ -267,7 +267,7 @@ public class CraftingTreeProcess
 			if( is.equals( what2 ) )
 			{
 				what2 = what2.copy();
-				what2.setStackSize( is.getStackSize() );
+				what2.setCount( is.getCount() );
 				return what2;
 			}
 		}
@@ -278,7 +278,7 @@ public class CraftingTreeProcess
 			if( is.getItem() == what2.getItem() && ( is.getItem().isDamageable() || is.getItemDamage() == what2.getItemDamage() ) )
 			{
 				what2 = is.copy();
-				what2.setStackSize( is.getStackSize() );
+				what2.setCount( is.getCount() );
 				return what2;
 			}
 		}
@@ -312,7 +312,7 @@ public class CraftingTreeProcess
 		for( IAEItemStack i : this.details.getOutputs() )
 		{
 			i = i.copy();
-			i.setCountRequestable( i.getStackSize() * this.crafts );
+			i.setCountRequestable( i.getCount() * this.crafts );
 			plan.addRequestable( i );
 		}
 

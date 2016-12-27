@@ -49,7 +49,7 @@ public class VoidFluidInventory implements IMEInventoryHandler<IAEFluidStack>
 
 		if( input != null )
 		{
-			this.target.addPower( input.getStackSize() / 1000.0 );
+			this.target.addPower( input.getCount() / 1000.0 );
 		}
 		return null;
 	}

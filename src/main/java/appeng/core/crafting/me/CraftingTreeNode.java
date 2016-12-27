@@ -123,7 +123,7 @@ public class CraftingTreeNode
 
 		final List<IAEItemStack> thingsUsed = new LinkedList<IAEItemStack>();
 
-		this.what.setStackSize( l );
+		this.what.setCount( l );
 		if( this.getSlot() >= 0 && this.parent != null && this.parent.details.isCraftable() )
 		{
 			final Collection<IAEItemStack> itemList;
@@ -150,7 +150,7 @@ public class CraftingTreeNode
 				if( this.parent.details.isValidItemForSlot( this.getSlot(), fuzz.getItemStack(), this.world ) )
 				{
 					fuzz = fuzz.copy();
-					fuzz.setStackSize( l );
+					fuzz.setCount( l );
 
 					final IAEItemStack available = inv.extractItems( fuzz, Actionable.MODULATE, src );
 
@@ -167,8 +167,8 @@ public class CraftingTreeNode
 							}
 						}
 
-						this.bytes += available.getStackSize();
-						l -= available.getStackSize();
+						this.bytes += available.getCount();
+						l -= available.getCount();
 
 						if( l == 0 )
 						{
@@ -195,8 +195,8 @@ public class CraftingTreeNode
 					}
 				}
 
-				this.bytes += available.getStackSize();
-				l -= available.getStackSize();
+				this.bytes += available.getCount();
+				l -= available.getCount();
 
 				if( l == 0 )
 				{
@@ -208,10 +208,10 @@ public class CraftingTreeNode
 		if( this.canEmit )
 		{
 			final IAEItemStack wat = this.what.copy();
-			wat.setStackSize( l );
+			wat.setCount( l );
 
-			this.howManyEmitted = wat.getStackSize();
-			this.bytes += wat.getStackSize();
+			this.howManyEmitted = wat.getCount();
+			this.bytes += wat.getCount();
 
 			return wat;
 		}
@@ -226,16 +226,16 @@ public class CraftingTreeNode
 			{
 				final IAEItemStack madeWhat = pro.getAmountCrafted( this.what );
 
-				pro.request( inv, pro.getTimes( l, madeWhat.getStackSize() ), src );
+				pro.request( inv, pro.getTimes( l, madeWhat.getCount() ), src );
 
-				madeWhat.setStackSize( l );
+				madeWhat.setCount( l );
 
 				final IAEItemStack available = inv.extractItems( madeWhat, Actionable.MODULATE, src );
 
 				if( available != null )
 				{
-					this.bytes += available.getStackSize();
-					l -= available.getStackSize();
+					this.bytes += available.getCount();
+					l -= available.getCount();
 
 					if( l <= 0 )
 					{
@@ -259,7 +259,7 @@ public class CraftingTreeNode
 						final MECraftingInventory subInv = new MECraftingInventory( inv, true, true, true );
 						pro.request( subInv, 1, src );
 
-						this.what.setStackSize( l );
+						this.what.setCount( l );
 						final IAEItemStack available = subInv.extractItems( this.what, Actionable.MODULATE, src );
 
 						if( available != null )
@@ -269,8 +269,8 @@ public class CraftingTreeNode
 								throw new CraftBranchFailure( this.what, l );
 							}
 
-							this.bytes += available.getStackSize();
-							l -= available.getStackSize();
+							this.bytes += available.getCount();
+							l -= available.getCount();
 
 							if( l <= 0 )
 							{
@@ -295,14 +295,14 @@ public class CraftingTreeNode
 			this.missing += l;
 			this.bytes += l;
 			final IAEItemStack rv = this.what.copy();
-			rv.setStackSize( l );
+			rv.setCount( l );
 			return rv;
 		}
 
 		for( final IAEItemStack o : thingsUsed )
 		{
 			this.job.refund( o.copy() );
-			o.setStackSize( -o.getStackSize() );
+			o.setCount( -o.getCount() );
 			this.used.add( o );
 		}
 
@@ -328,7 +328,7 @@ public class CraftingTreeNode
 	IAEItemStack getStack( final long size )
 	{
 		final IAEItemStack is = this.what.copy();
-		is.setStackSize( size );
+		is.setCount( size );
 		return is;
 	}
 
@@ -352,9 +352,9 @@ public class CraftingTreeNode
 		{
 			final IAEItemStack ex = storage.extractItems( i, Actionable.MODULATE, src );
 
-			if( ex == null || ex.getStackSize() != i.getStackSize() )
+			if( ex == null || ex.getCount() != i.getCount() )
 			{
-				throw new CraftBranchFailure( i, i.getStackSize() );
+				throw new CraftBranchFailure( i, i.getCount() );
 			}
 
 			craftingCPUCluster.addStorage( ex );
@@ -363,7 +363,7 @@ public class CraftingTreeNode
 		if( this.howManyEmitted > 0 )
 		{
 			final IAEItemStack i = this.what.copy();
-			i.setStackSize( this.howManyEmitted );
+			i.setCount( this.howManyEmitted );
 			craftingCPUCluster.addEmitable( i );
 		}
 
@@ -378,7 +378,7 @@ public class CraftingTreeNode
 		if( this.missing > 0 )
 		{
 			final IAEItemStack o = this.what.copy();
-			o.setStackSize( this.missing );
+			o.setCount( this.missing );
 			plan.add( o );
 		}
 

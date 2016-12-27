@@ -255,15 +255,15 @@ public class GuiCraftConfirm extends AEBaseGui
 
 				int lines = 0;
 
-				if( stored != null && stored.getStackSize() > 0 )
+				if( stored != null && stored.getCount() > 0 )
 				{
 					lines++;
 				}
-				if( pendingStack != null && pendingStack.getStackSize() > 0 )
+				if( pendingStack != null && pendingStack.getCount() > 0 )
 				{
 					lines++;
 				}
-				if( pendingStack != null && pendingStack.getStackSize() > 0 )
+				if( pendingStack != null && pendingStack.getCount() > 0 )
 				{
 					lines++;
 				}
@@ -271,16 +271,16 @@ public class GuiCraftConfirm extends AEBaseGui
 				final int negY = ( ( lines - 1 ) * 5 ) / 2;
 				int downY = 0;
 
-				if( stored != null && stored.getStackSize() > 0 )
+				if( stored != null && stored.getCount() > 0 )
 				{
-					String str = Long.toString( stored.getStackSize() );
-					if( stored.getStackSize() >= 10000 )
+					String str = Long.toString( stored.getCount() );
+					if( stored.getCount() >= 10000 )
 					{
-						str = Long.toString( stored.getStackSize() / 1000 ) + 'k';
+						str = Long.toString( stored.getCount() / 1000 ) + 'k';
 					}
-					if( stored.getStackSize() >= 10000000 )
+					if( stored.getCount() >= 10000000 )
 					{
-						str = Long.toString( stored.getStackSize() / 1000000 ) + 'm';
+						str = Long.toString( stored.getCount() / 1000000 ) + 'm';
 					}
 
 					str = GuiText.FromStorage.getLocal() + ": " + str;
@@ -289,23 +289,23 @@ public class GuiCraftConfirm extends AEBaseGui
 
 					if( this.tooltip == z - viewStart )
 					{
-						lineList.add( GuiText.FromStorage.getLocal() + ": " + Long.toString( stored.getStackSize() ) );
+						lineList.add( GuiText.FromStorage.getLocal() + ": " + Long.toString( stored.getCount() ) );
 					}
 
 					downY += 5;
 				}
 
 				boolean red = false;
-				if( missingStack != null && missingStack.getStackSize() > 0 )
+				if( missingStack != null && missingStack.getCount() > 0 )
 				{
-					String str = Long.toString( missingStack.getStackSize() );
-					if( missingStack.getStackSize() >= 10000 )
+					String str = Long.toString( missingStack.getCount() );
+					if( missingStack.getCount() >= 10000 )
 					{
-						str = Long.toString( missingStack.getStackSize() / 1000 ) + 'k';
+						str = Long.toString( missingStack.getCount() / 1000 ) + 'k';
 					}
-					if( missingStack.getStackSize() >= 10000000 )
+					if( missingStack.getCount() >= 10000000 )
 					{
-						str = Long.toString( missingStack.getStackSize() / 1000000 ) + 'm';
+						str = Long.toString( missingStack.getCount() / 1000000 ) + 'm';
 					}
 
 					str = GuiText.Missing.getLocal() + ": " + str;
@@ -314,23 +314,23 @@ public class GuiCraftConfirm extends AEBaseGui
 
 					if( this.tooltip == z - viewStart )
 					{
-						lineList.add( GuiText.Missing.getLocal() + ": " + Long.toString( missingStack.getStackSize() ) );
+						lineList.add( GuiText.Missing.getLocal() + ": " + Long.toString( missingStack.getCount() ) );
 					}
 
 					red = true;
 					downY += 5;
 				}
 
-				if( pendingStack != null && pendingStack.getStackSize() > 0 )
+				if( pendingStack != null && pendingStack.getCount() > 0 )
 				{
-					String str = Long.toString( pendingStack.getStackSize() );
-					if( pendingStack.getStackSize() >= 10000 )
+					String str = Long.toString( pendingStack.getCount() );
+					if( pendingStack.getCount() >= 10000 )
 					{
-						str = Long.toString( pendingStack.getStackSize() / 1000 ) + 'k';
+						str = Long.toString( pendingStack.getCount() / 1000 ) + 'k';
 					}
-					if( pendingStack.getStackSize() >= 10000000 )
+					if( pendingStack.getCount() >= 10000000 )
 					{
-						str = Long.toString( pendingStack.getStackSize() / 1000000 ) + 'm';
+						str = Long.toString( pendingStack.getCount() / 1000000 ) + 'm';
 					}
 
 					str = GuiText.ToCraft.getLocal() + ": " + str;
@@ -339,7 +339,7 @@ public class GuiCraftConfirm extends AEBaseGui
 
 					if( this.tooltip == z - viewStart )
 					{
-						lineList.add( GuiText.ToCraft.getLocal() + ": " + Long.toString( pendingStack.getStackSize() ) );
+						lineList.add( GuiText.ToCraft.getLocal() + ": " + Long.toString( pendingStack.getCount() ) );
 					}
 				}
 
@@ -442,7 +442,7 @@ public class GuiCraftConfirm extends AEBaseGui
 			else
 			{
 				final IAEItemStack is = this.findVisualStack( l );
-				is.setStackSize( amt );
+				is.setCount( amt );
 			}
 		}
 
@@ -453,7 +453,7 @@ public class GuiCraftConfirm extends AEBaseGui
 	{
 		IAEItemStack a = s.findPrecise( l );
 
-		if( l.getStackSize() <= 0 )
+		if( l.getCount() <= 0 )
 		{
 			if( a != null )
 			{
@@ -470,7 +470,7 @@ public class GuiCraftConfirm extends AEBaseGui
 
 			if( a != null )
 			{
-				a.setStackSize( l.getStackSize() );
+				a.setCount( l.getCount() );
 			}
 		}
 	}
@@ -485,17 +485,17 @@ public class GuiCraftConfirm extends AEBaseGui
 
 		if( a != null )
 		{
-			total += a.getStackSize();
+			total += a.getCount();
 		}
 
 		if( c != null )
 		{
-			total += c.getStackSize();
+			total += c.getCount();
 		}
 
 		if( m != null )
 		{
-			total += m.getStackSize();
+			total += m.getCount();
 		}
 
 		return total;

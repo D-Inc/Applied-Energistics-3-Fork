@@ -180,10 +180,10 @@ public class ItemRepo
 			if( viewMode == ViewItems.CRAFTABLE )
 			{
 				is = is.copy();
-				is.setStackSize( 0 );
+				is.setCount( 0 );
 			}
 
-			if( viewMode == ViewItems.STORED && is.getStackSize() == 0 )
+			if( viewMode == ViewItems.STORED && is.getCount() == 0 )
 			{
 				continue;
 			}

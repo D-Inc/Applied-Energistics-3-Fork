@@ -96,7 +96,7 @@ public final class FluidList implements IItemList<IAEFluidStack>
 
 		if( st != null )
 		{
-			st.grow( option.getStackSize() );
+			st.grow( option.getCount() );
 			return;
 		}
 
@@ -127,7 +127,7 @@ public final class FluidList implements IItemList<IAEFluidStack>
 		}
 
 		final IAEFluidStack opt = option.copy();
-		opt.setStackSize( 0 );
+		opt.setCount( 0 );
 		opt.setCraftable( true );
 
 		this.putFluidRecord( opt );
@@ -150,7 +150,7 @@ public final class FluidList implements IItemList<IAEFluidStack>
 		}
 
 		final IAEFluidStack opt = option.copy();
-		opt.setStackSize( 0 );
+		opt.setCount( 0 );
 		opt.setCraftable( false );
 		opt.setCountRequestable( option.getCountRequestable() );
 

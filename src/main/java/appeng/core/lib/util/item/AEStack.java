@@ -58,15 +58,15 @@ public abstract class AEStack<StackType extends IAEStack> implements IAEStack<St
 	}
 
 	@Override
-	public long getStackSize()
+	public long getCount()
 	{
-		return this.getCount();
+		return stackSize;
 	}
 
 	@Override
-	public StackType setStackSize( final long ss )
+	public StackType setCount( final long ss )
 	{
-		this.setCount(ss);
+		stackSize = ss;
 		return (StackType) this;
 	}
 

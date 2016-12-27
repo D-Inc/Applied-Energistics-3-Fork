@@ -228,7 +228,7 @@ public final class CraftingCPUCluster implements IAECluster, ICraftingCPU
 		if( input instanceof IAEItemStack )
 		{
 			final IAEItemStack is = this.waitingFor.findPrecise( (IAEItemStack) input );
-			if( is != null && is.getStackSize() > 0 )
+			if( is != null && is.getCount() > 0 )
 			{
 				return true;
 			}
@@ -248,9 +248,9 @@ public final class CraftingCPUCluster implements IAECluster, ICraftingCPU
 
 		if( type == Actionable.SIMULATE )// causes crafting to lock up?
 		{
-			if( is != null && is.getStackSize() > 0 )
+			if( is != null && is.getCount() > 0 )
 			{
-				if( is.getStackSize() >= what.getStackSize() )
+				if( is.getCount() >= what.getCount() )
 				{
 					if( this.finalOutput.equals( what ) )
 					{
@@ -266,10 +266,10 @@ public final class CraftingCPUCluster implements IAECluster, ICraftingCPU
 				}
 
 				final IAEItemStack leftOver = what.copy();
-				leftOver.shrink( is.getStackSize() );
+				leftOver.shrink( is.getCount() );
 
 				final IAEItemStack used = what.copy();
-				used.setStackSize( is.getStackSize() );
+				used.setCount( is.getCount() );
 
 				if( this.finalOutput.equals( what ) )
 				{
@@ -287,15 +287,15 @@ public final class CraftingCPUCluster implements IAECluster, ICraftingCPU
 		}
 		else if( type == Actionable.MODULATE )
 		{
-			if( is != null && is.getStackSize() > 0 )
+			if( is != null && is.getCount() > 0 )
 			{
 				this.waiting = false;
 
 				this.postChange( what, src );
 
-				if( is.getStackSize() >= what.getStackSize() )
+				if( is.getCount() >= what.getCount() )
 				{
-					is.shrink( what.getStackSize() );
+					is.shrink( what.getCount() );
 
 					this.updateElapsedTime( what );
 					this.markDirty();
@@ -305,14 +305,14 @@ public final class CraftingCPUCluster implements IAECluster, ICraftingCPU
 					{
 						IAEStack leftover = what;
 
-						this.finalOutput.shrink( what.getStackSize() );
+						this.finalOutput.shrink( what.getCount() );
 
 						if( this.myLastLink != null )
 						{
 							leftover = ( (CraftingLink) this.myLastLink ).injectItems( what, type );
 						}
 
-						if( this.finalOutput.getStackSize() <= 0 )
+						if( this.finalOutput.getCount() <= 0 )
 						{
 							this.completeJob();
 						}
@@ -327,16 +327,16 @@ public final class CraftingCPUCluster implements IAECluster, ICraftingCPU
 				}
 
 				final IAEItemStack insert = what.copy();
-				insert.setStackSize( is.getStackSize() );
-				what.shrink( is.getStackSize() );
+				insert.setCount( is.getCount() );
+				what.shrink( is.getCount() );
 
-				is.setStackSize( 0 );
+				is.setCount( 0 );
 
 				if( this.finalOutput.equals( insert ) )
 				{
 					IAEStack leftover = input;
 
-					this.finalOutput.shrink( insert.getStackSize() );
+					this.finalOutput.shrink( insert.getCount() );
 
 					if( this.myLastLink != null )
 					{
@@ -344,7 +344,7 @@ public final class CraftingCPUCluster implements IAECluster, ICraftingCPU
 						leftover = what;
 					}
 
-					if( this.finalOutput.getStackSize() <= 0 )
+					if( this.finalOutput.getCount() <= 0 )
 					{
 						this.completeJob();
 					}
@@ -431,7 +431,7 @@ public final class CraftingCPUCluster implements IAECluster, ICraftingCPU
 		if( AELog.isCraftingLogEnabled() )
 		{
 			final IAEItemStack logStack = this.finalOutput.copy();
-			logStack.setStackSize( this.startItemCount );
+			logStack.setCount( this.startItemCount );
 			AELog.crafting( LOG_MARK_AS_COMPLETE, logStack );
 		}
 
@@ -447,7 +447,7 @@ public final class CraftingCPUCluster implements IAECluster, ICraftingCPU
 	{
 		IAEItemStack send = this.finalOutput;
 
-		if( this.finalOutput != null && this.finalOutput.getStackSize() <= 0 )
+		if( this.finalOutput != null && this.finalOutput.getCount() <= 0 )
 		{
 			send = null;
 		}
@@ -498,11 +498,11 @@ public final class CraftingCPUCluster implements IAECluster, ICraftingCPU
 				for( IAEItemStack fuzz : this.inventory.getItemList().findFuzzy( g, FuzzyMode.IGNORE_ALL ) )
 				{
 					fuzz = fuzz.copy();
-					fuzz.setStackSize( g.getStackSize() );
+					fuzz.setCount( g.getCount() );
 					final IAEItemStack ais = this.inventory.extractItems( fuzz, Actionable.SIMULATE, this.machineSrc );
 					final ItemStack is = ais == null ? null : ais.getItemStack();
 
-					if( is != null && is.getCount() == g.getStackSize() )
+					if( is != null && is.getCount() == g.getCount() )
 					{
 						found = true;
 						break;
@@ -524,7 +524,7 @@ public final class CraftingCPUCluster implements IAECluster, ICraftingCPU
 				final IAEItemStack ais = this.inventory.extractItems( g.copy(), Actionable.SIMULATE, this.machineSrc );
 				final ItemStack is = ais == null ? null : ais.getItemStack();
 
-				if( is == null || is.getCount() < g.getStackSize() )
+				if( is == null || is.getCount() < g.getCount() )
 				{
 					return false;
 				}
@@ -660,7 +660,7 @@ public final class CraftingCPUCluster implements IAECluster, ICraftingCPU
 							{
 								if( anInput != null )
 								{
-									sum += anInput.getStackSize();
+									sum += anInput.getCount();
 								}
 							}
 
@@ -684,7 +684,7 @@ public final class CraftingCPUCluster implements IAECluster, ICraftingCPU
 										for( IAEItemStack fuzz : this.inventory.getItemList().findFuzzy( input[x], FuzzyMode.IGNORE_ALL ) )
 										{
 											fuzz = fuzz.copy();
-											fuzz.setStackSize( input[x].getStackSize() );
+											fuzz.setCount( input[x].getCount() );
 
 											if( details.isValidItemForSlot( x, fuzz.getItemStack(), this.getWorld() ) )
 											{
@@ -710,7 +710,7 @@ public final class CraftingCPUCluster implements IAECluster, ICraftingCPU
 										{
 											this.postChange( input[x], this.machineSrc );
 											ic.setInventorySlotContents( x, is );
-											if( is.getCount() == input[x].getStackSize() )
+											if( is.getCount() == input[x].getCount() )
 											{
 												found = true;
 												continue;
@@ -1018,7 +1018,7 @@ public final class CraftingCPUCluster implements IAECluster, ICraftingCPU
 					for( IAEItemStack ais : t.getKey().getCondensedOutputs() )
 					{
 						ais = ais.copy();
-						ais.setStackSize( ais.getStackSize() * t.getValue().value );
+						ais.setCount( ais.getCount() * t.getValue().value );
 						list.add( ais );
 					}
 				}
@@ -1040,7 +1040,7 @@ public final class CraftingCPUCluster implements IAECluster, ICraftingCPU
 					for( IAEItemStack ais : t.getKey().getCondensedOutputs() )
 					{
 						ais = ais.copy();
-						ais.setStackSize( ais.getStackSize() * t.getValue().value );
+						ais.setCount( ais.getCount() * t.getValue().value );
 						list.add( ais );
 					}
 				}
@@ -1086,7 +1086,7 @@ public final class CraftingCPUCluster implements IAECluster, ICraftingCPU
 			case PENDING:
 
 				is = what.copy();
-				is.setStackSize( 0 );
+				is.setCount( 0 );
 
 				for( final Entry<ICraftingPatternDetails, TaskProgress> t : this.tasks.entrySet() )
 				{
@@ -1094,7 +1094,7 @@ public final class CraftingCPUCluster implements IAECluster, ICraftingCPU
 					{
 						if( ais.equals( is ) )
 						{
-							is.setStackSize( is.getStackSize() + ais.getStackSize() * t.getValue().value );
+							is.setCount( is.getCount() + ais.getCount() * t.getValue().value );
 						}
 					}
 				}
@@ -1111,7 +1111,7 @@ public final class CraftingCPUCluster implements IAECluster, ICraftingCPU
 		}
 
 		is = what.copy();
-		is.setStackSize( 0 );
+		is.setCount( 0 );
 		return is;
 	}
 
@@ -1282,7 +1282,7 @@ public final class CraftingCPUCluster implements IAECluster, ICraftingCPU
 	public boolean isMaking( final IAEItemStack what )
 	{
 		final IAEItemStack wat = this.waitingFor.findPrecise( what );
-		return wat != null && wat.getStackSize() > 0;
+		return wat != null && wat.getCount() > 0;
 	}
 
 	public void breakCluster()
@@ -1308,7 +1308,7 @@ public final class CraftingCPUCluster implements IAECluster, ICraftingCPU
 		int itemCount = 0;
 		for( final IAEItemStack ge : list )
 		{
-			itemCount += ge.getStackSize();
+			itemCount += ge.getCount();
 		}
 
 		this.startItemCount = itemCount;
@@ -1320,7 +1320,7 @@ public final class CraftingCPUCluster implements IAECluster, ICraftingCPU
 		final long nextStartTime = System.nanoTime();
 		this.elapsedTime = this.getElapsedTime() + nextStartTime - this.lastTime;
 		this.lastTime = nextStartTime;
-		this.remainingItemCount = this.getRemainingItemCount() - is.getStackSize();
+		this.remainingItemCount = this.getRemainingItemCount() - is.getCount();
 	}
 
 	public long getElapsedTime()

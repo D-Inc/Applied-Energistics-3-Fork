@@ -33,6 +33,6 @@ public class CraftingCalculationFailure extends RuntimeException
 	{
 		super( "this should have been caught!" );
 		this.missing = what.copy();
-		this.missing.setStackSize( howMany );
+		this.missing.setCount( howMany );
 	}
 }

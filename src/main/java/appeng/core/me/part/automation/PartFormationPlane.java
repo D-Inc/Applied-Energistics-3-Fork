@@ -342,7 +342,7 @@ public class PartFormationPlane extends PartUpgradeable implements ICellContaine
 	@Override
 	public IAEItemStack injectItems( final IAEItemStack input, final Actionable type, final BaseActionSource src )
 	{
-		if( this.blocked || input == null || input.getStackSize() <= 0 )
+		if( this.blocked || input == null || input.getCount() <= 0 )
 		{
 			return input;
 		}
@@ -352,7 +352,7 @@ public class PartFormationPlane extends PartUpgradeable implements ICellContaine
 		final ItemStack is = input.getItemStack();
 		final Item i = is.getItem();
 
-		long maxStorage = Math.min( input.getStackSize(), is.getMaxStackSize() );
+		long maxStorage = Math.min( input.getCount(), is.getMaxStackSize() );
 		boolean worked = false;
 
 		final TileEntity te = this.getHost().getTile();
@@ -492,7 +492,7 @@ public class PartFormationPlane extends PartUpgradeable implements ICellContaine
 		{
 			final IAEItemStack out = input.copy();
 			out.shrink( maxStorage );
-			if( out.getStackSize() == 0 )
+			if( out.getCount() == 0 )
 			{
 				return null;
 			}

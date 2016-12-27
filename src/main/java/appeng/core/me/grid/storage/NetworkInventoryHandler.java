@@ -222,26 +222,26 @@ public class NetworkInventoryHandler<T extends IAEStack<T>> implements IMEInvent
 
 		final T output = request.copy();
 		request = request.copy();
-		output.setStackSize( 0 );
-		final long req = request.getStackSize();
+		output.setCount( 0 );
+		final long req = request.getCount();
 
 		while( i.hasNext() )
 		{
 			final List<IMEInventoryHandler<T>> invList = i.next();
 
 			final Iterator<IMEInventoryHandler<T>> ii = invList.iterator();
-			while( ii.hasNext() && output.getStackSize() < req )
+			while( ii.hasNext() && output.getCount() < req )
 			{
 				final IMEInventoryHandler<T> inv = ii.next();
 
-				request.setStackSize( req - output.getStackSize() );
+				request.setCount( req - output.getCount() );
 				output.add( inv.extractItems( request, mode, src ) );
 			}
 		}
 
 		this.surface( this, mode );
 
-		if( output.getStackSize() <= 0 )
+		if( output.getCount() <= 0 )
 		{
 			return null;
 		}

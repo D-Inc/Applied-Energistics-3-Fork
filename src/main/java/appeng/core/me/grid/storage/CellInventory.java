@@ -206,7 +206,7 @@ public class CellInventory implements ICellInventory
 		{
 			return null;
 		}
-		if( input.getStackSize() == 0 )
+		if( input.getCount() == 0 )
 		{
 			return null;
 		}
@@ -236,13 +236,13 @@ public class CellInventory implements ICellInventory
 				return input;
 			}
 
-			if( input.getStackSize() > remainingItemSlots )
+			if( input.getCount() > remainingItemSlots )
 			{
 				final IAEItemStack r = input.copy();
-				r.setStackSize( r.getStackSize() - remainingItemSlots );
+				r.setCount( r.getCount() - remainingItemSlots );
 				if( mode == Actionable.MODULATE )
 				{
-					l.setStackSize( l.getStackSize() + remainingItemSlots );
+					l.setCount( l.getCount() + remainingItemSlots );
 					this.updateItemCount( remainingItemSlots );
 					this.saveChanges();
 				}
@@ -252,8 +252,8 @@ public class CellInventory implements ICellInventory
 			{
 				if( mode == Actionable.MODULATE )
 				{
-					l.setStackSize( l.getStackSize() + input.getStackSize() );
-					this.updateItemCount( input.getStackSize() );
+					l.setCount( l.getCount() + input.getCount() );
+					this.updateItemCount( input.getCount() );
 					this.saveChanges();
 				}
 				return null;
@@ -265,7 +265,7 @@ public class CellInventory implements ICellInventory
 			final int remainingItemCount = (int) this.getRemainingItemCount() - this.getBytesPerType() * 8;
 			if( remainingItemCount > 0 )
 			{
-				if( input.getStackSize() > remainingItemCount )
+				if( input.getCount() > remainingItemCount )
 				{
 					final ItemStack toReturn = Platform.cloneItemStack( sharedItemStack );
 					toReturn.setCount(sharedItemStack.getCount() - remainingItemCount);
@@ -284,7 +284,7 @@ public class CellInventory implements ICellInventory
 
 				if( mode == Actionable.MODULATE )
 				{
-					this.updateItemCount( input.getStackSize() );
+					this.updateItemCount( input.getCount() );
 					this.cellItems.add( input );
 					this.saveChanges();
 				}
@@ -304,7 +304,7 @@ public class CellInventory implements ICellInventory
 			return null;
 		}
 
-		final long size = Math.min( Integer.MAX_VALUE, request.getStackSize() );
+		final long size = Math.min( Integer.MAX_VALUE, request.getCount() );
 
 		IAEItemStack Results = null;
 
@@ -313,22 +313,22 @@ public class CellInventory implements ICellInventory
 		{
 			Results = l.copy();
 
-			if( l.getStackSize() <= size )
+			if( l.getCount() <= size )
 			{
-				Results.setStackSize( l.getStackSize() );
+				Results.setCount( l.getCount() );
 				if( mode == Actionable.MODULATE )
 				{
-					this.updateItemCount( -l.getStackSize() );
-					l.setStackSize( 0 );
+					this.updateItemCount( -l.getCount() );
+					l.setCount( 0 );
 					this.saveChanges();
 				}
 			}
 			else
 			{
-				Results.setStackSize( size );
+				Results.setCount( size );
 				if( mode == Actionable.MODULATE )
 				{
-					l.setStackSize( l.getStackSize() - size );
+					l.setCount( l.getCount() - size );
 					this.updateItemCount( -size );
 					this.saveChanges();
 				}
@@ -364,7 +364,7 @@ public class CellInventory implements ICellInventory
 		int x = 0;
 		for( final IAEItemStack v : this.cellItems )
 		{
-			itemCount += v.getStackSize();
+			itemCount += v.getCount();
 
 			final NBTBase c = this.tagCompound.getTag( itemSlots[x] );
 			if( c instanceof NBTTagCompound )
@@ -382,7 +382,7 @@ public class CellInventory implements ICellInventory
 			 * NBTBase tagSlotCount = tagCompound.getTag( itemSlotCount[x] ); if ( tagSlotCount instanceof
 			 * NBTTagInt ) ((NBTTagInt) tagSlotCount).data = (int) v.getStackSize(); else
 			 */
-			this.tagCompound.setInteger( itemSlotCount[x], (int) v.getStackSize() );
+			this.tagCompound.setInteger( itemSlotCount[x], (int) v.getCount() );
 
 			x++;
 		}

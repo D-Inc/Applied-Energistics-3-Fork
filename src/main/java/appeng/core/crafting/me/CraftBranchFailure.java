@@ -33,6 +33,6 @@ public class CraftBranchFailure extends Exception
 	{
 		super( "Failed: " + what.getItem().getUnlocalizedName() + " x " + howMany );
 		this.missing = what.copy();
-		this.missing.setStackSize( howMany );
+		this.missing.setCount( howMany );
 	}
 }

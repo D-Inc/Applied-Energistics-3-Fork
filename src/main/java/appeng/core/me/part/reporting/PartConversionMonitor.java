@@ -96,7 +96,7 @@ public class PartConversionMonitor extends AbstractPartMonitor
 						if( input.equals( targetStack ) )
 						{
 							final IAEItemStack insertItem = input.copy();
-							insertItem.setStackSize( targetStack.getCount() );
+							insertItem.setCount( targetStack.getCount() );
 							final IAEItemStack failedToInsert = Platform.poweredInsert( energy, cell, insertItem, new PlayerSource( player, this ) );
 							player.inventory.setInventorySlotContents( x, failedToInsert == null ? null : failedToInsert.getItemStack() );
 						}
@@ -133,7 +133,7 @@ public class PartConversionMonitor extends AbstractPartMonitor
 				final IMEMonitor<IAEItemStack> cell = this.getProxy().getStorage().getItemInventory();
 
 				final ItemStack is = input.getItemStack();
-				input.setStackSize( is.getMaxStackSize() );
+				input.setCount( is.getMaxStackSize() );
 
 				final IAEItemStack retrieved = Platform.poweredExtraction( energy, cell, input, new PlayerSource( player, this ) );
 				if( retrieved != null )

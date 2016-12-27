@@ -1585,7 +1585,7 @@ public class Platform
 		long retrieved = 0;
 		if( possible != null )
 		{
-			retrieved = possible.getStackSize();
+			retrieved = possible.getCount();
 		}
 
 		final double availablePower = energy.extractAEPower( retrieved, Actionable.SIMULATE, PowerMultiplier.CONFIG );
@@ -1596,12 +1596,12 @@ public class Platform
 		{
 			energy.extractAEPower( retrieved, Actionable.MODULATE, PowerMultiplier.CONFIG );
 
-			possible.setStackSize( itemToExtract );
+			possible.setCount( itemToExtract );
 			final StackType ret = cell.extractItems( possible, Actionable.MODULATE, src );
 
 			if( ret != null && src.isPlayer() )
 			{
-				Stats.ItemsExtracted.addToPlayer( ( (PlayerSource) src ).player, (int) ret.getStackSize() );
+				Stats.ItemsExtracted.addToPlayer( ( (PlayerSource) src ).player, (int) ret.getCount() );
 			}
 
 			return ret;
@@ -1614,10 +1614,10 @@ public class Platform
 	{
 		final StackType possible = cell.injectItems( (StackType) input.copy(), Actionable.SIMULATE, src );
 
-		long stored = input.getStackSize();
+		long stored = input.getCount();
 		if( possible != null )
 		{
-			stored -= possible.getStackSize();
+			stored -= possible.getCount();
 		}
 
 		final double availablePower = energy.extractAEPower( stored, Actionable.SIMULATE, PowerMultiplier.CONFIG );
@@ -1628,17 +1628,17 @@ public class Platform
 		{
 			energy.extractAEPower( stored, Actionable.MODULATE, PowerMultiplier.CONFIG );
 
-			if( itemToAdd < input.getStackSize() )
+			if( itemToAdd < input.getCount() )
 			{
-				final long original = input.getStackSize();
+				final long original = input.getCount();
 				final StackType split = (StackType) input.copy();
 				split.shrink( itemToAdd );
-				input.setStackSize( itemToAdd );
+				input.setCount( itemToAdd );
 				split.add( cell.injectItems( input, Actionable.MODULATE, src ) );
 
 				if( src.isPlayer() )
 				{
-					final long diff = original - split.getStackSize();
+					final long diff = original - split.getCount();
 					Stats.ItemsInserted.addToPlayer( ( (PlayerSource) src ).player, (int) diff );
 				}
 
@@ -1649,7 +1649,7 @@ public class Platform
 
 			if( src.isPlayer() )
 			{
-				final long diff = ret == null ? input.getStackSize() : input.getStackSize() - ret.getStackSize();
+				final long diff = ret == null ? input.getCount() : input.getCount() - ret.getCount();
 				Stats.ItemsInserted.addToPlayer( ( (PlayerSource) src ).player, (int) diff );
 			}
 
@@ -1672,7 +1672,7 @@ public class Platform
 			{
 				for( final IAEItemStack is : myItems.getAvailableItems( itemChanges ) )
 				{
-					is.setStackSize( -is.getStackSize() );
+					is.setCount( -is.getCount() );
 				}
 			}
 
@@ -1682,7 +1682,7 @@ public class Platform
 			{
 				for( final IAEFluidStack is : myFluids.getAvailableItems( fluidChanges ) )
 				{
-					is.setStackSize( -is.getStackSize() );
+					is.setCount( -is.getCount() );
 				}
 			}
 		}
@@ -1713,7 +1713,7 @@ public class Platform
 
 		for( final T is : before )
 		{
-			is.setStackSize( -is.getStackSize() );
+			is.setCount( -is.getCount() );
 		}
 
 		for( final T is : after )
@@ -1723,7 +1723,7 @@ public class Platform
 
 		for( final T is : before )
 		{
-			if( is.getStackSize() != 0 )
+			if( is.getCount() != 0 )
 			{
 				changes.add( is );
 			}
@@ -1950,7 +1950,7 @@ public class Platform
 			}
 
 			final AEItemStack ae_req = AEItemStack.create( providedTemplate );
-			ae_req.setStackSize( 1 );
+			ae_req.setCount( 1 );
 
 			if( filter == null || filter.isListed( ae_req ) )
 			{
@@ -1981,7 +1981,7 @@ public class Platform
 						if( r.matches( ci, w ) && Platform.isSameItem( r.getCraftingResult( ci ), output ) )
 						{
 							final IAEItemStack ax = x.copy();
-							ax.setStackSize( 1 );
+							ax.setCount( 1 );
 							if( filter == null || filter.isListed( ax ) )
 							{
 								final IAEItemStack ex = src.extractItems( ax, realForFake, mySrc );

@@ -310,7 +310,7 @@ public class TileCraftingTile extends AENetworkTile implements IAEMultiBlock, IP
 			for( IAEItemStack ais : inv.getAvailableItems( AppEngApi.internalApi().storage().createItemList() ) )
 			{
 				ais = ais.copy();
-				ais.setStackSize( ais.getItemStack().getMaxStackSize() );
+				ais.setCount( ais.getItemStack().getMaxStackSize() );
 				while( true )
 				{
 					final IAEItemStack g = inv.extractItems( ais.copy(), Actionable.MODULATE, this.cluster.getActionSource() );

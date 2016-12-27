@@ -49,7 +49,7 @@ public class VoidItemInventory implements IMEInventoryHandler<IAEItemStack>
 
 		if( input != null )
 		{
-			this.target.addPower( input.getStackSize() );
+			this.target.addPower( input.getCount() );
 		}
 		return null;
 	}

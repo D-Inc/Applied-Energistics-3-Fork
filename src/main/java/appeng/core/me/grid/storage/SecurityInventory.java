@@ -101,7 +101,7 @@ public class SecurityInventory implements IMEInventoryHandler<IAEItemStack>
 					return output;
 				}
 
-				target.setStackSize( 0 );
+				target.setCount( 0 );
 				this.securityTile.inventoryChanged();
 				return output;
 			}

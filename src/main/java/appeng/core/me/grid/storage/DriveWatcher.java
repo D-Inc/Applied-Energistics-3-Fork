@@ -48,11 +48,11 @@ public class DriveWatcher<T extends IAEStack<T>> extends MEInventoryHandler<T>
 	@Override
 	public T injectItems( final T input, final Actionable type, final BaseActionSource src )
 	{
-		final long size = input.getStackSize();
+		final long size = input.getCount();
 
 		final T a = super.injectItems( input, type, src );
 
-		if( a == null || a.getStackSize() != size )
+		if( a == null || a.getCount() != size )
 		{
 			final int newStatus = this.handler.getStatusForCell( this.is, this.getInternal() );
 

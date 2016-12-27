@@ -570,7 +570,7 @@ public class TileChest extends AENetworkPowerTile implements IMEChest, IFluidHan
 			{
 				final IMEInventory<IAEItemStack> cell = this.getHandler( StorageChannel.ITEMS );
 				final IAEItemStack returns = cell.injectItems( AppEngApi.internalApi().storage().createItemStack( this.inv.getStackInSlot( 0 ) ), Actionable.SIMULATE, this.mySrc );
-				return returns == null || returns.getStackSize() != insertingItem.getCount();
+				return returns == null || returns.getCount() != insertingItem.getCount();
 			}
 			catch( final ChestNoHandler ignored )
 			{
@@ -711,7 +711,7 @@ public class TileChest extends AENetworkPowerTile implements IMEChest, IFluidHan
 					return resource.amount;
 				}
 
-				return resource.amount - (int) results.getStackSize();
+				return resource.amount - (int) results.getCount();
 			}
 			catch( final ChestNoHandler ignored )
 			{

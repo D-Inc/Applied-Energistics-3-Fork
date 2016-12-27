@@ -54,7 +54,7 @@ public final class AEItemStack extends AEStack<IAEItemStack> implements IAEItemS
 	private AEItemStack( final AEItemStack is )
 	{
 		this.setDefinition( is.getDefinition() );
-		this.setStackSize( is.getStackSize() );
+		this.setCount( is.getCount() );
 		this.setCraftable( is.isCraftable() );
 		this.setCountRequestable( is.getCountRequestable() );
 	}
@@ -101,7 +101,7 @@ public final class AEItemStack extends AEStack<IAEItemStack> implements IAEItemS
 			this.getDefinition().setTagCompound( (AESharedNBT) AESharedNBT.getSharedTagCompound( tagCompound, is ) );
 		}
 
-		this.setStackSize( is.getCount() );
+		this.setCount( is.getCount() );
 		this.setCraftable( false );
 		this.setCountRequestable( 0 );
 
@@ -112,7 +112,7 @@ public final class AEItemStack extends AEStack<IAEItemStack> implements IAEItemS
 	public AEItemStack( NBTTagCompound tag )
 	{
 		this(new ItemStack( tag ));
-		setStackSize( tag.getLong( "Cnt" ) );
+		setCount( tag.getLong( "Cnt" ) );
 		setCountRequestable( tag.getLong( "Req" ) );
 		setCraftable( tag.getBoolean( "Craft" ) );
 	}
@@ -167,7 +167,7 @@ public final class AEItemStack extends AEStack<IAEItemStack> implements IAEItemS
 
 		final AEItemStack item = AEItemStack.create( itemstack );
 		// item.priority = (int) priority;
-		item.setStackSize( stackSize );
+		item.setCount( stackSize );
 		item.setCountRequestable( countRequestable );
 		item.setCraftable( isCraftable );
 		return item;
@@ -184,7 +184,7 @@ public final class AEItemStack extends AEStack<IAEItemStack> implements IAEItemS
 		// if ( priority < ((AEItemStack) option).priority )
 		// priority = ((AEItemStack) option).priority;
 
-		this.grow( option.getStackSize() );
+		this.grow( option.getCount() );
 		this.setCountRequestable( this.getCountRequestable() + option.getCountRequestable() );
 		this.setCraftable( this.isCraftable() || option.isCraftable() );
 	}
@@ -214,7 +214,7 @@ public final class AEItemStack extends AEStack<IAEItemStack> implements IAEItemS
 		/*
 		 * if ( Cnt != null && Cnt instanceof NBTTagLong ) ((NBTTagLong) Cnt).data = this.getCount(); else
 		 */
-		i.setLong( "Cnt", this.getStackSize() );
+		i.setLong( "Cnt", this.getCount() );
 
 		/*
 		 * if ( Req != null && Req instanceof NBTTagLong ) ((NBTTagLong) Req).data = this.getCount(); else
@@ -414,7 +414,7 @@ public final class AEItemStack extends AEStack<IAEItemStack> implements IAEItemS
 	@Override
 	public ItemStack getItemStack()
 	{
-		final ItemStack is = new ItemStack( this.getDefinition().getItem(), (int) Math.min( Integer.MAX_VALUE, this.getStackSize() ), this.getDefinition().getDamageValue() );
+		final ItemStack is = new ItemStack( this.getDefinition().getItem(), (int) Math.min( Integer.MAX_VALUE, this.getCount() ), this.getDefinition().getDamageValue() );
 		if( this.getDefinition().getTagCompound() != null )
 		{
 			is.setTagCompound( this.getDefinition().getTagCompound().getNBTTagCompoundCopy() );

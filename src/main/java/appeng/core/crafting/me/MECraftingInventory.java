@@ -208,16 +208,16 @@ public class MECraftingInventory implements IMEInventory<IAEItemStack>
 		}
 
 		final IAEItemStack list = this.localCache.findPrecise( request );
-		if( list == null || list.getStackSize() == 0 )
+		if( list == null || list.getCount() == 0 )
 		{
 			return null;
 		}
 
-		if( list.getStackSize() >= request.getStackSize() )
+		if( list.getCount() >= request.getCount() )
 		{
 			if( mode == Actionable.MODULATE )
 			{
-				list.shrink( request.getStackSize() );
+				list.shrink( request.getCount() );
 				if( this.logExtracted )
 				{
 					this.extractedCache.add( request );
@@ -228,7 +228,7 @@ public class MECraftingInventory implements IMEInventory<IAEItemStack>
 		}
 
 		final IAEItemStack ret = request.copy();
-		ret.setStackSize( list.getStackSize() );
+		ret.setCount( list.getCount() );
 
 		if( mode == Actionable.MODULATE )
 		{
@@ -302,7 +302,7 @@ public class MECraftingInventory implements IMEInventory<IAEItemStack>
 				IAEItemStack result = null;
 				pulled.add( result = this.target.extractItems( extra, Actionable.MODULATE, src ) );
 
-				if( result == null || result.getStackSize() != extra.getStackSize() )
+				if( result == null || result.getCount() != extra.getCount() )
 				{
 					failed = true;
 					break;
@@ -346,7 +346,7 @@ public class MECraftingInventory implements IMEInventory<IAEItemStack>
 		final IAEItemStack list = this.localCache.findPrecise( what );
 		if( list != null )
 		{
-			list.setStackSize( 0 );
+			list.setCount( 0 );
 		}
 	}
 }

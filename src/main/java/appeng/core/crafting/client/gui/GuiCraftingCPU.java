@@ -231,18 +231,18 @@ public class GuiCraftingCPU extends AEBaseGui implements ISortSource
 
 				int lines = 0;
 
-				if( stored != null && stored.getStackSize() > 0 )
+				if( stored != null && stored.getCount() > 0 )
 				{
 					lines++;
 				}
 				boolean active = false;
-				if( activeStack != null && activeStack.getStackSize() > 0 )
+				if( activeStack != null && activeStack.getCount() > 0 )
 				{
 					lines++;
 					active = true;
 				}
 				boolean scheduled = false;
-				if( pendingStack != null && pendingStack.getStackSize() > 0 )
+				if( pendingStack != null && pendingStack.getCount() > 0 )
 				{
 					lines++;
 					scheduled = true;
@@ -259,45 +259,45 @@ public class GuiCraftingCPU extends AEBaseGui implements ISortSource
 				final int negY = ( ( lines - 1 ) * 5 ) / 2;
 				int downY = 0;
 
-				if( stored != null && stored.getStackSize() > 0 )
+				if( stored != null && stored.getCount() > 0 )
 				{
-					final String str = GuiText.Stored.getLocal() + ": " + converter.toWideReadableForm( stored.getStackSize() );
+					final String str = GuiText.Stored.getLocal() + ": " + converter.toWideReadableForm( stored.getCount() );
 					final int w = 4 + this.fontRendererObj.getStringWidth( str );
 					this.fontRendererObj.drawString( str, (int) ( ( x * ( 1 + SECTION_LENGTH ) + ITEMSTACK_LEFT_OFFSET + SECTION_LENGTH - 19 - ( w * 0.5 ) ) * 2 ), ( y * offY + ITEMSTACK_TOP_OFFSET + 6 - negY + downY ) * 2, TEXT_COLOR );
 
 					if( this.tooltip == z - viewStart )
 					{
-						lineList.add( GuiText.Stored.getLocal() + ": " + Long.toString( stored.getStackSize() ) );
+						lineList.add( GuiText.Stored.getLocal() + ": " + Long.toString( stored.getCount() ) );
 					}
 
 					downY += 5;
 				}
 
-				if( activeStack != null && activeStack.getStackSize() > 0 )
+				if( activeStack != null && activeStack.getCount() > 0 )
 				{
-					final String str = GuiText.Crafting.getLocal() + ": " + converter.toWideReadableForm( activeStack.getStackSize() );
+					final String str = GuiText.Crafting.getLocal() + ": " + converter.toWideReadableForm( activeStack.getCount() );
 					final int w = 4 + this.fontRendererObj.getStringWidth( str );
 
 					this.fontRendererObj.drawString( str, (int) ( ( x * ( 1 + SECTION_LENGTH ) + ITEMSTACK_LEFT_OFFSET + SECTION_LENGTH - 19 - ( w * 0.5 ) ) * 2 ), ( y * offY + ITEMSTACK_TOP_OFFSET + 6 - negY + downY ) * 2, TEXT_COLOR );
 
 					if( this.tooltip == z - viewStart )
 					{
-						lineList.add( GuiText.Crafting.getLocal() + ": " + Long.toString( activeStack.getStackSize() ) );
+						lineList.add( GuiText.Crafting.getLocal() + ": " + Long.toString( activeStack.getCount() ) );
 					}
 
 					downY += 5;
 				}
 
-				if( pendingStack != null && pendingStack.getStackSize() > 0 )
+				if( pendingStack != null && pendingStack.getCount() > 0 )
 				{
-					final String str = GuiText.Scheduled.getLocal() + ": " + converter.toWideReadableForm( pendingStack.getStackSize() );
+					final String str = GuiText.Scheduled.getLocal() + ": " + converter.toWideReadableForm( pendingStack.getCount() );
 					final int w = 4 + this.fontRendererObj.getStringWidth( str );
 
 					this.fontRendererObj.drawString( str, (int) ( ( x * ( 1 + SECTION_LENGTH ) + ITEMSTACK_LEFT_OFFSET + SECTION_LENGTH - 19 - ( w * 0.5 ) ) * 2 ), ( y * offY + ITEMSTACK_TOP_OFFSET + 6 - negY + downY ) * 2, TEXT_COLOR );
 
 					if( this.tooltip == z - viewStart )
 					{
-						lineList.add( GuiText.Scheduled.getLocal() + ": " + Long.toString( pendingStack.getStackSize() ) );
+						lineList.add( GuiText.Scheduled.getLocal() + ": " + Long.toString( pendingStack.getCount() ) );
 					}
 				}
 
@@ -384,7 +384,7 @@ public class GuiCraftingCPU extends AEBaseGui implements ISortSource
 			else
 			{
 				final IAEItemStack is = this.findVisualStack( l );
-				is.setStackSize( amt );
+				is.setCount( amt );
 			}
 		}
 
@@ -395,7 +395,7 @@ public class GuiCraftingCPU extends AEBaseGui implements ISortSource
 	{
 		IAEItemStack a = s.findPrecise( l );
 
-		if( l.getStackSize() <= 0 )
+		if( l.getCount() <= 0 )
 		{
 			if( a != null )
 			{
@@ -412,7 +412,7 @@ public class GuiCraftingCPU extends AEBaseGui implements ISortSource
 
 			if( a != null )
 			{
-				a.setStackSize( l.getStackSize() );
+				a.setCount( l.getCount() );
 			}
 		}
 	}
@@ -427,17 +427,17 @@ public class GuiCraftingCPU extends AEBaseGui implements ISortSource
 
 		if( a != null )
 		{
-			total += a.getStackSize();
+			total += a.getCount();
 		}
 
 		if( b != null )
 		{
-			total += b.getStackSize();
+			total += b.getCount();
 		}
 
 		if( c != null )
 		{
-			total += c.getStackSize();
+			total += c.getCount();
 		}
 
 		return total;
