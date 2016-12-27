@@ -221,7 +221,7 @@ public class TileCondenser extends AEBaseInvTile implements IFluidHandler, IConf
 	}
 
 	@Override
-	public int fill( final EnumFacing from, final FluidStack resource, final boolean doFill )
+	public int fill( final FluidStack resource, final boolean doFill )
 	{
 		if( doFill )
 		{
@@ -232,31 +232,19 @@ public class TileCondenser extends AEBaseInvTile implements IFluidHandler, IConf
 	}
 
 	@Override
-	public FluidStack drain( final EnumFacing from, final FluidStack resource, final boolean doDrain )
+	public FluidStack drain( final FluidStack resource, final boolean doDrain )
 	{
 		return null;
 	}
 
 	@Override
-	public FluidStack drain( final EnumFacing from, final int maxDrain, final boolean doDrain )
+	public FluidStack drain( final int maxDrain, final boolean doDrain )
 	{
 		return null;
 	}
-
+	
 	@Override
-	public boolean canFill( final EnumFacing from, final Fluid fluid )
-	{
-		return true;
-	}
-
-	@Override
-	public boolean canDrain( final EnumFacing from, final Fluid fluid )
-	{
-		return false;
-	}
-
-	@Override
-	public FluidTankInfo[] getTankInfo( final EnumFacing from )
+	public FluidTankInfo[] getTankInfo()
 	{
 		return EMPTY;
 	}
