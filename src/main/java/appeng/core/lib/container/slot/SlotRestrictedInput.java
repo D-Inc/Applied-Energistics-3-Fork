@@ -77,11 +77,11 @@ public class SlotRestrictedInput extends AppEngSlot
 		return super.getSlotStackLimit();
 	}
 
-	public boolean isValid( final ItemStack is, final World theWorld )
+	public boolean isValid( final ItemStack is, final World world )
 	{
 		if( this.which == PlacableItemType.VALID_ENCODED_PATTERN_W_OUTPUT )
 		{
-			final ICraftingPatternDetails ap = is.getItem() instanceof ICraftingPatternItem ? ( (ICraftingPatternItem) is.getItem() ).getPatternForItem( is, theWorld ) : null;
+			final ICraftingPatternDetails ap = is.getItem() instanceof ICraftingPatternItem ? ( (ICraftingPatternItem) is.getItem() ).getPatternForItem( is, world ) : null;
 			return ap != null;
 		}
 		return true;
@@ -130,7 +130,7 @@ public class SlotRestrictedInput extends AppEngSlot
 				if( i.getItem() instanceof ICraftingPatternItem )
 				{
 					final ICraftingPatternItem b = (ICraftingPatternItem) i.getItem();
-					final ICraftingPatternDetails de = b.getPatternForItem( i, this.p.player.worldObj );
+					final ICraftingPatternDetails de = b.getPatternForItem( i, this.p.player.world );
 					if( de != null )
 					{
 						return de.isCraftable();

@@ -151,7 +151,7 @@ public class ToolMassCannon extends AEBasePoweredItem implements IStorageCell
 							return new ActionResult<ItemStack>( EnumActionResult.SUCCESS, item );
 						}
 
-						ammo.func_190920_e(1);
+						ammo.setCount(1);
 						aeAmmo = inv.extractItems( aeAmmo, Actionable.MODULATE, new PlayerSource( p, null ) );
 						if( aeAmmo == null )
 						{
@@ -189,7 +189,7 @@ public class ToolMassCannon extends AEBasePoweredItem implements IStorageCell
 				{
 					if( Platform.isServer() )
 					{
-						p.addChatMessage( PlayerMessages.AmmoDepleted.get() );
+						p.sendMessage( PlayerMessages.AmmoDepleted.get() );
 					}
 					return new ActionResult<ItemStack>( EnumActionResult.SUCCESS, item );
 				}

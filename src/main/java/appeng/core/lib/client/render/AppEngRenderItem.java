@@ -95,7 +95,7 @@ public class AppEngRenderItem extends RenderItem
 				GL11.glColor4f( 1.0F, 1.0F, 1.0F, 1.0F );
 			}
 
-			if( is.func_190916_E() == 0 )
+			if( is.getCount() == 0 )
 			{
 				final String craftLabelText = AEConfig.instance.useTerminalUseLargeFont() ? GuiText.LargeFontCraft.getLocal() : GuiText.SmallFontCraft.getLocal();
 				GL11.glDisable( GL11.GL_LIGHTING );
@@ -110,7 +110,7 @@ public class AppEngRenderItem extends RenderItem
 				GL11.glEnable( GL11.GL_DEPTH_TEST );
 			}
 
-			final long amount = this.aeStack != null ? this.aeStack.getStackSize() : is.func_190916_E();
+			final long amount = this.aeStack != null ? this.aeStack.getStackSize() : is.getCount();
 			if( amount != 0 )
 			{
 				final String stackSize = this.getToBeRenderedstackSize( amount );

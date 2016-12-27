@@ -78,7 +78,7 @@ public class FacadePart implements IFacadePart, IBoxProvider
 			throw new IllegalArgumentException( "Facade Part constructed on null item." );
 		}
 		this.facade = facade.copy();
-		this.facade.func_190920_e(1);
+		this.facade.setCount(1);
 		this.side = side;
 	}
 

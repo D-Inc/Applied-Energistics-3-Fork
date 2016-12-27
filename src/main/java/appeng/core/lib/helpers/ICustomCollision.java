@@ -29,7 +29,7 @@ import net.minecraft.world.World;
 
 public interface ICustomCollision
 {
-	Iterable<AxisAlignedBB> getSelectedBoundingBoxesFromPool( World w, BlockPos pos, Entity thePlayer, boolean b );
+	Iterable<AxisAlignedBB> getSelectedBoundingBoxesFromPool( World w, BlockPos pos, Entity player, boolean b );
 
 	void addCollidingBlockToList( World w, BlockPos pos, AxisAlignedBB bb, List<AxisAlignedBB> out, Entity e );
 }

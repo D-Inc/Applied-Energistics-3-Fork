@@ -96,7 +96,7 @@ public class AEBaseTile extends TileEntity implements ITickable, IOrientable, IC
 
 	public boolean notLoaded()
 	{
-		return !this.worldObj.isBlockLoaded( this.pos );
+		return !this.world.isBlockLoaded( this.pos );
 	}
 
 	@Nonnull
@@ -121,7 +121,7 @@ public class AEBaseTile extends TileEntity implements ITickable, IOrientable, IC
 	{
 		if( state == null )
 		{
-			state = worldObj.getBlockState( getPos() );
+			state = world.getBlockState( getPos() );
 		}
 		return state;
 	}
@@ -309,10 +309,10 @@ public class AEBaseTile extends TileEntity implements ITickable, IOrientable, IC
 		else
 		{
 			// TODO Pre-1.8 - Optimize Network Load
-			if( this.worldObj != null )
+			if( this.world != null )
 			{
 				AELog.blockUpdate( this.pos, this );
-				this.worldObj.notifyBlockUpdate( this.pos, getBlockState(), getBlockState(), 3 );
+				this.world.notifyBlockUpdate( this.pos, getBlockState(), getBlockState(), 3 );
 			}
 		}
 	}
@@ -444,7 +444,7 @@ public class AEBaseTile extends TileEntity implements ITickable, IOrientable, IC
 		this.forward = inForward;
 		this.up = inUp;
 		this.markForUpdate();
-		Platform.notifyBlocksOfNeighbors( this.worldObj, this.pos );
+		Platform.notifyBlocksOfNeighbors( this.world, this.pos );
 	}
 
 	public void onPlacement( final ItemStack stack, final EntityPlayer player, final EnumFacing side )
@@ -590,7 +590,7 @@ public class AEBaseTile extends TileEntity implements ITickable, IOrientable, IC
 
 	public void securityBreak()
 	{
-		this.worldObj.destroyBlock( this.pos, true );
+		this.world.destroyBlock( this.pos, true );
 		this.disableDrops();
 	}
 

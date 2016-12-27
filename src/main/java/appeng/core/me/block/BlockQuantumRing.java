@@ -40,7 +40,7 @@ public class BlockQuantumRing extends BlockQuantumBase
 	}
 
 	@Override
-	public Iterable<AxisAlignedBB> getSelectedBoundingBoxesFromPool( final World w, final BlockPos pos, final Entity thePlayer, final boolean b )
+	public Iterable<AxisAlignedBB> getSelectedBoundingBoxesFromPool( final World w, final BlockPos pos, final Entity player, final boolean b )
 	{
 		double onePixel = 2.0 / 16.0;
 		final TileQuantumBridge bridge = this.getTileEntity( w, pos );

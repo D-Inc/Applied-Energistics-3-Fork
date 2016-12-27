@@ -84,7 +84,7 @@ public class TileDrive extends AENetworkInvTile implements IChestOrDrive, IPrior
 	@TileEvent( TileEventType.NETWORK_WRITE )
 	public void writeToStream_TileDrive( final ByteBuf data )
 	{
-		if( this.worldObj.getTotalWorldTime() - this.lastStateChange > 8 )
+		if( this.world.getTotalWorldTime() - this.lastStateChange > 8 )
 		{
 			this.state = 0;
 		}
@@ -166,7 +166,7 @@ public class TileDrive extends AENetworkInvTile implements IChestOrDrive, IPrior
 	@Override
 	public boolean isCellBlinking( final int slot )
 	{
-		final long now = this.worldObj.getTotalWorldTime();
+		final long now = this.world.getTotalWorldTime();
 		if( now - this.lastStateChange > 8 )
 		{
 			return false;
@@ -180,7 +180,7 @@ public class TileDrive extends AENetworkInvTile implements IChestOrDrive, IPrior
 	{
 		final int oldState = this.state;
 		this.state = data.readInt();
-		this.lastStateChange = this.worldObj.getTotalWorldTime();
+		this.lastStateChange = this.world.getTotalWorldTime();
 		return ( this.state & 0xDB6DB6DB ) != ( oldState & 0xDB6DB6DB );
 	}
 
@@ -402,7 +402,7 @@ public class TileDrive extends AENetworkInvTile implements IChestOrDrive, IPrior
 	@Override
 	public void blinkCell( final int slot )
 	{
-		final long now = this.worldObj.getTotalWorldTime();
+		final long now = this.world.getTotalWorldTime();
 		if( now - this.lastStateChange > 8 )
 		{
 			this.state = 0;
@@ -417,6 +417,6 @@ public class TileDrive extends AENetworkInvTile implements IChestOrDrive, IPrior
 	@Override
 	public void saveChanges( final IMEInventory cellInventory )
 	{
-		this.worldObj.markChunkDirty( this.pos, this );
+		this.world.markChunkDirty( this.pos, this );
 	}
 }

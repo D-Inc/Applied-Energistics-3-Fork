@@ -397,7 +397,7 @@ public class PartPlacement
 
 	private static float getEyeOffset( final EntityPlayer p )
 	{
-		if( p.worldObj.isRemote )
+		if( p.world.isRemote )
 		{
 			return Platform.getEyeOffset( p );
 		}
@@ -433,7 +433,7 @@ public class PartPlacement
 	@SubscribeEvent
 	public void playerInteract( final PlayerInteractEvent event )
 	{
-		if( event instanceof PlayerInteractEvent.RightClickEmpty && event.getEntityPlayer().worldObj.isRemote )
+		if( event instanceof PlayerInteractEvent.RightClickEmpty && event.getEntityPlayer().world.isRemote )
 		{
 			// re-check to see if this event was already channeled, cause these two events are really stupid...
 			final RayTraceResult mop = Platform.rayTrace( event.getEntityPlayer(), true, false );
@@ -445,7 +445,7 @@ public class PartPlacement
 
 			if( mop != null && mop.hitVec.distanceTo( vec3 ) < d0 )
 			{
-				final World w = event.getEntity().worldObj;
+				final World w = event.getEntity().world;
 				final TileEntity te = w.getTileEntity( mop.getBlockPos() );
 				if( te instanceof IPartHost && this.wasCanceled )
 				{
@@ -466,7 +466,7 @@ public class PartPlacement
 				}
 			}
 		}
-		else if( event instanceof PlayerInteractEvent.RightClickBlock && event.getEntityPlayer().worldObj.isRemote )
+		else if( event instanceof PlayerInteractEvent.RightClickBlock && event.getEntityPlayer().world.isRemote )
 		{
 			if( this.placing.get() != null )
 			{
@@ -476,7 +476,7 @@ public class PartPlacement
 			this.placing.set( event );
 
 			final ItemStack held = event.getEntityPlayer().getHeldItem( event.getHand() );
-			if( place( held, event.getPos(), event.getFace(), event.getEntityPlayer(), event.getHand(), event.getEntityPlayer().worldObj, PlaceType.INTERACT_FIRST_PASS, 0 ) == EnumActionResult.SUCCESS )
+			if( place( held, event.getPos(), event.getFace(), event.getEntityPlayer(), event.getHand(), event.getEntityPlayer().world, PlaceType.INTERACT_FIRST_PASS, 0 ) == EnumActionResult.SUCCESS )
 			{
 				event.setCanceled( true );
 				this.wasCanceled = true;

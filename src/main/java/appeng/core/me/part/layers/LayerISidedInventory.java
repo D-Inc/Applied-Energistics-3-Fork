@@ -152,7 +152,7 @@ public class LayerISidedInventory extends LayerBase implements ISidedInventory
 	}
 
 	@Override
-	public ItemStack decStackSize( final int slot, final int amount )
+	public ItemStack decrStackSize( final int slot, final int amount )
 	{
 		if( this.invLayer == null )
 		{
@@ -198,7 +198,7 @@ public class LayerISidedInventory extends LayerBase implements ISidedInventory
 	}
 
 	@Override
-	public boolean isUseableByPlayer( final EntityPlayer entityplayer )
+	public boolean isUsableByPlayer( final EntityPlayer entityplayer )
 	{
 		return false;
 	}

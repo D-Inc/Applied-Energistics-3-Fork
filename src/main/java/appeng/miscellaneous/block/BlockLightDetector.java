@@ -94,7 +94,7 @@ public class BlockLightDetector extends AEBaseTileBlock implements IOrientableBl
 	}
 
 	@Override
-	public Iterable<AxisAlignedBB> getSelectedBoundingBoxesFromPool( final World w, final BlockPos pos, final Entity thePlayer, final boolean b )
+	public Iterable<AxisAlignedBB> getSelectedBoundingBoxesFromPool( final World w, final BlockPos pos, final Entity player, final boolean b )
 	{
 		final EnumFacing up = this.getOrientable( w, pos ).getUp();
 		final double xOff = -0.3 * up.getFrontOffsetX();

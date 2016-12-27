@@ -54,7 +54,7 @@ public class TileCubeGenerator extends AEBaseTile implements ITickable
 			{
 				for( final EntityPlayer e : CommonHelper.proxy.getPlayers() )
 				{
-					e.addChatMessage( new TextComponentString( "Spawning in... " + ( this.countdown / 20 ) ) );
+					e.sendMessage( new TextComponentString( "Spawning in... " + ( this.countdown / 20 ) ) );
 				}
 			}
 
@@ -67,7 +67,7 @@ public class TileCubeGenerator extends AEBaseTile implements ITickable
 
 	private void spawn()
 	{
-		this.worldObj.setBlockToAir( this.pos );
+		this.world.setBlockToAir( this.pos );
 
 		final Item i = this.is.getItem();
 		final EnumFacing side = EnumFacing.UP;
@@ -81,7 +81,7 @@ public class TileCubeGenerator extends AEBaseTile implements ITickable
 				for( int z = -half; z < half; z++ )
 				{
 					final BlockPos p = this.pos.add( x, y - 1, z );
-					i.onItemUse( this.is.copy(), this.who, this.worldObj, p, EnumHand.MAIN_HAND, side, 0.5f, 0.0f, 0.5f );
+					i.onItemUse( this.is.copy(), this.who, this.world, p, EnumHand.MAIN_HAND, side, 0.5f, 0.0f, 0.5f );
 				}
 			}
 		}
@@ -116,7 +116,7 @@ public class TileCubeGenerator extends AEBaseTile implements ITickable
 					this.size = 64;
 				}
 
-				player.addChatMessage( new TextComponentString( "Size: " + this.size ) );
+				player.sendMessage( new TextComponentString( "Size: " + this.size ) );
 			}
 			else
 			{

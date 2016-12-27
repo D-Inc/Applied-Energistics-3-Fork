@@ -70,9 +70,9 @@ public class WrapperInvSlot
 		}
 
 		@Override
-		public ItemStack decStackSize( final int i, final int num )
+		public ItemStack decrStackSize( final int i, final int num )
 		{
-			return this.inv.decStackSize( this.slot, num );
+			return this.inv.decrStackSize( this.slot, num );
 		}
 
 		@Override
@@ -100,9 +100,9 @@ public class WrapperInvSlot
 		}
 
 		@Override
-		public boolean isUseableByPlayer( final EntityPlayer entityplayer )
+		public boolean isUsableByPlayer( final EntityPlayer entityplayer )
 		{
-			return this.inv.isUseableByPlayer( entityplayer );
+			return this.inv.isUsableByPlayer( entityplayer );
 		}
 
 		@Override

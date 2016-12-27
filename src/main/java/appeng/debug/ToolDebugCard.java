@@ -208,7 +208,7 @@ public class ToolDebugCard extends AEBaseItem
 
 	private void outputMsg( final ICommandSender player, final String string )
 	{
-		player.addChatMessage( new TextComponentString( string ) );
+		player.sendMessage( new TextComponentString( string ) );
 	}
 
 	private String timeMeasurement( final long nanos )

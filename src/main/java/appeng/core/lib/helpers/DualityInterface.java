@@ -419,10 +419,10 @@ public class DualityInterface implements IGridTickable, IStorageMonitorable, IIn
 			}
 			else if( req.isSameType( Stored ) ) // same type ( qty different? )!
 			{
-				if( req.getStackSize() != Stored.func_190916_E() )
+				if( req.getStackSize() != Stored.getCount() )
 				{
 					this.requireWork[slot] = req.copy();
-					this.requireWork[slot].setStackSize( req.getStackSize() - Stored.func_190916_E() );
+					this.requireWork[slot].setStackSize( req.getStackSize() - Stored.getCount() );
 					return;
 				}
 			}
@@ -499,7 +499,7 @@ public class DualityInterface implements IGridTickable, IStorageMonitorable, IIn
 		{
 			return true;
 		}
-		return out.getStackSize() != stack.func_190916_E();
+		return out.getStackSize() != stack.getCount();
 		// ItemStack after = adaptor.simulateAdd( stack );
 		// if ( after == null )
 		// return true;
@@ -702,7 +702,7 @@ public class DualityInterface implements IGridTickable, IStorageMonitorable, IIn
 
 				// make sure strange things didn't happen...
 				final ItemStack canExtract = adaptor.simulateRemove( (int) diff, toStore.getItemStack(), null );
-				if( canExtract == null || canExtract.func_190916_E() != diff )
+				if( canExtract == null || canExtract.getCount() != diff )
 				{
 					changed = true;
 					throw new GridAccessException();
@@ -724,7 +724,7 @@ public class DualityInterface implements IGridTickable, IStorageMonitorable, IIn
 					{
 						throw new IllegalStateException( "bad attempt at managing inventory. ( removeItems )" );
 					}
-					else if( removed.func_190916_E() != diff )
+					else if( removed.getCount() != diff )
 					{
 						throw new IllegalStateException( "bad attempt at managing inventory. ( removeItems )" );
 					}

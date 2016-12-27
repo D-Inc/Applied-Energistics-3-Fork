@@ -53,7 +53,7 @@ public abstract class CommonHelper
 
 	public abstract void sendToAllNearExcept( EntityPlayer p, double x, double y, double z, double dist, World w, AppEngPacket packet );
 
-	public abstract void spawnEffect( EffectType effect, World worldObj, double posX, double posY, double posZ, Object extra );
+	public abstract void spawnEffect( EffectType effect, World world, double posX, double posY, double posZ, Object extra );
 
 	public abstract boolean shouldAddParticles( Random r );
 

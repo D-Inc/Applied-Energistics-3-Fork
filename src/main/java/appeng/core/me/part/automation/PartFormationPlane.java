@@ -472,7 +472,7 @@ public class PartFormationPlane extends PartUpgradeable implements ICellContaine
 							}
 						}
 
-						if( !w.spawnEntityInWorld( result ) )
+						if( !w.spawnEntity( result ) )
 						{
 							result.setDead();
 							worked = false;
@@ -491,7 +491,7 @@ public class PartFormationPlane extends PartUpgradeable implements ICellContaine
 		if( worked )
 		{
 			final IAEItemStack out = input.copy();
-			out.decStackSize( maxStorage );
+			out.decrStackSize( maxStorage );
 			if( out.getStackSize() == 0 )
 			{
 				return null;

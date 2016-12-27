@@ -290,9 +290,9 @@ public class TileVibrationChamber extends AENetworkInvTile implements IGridTicka
 			this.isOn = this.getBurnTime() > 0;
 			this.markForUpdate();
 
-			if( this.hasWorldObj() )
+			if( this.hasworld() )
 			{
-				Platform.notifyBlocksOfNeighbors( this.worldObj, this.pos );
+				Platform.notifyBlocksOfNeighbors( this.world, this.pos );
 			}
 		}
 	}

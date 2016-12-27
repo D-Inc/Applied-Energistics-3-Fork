@@ -309,7 +309,7 @@ public class PartAnnihilationPlane extends PartBasicState implements IGridTickab
 		overflowEntity.motionY = 0;
 		overflowEntity.motionZ = 0;
 
-		w.spawnEntityInWorld( overflowEntity );
+		w.spawnEntity( overflowEntity );
 	}
 
 	protected boolean isAnnihilationPlane( final TileEntity blockTileEntity, final AEPartLocation side )

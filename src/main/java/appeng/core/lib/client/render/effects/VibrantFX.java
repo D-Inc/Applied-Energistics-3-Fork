@@ -63,7 +63,7 @@ public class VibrantFX extends Particle
 		this.prevPosX = this.posX;
 		this.prevPosY = this.posY;
 		this.prevPosZ = this.posZ;
-		// this.moveEntity(this.motionX, this.motionY, this.motionZ);
+		// this.move(this.motionX, this.motionY, this.motionZ);
 		this.particleScale *= 0.95;
 
 		if( this.particleMaxAge <= 0 || this.particleScale < 0.1 )

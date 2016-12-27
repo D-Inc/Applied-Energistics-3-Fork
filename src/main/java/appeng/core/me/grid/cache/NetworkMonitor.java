@@ -217,7 +217,7 @@ public class NetworkMonitor<T extends IAEStack<T>> implements IMEMonitor<T>
 		}
 		else if( leftOvers != null )
 		{
-			diff.decStackSize( leftOvers.getStackSize() );
+			diff.decrStackSize( leftOvers.getStackSize() );
 		}
 
 		if( diff.getStackSize() != 0 )

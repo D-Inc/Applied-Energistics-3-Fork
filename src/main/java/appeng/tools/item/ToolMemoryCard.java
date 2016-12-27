@@ -124,16 +124,16 @@ public class ToolMemoryCard extends AEBaseItem implements IMemoryCard
 		switch( msg )
 		{
 			case SETTINGS_CLEARED:
-				player.addChatMessage( PlayerMessages.SettingCleared.get() );
+				player.sendMessage( PlayerMessages.SettingCleared.get() );
 				break;
 			case INVALID_MACHINE:
-				player.addChatMessage( PlayerMessages.InvalidMachine.get() );
+				player.sendMessage( PlayerMessages.InvalidMachine.get() );
 				break;
 			case SETTINGS_LOADED:
-				player.addChatMessage( PlayerMessages.LoadedSettings.get() );
+				player.sendMessage( PlayerMessages.LoadedSettings.get() );
 				break;
 			case SETTINGS_SAVED:
-				player.addChatMessage( PlayerMessages.SavedSettings.get() );
+				player.sendMessage( PlayerMessages.SavedSettings.get() );
 				break;
 			default:
 		}

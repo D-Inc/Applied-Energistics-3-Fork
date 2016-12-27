@@ -38,11 +38,11 @@ public class WrapperMCISidedInventory extends WrapperInventoryRange implements I
 	}
 
 	@Override
-	public ItemStack decStackSize( final int var1, final int var2 )
+	public ItemStack decrStackSize( final int var1, final int var2 )
 	{
 		if( this.canRemoveItemFromSlot( var1, this.getStackInSlot( var1 ) ) )
 		{
-			return super.decStackSize( var1, var2 );
+			return super.decrStackSize( var1, var2 );
 		}
 		return null;
 	}

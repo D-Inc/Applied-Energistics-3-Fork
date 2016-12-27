@@ -81,14 +81,14 @@ public class AppEngInternalInventory implements IInventory, Iterable<ItemStack>
 
 	//TODO: bad override. -legracen
 	@Override
-	public ItemStack decStackSize( final int slot, final int qty )
+	public ItemStack decrStackSize( final int slot, final int qty )
 	{
 		if( this.inv[slot] != null )
 		{
 			final ItemStack split = this.getStackInSlot( slot );
 			ItemStack ns = null;
 
-			if( qty >= split.func_190916_E() )
+			if( qty >= split.getCount() )
 			{
 				ns = this.inv[slot];
 				this.inv[slot] = null;
@@ -134,16 +134,16 @@ public class AppEngInternalInventory implements IInventory, Iterable<ItemStack>
 
 			if( oldStack != null && newItemStack != null && Platform.isSameItem( oldStack, newItemStack ) )
 			{
-				if( oldStack.func_190916_E() > newItemStack.func_190916_E() )
+				if( oldStack.getCount() > newItemStack.getCount() )
 				{
 					removed = removed.copy();
-					removed.shrink(newItemStack.func_190916_E());
+					removed.shrink(newItemStack.getCount());
 					added = null;
 				}
-				else if( oldStack.func_190916_E() < newItemStack.func_190916_E() )
+				else if( oldStack.getCount() < newItemStack.getCount() )
 				{
 					added = added.copy();
-					added.shrink(oldStack.func_190916_E());
+					added.shrink(oldStack.getCount());
 					removed = null;
 				}
 				else
@@ -186,7 +186,7 @@ public class AppEngInternalInventory implements IInventory, Iterable<ItemStack>
 	}
 
 	@Override
-	public boolean isUseableByPlayer( final EntityPlayer var1 )
+	public boolean isUsableByPlayer( final EntityPlayer var1 )
 	{
 		return true;
 	}

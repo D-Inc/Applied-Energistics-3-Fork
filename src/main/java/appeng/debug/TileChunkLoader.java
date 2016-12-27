@@ -63,17 +63,17 @@ public class TileChunkLoader extends AEBaseTile implements ITickable
 			return;
 		}
 
-		this.ct = ForgeChunkManager.requestTicket( AppEng.instance().getModule( AppEngCore.class ), this.worldObj, Type.NORMAL );
+		this.ct = ForgeChunkManager.requestTicket( AppEng.instance().getModule( AppEngCore.class ), this.world, Type.NORMAL );
 
 		if( this.ct == null )
 		{
 			final MinecraftServer server = FMLCommonHandler.instance().getMinecraftServerInstance();
 			if( server != null )
 			{
-				final List<EntityPlayerMP> pl = server.getPlayerList().getPlayerList();
+				final List<EntityPlayerMP> pl = server.getPlayers().getPlayers();
 				for( final EntityPlayerMP p : pl )
 				{
-					p.addChatMessage( new TextComponentString( "Can't chunk load.." ) );
+					p.sendMessage( new TextComponentString( "Can't chunk load.." ) );
 				}
 			}
 			return;

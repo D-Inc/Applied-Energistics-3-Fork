@@ -135,8 +135,8 @@ public final class EntitySingularity extends AEBaseEntityItem
 									randTickSeed++;
 									item.stackSize--;
 
-									final EntitySingularity entity = new EntitySingularity( this.worldObj, this.posX, this.posY, this.posZ, (ItemStack) singularityStack );
-									this.worldObj.spawnEntityInWorld( entity );
+									final EntitySingularity entity = new EntitySingularity( this.world, this.posX, this.posY, this.posZ, (ItemStack) singularityStack );
+									this.world.spawnEntity( entity );
 								} );
 							}
 

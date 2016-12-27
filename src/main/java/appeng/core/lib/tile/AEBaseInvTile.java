@@ -91,9 +91,9 @@ public abstract class AEBaseInvTile extends AEBaseTile implements ISidedInventor
 	}
 
 	@Override
-	public ItemStack decStackSize( final int i, final int j )
+	public ItemStack decrStackSize( final int i, final int j )
 	{
-		return this.getInternalInventory().decStackSize( i, j );
+		return this.getInternalInventory().decrStackSize( i, j );
 	}
 
 	@Override
@@ -124,11 +124,11 @@ public abstract class AEBaseInvTile extends AEBaseTile implements ISidedInventor
 	}
 
 	@Override
-	public boolean isUseableByPlayer( final EntityPlayer p )
+	public boolean isUsableByPlayer( final EntityPlayer p )
 	{
 		final double squaredMCReach = 64.0D;
 
-		return this.worldObj.getTileEntity( this.pos ) == this && p.getDistanceSq( this.pos.getX() + 0.5D, this.pos.getY() + 0.5D, this.pos.getZ() + 0.5D ) <= squaredMCReach;
+		return this.world.getTileEntity( this.pos ) == this && p.getDistanceSq( this.pos.getX() + 0.5D, this.pos.getY() + 0.5D, this.pos.getZ() + 0.5D ) <= squaredMCReach;
 	}
 
 	@Override
@@ -157,7 +157,7 @@ public abstract class AEBaseInvTile extends AEBaseTile implements ISidedInventor
 	@Override
 	public int[] getSlotsForFace( final EnumFacing side )
 	{
-		final Block blk = this.worldObj.getBlockState( this.pos ).getBlock();
+		final Block blk = this.world.getBlockState( this.pos ).getBlock();
 		if( blk instanceof AEBaseBlock )
 		{
 			return this.getAccessibleSlotsBySide( ( (AEBaseBlock) blk ).mapRotation( this, side ) );

@@ -585,17 +585,17 @@ public abstract class AEBaseContainer extends Container
 									maxSize = d.getSlotStackLimit();
 								}
 
-								int placeAble = maxSize - t.func_190916_E();
+								int placeAble = maxSize - t.getCount();
 
-								if( tis.func_190916_E() < placeAble )
+								if( tis.getCount() < placeAble )
 								{
-									placeAble = tis.func_190916_E();
+									placeAble = tis.getCount();
 								}
 
-								t.func_190917_f(placeAble);
-								tis.func_190918_g(placeAble);
+								t.grow(placeAble);
+								tis.setCount(placeAble);
 
-								if( tis.func_190916_E() <= 0 )
+								if( tis.getCount() <= 0 )
 								{
 									clickSlot.putStack( null );
 									d.onSlotChanged();
@@ -637,17 +637,17 @@ public abstract class AEBaseContainer extends Container
 									maxSize = d.getSlotStackLimit();
 								}
 
-								int placeAble = maxSize - t.func_190916_E();
+								int placeAble = maxSize - t.getCount();
 
-								if( tis.func_190916_E() < placeAble )
+								if( tis.getCount() < placeAble )
 								{
-									placeAble = tis.func_190916_E();
+									placeAble = tis.getCount();
 								}
 
-								t.func_190917_f( placeAble );
-								tis.func_190918_g( placeAble );
+								t.grow( placeAble );
+								tis.setCount( placeAble );
 
-								if( tis.func_190916_E() <= 0 )
+								if( tis.getCount() <= 0 )
 								{
 									clickSlot.putStack( null );
 									d.onSlotChanged();
@@ -675,15 +675,15 @@ public abstract class AEBaseContainer extends Container
 							}
 
 							final ItemStack tmp = tis.copy();
-							if( tmp.func_190916_E() > maxSize )
+							if( tmp.getCount() > maxSize )
 							{
-								tmp.func_190920_e(maxSize);
+								tmp.setCount(maxSize);
 							}
 
-							tis.func_190918_g(tmp.func_190916_E());
+							tis.setCount(tmp.getCount());
 							d.putStack( tmp );
 
-							if( tis.func_190916_E() <= 0 )
+							if( tis.getCount() <= 0 )
 							{
 								clickSlot.putStack( null );
 								d.onSlotChanged();
@@ -728,7 +728,7 @@ public abstract class AEBaseContainer extends Container
 		{
 			if( this.tileEntity instanceof IInventory )
 			{
-				return ( (IInventory) this.tileEntity ).isUseableByPlayer( entityplayer );
+				return ( (IInventory) this.tileEntity ).isUsableByPlayer( entityplayer );
 			}
 			return true;
 		}
@@ -783,7 +783,7 @@ public abstract class AEBaseContainer extends Container
 						if( hand != null )
 						{
 							final ItemStack is = hand.copy();
-							is.func_190920_e( 1 );
+							is.setCount( 1 );
 							s.putStack( is );
 						}
 
@@ -795,16 +795,16 @@ public abstract class AEBaseContainer extends Container
 						{
 							if( hand == null )
 							{
-								is.func_190918_g( 1 );
+								is.setCount( 1 );
 							}
 							else if( hand.isItemEqual( is ) )
 							{
-								is.func_190920_e(Math.min( is.getMaxStackSize(), is.func_190916_E() + 1 ));
+								is.setCount(Math.min( is.getMaxStackSize(), is.getCount() + 1 ));
 							}
 							else
 							{
 								is = hand.copy();
-								is.func_190920_e(1);
+								is.setCount(1);
 							}
 
 							s.putStack( is );
@@ -812,7 +812,7 @@ public abstract class AEBaseContainer extends Container
 						else if( hand != null )
 						{
 							is = hand.copy();
-							is.func_190920_e(1);
+							is.setCount(1);
 							s.putStack( is );
 						}
 
@@ -865,12 +865,12 @@ public abstract class AEBaseContainer extends Container
 					ais.setStackSize( myItem.getMaxStackSize() );
 
 					final InventoryAdaptor adp = InventoryAdaptor.getAdaptor( player, EnumFacing.UP );
-					myItem.func_190920_e((int) ais.getStackSize());
+					myItem.setCount((int) ais.getStackSize());
 					myItem = adp.simulateAdd( myItem );
 
 					if( myItem != null )
 					{
-						ais.setStackSize( ais.getStackSize() - myItem.func_190916_E() );
+						ais.setStackSize( ais.getStackSize() - myItem.getCount() );
 					}
 
 					ais = Platform.poweredExtraction( this.getPowerSource(), this.getCellInventory(), ais, this.getActionSource() );
@@ -925,7 +925,7 @@ public abstract class AEBaseContainer extends Container
 
 					if( item != null )
 					{
-						if( item.func_190916_E() >= item.getMaxStackSize() )
+						if( item.getCount() >= item.getMaxStackSize() )
 						{
 							liftQty = 0;
 						}
@@ -1036,8 +1036,8 @@ public abstract class AEBaseContainer extends Container
 					if( ais == null )
 					{
 						final ItemStack is = player.inventory.getItemStack();
-						is.func_190918_g( 1 );
-						if( is.func_190916_E() <= 0 )
+						is.setCount( 1 );
+						if( is.getCount() <= 0 )
 						{
 							player.inventory.setItemStack( null );
 						}
@@ -1050,7 +1050,7 @@ public abstract class AEBaseContainer extends Container
 				if( player.capabilities.isCreativeMode && slotItem != null )
 				{
 					final ItemStack is = slotItem.getItemStack();
-					is.func_190920_e(is.getMaxStackSize());
+					is.setCount(is.getMaxStackSize());
 					player.inventory.setItemStack( is );
 					this.updateHeld( player );
 				}
@@ -1073,12 +1073,12 @@ public abstract class AEBaseContainer extends Container
 						ais.setStackSize( myItem.getMaxStackSize() );
 
 						final InventoryAdaptor adp = InventoryAdaptor.getAdaptor( player, EnumFacing.UP );
-						myItem.func_190920_e((int) ais.getStackSize());
+						myItem.setCount((int) ais.getStackSize());
 						myItem = adp.simulateAdd( myItem );
 
 						if( myItem != null )
 						{
-							ais.setStackSize( ais.getStackSize() - myItem.func_190916_E() );
+							ais.setStackSize( ais.getStackSize() - myItem.getCount() );
 						}
 
 						ais = Platform.poweredExtraction( this.getPowerSource(), this.getCellInventory(), ais, this.getActionSource() );
@@ -1234,32 +1234,32 @@ public abstract class AEBaseContainer extends Container
 		ItemStack testB = isA == null ? null : isA.copy();
 
 		// can put some back?
-		if( testA != null && testA.func_190916_E() > a.getSlotStackLimit() )
+		if( testA != null && testA.getCount() > a.getSlotStackLimit() )
 		{
 			if( testB != null )
 			{
 				return;
 			}
 
-			final int totalA = testA.func_190916_E();
-			testA.func_190920_e(a.getSlotStackLimit());
+			final int totalA = testA.getCount();
+			testA.setCount(a.getSlotStackLimit());
 			testB = testA.copy();
 
-			testB.func_190920_e(totalA - testA.func_190916_E());
+			testB.setCount(totalA - testA.getCount());
 		}
 
-		if( testB != null && testB.func_190916_E() > b.getSlotStackLimit() )
+		if( testB != null && testB.getCount() > b.getSlotStackLimit() )
 		{
 			if( testA != null )
 			{
 				return;
 			}
 
-			final int totalB = testB.func_190916_E();
-			testB.func_190920_e(b.getSlotStackLimit());
+			final int totalB = testB.getCount();
+			testB.setCount(b.getSlotStackLimit());
 			testA = testB.copy();
 
-			testA.func_190920_e(totalB - testA.func_190916_E());
+			testA.setCount(totalB - testA.getCount());
 		}
 
 		a.putStack( testA );

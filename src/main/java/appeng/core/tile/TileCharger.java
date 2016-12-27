@@ -278,7 +278,7 @@ public class TileCharger extends AENetworkPowerTile implements ICrankable, ITick
 
 			if( AppEngApi.internalApi().definitions().materials().certusQuartzCrystal().isSameAs( held ) || Platform.isChargeable( held ) )
 			{
-				held = player.inventory.decStackSize( player.inventory.currentItem, 1 );
+				held = player.inventory.decrStackSize( player.inventory.currentItem, 1 );
 				this.setInventorySlotContents( 0, held );
 			}
 		}
@@ -287,7 +287,7 @@ public class TileCharger extends AENetworkPowerTile implements ICrankable, ITick
 			final List<ItemStack> drops = new ArrayList<ItemStack>();
 			drops.add( myItem );
 			this.setInventorySlotContents( 0, null );
-			Platform.spawnDrops( this.worldObj, this.pos.offset( this.getForward() ), drops );
+			Platform.spawnDrops( this.world, this.pos.offset( this.getForward() ), drops );
 		}
 	}
 }

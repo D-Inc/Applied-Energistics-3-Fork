@@ -269,9 +269,9 @@ public class PartP2PItems extends PartP2PTunnel<PartP2PItems> implements /* IPip
 	}
 
 	@Override
-	public ItemStack decStackSize( final int i, final int j )
+	public ItemStack decrStackSize( final int i, final int j )
 	{
-		return this.getDestination().decStackSize( i, j );
+		return this.getDestination().decrStackSize( i, j );
 	}
 
 	@Override
@@ -311,7 +311,7 @@ public class PartP2PItems extends PartP2PTunnel<PartP2PItems> implements /* IPip
 	}
 
 	@Override
-	public boolean isUseableByPlayer( final EntityPlayer entityplayer )
+	public boolean isUsableByPlayer( final EntityPlayer entityplayer )
 	{
 		return false;
 	}

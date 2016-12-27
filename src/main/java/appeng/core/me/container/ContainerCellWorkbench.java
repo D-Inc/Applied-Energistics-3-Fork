@@ -279,10 +279,10 @@ public class ContainerCellWorkbench extends ContainerUpgradeable
 		}
 
 		@Override
-		public ItemStack decStackSize( final int i, final int j )
+		public ItemStack decrStackSize( final int i, final int j )
 		{
 			final IInventory inv = ContainerCellWorkbench.this.getCellUpgradeInventory();
-			final ItemStack is = inv.decStackSize( i, j );
+			final ItemStack is = inv.decrStackSize( i, j );
 			inv.markDirty();
 			return is;
 		}
@@ -329,7 +329,7 @@ public class ContainerCellWorkbench extends ContainerUpgradeable
 		}
 
 		@Override
-		public boolean isUseableByPlayer( final EntityPlayer entityplayer )
+		public boolean isUsableByPlayer( final EntityPlayer entityplayer )
 		{
 			return false;
 		}

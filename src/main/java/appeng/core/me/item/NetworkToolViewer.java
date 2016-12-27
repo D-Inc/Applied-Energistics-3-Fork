@@ -61,9 +61,9 @@ public class NetworkToolViewer implements INetworkTool
 	}
 
 	@Override
-	public ItemStack decStackSize( final int i, final int j )
+	public ItemStack decrStackSize( final int i, final int j )
 	{
-		return this.inv.decStackSize( i, j );
+		return this.inv.decrStackSize( i, j );
 	}
 
 	@Override
@@ -104,9 +104,9 @@ public class NetworkToolViewer implements INetworkTool
 	}
 
 	@Override
-	public boolean isUseableByPlayer( final EntityPlayer entityplayer )
+	public boolean isUsableByPlayer( final EntityPlayer entityplayer )
 	{
-		return this.inv.isUseableByPlayer( entityplayer );
+		return this.inv.isUsableByPlayer( entityplayer );
 	}
 
 	@Override

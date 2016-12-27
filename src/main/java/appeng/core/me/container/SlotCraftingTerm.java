@@ -82,7 +82,7 @@ public class SlotCraftingTerm extends AppEngCraftingSlot
 	}
 
 	@Override
-	public void onPickupFromSlot( final EntityPlayer p, final ItemStack is )
+	public ItemStack onTake( final EntityPlayer p, final ItemStack is )
 	{
 	}
 
@@ -142,7 +142,7 @@ public class SlotCraftingTerm extends AppEngCraftingSlot
 				{
 					final List<ItemStack> drops = new ArrayList<ItemStack>();
 					drops.add( extra );
-					Platform.spawnDrops( who.worldObj, new BlockPos( (int) who.posX, (int) who.posY, (int) who.posZ ), drops );
+					Platform.spawnDrops( who.world, new BlockPos( (int) who.posX, (int) who.posY, (int) who.posZ ), drops );
 					return;
 				}
 			}
@@ -172,7 +172,7 @@ public class SlotCraftingTerm extends AppEngCraftingSlot
 					ic.setInventorySlotContents( x, this.getPattern().getStackInSlot( x ) );
 				}
 
-				final IRecipe r = Platform.findMatchingRecipe( ic, p.worldObj );
+				final IRecipe r = Platform.findMatchingRecipe( ic, p.world );
 
 				if( r == null )
 				{
@@ -211,7 +211,7 @@ public class SlotCraftingTerm extends AppEngCraftingSlot
 					{
 						if( this.getPattern().getStackInSlot( x ) != null )
 						{
-							set[x] = Platform.extractItemsByRecipe( this.energySrc, this.mySrc, inv, p.worldObj, r, is, ic, this.getPattern().getStackInSlot( x ), x, all, Actionable.MODULATE, ItemViewCell.createFilter( this.container.getViewCells() ) );
+							set[x] = Platform.extractItemsByRecipe( this.energySrc, this.mySrc, inv, p.world, r, is, ic, this.getPattern().getStackInSlot( x ), x, all, Actionable.MODULATE, ItemViewCell.createFilter( this.container.getViewCells() ) );
 							ic.setInventorySlotContents( x, set[x] );
 						}
 					}
@@ -272,7 +272,7 @@ public class SlotCraftingTerm extends AppEngCraftingSlot
 
 		if( drops.size() > 0 )
 		{
-			Platform.spawnDrops( p.worldObj, new BlockPos( (int) p.posX, (int) p.posY, (int) p.posZ ), drops );
+			Platform.spawnDrops( p.world, new BlockPos( (int) p.posX, (int) p.posY, (int) p.posZ ), drops );
 		}
 	}
 

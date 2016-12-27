@@ -50,7 +50,7 @@ public class AppEngNullInventory implements IInventory
 	}
 
 	@Override
-	public ItemStack decStackSize( final int slot, final int qty )
+	public ItemStack decrStackSize( final int slot, final int qty )
 	{
 		return null;
 	}
@@ -92,7 +92,7 @@ public class AppEngNullInventory implements IInventory
 	}
 
 	@Override
-	public boolean isUseableByPlayer( final EntityPlayer var1 )
+	public boolean isUsableByPlayer( final EntityPlayer var1 )
 	{
 		return false;
 	}

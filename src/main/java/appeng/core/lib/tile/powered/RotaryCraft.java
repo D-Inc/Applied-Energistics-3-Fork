@@ -51,7 +51,7 @@ package appeng.core.lib.tile.powered;
 // @Method( iname = IntegrationType.RotaryCraft )
 // public void Tick_RotaryCraft()
 // {
-// if( this.worldObj != null && !this.worldObj.isRemote && this.currentPower > 0 )
+// if( this.world != null && !this.world.isRemote && this.currentPower > 0 )
 // {
 // this.injectExternalPower( PowerUnits.WA, this.currentPower );
 // this.currentPower = 0;

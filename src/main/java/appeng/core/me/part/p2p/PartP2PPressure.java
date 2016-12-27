@@ -167,7 +167,7 @@ package appeng.core.me.part.p2p;
 // }
 //
 // final TileEntity te = this.getTile();
-// Platform.notifyBlocksOfNeighbors( te.getWorldObj(), te.xCoord, te.yCoord, te.zCoord );
+// Platform.notifyBlocksOfNeighbors( te.getworld(), te.xCoord, te.yCoord, te.zCoord );
 // }
 // }
 //

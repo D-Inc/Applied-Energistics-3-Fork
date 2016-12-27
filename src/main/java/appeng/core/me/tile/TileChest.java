@@ -329,7 +329,7 @@ public class TileChest extends AENetworkPowerTile implements IMEChest, IFluidHan
 	@Override
 	public boolean isCellBlinking( final int slot )
 	{
-		final long now = this.worldObj.getTotalWorldTime();
+		final long now = this.world.getTotalWorldTime();
 		if( now - this.lastStateChange > 8 )
 		{
 			return false;
@@ -364,7 +364,7 @@ public class TileChest extends AENetworkPowerTile implements IMEChest, IFluidHan
 	@TileEvent( TileEventType.TICK )
 	public void Tick_TileChest()
 	{
-		if( this.worldObj.isRemote )
+		if( this.world.isRemote )
 		{
 			return;
 		}
@@ -400,7 +400,7 @@ public class TileChest extends AENetworkPowerTile implements IMEChest, IFluidHan
 	@TileEvent( TileEventType.NETWORK_WRITE )
 	public void writeToStream_TileChest( final ByteBuf data )
 	{
-		if( this.worldObj.getTotalWorldTime() - this.lastStateChange > 8 )
+		if( this.world.getTotalWorldTime() - this.lastStateChange > 8 )
 		{
 			this.state = 0;
 		}
@@ -459,7 +459,7 @@ public class TileChest extends AENetworkPowerTile implements IMEChest, IFluidHan
 			this.storageType = new ItemStack( Item.getItemById( item & 0xffff ), 1, item >> Platform.DEF_OFFSET );
 		}
 
-		this.lastStateChange = this.worldObj.getTotalWorldTime();
+		this.lastStateChange = this.world.getTotalWorldTime();
 
 		return oldPaintedColor != this.paintedColor || ( this.state & 0xDB6DB6DB ) != ( oldState & 0xDB6DB6DB ) || !Platform.isSameItemPrecise( oldType, this.storageType );
 	}
@@ -542,9 +542,9 @@ public class TileChest extends AENetworkPowerTile implements IMEChest, IFluidHan
 			}
 
 			// update the neighbors
-			if( this.worldObj != null )
+			if( this.world != null )
 			{
-				Platform.notifyBlocksOfNeighbors( this.worldObj, this.pos );
+				Platform.notifyBlocksOfNeighbors( this.world, this.pos );
 				this.markForUpdate();
 			}
 		}
@@ -680,7 +680,7 @@ public class TileChest extends AENetworkPowerTile implements IMEChest, IFluidHan
 	@Override
 	public void blinkCell( final int slot )
 	{
-		final long now = this.worldObj.getTotalWorldTime();
+		final long now = this.world.getTotalWorldTime();
 		if( now - this.lastStateChange > 8 )
 		{
 			this.state = 0;
@@ -857,7 +857,7 @@ public class TileChest extends AENetworkPowerTile implements IMEChest, IFluidHan
 	@Override
 	public void saveChanges( final IMEInventory cellInventory )
 	{
-		this.worldObj.markChunkDirty( this.pos, this );
+		this.world.markChunkDirty( this.pos, this );
 	}
 
 	private static class ChestNoHandler extends Exception

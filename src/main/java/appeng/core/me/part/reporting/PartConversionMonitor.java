@@ -145,7 +145,7 @@ public class PartConversionMonitor extends AbstractPartMonitor
 					{
 						final TileEntity te = this.getTile();
 						final List<ItemStack> list = Collections.singletonList( newItems );
-						Platform.spawnDrops( player.worldObj, te.getPos().offset( this.getSide().getFacing() ), list );
+						Platform.spawnDrops( player.world, te.getPos().offset( this.getSide().getFacing() ), list );
 					}
 
 					if( player.openContainer != null )

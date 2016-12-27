@@ -310,7 +310,7 @@ public final class ItemMultiItem extends AEBaseItem implements IStorageComponent
 					final InventoryAdaptor ad = InventoryAdaptor.getAdaptor( upgrades, EnumFacing.UP );
 					if( ad != null )
 					{
-						if( player.worldObj.isRemote )
+						if( player.world.isRemote )
 						{
 							return EnumActionResult.PASS;
 						}

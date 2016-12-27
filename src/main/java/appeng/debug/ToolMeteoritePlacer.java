@@ -49,7 +49,7 @@ public class ToolMeteoritePlacer extends AEBaseItem
 
 		if( !worked )
 		{
-			player.addChatMessage( new TextComponentString( "Un-suitable Location." ) );
+			player.sendMessage( new TextComponentString( "Un-suitable Location." ) );
 		}
 
 		return EnumActionResult.SUCCESS;

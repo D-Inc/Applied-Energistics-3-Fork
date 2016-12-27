@@ -164,12 +164,12 @@ public class ContainerQuartzKnife extends AEBaseContainer implements IAEAppEngIn
 
 	private boolean makePlate()
 	{
-		if( this.inSlot.decStackSize( 0, 1 ) != null )
+		if( this.inSlot.decrStackSize( 0, 1 ) != null )
 		{
 			final ItemStack item = this.toolInv.getItemStack();
 			item.damageItem( 1, this.getPlayerInv().player );
 
-			if( item.func_190916_E() == 0 )
+			if( item.getCount() == 0 )
 			{
 				this.getPlayerInv().mainInventory.set( this.getPlayerInv().currentItem, null);
 				MinecraftForge.EVENT_BUS.post( new PlayerDestroyItemEvent( this.getPlayerInv().player, item, null ) );
@@ -220,7 +220,7 @@ public class ContainerQuartzKnife extends AEBaseContainer implements IAEAppEngIn
 	}
 
 	@Override
-	public boolean isUseableByPlayer( final EntityPlayer var1 )
+	public boolean isUsableByPlayer( final EntityPlayer var1 )
 	{
 		return false;
 	}

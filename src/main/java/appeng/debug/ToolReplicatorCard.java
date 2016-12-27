@@ -178,6 +178,6 @@ public class ToolReplicatorCard extends AEBaseItem
 
 	private void outputMsg( final ICommandSender player, final String string )
 	{
-		player.addChatMessage( new TextComponentString( string ) );
+		player.sendMessage( new TextComponentString( string ) );
 	}
 }

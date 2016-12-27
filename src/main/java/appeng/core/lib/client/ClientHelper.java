@@ -87,7 +87,7 @@ public class ClientHelper extends ServerHelper
 	{
 		if( Platform.isClient() )
 		{
-			return Minecraft.getMinecraft().theWorld;
+			return Minecraft.getMinecraft().world;
 		}
 		else
 		{
@@ -107,7 +107,7 @@ public class ClientHelper extends ServerHelper
 		if( Platform.isClient() )
 		{
 			final List<EntityPlayer> o = new ArrayList<>();
-			o.add( Minecraft.getMinecraft().thePlayer );
+			o.add( Minecraft.getMinecraft().player );
 			return o;
 		}
 		else
@@ -117,29 +117,29 @@ public class ClientHelper extends ServerHelper
 	}
 
 	@Override
-	public void spawnEffect( final EffectType effect, final World worldObj, final double posX, final double posY, final double posZ, final Object o )
+	public void spawnEffect( final EffectType effect, final World world, final double posX, final double posY, final double posZ, final Object o )
 	{
 		if( AEConfig.instance.enableEffects )
 		{
 			switch( effect )
 			{
 				case Assembler:
-					this.spawnAssembler( worldObj, posX, posY, posZ, o );
+					this.spawnAssembler( world, posX, posY, posZ, o );
 					return;
 				case Vibrant:
-					this.spawnVibrant( worldObj, posX, posY, posZ );
+					this.spawnVibrant( world, posX, posY, posZ );
 					return;
 				case Crafting:
-					this.spawnCrafting( worldObj, posX, posY, posZ );
+					this.spawnCrafting( world, posX, posY, posZ );
 					return;
 				case Energy:
-					this.spawnEnergy( worldObj, posX, posY, posZ );
+					this.spawnEnergy( world, posX, posY, posZ );
 					return;
 				case Lightning:
-					this.spawnLightning( worldObj, posX, posY, posZ );
+					this.spawnLightning( world, posX, posY, posZ );
 					return;
 				case LightningArc:
-					this.spawnLightningArc( worldObj, posX, posY, posZ, (Vec3d) o );
+					this.spawnLightningArc( world, posX, posY, posZ, (Vec3d) o );
 					return;
 				default:
 			}
@@ -173,7 +173,7 @@ public class ClientHelper extends ServerHelper
 		if( itemstack != null )
 		{
 			final EntityItem entityitem = new EntityItem( w, 0.0D, 0.0D, 0.0D, itemstack );
-			entityitem.getEntityItem().func_190920_e(1);
+			entityitem.getEntityItem().setCount(1);
 
 			// set all this stuff and then do shit? meh?
 			entityitem.hoverStart = 0;
@@ -200,7 +200,7 @@ public class ClientHelper extends ServerHelper
 		}
 
 		final Minecraft mc = Minecraft.getMinecraft();
-		final EntityPlayer player = mc.thePlayer;
+		final EntityPlayer player = mc.player;
 
 		return this.renderModeForPlayer( player );
 	}
@@ -209,12 +209,12 @@ public class ClientHelper extends ServerHelper
 	public void triggerUpdates()
 	{
 		final Minecraft mc = Minecraft.getMinecraft();
-		if( mc == null || mc.thePlayer == null || mc.theWorld == null )
+		if( mc == null || mc.player == null || mc.world == null )
 		{
 			return;
 		}
 
-		final EntityPlayer player = mc.thePlayer;
+		final EntityPlayer player = mc.player;
 
 		final int x = (int) player.posX;
 		final int y = (int) player.posY;
@@ -222,7 +222,7 @@ public class ClientHelper extends ServerHelper
 
 		final int range = 16 * 16;
 
-		mc.theWorld.markBlockRangeForRenderUpdate( x - range, y - range, z - range, x + range, y + range, z + range );
+		mc.world.markBlockRangeForRenderUpdate( x - range, y - range, z - range, x + range, y + range, z + range );
 	}
 
 	@Override
@@ -266,11 +266,11 @@ public class ClientHelper extends ServerHelper
 		}
 	}
 
-	private void spawnAssembler( final World worldObj, final double posX, final double posY, final double posZ, final Object o )
+	private void spawnAssembler( final World world, final double posX, final double posY, final double posZ, final Object o )
 	{
 		final PacketAssemblerAnimation paa = (PacketAssemblerAnimation) o;
 
-		final AssemblerFX fx = new AssemblerFX( Minecraft.getMinecraft().theWorld, posX, posY, posZ, 0.0D, 0.0D, 0.0D, paa.rate, paa.is );
+		final AssemblerFX fx = new AssemblerFX( Minecraft.getMinecraft().world, posX, posY, posZ, 0.0D, 0.0D, 0.0D, paa.rate, paa.is );
 		Minecraft.getMinecraft().effectRenderer.addEffect( fx );
 	}
 
@@ -317,15 +317,15 @@ public class ClientHelper extends ServerHelper
 		Minecraft.getMinecraft().effectRenderer.addEffect( fx );
 	}
 
-	private void spawnLightning( final World worldObj, final double posX, final double posY, final double posZ )
+	private void spawnLightning( final World world, final double posX, final double posY, final double posZ )
 	{
-		final LightningFX fx = new LightningFX( worldObj, posX, posY + 0.3f, posZ, 0.0f, 0.0f, 0.0f );
+		final LightningFX fx = new LightningFX( world, posX, posY + 0.3f, posZ, 0.0f, 0.0f, 0.0f );
 		Minecraft.getMinecraft().effectRenderer.addEffect( fx );
 	}
 
-	private void spawnLightningArc( final World worldObj, final double posX, final double posY, final double posZ, final Vec3d second )
+	private void spawnLightningArc( final World world, final double posX, final double posY, final double posZ, final Vec3d second )
 	{
-		final LightningFX fx = new LightningArcFX( worldObj, posX, posY, posZ, second.xCoord, second.yCoord, second.zCoord, 0.0f, 0.0f, 0.0f );
+		final LightningFX fx = new LightningArcFX( world, posX, posY, posZ, second.xCoord, second.yCoord, second.zCoord, 0.0f, 0.0f, 0.0f );
 		Minecraft.getMinecraft().effectRenderer.addEffect( fx );
 	}
 
@@ -344,7 +344,7 @@ public class ClientHelper extends ServerHelper
 		}
 
 		final Minecraft mc = Minecraft.getMinecraft();
-		final EntityPlayer player = mc.thePlayer;
+		final EntityPlayer player = mc.player;
 		if( player.isSneaking() )
 		{
 			final EnumHand hand;

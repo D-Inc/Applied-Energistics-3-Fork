@@ -70,7 +70,7 @@ public class StorageHelper
 
 		try
 		{
-			oldWorld = (WorldServer) entity.worldObj;
+			oldWorld = (WorldServer) entity.world;
 			newWorld = (WorldServer) link.dim;
 			player = ( entity instanceof EntityPlayerMP ) ? (EntityPlayerMP) entity : null;
 		}
@@ -108,7 +108,7 @@ public class StorageHelper
 		}
 
 		// load the chunk!
-		newWorld.getChunkProvider().provideChunk( MathHelper.floor_double( link.x ) >> 4, MathHelper.floor_double( link.z ) >> 4 );
+		newWorld.getChunkProvider().provideChunk( MathHelper.floor( link.x ) >> 4, MathHelper.floor( link.z ) >> 4 );
 
 		if( newWorld != oldWorld )
 		{
@@ -119,11 +119,11 @@ public class StorageHelper
 					Achievements.SpatialIOExplorer.addToPlayer( player );
 				}
 
-				player.mcServer.getPlayerList().transferPlayerToDimension( player, link.dim.provider.getDimension(), new METeleporter( newWorld, link ) );
+				player.mcServer.getPlayers().transferPlayerToDimension( player, link.dim.provider.getDimension(), new METeleporter( newWorld, link ) );
 			}
 			else
 			{
-				entity.getServer().getPlayerList().transferEntityToWorld( entity, entity.dimension, entity.getServer().worldServerForDimension( entity.dimension ), (WorldServer) link.dim, new METeleporter( newWorld, link ) );
+				entity.getServer().getPlayers().transferEntityToWorld( entity, entity.dimension, entity.getServer().worldServerForDimension( entity.dimension ), (WorldServer) link.dim, new METeleporter( newWorld, link ) );
 			}
 		}
 
@@ -131,7 +131,7 @@ public class StorageHelper
 		{
 			if( player != null )
 			{
-				entity.worldObj.updateEntityWithOptionalForce( entity, true );
+				entity.world.updateEntityWithOptionalForce( entity, true );
 			}
 
 			for( Entity passanger : passangersOnOtherSide )

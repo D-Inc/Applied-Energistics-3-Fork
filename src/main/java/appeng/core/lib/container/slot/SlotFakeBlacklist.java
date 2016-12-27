@@ -47,7 +47,7 @@ public class SlotFakeBlacklist extends SlotFakeTypeOnly
 	{
 		if( this.getHasStack() )
 		{
-			return this.getStack().func_190916_E() > 0 ? 16 + 14 : 14;
+			return this.getStack().getCount() > 0 ? 16 + 14 : 14;
 		}
 		return -1;
 	}

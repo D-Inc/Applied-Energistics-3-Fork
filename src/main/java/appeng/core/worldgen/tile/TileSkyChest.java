@@ -91,9 +91,9 @@ public class TileSkyChest extends AEBaseInvTile
 		if( !player.isSpectator() )
 		{
 			this.setPlayerOpen( this.getPlayerOpen() + 1 );
-			this.worldObj.addBlockEvent( this.pos, this.getBlockType(), 1, this.numPlayersUsing );
-			this.worldObj.notifyNeighborsOfStateChange( this.pos, this.getBlockType() );
-			this.worldObj.notifyNeighborsOfStateChange( this.pos.down(), this.getBlockType() );
+			this.world.addBlockEvent( this.pos, this.getBlockType(), 1, this.numPlayersUsing );
+			this.world.notifyNeighborsOfStateChange( this.pos, this.getBlockType() );
+			this.world.notifyNeighborsOfStateChange( this.pos.down(), this.getBlockType() );
 
 			if( this.getPlayerOpen() == 1 )
 			{
@@ -109,9 +109,9 @@ public class TileSkyChest extends AEBaseInvTile
 		if( !player.isSpectator() )
 		{
 			this.setPlayerOpen( this.getPlayerOpen() - 1 );
-			this.worldObj.addBlockEvent( this.pos, this.getBlockType(), 1, this.numPlayersUsing );
-			this.worldObj.notifyNeighborsOfStateChange( this.pos, this.getBlockType() );
-			this.worldObj.notifyNeighborsOfStateChange( this.pos.down(), this.getBlockType() );
+			this.world.addBlockEvent( this.pos, this.getBlockType(), 1, this.numPlayersUsing );
+			this.world.notifyNeighborsOfStateChange( this.pos, this.getBlockType() );
+			this.world.notifyNeighborsOfStateChange( this.pos.down(), this.getBlockType() );
 
 			if( this.getPlayerOpen() < 0 )
 			{

@@ -107,7 +107,7 @@ public class ItemCrystalSeed extends AEBaseItem implements IGrowableCrystal
 	{
 		final int newDamage = getProgress( is ) + 1;
 		final ApiMaterials materials = AppEngApi.internalApi().definitions().materials();
-		final int size = is.func_190916_E();
+		final int size = is.getCount();
 
 		if( newDamage == CERTUS + SINGLE_OFFSET )
 		{

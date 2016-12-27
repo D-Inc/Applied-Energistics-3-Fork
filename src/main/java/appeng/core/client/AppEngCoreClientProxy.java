@@ -118,11 +118,11 @@ public class AppEngCoreClientProxy extends AppEngCoreServerProxy
 		}
 	}
 
-	private void spawnAssembler( final World worldObj, final double posX, final double posY, final double posZ, final Object o )
+	private void spawnAssembler( final World world, final double posX, final double posY, final double posZ, final Object o )
 	{
 		final PacketAssemblerAnimation paa = (PacketAssemblerAnimation) o;
 
-		final AssemblerFX fx = new AssemblerFX( Minecraft.getMinecraft().theWorld, posX, posY, posZ, 0.0D, 0.0D, 0.0D, paa.rate, paa.is );
+		final AssemblerFX fx = new AssemblerFX( Minecraft.getMinecraft().world, posX, posY, posZ, 0.0D, 0.0D, 0.0D, paa.rate, paa.is );
 		Minecraft.getMinecraft().effectRenderer.addEffect( fx );
 	}
 
@@ -169,15 +169,15 @@ public class AppEngCoreClientProxy extends AppEngCoreServerProxy
 		Minecraft.getMinecraft().effectRenderer.addEffect( fx );
 	}
 
-	private void spawnLightning( final World worldObj, final double posX, final double posY, final double posZ )
+	private void spawnLightning( final World world, final double posX, final double posY, final double posZ )
 	{
-		final LightningFX fx = new LightningFX( worldObj, posX, posY + 0.3f, posZ, 0.0f, 0.0f, 0.0f );
+		final LightningFX fx = new LightningFX( world, posX, posY + 0.3f, posZ, 0.0f, 0.0f, 0.0f );
 		Minecraft.getMinecraft().effectRenderer.addEffect( fx );
 	}
 
-	private void spawnLightningArc( final World worldObj, final double posX, final double posY, final double posZ, final Vec3d second )
+	private void spawnLightningArc( final World world, final double posX, final double posY, final double posZ, final Vec3d second )
 	{
-		final LightningFX fx = new LightningArcFX( worldObj, posX, posY, posZ, second.xCoord, second.yCoord, second.zCoord, 0.0f, 0.0f, 0.0f );
+		final LightningFX fx = new LightningArcFX( world, posX, posY, posZ, second.xCoord, second.yCoord, second.zCoord, 0.0f, 0.0f, 0.0f );
 		Minecraft.getMinecraft().effectRenderer.addEffect( fx );
 	}
 
@@ -196,7 +196,7 @@ public class AppEngCoreClientProxy extends AppEngCoreServerProxy
 		}
 
 		final Minecraft mc = Minecraft.getMinecraft();
-		final EntityPlayer player = mc.thePlayer;
+		final EntityPlayer player = mc.player;
 		if( player.isSneaking() )
 		{
 			final EnumHand hand;

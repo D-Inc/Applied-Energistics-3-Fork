@@ -170,11 +170,11 @@ public class GuiPatternTerm extends GuiMEMonitorable
 	{
 		if( s.isPlayerSide() )
 		{
-			s.yDisplayPosition = s.getY() + this.ySize - 78 - 5;
+			s.yPos = s.getY() + this.ySize - 78 - 5;
 		}
 		else
 		{
-			s.yDisplayPosition = s.getY() + this.ySize - 78 - 3;
+			s.yPos = s.getY() + this.ySize - 78 - 3;
 		}
 	}
 }

@@ -53,7 +53,7 @@ public class ToolChargedStaff extends AEBasePoweredItem
 					final float dx = (float) ( Platform.getRandomFloat() * target.width + entityBoundingBox.minX );
 					final float dy = (float) ( Platform.getRandomFloat() * target.height + entityBoundingBox.minY );
 					final float dz = (float) ( Platform.getRandomFloat() * target.width + entityBoundingBox.minZ );
-					CommonHelper.proxy.sendToAllNearExcept( null, dx, dy, dz, 32.0, target.worldObj, new PacketLightning( dx, dy, dz ) );
+					CommonHelper.proxy.sendToAllNearExcept( null, dx, dy, dz, 32.0, target.world, new PacketLightning( dx, dy, dz ) );
 				}
 			}
 			target.attackEntityFrom( DamageSource.magic, 6 );

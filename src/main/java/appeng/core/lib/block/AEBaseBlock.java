@@ -178,7 +178,7 @@ public abstract class AEBaseBlock extends Block
 		{
 			if( Platform.isClient() )
 			{
-				final EntityPlayer player = Minecraft.getMinecraft().player;//Renamed in 1.11 Minecraft.getMinecraft().thePlayer;
+				final EntityPlayer player = Minecraft.getMinecraft().player;//Renamed in 1.11 Minecraft.getMinecraft().player;
 				final LookDirection ld = Platform.getPlayerRay( player, Platform.getEyeOffset( player ) );
 
 				final Iterable<AxisAlignedBB> bbs = collisionHandler.getSelectedBoundingBoxesFromPool( w, pos, Minecraft.getMinecraft().player, true );

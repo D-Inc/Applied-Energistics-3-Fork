@@ -131,9 +131,9 @@ public class TilePaint extends AEBaseTile
 			this.isLit = 14;
 		}
 
-		if( this.worldObj != null )
+		if( this.world != null )
 		{
-			this.worldObj.getLightFor( EnumSkyBlock.BLOCK, this.pos );
+			this.world.getLightFor( EnumSkyBlock.BLOCK, this.pos );
 		}
 	}
 
@@ -171,8 +171,8 @@ public class TilePaint extends AEBaseTile
 	public boolean isSideValid( final EnumFacing side )
 	{
 		final BlockPos p = this.pos.offset( side );
-		final IBlockState blk = this.worldObj.getBlockState( p );
-		return blk.getBlock().isSideSolid( this.worldObj.getBlockState( p ), this.worldObj, p, side.getOpposite() );
+		final IBlockState blk = this.world.getBlockState( p );
+		return blk.getBlock().isSideSolid( this.world.getBlockState( p ), this.world, p, side.getOpposite() );
 	}
 
 	private void removeSide( final EnumFacing side )
@@ -211,7 +211,7 @@ public class TilePaint extends AEBaseTile
 
 		if( this.dots == null )
 		{
-			this.worldObj.setBlockToAir( this.pos );
+			this.world.setBlockToAir( this.pos );
 		}
 	}
 
@@ -236,8 +236,8 @@ public class TilePaint extends AEBaseTile
 	{
 		final BlockPos p = this.pos.offset( side );
 
-		final IBlockState blk = this.worldObj.getBlockState( p );
-		if( blk.getBlock().isSideSolid( this.worldObj.getBlockState( p ), this.worldObj, p, side.getOpposite() ) )
+		final IBlockState blk = this.world.getBlockState( p );
+		if( blk.getBlock().isSideSolid( this.world.getBlockState( p ), this.world, p, side.getOpposite() ) )
 		{
 			final ItemPaintBall ipb = (ItemPaintBall) type.getItem();
 

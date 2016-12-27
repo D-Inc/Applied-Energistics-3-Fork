@@ -87,9 +87,9 @@ public class WrapperInventoryRange implements IInventory
 	}
 
 	@Override
-	public ItemStack decStackSize( final int var1, final int var2 )
+	public ItemStack decrStackSize( final int var1, final int var2 )
 	{
-		return this.src.decStackSize( this.getSlots()[var1], var2 );
+		return this.src.decrStackSize( this.getSlots()[var1], var2 );
 	}
 
 	@Override
@@ -117,9 +117,9 @@ public class WrapperInventoryRange implements IInventory
 	}
 
 	@Override
-	public boolean isUseableByPlayer( final EntityPlayer var1 )
+	public boolean isUsableByPlayer( final EntityPlayer var1 )
 	{
-		return this.src.isUseableByPlayer( var1 );
+		return this.src.isUsableByPlayer( var1 );
 	}
 
 	@Override

@@ -77,7 +77,7 @@ public class PacketPartPlacement extends AppEngPacket
 		final EntityPlayerMP sender = (EntityPlayerMP) player;
 		CommonHelper.proxy.updateRenderMode( sender );
 		PartPlacement.setEyeHeight( this.eyeHeight );
-		PartPlacement.place( sender.getHeldItem( hand ), new BlockPos( this.x, this.y, this.z ), EnumFacing.VALUES[this.face], sender, hand, sender.worldObj, PartPlacement.PlaceType.INTERACT_FIRST_PASS, 0 );
+		PartPlacement.place( sender.getHeldItem( hand ), new BlockPos( this.x, this.y, this.z ), EnumFacing.VALUES[this.face], sender, hand, sender.world, PartPlacement.PlaceType.INTERACT_FIRST_PASS, 0 );
 		CommonHelper.proxy.updateRenderMode( null );
 	}
 }

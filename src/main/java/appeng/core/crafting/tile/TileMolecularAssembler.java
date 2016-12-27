@@ -510,7 +510,7 @@ public class TileMolecularAssembler extends AENetworkInvTile implements IUpgrade
 
 				try
 				{
-					final TargetPoint where = new TargetPoint( this.worldObj.provider.getDimension(), this.pos.getX(), this.pos.getY(), this.pos.getZ(), 32 );
+					final TargetPoint where = new TargetPoint( this.world.provider.getDimension(), this.pos.getX(), this.pos.getY(), this.pos.getZ(), 32 );
 					final IAEItemStack item = AEItemStack.create( output );
 					NetworkHandler.instance.sendToAllAround( new PacketAssemblerAnimation( this.pos, (byte) speed, item ), where );
 				}
@@ -537,7 +537,7 @@ public class TileMolecularAssembler extends AENetworkInvTile implements IUpgrade
 				final ItemStack is = this.inv.getStackInSlot( x );
 				if( is != null )
 				{
-					if( this.myPlan == null || !this.myPlan.isValidItemForSlot( x, is, this.worldObj ) )
+					if( this.myPlan == null || !this.myPlan.isValidItemForSlot( x, is, this.world ) )
 					{
 						this.inv.setInventorySlotContents( 9, is );
 						this.inv.setInventorySlotContents( x, null );
@@ -605,9 +605,9 @@ public class TileMolecularAssembler extends AENetworkInvTile implements IUpgrade
 			return output;
 		}
 
-		final int size = output.func_190916_E();
+		final int size = output.getCount();
 		output = adaptor.addItems( output );
-		final int newSize = output == null ? 0 : output.func_190916_E();
+		final int newSize = output == null ? 0 : output.getCount();
 
 		if( size != newSize )
 		{

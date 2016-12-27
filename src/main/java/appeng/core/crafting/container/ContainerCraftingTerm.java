@@ -81,7 +81,7 @@ public class ContainerCraftingTerm extends ContainerMEMonitorable implements IAE
 			ic.setInventorySlotContents( x, this.craftingSlots[x].getStack() );
 		}
 
-		this.outputSlot.putStack( CraftingManager.getInstance().findMatchingRecipe( ic, this.getPlayerInv().player.worldObj ) );
+		this.outputSlot.putStack( CraftingManager.getInstance().findMatchingRecipe( ic, this.getPlayerInv().player.world ) );
 	}
 
 	@Override

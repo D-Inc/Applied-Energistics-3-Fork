@@ -45,7 +45,7 @@ public class AppEngCraftingSlot extends AppEngSlot
 	/**
 	 * The player that is using the GUI where this slot resides.
 	 */
-	private final EntityPlayer thePlayer;
+	private final EntityPlayer player;
 
 	/**
 	 * The number of items that have been crafted so far. Gets passed to ItemStack.onCrafting before being reset.
@@ -55,7 +55,7 @@ public class AppEngCraftingSlot extends AppEngSlot
 	public AppEngCraftingSlot( final EntityPlayer par1EntityPlayer, final IInventory par2IInventory, final IInventory par3IInventory, final int par4, final int par5, final int par6 )
 	{
 		super( par3IInventory, par4, par5, par6 );
-		this.thePlayer = par1EntityPlayer;
+		this.player = par1EntityPlayer;
 		this.craftMatrix = par2IInventory;
 	}
 
@@ -85,64 +85,64 @@ public class AppEngCraftingSlot extends AppEngSlot
 	@Override
 	protected void onCrafting( final ItemStack par1ItemStack )
 	{
-		//TODO: worldObj not found attempting to use .getEntityWorld() instead here. -legracen
-		par1ItemStack.onCrafting( this.thePlayer.getEntityWorld(), this.thePlayer, this.amountCrafted );//.worldObj, this.thePlayer, this.amountCrafted );
+		//TODO: world not found attempting to use .getEntityWorld() instead here. -legracen
+		par1ItemStack.onCrafting( this.player.getEntityWorld(), this.player, this.amountCrafted );//.world, this.player, this.amountCrafted );
 		this.amountCrafted = 0;
 
 		if( par1ItemStack.getItem() == Item.getItemFromBlock( Blocks.CRAFTING_TABLE ) )
 		{
-			this.thePlayer.addStat( AchievementList.BUILD_WORK_BENCH, 1 );
+			this.player.addStat( AchievementList.BUILD_WORK_BENCH, 1 );
 		}
 
 		if( par1ItemStack.getItem() instanceof ItemPickaxe )
 		{
-			this.thePlayer.addStat( AchievementList.BUILD_PICKAXE, 1 );
+			this.player.addStat( AchievementList.BUILD_PICKAXE, 1 );
 		}
 
 		if( par1ItemStack.getItem() == Item.getItemFromBlock( Blocks.FURNACE ) )
 		{
-			this.thePlayer.addStat( AchievementList.BUILD_FURNACE, 1 );
+			this.player.addStat( AchievementList.BUILD_FURNACE, 1 );
 		}
 
 		if( par1ItemStack.getItem() instanceof ItemHoe )
 		{
-			this.thePlayer.addStat( AchievementList.BUILD_HOE, 1 );
+			this.player.addStat( AchievementList.BUILD_HOE, 1 );
 		}
 
 		if( par1ItemStack.getItem() == Items.BREAD )
 		{
-			this.thePlayer.addStat( AchievementList.MAKE_BREAD, 1 );
+			this.player.addStat( AchievementList.MAKE_BREAD, 1 );
 		}
 
 		if( par1ItemStack.getItem() == Items.CAKE )
 		{
-			this.thePlayer.addStat( AchievementList.BAKE_CAKE, 1 );
+			this.player.addStat( AchievementList.BAKE_CAKE, 1 );
 		}
 
 		if( par1ItemStack.getItem() instanceof ItemPickaxe && ( (ItemTool) par1ItemStack.getItem() ).getToolMaterial() != Item.ToolMaterial.WOOD )
 		{
-			this.thePlayer.addStat( AchievementList.BUILD_BETTER_PICKAXE, 1 );
+			this.player.addStat( AchievementList.BUILD_BETTER_PICKAXE, 1 );
 		}
 
 		if( par1ItemStack.getItem() instanceof ItemSword )
 		{
-			this.thePlayer.addStat( AchievementList.BUILD_SWORD, 1 );
+			this.player.addStat( AchievementList.BUILD_SWORD, 1 );
 		}
 
 		if( par1ItemStack.getItem() == Item.getItemFromBlock( Blocks.ENCHANTING_TABLE ) )
 		{
-			this.thePlayer.addStat( AchievementList.ENCHANTMENTS, 1 );
+			this.player.addStat( AchievementList.ENCHANTMENTS, 1 );
 		}
 
 		if( par1ItemStack.getItem() == Item.getItemFromBlock( Blocks.BOOKSHELF ) )
 		{
-			this.thePlayer.addStat( AchievementList.BOOKCASE, 1 );
+			this.player.addStat( AchievementList.BOOKCASE, 1 );
 		}
 	}
 
 	//TODO: bad overide possibly fixed need verification. -legracen
 	@Override
-	public void onPickupFromSlot( final EntityPlayer playerIn, final ItemStack stack )
+	public ItemStack onTake( final EntityPlayer playerIn, final ItemStack stack )
 	{
 		net.minecraftforge.fml.common.FMLCommonHandler.instance().firePlayerCraftingEvent( playerIn, stack, this.craftMatrix );
 		this.onCrafting( stack );
@@ -154,7 +154,7 @@ public class AppEngCraftingSlot extends AppEngSlot
 			ic.setInventorySlotContents( x, this.craftMatrix.getStackInSlot( x ) );
 		}
 
-		//TODO: worldObj not found attempting to use .world instead here. also error with aitemstack definition possible. -legracen
+		//TODO: world not found attempting to use .world instead here. also error with aitemstack definition possible. -legracen
 		final ItemStack[] aitemstack = CraftingManager.getInstance().getRemainingItems( ic, playerIn.getEntityWorld());
 
 		for( int x = 0; x < this.craftMatrix.getSizeInventory(); x++ )
@@ -180,9 +180,9 @@ public class AppEngCraftingSlot extends AppEngSlot
 				{
 					this.craftMatrix.setInventorySlotContents( i, itemstack2 );
 				}
-				else if( !this.thePlayer.inventory.addItemStackToInventory( itemstack2 ) )
+				else if( !this.player.inventory.addItemStackToInventory( itemstack2 ) )
 				{
-					this.thePlayer.dropItem( itemstack2, false );
+					this.player.dropItem( itemstack2, false );
 				}
 			}
 		}
@@ -193,7 +193,7 @@ public class AppEngCraftingSlot extends AppEngSlot
 	 * stack.
 	 */
 	@Override
-	public ItemStack decStackSize( final int par1 )
+	public ItemStack decrStackSize( final int par1 )
 	{
 		if( this.getHasStack() )
 		{

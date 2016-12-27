@@ -44,7 +44,7 @@ package appeng.core.lib.util.inv;
 // }
 //
 // @Override
-// public ItemStack decStackSize( int i, int j )
+// public ItemStack decrStackSize( int i, int j )
 // {
 // return null;
 // }
@@ -86,7 +86,7 @@ package appeng.core.lib.util.inv;
 // }
 //
 // @Override
-// public boolean isUseableByPlayer( EntityPlayer entityplayer )
+// public boolean isUsableByPlayer( EntityPlayer entityplayer )
 // {
 // return false;
 // }

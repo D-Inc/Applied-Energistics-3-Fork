@@ -48,7 +48,7 @@ public class SlotME extends Slot
 	}
 
 	@Override
-	public void onPickupFromSlot( final EntityPlayer par1EntityPlayer, final ItemStack par2ItemStack )
+	public ItemStack onTake( final EntityPlayer par1EntityPlayer, final ItemStack par2ItemStack )
 	{
 	}
 
@@ -91,7 +91,7 @@ public class SlotME extends Slot
 	}
 
 	@Override
-	public ItemStack decStackSize( final int par1 )
+	public ItemStack decrStackSize( final int par1 )
 	{
 		return null;
 	}

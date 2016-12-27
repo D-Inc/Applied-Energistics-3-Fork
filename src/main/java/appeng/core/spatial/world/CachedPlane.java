@@ -283,7 +283,7 @@ public class CachedPlane
 					final BlockPos pos = new BlockPos( x, y, z );
 
 					// attempt recovery...
-					te.setWorldObj( this.world );
+					te.setworld( this.world );
 					te.setPos( pos );
 					c.c.addTileEntity( new BlockPos( c.x, y + y, c.z ), te );
 					// c.c.setChunkTileEntity( c.x, y + y, c.z, te );

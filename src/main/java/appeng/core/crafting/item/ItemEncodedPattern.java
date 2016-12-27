@@ -79,7 +79,7 @@ public class ItemEncodedPattern extends AEBaseItem implements ICraftingPatternIt
 
 			final InventoryPlayer inv = player.inventory;
 
-			ItemStack is = (ItemStack) AppEngApi.internalApi().definitions().materials().blankPattern().maybeStack( stack.func_190916_E() ).orElse( null );
+			ItemStack is = (ItemStack) AppEngApi.internalApi().definitions().materials().blankPattern().maybeStack( stack.getCount() ).orElse( null );
 			if( is != null )
 			{
 				for( int s = 0; s < player.inventory.getSizeInventory(); s++ )
@@ -99,7 +99,7 @@ public class ItemEncodedPattern extends AEBaseItem implements ICraftingPatternIt
 	@Override
 	public void addCheckedInformation( final ItemStack stack, final EntityPlayer player, final List<String> lines, final boolean displayMoreInfo )
 	{
-		final ICraftingPatternDetails details = this.getPatternForItem( stack, player.worldObj );
+		final ICraftingPatternDetails details = this.getPatternForItem( stack, player.world );
 
 		if( details == null )
 		{

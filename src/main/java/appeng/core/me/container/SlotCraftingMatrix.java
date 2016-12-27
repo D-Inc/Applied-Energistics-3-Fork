@@ -58,9 +58,9 @@ public class SlotCraftingMatrix extends AppEngSlot
 	}
 
 	@Override
-	public ItemStack decStackSize( final int par1 )
+	public ItemStack decrStackSize( final int par1 )
 	{
-		final ItemStack is = super.decStackSize( par1 );
+		final ItemStack is = super.decrStackSize( par1 );
 		this.c.onCraftMatrixChanged( this.inventory );
 		return is;
 	}

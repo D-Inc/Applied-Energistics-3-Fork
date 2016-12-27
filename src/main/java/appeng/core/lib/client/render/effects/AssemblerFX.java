@@ -46,7 +46,7 @@ public class AssemblerFX extends Particle implements ICanDie
 		this.motionZ = 0;
 		this.speed = speed;
 		this.fi = new EntityFloatingItem( this, w, x, y, z, is.getItemStack() );
-		w.spawnEntityInWorld( this.fi );
+		w.spawnEntity( this.fi );
 		this.particleMaxAge = (int) Math.ceil( Math.max( 1, 100.0f / speed ) ) + 2;
 	}
 
@@ -76,7 +76,7 @@ public class AssemblerFX extends Particle implements ICanDie
 		}
 
 		this.motionY -= 0.04D * (double) this.particleGravity;
-		this.moveEntity( this.motionX, this.motionY, this.motionZ );
+		this.move( this.motionX, this.motionY, this.motionZ );
 		this.motionX *= 0.9800000190734863D;
 		this.motionY *= 0.9800000190734863D;
 		this.motionZ *= 0.9800000190734863D;
@@ -102,7 +102,7 @@ public class AssemblerFX extends Particle implements ICanDie
 			// if ( CommonHelper.proxy.shouldAddParticles( r ) )
 			for( int x = 0; x < (int) Math.ceil( this.speed / 5 ); x++ )
 			{
-				CommonHelper.proxy.spawnEffect( EffectType.Crafting, this.worldObj, this.posX, this.posY, this.posZ, null );
+				CommonHelper.proxy.spawnEffect( EffectType.Crafting, this.world, this.posX, this.posY, this.posZ, null );
 			}
 		}
 	}

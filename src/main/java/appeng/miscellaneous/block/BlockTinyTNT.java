@@ -88,7 +88,7 @@ public class BlockTinyTNT extends AEBaseBlock implements ICustomCollision
 		if( !w.isRemote )
 		{
 			final EntityTinyTNTPrimed primedTinyTNTEntity = new EntityTinyTNTPrimed( w, pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F, igniter );
-			w.spawnEntityInWorld( primedTinyTNTEntity );
+			w.spawnEntity( primedTinyTNTEntity );
 			w.playSound( null, primedTinyTNTEntity.posX, primedTinyTNTEntity.posY, primedTinyTNTEntity.posZ, SoundEvents.ENTITY_TNT_PRIMED, SoundCategory.BLOCKS, 1, 1 );
 		}
 	}
@@ -143,12 +143,12 @@ public class BlockTinyTNT extends AEBaseBlock implements ICustomCollision
 		{
 			final EntityTinyTNTPrimed primedTinyTNTEntity = new EntityTinyTNTPrimed( w, pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F, exp.getExplosivePlacedBy() );
 			primedTinyTNTEntity.setFuse( w.rand.nextInt( primedTinyTNTEntity.getFuse() / 4 ) + primedTinyTNTEntity.getFuse() / 8 );
-			w.spawnEntityInWorld( primedTinyTNTEntity );
+			w.spawnEntity( primedTinyTNTEntity );
 		}
 	}
 
 	@Override
-	public Iterable<AxisAlignedBB> getSelectedBoundingBoxesFromPool( final World w, final BlockPos pos, final Entity thePlayer, final boolean b )
+	public Iterable<AxisAlignedBB> getSelectedBoundingBoxesFromPool( final World w, final BlockPos pos, final Entity player, final boolean b )
 	{
 		return Collections.singletonList( new AxisAlignedBB( 0.25, 0, 0.25, 0.75, 0.5, 0.75 ) );
 	}
