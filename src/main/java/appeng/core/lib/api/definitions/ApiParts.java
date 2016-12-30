@@ -22,113 +22,110 @@ package appeng.core.lib.api.definitions;
 import appeng.api.definitions.IItemDefinition;
 import appeng.core.api.exceptions.MissingDefinition;
 import appeng.core.lib.bootstrap.FeatureFactory;
-//TODO: DamagedItemDefinition class does not exist. -legracen
-import appeng.core.lib.features.DamagedItemDefinition;
 import appeng.core.me.api.parts.IPartHelper;
 import appeng.core.me.item.ItemMultiPart;
-import appeng.core.me.item.ItemMultipartRendering;
 import appeng.core.me.item.PartType;
 
 //TODO 1.11-CN:A - @Elix_x has plans...
 /**
  * Internal implementation for the API parts
  */
-public final class ApiParts// implements IParts
+public  class ApiParts// implements IParts
 {
-	private final IItemDefinition cableSmart;
-	private final IItemDefinition cableCovered;
-	private final IItemDefinition cableGlass;
-	private final IItemDefinition cableDense;
-	// private final AEColoredItemDefinition lumenCableSmart;
-	// private final AEColoredItemDefinition lumenCableCovered;
-	// private final AEColoredItemDefinition lumenCableGlass;
-	// private final AEColoredItemDefinition lumenCableDense;
-	private final IItemDefinition quartzFiber;
-	private final IItemDefinition toggleBus;
-	private final IItemDefinition invertedToggleBus;
-	private final IItemDefinition storageBus;
-	private final IItemDefinition importBus;
-	private final IItemDefinition exportBus;
-	private final IItemDefinition iface;
-	private final IItemDefinition levelEmitter;
-	private final IItemDefinition annihilationPlane;
-	private final IItemDefinition identityAnnihilationPlane;
-	private final IItemDefinition formationPlane;
-	private final IItemDefinition p2PTunnelME;
-	private final IItemDefinition p2PTunnelRedstone;
-	private final IItemDefinition p2PTunnelItems;
-	private final IItemDefinition p2PTunnelLiquids;
-	// private final IItemDefinition p2PTunnelEU;
-	// private final IItemDefinition p2PTunnelRF;
-	private final IItemDefinition p2PTunnelLight;
-	// private final IItemDefinition p2PTunnelOpenComputers;
-	// private final IItemDefinition p2PTunnelPneumaticCraft;
-	private final IItemDefinition cableAnchor;
-	private final IItemDefinition monitor;
-	private final IItemDefinition semiDarkMonitor;
-	private final IItemDefinition darkMonitor;
-	private final IItemDefinition interfaceTerminal;
-	private final IItemDefinition patternTerminal;
-	private final IItemDefinition craftingTerminal;
-	private final IItemDefinition terminal;
-	private final IItemDefinition storageMonitor;
-	private final IItemDefinition conversionMonitor;
+	private  IItemDefinition cableSmart;
+	private  IItemDefinition cableCovered;
+	private  IItemDefinition cableGlass;
+	private  IItemDefinition cableDense;
+	// private  AEColoredItemDefinition lumenCableSmart;
+	// private  AEColoredItemDefinition lumenCableCovered;
+	// private  AEColoredItemDefinition lumenCableGlass;
+	// private  AEColoredItemDefinition lumenCableDense;
+	private  IItemDefinition quartzFiber;
+	private  IItemDefinition toggleBus;
+	private  IItemDefinition invertedToggleBus;
+	private  IItemDefinition storageBus;
+	private  IItemDefinition importBus;
+	private  IItemDefinition exportBus;
+	private  IItemDefinition iface;
+	private  IItemDefinition levelEmitter;
+	private  IItemDefinition annihilationPlane;
+	private  IItemDefinition identityAnnihilationPlane;
+	private  IItemDefinition formationPlane;
+	private  IItemDefinition p2PTunnelME;
+	private  IItemDefinition p2PTunnelRedstone;
+	private  IItemDefinition p2PTunnelItems;
+	private  IItemDefinition p2PTunnelLiquids;
+	// private  IItemDefinition p2PTunnelEU;
+	// private  IItemDefinition p2PTunnelRF;
+	private  IItemDefinition p2PTunnelLight;
+	// private  IItemDefinition p2PTunnelOpenComputers;
+	// private  IItemDefinition p2PTunnelPneumaticCraft;
+	private  IItemDefinition cableAnchor;
+	private  IItemDefinition monitor;
+	private  IItemDefinition semiDarkMonitor;
+	private  IItemDefinition darkMonitor;
+	private  IItemDefinition interfaceTerminal;
+	private  IItemDefinition patternTerminal;
+	private  IItemDefinition craftingTerminal;
+	private  IItemDefinition terminal;
+	private  IItemDefinition storageMonitor;
+	private  IItemDefinition conversionMonitor;
 
 	public ApiParts( FeatureFactory registry, IPartHelper partHelper )
 	{
-		final ItemMultiPart itemMultiPart = new ItemMultiPart( partHelper );
-		registry.item( "multipart", () -> itemMultiPart ).rendering( new ItemMultipartRendering( itemMultiPart ) ).build();
-
-		this.cableSmart = constructColoredDefinition( itemMultiPart, PartType.CableSmart );
-		this.cableCovered = constructColoredDefinition( itemMultiPart, PartType.CableCovered );
-		this.cableGlass = constructColoredDefinition( itemMultiPart, PartType.CableGlass );
-		this.cableDense = constructColoredDefinition( itemMultiPart, PartType.CableDense );
-		// this.lumenCableSmart = Optional.absent(); // has yet to be implemented, no PartType defined for it yet
-		// this.lumenCableCovered = Optional.absent(); // has yet to be implemented, no PartType defined for it yet
-		// this.lumenCableGlass = Optional.absent(); // has yet to be implemented, no PartType defined for it yet
-		// this.lumenCableDense = Optional.absent(); // has yet to be implemented, no PartType defined for it yet
-		this.quartzFiber = new DamagedItemDefinition( "part.quartz_fiber", itemMultiPart.createPart( PartType.QuartzFiber ) );
-		this.toggleBus = new DamagedItemDefinition( "part.toggle_bus", itemMultiPart.createPart( PartType.ToggleBus ) );
-		this.invertedToggleBus = new DamagedItemDefinition( "part.toggle_bus.inverted", itemMultiPart.createPart( PartType.InvertedToggleBus ) );
-		this.storageBus = new DamagedItemDefinition( "part.bus.storage", itemMultiPart.createPart( PartType.StorageBus ) );
-		this.importBus = new DamagedItemDefinition( "part.bus.import", itemMultiPart.createPart( PartType.ImportBus ) );
-		this.exportBus = new DamagedItemDefinition( "part.bus.export", itemMultiPart.createPart( PartType.ExportBus ) );
-		this.iface = new DamagedItemDefinition( "part.interface", itemMultiPart.createPart( PartType.Interface ) );
-		this.levelEmitter = new DamagedItemDefinition( "part.level_emitter", itemMultiPart.createPart( PartType.LevelEmitter ) );
-		this.annihilationPlane = new DamagedItemDefinition( "part.plane.annihilation", itemMultiPart.createPart( PartType.AnnihilationPlane ) );
-		this.identityAnnihilationPlane = new DamagedItemDefinition( "part.plane.annihiliation.identity", itemMultiPart.createPart( PartType.IdentityAnnihilationPlane ) );
-		this.formationPlane = new DamagedItemDefinition( "part.plane.formation", itemMultiPart.createPart( PartType.FormationPlane ) );
-		this.p2PTunnelME = new DamagedItemDefinition( "part.tunnel.me", itemMultiPart.createPart( PartType.P2PTunnelME ) );
-		this.p2PTunnelRedstone = new DamagedItemDefinition( "part.tunnel.redstone", itemMultiPart.createPart( PartType.P2PTunnelRedstone ) );
-		this.p2PTunnelItems = new DamagedItemDefinition( "part.tunnel.item", itemMultiPart.createPart( PartType.P2PTunnelItems ) );
-		this.p2PTunnelLiquids = new DamagedItemDefinition( "part.tunnel.fluid", itemMultiPart.createPart( PartType.P2PTunnelLiquids ) );
-		// this.p2PTunnelEU = new DamagedItemDefinition( itemMultiPart.createPart( PartType.P2PTunnelEU ) );
-		// this.p2PTunnelRF = new DamagedItemDefinition( itemMultiPart.createPart( PartType.P2PTunnelRF ) );
-		this.p2PTunnelLight = new DamagedItemDefinition( "part.tunnel.light", itemMultiPart.createPart( PartType.P2PTunnelLight ) );
-		// this.p2PTunnelOpenComputers = new DamagedItemDefinition( itemMultiPart.createPart(
-		// PartType.P2PTunnelOpenComputers ) );
-		// this.p2PTunnelPneumaticCraft = new DamagedItemDefinition( itemMultiPart.createPart(
-		// PartType.P2PTunnelPressure ) );
-		this.cableAnchor = new DamagedItemDefinition( "part.cable_anchor", itemMultiPart.createPart( PartType.CableAnchor ) );
-		this.monitor = new DamagedItemDefinition( "part.monitor", itemMultiPart.createPart( PartType.Monitor ) );
-		this.semiDarkMonitor = new DamagedItemDefinition( "part.monitor.semi_dark", itemMultiPart.createPart( PartType.SemiDarkMonitor ) );
-		this.darkMonitor = new DamagedItemDefinition( "part.monitor.dark", itemMultiPart.createPart( PartType.DarkMonitor ) );
-		this.interfaceTerminal = new DamagedItemDefinition( "part.terminal.interface", itemMultiPart.createPart( PartType.InterfaceTerminal ) );
-		this.patternTerminal = new DamagedItemDefinition( "part.terminal.pattern", itemMultiPart.createPart( PartType.PatternTerminal ) );
-		this.craftingTerminal = new DamagedItemDefinition( "part.terminal.crafting", itemMultiPart.createPart( PartType.CraftingTerminal ) );
-		this.terminal = new DamagedItemDefinition( "part.terminal", itemMultiPart.createPart( PartType.Terminal ) );
-		this.storageMonitor = new DamagedItemDefinition( "part.monitor.storage", itemMultiPart.createPart( PartType.StorageMonitor ) );
-		this.conversionMonitor = new DamagedItemDefinition( "part.monitor.conversion", itemMultiPart.createPart( PartType.ConversionMonitor ) );
+//		 ItemMultiPart itemMultiPart = new ItemMultiPart( partHelper );
+//		registry.item( "multipart", () -> itemMultiPart ).rendering( new ItemMultipartRendering( itemMultiPart ) ).build();
+//
+//		this.cableSmart = constructColoredDefinition( itemMultiPart, PartType.CableSmart );
+//		this.cableCovered = constructColoredDefinition( itemMultiPart, PartType.CableCovered );
+//		this.cableGlass = constructColoredDefinition( itemMultiPart, PartType.CableGlass );
+//		this.cableDense = constructColoredDefinition( itemMultiPart, PartType.CableDense );
+//		// this.lumenCableSmart = Optional.absent(); // has yet to be implemented, no PartType defined for it yet
+//		// this.lumenCableCovered = Optional.absent(); // has yet to be implemented, no PartType defined for it yet
+//		// this.lumenCableGlass = Optional.absent(); // has yet to be implemented, no PartType defined for it yet
+//		// this.lumenCableDense = Optional.absent(); // has yet to be implemented, no PartType defined for it yet
+//		this.quartzFiber = new DamagedItemDefinition( "part.quartz_fiber", itemMultiPart.createPart( PartType.QuartzFiber ) );
+//		this.toggleBus = new DamagedItemDefinition( "part.toggle_bus", itemMultiPart.createPart( PartType.ToggleBus ) );
+//		this.invertedToggleBus = new DamagedItemDefinition( "part.toggle_bus.inverted", itemMultiPart.createPart( PartType.InvertedToggleBus ) );
+//		this.storageBus = new DamagedItemDefinition( "part.bus.storage", itemMultiPart.createPart( PartType.StorageBus ) );
+//		this.importBus = new DamagedItemDefinition( "part.bus.import", itemMultiPart.createPart( PartType.ImportBus ) );
+//		this.exportBus = new DamagedItemDefinition( "part.bus.export", itemMultiPart.createPart( PartType.ExportBus ) );
+//		this.iface = new DamagedItemDefinition( "part.interface", itemMultiPart.createPart( PartType.Interface ) );
+//		this.levelEmitter = new DamagedItemDefinition( "part.level_emitter", itemMultiPart.createPart( PartType.LevelEmitter ) );
+//		this.annihilationPlane = new DamagedItemDefinition( "part.plane.annihilation", itemMultiPart.createPart( PartType.AnnihilationPlane ) );
+//		this.identityAnnihilationPlane = new DamagedItemDefinition( "part.plane.annihiliation.identity", itemMultiPart.createPart( PartType.IdentityAnnihilationPlane ) );
+//		this.formationPlane = new DamagedItemDefinition( "part.plane.formation", itemMultiPart.createPart( PartType.FormationPlane ) );
+//		this.p2PTunnelME = new DamagedItemDefinition( "part.tunnel.me", itemMultiPart.createPart( PartType.P2PTunnelME ) );
+//		this.p2PTunnelRedstone = new DamagedItemDefinition( "part.tunnel.redstone", itemMultiPart.createPart( PartType.P2PTunnelRedstone ) );
+//		this.p2PTunnelItems = new DamagedItemDefinition( "part.tunnel.item", itemMultiPart.createPart( PartType.P2PTunnelItems ) );
+//		this.p2PTunnelLiquids = new DamagedItemDefinition( "part.tunnel.fluid", itemMultiPart.createPart( PartType.P2PTunnelLiquids ) );
+//		// this.p2PTunnelEU = new DamagedItemDefinition( itemMultiPart.createPart( PartType.P2PTunnelEU ) );
+//		// this.p2PTunnelRF = new DamagedItemDefinition( itemMultiPart.createPart( PartType.P2PTunnelRF ) );
+//		this.p2PTunnelLight = new DamagedItemDefinition( "part.tunnel.light", itemMultiPart.createPart( PartType.P2PTunnelLight ) );
+//		// this.p2PTunnelOpenComputers = new DamagedItemDefinition( itemMultiPart.createPart(
+//		// PartType.P2PTunnelOpenComputers ) );
+//		// this.p2PTunnelPneumaticCraft = new DamagedItemDefinition( itemMultiPart.createPart(
+//		// PartType.P2PTunnelPressure ) );
+//		this.cableAnchor = new DamagedItemDefinition( "part.cable_anchor", itemMultiPart.createPart( PartType.CableAnchor ) );
+//		this.monitor = new DamagedItemDefinition( "part.monitor", itemMultiPart.createPart( PartType.Monitor ) );
+//		this.semiDarkMonitor = new DamagedItemDefinition( "part.monitor.semi_dark", itemMultiPart.createPart( PartType.SemiDarkMonitor ) );
+//		this.darkMonitor = new DamagedItemDefinition( "part.monitor.dark", itemMultiPart.createPart( PartType.DarkMonitor ) );
+//		this.interfaceTerminal = new DamagedItemDefinition( "part.terminal.interface", itemMultiPart.createPart( PartType.InterfaceTerminal ) );
+//		this.patternTerminal = new DamagedItemDefinition( "part.terminal.pattern", itemMultiPart.createPart( PartType.PatternTerminal ) );
+//		this.craftingTerminal = new DamagedItemDefinition( "part.terminal.crafting", itemMultiPart.createPart( PartType.CraftingTerminal ) );
+//		this.terminal = new DamagedItemDefinition( "part.terminal", itemMultiPart.createPart( PartType.Terminal ) );
+//		this.storageMonitor = new DamagedItemDefinition( "part.monitor.storage", itemMultiPart.createPart( PartType.StorageMonitor ) );
+//		this.conversionMonitor = new DamagedItemDefinition( "part.monitor.conversion", itemMultiPart.createPart( PartType.ConversionMonitor ) );
 	}
 
-	private static IItemDefinition constructColoredDefinition( final ItemMultiPart target, final PartType type )
+	private static IItemDefinition constructColoredDefinition(  ItemMultiPart target,  PartType type )
 	{
 		return null;
-		/*final ColoredItemDefinition definition = new ColoredItemDefinition();
+		/* ColoredItemDefinition definition = new ColoredItemDefinition();
 
-		for( final AEColor color : AEColor.values() )
+		for(  AEColor color : AEColor.values() )
 		{
-			final ItemStackSrc multiPartSource = target.createPart( type, color );
+			 ItemStackSrc multiPartSource = target.createPart( type, color );
 
 			definition.add( color, multiPartSource );
 		}

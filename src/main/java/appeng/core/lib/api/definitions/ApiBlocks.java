@@ -129,418 +129,418 @@ public final class ApiBlocks// implements IBlocks
 	/* @Override */
 	public IBlockDefinition quartzOre()
 	{
-		return this.quartzOre;
+		return null;
 	}
 
 	/* @Override */
 	public IBlockDefinition quartzOreCharged()
 	{
-		return this.quartzOreCharged;
+		return null;
 	}
 
 	/* @Override */
 	public IBlockDefinition matrixFrame()
 	{
-		return this.matrixFrame;
+		return null;
 	}
 
 	/* @Override */
 	public IBlockDefinition quartzBlock()
 	{
-		return this.quartzBlock;
+		return null;
 	}
 
 	/* @Override */
 	public IBlockDefinition quartzPillar()
 	{
-		return this.quartzPillar;
+		return null;
 	}
 
 	/* @Override */
 	public IBlockDefinition chiseledQuartzBlock()
 	{
-		return this.chiseledQuartzBlock;
+		return null;
 	}
 
 	/* @Override */
 	public IBlockDefinition quartzGlass()
 	{
-		return this.quartzGlass;
+		return null;
 	}
 
 	/* @Override */
 	public IBlockDefinition quartzVibrantGlass()
 	{
-		return this.quartzVibrantGlass;
+		return null;
 	}
 
 	/* @Override */
 	public IBlockDefinition quartzFixture()
 	{
-		return this.quartzFixture;
+		return null;
 	}
 
 	/* @Override */
 	public IBlockDefinition fluixBlock()
 	{
-		return this.fluixBlock;
+		return null;
 	}
 
 	/* @Override */
 	public IBlockDefinition skyStoneBlock()
 	{
-		return this.skyStoneBlock;
+		return null;
 	}
 
 	/* @Override */
 	public IBlockDefinition smoothSkyStoneBlock()
 	{
-		return this.smoothSkyStoneBlock;
+		return null;
 	}
 
 	/* @Override */
 	public IBlockDefinition skyStoneBrick()
 	{
-		return this.skyStoneBrick;
+		return null;
 	}
 
 	/* @Override */
 	public IBlockDefinition skyStoneSmallBrick()
 	{
-		return this.skyStoneSmallBrick;
+		return null;
 	}
 
 	/* @Override */
 	public IBlockDefinition skyStoneChest()
 	{
-		return this.skyStoneChest;
+		return null;
 	}
 
 	/* @Override */
 	public IBlockDefinition smoothSkyStoneChest()
 	{
-		return this.smoothSkyStoneChest;
+		return null;
 	}
 
 	/* @Override */
 	public IBlockDefinition skyCompass()
 	{
-		return this.skyCompass;
+		return null;
 	}
 
 	/* @Override */
 	public IBlockDefinition skyStoneStairs()
 	{
-		return this.skyStoneStairs;
+		return null;
 	}
 
 	/* @Override */
 	public IBlockDefinition smoothSkyStoneStairs()
 	{
-		return this.smoothSkyStoneStairs;
+		return null;
 	}
 
 	/* @Override */
 	public IBlockDefinition skyStoneBrickStairs()
 	{
-		return this.skyStoneBrickStairs;
+		return null;
 	}
 
 	/* @Override */
 	public IBlockDefinition skyStoneSmallBrickStairs()
 	{
-		return this.skyStoneSmallBrickStairs;
+		return null;
 	}
 
 	/* @Override */
 	public IBlockDefinition fluixStairs()
 	{
-		return this.fluixStairs;
+		return null;
 	}
 
 	/* @Override */
 	public IBlockDefinition quartzStairs()
 	{
-		return this.quartzStairs;
+		return null;
 	}
 
 	/* @Override */
 	public IBlockDefinition chiseledQuartzStairs()
 	{
-		return this.chiseledQuartzStairs;
+		return null;
 	}
 
 	/* @Override */
 	public IBlockDefinition quartzPillarStairs()
 	{
-		return this.quartzPillarStairs;
+		return null;
 	}
 
 	/*
 	 * @Override
 	 * public IBlockDefinition skyStoneSlab()
 	 * {
-	 * return this.skyStoneSlab;
+	 * return null;
 	 * }
 	 * @Override
 	 * public IBlockDefinition skyStoneBlockSlab()
 	 * {
-	 * return this.skyStoneBlockSlab;
+	 * return null;
 	 * }
 	 * @Override
 	 * public IBlockDefinition skyStoneBrickSlab()
 	 * {
-	 * return this.skyStoneBrickSlab;
+	 * return null;
 	 * }
 	 * @Override
 	 * public IBlockDefinition skyStoneSmallBrickSlab()
 	 * {
-	 * return this.skyStoneSmallBrickSlab;
+	 * return null;
 	 * }
 	 * @Override
 	 * public IBlockDefinition fluixSlab()
 	 * {
-	 * return this.fluixSlab;
+	 * return null;
 	 * }
 	 * @Override
 	 * public IBlockDefinition quartzSlab()
 	 * {
-	 * return this.quartzSlab;
+	 * return null;
 	 * }
 	 * @Override
 	 * public IBlockDefinition chiseledQuartzSlab()
 	 * {
-	 * return this.chiseledQuartzSlab;
+	 * return null;
 	 * }
 	 * @Override
 	 * public IBlockDefinition quartzPillarSlab()
 	 * {
-	 * return this.quartzPillarSlab;
+	 * return null;
 	 * }
 	 */
 
 	/* @Override */
 	public ITileDefinition grindstone()
 	{
-		return this.grindstone;
+		return null;
 	}
 
 	/* @Override */
 	public ITileDefinition inscriber()
 	{
-		return this.inscriber;
+		return null;
 	}
 
 	/* @Override */
 	public ITileDefinition wirelessAccessPoint()
 	{
-		return this.wirelessAccessPoint;
+		return null;
 	}
 
 	/* @Override */
 	public ITileDefinition charger()
 	{
-		return this.charger;
+		return null;
 	}
 
 	/* @Override */
 	public IBlockDefinition<? extends Block> tinyTNT()
 	{
-		return this.tinyTNT;
+		return null;
 	}
 
 	/* @Override */
 	public ITileDefinition securityStation()
 	{
-		return this.securityStation;
+		return null;
 	}
 
 	/* @Override */
 	public ITileDefinition quantumRing()
 	{
-		return this.quantumRing;
+		return null;
 	}
 
 	/* @Override */
 	public ITileDefinition quantumLink()
 	{
-		return this.quantumLink;
+		return null;
 	}
 
 	/* @Override */
 	public ITileDefinition spatialPylon()
 	{
-		return this.spatialPylon;
+		return null;
 	}
 
 	/* @Override */
 	public ITileDefinition spatialIOPort()
 	{
-		return this.spatialIOPort;
+		return null;
 	}
 
 	/* @Override */
 	public ITileDefinition multiPart()
 	{
-		return this.multiPart;
+		return null;
 	}
 
 	/* @Override */
 	public ITileDefinition controller()
 	{
-		return this.controller;
+		return null;
 	}
 
 	/* @Override */
 	public ITileDefinition drive()
 	{
-		return this.drive;
+		return null;
 	}
 
 	/* @Override */
 	public ITileDefinition chest()
 	{
-		return this.chest;
+		return null;
 	}
 
 	/* @Override */
 	public ITileDefinition iface()
 	{
-		return this.iface;
+		return null;
 	}
 
 	/* @Override */
 	public ITileDefinition cellWorkbench()
 	{
-		return this.cellWorkbench;
+		return null;
 	}
 
 	/* @Override */
 	public ITileDefinition iOPort()
 	{
-		return this.iOPort;
+		return null;
 	}
 
 	/* @Override */
 	public ITileDefinition condenser()
 	{
-		return this.condenser;
+		return null;
 	}
 
 	/* @Override */
 	public ITileDefinition energyAcceptor()
 	{
-		return this.energyAcceptor;
+		return null;
 	}
 
 	/* @Override */
 	public ITileDefinition vibrationChamber()
 	{
-		return this.vibrationChamber;
+		return null;
 	}
 
 	/* @Override */
 	public ITileDefinition quartzGrowthAccelerator()
 	{
-		return this.quartzGrowthAccelerator;
+		return null;
 	}
 
 	/* @Override */
 	public ITileDefinition energyCell()
 	{
-		return this.energyCell;
+		return null;
 	}
 
 	/* @Override */
 	public ITileDefinition energyCellDense()
 	{
-		return this.energyCellDense;
+		return null;
 	}
 
 	/* @Override */
 	public ITileDefinition energyCellCreative()
 	{
-		return this.energyCellCreative;
+		return null;
 	}
 
 	/* @Override */
 	public ITileDefinition craftingUnit()
 	{
-		return this.craftingUnit;
+		return null;
 	}
 
 	/* @Override */
 	public ITileDefinition craftingAccelerator()
 	{
-		return this.craftingAccelerator;
+		return null;
 	}
 
 	/* @Override */
 	public ITileDefinition craftingStorage1k()
 	{
-		return this.craftingStorage1k;
+		return null;
 	}
 
 	/* @Override */
 	public ITileDefinition craftingStorage4k()
 	{
-		return this.craftingStorage4k;
+		return null;
 	}
 
 	/* @Override */
 	public ITileDefinition craftingStorage16k()
 	{
-		return this.craftingStorage16k;
+		return null;
 	}
 
 	/* @Override */
 	public ITileDefinition craftingStorage64k()
 	{
-		return this.craftingStorage64k;
+		return null;
 	}
 
 	/* @Override */
 	public ITileDefinition craftingMonitor()
 	{
-		return this.craftingMonitor;
+		return null;
 	}
 
 	/* @Override */
 	public ITileDefinition molecularAssembler()
 	{
-		return this.molecularAssembler;
+		return null;
 	}
 
 	/* @Override */
 	public ITileDefinition lightDetector()
 	{
-		return this.lightDetector;
+		return null;
 	}
 
 	/* @Override */
 	//TODO: Number of arguments error at this point. need to check class. -legracen
-	public ITileDefinition<? extends TileEntity, Class<? extends TileEntity>> paint()
+	public ITileDefinition paint()
 	{
-		return this.paint;
+		return null;
 	}
 
 	public IBlockDefinition chunkLoader()
 	{
-		return this.chunkLoader;
+		return null;
 	}
 
 	public IBlockDefinition itemGen()
 	{
-		return this.itemGen;
+		return null;
 	}
 
 	public IBlockDefinition phantomNode()
 	{
-		return this.phantomNode;
+		return null;
 	}
 
 	public IBlockDefinition cubeGenerator()
 	{
-		return this.cubeGenerator;
+		return null;
 	}
 }

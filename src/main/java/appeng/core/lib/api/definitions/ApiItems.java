@@ -19,41 +19,10 @@
 package appeng.core.lib.api.definitions;
 
 
+import net.minecraft.item.Item;
+
 import appeng.api.definitions.IItemDefinition;
-//TODO: AEColoredItemDefinition class does not exist. -legracen
-import appeng.core.api.util.AEColoredItemDefinition;
-import appeng.core.crafting.item.ItemEncodedPattern;
-import appeng.core.item.ItemCrystalSeed;
-import appeng.core.item.ItemCrystalSeedRendering;
-import appeng.core.item.MaterialType;
 import appeng.core.lib.bootstrap.FeatureFactory;
-import appeng.core.lib.features.AEFeature;
-import appeng.core.me.CreativeTabFacade;
-import appeng.core.me.item.ItemBasicStorageCell;
-import appeng.core.me.item.ItemCreativeStorageCell;
-import appeng.core.me.item.ItemViewCell;
-import appeng.core.me.item.ToolWirelessTerminal;
-import appeng.core.spatial.item.ItemSpatialStorageCell;
-import appeng.debug.ToolDebugCard;
-import appeng.debug.ToolEraser;
-import appeng.debug.ToolMeteoritePlacer;
-import appeng.debug.ToolReplicatorCard;
-import appeng.decorative.item.ItemFacade;
-import appeng.tools.item.ToolBiometricCard;
-import appeng.tools.item.ToolChargedStaff;
-import appeng.tools.item.ToolColorApplicator;
-import appeng.tools.item.ToolEntropyManipulator;
-import appeng.tools.item.ToolMassCannon;
-import appeng.tools.item.ToolMemoryCard;
-import appeng.tools.item.ToolNetworkTool;
-import appeng.tools.item.ToolPortableCell;
-import appeng.tools.item.ToolQuartzAxe;
-import appeng.tools.item.ToolQuartzCuttingKnife;
-import appeng.tools.item.ToolQuartzHoe;
-import appeng.tools.item.ToolQuartzPickaxe;
-import appeng.tools.item.ToolQuartzSpade;
-import appeng.tools.item.ToolQuartzSword;
-import appeng.tools.item.ToolQuartzWrench;
 
 
 /**
@@ -68,243 +37,248 @@ public final class ApiItems// implements IItems
 	}
 
 	/* @Override */
-	public IItemDefinition certusQuartzAxe()
+	public IItemDefinition<Item> certusQuartzAxe()
 	{
-		return this.certusQuartzAxe;
+		return null;
 	}
 
 	/* @Override */
-	public IItemDefinition certusQuartzHoe()
+	public IItemDefinition<Item> certusQuartzHoe()
 	{
-		return this.certusQuartzHoe;
+		return null;
 	}
 
 	/* @Override */
-	public IItemDefinition certusQuartzShovel()
+	public IItemDefinition<Item> certusQuartzShovel()
 	{
-		return this.certusQuartzShovel;
+		return null;
 	}
 
 	/* @Override */
-	public IItemDefinition certusQuartzPick()
+	public IItemDefinition<Item> certusQuartzPick()
 	{
-		return this.certusQuartzPick;
+		return null;
 	}
 
 	/* @Override */
-	public IItemDefinition certusQuartzSword()
+	public IItemDefinition<Item> certusQuartzSword()
 	{
-		return this.certusQuartzSword;
+		return null;
 	}
 
 	/* @Override */
-	public IItemDefinition certusQuartzWrench()
+	public IItemDefinition<Item> certusQuartzWrench()
 	{
-		return this.certusQuartzWrench;
+		return null;
 	}
 
 	/* @Override */
-	public IItemDefinition certusQuartzKnife()
+	public IItemDefinition<Item> certusQuartzKnife()
 	{
-		return this.certusQuartzKnife;
+		return null;
 	}
 
 	/* @Override */
-	public IItemDefinition netherQuartzAxe()
+	public IItemDefinition<Item> netherQuartzAxe()
 	{
-		return this.netherQuartzAxe;
+		return null;
 	}
 
 	/* @Override */
-	public IItemDefinition netherQuartzHoe()
+	public IItemDefinition<Item> netherQuartzHoe()
 	{
-		return this.netherQuartzHoe;
+		return null;
 	}
 
 	/* @Override */
-	public IItemDefinition netherQuartzShovel()
+	public IItemDefinition<Item> netherQuartzShovel()
 	{
-		return this.netherQuartzShovel;
+		return null;
 	}
 
 	/* @Override */
-	public IItemDefinition netherQuartzPick()
+	public IItemDefinition<Item> netherQuartzPick()
 	{
-		return this.netherQuartzPick;
+		return null;
 	}
 
 	/* @Override */
-	public IItemDefinition netherQuartzSword()
+	public IItemDefinition<Item> netherQuartzSword()
 	{
-		return this.netherQuartzSword;
+		return null;
 	}
 
 	/* @Override */
-	public IItemDefinition netherQuartzWrench()
+	public IItemDefinition<Item> netherQuartzWrench()
 	{
-		return this.netherQuartzWrench;
+		return null;
 	}
 
 	/* @Override */
-	public IItemDefinition netherQuartzKnife()
+	public IItemDefinition<Item> netherQuartzKnife()
 	{
-		return this.netherQuartzKnife;
+		return null;
 	}
 
 	/* @Override */
-	public IItemDefinition entropyManipulator()
+	public IItemDefinition<Item> entropyManipulator()
 	{
-		return this.entropyManipulator;
+		return null;
 	}
 
 	/* @Override */
-	public IItemDefinition wirelessTerminal()
+	public IItemDefinition<Item> wirelessTerminal()
 	{
-		return this.wirelessTerminal;
+		return null;
 	}
 
 	/* @Override */
-	public IItemDefinition biometricCard()
+	public IItemDefinition<Item> biometricCard()
 	{
-		return this.biometricCard;
+		return null;
 	}
 
 	/* @Override */
-	public IItemDefinition chargedStaff()
+	public IItemDefinition<Item> chargedStaff()
 	{
-		return this.memoryCard;
+		return null;
 	}
 
 	/* @Override */
-	public IItemDefinition massCannon()
+	public IItemDefinition<Item> massCannon()
 	{
-		return this.massCannon;
+		return null;
 	}
 
 	/* @Override */
-	public IItemDefinition memoryCard()
+	public IItemDefinition<Item> memoryCard()
 	{
-		return this.memoryCard;
+		return null;
 	}
 
 	/* @Override */
-	public IItemDefinition networkTool()
+	public IItemDefinition<Item> networkTool()
 	{
-		return this.networkTool;
+		return null;
 	}
 
 	/* @Override */
-	public IItemDefinition portableCell()
+	public IItemDefinition<Item> portableCell()
 	{
-		return this.portableCell;
+		return null;
 	}
 
 	/* @Override */
-	public IItemDefinition cellCreative()
+	public IItemDefinition<Item> cellCreative()
 	{
-		return this.cellCreative;
+		return null;
 	}
 
 	/* @Override */
-	public IItemDefinition viewCell()
+	public IItemDefinition<Item> viewCell()
 	{
-		return this.viewCell;
+		return null;
 	}
 
 	/* @Override */
-	public IItemDefinition cell1k()
+	public IItemDefinition<Item> cell1k()
 	{
-		return this.cell1k;
+		return null;
 	}
 
 	/* @Override */
-	public IItemDefinition cell4k()
+	public IItemDefinition<Item> cell4k()
 	{
-		return this.cell4k;
+		return null;
 	}
 
 	/* @Override */
-	public IItemDefinition cell16k()
+	public IItemDefinition<Item> cell16k()
 	{
-		return this.cell16k;
+		return null;
 	}
 
 	/* @Override */
-	public IItemDefinition cell64k()
+	public IItemDefinition<Item> cell64k()
 	{
-		return this.cell64k;
+		return null;
 	}
 
 	/* @Override */
-	public IItemDefinition spatialCell2()
+	public IItemDefinition<Item> spatialCell2()
 	{
-		return this.spatialCell2;
+		return null;
 	}
 
 	/* @Override */
-	public IItemDefinition spatialCell16()
+	public IItemDefinition<Item> spatialCell16()
 	{
-		return this.spatialCell16;
+		return null;
 	}
 
 	/* @Override */
-	public IItemDefinition spatialCell128()
+	public IItemDefinition<Item> spatialCell128()
 	{
-		return this.spatialCell128;
+		return null;
 	}
 
 	/* @Override */
-	public IItemDefinition facade()
+	public IItemDefinition<Item> facade()
 	{
-		return this.facade;
+		return null;
 	}
 
 	/* @Override */
-	public IItemDefinition encodedPattern()
+	public IItemDefinition<Item> encodedPattern()
 	{
-		return this.encodedPattern;
+		return null;
 	}
 
 	/* @Override */
-	public IItemDefinition colorApplicator()
+	public IItemDefinition<Item> colorApplicator()
 	{
-		return this.colorApplicator;
+		return null;
 	}
 
 	/* @Override */
-	public AEColoredItemDefinition coloredPaintBall()
+	public IItemDefinition<Item> coloredPaintBall()
 	{
-		return this.coloredPaintBall;
+		return null;
 	}
 
 	/* @Override */
-	public AEColoredItemDefinition coloredLumenPaintBall()
+	public IItemDefinition<Item> coloredLumenPaintBall()
 	{
-		return this.coloredLumenPaintBall;
+		return null;
 	}
 
-	public IItemDefinition paintBall()
+	public IItemDefinition<Item> paintBall()
 	{
-		return this.paintBall;
+		return null;
 	}
 
-	public IItemDefinition toolEraser()
+	public IItemDefinition<Item> toolEraser()
 	{
-		return this.toolEraser;
+		return null;
 	}
 
-	public IItemDefinition toolMeteoritePlacer()
+	public IItemDefinition<Item> toolMeteoritePlacer()
 	{
-		return this.toolMeteoritePlacer;
+		return null;
 	}
 
-	public IItemDefinition toolDebugCard()
+	public IItemDefinition<Item> toolDebugCard()
 	{
-		return this.toolDebugCard;
+		return null;
 	}
 
-	public IItemDefinition toolReplicatorCard()
+	public IItemDefinition<Item> toolReplicatorCard()
 	{
-		return this.toolReplicatorCard;
+		return null;
+	}
+
+	public IItemDefinition<Item> crystalSeed()
+	{
+		return null;
 	}
 }
