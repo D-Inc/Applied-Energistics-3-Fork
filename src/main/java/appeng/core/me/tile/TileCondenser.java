@@ -27,6 +27,7 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidTankProperties;
 
 import appeng.core.api.config.CondenserOutput;
 import appeng.core.api.config.Settings;
@@ -243,11 +244,11 @@ public class TileCondenser extends AEBaseInvTile implements IFluidHandler, IConf
 		return null;
 	}
 	
-	@Override
-	public FluidTankInfo[] getTankInfo()
-	{
-		return EMPTY;
-	}
+//	@Override
+//	public FluidTankInfo[] getTankInfo()
+//	{
+//		return EMPTY;
+//	}
 
 	@Override
 	public void updateSetting( final IConfigManager manager, final Enum settingName, final Enum newValue )
@@ -269,5 +270,12 @@ public class TileCondenser extends AEBaseInvTile implements IFluidHandler, IConf
 	private void setStoredPower( final double storedPower )
 	{
 		this.storedPower = storedPower;
+	}
+
+	@Override
+	public IFluidTankProperties[] getTankProperties()
+	{
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

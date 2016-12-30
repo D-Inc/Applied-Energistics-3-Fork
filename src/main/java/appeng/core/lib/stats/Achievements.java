@@ -72,7 +72,7 @@ public enum Achievements
 	Networking1( 4, -6, AppEngApi.internalApi().definitions().parts().cableCovered(), AchievementType.Custom ),
 
 	// done
-	Controller( 4, -4, AppEngApi.internalApi().definitions().blocks().controller().block().maybeItem().get(), AchievementType.Craft ),
+//	Controller( 4, -4, AppEngApi.internalApi().definitions().blocks().controller().block().maybeItem().get(), AchievementType.Craft ),
 
 	// done
 	Networking2( 4, 0, AppEngApi.internalApi().definitions().parts().cableSmart(), AchievementType.Custom ),

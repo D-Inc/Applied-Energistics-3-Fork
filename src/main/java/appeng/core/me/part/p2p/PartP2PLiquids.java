@@ -31,6 +31,7 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidTankProperties;
 
 import appeng.core.me.grid.GridAccessException;
 
@@ -75,7 +76,7 @@ public class PartP2PLiquids extends PartP2PTunnel<PartP2PLiquids> implements IFl
 	}
 
 	@Override
-	public int fill( final EnumFacing from, final FluidStack resource, final boolean doFill )
+	public int fill( final FluidStack resource, final boolean doFill )
 	{
 		final Stack<PartP2PLiquids> stack = this.getDepth();
 
@@ -99,7 +100,7 @@ public class PartP2PLiquids extends PartP2PTunnel<PartP2PLiquids> implements IFl
 			final IFluidHandler tank = l.getTarget();
 			if( tank != null )
 			{
-				l.tmpUsed = tank.fill( l.getSide().getFacing().getOpposite(), resource.copy(), false );
+				l.tmpUsed = tank.fill( resource.copy(), false );
 			}
 			else
 			{
@@ -154,7 +155,7 @@ public class PartP2PLiquids extends PartP2PTunnel<PartP2PLiquids> implements IFl
 			final IFluidHandler tank = l.getTarget();
 			if( tank != null )
 			{
-				l.tmpUsed = tank.fill( l.getSide().getFacing().getOpposite(), insert.copy(), true );
+				l.tmpUsed = tank.fill( insert.copy(), true );
 			}
 			else
 			{
@@ -196,7 +197,7 @@ public class PartP2PLiquids extends PartP2PTunnel<PartP2PLiquids> implements IFl
 				final IFluidHandler handler = l.getTarget();
 				if( handler != null )
 				{
-					if( handler.canFill( l.getSide().getFacing().getOpposite(), input ) )
+//					if( handler.canFill( input ) )
 					{
 						outs.add( l );
 					}
@@ -233,38 +234,38 @@ public class PartP2PLiquids extends PartP2PTunnel<PartP2PLiquids> implements IFl
 	}
 
 	@Override
-	public FluidStack drain( final EnumFacing from, final FluidStack resource, final boolean doDrain )
+	public FluidStack drain( final FluidStack resource, final boolean doDrain )
 	{
 		return null;
 	}
 
 	@Override
-	public FluidStack drain( final EnumFacing from, final int maxDrain, final boolean doDrain )
+	public FluidStack drain( final int maxDrain, final boolean doDrain )
 	{
 		return null;
 	}
 
-	@Override
-	public boolean canFill( final EnumFacing from, final Fluid fluid )
-	{
-		return !this.isOutput() && from == this.getSide().getFacing() && !this.getOutputs( fluid ).isEmpty();
-	}
-
-	@Override
-	public boolean canDrain( final EnumFacing from, final Fluid fluid )
-	{
-		return false;
-	}
-
-	@Override
-	public FluidTankInfo[] getTankInfo( final EnumFacing from )
-	{
-		if( from == this.getSide().getFacing() )
-		{
-			return this.getTank();
-		}
-		return new FluidTankInfo[0];
-	}
+//	@Override
+//	public boolean canFill( final EnumFacing from, final Fluid fluid )
+//	{
+//		return !this.isOutput() && from == this.getSide().getFacing() && !this.getOutputs( fluid ).isEmpty();
+//	}
+//
+//	@Override
+//	public boolean canDrain( final EnumFacing from, final Fluid fluid )
+//	{
+//		return false;
+//	}
+//
+//	@Override
+//	public FluidTankInfo[] getTankInfo( final EnumFacing from )
+//	{
+//		if( from == this.getSide().getFacing() )
+//		{
+//			return this.getTank();
+//		}
+//		return new FluidTankInfo[0];
+//	}
 
 	private FluidTankInfo[] getTank()
 	{
@@ -291,5 +292,12 @@ public class PartP2PLiquids extends PartP2PTunnel<PartP2PLiquids> implements IFl
 			}
 		}
 		return INACTIVE_TANK;
+	}
+
+	@Override
+	public IFluidTankProperties[] getTankProperties()
+	{
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -132,7 +132,7 @@ public class RecipeHandler implements IRecipeHandler
 		final ApiItems items = definitions.items();
 		final ApiBlocks blocks = definitions.blocks();
 
-		final Optional<Item> maybeCrystalSeedItem = items.crystalSeed().maybeItem();
+		final Optional<Item> maybeCrystalSeedItem = items.crystalSeed().maybe();
 		final Optional<Item> maybeSkyStoneItem = ( (IItemDefinition) blocks.skyStoneBlock().maybeItem().get() ).maybe();
 		final Optional<Item> maybeCStorageItem = ( (IItemDefinition) blocks.craftingStorage1k().block().maybeItem().get() ).maybe();
 		final Optional<Item> maybeCUnitItem = ( (IItemDefinition) blocks.craftingUnit().block().maybeItem().get() ).maybe();

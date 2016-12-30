@@ -296,7 +296,7 @@ public class ToolMassCannon extends AEBasePoweredItem implements IStorageCell
 				if( whatsThere.isReplaceable( w, hitPos ) && w.isAirBlock( hitPos ) )
 				{
 					AppEngApi.internalApi().definitions().blocks().paint().block().maybe().ifPresent( paintBlock -> {
-						w.setBlockState( hitPos, paintBlock.getDefaultState(), 3 );
+						w.setBlockState( hitPos, ((Block) paintBlock).getDefaultState(), 3 );
 					} );
 				}
 

@@ -21,13 +21,11 @@ package appeng.core.recipes;
 
 import net.minecraft.item.ItemStack;
 
+import appeng.api.definitions.IItemDefinition;
 import appeng.core.AppEng;
 import appeng.core.api.recipes.ISubItemResolver;
 import appeng.core.api.recipes.ResolverResult;
-import appeng.core.api.recipes.ResolverResultSet;
 import appeng.core.api.util.AEColor;
-//TODO: AEColoredItemDefinition class is not available. commenting out until it can be implemented. -legracen
-import appeng.core.api.util.AEColoredItemDefinition;
 import appeng.core.item.ItemCrystalSeed;
 import appeng.core.item.ItemMultiItem;
 import appeng.core.item.MaterialType;
@@ -52,55 +50,55 @@ public class AEItemResolver implements ISubItemResolver
 			final ApiItems items = definitions.items();
 			final ApiParts parts = definitions.parts();
 
-			if( itemName.startsWith( "PaintBall." ) )
-			{
-				return this.paintBall( items.coloredPaintBall(), itemName.substring( itemName.indexOf( '.' ) + 1 ), false );
-			}
+//			if( itemName.startsWith( "PaintBall." ) )
+//			{
+//				return this.paintBall( items.coloredPaintBall(), itemName.substring( itemName.indexOf( '.' ) + 1 ), false );
+//			}
 
-			if( itemName.startsWith( "LumenPaintBall." ) )
-			{
-				return this.paintBall( items.coloredLumenPaintBall(), itemName.substring( itemName.indexOf( '.' ) + 1 ), true );
-			}
+//			if( itemName.startsWith( "LumenPaintBall." ) )
+//			{
+//				return this.paintBall( items.coloredLumenPaintBall(), itemName.substring( itemName.indexOf( '.' ) + 1 ), true );
+//			}
 
-			if( itemName.equals( "CableGlass" ) )
-			{
-				return new ResolverResultSet( "CableGlass", parts.cableGlass().allStacks( 1 ) );
-			}
+//			if( itemName.equals( "CableGlass" ) )
+//			{
+//				return new ResolverResultSet( "CableGlass", parts.cableGlass().allStacks( 1 ) );
+//			}
 
-			if( itemName.startsWith( "CableGlass." ) )
-			{
-				return this.cableItem( parts.cableGlass(), itemName.substring( itemName.indexOf( '.' ) + 1 ) );
-			}
+//			if( itemName.startsWith( "CableGlass." ) )
+//			{
+//				return this.cableItem( parts.cableGlass(), itemName.substring( itemName.indexOf( '.' ) + 1 ) );
+//			}
 
-			if( itemName.equals( "CableCovered" ) )
-			{
-				return new ResolverResultSet( "CableCovered", parts.cableCovered().allStacks( 1 ) );
-			}
+//			if( itemName.equals( "CableCovered" ) )
+//			{
+//				return new ResolverResultSet( "CableCovered", parts.cableCovered().allStacks( 1 ) );
+//			}
 
-			if( itemName.startsWith( "CableCovered." ) )
-			{
-				return this.cableItem( parts.cableCovered(), itemName.substring( itemName.indexOf( '.' ) + 1 ) );
-			}
+//			if( itemName.startsWith( "CableCovered." ) )
+//			{
+//				return this.cableItem( parts.cableCovered(), itemName.substring( itemName.indexOf( '.' ) + 1 ) );
+//			}
 
-			if( itemName.equals( "CableSmart" ) )
-			{
-				return new ResolverResultSet( "CableSmart", parts.cableSmart().allStacks( 1 ) );
-			}
+//			if( itemName.equals( "CableSmart" ) )
+//			{
+//				return new ResolverResultSet( "CableSmart", parts.cableSmart().allStacks( 1 ) );
+//			}
 
-			if( itemName.startsWith( "CableSmart." ) )
-			{
-				return this.cableItem( parts.cableSmart(), itemName.substring( itemName.indexOf( '.' ) + 1 ) );
-			}
+//			if( itemName.startsWith( "CableSmart." ) )
+//			{
+//				return this.cableItem( parts.cableSmart(), itemName.substring( itemName.indexOf( '.' ) + 1 ) );
+//			}
 
-			if( itemName.equals( "CableDense" ) )
-			{
-				return new ResolverResultSet( "CableDense", parts.cableDense().allStacks( 1 ) );
-			}
+//			if( itemName.equals( "CableDense" ) )
+//			{
+//				return new ResolverResultSet( "CableDense", parts.cableDense().allStacks( 1 ) );
+//			}
 
-			if( itemName.startsWith( "CableDense." ) )
-			{
-				return this.cableItem( parts.cableDense(), itemName.substring( itemName.indexOf( '.' ) + 1 ) );
-			}
+//			if( itemName.startsWith( "CableDense." ) )
+//			{
+//				return this.cableItem( parts.cableDense(), itemName.substring( itemName.indexOf( '.' ) + 1 ) );
+//			}
 
 			if( itemName.startsWith( "ItemCrystalSeed." ) )
 			{
@@ -146,7 +144,7 @@ public class AEItemResolver implements ISubItemResolver
 
 		return null;
 	}
-	private Object paintBall( final AEColoredItemDefinition partType, final String substring, final boolean lumen )
+	private Object paintBall( final IItemDefinition partType, final String substring, final boolean lumen )
 	{
 		AEColor col;
 
@@ -164,11 +162,11 @@ public class AEItemResolver implements ISubItemResolver
 			return null;
 		}
 
-		final ItemStack is = partType.stack( col, 1 );
+		final ItemStack is = null;
 		return new ResolverResult( "ItemPaintBall", ( lumen ? 20 : 0 ) + is.getItemDamage() );
 	}
 
-	private Object cableItem( final AEColoredItemDefinition partType, final String substring )
+	private Object cableItem( final IItemDefinition partType, final String substring )
 	{
 		AEColor col;
 
@@ -181,7 +179,7 @@ public class AEItemResolver implements ISubItemResolver
 			col = AEColor.Transparent;
 		}
 
-		final ItemStack is = partType.stack( col, 1 );
+		final ItemStack is = null;
 		return new ResolverResult( "ItemMultiPart", is.getItemDamage() );
 	}
 }

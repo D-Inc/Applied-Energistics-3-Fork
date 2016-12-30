@@ -20,9 +20,6 @@ package appeng.core.lib.sync;
 
 
 import java.lang.reflect.Constructor;
-import java.util.List;
-
-import com.google.common.collect.Lists;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -34,8 +31,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
-//TODO: IComparableDefinition class not available. -legracen
-import appeng.api.definitions.IComparableDefinition;
 import appeng.core.api.config.SecurityPermissions;
 import appeng.core.api.exceptions.AppEngException;
 import appeng.core.api.features.IWirelessTermHandler;
@@ -69,7 +64,6 @@ import appeng.core.lib.container.ContainerUpgradeable;
 import appeng.core.lib.helpers.IInterfaceHost;
 import appeng.core.lib.helpers.IPriorityHost;
 import appeng.core.lib.helpers.WirelessTerminalGuiObject;
-import appeng.core.lib.stats.Achievements;
 import appeng.core.lib.util.Platform;
 import appeng.core.me.api.networking.IGrid;
 import appeng.core.me.api.networking.IGridNode;
@@ -412,22 +406,22 @@ public enum GuiBridge implements IGuiHandler
 
 	private void addPressAchievementToPlayer( final ItemStack newItem, final ApiMaterials possibleMaterials, final EntityPlayer player )
 	{
-		final IComparableDefinition logic = possibleMaterials.logicProcessorPress();
-		final IComparableDefinition eng = possibleMaterials.engProcessorPress();
-		final IComparableDefinition calc = possibleMaterials.calcProcessorPress();
-		final IComparableDefinition silicon = possibleMaterials.siliconPress();
-
-		final List<IComparableDefinition> presses = Lists.newArrayList( logic, eng, calc, silicon );
-
-		for( final IComparableDefinition press : presses )
-		{
-			if( press.isSameAs( newItem ) )
-			{
-				Achievements.Presses.addToPlayer( player );
-
-				return;
-			}
-		}
+//		final IComparableDefinition logic = possibleMaterials.logicProcessorPress();
+//		final IComparableDefinition eng = possibleMaterials.engProcessorPress();
+//		final IComparableDefinition calc = possibleMaterials.calcProcessorPress();
+//		final IComparableDefinition silicon = possibleMaterials.siliconPress();
+//
+//		final List<IComparableDefinition> presses = Lists.newArrayList( logic, eng, calc, silicon );
+//
+//		for( final IComparableDefinition press : presses )
+//		{
+//			if( press.isSameAs( newItem ) )
+//			{
+//				Achievements.Presses.addToPlayer( player );
+//
+//				return;
+//			}
+//		}
 	}
 
 	@Override
