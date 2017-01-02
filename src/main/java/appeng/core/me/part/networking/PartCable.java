@@ -132,22 +132,22 @@ public class PartCable extends AEBasePart implements IPartCable
 
 			final ApiParts parts = AppEngApi.internalApi().definitions().parts();
 
-//			if( this.getCableConnectionType() == AECableType.GLASS )
-//			{
-//				newPart = parts.cableGlass().stack( newColor, 1 );
-//			}
-//			else if( this.getCableConnectionType() == AECableType.COVERED )
-//			{
-//				newPart = parts.cableCovered().stack( newColor, 1 );
-//			}
-//			else if( this.getCableConnectionType() == AECableType.SMART )
-//			{
-//				newPart = parts.cableSmart().stack( newColor, 1 );
-//			}
-//			else if( this.getCableConnectionType() == AECableType.DENSE )
-//			{
-//				newPart = parts.cableDense().stack( newColor, 1 );
-//			}
+			if( this.getCableConnectionType() == AECableType.GLASS )
+			{
+				newPart = parts.cableGlass().stack( newColor, 1 );
+			}
+			else if( this.getCableConnectionType() == AECableType.COVERED )
+			{
+				newPart = parts.cableCovered().stack( newColor, 1 );
+			}
+			else if( this.getCableConnectionType() == AECableType.SMART )
+			{
+				newPart = parts.cableSmart().stack( newColor, 1 );
+			}
+			else if( this.getCableConnectionType() == AECableType.DENSE )
+			{
+				newPart = parts.cableDense().stack( newColor, 1 );
+			}
 
 			boolean hasPermission = true;
 

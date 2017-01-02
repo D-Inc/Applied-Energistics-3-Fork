@@ -32,7 +32,8 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 
-import appeng.api.definitions.IItemDefinition;
+//TODO: IComparableDefinition class is unavailable commenting out for now. -legracen
+import appeng.api.definitions.IComparableDefinition;
 import appeng.core.lib.ApiDefinitions;
 import appeng.core.lib.AppEngApi;
 import appeng.decorative.item.ItemFacade;
@@ -40,7 +41,8 @@ import appeng.decorative.item.ItemFacade;
 
 public final class FacadeRecipe implements IRecipe
 {
-	private final IItemDefinition anchor;
+	//TODO: IComparableDefinition class is unavailable commenting out for now. -legracen
+	private final IComparableDefinition anchor;
 	private final Optional<Item> maybeFacade;
 
 	public FacadeRecipe()

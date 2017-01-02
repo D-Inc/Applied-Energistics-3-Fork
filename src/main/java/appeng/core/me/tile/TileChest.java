@@ -36,7 +36,6 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.capability.IFluidHandler;
-import net.minecraftforge.fluids.capability.IFluidTankProperties;
 
 import appeng.core.api.config.AccessRestriction;
 import appeng.core.api.config.Actionable;
@@ -694,7 +693,7 @@ public class TileChest extends AENetworkPowerTile implements IMEChest, IFluidHan
 	}
 
 	@Override
-	public int fill( final FluidStack resource, final boolean doFill )
+	public int fill( final EnumFacing from, final FluidStack resource, final boolean doFill )
 	{
 		final double req = resource.amount / 500.0;
 		final double available = this.extractAEPower( req, Actionable.SIMULATE, PowerMultiplier.CONFIG );
@@ -722,54 +721,54 @@ public class TileChest extends AENetworkPowerTile implements IMEChest, IFluidHan
 	}
 
 	@Override
-	public FluidStack drain( final FluidStack resource, final boolean doDrain )
+	public FluidStack drain( final EnumFacing from, final FluidStack resource, final boolean doDrain )
 	{
 		return null;
 	}
 
 	@Override
-	public FluidStack drain( final int maxDrain, final boolean doDrain )
+	public FluidStack drain( final EnumFacing from, final int maxDrain, final boolean doDrain )
 	{
 		return null;
 	}
 
-//	@Override
-//	public boolean canFill( final Fluid fluid )
-//	{
-//		try
-//		{
-//			final IMEInventoryHandler h = this.getHandler( StorageChannel.FLUIDS );
-//			return h.canAccept( AEFluidStack.create( new FluidStack( fluid, 1 ) ) );
-//		}
-//		catch( final ChestNoHandler ignored )
-//		{
-//		}
-//		return false;
-//	}
-//
-//	@Override
-//	public boolean canDrain( final EnumFacing from, final Fluid fluid )
-//	{
-//		return false;
-//	}
-//
-//	@Override
-//	public FluidTankInfo[] getTankInfo( final EnumFacing from )
-//	{
-//		try
-//		{
-//			final IMEInventoryHandler h = this.getHandler( StorageChannel.FLUIDS );
-//			if( h.getChannel() == StorageChannel.FLUIDS )
-//			{
-//				return new FluidTankInfo[] { new FluidTankInfo( null, 1 ) }; // eh?
-//			}
-//		}
-//		catch( final ChestNoHandler ignored )
-//		{
-//		}
-//
-//		return null;
-//	}
+	@Override
+	public boolean canFill( final EnumFacing from, final Fluid fluid )
+	{
+		try
+		{
+			final IMEInventoryHandler h = this.getHandler( StorageChannel.FLUIDS );
+			return h.canAccept( AEFluidStack.create( new FluidStack( fluid, 1 ) ) );
+		}
+		catch( final ChestNoHandler ignored )
+		{
+		}
+		return false;
+	}
+
+	@Override
+	public boolean canDrain( final EnumFacing from, final Fluid fluid )
+	{
+		return false;
+	}
+
+	@Override
+	public FluidTankInfo[] getTankInfo( final EnumFacing from )
+	{
+		try
+		{
+			final IMEInventoryHandler h = this.getHandler( StorageChannel.FLUIDS );
+			if( h.getChannel() == StorageChannel.FLUIDS )
+			{
+				return new FluidTankInfo[] { new FluidTankInfo( null, 1 ) }; // eh?
+			}
+		}
+		catch( final ChestNoHandler ignored )
+		{
+		}
+
+		return null;
+	}
 
 	@Override
 	public IStorageMonitorable getMonitorable( final EnumFacing side, final BaseActionSource src )
@@ -989,13 +988,6 @@ public class TileChest extends AENetworkPowerTile implements IMEChest, IFluidHan
 			}
 			return super.extractItems( request, mode, src );
 		}
-	}
-
-	@Override
-	public IFluidTankProperties[] getTankProperties()
-	{
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

@@ -386,13 +386,6 @@ public class PartP2PItems extends PartP2PTunnel<PartP2PItems> implements /* IPip
 		return null;
 	}
 
-	@Override
-	public boolean isEmpty()
-	{
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 	// TODO Pre-1.8 - BC Integration
 	// @Override
 	// @Method( iname = "BuildCraftTransport" )

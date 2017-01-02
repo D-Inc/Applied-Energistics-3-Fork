@@ -48,14 +48,14 @@ public class AchievementHierarchy
 
 		Achievements.PatternTerminal.setParent( Achievements.CraftingTerminal );
 
-//		Achievements.Controller.setParent( Achievements.Networking1 );
+		Achievements.Controller.setParent( Achievements.Networking1 );
 
-//		Achievements.Networking2.setParent( Achievements.Controller );
+		Achievements.Networking2.setParent( Achievements.Controller );
 
 		Achievements.Networking3.setParent( Achievements.Networking2 );
 
-//		Achievements.P2P.setParent( Achievements.Controller );
+		Achievements.P2P.setParent( Achievements.Controller );
 
-//		Achievements.Recursive.setParent( Achievements.Controller );
+		Achievements.Recursive.setParent( Achievements.Controller );
 	}
 }

@@ -36,6 +36,8 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+//TODO: IComparableDefinition class not available. commenting out until it is. -legracen
+import appeng.api.definitions.IComparableDefinition;
 import appeng.api.definitions.IItemDefinition;
 import appeng.api.definitions.ITileDefinition;
 import appeng.core.api.config.Actionable;
@@ -238,10 +240,10 @@ public class TileInscriber extends AENetworkPowerTile implements IGridTickable, 
 
 		if( i == 0 || i == 1 )
 		{
-//			if( AppEngApi.internalApi().definitions().materials().namePress().isSameAs( itemstack ) )
-//			{
-//				return true;
-//			}
+			if( AppEngApi.internalApi().definitions().materials().namePress().isSameAs( itemstack ) )
+			{
+				return true;
+			}
 
 			for( final ItemStack optionals : AppEngApi.internalApi().registries().inscriber().getOptionals() )
 			{
@@ -347,7 +349,7 @@ public class TileInscriber extends AENetworkPowerTile implements IGridTickable, 
 			return null;
 		}
 
-		final IItemDefinition namePress = AppEngApi.internalApi().definitions().materials().namePress();
+		final IComparableDefinition namePress = AppEngApi.internalApi().definitions().materials().namePress();
 		final boolean isNameA = namePress.isSameAs( plateA );
 		final boolean isNameB = namePress.isSameAs( plateB );
 

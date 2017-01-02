@@ -2084,28 +2084,28 @@ public class Platform
 	{
 		final ApiParts parts = AppEngApi.internalApi().definitions().parts();
 
-//		for( final ItemStack stack : is )
-//		{
-//			if( parts.cableGlass().sameAs( AEColor.Transparent, stack ) )
-//			{
-//				return stack;
-//			}
-//
-//			if( parts.cableCovered().sameAs( AEColor.Transparent, stack ) )
-//			{
-//				return stack;
-//			}
-//
-//			if( parts.cableSmart().sameAs( AEColor.Transparent, stack ) )
-//			{
-//				return stack;
-//			}
-//
-//			if( parts.cableDense().sameAs( AEColor.Transparent, stack ) )
-//			{
-//				return stack;
-//			}
-//		}
+		for( final ItemStack stack : is )
+		{
+			if( parts.cableGlass().sameAs( AEColor.Transparent, stack ) )
+			{
+				return stack;
+			}
+
+			if( parts.cableCovered().sameAs( AEColor.Transparent, stack ) )
+			{
+				return stack;
+			}
+
+			if( parts.cableSmart().sameAs( AEColor.Transparent, stack ) )
+			{
+				return stack;
+			}
+
+			if( parts.cableDense().sameAs( AEColor.Transparent, stack ) )
+			{
+				return stack;
+			}
+		}
 
 		return is;
 	}

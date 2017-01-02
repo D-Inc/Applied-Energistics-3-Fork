@@ -30,77 +30,77 @@ import appeng.core.lib.bootstrap.FeatureFactory;
  */
 public  class ApiMaterials// implements IMaterials
 {
-	private  IItemDefinition<Item> cell2SpatialPart;
-	private  IItemDefinition<Item> cell16SpatialPart;
-	private  IItemDefinition<Item> cell128SpatialPart;
+	private  IItemDefinition cell2SpatialPart;
+	private  IItemDefinition cell16SpatialPart;
+	private  IItemDefinition cell128SpatialPart;
 
-	private  IItemDefinition<Item> silicon;
-	private  IItemDefinition<Item> skyDust;
+	private  IItemDefinition silicon;
+	private  IItemDefinition skyDust;
 
-	private  IItemDefinition<Item> calcProcessorPress;
-	private  IItemDefinition<Item> engProcessorPress;
-	private  IItemDefinition<Item> logicProcessorPress;
+	private  IItemDefinition calcProcessorPress;
+	private  IItemDefinition engProcessorPress;
+	private  IItemDefinition logicProcessorPress;
 
-	private  IItemDefinition<Item> calcProcessorPrint;
-	private  IItemDefinition<Item> engProcessorPrint;
-	private  IItemDefinition<Item> logicProcessorPrint;
+	private  IItemDefinition calcProcessorPrint;
+	private  IItemDefinition engProcessorPrint;
+	private  IItemDefinition logicProcessorPrint;
 
-	private  IItemDefinition<Item> siliconPress;
-	private  IItemDefinition<Item> siliconPrint;
+	private  IItemDefinition siliconPress;
+	private  IItemDefinition siliconPrint;
 
-	private  IItemDefinition<Item> namePress;
+	private  IItemDefinition namePress;
 
-	private  IItemDefinition<Item> logicProcessor;
-	private  IItemDefinition<Item> calcProcessor;
-	private  IItemDefinition<Item> engProcessor;
+	private  IItemDefinition logicProcessor;
+	private  IItemDefinition calcProcessor;
+	private  IItemDefinition engProcessor;
 
-	private  IItemDefinition<Item> basicCard;
-	private  IItemDefinition<Item> advCard;
+	private  IItemDefinition basicCard;
+	private  IItemDefinition advCard;
 
-	private  IItemDefinition<Item> purifiedCertusQuartzCrystal;
-	private  IItemDefinition<Item> purifiedNetherQuartzCrystal;
-	private  IItemDefinition<Item> purifiedFluixCrystal;
+	private  IItemDefinition purifiedCertusQuartzCrystal;
+	private  IItemDefinition purifiedNetherQuartzCrystal;
+	private  IItemDefinition purifiedFluixCrystal;
 
-	private  IItemDefinition<Item> cell1kPart;
-	private  IItemDefinition<Item> cell4kPart;
-	private  IItemDefinition<Item> cell16kPart;
-	private  IItemDefinition<Item> cell64kPart;
-	private  IItemDefinition<Item> emptyStorageCell;
+	private  IItemDefinition cell1kPart;
+	private  IItemDefinition cell4kPart;
+	private  IItemDefinition cell16kPart;
+	private  IItemDefinition cell64kPart;
+	private  IItemDefinition emptyStorageCell;
 
-	private  IItemDefinition<Item> cardRedstone;
-	private  IItemDefinition<Item> cardSpeed;
-	private  IItemDefinition<Item> cardCapacity;
-	private  IItemDefinition<Item> cardFuzzy;
-	private  IItemDefinition<Item> cardInverter;
-	private  IItemDefinition<Item> cardCrafting;
+	private  IItemDefinition cardRedstone;
+	private  IItemDefinition cardSpeed;
+	private  IItemDefinition cardCapacity;
+	private  IItemDefinition cardFuzzy;
+	private  IItemDefinition cardInverter;
+	private  IItemDefinition cardCrafting;
 
-	private  IItemDefinition<Item> enderDust;
-	private  IItemDefinition<Item> flour;
-	private  IItemDefinition<Item> goldDust;
-	private  IItemDefinition<Item> ironDust;
-	private  IItemDefinition<Item> fluixDust;
-	private  IItemDefinition<Item> certusQuartzDust;
-	private  IItemDefinition<Item> netherQuartzDust;
+	private  IItemDefinition enderDust;
+	private  IItemDefinition flour;
+	private  IItemDefinition goldDust;
+	private  IItemDefinition ironDust;
+	private  IItemDefinition fluixDust;
+	private  IItemDefinition certusQuartzDust;
+	private  IItemDefinition netherQuartzDust;
 
-	private  IItemDefinition<Item> matterBall;
-	private  IItemDefinition<Item> ironNugget;
+	private  IItemDefinition matterBall;
+	private  IItemDefinition ironNugget;
 
-	private  IItemDefinition<Item> certusQuartzCrystal;
-	private  IItemDefinition<Item> certusQuartzCrystalCharged;
-	private  IItemDefinition<Item> fluixCrystal;
-	private  IItemDefinition<Item> fluixPearl;
+	private  IItemDefinition certusQuartzCrystal;
+	private  IItemDefinition certusQuartzCrystalCharged;
+	private  IItemDefinition fluixCrystal;
+	private  IItemDefinition fluixPearl;
 
-	private  IItemDefinition<Item> woodenGear;
+	private  IItemDefinition woodenGear;
 
-	private  IItemDefinition<Item> wirelessReceiver;
-	private  IItemDefinition<Item> wirelessBooster;
+	private  IItemDefinition wirelessReceiver;
+	private  IItemDefinition wirelessBooster;
 
-	private  IItemDefinition<Item> annihilationCore;
-	private  IItemDefinition<Item> formationCore;
+	private  IItemDefinition annihilationCore;
+	private  IItemDefinition formationCore;
 
-	private  IItemDefinition<Item> singularity;
-	private  IItemDefinition<Item> qESingularity;
-	private  IItemDefinition<Item> blankPattern;
+	private  IItemDefinition singularity;
+	private  IItemDefinition qESingularity;
+	private  IItemDefinition blankPattern;
 
 	public ApiMaterials( FeatureFactory registry )
 	{
@@ -188,325 +188,325 @@ public  class ApiMaterials// implements IMaterials
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> cell2SpatialPart()
+	public IItemDefinition cell2SpatialPart()
 	{
 		return this.cell2SpatialPart;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> cell16SpatialPart()
+	public IItemDefinition cell16SpatialPart()
 	{
 		return this.cell16SpatialPart;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> cell128SpatialPart()
+	public IItemDefinition cell128SpatialPart()
 	{
 		return this.cell128SpatialPart;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> silicon()
+	public IItemDefinition silicon()
 	{
 		return this.silicon;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> skyDust()
+	public IItemDefinition skyDust()
 	{
 		return this.skyDust;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> calcProcessorPress()
+	public IItemDefinition calcProcessorPress()
 	{
 		return this.calcProcessorPress;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> engProcessorPress()
+	public IItemDefinition engProcessorPress()
 	{
 		return this.engProcessorPress;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> logicProcessorPress()
+	public IItemDefinition logicProcessorPress()
 	{
 		return this.logicProcessorPress;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> calcProcessorPrint()
+	public IItemDefinition calcProcessorPrint()
 	{
 		return this.calcProcessorPrint;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> engProcessorPrint()
+	public IItemDefinition engProcessorPrint()
 	{
 		return this.engProcessorPrint;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> logicProcessorPrint()
+	public IItemDefinition logicProcessorPrint()
 	{
 		return this.logicProcessorPrint;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> siliconPress()
+	public IItemDefinition siliconPress()
 	{
 		return this.siliconPress;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> siliconPrint()
+	public IItemDefinition siliconPrint()
 	{
 		return this.siliconPrint;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> namePress()
+	public IItemDefinition<? extends Item> namePress()
 	{
 		return this.namePress;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> logicProcessor()
+	public IItemDefinition logicProcessor()
 	{
 		return this.logicProcessor;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> calcProcessor()
+	public IItemDefinition calcProcessor()
 	{
 		return this.calcProcessor;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> engProcessor()
+	public IItemDefinition engProcessor()
 	{
 		return this.engProcessor;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> basicCard()
+	public IItemDefinition basicCard()
 	{
 		return this.basicCard;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> advCard()
+	public IItemDefinition advCard()
 	{
 		return this.advCard;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> purifiedCertusQuartzCrystal()
+	public IItemDefinition purifiedCertusQuartzCrystal()
 	{
 		return this.purifiedCertusQuartzCrystal;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> purifiedNetherQuartzCrystal()
+	public IItemDefinition purifiedNetherQuartzCrystal()
 	{
 		return this.purifiedNetherQuartzCrystal;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> purifiedFluixCrystal()
+	public IItemDefinition purifiedFluixCrystal()
 	{
 		return this.purifiedFluixCrystal;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> cell1kPart()
+	public IItemDefinition cell1kPart()
 	{
 		return this.cell1kPart;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> cell4kPart()
+	public IItemDefinition cell4kPart()
 	{
 		return this.cell4kPart;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> cell16kPart()
+	public IItemDefinition cell16kPart()
 	{
 		return this.cell16kPart;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> cell64kPart()
+	public IItemDefinition cell64kPart()
 	{
 		return this.cell64kPart;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> emptyStorageCell()
+	public IItemDefinition emptyStorageCell()
 	{
 		return this.emptyStorageCell;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> cardRedstone()
+	public IItemDefinition cardRedstone()
 	{
 		return this.cardRedstone;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> cardSpeed()
+	public IItemDefinition cardSpeed()
 	{
 		return this.cardSpeed;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> cardCapacity()
+	public IItemDefinition cardCapacity()
 	{
 		return this.cardCapacity;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> cardFuzzy()
+	public IItemDefinition cardFuzzy()
 	{
 		return this.cardFuzzy;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> cardInverter()
+	public IItemDefinition cardInverter()
 	{
 		return this.cardInverter;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> cardCrafting()
+	public IItemDefinition cardCrafting()
 	{
 		return this.cardCrafting;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> enderDust()
+	public IItemDefinition enderDust()
 	{
 		return this.enderDust;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> flour()
+	public IItemDefinition flour()
 	{
 		return this.flour;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> goldDust()
+	public IItemDefinition goldDust()
 	{
 		return this.goldDust;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> ironDust()
+	public IItemDefinition ironDust()
 	{
 		return this.ironDust;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> fluixDust()
+	public IItemDefinition fluixDust()
 	{
 		return this.fluixDust;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> certusQuartzDust()
+	public IItemDefinition certusQuartzDust()
 	{
 		return this.certusQuartzDust;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> netherQuartzDust()
+	public IItemDefinition netherQuartzDust()
 	{
 		return this.netherQuartzDust;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> matterBall()
+	public IItemDefinition matterBall()
 	{
 		return this.matterBall;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> ironNugget()
+	public IItemDefinition ironNugget()
 	{
 		return this.ironNugget;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> certusQuartzCrystal()
+	public IItemDefinition certusQuartzCrystal()
 	{
 		return this.certusQuartzCrystal;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> certusQuartzCrystalCharged()
+	public IItemDefinition certusQuartzCrystalCharged()
 	{
 		return this.certusQuartzCrystalCharged;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> fluixCrystal()
+	public IItemDefinition fluixCrystal()
 	{
 		return this.fluixCrystal;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> fluixPearl()
+	public IItemDefinition fluixPearl()
 	{
 		return this.fluixPearl;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> woodenGear()
+	public IItemDefinition woodenGear()
 	{
 		return this.woodenGear;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> wirelessReceiver()
+	public IItemDefinition wirelessReceiver()
 	{
 		return this.wirelessReceiver;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> wirelessBooster()
+	public IItemDefinition wirelessBooster()
 	{
 		return this.wirelessBooster;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> annihilationCore()
+	public IItemDefinition annihilationCore()
 	{
 		return this.annihilationCore;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> formationCore()
+	public IItemDefinition formationCore()
 	{
 		return this.formationCore;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> singularity()
+	public IItemDefinition singularity()
 	{
 		return this.singularity;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> qESingularity()
+	public IItemDefinition qESingularity()
 	{
 		return this.qESingularity;
 	}
 
 	/*@Override*/
-	public IItemDefinition<Item> blankPattern()
+	public IItemDefinition blankPattern()
 	{
 		return this.blankPattern;
 	}

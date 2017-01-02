@@ -29,6 +29,10 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+//TODO: FluidContainerRegistry has been removed need to find fix. --legracen
+import net.minecraftforge.fluids.FluidContainerRegistry;
+
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 
 import appeng.api.definitions.IItemDefinition;
@@ -108,10 +112,10 @@ public final class P2PTunnelRegistry
 
 		for( final AEColor c : AEColor.values() )
 		{
-//			this.addNewAttunement( parts.cableGlass().stack( c, 1 ), TunnelType.ME );
-//			this.addNewAttunement( parts.cableCovered().stack( c, 1 ), TunnelType.ME );
-//			this.addNewAttunement( parts.cableSmart().stack( c, 1 ), TunnelType.ME );
-//			this.addNewAttunement( parts.cableDense().stack( c, 1 ), TunnelType.ME );
+			this.addNewAttunement( parts.cableGlass().stack( c, 1 ), TunnelType.ME );
+			this.addNewAttunement( parts.cableCovered().stack( c, 1 ), TunnelType.ME );
+			this.addNewAttunement( parts.cableSmart().stack( c, 1 ), TunnelType.ME );
+			this.addNewAttunement( parts.cableDense().stack( c, 1 ), TunnelType.ME );
 		}
 	}
 
@@ -130,10 +134,10 @@ public final class P2PTunnelRegistry
 	{
 		if( trigger != null )
 		{
-//			if( FluidContainerRegistry.isContainer( trigger ) )
-//			{
-//				return TunnelType.FLUID;
-//			}
+			if( FluidContainerRegistry.isContainer( trigger ) )
+			{
+				return TunnelType.FLUID;
+			}
 
 			for( final ItemStack is : this.tunnels.keySet() )
 			{
