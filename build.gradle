@@ -22,6 +22,7 @@ sourceCompatibility = java_version
 targetCompatibility = java_version
 
 dependencies {
+	testCompile "junit:junit:4.12"
 	compile "code.elix_x.excore:EXCore:$excore_version-$minecraft_version"
 }
 
