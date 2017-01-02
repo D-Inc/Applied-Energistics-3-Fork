@@ -1,6 +1,4 @@
-[![Latest Build](https://img.shields.io/teamcity/http/ci.tsr.me/s/AppliedEnergistics_AutoHeadBuild.svg?label=Latest Build)](http://ci.tsr.me/viewType.html?buildTypeId=AppliedEnergistics_AutoHeadBuild&tab=buildTypeStatusDiv)
-[![Latest Tag](https://img.shields.io/github/tag/AppliedEnergistics/Applied-Energistics-2.svg?label=Latest Tag)](https://github.com/AppliedEnergistics/Applied-Energistics-2/tags)
-[![Latest Release](https://img.shields.io/github/release/AppliedEnergistics/Applied-Energistics-2.svg?label=Latest Release)](https://github.com/AppliedEnergistics/Applied-Energistics-2/releases)
+[![Build Status](https://travis-ci.org/AEModernMCPort/Applied-Energistics-3.svg?branch=codename-andromeda)](https://travis-ci.org/AEModernMCPort/Applied-Energistics-3) [![Latest](http://github-release-version.herokuapp.com/github/AEModernMCPort/Applied-Energistics-3/release.svg?style=flat)](https://github.com/AEModernMCPort/Applied-Energistics-3/releases/latest)
 
 # Applied Energistics 2
 
