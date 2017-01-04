@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/AEModernMCPort/Applied-Energistics-3.svg?branch=codename-andromeda)](https://travis-ci.org/AEModernMCPort/Applied-Energistics-3) [![Latest](http://github-release-version.herokuapp.com/github/AEModernMCPort/Applied-Energistics-3/release.svg?style=flat)](https://github.com/AEModernMCPort/Applied-Energistics-3/releases/latest)
 
-# Applied Energistics 2
+# Applied Energistics 3
 
 ## Table of Contents
 
@@ -22,9 +22,10 @@ A Mod about Matter, Energy and using them to conquer the world..
 
 ## Contacts
 
-* [Website](http://ae-mod.info/)
+* [Website](http://ae-mod.info/) (for AE2)
 * [IRC #appliedenergistics on esper.net](http://webchat.esper.net/?channels=appliedenergistics&prompt=1)
-* [GitHub](https://github.com/AppliedEnergistics/Applied-Energistics-2)
+* [GitHub](https://github.com/AEModernMCPort/Applied-Energistics-3)
+* [Discord](https://discord.gg/6ykqtkC)
 
 ## License
 
@@ -42,7 +43,9 @@ A Mod about Matter, Energy and using them to conquer the world..
 
 ## Downloads
 
-Downloads can be found on [CurseForge](http://www.curse.com/mc-mods/minecraft/223794-applied-energistics-2) or on the [official website](http://ae-mod.info/Downloads/).
+Downloads for the AE2 can be found on [CurseForge](http://www.curse.com/mc-mods/minecraft/223794-applied-energistics-2) or on the [official website](http://ae-mod.info/Downloads/).
+
+We don't have AE3 releases for now.
 
 ## Installation
 
@@ -50,7 +53,7 @@ You install this mod by putting it into the `minecraft/mods/` folder. It has no 
 
 ## Issues
 
-Applied Energistics 2 crashing, have a suggestion, found a bug?  Create an issue now!
+have a suggestion for Applied Energistics 3?  Create an issue now!
 
 1. Make sure your issue has not already been answered or fixed and you are using the latest version. Also think about whether your issue is a valid one before submitting it.
 2. Go to [the issues page](https://github.com/AppliedEnergistics/Applied-Energistics-2/issues) and click [new issue](https://github.com/AppliedEnergistics/Applied-Energistics-2/issues/new)
@@ -81,8 +84,8 @@ Providing as many details as possible does help us to find and resolve the issue
 ## Building
 
 1. Clone this repository via 
-  - SSH `git clone git@github.com:AppliedEnergistics/Applied-Energistics-2.git` or 
-  - HTTPS `git clone https://github.com/AppliedEnergistics/Applied-Energistics-2.git`
+  - SSH `git clone git@github.com:AEModernMCPort/Applied-Energistics-3.git` or 
+  - HTTPS `git clone https://github.com/AEModernMCPort/Applied-Energistics-3.git`
 2. Setup workspace 
   - Decompiled source `gradlew setupDecompWorkspace`
   - Obfuscated source `gradlew setupDevWorkspace`
