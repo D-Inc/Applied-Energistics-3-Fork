@@ -14,23 +14,23 @@ import appeng.api.definitions.sub.ISubDefinitionProperty;
 import appeng.core.lib.item.IStateItem.State.Property;
 
 
-public interface IStateItem
+public interface IStateItem<I extends Item & IStateItem<I>>
 {
 
 	boolean isValid( Property property );
 
 	Property getProperty( String name );
 
-	State getState( ItemStack itemstack );
+	State<I> getState( ItemStack itemstack );
 
-	ItemStack getItemStack( State state, int amount );
+	ItemStack getItemStack( State<I> state, int amount );
 
 	default State getDefaultState()
 	{
 		return getState( new ItemStack( (Item) this ) );
 	}
 
-	public class State<I extends Item & IStateItem>
+	public class State<I extends Item & IStateItem<I>>
 	{
 
 		private final I item;
@@ -71,7 +71,7 @@ public interface IStateItem
 			return (State) new State( item, map );
 		}
 
-		public interface Property<V, I extends Item & IStateItem> extends ISubDefinitionProperty<I, State, V>
+		public interface Property<V, I extends Item & IStateItem<I>> extends ISubDefinitionProperty<I, State, V>
 		{
 
 		}
