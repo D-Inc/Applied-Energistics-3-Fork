@@ -48,7 +48,7 @@ public class ToolMemoryCard extends AEBaseItem implements IMemoryCard
 	}
 
 	@Override
-	public void addCheckedInformation( final ItemStack stack, final EntityPlayer player, final List<String> lines, final boolean displayMoreInfo )
+	public void addInformation( final ItemStack stack, final EntityPlayer player, final List<String> lines, final boolean displayMoreInfo )
 	{
 		lines.add( this.getLocalizedName( this.getSettingsName( stack ) + ".name", this.getSettingsName( stack ) ) );
 

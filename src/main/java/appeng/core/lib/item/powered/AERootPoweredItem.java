@@ -52,7 +52,7 @@ public abstract class AERootPoweredItem extends AEBaseItem implements IAEItemPow
 	}
 
 	@Override
-	public void addCheckedInformation( final ItemStack stack, final EntityPlayer player, final List<String> lines, final boolean displayMoreInfo )
+	public void addInformation( ItemStack stack, EntityPlayer playerIn, List<String> lines, boolean advanced )
 	{
 		final NBTTagCompound tag = stack.getTagCompound();
 		double internalCurrentPower = 0;
@@ -75,9 +75,9 @@ public abstract class AERootPoweredItem extends AEBaseItem implements IAEItemPow
 	}
 
 	@Override
-	protected void getCheckedSubItems( final Item sameItem, final CreativeTabs creativeTab, final NonNullList<ItemStack> itemStacks )
+	public void getSubItems( final Item sameItem, final CreativeTabs creativeTab, final NonNullList<ItemStack> itemStacks )
 	{
-		super.getCheckedSubItems( sameItem, creativeTab, itemStacks );
+		super.getSubItems( sameItem, creativeTab, itemStacks );
 
 		final ItemStack charged = new ItemStack( this, 1 );
 		final NBTTagCompound tag = Platform.openNbtData( charged );

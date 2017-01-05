@@ -156,13 +156,13 @@ public class ItemCrystalSeed extends AEBaseItem implements IGrowableCrystal
 	}
 
 	@Override
-	public void addCheckedInformation( final ItemStack stack, final EntityPlayer player, final List<String> lines, final boolean displayMoreInfo )
+	public void addInformation( final ItemStack stack, final EntityPlayer player, final List<String> lines, final boolean displayMoreInfo )
 	{
 		lines.add( ButtonToolTips.DoesntDespawn.getLocal() );
 		final int progress = getProgress( stack ) % SINGLE_OFFSET;
 		lines.add( Math.floor( (float) progress / (float) ( SINGLE_OFFSET / 100 ) ) + "%" );
 
-		super.addCheckedInformation( stack, player, lines, displayMoreInfo );
+		super.addInformation( stack, player, lines, displayMoreInfo );
 	}
 
 	@Override
@@ -235,7 +235,7 @@ public class ItemCrystalSeed extends AEBaseItem implements IGrowableCrystal
 	}
 
 	@Override
-	protected void getCheckedSubItems( final Item sameItem, final CreativeTabs creativeTab, final NonNullList<ItemStack> itemStacks )
+	public void getSubItems( final Item sameItem, final CreativeTabs creativeTab, final NonNullList<ItemStack> itemStacks )
 	{
 		// lvl 0
 		itemStacks.add( newStyle( new ItemStack( this, 1, CERTUS ) ) );

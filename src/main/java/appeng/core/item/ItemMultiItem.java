@@ -83,9 +83,9 @@ public final class ItemMultiItem extends AEBaseItem implements IStorageComponent
 	}
 
 	@Override
-	public void addCheckedInformation( final ItemStack stack, final EntityPlayer player, final List<String> lines, final boolean displayMoreInfo )
+	public void addInformation( final ItemStack stack, final EntityPlayer player, final List<String> lines, final boolean displayMoreInfo )
 	{
-		super.addCheckedInformation( stack, player, lines, displayMoreInfo );
+		super.addInformation( stack, player, lines, displayMoreInfo );
 
 		final MaterialType mt = this.getTypeByStack( stack );
 		if( mt == null )
@@ -258,7 +258,7 @@ public final class ItemMultiItem extends AEBaseItem implements IStorageComponent
 	}
 
 	@Override
-	protected void getCheckedSubItems( final Item sameItem, final CreativeTabs creativeTab, final NonNullList<ItemStack> itemStacks )
+	public void getSubItems( final Item sameItem, final CreativeTabs creativeTab, final NonNullList<ItemStack> itemStacks )
 	{
 		final List<MaterialType> types = Arrays.asList( MaterialType.values() );
 		Collections.sort( types, new Comparator<MaterialType>(){

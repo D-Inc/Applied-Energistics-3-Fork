@@ -205,7 +205,7 @@ public final class ItemMultiPart extends AEBaseItem implements IPartItem, IItemG
 	}
 
 	@Override
-	protected void getCheckedSubItems( final Item sameItem, final CreativeTabs creativeTab, final NonNullList<ItemStack> itemStacks )
+	public void getSubItems( final Item sameItem, final CreativeTabs creativeTab, final NonNullList<ItemStack> itemStacks )
 	{
 		final List<Entry<Integer, PartTypeWithVariant>> types = new ArrayList<Entry<Integer, PartTypeWithVariant>>( this.registered.entrySet() );
 		Collections.sort( types, REGISTERED_COMPARATOR );

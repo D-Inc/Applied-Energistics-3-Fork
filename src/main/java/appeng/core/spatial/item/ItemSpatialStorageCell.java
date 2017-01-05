@@ -49,7 +49,7 @@ public class ItemSpatialStorageCell extends AEBaseItem implements ISpatialStorag
 	}
 
 	@Override
-	public void addCheckedInformation( final ItemStack stack, final EntityPlayer player, final List<String> lines, final boolean displayMoreInfo )
+	public void addInformation( final ItemStack stack, final EntityPlayer player, final List<String> lines, final boolean displayMoreInfo )
 	{
 		final WorldCoord wc = this.getStoredSize( stack );
 		if( wc.x > 0 )

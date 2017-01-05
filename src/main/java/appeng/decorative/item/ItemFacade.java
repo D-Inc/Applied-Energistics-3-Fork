@@ -88,7 +88,7 @@ public class ItemFacade extends AEBaseItem implements IFacadeItem, IAlphaPassIte
 	}
 
 	@Override
-	protected void getCheckedSubItems( final Item sameItem, final CreativeTabs creativeTab, final NonNullList<ItemStack> itemStacks )
+	public void getSubItems( final Item sameItem, final CreativeTabs creativeTab, final NonNullList<ItemStack> itemStacks )
 	{
 		this.calculateSubTypes();
 		itemStacks.addAll( this.subTypes );

@@ -44,33 +44,9 @@ public abstract class AEBaseItem extends Item
 	}
 
 	@Override
-	@SuppressWarnings( "unchecked" )
-	public final void addInformation( final ItemStack stack, final EntityPlayer player, final List lines, final boolean displayMoreInfo )
-	{
-		this.addCheckedInformation( stack, player, lines, displayMoreInfo );
-	}
-
-	@Override
-	@SuppressWarnings( "unchecked" )
-	public final void getSubItems( final Item sameItem, final CreativeTabs creativeTab, final NonNullList<ItemStack> itemStacks )
-	{
-		this.getCheckedSubItems( sameItem, creativeTab, itemStacks );
-	}
-
-	@Override
 	public boolean isBookEnchantable( final ItemStack itemstack1, final ItemStack itemstack2 )
 	{
 		return false;
-	}
-
-	protected void addCheckedInformation( final ItemStack stack, final EntityPlayer player, final List<String> lines, final boolean displayMoreInfo )
-	{
-		super.addInformation( stack, player, lines, displayMoreInfo );
-	}
-
-	protected void getCheckedSubItems( final Item sameItem, final CreativeTabs creativeTab, final NonNullList<ItemStack> itemStacks )
-	{
-		super.getSubItems( sameItem, creativeTab, itemStacks );
 	}
 
 }
