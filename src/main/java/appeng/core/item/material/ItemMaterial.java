@@ -45,12 +45,35 @@ public class ItemMaterial extends AEBaseItem implements IStateItem<ItemMaterial>
 		return new ItemStack( this, amount, Material.REGISTRY.getId( state.getValue( MaterialProperty.INSTANCE ) ) );
 	}
 
+	/**
+	 * Helper method for {@linkplain ItemStack} to {@linkplain Material} conversion.
+	 * 
+	 * @param itemstack to convert
+	 * @return {@linkplain Material} corresponding to given stack.
+	 */
+	public Material getMaterial( ItemStack itemstack )
+	{
+		return getState( itemstack ).getValue( MaterialProperty.INSTANCE );
+	}
+
+	/**
+	 * Helper method for {@linkplain Material} to {@linkplain ItemStack} conversion.
+	 * 
+	 * @param material to convert
+	 * @param amount of resulting items in stack
+	 * @return {@linkplain ItemStack} corresponding to given material containing given amount of items.
+	 */
+	public ItemStack getItemStack( Material material, int amount )
+	{
+		return getItemStack( new State<ItemMaterial>( this ).withProperty( MaterialProperty.INSTANCE, material ), amount );
+	}
+
 	@Override
 	public void getSubItems( Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems )
 	{
 		for( Material material : Material.REGISTRY )
 		{
-			subItems.add( getItemStack( new State<ItemMaterial>( this ).withProperty( MaterialProperty.INSTANCE, material ), 0 ) );
+			subItems.add( getItemStack( material, 1 ) );
 		}
 	}
 
