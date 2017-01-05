@@ -2,8 +2,10 @@
 package appeng.core.item.material;
 
 
-
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 
 import appeng.core.item.material.Material.MaterialProperty;
 import appeng.core.lib.item.AEBaseItem;
@@ -41,6 +43,15 @@ public class ItemMaterial extends AEBaseItem implements IStateItem<ItemMaterial>
 	public ItemStack getItemStack( State<ItemMaterial> state, int amount )
 	{
 		return new ItemStack( this, amount, Material.REGISTRY.getId( state.getValue( MaterialProperty.INSTANCE ) ) );
+	}
+
+	@Override
+	public void getSubItems( Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems )
+	{
+		for( Material material : Material.REGISTRY )
+		{
+			subItems.add( getItemStack( new State<ItemMaterial>( this ).withProperty( MaterialProperty.INSTANCE, material ), 0 ) );
+		}
 	}
 
 }
