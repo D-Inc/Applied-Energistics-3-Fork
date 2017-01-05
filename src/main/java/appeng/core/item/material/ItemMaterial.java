@@ -2,7 +2,6 @@
 package appeng.core.item.material;
 
 
-import com.google.common.collect.Maps;
 
 import net.minecraft.item.ItemStack;
 
@@ -35,7 +34,7 @@ public class ItemMaterial extends AEBaseItem implements IStateItem<ItemMaterial>
 	@Override
 	public State<ItemMaterial> getState( ItemStack itemstack )
 	{
-		return new State<>( this, Maps.newHashMap() ).withProperty( MaterialProperty.INSTANCE, Material.REGISTRY.getObjectById( itemstack.getMetadata() ) );
+		return new State<>( this ).withProperty( MaterialProperty.INSTANCE, Material.REGISTRY.getObjectById( itemstack.getMetadata() ) );
 	}
 
 	@Override

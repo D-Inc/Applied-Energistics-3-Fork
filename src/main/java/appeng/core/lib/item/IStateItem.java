@@ -42,6 +42,12 @@ public interface IStateItem<I extends Item & IStateItem<I>>
 			this.properties = ImmutableMap.copyOf( properties );
 		}
 
+		public State( I item )
+		{
+			this.item = item;
+			this.properties = ImmutableMap.of();
+		}
+
 		public I getItem()
 		{
 			return item;
