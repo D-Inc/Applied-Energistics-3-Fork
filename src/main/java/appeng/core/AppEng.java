@@ -20,9 +20,7 @@ package appeng.core;
 
 
 import java.io.File;
-import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -32,7 +30,6 @@ import java.util.concurrent.TimeUnit;
 import javax.annotation.Nonnull;
 
 import com.google.common.base.Stopwatch;
-import com.google.common.base.Throwables;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
@@ -63,6 +60,9 @@ import net.minecraftforge.fml.common.event.FMLServerStoppedEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
+import code.elix_x.excomms.reflection.ReflectionHelper.AClass;
+import code.elix_x.excomms.reflection.ReflectionHelper.Modifier;
+
 import appeng.api.module.Module;
 import appeng.api.module.ModuleIMCMessageEvent;
 import appeng.core.lib.AEConfig;
@@ -92,23 +92,6 @@ public final class AppEng
 					+ net.minecraftforge.common.ForgeVersion.minorVersion + '.' // minorVersion
 					+ net.minecraftforge.common.ForgeVersion.revisionVersion + '.' // revisionVersion
 					+ net.minecraftforge.common.ForgeVersion.buildVersion + ",)"; // buildVersion
-
-	// TODO @Elix-x Will be replaced with utils...
-	private static final Field modifiers;
-	static
-	{
-		try
-		{
-			modifiers = Field.class.getDeclaredField( "modifiers" );
-			modifiers.setAccessible( true );
-		}
-		catch( ReflectiveOperationException e )
-		{
-			// :(
-			// Should not happen.
-			throw Throwables.propagate( e );
-		}
-	}
 
 	@Nonnull
 	private static final AppEng INSTANCE = new AppEng();
@@ -479,7 +462,7 @@ public final class AppEng
 		}
 	}
 
-	private void populateInstances( ASMDataTable annotations )
+	private <I> void populateInstances( ASMDataTable annotations )
 	{
 		ClassLoader mcl = Loader.instance().getModClassLoader();
 
@@ -492,11 +475,8 @@ public final class AppEng
 				{
 					instance = classModule.get( Class.forName( (String) data.getAnnotationInfo().get( "value" ) ) );
 				}
-				Class<?> target = Class.forName( data.getClassName(), true, mcl );
-				Field f = target.getDeclaredField( data.getObjectName() );
-				f.setAccessible( true );
-				modifiers.set( f, f.getModifiers() & ( ~Modifier.FINAL ) );
-				f.set( classModule.get( target ), instance );
+				AClass<I> target = new AClass(Class.forName( data.getClassName(), true, mcl ));
+				target.getDeclaredField( data.getObjectName() ).setAccessible( true ).set( Modifier.FINAL, false ).set( (I) classModule.get( target.getClass() ), instance );
 			}
 			catch( ReflectiveOperationException e )
 			{
