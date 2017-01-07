@@ -28,12 +28,12 @@ public interface IDefinition<T>
 	/**
 	 * @return Implementation if applicable
 	 */
-	Optional<T> maybe();
+	<R extends T> Optional<R> maybe();
 
 	/**
 	 * @return {@linkplain ISubDefinition} representation if applicable
 	 */
-	<D, P extends ISubDefinitionProperty<T, D, ?>, S extends ISubDefinition<T, D, P, S>> Optional<S> maybeSubDefinition();
+	<R extends T, D, P extends ISubDefinitionProperty<R, D, ?>, S extends ISubDefinition<R, D, P, S>> Optional<S> maybeSubDefinition();
 
 	/**
 	 * @return <tt>true</tt> if definition is enabled

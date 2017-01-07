@@ -42,7 +42,7 @@ public class Definition<T> implements IDefinition<T>
 	}
 
 	@Override
-	public final <D, P extends ISubDefinitionProperty<T, D, ?>, S extends ISubDefinition<T, D, P, S>> Optional<S> maybeSubDefinition()
+	public final <R extends T, D, P extends ISubDefinitionProperty<R, D, ?>, S extends ISubDefinition<R, D, P, S>> Optional<S> maybeSubDefinition()
 	{
 		return subDefinitionsProvider.isPresent() ? (Optional<S>) Optional.of( subDefinitionsProvider.get().getDefaultSub() ) : Optional.empty();
 	}
