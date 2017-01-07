@@ -77,7 +77,7 @@ public interface IStateItem<I extends Item & IStateItem<I>>
 			return (State) new State( item, map );
 		}
 
-		public interface Property<V, I extends Item & IStateItem<I>> extends ISubDefinitionProperty<I, State, V>
+		public interface Property<V, I extends Item & IStateItem<I>> extends ISubDefinitionProperty<I, State<I>, V>
 		{
 
 		}

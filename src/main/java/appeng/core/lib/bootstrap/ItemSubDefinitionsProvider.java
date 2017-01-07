@@ -20,7 +20,7 @@ import appeng.core.lib.item.IStateItem.State;
 import appeng.core.lib.item.IStateItem.State.Property;
 
 
-public class ItemSubDefinitionsProvider<I extends Item & IStateItem<I>> extends SubDefinitionsProvider<I, State, IStateItemSubDefinition, IStateItem.State.Property<?, I>>
+public class ItemSubDefinitionsProvider<I extends Item & IStateItem<I>> extends SubDefinitionsProvider<I, State<I>, IStateItemSubDefinition, IStateItem.State.Property<?, I>>
 {
 
 	private final I item;
@@ -43,10 +43,10 @@ public class ItemSubDefinitionsProvider<I extends Item & IStateItem<I>> extends 
 	}
 
 	@Override
-	public State fromProperties( Map<ISubDefinitionProperty<I, State, ?>, ?> properties )
+	public State fromProperties( Map<ISubDefinitionProperty<I, State<I>, ?>, ?> properties )
 	{
 		State state = item.getDefaultState();
-		for( Entry<ISubDefinitionProperty<I, State, ?>, ?> e : properties.entrySet() )
+		for( Entry<ISubDefinitionProperty<I, State<I>, ?>, ?> e : properties.entrySet() )
 		{
 			state = state.withProperty( (Property) e.getKey(), e.getValue() );
 		}
@@ -54,7 +54,7 @@ public class ItemSubDefinitionsProvider<I extends Item & IStateItem<I>> extends 
 	}
 
 	@Override
-	public IStateItemSubDefinition instantiate( ResourceLocation identifier, State instance, ImmutableMap<ISubDefinitionProperty<I, State, ?>, ?> properties )
+	public IStateItemSubDefinition instantiate( ResourceLocation identifier, State<I> instance, ImmutableMap<ISubDefinitionProperty<I, State<I>, ?>, ?> properties )
 	{
 		return new IStateItemSubDefinition( identifier, instance, properties );
 	}
@@ -62,7 +62,7 @@ public class ItemSubDefinitionsProvider<I extends Item & IStateItem<I>> extends 
 	public class IStateItemSubDefinition extends SubDefinition<IStateItemSubDefinition>
 	{
 
-		public IStateItemSubDefinition( ResourceLocation identifier, State itemstack, ImmutableMap<ISubDefinitionProperty<I, State, ?>, ?> properties )
+		public IStateItemSubDefinition( ResourceLocation identifier, State<I> itemstack, ImmutableMap<ISubDefinitionProperty<I, State<I>, ?>, ?> properties )
 		{
 			super( identifier, itemstack, properties );
 		}
