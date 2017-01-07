@@ -20,7 +20,7 @@ import appeng.core.lib.item.IStateItem.State;
 import appeng.core.lib.item.IStateItem.State.Property;
 
 
-public class ItemSubDefinitionsProvider<I extends Item & IStateItem> extends SubDefinitionsProvider<I, State, IStateItemSubDefinition, IStateItem.State.Property<?, I>>
+public class ItemSubDefinitionsProvider<I extends Item & IStateItem<I>> extends SubDefinitionsProvider<I, State, IStateItemSubDefinition, IStateItem.State.Property<?, I>>
 {
 
 	private final I item;
@@ -59,7 +59,6 @@ public class ItemSubDefinitionsProvider<I extends Item & IStateItem> extends Sub
 		return new IStateItemSubDefinition( identifier, instance, properties );
 	}
 
-	//TODO: SubDefinition class not validating here. -legracen
 	public class IStateItemSubDefinition extends SubDefinition<IStateItemSubDefinition>
 	{
 
