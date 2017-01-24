@@ -21,6 +21,8 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppedEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.registry.FMLControlledNamespacedRegistry;
+import net.minecraftforge.fml.common.registry.RegistryBuilder;
 
 import appeng.api.definitions.IBlockDefinition;
 import appeng.api.definitions.IDefinition;
@@ -35,6 +37,7 @@ import appeng.core.definitions.CoreBlockDefinitions;
 import appeng.core.definitions.CoreItemDefinitions;
 import appeng.core.definitions.CoreTileDefinitions;
 import appeng.core.hooks.TickHandler;
+import appeng.core.item.material.Material;
 import appeng.core.lib.AELog;
 import appeng.core.lib.bootstrap.FeatureFactory;
 import appeng.core.lib.item.IStateItem;
@@ -78,6 +81,8 @@ public class AppEngCore implements ICore
 	 */
 	private ExportConfig exportConfig;
 
+	private FMLControlledNamespacedRegistry<Material> materialRegistry;
+
 	private CoreItemDefinitions itemDefinitions;
 	private CoreBlockDefinitions blockDefinitions;
 	private CoreTileDefinitions tileDefinitions;
@@ -111,9 +116,16 @@ public class AppEngCore implements ICore
 		return this.registration;
 	}
 
+	public FMLControlledNamespacedRegistry<Material> getMaterialRegistry()
+	{
+		return materialRegistry;
+	}
+
 	@ModuleEventHandler
 	public <I extends Item & IStateItem<I>, S extends ISubDefinition<I, State<I>, State.Property<?, I>, S>> void preInit( FMLPreInitializationEvent event )
 	{
+		materialRegistry = (FMLControlledNamespacedRegistry<Material>) new RegistryBuilder().setName( new ResourceLocation( AppEng.MODID, "material" ) ).setType( Material.class ).setIDRange( 0, Short.MAX_VALUE ).create();
+
 		FeatureFactory registry = new FeatureFactory();
 		this.blockDefinitions = new CoreBlockDefinitions( registry );
 		this.itemDefinitions = new CoreItemDefinitions( registry );
