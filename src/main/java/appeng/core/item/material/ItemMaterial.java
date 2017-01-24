@@ -24,21 +24,21 @@ public class ItemMaterial extends AEBaseItem implements IItemMaterial<ItemMateri
 
 	public static enum MaterialProperty implements IStateItem.State.Property<Material, ItemMaterial>
 	{
-	
+
 		INSTANCE;
-	
+
 		@Override
 		public String getName()
 		{
 			return "material";
 		}
-	
+
 		@Override
 		public boolean isValid( Material value )
 		{
 			return REGISTRY.containsValue( value );
 		}
-	
+
 	}
 
 	public ItemMaterial()

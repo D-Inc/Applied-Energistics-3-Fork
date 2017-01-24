@@ -475,7 +475,7 @@ public final class AppEng
 				{
 					instance = classModule.get( Class.forName( (String) data.getAnnotationInfo().get( "value" ) ) );
 				}
-				AClass<I> target = new AClass(Class.forName( data.getClassName(), true, mcl ));
+				AClass<I> target = new AClass( Class.forName( data.getClassName(), true, mcl ) );
 				target.getDeclaredField( data.getObjectName() ).setAccessible( true ).set( Modifier.FINAL, false ).set( (I) classModule.get( target.getClass() ), instance );
 			}
 			catch( ReflectiveOperationException e )
