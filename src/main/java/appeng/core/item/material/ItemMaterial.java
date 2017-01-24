@@ -7,7 +7,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 
-import appeng.core.item.material.Material.MaterialProperty;
+import appeng.core.item.material.ItemMaterial.MaterialProperty;
 import appeng.core.lib.item.AEBaseItem;
 import appeng.core.lib.item.IStateItem;
 import appeng.core.lib.item.IStateItem.State.Property;
@@ -15,6 +15,25 @@ import appeng.core.lib.item.IStateItem.State.Property;
 
 public class ItemMaterial extends AEBaseItem implements IStateItem<ItemMaterial>
 {
+
+	public static enum MaterialProperty implements IStateItem.State.Property<Material, ItemMaterial>
+	{
+	
+		INSTANCE;
+	
+		@Override
+		public String getName()
+		{
+			return "material";
+		}
+	
+		@Override
+		public boolean isValid( Material value )
+		{
+			return Material.REGISTRY.containsValue( value );
+		}
+	
+	}
 
 	public ItemMaterial()
 	{
@@ -24,25 +43,25 @@ public class ItemMaterial extends AEBaseItem implements IStateItem<ItemMaterial>
 	@Override
 	public boolean isValid( Property property )
 	{
-		return property == MaterialProperty.INSTANCE;
+		return property == ItemMaterial.MaterialProperty.INSTANCE;
 	}
 
 	@Override
 	public Property getProperty( String name )
 	{
-		return name.equals( MaterialProperty.INSTANCE.getName() ) ? MaterialProperty.INSTANCE : null;
+		return name.equals( ItemMaterial.MaterialProperty.INSTANCE.getName() ) ? ItemMaterial.MaterialProperty.INSTANCE : null;
 	}
 
 	@Override
 	public State<ItemMaterial> getState( ItemStack itemstack )
 	{
-		return new State<>( this ).withProperty( MaterialProperty.INSTANCE, Material.REGISTRY.getObjectById( itemstack.getMetadata() ) );
+		return new State<>( this ).withProperty( ItemMaterial.MaterialProperty.INSTANCE, Material.REGISTRY.getObjectById( itemstack.getMetadata() ) );
 	}
 
 	@Override
 	public ItemStack getItemStack( State<ItemMaterial> state, int amount )
 	{
-		return new ItemStack( this, amount, Material.REGISTRY.getId( state.getValue( MaterialProperty.INSTANCE ) ) );
+		return new ItemStack( this, amount, Material.REGISTRY.getId( state.getValue( ItemMaterial.MaterialProperty.INSTANCE ) ) );
 	}
 
 	/**
@@ -53,7 +72,7 @@ public class ItemMaterial extends AEBaseItem implements IStateItem<ItemMaterial>
 	 */
 	public Material getMaterial( ItemStack itemstack )
 	{
-		return getState( itemstack ).getValue( MaterialProperty.INSTANCE );
+		return getState( itemstack ).getValue( ItemMaterial.MaterialProperty.INSTANCE );
 	}
 
 	/**
@@ -65,7 +84,7 @@ public class ItemMaterial extends AEBaseItem implements IStateItem<ItemMaterial>
 	 */
 	public ItemStack getItemStack( Material material, int amount )
 	{
-		return getItemStack( new State<ItemMaterial>( this ).withProperty( MaterialProperty.INSTANCE, material ), amount );
+		return getItemStack( new State<ItemMaterial>( this ).withProperty( ItemMaterial.MaterialProperty.INSTANCE, material ), amount );
 	}
 
 	@Override
