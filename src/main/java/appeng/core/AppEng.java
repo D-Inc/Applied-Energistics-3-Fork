@@ -93,8 +93,8 @@ public final class AppEng
 					+ net.minecraftforge.common.ForgeVersion.revisionVersion + '.' // revisionVersion
 					+ net.minecraftforge.common.ForgeVersion.buildVersion + ",)"; // buildVersion
 
-	@Nonnull
-	private static final AppEng INSTANCE = new AppEng();
+	@Mod.Instance( MODID )
+	private static AppEng INSTANCE;
 
 	private ImmutableMap<String, ?> modules;
 	private ImmutableMap<Class<?>, ?> classModule;
