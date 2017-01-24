@@ -6,8 +6,10 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
+import net.minecraftforge.fml.common.registry.FMLControlledNamespacedRegistry;
 
-import appeng.core.item.material.ItemMaterial.MaterialProperty;
+import appeng.core.AppEng;
+import appeng.core.AppEngCore;
 import appeng.core.lib.item.AEBaseItem;
 import appeng.core.lib.item.IStateItem;
 import appeng.core.lib.item.IStateItem.State.Property;
@@ -15,6 +17,8 @@ import appeng.core.lib.item.IStateItem.State.Property;
 
 public class ItemMaterial extends AEBaseItem implements IStateItem<ItemMaterial>
 {
+
+	public static final FMLControlledNamespacedRegistry<Material> REGISTRY = AppEng.instance().getModule( AppEngCore.class ).getMaterialRegistry();
 
 	public static enum MaterialProperty implements IStateItem.State.Property<Material, ItemMaterial>
 	{
@@ -30,7 +34,7 @@ public class ItemMaterial extends AEBaseItem implements IStateItem<ItemMaterial>
 		@Override
 		public boolean isValid( Material value )
 		{
-			return Material.REGISTRY.containsValue( value );
+			return REGISTRY.containsValue( value );
 		}
 	
 	}
@@ -55,13 +59,13 @@ public class ItemMaterial extends AEBaseItem implements IStateItem<ItemMaterial>
 	@Override
 	public State<ItemMaterial> getState( ItemStack itemstack )
 	{
-		return new State<>( this ).withProperty( ItemMaterial.MaterialProperty.INSTANCE, Material.REGISTRY.getObjectById( itemstack.getMetadata() ) );
+		return new State<>( this ).withProperty( ItemMaterial.MaterialProperty.INSTANCE, REGISTRY.getObjectById( itemstack.getMetadata() ) );
 	}
 
 	@Override
 	public ItemStack getItemStack( State<ItemMaterial> state, int amount )
 	{
-		return new ItemStack( this, amount, Material.REGISTRY.getId( state.getValue( ItemMaterial.MaterialProperty.INSTANCE ) ) );
+		return new ItemStack( this, amount, REGISTRY.getId( state.getValue( ItemMaterial.MaterialProperty.INSTANCE ) ) );
 	}
 
 	/**
@@ -90,7 +94,7 @@ public class ItemMaterial extends AEBaseItem implements IStateItem<ItemMaterial>
 	@Override
 	public void getSubItems( Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems )
 	{
-		for( Material material : Material.REGISTRY )
+		for( Material material : REGISTRY )
 		{
 			subItems.add( getItemStack( material, 1 ) );
 		}
