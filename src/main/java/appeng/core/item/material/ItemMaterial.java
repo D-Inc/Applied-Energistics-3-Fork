@@ -109,7 +109,7 @@ public class ItemMaterial extends AEBaseItem implements IItemMaterial<ItemMateri
 	@Override
 	public String getUnlocalizedName()
 	{
-		return getUnlocalizedName( ItemStack.EMPTY );
+		return "material.null";
 	}
 
 	@Override

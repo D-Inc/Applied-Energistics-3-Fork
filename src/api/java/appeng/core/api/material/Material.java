@@ -24,24 +24,62 @@ public class Material extends IForgeRegistryEntry.Impl<Material>
 {
 
 	private ModelResourceLocation model;
+	private String unlocalizedName;
 
+	/**
+	 * Sets the default model location.
+	 * 
+	 * @param model - new default model location
+	 */
+	protected void setModel( ModelResourceLocation model )
+	{
+		this.model = model;
+	}
+
+	/**
+	 * Retrieves model location based on the stack.
+	 * 
+	 * @param itemstack - stack to get model for
+	 * @return model location for the given stack
+	 */
+	@Nonnull
 	public ModelResourceLocation getModel( ItemStack itemstack )
 	{
 		return model;
 	}
 
-	protected void setModel( ModelResourceLocation model )
+	/**
+	 * Sets the default unlocalized name.
+	 * 
+	 * @param unlocalizedName - new default unlocalized name
+	 */
+	protected void setUnlocalizedName( String unlocalizedName )
 	{
-		this.model = model;
+		this.unlocalizedName = unlocalizedName;
 	}
-	
+
+	/**
+	 * Retrieves unlocalized name based on the item stack.<br>
+	 * <b>It will be localized by prefixing <tt>material.</tt></b> and not <tt>item.</tt>!
+	 * 
+	 * @param itemstack - stack to get unlocalized name for
+	 * @return unlocalized name for the given stack
+	 */
 	@Nonnull
-	public String getUnlocalizedName( ItemStack itemstack ){
-		return null;
+	public String getUnlocalizedName( ItemStack itemstack )
+	{
+		return unlocalizedName;
 	}
-	
+
+	/**
+	 * Retrieves display name for the item stack. Returning <tt>null</tt> will cause {@linkplain #getUnlocalizedName(ItemStack)} to be called and localized.
+	 * 
+	 * @param itemstack - stack to get display name for
+	 * @return display name for the given stack, or null if {@linkplain #getUnlocalizedName(ItemStack)} should be used instead
+	 */
 	@Nullable
-	public String getDisplayName(ItemStack itemstack){
+	public String getDisplayName( ItemStack itemstack )
+	{
 		return null;
 	}
 
