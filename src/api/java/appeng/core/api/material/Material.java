@@ -2,7 +2,11 @@
 package appeng.core.api.material;
 
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.IForgeRegistryEntry;
 
@@ -29,6 +33,16 @@ public class Material extends IForgeRegistryEntry.Impl<Material>
 	protected void setModel( ModelResourceLocation model )
 	{
 		this.model = model;
+	}
+	
+	@Nonnull
+	public String getUnlocalizedName( ItemStack itemstack ){
+		return null;
+	}
+	
+	@Nullable
+	public String getDisplayName(ItemStack itemstack){
+		return null;
 	}
 
 }

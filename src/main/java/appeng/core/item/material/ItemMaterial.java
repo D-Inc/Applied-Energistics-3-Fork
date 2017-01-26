@@ -14,7 +14,6 @@ import appeng.core.api.items.IItemMaterial;
 import appeng.core.api.material.Material;
 import appeng.core.lib.item.AEBaseItem;
 import appeng.core.lib.item.IStateItem;
-import appeng.core.lib.item.IStateItem.State;
 import appeng.core.lib.item.IStateItem.State.Property;
 
 
@@ -94,6 +93,10 @@ public class ItemMaterial extends AEBaseItem implements IItemMaterial<ItemMateri
 		return getItemStack( new State<ItemMaterial>( this ).withProperty( ItemMaterial.MaterialProperty.INSTANCE, material ), amount );
 	}
 
+	/*
+	 * OVERRIDES START
+	 */
+
 	@Override
 	public void getSubItems( Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems )
 	{
@@ -101,6 +104,25 @@ public class ItemMaterial extends AEBaseItem implements IItemMaterial<ItemMateri
 		{
 			subItems.add( getItemStack( material, 1 ) );
 		}
+	}
+
+	@Override
+	public String getUnlocalizedName()
+	{
+		return getUnlocalizedName( ItemStack.EMPTY );
+	}
+
+	@Override
+	public String getUnlocalizedName( ItemStack itemstack )
+	{
+		return "material." + getMaterial( itemstack ).getUnlocalizedName( itemstack );
+	}
+
+	@Override
+	public String getItemStackDisplayName( ItemStack itemstack )
+	{
+		String display = getMaterial( itemstack ).getDisplayName( itemstack );
+		return display != null ? display : super.getItemStackDisplayName( itemstack );
 	}
 
 }
