@@ -2,6 +2,7 @@
 package appeng.core.api.material;
 
 
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.IForgeRegistryEntry;
 
@@ -17,5 +18,17 @@ import net.minecraftforge.fml.common.registry.IForgeRegistryEntry;
  */
 public class Material extends IForgeRegistryEntry.Impl<Material>
 {
+
+	private ModelResourceLocation model;
+
+	public ModelResourceLocation getModel()
+	{
+		return model;
+	}
+
+	protected void setModel( ModelResourceLocation model )
+	{
+		this.model = model;
+	}
 
 }

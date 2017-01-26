@@ -9,6 +9,7 @@ import appeng.api.definitions.IItemDefinition;
 import appeng.core.AppEng;
 import appeng.core.api.definitions.ICoreItemDefinitions;
 import appeng.core.client.render.ItemCrystalSeedRendering;
+import appeng.core.client.render.item.ItemMaterialRendering;
 import appeng.core.item.ItemCrystalSeed;
 import appeng.core.item.material.ItemMaterial;
 import appeng.core.lib.bootstrap.FeatureFactory;
@@ -24,7 +25,7 @@ public class CoreItemDefinitions extends Definitions<Item, IItemDefinition<Item>
 	public CoreItemDefinitions( FeatureFactory registry )
 	{
 		this.crystalSeed = registry.item( new ResourceLocation( AppEng.NAME, "crystal_seed" ), new ItemCrystalSeed() ).rendering( new ItemCrystalSeedRendering() ).build();
-		this.materialItem = registry.item( new ResourceLocation( AppEng.MODID, "material" ), new ItemMaterial() ).build();
+		this.materialItem = registry.item( new ResourceLocation( AppEng.MODID, "material" ), new ItemMaterial() ).rendering( new ItemMaterialRendering() ).build();
 		init( registry.buildDefaultItemBlocks() );
 	}
 
