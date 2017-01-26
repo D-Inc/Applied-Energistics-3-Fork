@@ -9,7 +9,7 @@ import appeng.api.definitions.IItemDefinition;
 import appeng.core.AppEng;
 import appeng.core.api.definitions.ICoreItemDefinitions;
 import appeng.core.item.ItemCrystalSeed;
-import appeng.core.item.ItemCrystalSeedRendering;
+import appeng.core.client.render.ItemCrystalSeedRendering;
 import appeng.core.item.ItemMultiItem;
 import appeng.core.lib.bootstrap.FeatureFactory;
 import appeng.core.lib.definitions.Definitions;

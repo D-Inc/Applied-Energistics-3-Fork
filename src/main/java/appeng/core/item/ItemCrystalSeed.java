@@ -52,8 +52,8 @@ import appeng.core.lib.util.Platform;
 public class ItemCrystalSeed extends AEBaseItem implements IGrowableCrystal
 {
 
-	static final int LEVEL_OFFSET = 200;
-	static final int SINGLE_OFFSET = LEVEL_OFFSET * 3;
+	public static final int LEVEL_OFFSET = 200;
+	public static final int SINGLE_OFFSET = LEVEL_OFFSET * 3;
 
 	public static final int CERTUS = 0;
 	public static final int NETHER = SINGLE_OFFSET;
@@ -85,7 +85,7 @@ public class ItemCrystalSeed extends AEBaseItem implements IGrowableCrystal
 		return itemStack;
 	}
 
-	static int getProgress( final ItemStack is )
+	public static int getProgress( final ItemStack is )
 	{
 		if( is.hasTagCompound() )
 		{

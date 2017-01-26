@@ -1,5 +1,5 @@
 
-package appeng.core.item;
+package appeng.core.client.render;
 
 
 import com.google.common.collect.ImmutableList;
@@ -10,6 +10,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import appeng.core.item.ItemCrystalSeed;
 import appeng.core.lib.bootstrap.IItemRendering;
 import appeng.core.lib.bootstrap.ItemRenderingCustomizer;
 
