@@ -25,7 +25,7 @@ public class Material extends IForgeRegistryEntry.Impl<Material>
 
 	private ModelResourceLocation model;
 
-	public ModelResourceLocation getModel()
+	public ModelResourceLocation getModel( ItemStack itemstack )
 	{
 		return model;
 	}

@@ -17,7 +17,7 @@ public class ItemMaterialRendering extends ItemRenderingCustomizer
 	@SideOnly( Side.CLIENT )
 	public void customize( IItemRendering rendering )
 	{
-		rendering.meshDefinition( stack -> ( (ItemMaterial) stack.getItem() ).getMaterial( stack ).getModel() );
+		rendering.meshDefinition( itemstack -> ( (ItemMaterial) itemstack.getItem() ).getMaterial( itemstack ).getModel( itemstack ) );
 	}
 
 }
