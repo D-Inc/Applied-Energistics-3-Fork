@@ -11,6 +11,7 @@ import net.minecraftforge.fml.common.registry.FMLControlledNamespacedRegistry;
 import appeng.core.AppEng;
 import appeng.core.AppEngCore;
 import appeng.core.api.items.IItemMaterial;
+import appeng.core.api.material.Material;
 import appeng.core.lib.item.AEBaseItem;
 import appeng.core.lib.item.IStateItem;
 import appeng.core.lib.item.IStateItem.State;

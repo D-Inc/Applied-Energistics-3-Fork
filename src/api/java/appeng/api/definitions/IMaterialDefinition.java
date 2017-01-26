@@ -7,7 +7,7 @@ import net.minecraft.item.Item;
 import appeng.api.definitions.sub.ISubDefinition;
 import appeng.api.definitions.sub.ISubDefinitionProperty;
 import appeng.core.api.items.IItemMaterial;
-import appeng.core.item.material.Material;
+import appeng.core.api.material.Material;
 
 
 public interface IMaterialDefinition<M extends Material> extends IDefinition<M>

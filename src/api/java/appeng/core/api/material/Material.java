@@ -1,5 +1,5 @@
 
-package appeng.core.item.material;
+package appeng.core.api.material;
 
 
 import net.minecraftforge.fml.common.registry.IForgeRegistryEntry;
