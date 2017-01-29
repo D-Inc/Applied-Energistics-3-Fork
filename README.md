@@ -5,8 +5,8 @@
 This repository is a WIP on Applied Energistics 3.
 
 ### If you want to help us
-- And **you are a modder** - We would appreciate you helping us port and fix the code. Everything that should be done is described here - #113. PR your changes to us and eventually, you will be invited to join our team!
-- And **you are an artist** - Although the current issue is the code, we still have a ton of models to do. All models that have to be done are listed here - #9. PR your models and/or textures to us and eventually, you will be invited to join our team!
+- And **you are a modder** - We would appreciate you helping us port and fix the code. Everything that should be done is described here - [#113](https://github.com/AEModernMCPort/Applied-Energistics-3/issues/113). PR your changes to us and eventually, you will be invited to join our team!
+- And **you are an artist** - Although the current issue is the code, we still have a ton of models to do. All models that have to be done are listed here - [#9](https://github.com/AEModernMCPort/Applied-Energistics-3/issues/9). PR your models and/or textures to us and eventually, you will be invited to join our team!
 - And **you are neiter of above** - Join our [discord server](https://discord.gg/6ykqtkC)! Suggest ideas! And be ready to test and submit bugs once everything is fixed!
 
 [Suggestion Guidelines](http://ae-mod.info/Suggestion-Guidelines/)
