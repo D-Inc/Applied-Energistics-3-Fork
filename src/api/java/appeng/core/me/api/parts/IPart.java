@@ -47,12 +47,13 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import appeng.api.client.BakingPipeline;
+import appeng.core.api.IForgeRegistryEntryImpl;
 import appeng.core.api.util.AECableType;
 import appeng.core.api.util.AEPartLocation;
 import appeng.core.me.api.networking.IGridNode;
 
 
-public interface IPart extends IBoxProvider, ICustomCableConnection
+public interface IPart<P extends IPart<P>> extends IForgeRegistryEntryImpl<P>, IBoxProvider, ICustomCableConnection
 {
 
 	/**
