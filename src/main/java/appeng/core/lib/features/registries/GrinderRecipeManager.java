@@ -34,11 +34,9 @@ import appeng.core.lib.AEConfig;
 import appeng.core.lib.AELog;
 import appeng.core.lib.features.registries.entries.AppEngGrinderRecipe;
 import appeng.core.lib.util.Platform;
-import appeng.core.recipes.ores.IOreListener;
-import appeng.core.recipes.ores.OreDictionaryHandler;
 
 
-public final class GrinderRecipeManager implements IOreListener
+public final class GrinderRecipeManager
 {
 	private final List<IGrinderEntry> recipes;
 	private final Map<ItemStack, String> ores;
@@ -70,8 +68,6 @@ public final class GrinderRecipeManager implements IOreListener
 		this.addIngot( "EnderPearl", new ItemStack( Items.ENDER_PEARL ) );
 
 		this.addIngot( "Wheat", new ItemStack( Items.WHEAT ) );
-
-		OreDictionaryHandler.INSTANCE.observe( this );
 	}
 
 	public List<IGrinderEntry> getRecipes()

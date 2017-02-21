@@ -25,18 +25,15 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 import appeng.core.lib.util.Platform;
-import appeng.core.recipes.ores.IOreListener;
-import appeng.core.recipes.ores.OreDictionaryHandler;
 
 
-public class MatterCannonAmmoRegistry implements IOreListener
+public class MatterCannonAmmoRegistry
 {
 
 	private final HashMap<ItemStack, Double> DamageModifiers = new HashMap<ItemStack, Double>();
 
 	public MatterCannonAmmoRegistry()
 	{
-		OreDictionaryHandler.INSTANCE.observe( this );
 		this.registerAmmo( new ItemStack( Items.GOLD_NUGGET ), 196.96655 );
 	}
 
