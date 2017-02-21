@@ -34,7 +34,7 @@ import appeng.core.api.util.AEColor;
  * @version rv3
  * @since rv3
  */
-public abstract class AbstractPartPanel extends AbstractPartReporting
+public abstract class AbstractPartPanel<P extends AbstractPartPanel<P>> extends AbstractPartReporting<P>
 {
 	public AbstractPartPanel( final ItemStack is )
 	{

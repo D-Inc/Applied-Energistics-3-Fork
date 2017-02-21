@@ -35,7 +35,7 @@ import appeng.core.me.api.networking.crafting.ICraftingPatternDetails;
 import appeng.core.me.api.storage.data.IAEItemStack;
 
 
-public class PartPatternTerminal extends AbstractPartTerminal
+public final class PartPatternTerminal extends AbstractPartTerminal<PartPatternTerminal>
 {
 	private final AppEngInternalInventory crafting = new AppEngInternalInventory( this, 9 );
 	private final AppEngInternalInventory output = new AppEngInternalInventory( this, 3 );

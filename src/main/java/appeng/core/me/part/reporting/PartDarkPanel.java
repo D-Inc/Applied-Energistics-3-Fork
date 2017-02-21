@@ -24,7 +24,7 @@ import net.minecraft.item.ItemStack;
 import appeng.core.lib.helpers.Reflected;
 
 
-public class PartDarkPanel extends AbstractPartPanel
+public final class PartDarkPanel extends AbstractPartPanel<PartDarkPanel>
 {
 
 	@Reflected

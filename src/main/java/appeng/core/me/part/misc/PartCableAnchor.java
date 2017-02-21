@@ -55,7 +55,7 @@ import appeng.core.me.api.parts.IPartHost;
 import appeng.core.me.api.parts.PartItemStack;
 
 
-public class PartCableAnchor implements IPart
+public final class PartCableAnchor implements IPart<PartCableAnchor>
 {
 
 	private ItemStack is = null;

@@ -33,7 +33,7 @@ import appeng.core.me.api.networking.events.MENetworkPowerStatusChange;
 import appeng.core.me.grid.GridAccessException;
 
 
-public abstract class PartBasicState extends AEBasePart implements IPowerChannelState
+public abstract class PartBasicState<P extends PartBasicState<P>> extends AEBasePart<P> implements IPowerChannelState
 {
 
 	protected static final int POWERED_FLAG = 1;

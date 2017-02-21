@@ -82,7 +82,7 @@ import appeng.core.me.grid.GridAccessException;
 import appeng.core.me.grid.storage.MEInventoryHandler;
 
 
-public class PartFormationPlane extends PartUpgradeable implements ICellContainer, IPriorityHost, IMEInventory<IAEItemStack>
+public final class PartFormationPlane extends PartUpgradeable<PartFormationPlane> implements ICellContainer, IPriorityHost, IMEInventory<IAEItemStack>
 {
 	private final MEInventoryHandler myHandler = new MEInventoryHandler( this, StorageChannel.ITEMS );
 	private final AppEngInternalAEInventory Config = new AppEngInternalAEInventory( this, 63 );

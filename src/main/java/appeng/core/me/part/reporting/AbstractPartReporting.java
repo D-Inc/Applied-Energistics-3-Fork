@@ -58,7 +58,7 @@ import appeng.core.me.part.AEBasePart;
  * @version rv3
  * @since rv3
  */
-public abstract class AbstractPartReporting extends AEBasePart implements IPartMonitor, IPowerChannelState
+public abstract class AbstractPartReporting<P extends AbstractPartReporting<P>> extends AEBasePart<P> implements IPartMonitor<P>, IPowerChannelState
 {
 
 	protected static final int POWERED_FLAG = 4;

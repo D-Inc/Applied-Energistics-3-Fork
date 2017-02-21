@@ -59,7 +59,7 @@ import appeng.core.me.grid.GridAccessException;
  * @version rv3
  * @since rv3
  */
-public abstract class AbstractPartTerminal extends AbstractPartDisplay implements ITerminalHost, IConfigManagerHost, IViewCellStorage, IAEAppEngInventory
+public abstract class AbstractPartTerminal<P extends AbstractPartTerminal<P>> extends AbstractPartDisplay<P> implements ITerminalHost, IConfigManagerHost, IViewCellStorage, IAEAppEngInventory
 {
 
 	private final IConfigManager cm = new ConfigManager( this );

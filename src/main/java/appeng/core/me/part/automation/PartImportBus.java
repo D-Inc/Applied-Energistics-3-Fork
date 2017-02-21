@@ -53,7 +53,7 @@ import appeng.core.me.api.storage.data.IAEItemStack;
 import appeng.core.me.grid.GridAccessException;
 
 
-public class PartImportBus extends PartSharedItemBus implements IInventoryDestination
+public final class PartImportBus extends PartSharedItemBus<PartImportBus> implements IInventoryDestination
 {
 	private final BaseActionSource source;
 	private IMEInventory<IAEItemStack> destination = null;

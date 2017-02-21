@@ -42,7 +42,7 @@ import appeng.core.me.api.parts.IPartHost;
  * Implemented on the {@link IPart}s cable objects that can be placed at {@link AEPartLocation}.UNKNOWN in
  * {@link IPartHost}s
  */
-public interface IPartCable extends IPart, IGridHost
+public interface IPartCable<P extends IPartCable<P>> extends IPart<P>, IGridHost
 {
 
 	/**

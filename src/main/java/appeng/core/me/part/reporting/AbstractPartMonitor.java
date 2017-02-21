@@ -73,7 +73,7 @@ import appeng.core.me.grid.GridAccessException;
  * @version rv3
  * @since rv3
  */
-public abstract class AbstractPartMonitor extends AbstractPartDisplay implements IPartStorageMonitor, IStackWatcherHost
+public abstract class AbstractPartMonitor<P extends AbstractPartMonitor<P>> extends AbstractPartDisplay<P> implements IPartStorageMonitor<P>, IStackWatcherHost
 {
 	private static final IWideReadableNumberConverter NUMBER_CONVERTER = ReadableNumberConverter.INSTANCE;
 	private IAEItemStack configuredItem;

@@ -24,7 +24,7 @@ import net.minecraft.item.ItemStack;
 import appeng.core.lib.helpers.Reflected;
 
 
-public class PartInvertedToggleBus extends PartToggleBus
+public final class PartInvertedToggleBus extends PartToggleBus<PartInvertedToggleBus>
 {
 	@Reflected
 	public PartInvertedToggleBus( final ItemStack is )

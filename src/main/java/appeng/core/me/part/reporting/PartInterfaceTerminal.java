@@ -28,7 +28,7 @@ import appeng.core.lib.sync.GuiBridge;
 import appeng.core.lib.util.Platform;
 
 
-public class PartInterfaceTerminal extends AbstractPartDisplay
+public final class PartInterfaceTerminal extends AbstractPartDisplay<PartInterfaceTerminal>
 {
 	public PartInterfaceTerminal( final ItemStack is )
 	{

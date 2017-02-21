@@ -31,7 +31,7 @@ import appeng.core.me.api.parts.IPart;
 /**
  * Implemented by all screen like parts provided by AE.
  */
-public interface IPartMonitor extends IPart, IGridHost
+public interface IPartMonitor<P extends IPartMonitor<P>> extends IPart<P>, IGridHost
 {
 
 	/**

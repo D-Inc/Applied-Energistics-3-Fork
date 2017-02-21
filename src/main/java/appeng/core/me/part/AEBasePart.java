@@ -88,7 +88,7 @@ import appeng.core.me.item.PartType;
 import appeng.core.me.part.networking.PartCable;
 
 
-public abstract class AEBasePart implements IPart, IGridProxyable, IActionHost, IUpgradeableHost, ICustomNameObject
+public abstract class AEBasePart<P extends AEBasePart<P>> implements IPart<P>, IGridProxyable, IActionHost, IUpgradeableHost, ICustomNameObject
 {
 
 	private static final Pattern PROPERTY_PATTERN = Pattern.compile( "\\$\\{([\\p{Alnum}_\\-\\.]+)\\}" );

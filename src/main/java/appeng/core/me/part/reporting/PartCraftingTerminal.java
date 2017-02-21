@@ -31,7 +31,7 @@ import appeng.core.lib.sync.GuiBridge;
 import appeng.core.lib.tile.inventory.AppEngInternalInventory;
 
 
-public class PartCraftingTerminal extends AbstractPartTerminal
+public final class PartCraftingTerminal extends AbstractPartTerminal<PartCraftingTerminal>
 {
 	private final AppEngInternalInventory craftingGrid = new AppEngInternalInventory( this, 9 );
 

@@ -66,7 +66,7 @@ import appeng.core.me.grid.GridAccessException;
 import appeng.core.me.part.PartBasicState;
 
 
-public class PartAnnihilationPlane extends PartBasicState implements IGridTickable, IWorldCallable<TickRateModulation>
+public class PartAnnihilationPlane<P extends PartAnnihilationPlane<P>> extends PartBasicState<P> implements IGridTickable, IWorldCallable<TickRateModulation>
 {
 
 	private final BaseActionSource mySrc = new MachineSource( this );

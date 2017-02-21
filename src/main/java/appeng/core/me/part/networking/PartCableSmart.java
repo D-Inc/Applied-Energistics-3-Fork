@@ -35,7 +35,7 @@ import appeng.core.me.api.networking.events.MENetworkPowerStatusChange;
 import appeng.core.me.api.parts.IPartCollisionHelper;
 
 
-public class PartCableSmart extends PartCable
+public final class PartCableSmart extends PartCable<PartCableSmart>
 {
 	@Reflected
 	public PartCableSmart( final ItemStack is )

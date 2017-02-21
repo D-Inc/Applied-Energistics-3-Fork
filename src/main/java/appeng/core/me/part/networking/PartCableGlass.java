@@ -24,7 +24,7 @@ import net.minecraft.item.ItemStack;
 import appeng.core.lib.helpers.Reflected;
 
 
-public class PartCableGlass extends PartCable
+public final class PartCableGlass extends PartCable<PartCableGlass>
 {
 	@Reflected
 	public PartCableGlass( final ItemStack is )

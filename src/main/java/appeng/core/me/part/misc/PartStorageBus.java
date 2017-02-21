@@ -79,7 +79,7 @@ import appeng.core.me.part.automation.PartUpgradeable;
 
 // TODO Pre-1.8 - BC Integration
 //@Interface( iname = IntegrationType.BuildCraftTransport, iface = "buildcraft.api.transport.IPipeConnection" )
-public class PartStorageBus extends PartUpgradeable implements IGridTickable, ICellContainer, IMEMonitorHandlerReceiver<IAEItemStack> /*
+public final class PartStorageBus extends PartUpgradeable<PartStorageBus> implements IGridTickable, ICellContainer, IMEMonitorHandlerReceiver<IAEItemStack> /*
 																																		 * ,
 																																		 * IPipeConnection
 																																		 */, IPriorityHost

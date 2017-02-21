@@ -75,7 +75,7 @@ import appeng.core.me.api.storage.data.IItemList;
 import appeng.core.me.grid.GridAccessException;
 
 
-public class PartLevelEmitter extends PartUpgradeable implements IEnergyWatcherHost, IStackWatcherHost, ICraftingWatcherHost, IMEMonitorHandlerReceiver<IAEItemStack>, ICraftingProvider
+public final class PartLevelEmitter extends PartUpgradeable<PartLevelEmitter> implements IEnergyWatcherHost, IStackWatcherHost, ICraftingWatcherHost, IMEMonitorHandlerReceiver<IAEItemStack>, ICraftingProvider
 {
 
 	private static final int FLAG_ON = 4;

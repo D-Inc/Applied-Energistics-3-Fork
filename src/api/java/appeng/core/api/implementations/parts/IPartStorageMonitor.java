@@ -33,7 +33,7 @@ import appeng.core.me.api.storage.data.IAEStack;
 /**
  * The Storage monitor is a {@link IPart} located on the sides of a IPartHost
  */
-public interface IPartStorageMonitor extends IPartMonitor, IPart, IGridHost, INetworkToolAgent
+public interface IPartStorageMonitor<P extends IPartStorageMonitor<P>> extends IPartMonitor<P>, IPart<P>, IGridHost, INetworkToolAgent
 {
 
 	/**

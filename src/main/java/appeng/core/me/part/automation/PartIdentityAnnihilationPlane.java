@@ -36,7 +36,7 @@ import appeng.core.me.api.parts.IPart;
 import appeng.core.me.api.parts.IPartHost;
 
 
-public class PartIdentityAnnihilationPlane extends PartAnnihilationPlane
+public final class PartIdentityAnnihilationPlane extends PartAnnihilationPlane<PartIdentityAnnihilationPlane>
 {
 
 	private static final float SILK_TOUCH_FACTOR = 16;

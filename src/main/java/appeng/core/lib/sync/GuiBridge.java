@@ -23,7 +23,6 @@ import java.lang.reflect.Constructor;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
@@ -53,7 +52,6 @@ import appeng.core.crafting.container.ContainerPatternTerm;
 import appeng.core.crafting.tile.TileCraftingTile;
 import appeng.core.crafting.tile.TileMolecularAssembler;
 import appeng.core.lib.AppEngApi;
-import appeng.core.lib.api.definitions.ApiMaterials;
 import appeng.core.lib.client.gui.AEBaseGui;
 import appeng.core.lib.client.gui.GuiNull;
 import appeng.core.lib.container.AEBaseContainer;
@@ -351,24 +349,6 @@ public enum GuiBridge implements IGuiHandler
 			}
 
 			final Object o = target.newInstance( inventory, tE );
-
-			/**
-			 * triggers achievement when the player sees presses.
-			 */
-			if( o instanceof AEBaseContainer )
-			{
-				final AEBaseContainer bc = (AEBaseContainer) o;
-				for( final Object so : bc.inventorySlots )
-				{
-					if( so instanceof Slot )
-					{
-						final ItemStack is = ( (Slot) so ).getStack();
-
-						final ApiMaterials materials = AppEngApi.internalApi().definitions().materials();
-						this.addPressAchievementToPlayer( is, materials, inventory.player );
-					}
-				}
-			}
 
 			return o;
 		}

@@ -61,7 +61,7 @@ import appeng.core.me.api.storage.data.IAEItemStack;
 import appeng.core.me.grid.GridAccessException;
 
 
-public class PartExportBus extends PartSharedItemBus implements ICraftingRequester
+public final class PartExportBus extends PartSharedItemBus<PartExportBus> implements ICraftingRequester
 {
 	private final MultiCraftingTracker craftingTracker = new MultiCraftingTracker( this, 9 );
 	private final BaseActionSource mySrc;

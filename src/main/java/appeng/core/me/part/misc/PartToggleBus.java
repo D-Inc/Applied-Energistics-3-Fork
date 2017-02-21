@@ -43,7 +43,7 @@ import appeng.core.me.grid.helpers.AENetworkProxy;
 import appeng.core.me.part.PartBasicState;
 
 
-public class PartToggleBus extends PartBasicState
+public class PartToggleBus<P extends PartToggleBus<P>> extends PartBasicState<P>
 {
 	private static final int REDSTONE_FLAG = 4;
 	private final AENetworkProxy outerProxy = new AENetworkProxy( this, "outer", null, true );

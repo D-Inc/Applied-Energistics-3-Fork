@@ -39,7 +39,7 @@ import appeng.core.me.api.parts.BusSupport;
 import appeng.core.me.api.parts.IPartCollisionHelper;
 
 
-public class PartDenseCable extends PartCable
+public final class PartDenseCable extends PartCable<PartDenseCable>
 {
 	@Reflected
 	public PartDenseCable( final ItemStack is )

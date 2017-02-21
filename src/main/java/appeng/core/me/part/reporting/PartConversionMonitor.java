@@ -40,7 +40,7 @@ import appeng.core.me.api.storage.data.IAEItemStack;
 import appeng.core.me.grid.GridAccessException;
 
 
-public class PartConversionMonitor extends AbstractPartMonitor
+public final class PartConversionMonitor extends AbstractPartMonitor<PartConversionMonitor>
 {
 	@Reflected
 	public PartConversionMonitor( final ItemStack is )

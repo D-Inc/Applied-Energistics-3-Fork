@@ -33,7 +33,7 @@ import net.minecraft.item.ItemStack;
  * @version rv3
  * @since rv3
  */
-public abstract class AbstractPartDisplay extends AbstractPartReporting
+public abstract class AbstractPartDisplay<P extends AbstractPartDisplay<P>> extends AbstractPartReporting<P>
 {
 
 	public AbstractPartDisplay( final ItemStack is )

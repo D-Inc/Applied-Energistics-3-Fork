@@ -70,7 +70,7 @@ import appeng.core.me.item.ItemMultiPart;
 import appeng.core.me.part.AEBasePart;
 
 
-public class PartCable extends AEBasePart implements IPartCable
+public class PartCable<P extends PartCable<P>> extends AEBasePart<P> implements IPartCable<P>
 {
 
 	private static final ImmutableSet<AEPartLocation> STRAIGHT_PART_LOCATIONS = ImmutableSet.of( AEPartLocation.DOWN, AEPartLocation.NORTH, AEPartLocation.EAST );

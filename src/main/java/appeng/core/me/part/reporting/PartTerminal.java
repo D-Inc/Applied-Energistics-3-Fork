@@ -22,7 +22,7 @@ package appeng.core.me.part.reporting;
 import net.minecraft.item.ItemStack;
 
 
-public class PartTerminal extends AbstractPartTerminal
+public final class PartTerminal extends AbstractPartTerminal<PartTerminal>
 {
 
 	public PartTerminal( final ItemStack is )

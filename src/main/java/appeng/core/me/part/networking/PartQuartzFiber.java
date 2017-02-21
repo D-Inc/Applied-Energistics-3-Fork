@@ -42,7 +42,7 @@ import appeng.core.me.grid.helpers.AENetworkProxy;
 import appeng.core.me.part.AEBasePart;
 
 
-public class PartQuartzFiber extends AEBasePart implements IEnergyGridProvider
+public final class PartQuartzFiber extends AEBasePart<PartQuartzFiber> implements IEnergyGridProvider
 {
 
 	private final AENetworkProxy outerProxy = new AENetworkProxy( this, "outer", this.getProxy().getMachineRepresentation(), true );

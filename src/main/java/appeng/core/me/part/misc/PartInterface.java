@@ -69,7 +69,7 @@ import appeng.core.me.api.storage.data.IAEItemStack;
 import appeng.core.me.part.PartBasicState;
 
 
-public class PartInterface extends PartBasicState implements IGridTickable, IStorageMonitorable, IInventoryDestination, IInterfaceHost, ISidedInventory, IAEAppEngInventory, ITileStorageMonitorable, IPriorityHost
+public final class PartInterface extends PartBasicState<PartInterface> implements IGridTickable, IStorageMonitorable, IInventoryDestination, IInterfaceHost, ISidedInventory, IAEAppEngInventory, ITileStorageMonitorable, IPriorityHost
 {
 
 	private final DualityInterface duality = new DualityInterface( this.getProxy(), this );

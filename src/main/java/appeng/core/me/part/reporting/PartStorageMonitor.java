@@ -30,7 +30,7 @@ import appeng.core.lib.helpers.Reflected;
  * @version rv2
  * @since rv0
  */
-public class PartStorageMonitor extends AbstractPartMonitor
+public final class PartStorageMonitor extends AbstractPartMonitor<PartStorageMonitor>
 {
 
 	@Reflected

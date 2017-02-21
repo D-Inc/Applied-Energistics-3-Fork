@@ -34,7 +34,7 @@ import appeng.core.lib.util.IConfigManagerHost;
 import appeng.core.me.part.PartBasicState;
 
 
-public abstract class PartUpgradeable extends PartBasicState implements IAEAppEngInventory, IConfigManagerHost
+public abstract class PartUpgradeable<P extends PartUpgradeable<P>> extends PartBasicState<P> implements IAEAppEngInventory, IConfigManagerHost
 {
 	private final IConfigManager manager;
 	private final UpgradeInventory upgrades;

@@ -35,7 +35,7 @@ import appeng.core.me.api.networking.ticking.TickRateModulation;
 import appeng.core.me.grid.GridAccessException;
 
 
-public abstract class PartSharedItemBus extends PartUpgradeable implements IGridTickable
+public abstract class PartSharedItemBus<P extends PartSharedItemBus<P>> extends PartUpgradeable<P> implements IGridTickable
 {
 
 	private final AppEngInternalAEInventory config = new AppEngInternalAEInventory( this, 9 );
