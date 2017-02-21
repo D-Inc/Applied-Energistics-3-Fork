@@ -28,7 +28,7 @@ public class TesrComponent<T extends AEBaseTile> implements PreInitComponent
 	}
 
 	@Override
-	public void preInitialize( Side side )
+	public void preInit( Side side )
 	{
 		ClientRegistry.bindTileEntitySpecialRenderer( tileEntityClass, tesr );
 	}

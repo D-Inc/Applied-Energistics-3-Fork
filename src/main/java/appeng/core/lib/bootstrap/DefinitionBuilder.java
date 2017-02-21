@@ -16,6 +16,9 @@ import net.minecraftforge.fml.common.registry.IForgeRegistryEntry;
 
 import appeng.api.definitions.IDefinition;
 import appeng.core.lib.AEConfig;
+import appeng.core.lib.bootstrap.components.InitComponent;
+import appeng.core.lib.bootstrap.components.PostInitComponent;
+import appeng.core.lib.bootstrap.components.PreInitComponent;
 import appeng.core.lib.features.AEFeature;
 
 
@@ -99,9 +102,9 @@ public abstract class DefinitionBuilder<T, D extends IDefinition<T>, B extends D
 		D definition = def( setRegistryName( instance ) );
 
 		preInitCallbacks.add( t -> register( ( (D) t ).maybe().get() ) );
-		preInitCallbacks.forEach( consumer -> factory.addPreInit( side -> consumer.accept( definition ) ) );
-		initCallbacks.forEach( consumer -> factory.addInit( side -> consumer.accept( definition ) ) );
-		postInitCallbacks.forEach( consumer -> factory.addPostInit( side -> consumer.accept( definition ) ) );
+		preInitCallbacks.forEach( consumer -> factory.<PreInitComponent>addBootstrapComponent( side -> consumer.accept( definition ) ) );
+		initCallbacks.forEach( consumer -> factory.<InitComponent>addBootstrapComponent( side -> consumer.accept( definition ) ) );
+		postInitCallbacks.forEach( consumer -> factory.<PostInitComponent>addBootstrapComponent( side -> consumer.accept( definition ) ) );
 
 		buildCallbacks.forEach( consumer -> consumer.accept( definition ) );
 

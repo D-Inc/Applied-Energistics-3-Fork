@@ -12,6 +12,6 @@ public interface PreInitComponent extends IBootstrapComponent
 {
 
 	@Override
-	void preInitialize( Side side );
+	void preInit( Side side );
 
 }

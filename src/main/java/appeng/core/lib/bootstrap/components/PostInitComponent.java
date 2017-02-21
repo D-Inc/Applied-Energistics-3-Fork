@@ -12,5 +12,5 @@ public interface PostInitComponent extends IBootstrapComponent
 {
 
 	@Override
-	void postInitialize( Side side );
+	void postInit( Side side );
 }

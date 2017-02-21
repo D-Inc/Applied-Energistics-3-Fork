@@ -28,7 +28,7 @@ public class StateMapperComponent implements InitComponent
 	}
 
 	@Override
-	public void initialize( Side side )
+	public void init( Side side )
 	{
 		ModelLoader.setCustomStateMapper( block, stateMapper );
 		if( stateMapper instanceof IResourceManagerReloadListener )

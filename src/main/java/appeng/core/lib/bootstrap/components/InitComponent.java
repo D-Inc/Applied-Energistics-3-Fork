@@ -12,6 +12,6 @@ public interface InitComponent extends IBootstrapComponent
 {
 
 	@Override
-	void initialize( Side side );
+	void init( Side side );
 
 }
