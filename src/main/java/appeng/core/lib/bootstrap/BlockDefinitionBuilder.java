@@ -12,7 +12,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import appeng.api.definitions.IBlockDefinition;
 import appeng.core.CreativeTab;
 import appeng.core.lib.block.AEBaseTileBlock;
-import appeng.core.lib.features.BlockDefinition;
+import appeng.core.lib.definitions.BlockDefinition;
 import appeng.core.lib.util.Platform;
 
 

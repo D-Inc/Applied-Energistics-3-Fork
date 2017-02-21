@@ -16,7 +16,7 @@
  * along with Applied Energistics 2.  If not, see <http://www.gnu.org/licenses/lgpl>.
  */
 
-package appeng.core.lib.features;
+package appeng.core.lib.definitions;
 
 
 import java.util.Optional;

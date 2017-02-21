@@ -1,5 +1,5 @@
 
-package appeng.core.lib.features;
+package appeng.core.lib.definitions;
 
 
 import java.util.HashMap;
@@ -12,7 +12,7 @@ import net.minecraft.util.ResourceLocation;
 import appeng.api.definitions.IDefinition;
 import appeng.api.definitions.sub.ISubDefinition;
 import appeng.api.definitions.sub.ISubDefinitionProperty;
-import appeng.core.lib.features.SubDefinitionsProvider.SubDefinition;
+import appeng.core.lib.definitions.SubDefinitionsProvider.SubDefinition;
 
 
 public abstract class SubDefinitionsProvider<T, D, S extends SubDefinition, P extends ISubDefinitionProperty<T, D, ?>>

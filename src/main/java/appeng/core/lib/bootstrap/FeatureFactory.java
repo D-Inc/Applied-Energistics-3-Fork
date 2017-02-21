@@ -22,8 +22,8 @@ import appeng.api.definitions.IDefinition;
 import appeng.api.definitions.IDefinitionsProvider;
 import appeng.core.AppEng;
 import appeng.core.lib.bootstrap.components.ModelOverrideComponent;
+import appeng.core.lib.definitions.BlockDefinition;
 import appeng.core.lib.features.AEFeature;
-import appeng.core.lib.features.BlockDefinition;
 import appeng.core.lib.util.Platform;
 
 

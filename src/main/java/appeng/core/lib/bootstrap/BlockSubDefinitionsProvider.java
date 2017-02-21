@@ -21,9 +21,9 @@ import net.minecraft.world.IBlockAccess;
 import appeng.api.definitions.IBlockDefinition;
 import appeng.api.definitions.sub.ISubDefinitionProperty;
 import appeng.core.lib.bootstrap.BlockSubDefinitionsProvider.IBlockStateWrapper;
-import appeng.core.lib.features.Definition;
-import appeng.core.lib.features.SubDefinitionsProvider;
-import appeng.core.lib.features.SubDefinitionsProvider.SubDefinition;
+import appeng.core.lib.definitions.Definition;
+import appeng.core.lib.definitions.SubDefinitionsProvider;
+import appeng.core.lib.definitions.SubDefinitionsProvider.SubDefinition;
 
 
 public class BlockSubDefinitionsProvider<B extends Block> extends SubDefinitionsProvider<B, IBlockState, IBlockStateWrapper, ISubDefinitionProperty<B, IBlockState, ?>>

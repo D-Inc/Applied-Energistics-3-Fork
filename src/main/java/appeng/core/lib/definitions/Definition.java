@@ -1,5 +1,5 @@
 
-package appeng.core.lib.features;
+package appeng.core.lib.definitions;
 
 
 import java.util.Optional;

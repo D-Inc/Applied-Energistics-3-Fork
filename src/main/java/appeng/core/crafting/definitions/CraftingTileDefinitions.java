@@ -12,14 +12,16 @@ import appeng.core.crafting.tile.TileCraftingStorageTile;
 import appeng.core.crafting.tile.TileCraftingTile;
 import appeng.core.crafting.tile.TileMolecularAssembler;
 import appeng.core.lib.features.AEFeature;
-import appeng.core.lib.features.BlockDefinition;
-import appeng.core.lib.features.TileDefinition;
+
 import net.minecraft.tileentity.TileEntity;
 
 import appeng.api.definitions.ITileDefinition;
 import appeng.core.crafting.api.definitions.ICraftingTileDefinitions;
 import appeng.core.lib.bootstrap.FeatureFactory;
+import appeng.core.lib.definitions.BlockDefinition;
 import appeng.core.lib.definitions.Definitions;
+import appeng.core.lib.definitions.TileDefinition;
+
 import net.minecraft.util.ResourceLocation;
 
 

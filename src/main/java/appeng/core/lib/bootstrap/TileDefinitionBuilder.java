@@ -10,7 +10,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import appeng.api.definitions.IBlockDefinition;
 import appeng.api.definitions.ITileDefinition;
 import appeng.core.lib.definitions.Definitions;
-import appeng.core.lib.features.TileDefinition;
+import appeng.core.lib.definitions.TileDefinition;
 
 
 public class TileDefinitionBuilder<T extends TileEntity> extends DefinitionBuilder<Class<T>, ITileDefinition<T>, TileDefinitionBuilder<T>> implements ITileBuilder<T, TileDefinitionBuilder<T>>
