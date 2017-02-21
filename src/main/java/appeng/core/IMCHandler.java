@@ -22,11 +22,12 @@ package appeng.core;
 import java.util.HashMap;
 import java.util.Map;
 
+import net.minecraftforge.fml.common.event.FMLInterModComms;
+
 import appeng.core.lib.AELog;
 import appeng.core.lib.api.IIMCProcessor;
 import appeng.core.lib.api.imc.IMCGrinder;
 import appeng.core.lib.api.imc.IMCMatterCannon;
-import net.minecraftforge.fml.common.event.FMLInterModComms;
 
 
 /**
