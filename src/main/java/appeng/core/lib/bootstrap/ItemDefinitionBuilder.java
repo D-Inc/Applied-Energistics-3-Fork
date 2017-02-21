@@ -9,7 +9,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import appeng.api.definitions.IItemDefinition;
-import appeng.core.AppEng;
 import appeng.core.CreativeTab;
 import appeng.core.lib.definitions.ItemDefinition;
 import appeng.core.lib.item.IStateItem;
@@ -60,7 +59,7 @@ public class ItemDefinitionBuilder<I extends Item> extends DefinitionBuilder<I, 
 	@Override
 	public IItemDefinition<I> def( I item )
 	{
-		item.setUnlocalizedName( AppEng.MODID + "." + registryName );
+		item.setUnlocalizedName( registryName.getResourceDomain() + "." + registryName.getResourcePath() );
 		item.setCreativeTab( creativeTab );
 
 		if( Platform.isClient() )
