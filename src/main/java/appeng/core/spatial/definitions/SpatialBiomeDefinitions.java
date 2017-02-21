@@ -14,11 +14,11 @@ import appeng.core.spatial.world.BiomeGenStorage;
 public class SpatialBiomeDefinitions extends Definitions<Biome, IBiomeDefinition<Biome>> implements ISpatialBiomeDefinitions
 {
 
-	private final IBiomeDefinition storageBiome;
+	private final IBiomeDefinition spatialStorage;
 
 	public SpatialBiomeDefinitions( FeatureFactory registry )
 	{
-		this.storageBiome = registry.biome( "storage", new BiomeGenStorage() ).build();
+		this.spatialStorage = registry.biome( "spatial_storage", new BiomeGenStorage() ).build();
 
 		init();
 	}

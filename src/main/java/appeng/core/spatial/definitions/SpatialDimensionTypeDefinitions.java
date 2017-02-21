@@ -15,11 +15,11 @@ import appeng.core.spatial.world.StorageWorldProvider;
 public class SpatialDimensionTypeDefinitions extends Definitions<DimensionType, IDimensionTypeDefinition<DimensionType>> implements ISpatialDimensionTypeDefinitions
 {
 
-	private final IDimensionTypeDefinition storageCell;
+	private final IDimensionTypeDefinition spatialStorage;
 
 	public SpatialDimensionTypeDefinitions( FeatureFactory registry )
 	{
-		this.storageCell = registry.dimensionType( "storage", AEConfig.instance.storageProviderID, "Storage Cell", "_cell", StorageWorldProvider.class, false ).build();
+		this.spatialStorage = registry.dimensionType( "spatial_storage", AEConfig.instance.storageProviderID, "Storage Cell", "_cell", StorageWorldProvider.class, false ).build();
 
 		init();
 	}

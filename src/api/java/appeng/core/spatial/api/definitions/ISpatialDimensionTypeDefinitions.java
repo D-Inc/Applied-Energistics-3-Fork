@@ -11,4 +11,9 @@ import appeng.api.definitions.IDimensionTypeDefinition;
 public interface ISpatialDimensionTypeDefinitions extends IDefinitions<DimensionType, IDimensionTypeDefinition<DimensionType>>
 {
 
+	default IDimensionTypeDefinition<? extends DimensionType> spatialStorage()
+	{
+		return get( "spatial_storage" );
+	}
+
 }

@@ -20,12 +20,12 @@ public class CoreItemDefinitions extends Definitions<Item, IItemDefinition<Item>
 {
 
 	private final IItemDefinition crystalSeed;
-	private final IItemDefinition materialItem;
+	private final IItemDefinition material;
 
 	public CoreItemDefinitions( FeatureFactory registry )
 	{
 		this.crystalSeed = registry.item( new ResourceLocation( AppEng.NAME, "crystal_seed" ), new ItemCrystalSeed() ).rendering( new ItemCrystalSeedRendering() ).build();
-		this.materialItem = registry.item( new ResourceLocation( AppEng.MODID, "material" ), new ItemMaterial() ).rendering( new ItemMaterialRendering() ).build();
+		this.material = registry.item( new ResourceLocation( AppEng.MODID, "material" ), new ItemMaterial() ).rendering( new ItemMaterialRendering() ).build();
 		init( registry.buildDefaultItemBlocks() );
 	}
 
