@@ -10,6 +10,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import appeng.api.definitions.IBlockDefinition;
+import appeng.core.AppEng;
 import appeng.core.CreativeTab;
 import appeng.core.lib.block.AEBaseTileBlock;
 import appeng.core.lib.definitions.BlockDefinition;
@@ -79,7 +80,7 @@ public class BlockDefinitionBuilder<B extends Block> extends DefinitionBuilder<B
 		}
 
 		block.setCreativeTab( creativeTab );
-		block.setUnlocalizedName( "appliedenergistics2." + registryName );
+		block.setUnlocalizedName( AppEng.MODID + "." + registryName );
 
 		if( Platform.isClient() )
 		{
