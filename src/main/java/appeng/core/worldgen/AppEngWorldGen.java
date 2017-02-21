@@ -32,6 +32,8 @@ public class AppEngWorldGen implements IWorldGen
 	@Module.Instance( NAME )
 	public static final AppEngWorldGen INSTANCE = null;
 
+	private FeatureFactory registry;
+
 	private WorldGenItemDefinitions itemDefinitions;
 	private WorldGenBlockDefinitions blockDefinitions;
 	private WorldGenTileDefinitions tileDefinitions;
@@ -57,22 +59,23 @@ public class AppEngWorldGen implements IWorldGen
 	@ModuleEventHandler
 	public void preInit( FMLPreInitializationEvent event )
 	{
-		FeatureFactory registry = new FeatureFactory();
+		registry = new FeatureFactory();
 		this.blockDefinitions = new WorldGenBlockDefinitions( registry );
 		this.itemDefinitions = new WorldGenItemDefinitions( registry );
 		this.tileDefinitions = new WorldGenTileDefinitions( registry );
+		registry.preInit( event );
 	}
 
 	@ModuleEventHandler
 	public void init( FMLInitializationEvent event )
 	{
-
+		registry.init( event );
 	}
 
 	@ModuleEventHandler
 	public void postInit( FMLPostInitializationEvent event )
 	{
-
+		registry.postInit( event );
 	}
 
 	@ModuleEventHandler

@@ -36,6 +36,8 @@ public class AppEngSpatial implements ISpatial
 	@Module.Instance( NAME )
 	public static final AppEngSpatial INSTANCE = null;
 
+	private FeatureFactory registry;
+
 	private SpatialItemDefinitions itemDefinitions;
 	private SpatialBlockDefinitions blockDefinitions;
 	private SpatialTileDefinitions tileDefinitions;
@@ -71,24 +73,25 @@ public class AppEngSpatial implements ISpatial
 	@ModuleEventHandler
 	public void preInit( FMLPreInitializationEvent event )
 	{
-		FeatureFactory registry = new FeatureFactory();
+		registry = new FeatureFactory();
 		this.blockDefinitions = new SpatialBlockDefinitions( registry );
 		this.itemDefinitions = new SpatialItemDefinitions( registry );
 		this.tileDefinitions = new SpatialTileDefinitions( registry );
 		this.biomeDefinitions = new SpatialBiomeDefinitions( registry );
 		this.dimensionTypeDefinitions = new SpatialDimensionTypeDefinitions( registry );
+		registry.preInit( event );
 	}
 
 	@ModuleEventHandler
 	public void init( FMLInitializationEvent event )
 	{
-
+		registry.init( event );
 	}
 
 	@ModuleEventHandler
 	public void postInit( FMLPostInitializationEvent event )
 	{
-
+		registry.postInit( event );
 	}
 
 	@ModuleEventHandler

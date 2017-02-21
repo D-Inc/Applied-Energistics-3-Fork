@@ -32,6 +32,8 @@ public class AppEngCrafting implements ICrafting
 	@Module.Instance( NAME )
 	public static final AppEngCrafting INSTANCE = null;
 
+	private FeatureFactory registry;
+
 	private CraftingItemDefinitions itemDefinitions;
 	private CraftingBlockDefinitions blockDefinitions;
 	private CraftingTileDefinitions tileDefinitions;
@@ -57,22 +59,23 @@ public class AppEngCrafting implements ICrafting
 	@ModuleEventHandler
 	public void preInit( FMLPreInitializationEvent event )
 	{
-		FeatureFactory registry = new FeatureFactory();
+		registry = new FeatureFactory();
 		this.blockDefinitions = new CraftingBlockDefinitions( registry );
 		this.itemDefinitions = new CraftingItemDefinitions( registry );
 		this.tileDefinitions = new CraftingTileDefinitions( registry );
+		registry.preInit( event );
 	}
 
 	@ModuleEventHandler
 	public void init( FMLInitializationEvent event )
 	{
-
+		registry.init( event );
 	}
 
 	@ModuleEventHandler
 	public void postInit( FMLPostInitializationEvent event )
 	{
-
+		registry.postInit( event );
 	}
 
 	@ModuleEventHandler

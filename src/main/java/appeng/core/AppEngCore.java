@@ -111,7 +111,6 @@ public class AppEngCore implements ICore
 		this.blockDefinitions = new CoreBlockDefinitions( registry );
 		this.itemDefinitions = new CoreItemDefinitions( registry );
 		this.tileDefinitions = new CoreTileDefinitions( registry );
-
 		registry.preInit( event );
 
 		CreativeTab.init();

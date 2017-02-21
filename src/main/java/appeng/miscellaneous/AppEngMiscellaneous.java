@@ -43,6 +43,8 @@ public class AppEngMiscellaneous implements IMiscellaneous
 
 	public static final String MODNAME = AppEng.NAME + " | " + IMiscellaneous.NAME;
 
+	private FeatureFactory registry;
+
 	private CraftingItemDefinitions itemDefinitions;
 	private CraftingBlockDefinitions blockDefinitions;
 	private CraftingTileDefinitions tileDefinitions;
@@ -68,10 +70,11 @@ public class AppEngMiscellaneous implements IMiscellaneous
 	@ModuleEventHandler
 	public void preInitAE( FMLPreInitializationEvent event )
 	{
-		FeatureFactory registry = new FeatureFactory();
+		registry = new FeatureFactory();
 		this.blockDefinitions = new CraftingBlockDefinitions( registry );
 		this.itemDefinitions = new CraftingItemDefinitions( registry );
 		this.tileDefinitions = new CraftingTileDefinitions( registry );
+		registry.preInit( event );
 	}
 
 	@EventHandler
@@ -83,7 +86,7 @@ public class AppEngMiscellaneous implements IMiscellaneous
 	@ModuleEventHandler
 	public void initAE( final FMLInitializationEvent event )
 	{
-
+		registry.init( event );
 	}
 
 	@EventHandler
@@ -95,7 +98,7 @@ public class AppEngMiscellaneous implements IMiscellaneous
 	@ModuleEventHandler
 	public void postInitAE( final FMLPostInitializationEvent event )
 	{
-
+		registry.postInit( event );
 	}
 
 	@EventHandler

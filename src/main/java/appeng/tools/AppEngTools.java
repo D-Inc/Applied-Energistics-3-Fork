@@ -43,6 +43,8 @@ public class AppEngTools implements ITools
 
 	public static final String MODNAME = AppEng.NAME + " | " + ITools.NAME;
 
+	private FeatureFactory registry;
+
 	private ToolsItemDefinitions itemDefinitions;
 	private ToolsBlockDefinitions blockDefinitions;
 	private ToolsTileDefinitions tileDefinitions;
@@ -68,10 +70,11 @@ public class AppEngTools implements ITools
 	@ModuleEventHandler
 	public void preInitAE( FMLPreInitializationEvent event )
 	{
-		FeatureFactory registry = new FeatureFactory();
+		registry = new FeatureFactory();
 		this.blockDefinitions = new ToolsBlockDefinitions( registry );
 		this.itemDefinitions = new ToolsItemDefinitions( registry );
 		this.tileDefinitions = new ToolsTileDefinitions( registry );
+		registry.preInit( event );
 	}
 
 	@EventHandler
@@ -83,7 +86,7 @@ public class AppEngTools implements ITools
 	@ModuleEventHandler
 	public void initAE( final FMLInitializationEvent event )
 	{
-
+		registry.init( event );
 	}
 
 	@EventHandler
@@ -95,7 +98,7 @@ public class AppEngTools implements ITools
 	@ModuleEventHandler
 	public void postInitAE( final FMLPostInitializationEvent event )
 	{
-
+		registry.postInit( event );
 	}
 
 	@EventHandler

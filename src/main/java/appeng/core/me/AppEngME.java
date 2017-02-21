@@ -38,6 +38,8 @@ public class AppEngME implements IME
 	@Module.Instance( NAME )
 	public static final AppEngME INSTANCE = null;
 
+	private FeatureFactory registry;
+
 	private MEItemDefinitions itemDefinitions;
 	private MEBlockDefinitions blockDefinitions;
 	private METileDefinitions tileDefinitions;
@@ -63,10 +65,11 @@ public class AppEngME implements IME
 	@ModuleEventHandler
 	public void preInit( FMLPreInitializationEvent event )
 	{
-		FeatureFactory registry = new FeatureFactory();
+		registry = new FeatureFactory();
 		this.blockDefinitions = new MEBlockDefinitions( registry );
 		this.itemDefinitions = new MEItemDefinitions( registry );
 		this.tileDefinitions = new METileDefinitions( registry );
+		registry.preInit( event );
 
 		FacadeConfig.instance = new FacadeConfig( new File( AppEng.instance().getConfigDirectory(), "Facades.cfg" ) );
 		if( AEConfig.instance.isFeatureEnabled( AEFeature.Facades ) )
@@ -78,13 +81,13 @@ public class AppEngME implements IME
 	@ModuleEventHandler
 	public void init( FMLInitializationEvent event )
 	{
-
+		registry.init( event );
 	}
 
 	@ModuleEventHandler
 	public void postInit( FMLPostInitializationEvent event )
 	{
-
+		registry.postInit( event );
 	}
 
 	@ModuleEventHandler
