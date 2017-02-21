@@ -64,7 +64,6 @@ public final class AEConfig extends Configuration implements IConfigurableObject
 	public final int[] levelByStacks = { 1, 10, 100, 1000 };
 	private final double WirelessHighWirelessCount = 64;
 	private final File configFile;
-	public int storageBiomeID = -1;
 	public int storageProviderID = -1;
 	public int formationPlaneEntityLimit = 128;
 	public float spawnChargedChance = 0.92f;
@@ -210,7 +209,6 @@ public final class AEConfig extends Configuration implements IConfigurableObject
 
 		if( this.isFeatureEnabled( AEFeature.SpatialIO ) )
 		{
-			this.storageBiomeID = this.get( "spatialio", "storageBiomeID", this.storageBiomeID ).getInt( this.storageBiomeID );
 			this.storageProviderID = this.get( "spatialio", "storageProviderID", this.storageProviderID ).getInt( this.storageProviderID );
 			this.spatialPowerMultiplier = this.get( "spatialio", "spatialPowerMultiplier", this.spatialPowerMultiplier ).getDouble( this.spatialPowerMultiplier );
 			this.spatialPowerExponent = this.get( "spatialio", "spatialPowerExponent", this.spatialPowerExponent ).getDouble( this.spatialPowerExponent );
@@ -344,7 +342,6 @@ public final class AEConfig extends Configuration implements IConfigurableObject
 	{
 		if( this.isFeatureEnabled( AEFeature.SpatialIO ) )
 		{
-			this.get( "spatialio", "storageBiomeID", this.storageBiomeID ).set( this.storageBiomeID );
 			this.get( "spatialio", "storageProviderID", this.storageProviderID ).set( this.storageProviderID );
 		}
 

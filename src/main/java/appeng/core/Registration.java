@@ -81,12 +81,6 @@ import appeng.core.worldgen.world.QuartzWorldGen;
 public final class Registration
 {
 	private DimensionType storageDimensionType;
-	private Biome storageBiome;
-
-	public Biome getStorageBiome()
-	{
-		return this.storageBiome;
-	}
 
 	public DimensionType getStorageDimensionType()
 	{
@@ -106,26 +100,6 @@ public final class Registration
 		}
 
 		final AEConfig config = AEConfig.instance;
-
-		if( this.storageBiome == null )
-		{
-			if( force && config.storageBiomeID == -1 )
-			{
-				config.storageBiomeID = Platform.findEmpty( Biome.REGISTRY, 0, 256 );
-				if( config.storageBiomeID == -1 )
-				{
-					throw new IllegalStateException( "Biome Array is full, please free up some Biome ID's or disable spatial." );
-				}
-
-				this.storageBiome = new BiomeGenStorage();
-				config.save();
-			}
-
-			if( !force && config.storageBiomeID != -1 )
-			{
-				this.storageBiome = new BiomeGenStorage();
-			}
-		}
 
 		if( config.storageProviderID != -1 )
 		{
