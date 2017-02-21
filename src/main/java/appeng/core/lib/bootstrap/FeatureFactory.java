@@ -13,6 +13,7 @@ import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.DimensionType;
+import net.minecraft.world.WorldProvider;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -127,6 +128,17 @@ public class FeatureFactory
 	public <D extends DimensionType> DimensionTypeDefinitionBuilder<D> dimensionType( ResourceLocation id, int did )
 	{
 		return new DimensionTypeDefinitionBuilder<D>( this, id, did ).features( defaultFeatures );
+	}
+
+	@Deprecated
+	public <D extends DimensionType> DimensionTypeDefinitionBuilder<D> dimensionType( String id, int did, String name, String suffix, Class<? extends WorldProvider> clazz, boolean shouldLoadSpawn )
+	{
+		return dimensionType( new ResourceLocation( AppEng.MODID, id ), did, name, suffix, clazz, shouldLoadSpawn );
+	}
+
+	public <D extends DimensionType> DimensionTypeDefinitionBuilder<D> dimensionType( ResourceLocation id, int did, String name, String suffix, Class<? extends WorldProvider> clazz, boolean shouldLoadSpawn )
+	{
+		return new DimensionTypeDefinitionBuilder<D>( this, id, did, name, suffix, clazz, shouldLoadSpawn ).features( defaultFeatures );
 	}
 
 	<B extends Block> void addItemBlock( BlockDefinition<B> def, IItemBlockCustomizer itemBlock )
