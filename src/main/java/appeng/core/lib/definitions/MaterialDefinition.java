@@ -39,4 +39,11 @@ public class MaterialDefinition<M extends Material> extends Definition<M> implem
 		return maybe().map( material -> itemMaterialDefinition.<I, D, P, S>maybeSubDefinition().get().withProperty( (P) ItemMaterial.MaterialProperty.INSTANCE, material ) );
 	}
 
+	@Override
+	public boolean isSameAs( Object other )
+	{
+		// TODO 1.11.2-CD:A - Add checks
+		return super.isSameAs( other );
+	}
+
 }
