@@ -10,22 +10,22 @@ import appeng.api.definitions.IDefinitions;
 
 public interface IWorldGenBlockDefinitions extends IDefinitions<Block, IBlockDefinition<Block>>
 {
-    default IBlockDefinition<? extends Block> quartzOre()
+    default IBlockDefinition<Block> quartzOre()
     {
         return get( "quartz_ore" );
     }
 
-    default IBlockDefinition<? extends Block> quartzOreCharged()
+    default IBlockDefinition<Block> quartzOreCharged()
     {
         return get( "charged_quartz_ore" );
     }
 
-    default IBlockDefinition<? extends Block> skyStoneChest()
+    default IBlockDefinition<Block> skyStoneChest()
     {
         return get( "skystone_chest" );
     }
 
-    default IBlockDefinition<? extends Block> smoothSkyStoneChest()
+    default IBlockDefinition<Block> smoothSkyStoneChest()
     {
         return get( "smooth_skystone_chest" );
     }

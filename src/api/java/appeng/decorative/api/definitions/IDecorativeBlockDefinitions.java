@@ -11,97 +11,97 @@ import appeng.api.definitions.IDefinitions;
 
 public interface IDecorativeBlockDefinitions extends IDefinitions<Block, IBlockDefinition<Block>>
 {
-    default IBlockDefinition<? extends Block> quartzBlock()
+    default IBlockDefinition<Block> quartzBlock()
     {
         return get( "quartz_block" );
     }
 
-    default IBlockDefinition<? extends Block> quartzPillar()
+    default IBlockDefinition<Block> quartzPillar()
     {
         return get( "quartz_pillar" );
     }
 
-    default IBlockDefinition<? extends Block> chiseledQuartzBlock()
+    default IBlockDefinition<Block> chiseledQuartzBlock()
     {
         return get( "chiseled_quartz_block" );
     }
 
-    default IBlockDefinition<? extends Block> quartzGlass()
+    default IBlockDefinition<Block> quartzGlass()
     {
         return get( "quartz_glass" );
     }
 
-    default IBlockDefinition<? extends Block> quartzVibrantGlass()
+    default IBlockDefinition<Block> quartzVibrantGlass()
     {
         return get( "quartz_vibrant_glass" );
     }
 
-    default IBlockDefinition<? extends Block> quartzFixture()
+    default IBlockDefinition<Block> quartzFixture()
     {
         return get( "quartz_fixture" );
     }
 
-    default IBlockDefinition<? extends Block> fluixBlock()
+    default IBlockDefinition<Block> fluixBlock()
     {
         return get( "fluix_block" );
     }
 
-    default IBlockDefinition<? extends Block> skyStoneBlock()
+    default IBlockDefinition<Block> skyStoneBlock()
     {
         return get( "sky_stone_block" );
     }
 
-    default IBlockDefinition<? extends Block> smoothSkyStoneBlock()
+    default IBlockDefinition<Block> smoothSkyStoneBlock()
     {
         return get( "smooth_skystone" );
     }
 
-    default IBlockDefinition<? extends Block> skyStoneBrick()
+    default IBlockDefinition<Block> skyStoneBrick()
     {
         return get( "skystone_brick" );
     }
 
-    default IBlockDefinition<? extends Block> skyStoneSmallBrick()
+    default IBlockDefinition<Block> skyStoneSmallBrick()
     {
         return get( "skystone_small_brick" );
     }
 
-    default IBlockDefinition<? extends Block> skyStoneStairs()
+    default IBlockDefinition<Block> skyStoneStairs()
     {
         return get( "skystone_stairs" );
     }
 
-    default IBlockDefinition<? extends Block> smoothSkyStoneStairs()
+    default IBlockDefinition<Block> smoothSkyStoneStairs()
     {
         return get( "smooth_skystone_stairs" );
     }
 
-    default IBlockDefinition<? extends Block> skyStoneBrickStairs()
+    default IBlockDefinition<Block> skyStoneBrickStairs()
     {
         return get( "skystone_brick_stairs" );
     }
 
-    default IBlockDefinition<? extends Block> skyStoneSmallBrickStairs()
+    default IBlockDefinition<Block> skyStoneSmallBrickStairs()
     {
         return get( "skystone_small_brick_stairs" );
     }
 
-    default IBlockDefinition<? extends Block> fluixStairs()
+    default IBlockDefinition<Block> fluixStairs()
     {
         return get( "fluix_stairs" );
     }
 
-    default IBlockDefinition<? extends Block> quartzStairs()
+    default IBlockDefinition<Block> quartzStairs()
     {
         return get( "quartz_stairs" );
     }
 
-    default IBlockDefinition<? extends Block> chiseledQuartzStairs()
+    default IBlockDefinition<Block> chiseledQuartzStairs()
     {
         return get( "chiseled_quartz_stairs" );
     }
 
-    default IBlockDefinition<? extends Block> quartzPillarStairs()
+    default IBlockDefinition<Block> quartzPillarStairs()
     {
         return get( "quartz_pillar_stairs" );
     }

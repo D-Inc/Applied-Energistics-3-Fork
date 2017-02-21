@@ -11,27 +11,27 @@ import appeng.api.definitions.ITileDefinition;
 public interface ICoreTileDefinitions extends IDefinitions<Class<TileEntity>, ITileDefinition<TileEntity>>
 {
 
-    default ITileDefinition<? extends TileEntity> crank()
+    default ITileDefinition<TileEntity> crank()
     {
         return get( "crank" );
     }
 
-    default ITileDefinition<? extends TileEntity> charger()
+    default ITileDefinition<TileEntity> charger()
     {
         return get( "charger" );
     }
 
-    default ITileDefinition<? extends TileEntity> grinder()
+    default ITileDefinition<TileEntity> grinder()
     {
         return get( "grinder" );
     }
 
-    default ITileDefinition<? extends TileEntity> inscriber()
+    default ITileDefinition<TileEntity> inscriber()
     {
         return get( "inscriber" );
     }
 
-    default ITileDefinition<? extends TileEntity> vibrationChamber()
+    default ITileDefinition<TileEntity> vibrationChamber()
     {
         return get( "vibration_chamber" );
     }

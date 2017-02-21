@@ -11,37 +11,37 @@ import appeng.api.definitions.IItemDefinition;
 public interface ICoreItemDefinitions extends IDefinitions<Item, IItemDefinition<Item>>
 {
 
-	default IItemDefinition<? extends Item> crystalSeed()
+	default IItemDefinition<Item> crystalSeed()
 	{
 		return get( "crystal_seed" );
 	}
 
-	default IItemDefinition<? extends Item> material()
+	default IItemDefinition<Item> material()
 	{
 		return get( "material" );
 	}
 
-	default IItemDefinition<? extends Item> blockCrank()
+	default IItemDefinition<Item> blockCrank()
 	{
 		return get( "crank" );
 	}
 
-	default IItemDefinition<? extends Item> blockCharger()
+	default IItemDefinition<Item> blockCharger()
 	{
 		return get( "charger" );
 	}
 
-	default IItemDefinition<? extends Item> blockGrinder()
+	default IItemDefinition<Item> blockGrinder()
 	{
 		return get( "grinder" );
 	}
 
-	default IItemDefinition<? extends Item> blockInscriber()
+	default IItemDefinition<Item> blockInscriber()
 	{
 		return get( "inscriber" );
 	}
 
-	default IItemDefinition<? extends Item> blockVibrationChamber()
+	default IItemDefinition<Item> blockVibrationChamber()
 	{
 		return get( "vibration_chamber" );
 	}

@@ -13,107 +13,107 @@ import net.minecraft.item.ItemBlock;
 public interface IDecorativeItemDefinitions extends IDefinitions<Item, IItemDefinition<Item>>
 {
 
-	default IDefinition<? extends Item> paintBall()
+	default IDefinition<Item> paintBall()
 	{
 		return get( "paint_ball" );
 	}
 
-	default IDefinition<? extends Item> facade()
+	default IDefinition<Item> facade()
 	{
 		return get( "facade" );
 	}
 
-	default IItemDefinition<? extends Item> blockQuartzBlock()
+	default IItemDefinition<Item> blockQuartzBlock()
 	{
 		return get( "quartz_block" );
 	}
 
-	default IItemDefinition<? extends Item> blockQuartzPillar()
+	default IItemDefinition<Item> blockQuartzPillar()
 	{
 		return get( "quartz_pillar" );
 	}
 
-	default IItemDefinition<? extends Item> blockChiseledQuartzBlock()
+	default IItemDefinition<Item> blockChiseledQuartzBlock()
 	{
 		return get( "chiseled_quartz_block" );
 	}
 
-	default IItemDefinition<? extends Item> blockQuartzGlass()
+	default IItemDefinition<Item> blockQuartzGlass()
 	{
 		return get( "quartz_glass" );
 	}
 
-	default IItemDefinition<? extends Item> blockQuartzVibrantGlass()
+	default IItemDefinition<Item> blockQuartzVibrantGlass()
 	{
 		return get( "quartz_vibrant_glass" );
 	}
 
-	default IItemDefinition<? extends Item> blockQuartzFixture()
+	default IItemDefinition<Item> blockQuartzFixture()
 	{
 		return get( "quartz_fixture" );
 	}
 
-	default IItemDefinition<? extends Item> blockFluixBlock()
+	default IItemDefinition<Item> blockFluixBlock()
 	{
 		return get( "fluix_block" );
 	}
 
-	default IItemDefinition<? extends Item> blockSkyStoneBlock()
+	default IItemDefinition<Item> blockSkyStoneBlock()
 	{
 		return get( "sky_stone_block" );
 	}
 
-	default IItemDefinition<? extends Item> blockSmoothSkyStoneBlock()
+	default IItemDefinition<Item> blockSmoothSkyStoneBlock()
 	{
 		return get( "smooth_skystone" );
 	}
 
-	default IItemDefinition<? extends Item> blockSkyStoneBrick()
+	default IItemDefinition<Item> blockSkyStoneBrick()
 	{
 		return get( "skystone_brick" );
 	}
 
-	default IItemDefinition<? extends Item> blockSkyStoneSmallBrick()
+	default IItemDefinition<Item> blockSkyStoneSmallBrick()
 	{
 		return get( "skystone_small_brick" );
 	}
 
-	default IItemDefinition<? extends Item> blockSkyStoneStairs()
+	default IItemDefinition<Item> blockSkyStoneStairs()
 	{
 		return get( "skystone_stairs" );
 	}
 
-	default IItemDefinition<? extends Item> blockSmoothSkyStoneStairs()
+	default IItemDefinition<Item> blockSmoothSkyStoneStairs()
 	{
 		return get( "smooth_skystone_stairs" );
 	}
 
-	default IItemDefinition<? extends Item> blockSkyStoneBrickStairs()
+	default IItemDefinition<Item> blockSkyStoneBrickStairs()
 	{
 		return get( "skystone_brick_stairs" );
 	}
 
-	default IItemDefinition<? extends Item> blockSkyStoneSmallBrickStairs()
+	default IItemDefinition<Item> blockSkyStoneSmallBrickStairs()
 	{
 		return get( "skystone_small_brick_stairs" );
 	}
 
-	default IItemDefinition<? extends Item> blockFluixStairs()
+	default IItemDefinition<Item> blockFluixStairs()
 	{
 		return get( "fluix_stairs" );
 	}
 
-	default IItemDefinition<? extends Item> blockQuartzStairs()
+	default IItemDefinition<Item> blockQuartzStairs()
 	{
 		return get( "quartz_stairs" );
 	}
 
-	default IItemDefinition<? extends Item> blockChiseledQuartzStairs()
+	default IItemDefinition<Item> blockChiseledQuartzStairs()
 	{
 		return get( "chiseled_quartz_stairs" );
 	}
 
-	default IItemDefinition<? extends Item> blockQuartzPillarStairs()
+	default IItemDefinition<Item> blockQuartzPillarStairs()
 	{
 		return get( "quartz_pillar_stairs" );
 	}

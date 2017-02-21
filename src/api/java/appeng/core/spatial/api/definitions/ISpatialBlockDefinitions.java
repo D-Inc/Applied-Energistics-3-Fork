@@ -10,17 +10,17 @@ import appeng.api.definitions.IDefinitions;
 
 public interface ISpatialBlockDefinitions extends IDefinitions<Block, IBlockDefinition<Block>>
 {
-    default IBlockDefinition<? extends Block> matrixFrame()
+    default IBlockDefinition<Block> matrixFrame()
     {
         return get( "matrix_frame" );
     }
 
-    default IBlockDefinition<? extends Block> spatialPylon()
+    default IBlockDefinition<Block> spatialPylon()
     {
         return get( "spatial_pylon" );
     }
 
-    default IBlockDefinition<? extends Block> spatialIOPort()
+    default IBlockDefinition<Block> spatialIOPort()
     {
         return get( "spatial_ioport" );
     }

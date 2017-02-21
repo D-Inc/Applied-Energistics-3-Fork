@@ -9,82 +9,82 @@ import appeng.api.definitions.IDefinitions;
 
 public interface IMEBlockDefinitions extends IDefinitions<Block, IBlockDefinition<Block>>
 {
-    default IBlockDefinition<? extends Block> multiPart()
+    default IBlockDefinition<Block> multiPart()
     {
         return get( "multipart_block" );
     }
 
-    default IBlockDefinition<? extends Block> wirelessAccessPoint()
+    default IBlockDefinition<Block> wirelessAccessPoint()
     {
         return get( "wireless_access_point" );
     }
 
-    default IBlockDefinition<? extends Block> securityStation()
+    default IBlockDefinition<Block> securityStation()
     {
         return get( "security_station" );
     }
 
-    default IBlockDefinition<? extends Block> quantumRing()
+    default IBlockDefinition<Block> quantumRing()
     {
         return get( "quantum_ring" );
     }
 
-    default IBlockDefinition<? extends Block> quantumLink()
+    default IBlockDefinition<Block> quantumLink()
     {
         return get( "quantum_link" );
     }
 
-    default IBlockDefinition<? extends Block> controller()
+    default IBlockDefinition<Block> controller()
     {
         return get( "controller" );
     }
 
-    default IBlockDefinition<? extends Block> drive()
+    default IBlockDefinition<Block> drive()
     {
         return get( "drive" );
     }
 
-    default IBlockDefinition<? extends Block> chest()
+    default IBlockDefinition<Block> chest()
     {
         return get( "chest" );
     }
 
-    default IBlockDefinition<? extends Block> iface()
+    default IBlockDefinition<Block> iface()
     {
         return get( "interface" );
     }
 
-    default IBlockDefinition<? extends Block> cellWorkbench()
+    default IBlockDefinition<Block> cellWorkbench()
     {
         return get( "cell_workbench" );
     }
 
-    default IBlockDefinition<? extends Block> iOPort()
+    default IBlockDefinition<Block> iOPort()
     {
         return get( "ioport" );
     }
 
-    default IBlockDefinition<? extends Block> condenser()
+    default IBlockDefinition<Block> condenser()
     {
         return get( "condenser" );
     }
 
-    default IBlockDefinition<? extends Block> energyAcceptor()
+    default IBlockDefinition<Block> energyAcceptor()
     {
         return get( "energy_acceptor" );
     }
 
-    default IBlockDefinition<? extends Block> energyCell()
+    default IBlockDefinition<Block> energyCell()
     {
         return get( "energy_cell" );
     }
 
-    default IBlockDefinition<? extends Block> energyCellDense()
+    default IBlockDefinition<Block> energyCellDense()
     {
         return get( "dense_energy_cell" );
     }
 
-    default IBlockDefinition<? extends Block> energyCellCreative()
+    default IBlockDefinition<Block> energyCellCreative()
     {
         return get( "creative_energy_cell" );
     }

@@ -11,47 +11,47 @@ import appeng.api.definitions.IItemDefinition;
 public interface ICraftingItemDefinitions extends IDefinitions<Item, IItemDefinition<Item>>
 {
 
-	default IItemDefinition<? extends Item> encodedPattern()
+	default IItemDefinition<Item> encodedPattern()
 	{
 		return get( "encoded_pattern" );
 	}
 
-	default IItemDefinition<? extends Item> blockCraftingMonitor()
+	default IItemDefinition<Item> blockCraftingMonitor()
 	{
 		return get( "crafting_monitor" );
 	}
 
-	default IItemDefinition<? extends Item> blockCraftingStorage1k()
+	default IItemDefinition<Item> blockCraftingStorage1k()
 	{
 		return get( "crafting_storage_1k" );
 	}
 
-	default IItemDefinition<? extends Item> blockCraftingStorage4k()
+	default IItemDefinition<Item> blockCraftingStorage4k()
 	{
 		return get( "crafting_storage_4k" );
 	}
 
-	default IItemDefinition<? extends Item> blockCraftingStorage16k()
+	default IItemDefinition<Item> blockCraftingStorage16k()
 	{
 		return get( "crafting_storage_16k" );
 	}
 
-	default IItemDefinition<? extends Item> blockCraftingStorage64k()
+	default IItemDefinition<Item> blockCraftingStorage64k()
 	{
 		return get( "crafting_storage_64k" );
 	}
 
-	default IItemDefinition<? extends Item> blockCraftingUnit()
+	default IItemDefinition<Item> blockCraftingUnit()
 	{
 		return get( "crafting_unit" );
 	}
 
-	default IItemDefinition<? extends Item> blockCraftingAccelerator()
+	default IItemDefinition<Item> blockCraftingAccelerator()
 	{
 		return get( "crafting_accelerator" );
 	}
 
-	default IItemDefinition<? extends Item> blockMolecularAssembler()
+	default IItemDefinition<Item> blockMolecularAssembler()
 	{
 		return get( "molecular_assembler" );
 	}

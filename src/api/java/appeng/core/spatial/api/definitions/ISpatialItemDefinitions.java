@@ -11,32 +11,32 @@ import net.minecraft.item.ItemBlock;
 
 public interface ISpatialItemDefinitions extends IDefinitions<Item, IItemDefinition<Item>>
 {
-    default IItemDefinition<? extends Item> spatialCell2()
+    default IItemDefinition<Item> spatialCell2()
     {
         return get( "spatial_storage_cell_2_cubed" );
     }
 
-    default IItemDefinition<? extends Item> spatialCell16()
+    default IItemDefinition<Item> spatialCell16()
     {
         return get( "spatial_storage_cell_16_cubed" );
     }
 
-    default IItemDefinition<? extends Item> spatialCell128()
+    default IItemDefinition<Item> spatialCell128()
     {
         return get( "spatial_storage_cell_128_cubed" );
     }
 
-    default IItemDefinition<? extends Item> blockMatrixFrame()
+    default IItemDefinition<Item> blockMatrixFrame()
     {
         return get( "matrix_frame" );
     }
 
-    default IItemDefinition<? extends Item> blockSpatialPylon()
+    default IItemDefinition<Item> blockSpatialPylon()
     {
         return get( "spatial_pylon" );
     }
 
-    default IItemDefinition<? extends Item> blockSpatialIOPort()
+    default IItemDefinition<Item> blockSpatialIOPort()
     {
         return get( "spatial_ioport" );
     }

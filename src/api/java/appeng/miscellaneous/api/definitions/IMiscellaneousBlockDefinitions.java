@@ -10,27 +10,27 @@ import appeng.api.definitions.IDefinitions;
 
 public interface IMiscellaneousBlockDefinitions extends IDefinitions<Block, IBlockDefinition<Block>>
 {
-    default IBlockDefinition<? extends Block> skyCompass()
+    default IBlockDefinition<Block> skyCompass()
     {
         return get( "sky_compass" );
     }
 
-    default IBlockDefinition<? extends Block> tinyTNT()
+    default IBlockDefinition<Block> tinyTNT()
     {
         return get( "tiny_tnt" );
     }
 
-    default IBlockDefinition<? extends Block> quartzGrowthAccelerator()
+    default IBlockDefinition<Block> quartzGrowthAccelerator()
     {
         return get( "quartz_growth_accelerator" );
     }
 
-    default IBlockDefinition<? extends Block> lightDetector()
+    default IBlockDefinition<Block> lightDetector()
     {
         return get( "light_detector" );
     }
 
-    default IBlockDefinition<? extends Block> paint()
+    default IBlockDefinition<Block> paint()
     {
         return get( "paint" );
     }

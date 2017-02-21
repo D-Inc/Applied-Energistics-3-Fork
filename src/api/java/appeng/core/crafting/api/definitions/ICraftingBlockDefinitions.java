@@ -10,35 +10,35 @@ import appeng.api.definitions.IDefinitions;
 
 public interface ICraftingBlockDefinitions extends IDefinitions<Block, IBlockDefinition<Block>>
 {
-    default IBlockDefinition<? extends Block> craftingMonitor(){
+    default IBlockDefinition<Block> craftingMonitor(){
         return get( "crafting_monitor" );
     }
 
-    default IBlockDefinition<? extends Block> craftingStorage1k(){
+    default IBlockDefinition<Block> craftingStorage1k(){
         return get( "crafting_storage_1k");
     }
 
-    default IBlockDefinition<? extends Block> craftingStorage4k(){
+    default IBlockDefinition<Block> craftingStorage4k(){
         return get( "crafting_storage_4k");
     }
 
-    default IBlockDefinition<? extends Block> craftingStorage16k(){
+    default IBlockDefinition<Block> craftingStorage16k(){
         return get( "crafting_storage_16k");
     }
 
-    default IBlockDefinition<? extends Block> craftingStorage64k(){
+    default IBlockDefinition<Block> craftingStorage64k(){
         return get( "crafting_storage_64k");
     }
 
-    default IBlockDefinition<? extends Block> craftingUnit(){
+    default IBlockDefinition<Block> craftingUnit(){
         return get( "crafting_unit");
     }
 
-    default IBlockDefinition<? extends Block> craftingAccelerator(){
+    default IBlockDefinition<Block> craftingAccelerator(){
         return get( "crafting_accelerator");
     }
 
-    default IBlockDefinition<? extends Block> molecularAssembler(){
+    default IBlockDefinition<Block> molecularAssembler(){
         return get( "molecular_assembler" );
     }
 }

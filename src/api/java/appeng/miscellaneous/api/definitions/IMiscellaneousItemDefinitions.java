@@ -11,27 +11,27 @@ import net.minecraft.item.ItemBlock;
 
 public interface IMiscellaneousItemDefinitions extends IDefinitions<Item, IItemDefinition<Item>>
 {
-    default IItemDefinition<? extends Item > blockSkyCompass()
+    default IItemDefinition<Item > blockSkyCompass()
     {
         return get( "sky_compass" );
     }
 
-    default IItemDefinition<? extends Item> blockTinyTNT()
+    default IItemDefinition<Item> blockTinyTNT()
     {
         return get( "tiny_tnt" );
     }
 
-    default IItemDefinition<? extends Item> blockQuartzGrowthAccelerator()
+    default IItemDefinition<Item> blockQuartzGrowthAccelerator()
     {
         return get( "quartz_growth_accelerator" );
     }
 
-    default IItemDefinition<? extends Item> blockLightDetector()
+    default IItemDefinition<Item> blockLightDetector()
     {
         return get( "light_detector" );
     }
 
-    default IItemDefinition<? extends Item> blockPaint()
+    default IItemDefinition<Item> blockPaint()
     {
         return get( "paint" );
     }
