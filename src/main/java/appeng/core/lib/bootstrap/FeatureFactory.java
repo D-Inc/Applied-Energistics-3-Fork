@@ -12,6 +12,8 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.DimensionType;
+import net.minecraft.world.biome.Biome;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -100,9 +102,31 @@ public class FeatureFactory
 		return material( new ResourceLocation( AppEng.MODID, id ), material );
 	}
 
-	public <I extends Material> MaterialDefinitionBuilder<I> material( ResourceLocation id, I material )
+	public <M extends Material> MaterialDefinitionBuilder<M> material( ResourceLocation id, M material )
 	{
-		return new MaterialDefinitionBuilder<I>( this, id, material ).features( defaultFeatures );
+		return new MaterialDefinitionBuilder<M>( this, id, material ).features( defaultFeatures );
+	}
+
+	@Deprecated
+	public <B extends Biome> BiomeDefinitionBuilder<B> biome( String id, B biome )
+	{
+		return biome( new ResourceLocation( AppEng.MODID, id ), biome );
+	}
+
+	public <B extends Biome> BiomeDefinitionBuilder<B> biome( ResourceLocation id, B biome )
+	{
+		return new BiomeDefinitionBuilder<B>( this, id, biome ).features( defaultFeatures );
+	}
+
+	@Deprecated
+	public <D extends DimensionType> DimensionTypeDefinitionBuilder<D> dimensionType( String id, int did )
+	{
+		return dimensionType( new ResourceLocation( AppEng.MODID, id ), did );
+	}
+
+	public <D extends DimensionType> DimensionTypeDefinitionBuilder<D> dimensionType( ResourceLocation id, int did )
+	{
+		return new DimensionTypeDefinitionBuilder<D>( this, id, did ).features( defaultFeatures );
 	}
 
 	<B extends Block> void addItemBlock( BlockDefinition<B> def, IItemBlockCustomizer itemBlock )
