@@ -12,6 +12,9 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -113,9 +116,19 @@ public class FeatureFactory
 		this.bootstrapComponents.add( component );
 	}
 
-	public List<IBootstrapComponent> getBootstrapComponents()
+	public void preInit( FMLPreInitializationEvent event )
 	{
-		return bootstrapComponents;
+		this.bootstrapComponents.forEach( component -> component.preInit( event.getSide() ) );
+	}
+
+	public void init( FMLInitializationEvent event )
+	{
+		this.bootstrapComponents.forEach( component -> component.init( event.getSide() ) );
+	}
+
+	public void postInit( FMLPostInitializationEvent event )
+	{
+		this.bootstrapComponents.forEach( component -> component.postInit( event.getSide() ) );
 	}
 
 }

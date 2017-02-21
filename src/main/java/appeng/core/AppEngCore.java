@@ -2,15 +2,12 @@
 package appeng.core;
 
 
-import java.io.File;
-
 import javax.annotation.Nonnull;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLInterModComms.IMCEvent;
@@ -46,11 +43,6 @@ import appeng.core.lib.sync.GuiBridge;
 import appeng.core.lib.sync.network.NetworkHandler;
 import appeng.core.lib.worlddata.WorldData;
 import appeng.core.server.AECommand;
-import appeng.core.services.VersionChecker;
-import appeng.core.services.export.ExportConfig;
-import appeng.core.services.export.ExportProcess;
-import appeng.core.services.export.ForgeExportConfig;
-import appeng.core.services.version.VersionCheckerConfig;
 
 
 /*
@@ -69,6 +61,8 @@ public class AppEngCore implements ICore
 	private final Registration registration;
 
 	private FMLControlledNamespacedRegistry<Material> materialRegistry;
+
+	private FeatureFactory registry;
 
 	private CoreItemDefinitions itemDefinitions;
 	private CoreBlockDefinitions blockDefinitions;
@@ -113,10 +107,12 @@ public class AppEngCore implements ICore
 	{
 		materialRegistry = (FMLControlledNamespacedRegistry<Material>) new RegistryBuilder().setName( new ResourceLocation( AppEng.MODID, "material" ) ).setType( Material.class ).setIDRange( 0, Short.MAX_VALUE ).create();
 
-		FeatureFactory registry = new FeatureFactory();
+		registry = new FeatureFactory();
 		this.blockDefinitions = new CoreBlockDefinitions( registry );
 		this.itemDefinitions = new CoreItemDefinitions( registry );
 		this.tileDefinitions = new CoreTileDefinitions( registry );
+
+		registry.preInit( event );
 
 		CreativeTab.init();
 
@@ -154,6 +150,8 @@ public class AppEngCore implements ICore
 	{
 		this.registration.initialize( event );
 
+		registry.init( event );
+
 		proxy.init( event );
 	}
 
@@ -161,6 +159,8 @@ public class AppEngCore implements ICore
 	public void postInit( FMLPostInitializationEvent event )
 	{
 		this.registration.postInit( event );
+
+		registry.postInit( event );
 
 		proxy.postInit( event );
 

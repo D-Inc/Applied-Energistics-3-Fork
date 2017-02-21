@@ -81,7 +81,7 @@ import appeng.core.worldgen.loot.ChestLoot;
 import appeng.core.worldgen.world.MeteoriteWorldGen;
 import appeng.core.worldgen.world.QuartzWorldGen;
 
-
+@Deprecated
 public final class Registration
 {
 	private DimensionType storageDimensionType;
@@ -100,14 +100,6 @@ public final class Registration
 	void preInitialize( final FMLPreInitializationEvent event )
 	{
 		this.registerSpatial( false );
-
-		final AppEngApi api = AppEngApi.INSTANCE;
-
-		ApiDefinitions definitions = api.definitions();
-
-		// Register all detected handlers and features (items, blocks) in pre-init
-		definitions.getRegistry().getBootstrapComponents().forEach( b -> b.preInitialize( event.getSide() ) );
-
 	}
 
 	private void registerSpatial( final boolean force )
@@ -172,9 +164,6 @@ public final class Registration
 		final AppEngApi api = AppEngApi.INSTANCE;
 		final IPartHelper partHelper = api.partHelper();
 		final RegistryContainer registries = api.registries();
-
-		ApiDefinitions definitions = api.definitions();
-		definitions.getRegistry().getBootstrapComponents().forEach( b -> b.initialize( event.getSide() ) );
 
 		// Perform ore camouflage!
 		ItemMultiItem.instance.makeUnique();
@@ -242,7 +231,6 @@ public final class Registration
 
 		final AppEngApi api = AppEngApi.INSTANCE;
 		final RegistryContainer registries = api.registries();
-		ApiDefinitions definitions = api.definitions();
 		final ApiParts parts = definitions.parts();
 		final ApiBlocks blocks = definitions.blocks();
 		final ApiItems items = definitions.items();
@@ -252,8 +240,6 @@ public final class Registration
 		GuiText.values();
 
 		blocks.multiPart().block().maybe().ifPresent( block -> ( (BlockCableBus) block ).setupTile() );
-
-		definitions.getRegistry().getBootstrapComponents().forEach( b -> b.postInitialize( event.getSide() ) );
 
 		// Interface
 		Upgrades.CRAFTING.registerItem( parts.iface(), 1 );
