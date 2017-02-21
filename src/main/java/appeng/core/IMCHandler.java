@@ -20,17 +20,13 @@ package appeng.core;
 
 
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
-import net.minecraftforge.fml.common.event.FMLInterModComms;
-
-import appeng.core.api.config.TunnelType;
 import appeng.core.lib.AELog;
 import appeng.core.lib.api.IIMCProcessor;
 import appeng.core.lib.api.imc.IMCGrinder;
 import appeng.core.lib.api.imc.IMCMatterCannon;
-import appeng.core.lib.api.imc.IMCP2PAttunement;
+import net.minecraftforge.fml.common.event.FMLInterModComms;
 
 
 /**
@@ -62,11 +58,6 @@ public class IMCHandler
 
 		this.processors.put( "add-grindable", new IMCGrinder() );
 		this.processors.put( "add-mattercannon-ammo", new IMCMatterCannon() );
-
-		for( final TunnelType type : TunnelType.values() )
-		{
-			this.processors.put( "add-p2p-attunement-" + type.name().replace( '_', '-' ).toLowerCase( Locale.ENGLISH ), new IMCP2PAttunement() );
-		}
 	}
 
 	/**
