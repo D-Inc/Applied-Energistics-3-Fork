@@ -21,6 +21,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import appeng.api.definitions.IDefinition;
 import appeng.api.definitions.IDefinitionsProvider;
 import appeng.core.AppEng;
+import appeng.core.api.material.Material;
 import appeng.core.lib.bootstrap.components.ModelOverrideComponent;
 import appeng.core.lib.definitions.BlockDefinition;
 import appeng.core.lib.features.AEFeature;
@@ -91,6 +92,17 @@ public class FeatureFactory
 	public <I extends Item> ItemDefinitionBuilder<I> item( ResourceLocation id, I item )
 	{
 		return new ItemDefinitionBuilder<I>( this, id, item ).features( defaultFeatures );
+	}
+
+	@Deprecated
+	public <M extends Material> MaterialDefinitionBuilder<M> material( String id, M material )
+	{
+		return material( new ResourceLocation( AppEng.MODID, id ), material );
+	}
+
+	public <I extends Material> MaterialDefinitionBuilder<I> material( ResourceLocation id, I material )
+	{
+		return new MaterialDefinitionBuilder<I>( this, id, material ).features( defaultFeatures );
 	}
 
 	<B extends Block> void addItemBlock( BlockDefinition<B> def, IItemBlockCustomizer itemBlock )
