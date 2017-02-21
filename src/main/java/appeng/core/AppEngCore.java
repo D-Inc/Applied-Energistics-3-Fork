@@ -45,8 +45,6 @@ import appeng.core.lib.item.IStateItem.State;
 import appeng.core.lib.sync.GuiBridge;
 import appeng.core.lib.sync.network.NetworkHandler;
 import appeng.core.lib.worlddata.WorldData;
-import appeng.core.recipes.CustomRecipeConfig;
-import appeng.core.recipes.CustomRecipeForgeConfiguration;
 import appeng.core.server.AECommand;
 import appeng.core.services.VersionChecker;
 import appeng.core.services.export.ExportConfig;
@@ -66,8 +64,6 @@ public class AppEngCore implements ICore
 	private static AppEngCoreProxy proxy;
 
 	private final Registration registration;
-
-	private CustomRecipeConfig customRecipeConfig;
 
 	/**
 	 * Folder for recipes
@@ -138,7 +134,6 @@ public class AppEngCore implements ICore
 		final Configuration recipeConfiguration = new Configuration( recipeFile );
 
 		final VersionCheckerConfig versionCheckerConfig = new VersionCheckerConfig( versionFile );
-		this.customRecipeConfig = new CustomRecipeForgeConfiguration( recipeConfiguration );
 		this.exportConfig = new ForgeExportConfig( recipeConfiguration );
 
 		CreativeTab.init();
@@ -191,7 +186,7 @@ public class AppEngCore implements ICore
 			this.startService( "AE2 CSV Export", exportProcessThread );
 		}
 
-		this.registration.initialize( event, this.recipeDirectory, this.customRecipeConfig );
+		this.registration.initialize( event );
 
 		proxy.init( event );
 	}

@@ -19,11 +19,8 @@
 package appeng.core;
 
 
-import java.io.File;
 import java.util.HashSet;
 import java.util.Set;
-
-import javax.annotation.Nonnull;
 
 import com.google.common.base.Preconditions;
 
@@ -36,8 +33,6 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.oredict.RecipeSorter;
-import net.minecraftforge.oredict.RecipeSorter.Category;
 
 import appeng.api.definitions.IItemDefinition;
 import appeng.core.api.config.Upgrades;
@@ -48,14 +43,12 @@ import appeng.core.item.ItemMultiItem;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.ApiDefinitions;
 import appeng.core.lib.AppEngApi;
-import appeng.core.lib.RecipeLoader;
 import appeng.core.lib.api.definitions.ApiBlocks;
 import appeng.core.lib.api.definitions.ApiItems;
 import appeng.core.lib.api.definitions.ApiParts;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.features.registries.GridCacheRegistry;
 import appeng.core.lib.features.registries.P2PTunnelRegistry;
-import appeng.core.lib.features.registries.RecipeHandlerRegistry;
 import appeng.core.lib.features.registries.RegistryContainer;
 import appeng.core.lib.features.registries.entries.BasicCellHandler;
 import appeng.core.lib.features.registries.entries.CreativeCellHandler;
@@ -82,22 +75,6 @@ import appeng.core.me.grid.cache.SpatialPylonCache;
 import appeng.core.me.grid.cache.TickManagerCache;
 import appeng.core.me.grid.storage.AEExternalHandler;
 import appeng.core.me.part.PartPlacement;
-import appeng.core.recipes.AEItemResolver;
-import appeng.core.recipes.CustomRecipeConfig;
-import appeng.core.recipes.RecipeHandler;
-import appeng.core.recipes.game.DisassembleRecipe;
-import appeng.core.recipes.game.FacadeRecipe;
-import appeng.core.recipes.game.ShapedRecipe;
-import appeng.core.recipes.game.ShapelessRecipe;
-import appeng.core.recipes.handlers.Grind;
-import appeng.core.recipes.handlers.HCCrusher;
-import appeng.core.recipes.handlers.Inscribe;
-import appeng.core.recipes.handlers.Press;
-import appeng.core.recipes.handlers.Pulverizer;
-import appeng.core.recipes.handlers.Shaped;
-import appeng.core.recipes.handlers.Shapeless;
-import appeng.core.recipes.handlers.Smelt;
-import appeng.core.recipes.ores.OreDictionaryHandler;
 import appeng.core.spatial.world.BiomeGenStorage;
 import appeng.core.spatial.world.StorageWorldProvider;
 import appeng.core.worldgen.loot.ChestLoot;
@@ -107,14 +84,8 @@ import appeng.core.worldgen.world.QuartzWorldGen;
 
 public final class Registration
 {
-	private final RecipeHandler recipeHandler;
 	private DimensionType storageDimensionType;
 	private Biome storageBiome;
-
-	Registration()
-	{
-		this.recipeHandler = new RecipeHandler();
-	}
 
 	public Biome getStorageBiome()
 	{
@@ -131,14 +102,6 @@ public final class Registration
 		this.registerSpatial( false );
 
 		final AppEngApi api = AppEngApi.INSTANCE;
-		final RecipeHandlerRegistry recipeRegistry = api.registries().recipes();
-		this.registerCraftHandlers( recipeRegistry );
-
-		RecipeSorter.register( "AE2-Facade", FacadeRecipe.class, Category.SHAPED, "" );
-		RecipeSorter.register( "AE2-Shaped", ShapedRecipe.class, Category.SHAPED, "" );
-		RecipeSorter.register( "AE2-Shapeless", ShapelessRecipe.class, Category.SHAPELESS, "" );
-
-		MinecraftForge.EVENT_BUS.register( OreDictionaryHandler.INSTANCE );
 
 		ApiDefinitions definitions = api.definitions();
 
@@ -202,28 +165,9 @@ public final class Registration
 		}
 	}
 
-	private void registerCraftHandlers( final RecipeHandlerRegistry registry )
-	{
-		registry.addNewSubItemResolver( new AEItemResolver() );
-
-		registry.addNewCraftHandler( "hccrusher", HCCrusher.class );
-		registry.addNewCraftHandler( "grind", Grind.class );
-		registry.addNewCraftHandler( "pulverizer", Pulverizer.class );
-
-		registry.addNewCraftHandler( "smelt", Smelt.class );
-		registry.addNewCraftHandler( "inscribe", Inscribe.class );
-		registry.addNewCraftHandler( "press", Press.class );
-
-		registry.addNewCraftHandler( "shaped", Shaped.class );
-		registry.addNewCraftHandler( "shapeless", Shapeless.class );
-	}
-
-	public void initialize( @Nonnull final FMLInitializationEvent event, @Nonnull final File recipeDirectory, @Nonnull final CustomRecipeConfig customRecipeConfig )
+	public void initialize( FMLInitializationEvent event )
 	{
 		Preconditions.checkNotNull( event );
-		Preconditions.checkNotNull( recipeDirectory );
-		Preconditions.checkArgument( !recipeDirectory.isFile() );
-		Preconditions.checkNotNull( customRecipeConfig );
 
 		final AppEngApi api = AppEngApi.INSTANCE;
 		final IPartHelper partHelper = api.partHelper();
@@ -234,9 +178,6 @@ public final class Registration
 
 		// Perform ore camouflage!
 		ItemMultiItem.instance.makeUnique();
-
-		final Runnable recipeLoader = new RecipeLoader( recipeDirectory, customRecipeConfig, this.recipeHandler );
-		recipeLoader.run();
 
 		// TODO Pre-1.8 - readd layers
 		// partHelper.registerNewLayer( "appeng.parts.layers.LayerISidedInventory",
@@ -294,23 +235,9 @@ public final class Registration
 			registries.matterCannon().registerAmmo( (ItemStack) ammoStack, weight );
 		} );
 
-		this.recipeHandler.injectRecipes();
-
 		final PlayerStatsRegistration registration = new PlayerStatsRegistration( FMLCommonHandler.instance().bus(), AEConfig.instance );
 		registration.registerAchievementHandlers();
 		registration.registerAchievements();
-
-		if( AEConfig.instance.isFeatureEnabled( AEFeature.EnableDisassemblyCrafting ) )
-		{
-			GameRegistry.addRecipe( new DisassembleRecipe() );
-			RecipeSorter.register( "appliedenergistics2:disassemble", DisassembleRecipe.class, Category.SHAPELESS, "after:minecraft:shapeless" );
-		}
-
-		if( AEConfig.instance.isFeatureEnabled( AEFeature.EnableFacadeCrafting ) )
-		{
-			GameRegistry.addRecipe( new FacadeRecipe() );
-			RecipeSorter.register( "appliedenergistics2:facade", FacadeRecipe.class, Category.SHAPED, "after:minecraft:shaped" );
-		}
 	}
 
 	void postInit( final FMLPostInitializationEvent event )
@@ -440,10 +367,5 @@ public final class Registration
 		{
 			registries.worldgen().enableWorldGenForDimension( WorldGenType.Meteorites, dimension );
 		}
-
-		/*
-		 * initial recipe bake, if ore dictionary changes after this it re-bakes.
-		 */
-		OreDictionaryHandler.INSTANCE.bakeRecipes();
 	}
 }
