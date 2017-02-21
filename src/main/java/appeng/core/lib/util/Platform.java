@@ -107,7 +107,6 @@ import appeng.core.lib.AppEngApi;
 import appeng.core.lib.api.definitions.ApiMaterials;
 import appeng.core.lib.api.definitions.ApiParts;
 import appeng.core.lib.features.AEFeature;
-import appeng.core.lib.stats.Stats;
 import appeng.core.lib.sync.GuiBridge;
 import appeng.core.lib.sync.GuiHostType;
 import appeng.core.lib.util.item.AEItemStack;
@@ -1599,11 +1598,6 @@ public class Platform
 			possible.setCount( itemToExtract );
 			final StackType ret = cell.extractItems( possible, Actionable.MODULATE, src );
 
-			if( ret != null && src.isPlayer() )
-			{
-				Stats.ItemsExtracted.addToPlayer( ( (PlayerSource) src ).player, (int) ret.getCount() );
-			}
-
 			return ret;
 		}
 
@@ -1636,22 +1630,10 @@ public class Platform
 				input.setCount( itemToAdd );
 				split.add( cell.injectItems( input, Actionable.MODULATE, src ) );
 
-				if( src.isPlayer() )
-				{
-					final long diff = original - split.getCount();
-					Stats.ItemsInserted.addToPlayer( ( (PlayerSource) src ).player, (int) diff );
-				}
-
 				return split;
 			}
 
 			final StackType ret = cell.injectItems( input, Actionable.MODULATE, src );
-
-			if( src.isPlayer() )
-			{
-				final long diff = ret == null ? input.getCount() : input.getCount() - ret.getCount();
-				Stats.ItemsInserted.addToPlayer( ( (PlayerSource) src ).player, (int) diff );
-			}
 
 			return ret;
 		}
