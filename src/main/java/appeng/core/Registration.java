@@ -19,14 +19,10 @@
 package appeng.core;
 
 
-import java.util.HashSet;
-import java.util.Set;
-
 import com.google.common.base.Preconditions;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.DimensionType;
-import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -51,7 +47,6 @@ import appeng.core.lib.features.registries.entries.BasicCellHandler;
 import appeng.core.lib.features.registries.entries.CreativeCellHandler;
 import appeng.core.lib.localization.GuiText;
 import appeng.core.lib.localization.PlayerMessages;
-import appeng.core.lib.util.Platform;
 import appeng.core.me.api.networking.crafting.ICraftingGrid;
 import appeng.core.me.api.networking.energy.IEnergyGrid;
 import appeng.core.me.api.networking.pathing.IPathingGrid;
@@ -71,11 +66,11 @@ import appeng.core.me.grid.cache.SpatialPylonCache;
 import appeng.core.me.grid.cache.TickManagerCache;
 import appeng.core.me.grid.storage.AEExternalHandler;
 import appeng.core.me.part.PartPlacement;
-import appeng.core.spatial.world.BiomeGenStorage;
 import appeng.core.spatial.world.StorageWorldProvider;
 import appeng.core.worldgen.loot.ChestLoot;
 import appeng.core.worldgen.world.MeteoriteWorldGen;
 import appeng.core.worldgen.world.QuartzWorldGen;
+
 
 @Deprecated
 public final class Registration
@@ -89,42 +84,7 @@ public final class Registration
 
 	void preInitialize( final FMLPreInitializationEvent event )
 	{
-		this.registerSpatial( false );
-	}
 
-	private void registerSpatial( final boolean force )
-	{
-		if( !AEConfig.instance.isFeatureEnabled( AEFeature.SpatialIO ) )
-		{
-			return;
-		}
-
-		final AEConfig config = AEConfig.instance;
-
-		if( config.storageProviderID != -1 )
-		{
-			storageDimensionType = DimensionType.register( "Storage Cell", "_cell", config.storageProviderID, StorageWorldProvider.class, false );
-		}
-
-		if( config.storageProviderID == -1 && force )
-		{
-			final Set<Integer> ids = new HashSet<>();
-			for( DimensionType type : DimensionType.values() )
-			{
-				ids.add( type.getId() );
-			}
-
-			config.storageProviderID = -11;
-
-			while( ids.contains( config.storageProviderID ) )
-			{
-				config.storageProviderID--;
-			}
-
-			storageDimensionType = DimensionType.register( "Storage Cell", "_cell", config.storageProviderID, StorageWorldProvider.class, false );
-
-			config.save();
-		}
 	}
 
 	public void initialize( FMLInitializationEvent event )
