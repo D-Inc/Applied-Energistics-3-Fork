@@ -20,34 +20,39 @@ package appeng.core.spatial.world;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.gen.ChunkProviderOverworld;
 
-import appeng.core.lib.AEConfig;
-import appeng.core.lib.AppEngApi;
+import appeng.core.spatial.AppEngSpatial;
+import appeng.core.spatial.definitions.SpatialBiomeDefinitions;
+import appeng.core.spatial.definitions.SpatialBlockDefinitions;
 
 
 public class StorageChunkProvider extends ChunkProviderOverworld
 {
 	private static final int SQUARE_CHUNK_SIZE = 256;
 	private static final Block[] BLOCKS;
+	private static final byte[] BIOMES = new byte[256];
 
 	static
 	{
 		BLOCKS = new Block[255 * SQUARE_CHUNK_SIZE];
-
-		AppEngApi.internalApi().definitions().blocks().matrixFrame().maybe().ifPresent( matrixFrameBlock -> {
+		AppEngSpatial.INSTANCE.<Block, SpatialBlockDefinitions>definitions( Block.class ).matrixFrame().maybe().ifPresent( matrixFrameBlock -> {
 			for( int x = 0; x < BLOCKS.length; x++ )
 			{
 				BLOCKS[x] = (Block) matrixFrameBlock;
 			}
 		} );
+
+		Arrays.fill( BIOMES, (byte) Biome.getIdForBiome( AppEngSpatial.INSTANCE.<Biome, SpatialBiomeDefinitions>definitions( Biome.class ).spatialStorage().maybe().get() ) );
 	}
 
 	private final World world;
@@ -63,13 +68,7 @@ public class StorageChunkProvider extends ChunkProviderOverworld
 	{
 		final Chunk chunk = new Chunk( this.world, x, z );
 
-		final byte[] biomes = chunk.getBiomeArray();
-		final AEConfig config = AEConfig.instance;
-
-		for( int k = 0; k < biomes.length; ++k )
-		{
-			biomes[k] = (byte) config.storageBiomeID;
-		}
+		chunk.setBiomeArray( BIOMES );
 
 		if( !chunk.isTerrainPopulated() )
 		{
