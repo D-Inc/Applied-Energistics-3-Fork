@@ -13,7 +13,7 @@ import appeng.core.lib.definitions.Definitions;
 import appeng.core.lib.definitions.TileDefinition;
 
 
-public class TileDefinitionBuilder<T extends TileEntity> extends DefinitionBuilder<Class<T>, ITileDefinition<T>, TileDefinitionBuilder<T>> implements ITileBuilder<T, TileDefinitionBuilder<T>>
+public class TileDefinitionBuilder<T extends TileEntity> extends DefinitionBuilder<Class<T>, Class<T>, ITileDefinition<T>, TileDefinitionBuilder<T>> implements ITileBuilder<T, TileDefinitionBuilder<T>>
 {
 
 	private Definitions<Block, IBlockDefinition<Block>> blockDefinitions;

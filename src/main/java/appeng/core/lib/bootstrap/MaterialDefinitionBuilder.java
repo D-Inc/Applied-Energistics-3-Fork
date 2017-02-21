@@ -9,7 +9,7 @@ import appeng.core.api.material.Material;
 import appeng.core.lib.definitions.MaterialDefinition;
 
 
-public class MaterialDefinitionBuilder<M extends Material> extends DefinitionBuilder<M, IMaterialDefinition<M>, MaterialDefinitionBuilder<M>> implements IMaterialBuilder<M, MaterialDefinitionBuilder<M>>
+public class MaterialDefinitionBuilder<M extends Material> extends DefinitionBuilder<M, M, IMaterialDefinition<M>, MaterialDefinitionBuilder<M>> implements IMaterialBuilder<M, MaterialDefinitionBuilder<M>>
 {
 
 	MaterialDefinitionBuilder( FeatureFactory factory, ResourceLocation registryName, M material )

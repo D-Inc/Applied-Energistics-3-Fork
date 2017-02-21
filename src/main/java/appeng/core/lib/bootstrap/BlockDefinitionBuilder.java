@@ -16,7 +16,7 @@ import appeng.core.lib.definitions.BlockDefinition;
 import appeng.core.lib.util.Platform;
 
 
-public class BlockDefinitionBuilder<B extends Block> extends DefinitionBuilder<B, IBlockDefinition<B>, BlockDefinitionBuilder<B>> implements IBlockBuilder<B, BlockDefinitionBuilder<B>>
+public class BlockDefinitionBuilder<B extends Block> extends DefinitionBuilder<B, B, IBlockDefinition<B>, BlockDefinitionBuilder<B>> implements IBlockBuilder<B, BlockDefinitionBuilder<B>>
 {
 
 	private CreativeTabs creativeTab = CreativeTab.instance;

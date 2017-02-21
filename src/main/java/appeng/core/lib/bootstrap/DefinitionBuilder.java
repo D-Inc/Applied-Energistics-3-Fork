@@ -22,14 +22,14 @@ import appeng.core.lib.bootstrap.components.PreInitComponent;
 import appeng.core.lib.features.AEFeature;
 
 
-public abstract class DefinitionBuilder<T, D extends IDefinition<T>, B extends DefinitionBuilder<T, D, B>> implements IDefinitionBuilder<T, D, B>
+public abstract class DefinitionBuilder<I, T, D extends IDefinition<T>, B extends DefinitionBuilder<I, T, D, B>> implements IDefinitionBuilder<T, D, B>
 {
 
 	protected final FeatureFactory factory;
 
 	protected final ResourceLocation registryName;
 
-	private final T instance;
+	private final I instance;
 
 	protected final EnumSet<AEFeature> features = EnumSet.noneOf( AEFeature.class );
 
@@ -41,7 +41,7 @@ public abstract class DefinitionBuilder<T, D extends IDefinition<T>, B extends D
 
 	private final List<Consumer<D>> postInitCallbacks = new ArrayList<>();
 
-	public DefinitionBuilder( FeatureFactory factory, ResourceLocation registryName, T instance )
+	public DefinitionBuilder( FeatureFactory factory, ResourceLocation registryName, I instance )
 	{
 		this.factory = factory;
 		this.registryName = registryName;
@@ -101,7 +101,7 @@ public abstract class DefinitionBuilder<T, D extends IDefinition<T>, B extends D
 
 		D definition = def( setRegistryName( instance ) );
 
-		preInitCallbacks.add( t -> register( ( (D) t ).maybe().get() ) );
+		preInitCallbacks.add( t -> register( ( t ).maybe().get() ) );
 		preInitCallbacks.forEach( consumer -> factory.<PreInitComponent>addBootstrapComponent( side -> consumer.accept( definition ) ) );
 		initCallbacks.forEach( consumer -> factory.<InitComponent>addBootstrapComponent( side -> consumer.accept( definition ) ) );
 		postInitCallbacks.forEach( consumer -> factory.<PostInitComponent>addBootstrapComponent( side -> consumer.accept( definition ) ) );
@@ -111,7 +111,7 @@ public abstract class DefinitionBuilder<T, D extends IDefinition<T>, B extends D
 		return definition;
 	}
 
-	protected T setRegistryName( T t )
+	protected I setRegistryName( I t )
 	{
 		if( t instanceof IForgeRegistryEntry )
 		{
@@ -128,6 +128,6 @@ public abstract class DefinitionBuilder<T, D extends IDefinition<T>, B extends D
 		}
 	}
 
-	protected abstract D def( @Nullable T t );
+	protected abstract D def( @Nullable I t );
 
 }

@@ -15,7 +15,7 @@ import appeng.core.lib.item.IStateItem;
 import appeng.core.lib.util.Platform;
 
 
-public class ItemDefinitionBuilder<I extends Item> extends DefinitionBuilder<I, IItemDefinition<I>, ItemDefinitionBuilder<I>> implements IItemBuilder<I, ItemDefinitionBuilder<I>>
+public class ItemDefinitionBuilder<I extends Item> extends DefinitionBuilder<I, I, IItemDefinition<I>, ItemDefinitionBuilder<I>> implements IItemBuilder<I, ItemDefinitionBuilder<I>>
 {
 
 	@SideOnly( Side.CLIENT )

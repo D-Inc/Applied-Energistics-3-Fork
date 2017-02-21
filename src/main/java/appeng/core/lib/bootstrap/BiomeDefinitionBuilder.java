@@ -9,7 +9,7 @@ import appeng.api.definitions.IBiomeDefinition;
 import appeng.core.lib.definitions.BiomeDefinition;
 
 
-public class BiomeDefinitionBuilder<B extends Biome> extends DefinitionBuilder<B, IBiomeDefinition<B>, BiomeDefinitionBuilder<B>> implements IBiomeBuilder<B, BiomeDefinitionBuilder<B>>
+public class BiomeDefinitionBuilder<B extends Biome> extends DefinitionBuilder<B, B, IBiomeDefinition<B>, BiomeDefinitionBuilder<B>> implements IBiomeBuilder<B, BiomeDefinitionBuilder<B>>
 {
 
 	BiomeDefinitionBuilder( FeatureFactory factory, ResourceLocation registryName, B biome )
