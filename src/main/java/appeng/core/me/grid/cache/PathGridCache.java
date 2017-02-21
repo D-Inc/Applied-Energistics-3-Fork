@@ -30,8 +30,6 @@ import appeng.core.api.util.AEPartLocation;
 import appeng.core.api.util.DimensionalCoord;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.features.AEFeature;
-import appeng.core.lib.stats.Achievements;
-import appeng.core.lib.util.Platform;
 import appeng.core.me.api.networking.GridFlags;
 import appeng.core.me.api.networking.IGrid;
 import appeng.core.me.api.networking.IGridBlock;
@@ -188,9 +186,6 @@ public class PathGridCache implements IPathingGrid
 					}
 				}
 
-				// check for achievements
-				this.achievementPost();
-
 				this.booting = false;
 				this.setChannelPowerUsage( this.getChannelsByBlocks() / 128.0 );
 				this.myGrid.postEvent( new MENetworkBootingStatusChange() );
@@ -335,49 +330,6 @@ public class PathGridCache implements IPathingGrid
 		}
 
 		return depth;
-	}
-
-	private void achievementPost()
-	{
-		if( this.lastChannels != this.getChannelsInUse() && AEConfig.instance.isFeatureEnabled( AEFeature.Channels ) )
-		{
-			final Achievements currentBracket = this.getAchievementBracket( this.getChannelsInUse() );
-			final Achievements lastBracket = this.getAchievementBracket( this.lastChannels );
-			if( currentBracket != lastBracket && currentBracket != null )
-			{
-				final Set<Integer> players = new HashSet<Integer>();
-				for( final IGridNode n : this.requireChannels )
-				{
-					players.add( n.getPlayerID() );
-				}
-
-				for( final int id : players )
-				{
-					Platform.addStat( id, currentBracket.getAchievement() );
-				}
-			}
-		}
-		this.lastChannels = this.getChannelsInUse();
-	}
-
-	private Achievements getAchievementBracket( final int ch )
-	{
-		if( ch < 8 )
-		{
-			return null;
-		}
-
-		if( ch < 128 )
-		{
-			return Achievements.Networking1;
-		}
-
-		if( ch < 2048 )
-		{
-			return Achievements.Networking2;
-		}
-
-		return Achievements.Networking3;
 	}
 
 	@MENetworkEventSubscribe
