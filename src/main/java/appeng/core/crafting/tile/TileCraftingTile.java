@@ -26,18 +26,20 @@ import java.util.LinkedList;
 import java.util.Optional;
 
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 
-import appeng.api.definitions.IItemDefinition;
 import appeng.core.api.config.Actionable;
 import appeng.core.api.implementations.IPowerChannelState;
 import appeng.core.api.util.AEPartLocation;
 import appeng.core.api.util.WorldCoord;
+import appeng.core.crafting.AppEngCrafting;
 import appeng.core.crafting.block.BlockCraftingUnit;
 import appeng.core.crafting.block.BlockCraftingUnit.CraftingUnitType;
+import appeng.core.crafting.definitions.CraftingItemDefinitions;
 import appeng.core.lib.AppEngApi;
 import appeng.core.lib.tile.TileEvent;
 import appeng.core.lib.tile.events.TileEventType;
@@ -85,7 +87,7 @@ public class TileCraftingTile extends AENetworkTile implements IAEMultiBlock, IP
 
 		if( ( (TileCraftingTile) obj ).isAccelerator() )
 		{
-			is = ( (IItemDefinition) AppEngApi.internalApi().definitions().blocks().craftingAccelerator().block().maybeItem().get() ).maybeStack( 1 );
+			is = AppEngCrafting.INSTANCE.<Item, CraftingItemDefinitions>definitions( Item.class ).blockCraftingAccelerator().maybeStack( 1 );
 		}
 
 		return is.orElseGet( () -> super.getItemFromTile( obj ) );

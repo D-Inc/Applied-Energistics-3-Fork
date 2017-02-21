@@ -19,6 +19,7 @@
 package appeng.core.me.grid.cluster.implementations;
 
 
+import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -26,8 +27,8 @@ import net.minecraft.world.World;
 
 import appeng.api.definitions.IBlockDefinition;
 import appeng.core.api.util.WorldCoord;
-import appeng.core.lib.AppEngApi;
-import appeng.core.lib.api.definitions.ApiBlocks;
+import appeng.core.me.AppEngME;
+import appeng.core.me.definitions.MEBlockDefinitions;
 import appeng.core.me.grid.cluster.IAECluster;
 import appeng.core.me.grid.cluster.IAEMultiBlock;
 import appeng.core.me.grid.cluster.MBCalculator;
@@ -87,17 +88,17 @@ public class QuantumCalculator extends MBCalculator
 					}
 
 					num++;
-					final ApiBlocks blocks = AppEngApi.internalApi().definitions().blocks();
+					final MEBlockDefinitions blocks = AppEngME.INSTANCE.definitions( Block.class );
 					if( num == 5 )
 					{
-						if( !this.isBlockAtLocation( w, p, blocks.quantumLink().block() ) )
+						if( !this.isBlockAtLocation( w, p, blocks.quantumLink() ) )
 						{
 							return false;
 						}
 					}
 					else
 					{
-						if( !this.isBlockAtLocation( w, p, blocks.quantumRing().block() ) )
+						if( !this.isBlockAtLocation( w, p, blocks.quantumRing() ) )
 						{
 							return false;
 						}

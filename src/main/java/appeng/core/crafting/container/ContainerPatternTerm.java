@@ -31,6 +31,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotCrafting;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
@@ -42,8 +43,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import appeng.core.api.config.Actionable;
-import appeng.core.lib.ApiDefinitions;
-import appeng.core.lib.AppEngApi;
+import appeng.core.crafting.AppEngCrafting;
+import appeng.core.crafting.definitions.CraftingItemDefinitions;
 import appeng.core.lib.container.ContainerNull;
 import appeng.core.lib.container.guisync.GuiSync;
 import appeng.core.lib.container.slot.IOptionalSlotHost;
@@ -218,7 +219,7 @@ public class ContainerPatternTerm extends ContainerMEMonitorable implements IAEA
 			}
 
 			// add a new encoded pattern.
-			Optional<ItemStack> maybePattern = AppEngApi.internalApi().definitions().items().encodedPattern().maybeStack( 1 );
+			Optional<ItemStack> maybePattern = AppEngCrafting.INSTANCE.<Item, CraftingItemDefinitions>definitions( Item.class ).encodedPattern().maybeStack( 1 );
 			if( maybePattern.isPresent() )
 			{
 				output = maybePattern.get();
@@ -315,9 +316,8 @@ public class ContainerPatternTerm extends ContainerMEMonitorable implements IAEA
 			return false;
 		}
 
-		final ApiDefinitions definitions = AppEngApi.internalApi().definitions();
-
-		boolean isPattern = definitions.items().encodedPattern().isSameAs( output );
+		boolean isPattern = AppEngCrafting.INSTANCE.<Item, CraftingItemDefinitions>definitions( Item.class ).encodedPattern().isSameAs( output );
+		// TODO 1.11.2-CD:A - Blank pattern is a separate item now!
 		isPattern |= definitions.materials().blankPattern().isSameAs( output );
 
 		return isPattern;

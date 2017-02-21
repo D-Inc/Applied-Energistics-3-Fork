@@ -693,7 +693,7 @@ public class TileChest extends AENetworkPowerTile implements IMEChest, IFluidHan
 	}
 
 	@Override
-	public int fill( final EnumFacing from, final FluidStack resource, final boolean doFill )
+	public int fill( final FluidStack resource, final boolean doFill )
 	{
 		final double req = resource.amount / 500.0;
 		final double available = this.extractAEPower( req, Actionable.SIMULATE, PowerMultiplier.CONFIG );
@@ -750,24 +750,6 @@ public class TileChest extends AENetworkPowerTile implements IMEChest, IFluidHan
 	public boolean canDrain( final EnumFacing from, final Fluid fluid )
 	{
 		return false;
-	}
-
-	@Override
-	public FluidTankInfo[] getTankInfo( final EnumFacing from )
-	{
-		try
-		{
-			final IMEInventoryHandler h = this.getHandler( StorageChannel.FLUIDS );
-			if( h.getChannel() == StorageChannel.FLUIDS )
-			{
-				return new FluidTankInfo[] { new FluidTankInfo( null, 1 ) }; // eh?
-			}
-		}
-		catch( final ChestNoHandler ignored )
-		{
-		}
-
-		return null;
 	}
 
 	@Override

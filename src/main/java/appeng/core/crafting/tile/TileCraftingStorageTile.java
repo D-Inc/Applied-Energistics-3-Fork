@@ -21,12 +21,12 @@ package appeng.core.crafting.tile;
 
 import java.util.Optional;
 
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-import appeng.api.definitions.IItemDefinition;
+import appeng.core.crafting.AppEngCrafting;
 import appeng.core.crafting.block.BlockCraftingUnit;
-import appeng.core.lib.AppEngApi;
-import appeng.core.lib.api.definitions.ApiBlocks;
+import appeng.core.crafting.definitions.CraftingItemDefinitions;
 
 
 public class TileCraftingStorageTile extends TileCraftingTile
@@ -36,7 +36,7 @@ public class TileCraftingStorageTile extends TileCraftingTile
 	@Override
 	protected ItemStack getItemFromTile( final Object obj )
 	{
-		final ApiBlocks blocks = AppEngApi.internalApi().definitions().blocks();
+		final CraftingItemDefinitions blocks = AppEngCrafting.INSTANCE.definitions( Item.class );
 		final int storage = ( (TileCraftingTile) obj ).getStorageBytes() / KILO_SCALAR;
 
 		Optional<ItemStack> is;
@@ -44,13 +44,13 @@ public class TileCraftingStorageTile extends TileCraftingTile
 		switch( storage )
 		{
 			case 4:
-				is = ( (IItemDefinition) blocks.craftingStorage4k().block().maybeItem().get() ).maybeStack( 1 );
+				is = blocks.blockCraftingStorage4k().maybeStack( 1 );
 				break;
 			case 16:
-				is = ( (IItemDefinition) blocks.craftingStorage16k().block().maybeItem().get() ).maybeStack( 1 );
+				is = blocks.blockCraftingStorage16k().maybeStack( 1 );
 				break;
 			case 64:
-				is = ( (IItemDefinition) blocks.craftingStorage64k().block().maybeItem().get() ).maybeStack( 1 );
+				is = blocks.blockCraftingStorage64k().maybeStack( 1 );
 				break;
 			default:
 				is = Optional.empty();

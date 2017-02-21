@@ -41,9 +41,9 @@ import appeng.core.AppEng;
 import appeng.core.AppEngCore;
 import appeng.core.api.implementations.items.IGrowableCrystal;
 import appeng.core.api.recipes.ResolverResult;
+import appeng.core.definitions.CoreItemDefinitions;
 import appeng.core.definitions.CoreMaterialDefinitions;
 import appeng.core.entity.EntityGrowingCrystal;
-import appeng.core.lib.AppEngApi;
 import appeng.core.lib.entity.EntityIds;
 import appeng.core.lib.item.AEBaseItem;
 import appeng.core.lib.localization.ButtonToolTips;
@@ -72,7 +72,7 @@ public class ItemCrystalSeed extends AEBaseItem implements IGrowableCrystal
 	public static ResolverResult getResolver( final int certus2 )
 	{
 
-		return AppEngApi.internalApi().definitions().items().crystalSeed().maybeStack( 1 ).map( crystalSeedStack -> {
+		return AppEngCore.INSTANCE.<Item, CoreItemDefinitions>definitions( Item.class ).crystalSeed().maybeStack( 1 ).map( crystalSeedStack -> {
 			crystalSeedStack.setItemDamage( certus2 );
 			crystalSeedStack = newStyle( crystalSeedStack );
 			return new ResolverResult( "ItemCrystalSeed", crystalSeedStack.getItemDamage(), crystalSeedStack.getTagCompound() );

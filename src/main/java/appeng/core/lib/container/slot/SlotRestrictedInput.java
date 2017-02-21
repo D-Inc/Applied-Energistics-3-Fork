@@ -24,25 +24,28 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
 
+import appeng.core.AppEngCore;
 import appeng.core.api.features.INetworkEncodable;
 import appeng.core.api.implementations.ICraftingPatternItem;
 import appeng.core.api.implementations.items.IBiometricCard;
 import appeng.core.api.implementations.items.ISpatialStorageCell;
 import appeng.core.api.implementations.items.IStorageComponent;
 import appeng.core.api.implementations.items.IUpgradeModule;
+import appeng.core.api.material.Material;
 import appeng.core.crafting.item.ItemEncodedPattern;
-import appeng.core.lib.ApiDefinitions;
+import appeng.core.definitions.CoreMaterialDefinitions;
 import appeng.core.lib.AppEngApi;
-import appeng.core.lib.api.definitions.ApiItems;
-import appeng.core.lib.api.definitions.ApiMaterials;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.AppEngME;
 import appeng.core.me.api.networking.crafting.ICraftingPatternDetails;
 import appeng.core.me.api.storage.ICellWorkbenchItem;
+import appeng.core.me.definitions.MEItemDefinitions;
 
 
 /**
@@ -120,9 +123,7 @@ public class SlotRestrictedInput extends AppEngSlot
 			return false;
 		}
 
-		final ApiDefinitions definitions = AppEngApi.internalApi().definitions();
-		final ApiMaterials materials = definitions.materials();
-		final ApiItems items = definitions.items();
+		final CoreMaterialDefinitions materials = AppEngCore.INSTANCE.definitions( Material.class );
 
 		switch( this.which )
 		{
@@ -190,7 +191,7 @@ public class SlotRestrictedInput extends AppEngSlot
 				return isMetalIngot( i );
 
 			case VIEW_CELL:
-				return items.viewCell().isSameAs( i );
+				return AppEngME.INSTANCE.<Item, MEItemDefinitions>definitions( Item.class ).viewCell().isSameAs( i );
 			case ORE:
 				return AppEngApi.internalApi().registries().grinder().getRecipeForInput( i ) != null;
 			case FUEL:

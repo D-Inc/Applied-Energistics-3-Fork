@@ -26,6 +26,7 @@ import io.netty.buffer.ByteBuf;
 
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryCrafting;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -36,8 +37,6 @@ import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 
-import appeng.api.definitions.IItemDefinition;
-import appeng.api.definitions.ITileDefinition;
 import appeng.core.api.config.Actionable;
 import appeng.core.api.config.PowerMultiplier;
 import appeng.core.api.config.RedstoneMode;
@@ -50,8 +49,9 @@ import appeng.core.api.util.AECableType;
 import appeng.core.api.util.AEPartLocation;
 import appeng.core.api.util.DimensionalCoord;
 import appeng.core.api.util.IConfigManager;
+import appeng.core.crafting.AppEngCrafting;
+import appeng.core.crafting.definitions.CraftingItemDefinitions;
 import appeng.core.crafting.item.ItemEncodedPattern;
-import appeng.core.lib.AppEngApi;
 import appeng.core.lib.container.ContainerNull;
 import appeng.core.lib.sync.network.NetworkHandler;
 import appeng.core.lib.sync.packets.PacketAssemblerAnimation;
@@ -97,13 +97,11 @@ public class TileMolecularAssembler extends AENetworkInvTile implements IUpgrade
 
 	public TileMolecularAssembler()
 	{
-		final ITileDefinition assembler = AppEngApi.internalApi().definitions().blocks().molecularAssembler();
-
 		this.settings = new ConfigManager( this );
 		this.settings.registerSetting( Settings.REDSTONE_CONTROLLED, RedstoneMode.IGNORE );
 		this.inv.setMaxStackSize( 1 );
 		this.getProxy().setIdlePowerUsage( 0.0 );
-		this.upgrades = new DefinitionUpgradeInventory( (IItemDefinition) assembler.block().maybeItem().get(), this, this.getUpgradeSlots() );
+		this.upgrades = new DefinitionUpgradeInventory( AppEngCrafting.INSTANCE.<Item, CraftingItemDefinitions>definitions( Item.class ).blockMolecularAssembler(), this, this.getUpgradeSlots() );
 		this.craftingInv = new InventoryCrafting( new ContainerNull(), 3, 3 );
 	}
 
