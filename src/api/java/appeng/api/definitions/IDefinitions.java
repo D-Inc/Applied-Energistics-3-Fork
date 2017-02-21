@@ -12,7 +12,7 @@ public interface IDefinitions<T, D extends IDefinition<T>>
 
 	default D get( String identifier )
 	{
-		return get( new ResourceLocation( "appliedenergistics2", identifier ) );
+		return get( new ResourceLocation( "appliedenergistics3", identifier ) );
 	}
 
 	default <T2 extends T, D2 extends IDefinition<T2>> D2 getUncheked( ResourceLocation identifier )
