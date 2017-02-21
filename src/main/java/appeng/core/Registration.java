@@ -39,22 +39,18 @@ import appeng.core.api.config.Upgrades;
 import appeng.core.api.features.IWirelessTermHandler;
 import appeng.core.api.features.IWorldGen.WorldGenType;
 import appeng.core.hooks.TickHandler;
-import appeng.core.item.ItemMultiItem;
 import appeng.core.lib.AEConfig;
-import appeng.core.lib.ApiDefinitions;
 import appeng.core.lib.AppEngApi;
 import appeng.core.lib.api.definitions.ApiBlocks;
 import appeng.core.lib.api.definitions.ApiItems;
 import appeng.core.lib.api.definitions.ApiParts;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.features.registries.GridCacheRegistry;
-import appeng.core.lib.features.registries.P2PTunnelRegistry;
 import appeng.core.lib.features.registries.RegistryContainer;
 import appeng.core.lib.features.registries.entries.BasicCellHandler;
 import appeng.core.lib.features.registries.entries.CreativeCellHandler;
 import appeng.core.lib.localization.GuiText;
 import appeng.core.lib.localization.PlayerMessages;
-import appeng.core.lib.stats.PlayerStatsRegistration;
 import appeng.core.lib.util.Platform;
 import appeng.core.me.api.networking.crafting.ICraftingGrid;
 import appeng.core.me.api.networking.energy.IEnergyGrid;
@@ -164,9 +160,6 @@ public final class Registration
 		final AppEngApi api = AppEngApi.INSTANCE;
 		final IPartHelper partHelper = api.partHelper();
 		final RegistryContainer registries = api.registries();
-
-		// Perform ore camouflage!
-		ItemMultiItem.instance.makeUnique();
 
 		// TODO Pre-1.8 - readd layers
 		// partHelper.registerNewLayer( "appeng.parts.layers.LayerISidedInventory",

@@ -38,14 +38,11 @@ import appeng.core.api.config.Settings;
 import appeng.core.api.config.StorageFilter;
 import appeng.core.api.config.Upgrades;
 import appeng.core.api.util.AECableType;
-import appeng.core.api.util.AEPartLocation;
 import appeng.core.api.util.IConfigManager;
 import appeng.core.lib.AppEngApi;
-import appeng.core.lib.helpers.IInterfaceHost;
 import appeng.core.lib.helpers.IPriorityHost;
 import appeng.core.lib.helpers.Reflected;
 import appeng.core.lib.settings.TickRates;
-import appeng.core.lib.stats.Achievements;
 import appeng.core.lib.sync.GuiBridge;
 import appeng.core.lib.tile.inventory.AppEngInternalAEInventory;
 import appeng.core.lib.tile.inventory.InvOperation;
@@ -65,7 +62,6 @@ import appeng.core.me.api.networking.ticking.ITickManager;
 import appeng.core.me.api.networking.ticking.TickRateModulation;
 import appeng.core.me.api.networking.ticking.TickingRequest;
 import appeng.core.me.api.parts.IPartCollisionHelper;
-import appeng.core.me.api.parts.IPartHost;
 import appeng.core.me.api.storage.ICellContainer;
 import appeng.core.me.api.storage.IExternalStorageHandler;
 import appeng.core.me.api.storage.IMEInventory;
@@ -387,8 +383,6 @@ public class PartStorageBus extends PartUpgradeable implements IGridTickable, IC
 
 				if( inv != null )
 				{
-					this.checkInterfaceVsStorageBus( target, this.getSide().getOpposite() );
-
 					this.handler = new MEInventoryHandler( inv, StorageChannel.ITEMS );
 
 					this.handler.setBaseAccess( (AccessRestriction) this.getConfigManager().getSetting( Settings.ACCESS ) );
@@ -456,31 +450,6 @@ public class PartStorageBus extends PartUpgradeable implements IGridTickable, IC
 		}
 
 		return this.handler;
-	}
-
-	private void checkInterfaceVsStorageBus( final TileEntity target, final AEPartLocation side )
-	{
-		IInterfaceHost achievement = null;
-
-		if( target instanceof IInterfaceHost )
-		{
-			achievement = (IInterfaceHost) target;
-		}
-
-		if( target instanceof IPartHost )
-		{
-			final Object part = ( (IPartHost) target ).getPart( side );
-			if( part instanceof IInterfaceHost )
-			{
-				achievement = (IInterfaceHost) part;
-			}
-		}
-
-		if( achievement != null && achievement.getActionableNode() != null )
-		{
-			Platform.addStat( achievement.getActionableNode().getPlayerID(), Achievements.Recursive.getAchievement() );
-			// Platform.addStat( getActionableNode().getPlayerID(), Achievements.Recursive.getAchievement() );
-		}
 	}
 
 	@Override
