@@ -68,18 +68,6 @@ public class AppEngCore implements ICore
 
 	private final Registration registration;
 
-	/**
-	 * Folder for recipes
-	 *
-	 * used for CSV item names and the recipes
-	 */
-	private File recipeDirectory;
-
-	/**
-	 * determined in pre-init but used in init
-	 */
-	private ExportConfig exportConfig;
-
 	private FMLControlledNamespacedRegistry<Material> materialRegistry;
 
 	private CoreItemDefinitions itemDefinitions;
@@ -130,28 +118,11 @@ public class AppEngCore implements ICore
 		this.itemDefinitions = new CoreItemDefinitions( registry );
 		this.tileDefinitions = new CoreTileDefinitions( registry );
 
-		this.recipeDirectory = new File( AppEng.instance().getConfigDirectory(), "recipes" );
-
-		final File versionFile = new File( AppEng.instance().getConfigDirectory(), "VersionChecker.cfg" );
-		final File recipeFile = new File( AppEng.instance().getConfigDirectory(), "CustomRecipes.cfg" );
-		final Configuration recipeConfiguration = new Configuration( recipeFile );
-
-		final VersionCheckerConfig versionCheckerConfig = new VersionCheckerConfig( versionFile );
-		this.exportConfig = new ForgeExportConfig( recipeConfiguration );
-
 		CreativeTab.init();
 
 		this.registration.preInitialize( event );
 
 		proxy.preInit( event );
-
-		if( versionCheckerConfig.isVersionCheckingEnabled() )
-		{
-			final VersionChecker versionChecker = new VersionChecker( versionCheckerConfig );
-			final Thread versionCheckerThread = new Thread( versionChecker );
-
-			this.startService( "AE2 VersionChecker", versionCheckerThread );
-		}
 
 		/*
 		 * ###################################
@@ -181,14 +152,6 @@ public class AppEngCore implements ICore
 	@ModuleEventHandler
 	public void init( FMLInitializationEvent event )
 	{
-		if( this.exportConfig.isExportingItemNamesEnabled() )
-		{
-			final ExportProcess process = new ExportProcess( this.recipeDirectory, this.exportConfig );
-			final Thread exportProcessThread = new Thread( process );
-
-			this.startService( "AE2 CSV Export", exportProcessThread );
-		}
-
 		this.registration.initialize( event );
 
 		proxy.init( event );
