@@ -75,7 +75,6 @@ import appeng.core.lib.util.Platform;
 import appeng.core.me.api.parts.CableRenderMode;
 import appeng.core.me.item.PartType;
 import appeng.core.me.part.AEBasePart;
-import appeng.core.transformer.MissingCoreMod;
 import appeng.tools.client.render.texture.ParticleTextures;
 
 
@@ -223,12 +222,6 @@ public class ClientHelper extends ServerHelper
 		final int range = 16 * 16;
 
 		mc.world.markBlockRangeForRenderUpdate( x - range, y - range, z - range, x + range, y + range, z + range );
-	}
-
-	@Override
-	public void missingCoreMod()
-	{
-		throw new MissingCoreMod();
 	}
 
 	@Override

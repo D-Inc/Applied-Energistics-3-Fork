@@ -151,12 +151,6 @@ public abstract class ServerHelper extends CommonHelper
 	}
 
 	@Override
-	public void missingCoreMod()
-	{
-		throw new IllegalStateException( "Unable to Load Core Mod, please verify that AE2 is properly install in the mods folder, with a .jar extension." );
-	}
-
-	@Override
 	public void moduleLoadingException( String exceptionText, String guiText )
 	{
 		throw new IllegalStateException( exceptionText );

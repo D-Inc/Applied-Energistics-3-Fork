@@ -41,8 +41,6 @@ public abstract class CommonHelper
 	@SidedProxy( clientSide = "appeng.core.lib.client.ClientHelper", serverSide = "appeng.core.lib.server.ServerHelper" )
 	public static CommonHelper proxy;
 
-	public abstract void missingCoreMod();
-
 	public abstract void moduleLoadingException( String exceptionText, String guiText );
 
 	public abstract void bindTileEntitySpecialRenderer( Class<? extends TileEntity> tile, AEBaseBlock blk );

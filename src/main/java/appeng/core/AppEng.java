@@ -178,11 +178,6 @@ public final class AppEng
 	@EventHandler
 	private void preInit( final FMLPreInitializationEvent event )
 	{
-		if( !Loader.isModLoaded( "appliedenergistics2-core" ) )
-		{
-			CommonHelper.proxy.missingCoreMod();
-		}
-
 		Map<String, Pair<Class<?>, String>> foundModules = new HashMap<>();
 		ASMDataTable annotations = event.getAsmData();
 		for( ASMData data : annotations.getAll( Module.class.getCanonicalName() ) )
