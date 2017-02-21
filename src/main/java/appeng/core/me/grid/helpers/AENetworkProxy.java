@@ -51,7 +51,6 @@ import appeng.core.me.api.networking.security.ISecurityGrid;
 import appeng.core.me.api.networking.storage.IStorageGrid;
 import appeng.core.me.api.networking.ticking.ITickManager;
 import appeng.core.me.grid.GridAccessException;
-import appeng.core.me.grid.cache.P2PCache;
 import appeng.core.me.part.networking.PartCable;
 
 
@@ -233,24 +232,6 @@ public class AENetworkProxy implements IGridBlock
 		}
 
 		final IStorageGrid pg = grid.getCache( IStorageGrid.class );
-
-		if( pg == null )
-		{
-			throw new GridAccessException();
-		}
-
-		return pg;
-	}
-
-	public P2PCache getP2P() throws GridAccessException
-	{
-		final IGrid grid = this.getGrid();
-		if( grid == null )
-		{
-			throw new GridAccessException();
-		}
-
-		final P2PCache pg = grid.getCache( P2PCache.class );
 
 		if( pg == null )
 		{

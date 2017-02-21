@@ -46,11 +46,6 @@ import appeng.core.me.part.networking.PartCableGlass;
 import appeng.core.me.part.networking.PartCableSmart;
 import appeng.core.me.part.networking.PartDenseCable;
 import appeng.core.me.part.networking.PartQuartzFiber;
-import appeng.core.me.part.p2p.PartP2PItems;
-import appeng.core.me.part.p2p.PartP2PLight;
-import appeng.core.me.part.p2p.PartP2PLiquids;
-import appeng.core.me.part.p2p.PartP2PRedstone;
-import appeng.core.me.part.p2p.PartP2PTunnelME;
 import appeng.core.me.part.reporting.PartConversionMonitor;
 import appeng.core.me.part.reporting.PartCraftingTerminal;
 import appeng.core.me.part.reporting.PartDarkPanel;
@@ -141,28 +136,6 @@ public enum PartType
 	ConversionMonitor( 420, new ResourceLocation( AppEng.MODID, "conversion_monitor" ), EnumSet.of( AEFeature.PartConversionMonitor ), PartConversionMonitor.class ),
 
 	Interface( 440, new ResourceLocation( AppEng.MODID, "interface" ), EnumSet.of( AEFeature.Core ), PartInterface.class ),
-
-	P2PTunnelME( 460, new ResourceLocation( AppEng.MODID, "p2p_tunnel_me" ), EnumSet.of( AEFeature.P2PTunnel, AEFeature.P2PTunnelME ), PartP2PTunnelME.class, GuiText.METunnel ),
-
-	P2PTunnelRedstone( 461, new ResourceLocation( AppEng.MODID, "p2p_tunnel_redstone" ), EnumSet.of( AEFeature.P2PTunnel, AEFeature.P2PTunnelRedstone ), PartP2PRedstone.class, GuiText.RedstoneTunnel ),
-
-	P2PTunnelItems( 462, new ResourceLocation( AppEng.MODID, "p2p_tunnel_items" ), EnumSet.of( AEFeature.P2PTunnel, AEFeature.P2PTunnelItems ), PartP2PItems.class, GuiText.ItemTunnel ),
-
-	P2PTunnelLiquids( 463, new ResourceLocation( AppEng.MODID, "p2p_tunnel_liquids" ), EnumSet.of( AEFeature.P2PTunnel, AEFeature.P2PTunnelLiquids ), PartP2PLiquids.class, GuiText.FluidTunnel ),
-
-	// P2PTunnelEU( 465, EnumSet.of( AEFeature.P2PTunnel, AEFeature.P2PTunnelEU ), EnumSet.of( IntegrationType.IC2 ),
-	// PartP2PIC2Power.class, GuiText.EUTunnel ),
-
-	// P2PTunnelRF( 466, EnumSet.of( AEFeature.P2PTunnel, AEFeature.P2PTunnelRF ), EnumSet.of( IntegrationType.RF ),
-	// PartP2PRFPower.class, GuiText.RFTunnel ),
-
-	P2PTunnelLight( 467, new ResourceLocation( AppEng.MODID, "p2p_tunnel_light" ), EnumSet.of( AEFeature.P2PTunnel, AEFeature.P2PTunnelLight ), PartP2PLight.class, GuiText.LightTunnel ),
-
-	// P2PTunnelOpenComputers( 468, EnumSet.of( AEFeature.P2PTunnel, AEFeature.P2PTunnelOpenComputers ), EnumSet.of(
-	// IntegrationType.OpenComputers ), PartP2POpenComputers.class, GuiText.OCTunnel ),
-
-	// P2PTunnelPressure( 469, EnumSet.of( AEFeature.P2PTunnel, AEFeature.P2PTunnelPressure ), EnumSet.of(
-	// IntegrationType.PneumaticCraft ), PartP2PPressure.class, GuiText.PressureTunnel ),
 
 	InterfaceTerminal( 480, new ResourceLocation( AppEng.MODID, "interface_terminal" ), EnumSet.of( AEFeature.InterfaceTerminal ), PartInterfaceTerminal.class );
 

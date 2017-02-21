@@ -59,7 +59,6 @@ import appeng.core.me.block.BlockCableBus;
 import appeng.core.me.grid.cache.CraftingGridCache;
 import appeng.core.me.grid.cache.EnergyGridCache;
 import appeng.core.me.grid.cache.GridStorageCache;
-import appeng.core.me.grid.cache.P2PCache;
 import appeng.core.me.grid.cache.PathGridCache;
 import appeng.core.me.grid.cache.SecurityCache;
 import appeng.core.me.grid.cache.SpatialPylonCache;
@@ -135,7 +134,6 @@ public final class Registration
 		gcr.registerGridCache( IEnergyGrid.class, EnergyGridCache.class );
 		gcr.registerGridCache( IPathingGrid.class, PathGridCache.class );
 		gcr.registerGridCache( IStorageGrid.class, GridStorageCache.class );
-		gcr.registerGridCache( P2PCache.class, P2PCache.class );
 		gcr.registerGridCache( ISpatialCache.class, SpatialPylonCache.class );
 		gcr.registerGridCache( ISecurityGrid.class, SecurityCache.class );
 		gcr.registerGridCache( ICraftingGrid.class, CraftingGridCache.class );
@@ -154,8 +152,6 @@ public final class Registration
 
 	void postInit( final FMLPostInitializationEvent event )
 	{
-		this.registerSpatial( true );
-
 		final AppEngApi api = AppEngApi.INSTANCE;
 		final RegistryContainer registries = api.registries();
 		final ApiParts parts = definitions.parts();
