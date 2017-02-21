@@ -23,19 +23,19 @@ import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 
-//TODO: IComparableDefinition does not curently exist. commenting out for now. -legracen
-import appeng.api.definitions.IComparableDefinition;
+import appeng.api.definitions.IItemDefinition;
 import appeng.core.api.implementations.items.IMemoryCard;
 import appeng.core.api.implementations.items.MemoryCardMessages;
-import appeng.core.lib.AppEngApi;
-import appeng.core.lib.api.definitions.ApiItems;
 import appeng.core.lib.sync.AppEngPacket;
 import appeng.core.lib.sync.network.INetworkInfo;
+import appeng.tools.AppEngTools;
+import appeng.tools.definitions.ToolsItemDefinitions;
 import appeng.tools.item.ToolColorApplicator;
 import appeng.tools.item.ToolNetworkTool;
 
@@ -88,9 +88,9 @@ public class PacketClick extends AppEngPacket
 	public void serverPacketData( final INetworkInfo manager, final AppEngPacket packet, final EntityPlayer player )
 	{
 		final ItemStack is = player.inventory.getCurrentItem();
-		final ApiItems items = AppEngApi.internalApi().definitions().items();
-		final IComparableDefinition maybeMemoryCard = items.memoryCard();
-		final IComparableDefinition maybeColorApplicator = items.colorApplicator();
+		final ToolsItemDefinitions items = AppEngTools.INSTANCE.<Item, ToolsItemDefinitions>definitions( Item.class );
+		final IItemDefinition<Item> maybeMemoryCard = items.memoryCard();
+		final IItemDefinition<Item> maybeColorApplicator = items.colorApplicator();
 
 		if( is != null )
 		{

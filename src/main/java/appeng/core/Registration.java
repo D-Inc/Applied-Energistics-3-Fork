@@ -21,6 +21,7 @@ package appeng.core;
 
 import com.google.common.base.Preconditions;
 
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.DimensionType;
 import net.minecraftforge.common.MinecraftForge;
@@ -69,6 +70,8 @@ import appeng.core.spatial.world.StorageWorldProvider;
 import appeng.core.worldgen.loot.ChestLoot;
 import appeng.core.worldgen.world.MeteoriteWorldGen;
 import appeng.core.worldgen.world.QuartzWorldGen;
+import appeng.tools.AppEngTools;
+import appeng.tools.definitions.ToolsItemDefinitions;
 
 
 @Deprecated
@@ -143,11 +146,12 @@ public final class Registration
 		registries.cell().addCellHandler( new BasicCellHandler() );
 		registries.cell().addCellHandler( new CreativeCellHandler() );
 
-		api.definitions().materials().matterBall().maybeStack( 1 ).ifPresent( ammoStack -> {
+		//TODO 1.11.2-CD:A - Where did it go???
+		/*AppEngTools.INSTANCE.<Item, ToolsItemDefinitions>definitions( Item.class ).matterBall().maybeStack( 1 ).ifPresent( ammoStack -> {
 			final double weight = 32;
 
 			registries.matterCannon().registerAmmo( (ItemStack) ammoStack, weight );
-		} );
+		} );*/
 	}
 
 	void postInit( final FMLPostInitializationEvent event )
