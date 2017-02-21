@@ -61,7 +61,6 @@ import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
 import code.elix_x.excomms.reflection.ReflectionHelper.AClass;
-import code.elix_x.excomms.reflection.ReflectionHelper.Modifier;
 
 import appeng.api.module.Module;
 import appeng.api.module.ModuleIMCMessageEvent;
@@ -471,7 +470,7 @@ public final class AppEng
 					instance = classModule.get( Class.forName( (String) data.getAnnotationInfo().get( "value" ) ) );
 				}
 				AClass<I> target = new AClass( Class.forName( data.getClassName(), true, mcl ) );
-				target.getDeclaredField( data.getObjectName() ).setAccessible( true ).set( Modifier.FINAL, false ).set( (I) classModule.get( target.getClass() ), instance );
+				target.getDeclaredField( data.getObjectName() ).setAccessible( true ).setFinal(false).set( (I) classModule.get( target.getClass() ), instance );
 			}
 			catch( ReflectiveOperationException e )
 			{
