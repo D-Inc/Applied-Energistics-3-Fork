@@ -41,7 +41,6 @@ public class RegistryContainer
 	private final SpecialComparisonRegistry comparison = new SpecialComparisonRegistry();
 	private final WirelessRegistry wireless = new WirelessRegistry();
 	private final GridCacheRegistry gridCache = new GridCacheRegistry();
-	private final P2PTunnelRegistry p2pTunnel = new P2PTunnelRegistry();
 	private final MatterCannonAmmoRegistry matterCannonReg = new MatterCannonAmmoRegistry();
 	private final PlayerRegistry playerRegistry = new PlayerRegistry();
 
@@ -83,11 +82,6 @@ public class RegistryContainer
 	public LocatableRegistry locatable()
 	{
 		return this.locatable;
-	}
-
-	public P2PTunnelRegistry p2pTunnel()
-	{
-		return this.p2pTunnel;
 	}
 
 	public MatterCannonAmmoRegistry matterCannon()
