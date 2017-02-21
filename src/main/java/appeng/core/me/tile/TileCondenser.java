@@ -23,17 +23,18 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
-import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 
+import appeng.core.AppEngCore;
 import appeng.core.api.config.CondenserOutput;
 import appeng.core.api.config.Settings;
 import appeng.core.api.implementations.items.IStorageComponent;
+import appeng.core.api.material.Material;
 import appeng.core.api.util.IConfigManager;
 import appeng.core.api.util.IConfigurableObject;
-import appeng.core.lib.AppEngApi;
+import appeng.core.definitions.CoreMaterialDefinitions;
 import appeng.core.lib.api.definitions.ApiMaterials;
 import appeng.core.lib.tile.AEBaseInvTile;
 import appeng.core.lib.tile.TileEvent;
@@ -139,7 +140,7 @@ public class TileCondenser extends AEBaseInvTile implements IFluidHandler, IConf
 
 	private ItemStack getOutput()
 	{
-		final ApiMaterials materials = AppEngApi.internalApi().definitions().materials();
+		final CoreMaterialDefinitions materials = AppEngCore.INSTANCE.<Material, CoreMaterialDefinitions>definitions( Material.class );
 
 		switch( (CondenserOutput) this.cm.getSetting( Settings.CONDENSER_OUTPUT ) )
 		{
@@ -147,6 +148,7 @@ public class TileCondenser extends AEBaseInvTile implements IFluidHandler, IConf
 				return (ItemStack) materials.matterBall().maybeStack( 1 ).orElse( null );
 
 			case SINGULARITY:
+				// TODO 1.11.2-CD:A - Singularity is a separate item now!
 				return (ItemStack) materials.singularity().maybeStack( 1 ).orElse( null );
 
 			case TRASH:

@@ -28,7 +28,7 @@ public class AETrading
 	 * @Override
 	 * public void manipulateTradesForVillager( EntityVillager villager, MerchantRecipeList recipeList, Random random )
 	 * {
-	 * final IMaterials materials = AppEngApi.internalApi().definitions().materials();
+	 * final IMaterials materials = AppEngCore.INSTANCE.<Material, CoreMaterialDefinitions>definitions( Material.class );
 	 * this.addMerchant( recipeList, materials.silicon(), 1, random, 2 );
 	 * this.addMerchant( recipeList, materials.certusQuartzCrystal(), 2, random, 4 );
 	 * this.addMerchant( recipeList, materials.certusQuartzDust(), 1, random, 3 );

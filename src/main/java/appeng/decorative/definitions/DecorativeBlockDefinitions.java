@@ -2,8 +2,8 @@
 package appeng.decorative.definitions;
 
 
-import appeng.decorative.AppEngDecorative;
 import net.minecraft.block.Block;
+import net.minecraft.util.ResourceLocation;
 
 import appeng.api.definitions.IBlockDefinition;
 import appeng.core.lib.bootstrap.FeatureFactory;
@@ -12,6 +12,7 @@ import appeng.core.lib.features.AEFeature;
 import appeng.core.worldgen.block.BlockQuartz;
 import appeng.core.worldgen.block.BlockSkyStone;
 import appeng.core.worldgen.block.BlockSkyStone.SkystoneType;
+import appeng.decorative.AppEngDecorative;
 import appeng.decorative.api.definitions.IDecorativeBlockDefinitions;
 import appeng.decorative.block.BlockChiseledQuartz;
 import appeng.decorative.block.BlockFluix;
@@ -20,7 +21,6 @@ import appeng.decorative.block.BlockQuartzLamp;
 import appeng.decorative.block.BlockQuartzPillar;
 import appeng.decorative.block.BlockStairCommon;
 import appeng.miscellaneous.block.BlockQuartzTorch;
-import net.minecraft.util.ResourceLocation;
 
 
 public class DecorativeBlockDefinitions extends Definitions<Block, IBlockDefinition<Block>> implements IDecorativeBlockDefinitions

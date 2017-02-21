@@ -40,7 +40,6 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import appeng.core.api.exceptions.MissingDefinition;
 import appeng.core.api.util.AEPartLocation;

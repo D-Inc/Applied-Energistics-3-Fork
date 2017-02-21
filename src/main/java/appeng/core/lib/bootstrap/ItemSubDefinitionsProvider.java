@@ -14,7 +14,6 @@ import appeng.api.definitions.IItemDefinition;
 import appeng.api.definitions.sub.ISubDefinitionProperty;
 import appeng.core.lib.bootstrap.ItemSubDefinitionsProvider.IStateItemSubDefinition;
 import appeng.core.lib.definitions.SubDefinitionsProvider;
-import appeng.core.lib.definitions.SubDefinitionsProvider.SubDefinition;
 import appeng.core.lib.item.IStateItem;
 import appeng.core.lib.item.IStateItem.State;
 import appeng.core.lib.item.IStateItem.State.Property;

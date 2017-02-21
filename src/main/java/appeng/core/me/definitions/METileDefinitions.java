@@ -4,37 +4,13 @@ package appeng.core.me.definitions;
 
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 import appeng.api.definitions.ITileDefinition;
 import appeng.core.AppEng;
-import appeng.core.lib.bootstrap.BlockRenderingCustomizer;
 import appeng.core.lib.bootstrap.FeatureFactory;
-import appeng.core.lib.bootstrap.IBlockRendering;
-import appeng.core.lib.bootstrap.IItemRendering;
 import appeng.core.lib.definitions.Definitions;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.me.api.definitions.IMETileDefinitions;
-import appeng.core.me.block.BlockCableBus;
-import appeng.core.me.block.BlockCellWorkbench;
-import appeng.core.me.block.BlockChest;
-import appeng.core.me.block.BlockCondenser;
-import appeng.core.me.block.BlockController;
-import appeng.core.me.block.BlockCreativeEnergyCell;
-import appeng.core.me.block.BlockDenseEnergyCell;
-import appeng.core.me.block.BlockDrive;
-import appeng.core.me.block.BlockEnergyAcceptor;
-import appeng.core.me.block.BlockEnergyCell;
-import appeng.core.me.block.BlockEnergyCellRendering;
-import appeng.core.me.block.BlockIOPort;
-import appeng.core.me.block.BlockInterface;
-import appeng.core.me.block.BlockQuantumLinkChamber;
-import appeng.core.me.block.BlockQuantumRing;
-import appeng.core.me.block.BlockSecurity;
-import appeng.core.me.block.BlockWireless;
-import appeng.core.me.block.CableBusColor;
-import appeng.core.me.block.CableModelCustomizer;
 import appeng.core.me.tile.TileCableBus;
 import appeng.core.me.tile.TileCellWorkbench;
 import appeng.core.me.tile.TileChest;
@@ -50,7 +26,6 @@ import appeng.core.me.tile.TileInterface;
 import appeng.core.me.tile.TileQuantumBridge;
 import appeng.core.me.tile.TileSecurity;
 import appeng.core.me.tile.TileWireless;
-import scala.App;
 
 
 public class METileDefinitions extends Definitions<Class<TileEntity>, ITileDefinition<TileEntity>> implements IMETileDefinitions

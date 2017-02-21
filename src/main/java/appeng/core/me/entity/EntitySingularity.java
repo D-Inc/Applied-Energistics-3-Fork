@@ -31,8 +31,10 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
 
+import appeng.core.AppEngCore;
+import appeng.core.api.material.Material;
+import appeng.core.definitions.CoreMaterialDefinitions;
 import appeng.core.lib.AEConfig;
-import appeng.core.lib.AppEngApi;
 import appeng.core.lib.api.definitions.ApiMaterials;
 import appeng.core.lib.entity.AEBaseEntityItem;
 import appeng.core.lib.features.AEFeature;
@@ -82,7 +84,8 @@ public final class EntitySingularity extends AEBaseEntityItem
 
 		final ItemStack item = this.getEntityItem();
 
-		final ApiMaterials materials = AppEngApi.internalApi().definitions().materials();
+		// TODO 1.11.2-CD:A - Singularity is a separate item now!
+		final CoreMaterialDefinitions materials = AppEngCore.INSTANCE.<Material, CoreMaterialDefinitions>definitions( Material.class );
 
 		if( materials.singularity().isSameAs( item ) )
 		{

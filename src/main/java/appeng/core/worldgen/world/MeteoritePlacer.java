@@ -41,6 +41,9 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import appeng.api.definitions.IBlockDefinition;
 import appeng.api.definitions.IItemDefinition;
+import appeng.core.AppEngCore;
+import appeng.core.api.material.Material;
+import appeng.core.definitions.CoreMaterialDefinitions;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.AppEngApi;
 import appeng.core.lib.api.definitions.ApiBlocks;
@@ -254,7 +257,7 @@ public final class MeteoritePlacer
 						}
 
 						ItemStack toAdd = null;
-						final ApiMaterials materials = AppEngApi.internalApi().definitions().materials();
+						final CoreMaterialDefinitions materials = AppEngCore.INSTANCE.<Material, CoreMaterialDefinitions>definitions( Material.class );
 
 						switch( r % 4 )
 						{

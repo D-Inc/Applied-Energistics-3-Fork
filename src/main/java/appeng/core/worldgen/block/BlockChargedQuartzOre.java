@@ -23,16 +23,16 @@ import java.util.Random;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import appeng.core.AppEngCore;
 import appeng.core.api.exceptions.MissingDefinition;
+import appeng.core.definitions.CoreMaterialDefinitions;
 import appeng.core.lib.AEConfig;
-import appeng.core.lib.AppEngApi;
 import appeng.core.lib.CommonHelper;
 import appeng.core.lib.client.render.effects.ChargedOreFX;
 
@@ -47,15 +47,9 @@ public final class BlockChargedQuartzOre extends BlockQuartzOre
 	}
 
 	@Override
-	public Item getItemDropped( final IBlockState state, final Random rand, final int fortune )
+	public ItemStack getItemStackDropped( final IBlockState state )
 	{
-		return (Item) AppEngApi.internalApi().definitions().materials().certusQuartzCrystalCharged().maybe().orElseThrow( () -> new MissingDefinition( "Tried to access charged certus quartz crystal, even though they are disabled" ) );
-	}
-
-	@Override
-	public int damageDropped( final IBlockState state )
-	{
-		return ( (ItemStack) AppEngApi.internalApi().definitions().materials().certusQuartzCrystalCharged().maybeStack( 1 ).orElseThrow( () -> new MissingDefinition( "Tried to access charged certus quartz crystal, even though they are disabled" ) ) ).getItemDamage();
+		return AppEngCore.INSTANCE.<appeng.core.api.material.Material, CoreMaterialDefinitions>definitions( appeng.core.api.material.Material.class ).certusQuartzCrystalCharged().maybeStack( 1 ).orElseThrow( () -> new MissingDefinition( "Tried to access certus quartz crystal, even though they are disabled" ) );
 	}
 
 	@Override

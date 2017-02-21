@@ -2,15 +2,18 @@
 package appeng.debug.definitions;
 
 
-import appeng.core.AppEng;
-import appeng.debug.*;
 import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
 
 import appeng.api.definitions.IItemDefinition;
 import appeng.core.lib.bootstrap.FeatureFactory;
 import appeng.core.lib.definitions.Definitions;
 import appeng.core.lib.features.AEFeature;
-import net.minecraft.util.ResourceLocation;
+import appeng.debug.AppEngDebug;
+import appeng.debug.ToolDebugCard;
+import appeng.debug.ToolEraser;
+import appeng.debug.ToolMeteoritePlacer;
+import appeng.debug.ToolReplicatorCard;
 
 
 public class DebugItemDefinitions extends Definitions<Item, IItemDefinition<Item>>

@@ -15,8 +15,9 @@ import net.minecraft.world.storage.loot.functions.SetMetadata;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import appeng.core.lib.AppEngApi;
-import appeng.core.lib.api.definitions.ApiMaterials;
+import appeng.core.AppEngCore;
+import appeng.core.api.material.Material;
+import appeng.core.definitions.CoreMaterialDefinitions;
 
 
 public class ChestLoot
@@ -28,7 +29,7 @@ public class ChestLoot
 		if( event.getName() == LootTableList.CHESTS_ABANDONED_MINESHAFT )
 		{
 			// TODO 1.9.4 aftermath - All these loot quality, pools and stuff. Figure it out and balance it.
-			final ApiMaterials materials = AppEngApi.internalApi().definitions().materials();
+			final CoreMaterialDefinitions materials = AppEngCore.INSTANCE.<Material, CoreMaterialDefinitions>definitions( Material.class );
 			materials.certusQuartzCrystal().maybeStack( 1 ).ifPresent( iis -> {
 				ItemStack is = (ItemStack) iis;
 				event.getTable().addPool( new LootPool( new LootEntry[] { new LootEntryItem( is.getItem(), 2, 3, new LootFunction[] { new SetMetadata( null, new RandomValueRange( is.getItemDamage() ) ) }, new LootCondition[] { new RandomChance( 1 ) }, "AE2 Crystal_" + is.getItemDamage() )

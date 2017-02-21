@@ -21,8 +21,6 @@ package appeng.core;
 
 import com.google.common.base.Preconditions;
 
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.world.DimensionType;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -70,8 +68,6 @@ import appeng.core.spatial.world.StorageWorldProvider;
 import appeng.core.worldgen.loot.ChestLoot;
 import appeng.core.worldgen.world.MeteoriteWorldGen;
 import appeng.core.worldgen.world.QuartzWorldGen;
-import appeng.tools.AppEngTools;
-import appeng.tools.definitions.ToolsItemDefinitions;
 
 
 @Deprecated

@@ -36,19 +36,21 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-//TODO: IComparableDefinition class not available. commenting out until it is. -legracen
-import appeng.api.definitions.IComparableDefinition;
 import appeng.api.definitions.IItemDefinition;
+import appeng.api.definitions.IMaterialDefinition;
 import appeng.api.definitions.ITileDefinition;
+import appeng.core.AppEngCore;
 import appeng.core.api.config.Actionable;
 import appeng.core.api.config.PowerMultiplier;
 import appeng.core.api.config.Upgrades;
 import appeng.core.api.features.IInscriberRecipe;
 import appeng.core.api.features.InscriberProcessType;
 import appeng.core.api.implementations.IUpgradeableHost;
+import appeng.core.api.material.Material;
 import appeng.core.api.util.AECableType;
 import appeng.core.api.util.AEPartLocation;
 import appeng.core.api.util.IConfigManager;
+import appeng.core.definitions.CoreMaterialDefinitions;
 import appeng.core.lib.AppEngApi;
 import appeng.core.lib.features.registries.entries.InscriberRecipe;
 import appeng.core.lib.helpers.Reflected;
@@ -240,7 +242,7 @@ public class TileInscriber extends AENetworkPowerTile implements IGridTickable, 
 
 		if( i == 0 || i == 1 )
 		{
-			if( AppEngApi.internalApi().definitions().materials().namePress().isSameAs( itemstack ) )
+			if( AppEngCore.INSTANCE.<Material, CoreMaterialDefinitions>definitions( Material.class ).namePress().isSameAs( itemstack ) )
 			{
 				return true;
 			}
@@ -349,7 +351,7 @@ public class TileInscriber extends AENetworkPowerTile implements IGridTickable, 
 			return null;
 		}
 
-		final IComparableDefinition namePress = AppEngApi.internalApi().definitions().materials().namePress();
+		final IMaterialDefinition<?> namePress = AppEngCore.INSTANCE.<Material, CoreMaterialDefinitions>definitions( Material.class ).namePress();
 		final boolean isNameA = namePress.isSameAs( plateA );
 		final boolean isNameB = namePress.isSameAs( plateB );
 

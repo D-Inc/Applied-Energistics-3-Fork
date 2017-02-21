@@ -2,16 +2,15 @@
 package appeng.tools.definitions;
 
 
-import appeng.tools.AppEngTools;
 import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
 
 import appeng.api.definitions.IItemDefinition;
 import appeng.core.lib.bootstrap.FeatureFactory;
 import appeng.core.lib.definitions.Definitions;
 import appeng.core.lib.features.AEFeature;
-import appeng.core.me.item.ItemCreativeStorageCell;
-import appeng.core.me.item.ItemViewCell;
 import appeng.core.me.item.ToolWirelessTerminal;
+import appeng.tools.AppEngTools;
 import appeng.tools.api.definitions.IToolsItemDefinitions;
 import appeng.tools.item.ToolBiometricCard;
 import appeng.tools.item.ToolChargedStaff;
@@ -28,7 +27,6 @@ import appeng.tools.item.ToolQuartzPickaxe;
 import appeng.tools.item.ToolQuartzSpade;
 import appeng.tools.item.ToolQuartzSword;
 import appeng.tools.item.ToolQuartzWrench;
-import net.minecraft.util.ResourceLocation;
 
 
 public class ToolsItemDefinitions extends Definitions<Item, IItemDefinition<Item>> implements IToolsItemDefinitions

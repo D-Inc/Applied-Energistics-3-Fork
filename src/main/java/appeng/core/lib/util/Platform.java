@@ -85,7 +85,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 
-import appeng.api.definitions.IItemDefinition;
+import appeng.api.definitions.IMaterialDefinition;
 import appeng.core.AppEng;
 import appeng.core.AppEngCore;
 import appeng.core.api.config.AccessRestriction;
@@ -97,14 +97,15 @@ import appeng.core.api.config.SecurityPermissions;
 import appeng.core.api.implementations.items.IAEItemPowerStorage;
 import appeng.core.api.implementations.items.IAEWrench;
 import appeng.core.api.implementations.tiles.ITileStorageMonitorable;
+import appeng.core.api.material.Material;
 import appeng.core.api.util.AEColor;
 import appeng.core.api.util.AEPartLocation;
 import appeng.core.api.util.DimensionalCoord;
+import appeng.core.definitions.CoreMaterialDefinitions;
 import appeng.core.hooks.TickHandler;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.AELog;
 import appeng.core.lib.AppEngApi;
-import appeng.core.lib.api.definitions.ApiMaterials;
 import appeng.core.lib.api.definitions.ApiParts;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.sync.GuiBridge;
@@ -2049,7 +2050,7 @@ public class Platform
 
 		if( type == AEFeature.CertusQuartzTools )
 		{
-			final IItemDefinition certusQuartzCrystal = AppEngApi.internalApi().definitions().materials().certusQuartzCrystal();
+			final IMaterialDefinition<?> certusQuartzCrystal = AppEngCore.INSTANCE.<Material, CoreMaterialDefinitions>definitions( Material.class ).certusQuartzCrystal();
 
 			return certusQuartzCrystal.isSameAs( b );
 		}
@@ -2158,7 +2159,7 @@ public class Platform
 
 	public static boolean isRecipePrioritized( final ItemStack what )
 	{
-		final ApiMaterials materials = AppEngApi.internalApi().definitions().materials();
+		final CoreMaterialDefinitions materials = AppEngCore.INSTANCE.<Material, CoreMaterialDefinitions>definitions( Material.class );
 
 		boolean isPurified = materials.purifiedCertusQuartzCrystal().isSameAs( what );
 		isPurified |= materials.purifiedFluixCrystal().isSameAs( what );

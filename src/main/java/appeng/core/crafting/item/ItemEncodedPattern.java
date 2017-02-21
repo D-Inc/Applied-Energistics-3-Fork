@@ -34,8 +34,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
+import appeng.core.AppEngCore;
 import appeng.core.api.implementations.ICraftingPatternItem;
-import appeng.core.lib.AppEngApi;
+import appeng.core.api.material.Material;
+import appeng.core.definitions.CoreMaterialDefinitions;
 import appeng.core.lib.CommonHelper;
 import appeng.core.lib.helpers.PatternHelper;
 import appeng.core.lib.item.AEBaseItem;
@@ -79,7 +81,8 @@ public class ItemEncodedPattern extends AEBaseItem implements ICraftingPatternIt
 
 			final InventoryPlayer inv = player.inventory;
 
-			ItemStack is = (ItemStack) AppEngApi.internalApi().definitions().materials().blankPattern().maybeStack( stack.getCount() ).orElse( null );
+			// TODO 1.11.2-CD:A - Blank Pattern is a separate item now
+			ItemStack is = (ItemStack) AppEngCore.INSTANCE.<Material, CoreMaterialDefinitions>definitions( Material.class ).blankPattern().maybeStack( stack.getCount() ).orElse( null );
 			if( is != null )
 			{
 				for( int s = 0; s < player.inventory.getSizeInventory(); s++ )

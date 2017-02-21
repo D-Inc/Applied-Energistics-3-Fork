@@ -35,7 +35,6 @@ import net.minecraft.world.WorldServer;
 
 import appeng.core.api.util.WorldCoord;
 import appeng.core.lib.AppEngApi;
-import appeng.core.lib.stats.Achievements;
 import appeng.core.lib.util.Platform;
 import appeng.core.spatial.ISpatialVisitor;
 

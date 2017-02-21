@@ -2,14 +2,18 @@
 package appeng.debug.definitions;
 
 
-import appeng.api.definitions.ITileDefinition;
-import appeng.core.lib.features.AEFeature;
-import appeng.debug.*;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ResourceLocation;
 
+import appeng.api.definitions.ITileDefinition;
 import appeng.core.lib.bootstrap.FeatureFactory;
 import appeng.core.lib.definitions.Definitions;
-import net.minecraft.util.ResourceLocation;
+import appeng.core.lib.features.AEFeature;
+import appeng.debug.AppEngDebug;
+import appeng.debug.TileChunkLoader;
+import appeng.debug.TileCubeGenerator;
+import appeng.debug.TileItemGen;
+import appeng.debug.TilePhantomNode;
 
 
 public class DebugTileDefinitions extends Definitions<Class<TileEntity>, ITileDefinition<TileEntity>>

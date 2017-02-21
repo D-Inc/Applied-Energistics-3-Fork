@@ -2,7 +2,6 @@
 package appeng.decorative.definitions;
 
 
-import appeng.decorative.AppEngDecorative;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 
@@ -12,6 +11,7 @@ import appeng.core.lib.bootstrap.FeatureFactory;
 import appeng.core.lib.definitions.Definitions;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.me.CreativeTabFacade;
+import appeng.decorative.AppEngDecorative;
 import appeng.decorative.api.definitions.IDecorativeItemDefinitions;
 import appeng.decorative.item.ItemFacade;
 import appeng.decorative.item.ItemPaintBall;

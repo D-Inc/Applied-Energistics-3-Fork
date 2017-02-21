@@ -2,14 +2,18 @@
 package appeng.debug.definitions;
 
 
-import appeng.debug.*;
 import net.minecraft.block.Block;
+import net.minecraft.util.ResourceLocation;
 
 import appeng.api.definitions.IBlockDefinition;
 import appeng.core.lib.bootstrap.FeatureFactory;
 import appeng.core.lib.definitions.Definitions;
 import appeng.core.lib.features.AEFeature;
-import net.minecraft.util.ResourceLocation;
+import appeng.debug.AppEngDebug;
+import appeng.debug.BlockChunkloader;
+import appeng.debug.BlockCubeGenerator;
+import appeng.debug.BlockItemGen;
+import appeng.debug.BlockPhantomNode;
 
 
 public class DebugBlockDefinitions extends Definitions<Block, IBlockDefinition<Block>>

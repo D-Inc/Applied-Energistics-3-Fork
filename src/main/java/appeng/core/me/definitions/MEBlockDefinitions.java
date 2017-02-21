@@ -8,7 +8,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import appeng.api.definitions.IBlockDefinition;
-import appeng.api.definitions.ITileDefinition;
 import appeng.core.AppEng;
 import appeng.core.lib.bootstrap.BlockRenderingCustomizer;
 import appeng.core.lib.bootstrap.FeatureFactory;

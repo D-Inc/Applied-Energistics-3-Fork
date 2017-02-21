@@ -38,11 +38,12 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 import appeng.core.AppEng;
+import appeng.core.AppEngCore;
 import appeng.core.api.implementations.items.IGrowableCrystal;
 import appeng.core.api.recipes.ResolverResult;
+import appeng.core.definitions.CoreMaterialDefinitions;
 import appeng.core.entity.EntityGrowingCrystal;
 import appeng.core.lib.AppEngApi;
-import appeng.core.lib.api.definitions.ApiMaterials;
 import appeng.core.lib.entity.EntityIds;
 import appeng.core.lib.item.AEBaseItem;
 import appeng.core.lib.localization.ButtonToolTips;
@@ -106,7 +107,7 @@ public class ItemCrystalSeed extends AEBaseItem implements IGrowableCrystal
 	public ItemStack triggerGrowth( final ItemStack is )
 	{
 		final int newDamage = getProgress( is ) + 1;
-		final ApiMaterials materials = AppEngApi.internalApi().definitions().materials();
+		final CoreMaterialDefinitions materials = AppEngCore.INSTANCE.<appeng.core.api.material.Material, CoreMaterialDefinitions>definitions( appeng.core.api.material.Material.class );
 		final int size = is.getCount();
 
 		if( newDamage == CERTUS + SINGLE_OFFSET )

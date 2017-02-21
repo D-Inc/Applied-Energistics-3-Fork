@@ -2,15 +2,15 @@
 package appeng.miscellaneous.definitions;
 
 
-import appeng.miscellaneous.AppEngMiscellaneous;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDispenser;
+import net.minecraft.util.ResourceLocation;
 
 import appeng.api.definitions.IBlockDefinition;
-import appeng.api.definitions.ITileDefinition;
 import appeng.core.lib.bootstrap.FeatureFactory;
 import appeng.core.lib.definitions.Definitions;
 import appeng.core.lib.features.AEFeature;
+import appeng.miscellaneous.AppEngMiscellaneous;
 import appeng.miscellaneous.api.definitions.IMiscellaneousBlockDefinitions;
 import appeng.miscellaneous.block.BlockLightDetector;
 import appeng.miscellaneous.block.BlockPaint;
@@ -18,7 +18,6 @@ import appeng.miscellaneous.block.BlockQuartzGrowthAccelerator;
 import appeng.miscellaneous.block.BlockSkyCompass;
 import appeng.miscellaneous.block.BlockTinyTNT;
 import appeng.tools.hooks.DispenserBehaviorTinyTNT;
-import net.minecraft.util.ResourceLocation;
 
 
 public class MiscellaneousBlockDefinitions extends Definitions<Block, IBlockDefinition<Block>> implements IMiscellaneousBlockDefinitions

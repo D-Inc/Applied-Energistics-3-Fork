@@ -2,11 +2,11 @@
 package appeng.core.spatial.definitions;
 
 
-import appeng.core.AppEng;
 import net.minecraft.block.Block;
+import net.minecraft.util.ResourceLocation;
 
 import appeng.api.definitions.IBlockDefinition;
-import appeng.api.definitions.ITileDefinition;
+import appeng.core.AppEng;
 import appeng.core.lib.bootstrap.FeatureFactory;
 import appeng.core.lib.definitions.Definitions;
 import appeng.core.lib.features.AEFeature;
@@ -14,7 +14,6 @@ import appeng.core.spatial.api.definitions.ISpatialBlockDefinitions;
 import appeng.core.spatial.block.BlockMatrixFrame;
 import appeng.core.spatial.block.BlockSpatialIOPort;
 import appeng.core.spatial.block.BlockSpatialPylon;
-import net.minecraft.util.ResourceLocation;
 
 
 public class SpatialBlockDefinitions extends Definitions<Block, IBlockDefinition<Block>> implements ISpatialBlockDefinitions
