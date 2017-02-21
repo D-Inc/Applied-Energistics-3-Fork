@@ -16,9 +16,9 @@ public interface ICoreItemDefinitions extends IDefinitions<Item, IItemDefinition
 		return get( "crystal_seed" );
 	}
 
-	default IItemDefinition<? extends Item> multiItem()
+	default IItemDefinition<? extends Item> material()
 	{
-		return get( "multi_item" );
+		return get( "material" );
 	}
 
 	default IItemDefinition<? extends Item> blockCrank()
