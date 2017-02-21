@@ -33,6 +33,7 @@ import appeng.core.api.definitions.ICoreItemDefinitions;
 import appeng.core.api.material.Material;
 import appeng.core.definitions.CoreBlockDefinitions;
 import appeng.core.definitions.CoreItemDefinitions;
+import appeng.core.definitions.CoreMaterialDefinitions;
 import appeng.core.definitions.CoreTileDefinitions;
 import appeng.core.hooks.TickHandler;
 import appeng.core.lib.AELog;
@@ -67,6 +68,7 @@ public class AppEngCore implements ICore
 	private CoreItemDefinitions itemDefinitions;
 	private CoreBlockDefinitions blockDefinitions;
 	private CoreTileDefinitions tileDefinitions;
+	private CoreMaterialDefinitions materialDefinitions;
 
 	public AppEngCore()
 	{
