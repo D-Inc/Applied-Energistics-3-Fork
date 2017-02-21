@@ -42,14 +42,12 @@ public final class AppEngApi
 
 	private final RegistryContainer registryContainer;
 	private final IStorageHelper storageHelper;
-	private final ApiDefinitions definitions;
 
 	private AppEngApi()
 	{
 		this.storageHelper = new ApiStorage();
 		this.registryContainer = new RegistryContainer();
 		this.partHelper = new ApiPart();
-		this.definitions = new ApiDefinitions( this.partHelper );
 	}
 
 	public RegistryContainer registries()
@@ -65,11 +63,6 @@ public final class AppEngApi
 	public ApiPart partHelper()
 	{
 		return this.partHelper;
-	}
-
-	public ApiDefinitions definitions()
-	{
-		return this.definitions;
 	}
 
 	public IGridNode createGridNode( final IGridBlock blk )
