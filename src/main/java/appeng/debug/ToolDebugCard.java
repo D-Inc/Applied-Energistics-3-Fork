@@ -24,7 +24,6 @@ import java.util.Set;
 
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
@@ -50,7 +49,6 @@ import appeng.core.me.api.parts.IPartHost;
 import appeng.core.me.grid.Grid;
 import appeng.core.me.grid.GridNode;
 import appeng.core.me.grid.cache.TickManagerCache;
-import appeng.core.me.part.p2p.PartP2PTunnel;
 import appeng.core.me.tile.TileController;
 
 
@@ -130,11 +128,6 @@ public class ToolDebugCard extends AEBaseItem
 						}
 
 						this.outputMsg( player, "Cable Distance: " + length );
-					}
-
-					if( center.getMachine() instanceof PartP2PTunnel )
-					{
-						this.outputMsg( player, "Freq: " + ( (PartP2PTunnel) center.getMachine() ).getFrequency() );
 					}
 
 					final TickManagerCache tmc = g.getCache( ITickManager.class );
