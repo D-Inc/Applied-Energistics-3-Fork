@@ -44,7 +44,6 @@ public class RegistryContainer
 	private final P2PTunnelRegistry p2pTunnel = new P2PTunnelRegistry();
 	private final MatterCannonAmmoRegistry matterCannonReg = new MatterCannonAmmoRegistry();
 	private final PlayerRegistry playerRegistry = new PlayerRegistry();
-	private final RecipeHandlerRegistry recipeReg = new RecipeHandlerRegistry();
 
 	public GridCacheRegistry gridCache()
 	{
@@ -99,11 +98,6 @@ public class RegistryContainer
 	public PlayerRegistry players()
 	{
 		return this.playerRegistry;
-	}
-
-	public RecipeHandlerRegistry recipes()
-	{
-		return this.recipeReg;
 	}
 
 	public IWorldGen worldgen()
