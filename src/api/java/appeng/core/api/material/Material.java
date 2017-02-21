@@ -53,7 +53,7 @@ public class Material extends IForgeRegistryEntry.Impl<Material>
 	 * 
 	 * @param model - new default model location
 	 */
-	protected void setModel( ModelResourceLocation model )
+	public void setModel( ModelResourceLocation model )
 	{
 		this.model = model;
 	}
