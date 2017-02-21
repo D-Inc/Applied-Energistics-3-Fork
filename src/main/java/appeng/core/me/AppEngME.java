@@ -35,6 +35,9 @@ import appeng.core.me.definitions.METileDefinitions;
 public class AppEngME implements IME
 {
 
+	@Module.Instance( NAME )
+	public static final AppEngME INSTANCE = null;
+
 	private MEItemDefinitions itemDefinitions;
 	private MEBlockDefinitions blockDefinitions;
 	private METileDefinitions tileDefinitions;

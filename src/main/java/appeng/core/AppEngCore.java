@@ -60,6 +60,9 @@ import appeng.core.services.version.VersionCheckerConfig;
 public class AppEngCore implements ICore
 {
 
+	@Module.Instance( NAME )
+	public static final AppEngCore INSTANCE = null;
+
 	@SidedProxy( clientSide = "appeng.core.client.AppEngCoreClientProxy", serverSide = "appeng.core.server.AppEngCoreServerProxy" )
 	private static AppEngCoreProxy proxy;
 

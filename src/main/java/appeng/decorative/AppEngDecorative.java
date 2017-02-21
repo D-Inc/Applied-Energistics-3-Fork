@@ -36,6 +36,9 @@ import appeng.decorative.api.IDecorative;
 public class AppEngDecorative implements IDecorative
 {
 
+	@Module.Instance( NAME )
+	public static final AppEngDecorative INSTANCE = null;
+
 	public static final String MODID = AppEng.MODID + "|" + IDecorative.NAME;
 
 	public static final String MODNAME = AppEng.NAME + " | " + IDecorative.NAME;

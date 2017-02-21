@@ -36,6 +36,9 @@ import appeng.tools.definitions.ToolsTileDefinitions;
 public class AppEngTools implements ITools
 {
 
+	@Module.Instance( NAME )
+	public static final AppEngTools INSTANCE = null;
+
 	public static final String MODID = AppEng.MODID + "|" + ITools.NAME;
 
 	public static final String MODNAME = AppEng.NAME + " | " + ITools.NAME;

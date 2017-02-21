@@ -29,6 +29,9 @@ import appeng.core.lib.bootstrap.FeatureFactory;
 public class AppEngCrafting implements ICrafting
 {
 
+	@Module.Instance( NAME )
+	public static final AppEngCrafting INSTANCE = null;
+
 	private CraftingItemDefinitions itemDefinitions;
 	private CraftingBlockDefinitions blockDefinitions;
 	private CraftingTileDefinitions tileDefinitions;

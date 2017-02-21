@@ -29,6 +29,9 @@ import appeng.core.worldgen.definitions.WorldGenTileDefinitions;
 public class AppEngWorldGen implements IWorldGen
 {
 
+	@Module.Instance( NAME )
+	public static final AppEngWorldGen INSTANCE = null;
+
 	private WorldGenItemDefinitions itemDefinitions;
 	private WorldGenBlockDefinitions blockDefinitions;
 	private WorldGenTileDefinitions tileDefinitions;

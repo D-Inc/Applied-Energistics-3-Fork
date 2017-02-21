@@ -33,6 +33,9 @@ import appeng.core.spatial.definitions.SpatialTileDefinitions;
 public class AppEngSpatial implements ISpatial
 {
 
+	@Module.Instance( NAME )
+	public static final AppEngSpatial INSTANCE = null;
+
 	private SpatialItemDefinitions itemDefinitions;
 	private SpatialBlockDefinitions blockDefinitions;
 	private SpatialTileDefinitions tileDefinitions;

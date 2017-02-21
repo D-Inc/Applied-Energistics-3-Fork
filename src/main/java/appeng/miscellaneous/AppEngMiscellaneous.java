@@ -36,6 +36,9 @@ import appeng.miscellaneous.api.IMiscellaneous;
 public class AppEngMiscellaneous implements IMiscellaneous
 {
 
+	@Module.Instance( NAME )
+	public static final AppEngMiscellaneous INSTANCE = null;
+
 	public static final String MODID = AppEng.MODID + "|" + IMiscellaneous.NAME;
 
 	public static final String MODNAME = AppEng.NAME + " | " + IMiscellaneous.NAME;
