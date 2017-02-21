@@ -234,10 +234,6 @@ public final class Registration
 
 			registries.matterCannon().registerAmmo( (ItemStack) ammoStack, weight );
 		} );
-
-		final PlayerStatsRegistration registration = new PlayerStatsRegistration( FMLCommonHandler.instance().bus(), AEConfig.instance );
-		registration.registerAchievementHandlers();
-		registration.registerAchievements();
 	}
 
 	void postInit( final FMLPostInitializationEvent event )
@@ -250,9 +246,6 @@ public final class Registration
 		final ApiParts parts = definitions.parts();
 		final ApiBlocks blocks = definitions.blocks();
 		final ApiItems items = definitions.items();
-
-		// default settings..
-		( (P2PTunnelRegistry) registries.p2pTunnel() ).configure();
 
 		// add to localization..
 		PlayerMessages.values();
