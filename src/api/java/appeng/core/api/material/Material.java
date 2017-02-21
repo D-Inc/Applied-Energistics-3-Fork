@@ -75,7 +75,7 @@ public class Material extends IForgeRegistryEntry.Impl<Material>
 	 * 
 	 * @param unlocalizedName - new default unlocalized name
 	 */
-	protected void setUnlocalizedName( String unlocalizedName )
+	public void setUnlocalizedName( String unlocalizedName )
 	{
 		this.unlocalizedName = unlocalizedName;
 	}
