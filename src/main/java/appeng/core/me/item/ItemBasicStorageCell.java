@@ -33,13 +33,16 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+import appeng.api.definitions.IMaterialDefinition;
+import appeng.core.AppEngCore;
 import appeng.core.api.config.FuzzyMode;
 import appeng.core.api.config.IncludeExclude;
 import appeng.core.api.exceptions.MissingDefinition;
 import appeng.core.api.implementations.items.IItemGroup;
 import appeng.core.api.implementations.items.IStorageCell;
 import appeng.core.api.implementations.items.IUpgradeModule;
-import appeng.core.item.MaterialType;
+import appeng.core.api.material.Material;
+import appeng.core.definitions.CoreMaterialDefinitions;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.AppEngApi;
 import appeng.core.lib.features.AEFeature;
@@ -57,39 +60,18 @@ import appeng.core.me.api.storage.data.IItemList;
 
 public final class ItemBasicStorageCell extends AEBaseItem implements IStorageCell, IItemGroup
 {
-	private final MaterialType component;
+	private final IMaterialDefinition<?> component;
 	private final int totalBytes;
 	private final int perType;
 	private final double idleDrain;
 
-	public ItemBasicStorageCell( final MaterialType whichCell, final int kilobytes )
+	public ItemBasicStorageCell( IMaterialDefinition<?> component, int perType, double idleDrain, final int kilobytes )
 	{
 		this.setMaxStackSize( 1 );
+		this.component = component;
 		this.totalBytes = kilobytes * 1024;
-		this.component = whichCell;
-
-		switch( this.component )
-		{
-			case Cell1kPart:
-				this.idleDrain = 0.5;
-				this.perType = 8;
-				break;
-			case Cell4kPart:
-				this.idleDrain = 1.0;
-				this.perType = 32;
-				break;
-			case Cell16kPart:
-				this.idleDrain = 1.5;
-				this.perType = 128;
-				break;
-			case Cell64kPart:
-				this.idleDrain = 2.0;
-				this.perType = 512;
-				break;
-			default:
-				this.idleDrain = 0.0;
-				this.perType = 8;
-		}
+		this.perType = perType;
+		this.idleDrain = idleDrain;
 	}
 
 	@Override
@@ -239,7 +221,7 @@ public final class ItemBasicStorageCell extends AEBaseItem implements IStorageCe
 					playerInventory.setInventorySlotContents( playerInventory.currentItem, null );
 
 					// drop core
-					final ItemStack extraB = ia.addItems( this.component.stack( 1 ) );
+					final ItemStack extraB = ia.addItems( this.component.maybeStack( 1 ).get() );
 					if( extraB != null )
 					{
 						player.dropItem( extraB, false );
@@ -258,7 +240,7 @@ public final class ItemBasicStorageCell extends AEBaseItem implements IStorageCe
 					}
 
 					// drop empty storage cell case
-					AppEngApi.internalApi().definitions().materials().emptyStorageCell().maybeStack( 1 ).ifPresent( is -> {
+					AppEngCore.INSTANCE.<Material, CoreMaterialDefinitions>definitions( Material.class ).cellHousing().maybeStack( 1 ).ifPresent( is -> {
 						final ItemStack extraA = ia.addItems( (ItemStack) is );
 						if( extraA != null )
 						{
@@ -287,7 +269,7 @@ public final class ItemBasicStorageCell extends AEBaseItem implements IStorageCe
 	@Override
 	public ItemStack getContainerItem( final ItemStack itemStack )
 	{
-		return AppEngApi.internalApi().definitions().materials().emptyStorageCell().maybeStack( 1 ).orElseThrow( () -> new MissingDefinition( "Tried to use empty storage cells while basic storage cells are defined." ) );
+		return AppEngCore.INSTANCE.<Material, CoreMaterialDefinitions>definitions( Material.class ).cellHousing().maybeStack( 1 ).orElseThrow( () -> new MissingDefinition( "Tried to use empty storage cells while basic storage cells are defined." ) );
 	}
 
 	@Override
