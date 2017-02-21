@@ -124,7 +124,7 @@ public abstract class DefinitionBuilder<T, D extends IDefinition<T>, B extends D
 	{
 		if( t instanceof IForgeRegistryEntry )
 		{
-			GameRegistry.findRegistry( ( (IForgeRegistryEntry) t ).getRegistryType() ).register( (IForgeRegistryEntry) t );
+			GameRegistry.register( (IForgeRegistryEntry) t );
 		}
 	}
 
