@@ -33,7 +33,7 @@ import appeng.core.lib.item.IStateItem.State.Property;
 import appeng.core.lib.localization.GuiText;
 
 
-public class ItemPaintBall extends AEBaseItem implements IStateItem
+public class ItemPaintBall extends AEBaseItem implements IStateItem<ItemPaintBall>
 {
 
 	private static final Property<AEColor, ItemPaintBall> COLOR = new Property<AEColor, ItemPaintBall>(){
