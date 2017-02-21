@@ -29,7 +29,7 @@ public class MaterialDefinition<M extends Material> extends Definition<M> implem
 	}
 
 	@Override
-	public <I extends Item & IItemMaterial<I>, D, P extends ISubDefinitionProperty<I, D, ?>, S extends ISubDefinition<I, D, P, ? extends S>> Optional<S> asSubDefinition()
+	public <I extends Item & IItemMaterial<I>, D, P extends ISubDefinitionProperty<I, D, ?>, S extends ISubDefinition<I, D, P, ? extends S>> Optional<S> maybeAsSubDefinition()
 	{
 		return (Optional<S>) asSubDefinitionC();
 	}
