@@ -89,6 +89,12 @@ public class AppEngME implements IME
 	{
 		return (Map<Class<?>, ResourceLocation>) slaveset.get( CLASS2PARTMAP );
 	}
+
+	public ResourceLocation getRegistryName( Class<? extends IPart> clas )
+	{
+		return (ResourceLocation) partRegistry.getSlaveMap( CLASS2PARTMAP, Map.class ).get( clas );
+	}
+
 	@ModuleEventHandler
 	public void preInit( FMLPreInitializationEvent event )
 	{

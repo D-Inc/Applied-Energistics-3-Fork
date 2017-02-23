@@ -22,6 +22,7 @@ package appeng.core.me.definitions;
 import net.minecraft.util.ResourceLocation;
 
 import appeng.core.lib.definitions.Definition;
+import appeng.core.me.AppEngME;
 import appeng.core.me.api.definitions.IPartDefinition;
 import appeng.core.me.api.part.PartRegistryEntry;
 import appeng.core.me.api.parts.IPart;
@@ -33,6 +34,26 @@ public class PartDefinition<P extends IPart<P>> extends Definition<PartRegistryE
 	public PartDefinition( ResourceLocation identifier, PartRegistryEntry<P> part )
 	{
 		super( identifier, part );
+	}
+
+	@Override
+	public boolean isSameAs( Object other )
+	{
+		if( super.isSameAs( other ) )
+		{
+			return true;
+		}
+		else
+		{
+			if( isEnabled() )
+			{
+				if( other instanceof IPart )
+				{
+					return AppEngME.INSTANCE.getRegistryName( ( (IPart<?>) other ).getClass() ).equals( identifier() );
+				}
+			}
+			return false;
+		}
 	}
 
 }
