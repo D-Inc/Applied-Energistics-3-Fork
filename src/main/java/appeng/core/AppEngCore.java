@@ -90,6 +90,10 @@ public class AppEngCore implements ICore
 		{
 			return (D) tileDefinitions;
 		}
+		if( clas == Material.class )
+		{
+			return (D) materialDefinitions;
+		}
 		return null;
 	}
 
@@ -113,6 +117,7 @@ public class AppEngCore implements ICore
 		this.blockDefinitions = new CoreBlockDefinitions( registry );
 		this.itemDefinitions = new CoreItemDefinitions( registry );
 		this.tileDefinitions = new CoreTileDefinitions( registry );
+		this.materialDefinitions = new CoreMaterialDefinitions( registry );
 		registry.preInit( event );
 
 		CreativeTab.init();
