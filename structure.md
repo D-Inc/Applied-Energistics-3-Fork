@@ -1,12 +1,13 @@
 # Applied Energistics 3 - Structure
 
-##### This file describes new modular structure of Applied Energistics 3 and repartition of AE2's items, blocks and other features between modules.
+#### This file describes new modular structure of Applied Energistics 3 and repartition of AE2's items, blocks and other features between modules.
 
-It is important to note that this file is repartition of **AE2's features only**. Applied Energistics 3 will have new systems, new mechanics and a lot of new stuff, but these are not included in here, as these will be discussed later on, because we have to move over the old stuff first. _Also, not all old stuff made it over ;) :( _
+It is important to note that this file is repartition of **AE2's features only**. Applied Energistics 3 will have new systems, new mechanics and a lot of new stuff, but these are not included in here, as these will be discussed later on, because we have to move over the old stuff first.
+_Also, not all old stuff made it over ;) :(_
 
 ## Modules
 
-Applied Energistics 3 is split into modules. Each module represents a certain theme/feature/option/..., like _World Gen_ module is responsible for world generation (meteorites and ores), _ME_ module adds ME system, _Spatial IO_ module adds spatial storage cells, etc.
+Applied Energistics 3 is split into modules. Each module represents a certain theme/feature/element/..., like _World Gen_ module is responsible for world generation (meteorites and ores), _ME_ module adds ME system, _Spatial IO_ module adds spatial storage cells, etc.
 The significant part of the new modules system is difference between _internal_ and _external_ modules. Before we get to it, you have to understand how Applied Energistics 3 will be distributed:
 - There will be one JAR that includes ALL modules (it will also be the one you download by default).
 - A _Core_ jar which contains utility classes, core API and all internal modules. It is included in the _ALL_ JAR, but in other cases it will always have to be installed.
@@ -19,7 +20,9 @@ Now that we covered distribution, we only have to sum things up to define _inter
 
 **TLDR: If you are a simple user and you do not care about all of this mess, just download the first JAR you see and you're good.**
 
-#### Current Modules Structure:
+--
+
+### Current Modules Structure:
 **(All modules under _Core_ are internal)**
 
 - Core
@@ -32,6 +35,8 @@ Now that we covered distribution, we only have to sum things up to define _inter
 - Miscellaneous
 - Tools
 
+-----
+
 ## Repartition Of AE2 Features:
 - Core
   - Blocks:
@@ -41,22 +46,24 @@ Now that we covered distribution, we only have to sum things up to define _inter
   - Crafting
     - Blocks:
 	  - 
-	- Items:
+    - Items:
 	  - 
   - ME
     - Blocks:
 	  - 
-	- Items:
+    - Items:
 	  - 
+    - Parts:
+      - 
   - Spatial
     - Blocks:
 	  - 
-	- Items:
+    - Items:
 	  - 
   - World Gen
     - Blocks:
 	  - 
-	- Items:
+    - Items:
 	  - 
 - Decorative
   - Blocks:
@@ -73,3 +80,6 @@ Now that we covered distribution, we only have to sum things up to define _inter
     - 
   - Items:
     - 
+
+- **Did Not Make It Over (yet - may come back in later versions)**:
+  - P2P
