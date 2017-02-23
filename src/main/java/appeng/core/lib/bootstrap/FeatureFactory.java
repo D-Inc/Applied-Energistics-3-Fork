@@ -33,7 +33,7 @@ import appeng.core.lib.util.Platform;
 
 public class FeatureFactory
 {
-	private final AEFeature[] defaultFeatures;
+	protected final AEFeature[] defaultFeatures;
 
 	private final List<IBootstrapComponent> bootstrapComponents;
 
@@ -54,7 +54,7 @@ public class FeatureFactory
 		}
 	}
 
-	private FeatureFactory( FeatureFactory parent, AEFeature... defaultFeatures )
+	protected FeatureFactory( FeatureFactory parent, AEFeature... defaultFeatures )
 	{
 		this.defaultFeatures = defaultFeatures.clone();
 		this.bootstrapComponents = parent.bootstrapComponents;
