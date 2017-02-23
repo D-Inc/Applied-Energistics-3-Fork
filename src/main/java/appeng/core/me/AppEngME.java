@@ -35,13 +35,14 @@ import appeng.api.module.ModuleIMCMessageEvent;
 import appeng.core.AppEng;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.FacadeConfig;
-import appeng.core.lib.bootstrap.FeatureFactory;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.me.api.IME;
 import appeng.core.me.api.part.PartRegistryEntry;
 import appeng.core.me.api.parts.IPart;
+import appeng.core.me.bootstrap.MEFeatureFactory;
 import appeng.core.me.definitions.MEBlockDefinitions;
 import appeng.core.me.definitions.MEItemDefinitions;
+import appeng.core.me.definitions.MEPartDefinitions;
 import appeng.core.me.definitions.METileDefinitions;
 
 
@@ -56,11 +57,12 @@ public class AppEngME implements IME
 
 	private FMLControlledNamespacedRegistry<PartRegistryEntry<?>> partRegistry;
 
-	private FeatureFactory registry;
+	private MEFeatureFactory registry;
 
 	private MEItemDefinitions itemDefinitions;
 	private MEBlockDefinitions blockDefinitions;
 	private METileDefinitions tileDefinitions;
+	private MEPartDefinitions partDefinitions;
 
 	@Override
 	public <T, D extends IDefinitions<T, ? extends IDefinition<T>>> D definitions( Class<T> clas )
@@ -76,6 +78,10 @@ public class AppEngME implements IME
 		if( clas == TileEntity.class )
 		{
 			return (D) tileDefinitions;
+		}
+		if( clas == PartRegistryEntry.class )
+		{
+			return (D) partDefinitions;
 		}
 		return null;
 	}
@@ -109,10 +115,11 @@ public class AppEngME implements IME
 				} ) ).create();
 		// @formatter:on
 
-		registry = new FeatureFactory();
+		registry = new MEFeatureFactory();
 		this.blockDefinitions = new MEBlockDefinitions( registry );
 		this.itemDefinitions = new MEItemDefinitions( registry );
 		this.tileDefinitions = new METileDefinitions( registry );
+		this.partDefinitions = new MEPartDefinitions<>( registry );
 		registry.preInit( event );
 
 		FacadeConfig.instance = new FacadeConfig( new File( AppEng.instance().getConfigDirectory(), "Facades.cfg" ) );
