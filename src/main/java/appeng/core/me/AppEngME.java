@@ -7,6 +7,7 @@ import java.io.File;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -14,6 +15,8 @@ import net.minecraftforge.fml.common.event.FMLServerAboutToStartEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppedEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
+import net.minecraftforge.fml.common.registry.FMLControlledNamespacedRegistry;
+import net.minecraftforge.fml.common.registry.RegistryBuilder;
 
 import appeng.api.definitions.IDefinition;
 import appeng.api.definitions.IDefinitions;
@@ -26,6 +29,7 @@ import appeng.core.lib.FacadeConfig;
 import appeng.core.lib.bootstrap.FeatureFactory;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.me.api.IME;
+import appeng.core.me.api.part.PartRegistryEntry;
 import appeng.core.me.definitions.MEBlockDefinitions;
 import appeng.core.me.definitions.MEItemDefinitions;
 import appeng.core.me.definitions.METileDefinitions;
@@ -37,6 +41,8 @@ public class AppEngME implements IME
 
 	@Module.Instance( NAME )
 	public static final AppEngME INSTANCE = null;
+
+	private FMLControlledNamespacedRegistry<PartRegistryEntry<?>> partRegistry;
 
 	private FeatureFactory registry;
 
@@ -62,9 +68,16 @@ public class AppEngME implements IME
 		return null;
 	}
 
+	public FMLControlledNamespacedRegistry<PartRegistryEntry<?>> getPartRegistry()
+	{
+		return partRegistry;
+	}
+
 	@ModuleEventHandler
 	public void preInit( FMLPreInitializationEvent event )
 	{
+		partRegistry = (FMLControlledNamespacedRegistry<PartRegistryEntry<?>>) new RegistryBuilder().setName( new ResourceLocation( AppEng.MODID, "parts" ) ).setType( PartRegistryEntry.class ).create();
+
 		registry = new FeatureFactory();
 		this.blockDefinitions = new MEBlockDefinitions( registry );
 		this.itemDefinitions = new MEItemDefinitions( registry );
