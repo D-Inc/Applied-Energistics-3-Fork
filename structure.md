@@ -41,28 +41,19 @@ Now that we covered distribution, we only have to sum things up to define _inter
 - Core
   - Blocks:
     - Charger
+    - Energy Cell
+    - Dense Energy Cell
     - Creative Energy Cell
     - Crystal Growth Accelerator
-    - Dense Energy Cell
-    - Energy Acceptor
-    - Energy Cell
-    - Inscriber
-    - Light Detecting Fixture
     - Meteorite Compass
-    - Matter Condenser
     - Quartz Grindstone
-    - Quartz Glass
     - Tiny TNT
-    - Vibrant Quartz Glass
     - Vibration Chamber
     - Wooden Crank
+    - Sky Stone
   - Items:
-    - Engineering Processor
-    - Calculation Processor
-    - Logic Processor
     - Annihilation Core
     - Formation Core
-    - Certus Quartz Cutting Knife
     - Certus Quartz Seed
     - Certus Quartz Wrench
     - Charged Certus Quartz Crystal
@@ -70,25 +61,15 @@ Now that we covered distribution, we only have to sum things up to define _inter
     - Fluix Crystal
     - Fluix Pearl
     - Fluix Seed
-    - Inscriber Calculation Press
-    - Inscriber Engineering Press
-    - Inscriber Logic Press
-    - Inscriber Name Press
-    - Inscriber Silicon Press
     - Matter Ball
     - Matter Cannon
-    - Nether Quartz Cutting Knife
     - Nether Quartz Seed
     - Nether Quartz Wrench
-    - Paint Ball
-    - Printed Calculation Circuit
-    - Printed Engineering Circuit
-    - Printed Logic Circuit
-    - Printed Silicon
     - Pure Fluix Crystal
     - Pure Nether Quartz Crystal
     - Wooden Gear
-    - Color Applicator
+    - Certus Quartz Cutting Knife (No right click function)
+    - Nether Quartz Cutting Knife (No right click function)
   - Materials:
     - Certus Quartz Crystal
     - Certus Quartz Dust
@@ -96,13 +77,12 @@ Now that we covered distribution, we only have to sum things up to define _inter
     - Fluix Dust
     - Nether Quartz Dust
     - Ender Dust
-    - Flour
     - Iron Dust
     - Sky Stone Dust
     - Silicon
   - Crafting
     - Blocks:
-	    - 16k Crafting storage
+      - 16k Crafting storage
       - 1k Crafting Storage
       - 4k Crafting Storage
       - 64k Crafting Storage
@@ -111,10 +91,15 @@ Now that we covered distribution, we only have to sum things up to define _inter
       - Crafting Unit
       - Molecular Assembler
     - Items:
-	  - 
+      - Encoded Pattern 
+    - Materials:
+      - Blank Pattern
   - ME
     - Blocks:
-	    - Cell Workbench
+      - Energy Acceptor
+      - Inscriber
+      - Matter Condenser
+      - Cell Workbench
       - ME Chest
       - ME Controller
       - ME Drive
@@ -125,36 +110,47 @@ Now that we covered distribution, we only have to sum things up to define _inter
       - ME Security Terminal
     - Items:
       - Annihilation Core
-	    - 16k ME Storage Cell
-	    - 16k ME Storage Component 
-	    - 1k ME Storage Cell
-	    - 1k ME Storage Component
-	    - 4k ME Storage Cell
-	    - 4k ME Storage Component
-	    - 64k ME Storage Cell
-	    - 64k ME Storage Component
+      - 16k ME Storage Cell
+      - 1k ME Storage Cell
+      - 4k ME Storage Cell
+      - 64k ME Storage Cell
+      - Creative ME Storage Cell
+      - Portable Cell
+      - View Cell
       - Acceleration Card
       - Advanced Card
       - Basic Card
       - Biometric Card
-      - Blank Pattern
       - Capacity Card
       - Crafting Card
-      - Creative ME Storage Cell
-      - Encoded Pattern
       - Fuzzy Card
       - Inverter Card
-      - ME Storage Housing
       - Memory Card
       - Network Tool
-      - Portable Cell
-      - Quantum Entangled Singularity
       - Redstone Card
       - Singularity
-      - View Cell
+      - Quantum Entangled Singularity
       - Wireless Booster
       - Wireless Receiver
       - Wireless Terminal
+      - Engineering Processor
+      - Calculation Processor
+      - Logic Processor
+    - Materials:
+      - ME Storage Housing
+      - 1k ME Storage Component
+      - 16k ME Storage Component 
+      - 4k ME Storage Component
+      - 64k ME Storage Component
+      - Inscriber Calculation Press
+      - Inscriber Engineering Press
+      - Inscriber Logic Press
+      - Inscriber Name Press
+      - Inscriber Silicon Press
+      - Printed Calculation Circuit
+      - Printed Engineering Circuit
+      - Printed Logic Circuit
+      - Printed Silicon
     - Parts:
       - Bright Illuminated Panel
       - Cable Anchor
@@ -183,19 +179,22 @@ Now that we covered distribution, we only have to sum things up to define _inter
       - Quartz Fiber
   - Spatial
     - Blocks:
-	    - Spatial IO Port
-	    - Spatial Pylon
+       - Spatial IO Port
+       - Spatial Pylon
     - Items:
-	    - 128Cubed Spatial Component
-	    - 128Cubed Spatial Storage Cell
-	    - 16Cubed Spatial Component
-	    - 16Cubed Spatial Storage Cell 
-      - 2Cubed Spatial Component
-      - 2Cubed Spatial Storage Cell
+      - 2³ Spatial Storage Cell
+      - 16³ Spatial Storage Cell 
+      - 128³ Spatial Storage Cell
+    - Materials:
+      - 2³ Spatial Component
+      - 16³ Spatial Component
+      - 128³ Spatial Component
   - World Gen
     - Blocks:
-	    - Certus Quartz Ore
+      - Certus Quartz Ore
       - Charged Certus Quartz Ore
+      - Sky Stone Chest
+      - Sky Stone Block Chest
     - Items:
 	  - 
 - Decorative
@@ -204,16 +203,21 @@ Now that we covered distribution, we only have to sum things up to define _inter
     - Certus Quartz Pillar
     - Charged Quartz Fixture
     - Chiseled Certus Quartz Block
-    - Sky Stone Block Chest
     - Sky Stone Block
     - Sky Stone Brick
-    - Sky Stone Chest
     - Sky Stone Small Brick
-    - Sky Stone
     - Fluix Block
+    - Quartz Glass
+    - Vibrant Quartz Glass
+  - Items:
+    - Paint Ball
+    - Color Applicator
+- Miscellaneous
+  - Blocks:
+    - Light Detecting Fixture
   - Items:
     - 
-- Miscellaneous
+- Tools 
   - Blocks:
     - 
   - Items:
@@ -222,18 +226,16 @@ Now that we covered distribution, we only have to sum things up to define _inter
     - Certus Quartz Pickaxe
     - Certus Quartz Shovel
     - Certus Quartz Sword
-    - Charged Staff
-    - Entropy Manipulator
     - Nether Quartz Axe
     - Nether Quartz Hoe
     - Nether Quartz Pickaxe
     - Nether Quartz Shovel
     - Nether Quartz Sword
-- Tools 
-  - Blocks:
-    - 
-  - Items:
-    - 
+    - Charged Staff
+    - Entropy Manipulator
 
 - **Did Not Make It Over (yet - may come back in later versions)**:
   - P2P
+- **Did Not Make It Over - Will not come back ヾ(^\_^) **
+  - Flour
+  - Knives right click function
