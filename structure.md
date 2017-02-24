@@ -235,7 +235,7 @@ Now that we covered distribution, we only have to sum things up to define _inter
 
 - **Did Not Make It Over (yet - may come back in later versions)**:
   - P2P
-- **Did Not Make It Over - Will not come back ヾ(^\_^) **
+- **Did Not Make It Over - Will not come back ヾ(^\_^)**
   - Flour
   - Knives right click function
   - Inscriber Name Press
