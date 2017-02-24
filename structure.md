@@ -37,47 +37,199 @@ Now that we covered distribution, we only have to sum things up to define _inter
 
 -----
 
-## Repartition Of AE2 Features:
+## Repartition Of AE2 Features (WIP):
 - Core
   - Blocks:
-    - 
+    - Charger
+    - Creative Energy Cell
+    - Crystal Growth Accelerator
+    - Dense Energy Cell
+    - Energy Acceptor
+    - Energy Cell
+    - Inscriber
+    - Light Detecting Fixture
+    - Meteorite Compass
+    - Matter Condenser
+    - Quartz Grindstone
+    - Quartz Glass
+    - Tiny TNT
+    - Vibrant Quartz Glass
+    - Vibration Chamber
+    - Wooden Crank
   - Items:
-    - 
+    - Engineering Processor
+    - Calculation Processor
+    - Logic Processor
+    - Annihilation Core
+    - Formation Core
+    - Certus Quartz Cutting Knife
+    - Certus Quartz Seed
+    - Certus Quartz Wrench
+    - Charged Certus Quartz Crystal
+    - Pure Certus Quartz Crystal
+    - Fluix Crystal
+    - Fluix Pearl
+    - Fluix Seed
+    - Inscriber Calculation Press
+    - Inscriber Engineering Press
+    - Inscriber Logic Press
+    - Inscriber Name Press
+    - Inscriber Silicon Press
+    - Matter Ball
+    - Matter Cannon
+    - Nether Quartz Cutting Knife
+    - Nether Quartz Seed
+    - Nether Quartz Wrench
+    - Paint Ball
+    - Printed Calculation Circuit
+    - Printed Engineering Circuit
+    - Printed Logic Circuit
+    - Printed Silicon
+    - Pure Fluix Crystal
+    - Pure Nether Quartz Crystal
+    - Wooden Gear
+    - Color Applicator
   - Materials:
-    - 
+    - Certus Quartz Crystal
+    - Certus Quartz Dust
+    - Gold Dust
+    - Fluix Dust
+    - Nether Quartz Dust
+    - Ender Dust
+    - Flour
+    - Iron Dust
+    - Sky Stone Dust
+    - Silicon
   - Crafting
     - Blocks:
-	  - 
+	    - 16k Crafting storage
+      - 1k Crafting Storage
+      - 4k Crafting Storage
+      - 64k Crafting Storage
+      - Crafting Co Processing Unit
+      - Crafting Monitor
+      - Crafting Unit
+      - Molecular Assembler
     - Items:
 	  - 
   - ME
     - Blocks:
-	  - 
+	    - Cell Workbench
+      - ME Chest
+      - ME Controller
+      - ME Drive
+      - ME Interface
+      - ME IO Port
+      - ME Quantum Link Chamber
+      - ME Quantum Ring
+      - ME Security Terminal
     - Items:
-	  - 
+      - Annihilation Core
+	    - 16k ME Storage Cell
+	    - 16k ME Storage Component 
+	    - 1k ME Storage Cell
+	    - 1k ME Storage Component
+	    - 4k ME Storage Cell
+	    - 4k ME Storage Component
+	    - 64k ME Storage Cell
+	    - 64k ME Storage Component
+      - Acceleration Card
+      - Advanced Card
+      - Basic Card
+      - Biometric Card
+      - Blank Pattern
+      - Capacity Card
+      - Crafting Card
+      - Creative ME Storage Cell
+      - Encoded Pattern
+      - Fuzzy Card
+      - Inverter Card
+      - ME Storage Housing
+      - Memory Card
+      - Network Tool
+      - Portable Cell
+      - Quantum Entangled Singularity
+      - Redstone Card
+      - Singularity
+      - View Cell
+      - Wireless Booster
+      - Wireless Receiver
+      - Wireless Terminal
     - Parts:
-      - 
+      - Bright Illuminated Panel
+      - Cable Anchor
+      - Cable Facade
+      - Dark Illuminated Panel
+      - Illuminated Panel
+      - ME Annihilation Plane
+      - ME Conversion Monitor
+      - ME Covered Cable
+      - ME Crafting Terminal
+      - ME Dense Cable
+      - ME Export Bus
+      - ME Formation Plane
+      - ME Glass Cable
+      - ME Import Bus
+      - ME Interface Terminal
+      - ME Inverted Toggle Bus
+      - ME Level Emitter
+      - ME Pattern Terminal
+      - ME Smart Cable
+      - ME Storage Bus
+      - ME Storage Monitor
+      - ME Terminal
+      - ME Toggle Bus
+      - ME Wireless Access Point
+      - Quartz Fiber
   - Spatial
     - Blocks:
-	  - 
+	    - Spatial IO Port
+	    - Spatial Pylon
     - Items:
-	  - 
+	    - 128Cubed Spatial Component
+	    - 128Cubed Spatial Storage Cell
+	    - 16Cubed Spatial Component
+	    - 16Cubed Spatial Storage Cell 
+      - 2Cubed Spatial Component
+      - 2Cubed Spatial Storage Cell
   - World Gen
     - Blocks:
-	  - 
+	    - Certus Quartz Ore
+      - Charged Certus Quartz Ore
     - Items:
 	  - 
 - Decorative
   - Blocks:
-    - 
+    - Certus Quartz Block
+    - Certus Quartz Pillar
+    - Charged Quartz Fixture
+    - Chiseled Certus Quartz Block
+    - Sky Stone Block Chest
+    - Sky Stone Block
+    - Sky Stone Brick
+    - Sky Stone Chest
+    - Sky Stone Small Brick
+    - Sky Stone
+    - Fluix Block
   - Items:
     - 
 - Miscellaneous
   - Blocks:
     - 
   - Items:
-    - 
-- Tools
+    - Certus Quartz Axe
+    - Certus Quartz Hoe
+    - Certus Quartz Pickaxe
+    - Certus Quartz Shovel
+    - Certus Quartz Sword
+    - Charged Staff
+    - Entropy Manipulator
+    - Nether Quartz Axe
+    - Nether Quartz Hoe
+    - Nether Quartz Pickaxe
+    - Nether Quartz Shovel
+    - Nether Quartz Sword
+- Tools 
   - Blocks:
     - 
   - Items:
