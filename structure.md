@@ -145,7 +145,6 @@ Now that we covered distribution, we only have to sum things up to define _inter
       - Inscriber Calculation Press
       - Inscriber Engineering Press
       - Inscriber Logic Press
-      - Inscriber Name Press
       - Inscriber Silicon Press
       - Printed Calculation Circuit
       - Printed Engineering Circuit
@@ -239,3 +238,5 @@ Now that we covered distribution, we only have to sum things up to define _inter
 - **Did Not Make It Over - Will not come back ヾ(^\_^) **
   - Flour
   - Knives right click function
+  - Inscriber Name Press
+  - Name Plate
