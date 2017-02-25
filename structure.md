@@ -50,6 +50,8 @@ Now that we covered distribution, we only have to sum things up to define _inter
     - Vibration Chamber
     - Wooden Crank
     - Sky Stone
+    - Quartz Glass
+    - Vibrant Quartz Glass
   - Items:
     - Annihilation Core
     - Formation Core
@@ -206,8 +208,6 @@ Now that we covered distribution, we only have to sum things up to define _inter
     - Sky Stone Brick
     - Sky Stone Small Brick
     - Fluix Block
-    - Quartz Glass
-    - Vibrant Quartz Glass
   - Items:
     - Paint Ball
     - Color Applicator
