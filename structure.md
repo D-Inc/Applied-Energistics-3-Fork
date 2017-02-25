@@ -45,7 +45,6 @@ Now that we covered distribution, we only have to sum things up to define _inter
     - Dense Energy Cell
     - Creative Energy Cell
     - Crystal Growth Accelerator
-    - Meteorite Compass
     - Quartz Grindstone
     - Tiny TNT
     - Vibration Chamber
@@ -194,6 +193,7 @@ Now that we covered distribution, we only have to sum things up to define _inter
       - Charged Certus Quartz Ore
       - Sky Stone Chest
       - Sky Stone Block Chest
+      - Meteorite Compass
     - Items:
 	  - 
 - Decorative
