@@ -37,51 +37,207 @@ Now that we covered distribution, we only have to sum things up to define _inter
 
 -----
 
-## Repartition Of AE2 Features:
+## Repartition Of AE2 Features (WIP):
 - Core
   - Blocks:
-    - 
+    - Charger
+    - Energy Cell
+    - Dense Energy Cell
+    - Creative Energy Cell
+    - Crystal Growth Accelerator
+    - Quartz Grindstone
+    - Tiny TNT
+    - Vibration Chamber
+    - Wooden Crank
+    - Sky Stone
+    - Quartz Glass
+    - Vibrant Quartz Glass
   - Items:
-    - 
+    - Annihilation Core
+    - Formation Core
+    - Certus Quartz Seed
+    - Certus Quartz Wrench
+    - Charged Certus Quartz Crystal
+    - Pure Certus Quartz Crystal
+    - Fluix Crystal
+    - Fluix Pearl
+    - Fluix Seed
+    - Matter Ball
+    - Matter Cannon
+    - Nether Quartz Seed
+    - Nether Quartz Wrench
+    - Pure Fluix Crystal
+    - Pure Nether Quartz Crystal
+    - Wooden Gear
+    - Certus Quartz Cutting Knife (No right click function)
+    - Nether Quartz Cutting Knife (No right click function)
   - Materials:
-    - 
+    - Certus Quartz Crystal
+    - Certus Quartz Dust
+    - Gold Dust
+    - Fluix Dust
+    - Nether Quartz Dust
+    - Ender Dust
+    - Iron Dust
+    - Sky Stone Dust
+    - Silicon
   - Crafting
     - Blocks:
-	  - 
+      - 16k Crafting storage
+      - 1k Crafting Storage
+      - 4k Crafting Storage
+      - 64k Crafting Storage
+      - Crafting Co Processing Unit
+      - Crafting Monitor
+      - Crafting Unit
+      - Molecular Assembler
     - Items:
-	  - 
+      - Encoded Pattern 
+    - Materials:
+      - Blank Pattern
+    - Parts:
+      - ME Pattern Terminal
   - ME
     - Blocks:
-	  - 
+      - Energy Acceptor
+      - Inscriber
+      - Matter Condenser
+      - Cell Workbench
+      - ME Chest
+      - ME Controller
+      - ME Drive
+      - ME Interface
+      - ME IO Port
+      - ME Quantum Link Chamber
+      - ME Quantum Ring
+      - ME Security Terminal
     - Items:
-	  - 
+      - Annihilation Core
+      - 16k ME Storage Cell
+      - 1k ME Storage Cell
+      - 4k ME Storage Cell
+      - 64k ME Storage Cell
+      - Creative ME Storage Cell
+      - Portable Cell
+      - View Cell
+      - Acceleration Card
+      - Advanced Card
+      - Basic Card
+      - Biometric Card
+      - Capacity Card
+      - Crafting Card
+      - Fuzzy Card
+      - Inverter Card
+      - Memory Card
+      - Network Tool
+      - Redstone Card
+      - Singularity
+      - Quantum Entangled Singularity
+      - Wireless Booster
+      - Wireless Receiver
+      - Wireless Terminal
+      - Engineering Processor
+      - Calculation Processor
+      - Logic Processor
+    - Materials:
+      - ME Storage Housing
+      - 1k ME Storage Component
+      - 16k ME Storage Component 
+      - 4k ME Storage Component
+      - 64k ME Storage Component
+      - Inscriber Calculation Press
+      - Inscriber Engineering Press
+      - Inscriber Logic Press
+      - Inscriber Silicon Press
+      - Printed Calculation Circuit
+      - Printed Engineering Circuit
+      - Printed Logic Circuit
+      - Printed Silicon
     - Parts:
-      - 
+      - Bright Illuminated Panel
+      - Cable Anchor
+      - Cable Facade
+      - Dark Illuminated Panel
+      - Illuminated Panel
+      - ME Annihilation Plane
+      - ME Conversion Monitor
+      - ME Covered Cable
+      - ME Crafting Terminal
+      - ME Dense Cable
+      - ME Export Bus
+      - ME Formation Plane
+      - ME Glass Cable
+      - ME Import Bus
+      - ME Interface Terminal
+      - ME Inverted Toggle Bus
+      - ME Level Emitter
+      - ME Smart Cable
+      - ME Storage Bus
+      - ME Storage Monitor
+      - ME Terminal
+      - ME Toggle Bus
+      - ME Wireless Access Point
+      - Quartz Fiber
   - Spatial
     - Blocks:
-	  - 
+       - Spatial IO Port
+       - Spatial Pylon
     - Items:
-	  - 
+      - 2³ Spatial Storage Cell
+      - 16³ Spatial Storage Cell 
+      - 128³ Spatial Storage Cell
+    - Materials:
+      - 2³ Spatial Component
+      - 16³ Spatial Component
+      - 128³ Spatial Component
   - World Gen
     - Blocks:
-	  - 
+      - Certus Quartz Ore
+      - Charged Certus Quartz Ore
+      - Sky Stone Chest
+      - Sky Stone Block Chest
+      - Meteorite Compass
     - Items:
 	  - 
 - Decorative
   - Blocks:
-    - 
+    - Certus Quartz Block
+    - Certus Quartz Pillar
+    - Charged Quartz Fixture
+    - Chiseled Certus Quartz Block
+    - Sky Stone Block
+    - Sky Stone Brick
+    - Sky Stone Small Brick
+    - Fluix Block
   - Items:
-    - 
+    - Paint Ball
+    - Color Applicator
 - Miscellaneous
   - Blocks:
-    - 
+    - Light Detecting Fixture
   - Items:
     - 
-- Tools
+- Tools 
   - Blocks:
     - 
   - Items:
-    - 
+    - Certus Quartz Axe
+    - Certus Quartz Hoe
+    - Certus Quartz Pickaxe
+    - Certus Quartz Shovel
+    - Certus Quartz Sword
+    - Nether Quartz Axe
+    - Nether Quartz Hoe
+    - Nether Quartz Pickaxe
+    - Nether Quartz Shovel
+    - Nether Quartz Sword
+    - Charged Staff
+    - Entropy Manipulator
 
 - **Did Not Make It Over (yet - may come back in later versions)**:
   - P2P
+- **Did Not Make It Over - Will not come back ヾ(^\_^)**
+  - Flour
+  - Knives right click function
+  - Inscriber Name Press
+  - Name Plate
