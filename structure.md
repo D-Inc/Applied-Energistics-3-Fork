@@ -53,22 +53,11 @@ Now that we covered distribution, we only have to sum things up to define _inter
     - Quartz Glass
     - Vibrant Quartz Glass
   - Items:
-    - Annihilation Core
-    - Formation Core
     - Certus Quartz Seed
     - Certus Quartz Wrench
-    - Charged Certus Quartz Crystal
-    - Pure Certus Quartz Crystal
-    - Fluix Crystal
-    - Fluix Pearl
     - Fluix Seed
-    - Matter Ball
-    - Matter Cannon
     - Nether Quartz Seed
     - Nether Quartz Wrench
-    - Pure Fluix Crystal
-    - Pure Nether Quartz Crystal
-    - Wooden Gear
     - Certus Quartz Cutting Knife (No right click function)
     - Nether Quartz Cutting Knife (No right click function)
   - Materials:
@@ -79,8 +68,15 @@ Now that we covered distribution, we only have to sum things up to define _inter
     - Nether Quartz Dust
     - Ender Dust
     - Iron Dust
-    - Sky Stone Dust
+    - Sky Dust
     - Silicon
+    - Fluix Crystal
+    - Fluix Pearl
+    - Charged Certus Quartz Crystal
+    - Pure Certus Quartz Crystal
+    - Pure Fluix Crystal
+    - Pure Nether Quartz Crystal
+    - Wooden Gear
   - Crafting
     - Blocks:
       - 16k Crafting storage
@@ -112,7 +108,6 @@ Now that we covered distribution, we only have to sum things up to define _inter
       - ME Quantum Ring
       - ME Security Terminal
     - Items:
-      - Annihilation Core
       - 16k ME Storage Cell
       - 1k ME Storage Cell
       - 4k ME Storage Cell
@@ -140,6 +135,8 @@ Now that we covered distribution, we only have to sum things up to define _inter
       - Calculation Processor
       - Logic Processor
     - Materials:
+      - Annihilation Core
+      - Formation Core
       - ME Storage Housing
       - 1k ME Storage Component
       - 16k ME Storage Component 
@@ -233,6 +230,9 @@ Now that we covered distribution, we only have to sum things up to define _inter
     - Nether Quartz Sword
     - Charged Staff
     - Entropy Manipulator
+    - Matter Cannon
+  - Materials:
+    - Matter Ball
 
 - **Did Not Make It Over (yet - may come back in later versions)**:
   - P2P
