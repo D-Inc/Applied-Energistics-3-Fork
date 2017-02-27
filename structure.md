@@ -95,6 +95,8 @@ Now that we covered distribution, we only have to sum things up to define _inter
       - Encoded Pattern 
     - Materials:
       - Blank Pattern
+    - Parts:
+      - ME Pattern Terminal
   - ME
     - Blocks:
       - Energy Acceptor
@@ -169,7 +171,6 @@ Now that we covered distribution, we only have to sum things up to define _inter
       - ME Interface Terminal
       - ME Inverted Toggle Bus
       - ME Level Emitter
-      - ME Pattern Terminal
       - ME Smart Cable
       - ME Storage Bus
       - ME Storage Monitor
