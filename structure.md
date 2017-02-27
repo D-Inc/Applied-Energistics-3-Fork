@@ -187,6 +187,10 @@ Now that we covered distribution, we only have to sum things up to define _inter
       - 2³ Spatial Component
       - 16³ Spatial Component
       - 128³ Spatial Component
+    - Dimensions:
+      - Storage Cell Dimension
+    - Biomes:
+      - Storage Cell Biome
   - World Gen
     - Blocks:
       - Certus Quartz Ore
@@ -196,6 +200,10 @@ Now that we covered distribution, we only have to sum things up to define _inter
       - Meteorite Compass
     - Items:
 	  - 
+    - World Generation:
+      - Ores
+      - Meteorites
+      - Dungeon loot
 - Decorative
   - Blocks:
     - Certus Quartz Block
