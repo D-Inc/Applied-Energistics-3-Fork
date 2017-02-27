@@ -26,7 +26,7 @@ public class Definitions<T, D extends IDefinition<T>> implements IDefinitions<T,
 		init( null );
 	}
 
-	protected final void init( Map<ResourceLocation, IDefinition<? extends T>> extraEntries )
+	protected final void init( Map<ResourceLocation, D> extraEntries )
 	{
 		assert map == null;
 		ImmutableMap.Builder builder = ImmutableMap.builder();

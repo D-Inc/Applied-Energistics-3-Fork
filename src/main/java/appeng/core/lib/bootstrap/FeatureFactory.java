@@ -10,6 +10,7 @@ import com.google.common.collect.Maps;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.DimensionType;
@@ -21,8 +22,8 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import appeng.api.definitions.IDefinition;
 import appeng.api.definitions.IDefinitionsProvider;
+import appeng.api.definitions.IItemDefinition;
 import appeng.core.AppEng;
 import appeng.core.api.material.Material;
 import appeng.core.lib.bootstrap.components.ModelOverrideComponent;
@@ -40,7 +41,7 @@ public class FeatureFactory
 	@SideOnly( Side.CLIENT )
 	ModelOverrideComponent modelOverrideComponent;
 
-	private final Map<BlockDefinition<? extends Block>, IItemBlockCustomizer> defaultItemBlocks = Maps.newHashMap();
+	private final Map<BlockDefinition<? extends Block>, IItemBlockCustomizer<ItemBlock>> defaultItemBlocks = Maps.newHashMap();
 
 	public FeatureFactory()
 	{
@@ -146,9 +147,9 @@ public class FeatureFactory
 		defaultItemBlocks.put( def, itemBlock );
 	}
 
-	public Map<ResourceLocation, IDefinition<? extends Item>> buildDefaultItemBlocks()
+	public Map<ResourceLocation, IItemDefinition<Item>> buildDefaultItemBlocks()
 	{
-		Map<ResourceLocation, IDefinition<? extends Item>> result = Maps.newHashMap();
+		Map result = Maps.newHashMap();
 		this.defaultItemBlocks.forEach( ( def, item ) -> result.put( def.identifier(), item.customize( item( def.identifier(), item.createItemBlock( def.maybe().get() ) ) ).build() ) );
 		this.defaultItemBlocks.clear();
 		return result;
