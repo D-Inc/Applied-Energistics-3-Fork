@@ -37,7 +37,7 @@ Now that we covered distribution, we only have to sum things up to define _inter
 
 -----
 
-## Repartition Of AE2 Features (WIP):
+## Repartition Of AE2 Features:
 - Core
   - Blocks:
     - Charger
@@ -198,8 +198,6 @@ Now that we covered distribution, we only have to sum things up to define _inter
       - Sky Stone Chest
       - Sky Stone Block Chest
       - Meteorite Compass
-    - Items:
-	  - 
     - World Generation:
       - Ores
       - Meteorites
@@ -220,11 +218,7 @@ Now that we covered distribution, we only have to sum things up to define _inter
 - Miscellaneous
   - Blocks:
     - Light Detecting Fixture
-  - Items:
-    - 
 - Tools 
-  - Blocks:
-    - 
   - Items:
     - Certus Quartz Axe
     - Certus Quartz Hoe
