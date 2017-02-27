@@ -23,6 +23,9 @@ public class PartDefinitionBuilder<P extends IPart<P>> extends DefinitionBuilder
 	@Override
 	public IPartDefinition<P> def( PartRegistryEntry<P> part )
 	{
-		return new PartDefinition( registryName, part );
+		if(part == null){
+			return new PartDefinition( registryName, null, null );
+		}
+		return new PartDefinition( registryName, part, ((MEFeatureFactory) factory).defaultItemPartTemp( part ) );
 	}
 }

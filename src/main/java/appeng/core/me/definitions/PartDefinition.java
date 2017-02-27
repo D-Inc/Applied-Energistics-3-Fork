@@ -19,8 +19,12 @@
 package appeng.core.me.definitions;
 
 
+import com.google.common.base.Optional;
+
+import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 
+import appeng.api.definitions.IItemDefinition;
 import appeng.core.lib.definitions.Definition;
 import appeng.core.me.AppEngME;
 import appeng.core.me.api.definitions.IPartDefinition;
@@ -31,9 +35,18 @@ import appeng.core.me.api.parts.IPart;
 public class PartDefinition<P extends IPart<P>> extends Definition<PartRegistryEntry<P>> implements IPartDefinition<P>
 {
 
-	public PartDefinition( ResourceLocation identifier, PartRegistryEntry<P> part )
+	private final Optional item;
+
+	public PartDefinition( ResourceLocation identifier, PartRegistryEntry<P> t, IItemDefinition<?> item )
 	{
-		super( identifier, part );
+		super( identifier, t );
+		this.item = Optional.fromNullable( item );
+	}
+
+	@Override
+	public <I extends Item> Optional<IItemDefinition<I>> maybeItem()
+	{
+		return item;
 	}
 
 	@Override
