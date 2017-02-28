@@ -11,7 +11,6 @@ import appeng.core.api.definitions.ICoreBlockDefinitions;
 import appeng.core.block.BlockCharger;
 import appeng.core.block.BlockCrank;
 import appeng.core.block.BlockGrinder;
-import appeng.core.block.BlockInscriber;
 import appeng.core.block.BlockVibrationChamber;
 import appeng.core.lib.bootstrap.BlockRenderingCustomizer;
 import appeng.core.lib.bootstrap.FeatureFactory;
@@ -19,6 +18,7 @@ import appeng.core.lib.bootstrap.IBlockRendering;
 import appeng.core.lib.bootstrap.IItemRendering;
 import appeng.core.lib.definitions.Definitions;
 import appeng.core.lib.features.AEFeature;
+import appeng.core.me.block.BlockInscriber;
 
 
 public class CoreBlockDefinitions extends Definitions<Block, IBlockDefinition<Block>> implements ICoreBlockDefinitions
