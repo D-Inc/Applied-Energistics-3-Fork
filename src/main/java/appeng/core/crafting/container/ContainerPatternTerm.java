@@ -219,7 +219,7 @@ public class ContainerPatternTerm extends ContainerMEMonitorable implements IAEA
 			}
 
 			// add a new encoded pattern.
-			Optional<ItemStack> maybePattern = AppEngCrafting.INSTANCE.<Item, CraftingItemDefinitions>definitions( Item.class ).encodedPattern().maybeStack( 1 );
+			Optional<ItemStack> maybePattern = AppEngCrafting.INSTANCE.<Item, CraftingItemDefinitions>definitions( Item.class ).pattern().maybeStack( 1 );
 			if( maybePattern.isPresent() )
 			{
 				output = maybePattern.get();
@@ -316,7 +316,7 @@ public class ContainerPatternTerm extends ContainerMEMonitorable implements IAEA
 			return false;
 		}
 
-		boolean isPattern = AppEngCrafting.INSTANCE.<Item, CraftingItemDefinitions>definitions( Item.class ).encodedPattern().isSameAs( output );
+		boolean isPattern = AppEngCrafting.INSTANCE.<Item, CraftingItemDefinitions>definitions( Item.class ).pattern().isSameAs( output );
 		// TODO 1.11.2-CD:A - Blank pattern is a separate item now!
 		isPattern |= definitions.materials().blankPattern().isSameAs( output );
 

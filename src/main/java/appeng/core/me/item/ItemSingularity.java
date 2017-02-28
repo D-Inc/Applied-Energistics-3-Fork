@@ -2,11 +2,14 @@
 package appeng.core.me.item;
 
 
+import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 
 import appeng.core.lib.item.AEBaseItem;
 import appeng.core.lib.item.IStateItem;
 import appeng.core.lib.item.IStateItem.State.Property;
+import appeng.core.me.entity.EntitySingularity;
 
 
 public class ItemSingularity extends AEBaseItem implements IStateItem<ItemSingularity>
@@ -50,6 +53,12 @@ public class ItemSingularity extends AEBaseItem implements IStateItem<ItemSingul
 	public ItemStack getItemStack( State<ItemSingularity> state, int amount )
 	{
 		return new ItemStack( this, amount, state.getValue( ENTANGLED ) ? 1 : 0 );
+	}
+
+	@Override
+	public Entity createEntity( World world, Entity location, ItemStack itemstack )
+	{
+		return new EntitySingularity( world, location.posX, location.posY, location.posZ, itemstack );
 	}
 
 }

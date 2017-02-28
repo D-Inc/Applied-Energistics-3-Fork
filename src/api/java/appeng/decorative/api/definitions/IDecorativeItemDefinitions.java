@@ -4,26 +4,26 @@ package appeng.decorative.api.definitions;
 
 import net.minecraft.item.Item;
 
-import appeng.api.definitions.IDefinition;
 import appeng.api.definitions.IDefinitions;
 import appeng.api.definitions.IItemDefinition;
-import net.minecraft.item.ItemBlock;
 
 
 public interface IDecorativeItemDefinitions extends IDefinitions<Item, IItemDefinition<Item>>
 {
 
-	default IDefinition<Item> paintBall()
+	default IItemDefinition<Item> paintBall()
 	{
-		return get( "paint_ball" );
+		return get( "paintBall" );
 	}
 
-	default IDefinition<Item> facade()
+	default IItemDefinition<Item> colorApplicator()
 	{
-		return get( "facade" );
+		return get( "colorApplicator" );
 	}
 
-	default IItemDefinition<Item> blockQuartzBlock()
+
+
+	default IItemDefinition<Item> blockQuartzItem()
 	{
 		return get( "quartz_block" );
 	}
@@ -33,19 +33,9 @@ public interface IDecorativeItemDefinitions extends IDefinitions<Item, IItemDefi
 		return get( "quartz_pillar" );
 	}
 
-	default IItemDefinition<Item> blockChiseledQuartzBlock()
+	default IItemDefinition<Item> blockChiseledQuartzItem()
 	{
 		return get( "chiseled_quartz_block" );
-	}
-
-	default IItemDefinition<Item> blockQuartzGlass()
-	{
-		return get( "quartz_glass" );
-	}
-
-	default IItemDefinition<Item> blockQuartzVibrantGlass()
-	{
-		return get( "quartz_vibrant_glass" );
 	}
 
 	default IItemDefinition<Item> blockQuartzFixture()
@@ -53,49 +43,44 @@ public interface IDecorativeItemDefinitions extends IDefinitions<Item, IItemDefi
 		return get( "quartz_fixture" );
 	}
 
-	default IItemDefinition<Item> blockFluixBlock()
+	default IItemDefinition<Item> blockFluixItem()
 	{
 		return get( "fluix_block" );
 	}
 
-	default IItemDefinition<Item> blockSkyStoneBlock()
+	default IItemDefinition<Item> blockSkyStoneItem()
 	{
 		return get( "sky_stone_block" );
 	}
 
-	default IItemDefinition<Item> blockSmoothSkyStoneBlock()
-	{
-		return get( "smooth_skystone" );
-	}
-
 	default IItemDefinition<Item> blockSkyStoneBrick()
 	{
-		return get( "skystone_brick" );
+		return get( "sky_stone_brick" );
 	}
 
 	default IItemDefinition<Item> blockSkyStoneSmallBrick()
 	{
-		return get( "skystone_small_brick" );
+		return get( "sky_stone_small_brick" );
 	}
 
 	default IItemDefinition<Item> blockSkyStoneStairs()
 	{
-		return get( "skystone_stairs" );
+		return get( "sky_stone_stairs" );
 	}
 
 	default IItemDefinition<Item> blockSmoothSkyStoneStairs()
 	{
-		return get( "smooth_skystone_stairs" );
+		return get( "smooth_sky_stone_stairs" );
 	}
 
 	default IItemDefinition<Item> blockSkyStoneBrickStairs()
 	{
-		return get( "skystone_brick_stairs" );
+		return get( "sky_stone_brick_stairs" );
 	}
 
 	default IItemDefinition<Item> blockSkyStoneSmallBrickStairs()
 	{
-		return get( "skystone_small_brick_stairs" );
+		return get( "sky_stone_small_brick_stairs" );
 	}
 
 	default IItemDefinition<Item> blockFluixStairs()
@@ -118,4 +103,8 @@ public interface IDecorativeItemDefinitions extends IDefinitions<Item, IItemDefi
 		return get( "quartz_pillar_stairs" );
 	}
 
+	default IItemDefinition<Item> blockPaint()
+	{
+		return get( "paint" );
+	}
 }

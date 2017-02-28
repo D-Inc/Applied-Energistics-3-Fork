@@ -29,4 +29,9 @@ public interface IWorldGenBlockDefinitions extends IDefinitions<Block, IBlockDef
     {
         return get( "smooth_skystone_chest" );
     }
+    
+    default IBlockDefinition<Block> meteoriteCompass()
+    {
+        return get( "meteorite_compass" );
+    }
 }

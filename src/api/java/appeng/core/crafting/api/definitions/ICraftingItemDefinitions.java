@@ -11,11 +11,18 @@ import appeng.api.definitions.IItemDefinition;
 public interface ICraftingItemDefinitions extends IDefinitions<Item, IItemDefinition<Item>>
 {
 
-	default IItemDefinition<Item> encodedPattern()
+	default IItemDefinition<Item> pattern()
 	{
-		return get( "encoded_pattern" );
+		return get( "pattern" );
+	}
+	
+	default IItemDefinition<Item> craftingCard()
+	{
+		return get( "crafting_card" );
 	}
 
+	
+	
 	default IItemDefinition<Item> blockCraftingMonitor()
 	{
 		return get( "crafting_monitor" );
@@ -31,7 +38,7 @@ public interface ICraftingItemDefinitions extends IDefinitions<Item, IItemDefini
 		return get( "crafting_storage_4k" );
 	}
 
-	default IItemDefinition<Item> blockCraftingStorage16k()
+	default IItemDefinition<Item> CraftingStorage16k()
 	{
 		return get( "crafting_storage_16k" );
 	}
@@ -55,5 +62,4 @@ public interface ICraftingItemDefinitions extends IDefinitions<Item, IItemDefini
 	{
 		return get( "molecular_assembler" );
 	}
-
 }

@@ -29,7 +29,7 @@ public class WorldGenBlockDefinitions extends Definitions<Block, IBlockDefinitio
 	private final IBlockDefinition skyStoneChest;
 	private final IBlockDefinition smoothSkyStoneChest;
 	
-	private final IBlockDefinition skyCompass;
+	private final IBlockDefinition meteoriteCompass;
 	
 	public WorldGenBlockDefinitions( FeatureFactory registry )
 	{
@@ -43,7 +43,7 @@ public class WorldGenBlockDefinitions extends Definitions<Block, IBlockDefinitio
 		this.skyStoneChest = registry.block( "skystone_chest", new BlockSkyChest( SkyChestType.STONE ) ).features( AEFeature.SkyStoneChests ).rendering( new SkyChestRenderingCustomizer( SkyChestType.STONE ) ).createDefaultItemBlock().build();
 		this.smoothSkyStoneChest = registry.block( "smooth_skystone_chest", new BlockSkyChest( SkyChestType.BLOCK ) ).features( AEFeature.SkyStoneChests ).rendering( new SkyChestRenderingCustomizer( SkyChestType.BLOCK ) ).createDefaultItemBlock().build();
 		
-		this.skyCompass = registry.block( new ResourceLocation( AppEngMiscellaneous.MODID, "sky_compass" ), new BlockSkyCompass() ).features( AEFeature.MeteoriteCompass ).build();
+		this.meteoriteCompass = registry.block( new ResourceLocation( AppEngMiscellaneous.MODID, "meteorite_compass" ), new BlockSkyCompass() ).features( AEFeature.MeteoriteCompass ).build();
 
 		init();
 	}

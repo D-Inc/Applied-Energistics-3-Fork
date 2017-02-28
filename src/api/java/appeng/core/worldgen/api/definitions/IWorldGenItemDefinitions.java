@@ -6,28 +6,32 @@ import net.minecraft.item.Item;
 
 import appeng.api.definitions.IDefinitions;
 import appeng.api.definitions.IItemDefinition;
-import net.minecraft.item.ItemBlock;
 
 
 public interface IWorldGenItemDefinitions extends IDefinitions<Item, IItemDefinition<Item>>
 {
-    default IItemDefinition<Item> quartzOre()
+    default IItemDefinition<Item> blockQuartzOre()
     {
         return get( "quartz_ore" );
     }
 
-    default IItemDefinition<Item> quartzOreCharged()
+    default IItemDefinition<Item> blockQuartzOreCharged()
     {
         return get( "charged_quartz_ore" );
     }
 
-    default IItemDefinition<Item> skyStoneChest()
+    default IItemDefinition<Item> SSkyStoneChest()
     {
         return get( "skystone_chest" );
     }
 
-    default IItemDefinition<Item> smoothSkyStoneChest()
+    default IItemDefinition<Item> blockSmoothSkyStoneChest()
     {
         return get( "smooth_skystone_chest" );
+    }
+    
+    default IItemDefinition<Item> blocketeoriteCompass()
+    {
+        return get( "meteorite_compass" );
     }
 }
