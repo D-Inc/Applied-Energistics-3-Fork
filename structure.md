@@ -89,7 +89,8 @@ Now that we covered distribution, we only have to sum things up to define _inter
       - Crafting Unit
       - Molecular Assembler
     - Items:
-      - Encoded Pattern 
+      - Encoded Pattern
+      - Crafting Card
     - Materials:
       - Blank Pattern
     - Parts:
@@ -121,7 +122,6 @@ Now that we covered distribution, we only have to sum things up to define _inter
       - Basic Card
       - Biometric Card
       - Capacity Card
-      - Crafting Card
       - Fuzzy Card
       - Inverter Card
       - Memory Card
