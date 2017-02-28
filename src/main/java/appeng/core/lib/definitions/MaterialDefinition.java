@@ -15,7 +15,7 @@ import appeng.core.AppEngCore;
 import appeng.core.api.items.IItemMaterial;
 import appeng.core.api.material.Material;
 import appeng.core.definitions.CoreItemDefinitions;
-import appeng.core.item.material.ItemMaterial;
+import appeng.core.item.ItemMaterial;
 
 
 public class MaterialDefinition<M extends Material> extends Definition<M> implements IMaterialDefinition<M>

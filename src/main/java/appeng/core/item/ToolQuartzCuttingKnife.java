@@ -16,7 +16,7 @@
  * along with Applied Energistics 2.  If not, see <http://www.gnu.org/licenses/lgpl>.
  */
 
-package appeng.tools.item;
+package appeng.core.item;
 
 
 import net.minecraft.entity.player.EntityPlayer;

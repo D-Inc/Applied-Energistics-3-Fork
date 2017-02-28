@@ -11,7 +11,7 @@ import appeng.core.api.definitions.ICoreItemDefinitions;
 import appeng.core.client.render.ItemCrystalSeedRendering;
 import appeng.core.client.render.item.ItemMaterialRendering;
 import appeng.core.item.ItemCrystalSeed;
-import appeng.core.item.material.ItemMaterial;
+import appeng.core.item.ItemMaterial;
 import appeng.core.lib.bootstrap.FeatureFactory;
 import appeng.core.lib.definitions.Definitions;
 

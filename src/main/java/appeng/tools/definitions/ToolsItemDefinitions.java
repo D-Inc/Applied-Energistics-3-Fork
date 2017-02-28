@@ -6,6 +6,8 @@ import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 
 import appeng.api.definitions.IItemDefinition;
+import appeng.core.item.ToolQuartzCuttingKnife;
+import appeng.core.item.ToolQuartzWrench;
 import appeng.core.lib.bootstrap.FeatureFactory;
 import appeng.core.lib.definitions.Definitions;
 import appeng.core.lib.features.AEFeature;
@@ -21,12 +23,10 @@ import appeng.tools.item.ToolMemoryCard;
 import appeng.tools.item.ToolNetworkTool;
 import appeng.tools.item.ToolPortableCell;
 import appeng.tools.item.ToolQuartzAxe;
-import appeng.tools.item.ToolQuartzCuttingKnife;
 import appeng.tools.item.ToolQuartzHoe;
 import appeng.tools.item.ToolQuartzPickaxe;
 import appeng.tools.item.ToolQuartzSpade;
 import appeng.tools.item.ToolQuartzSword;
-import appeng.tools.item.ToolQuartzWrench;
 
 
 public class ToolsItemDefinitions extends Definitions<Item, IItemDefinition<Item>> implements IToolsItemDefinitions

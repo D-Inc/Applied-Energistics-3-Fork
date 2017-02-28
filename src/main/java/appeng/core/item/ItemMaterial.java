@@ -1,5 +1,5 @@
 
-package appeng.core.item.material;
+package appeng.core.item;
 
 
 import java.util.List;
