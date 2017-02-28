@@ -19,7 +19,7 @@ public interface IStateItem<I extends Item & IStateItem<I>>
 
 	boolean isValid( Property property );
 
-	Property getProperty( String name );
+	<V> Property<V, I> getProperty( String name );
 
 	State<I> getState( ItemStack itemstack );
 
