@@ -81,10 +81,10 @@ import appeng.decorative.tile.TilePaint;
 import appeng.tools.hooks.DispenserMatterCannon;
 
 
-public class ToolMassCannon extends AEBasePoweredItem implements IStorageCell
+public class ToolMatterCannon extends AEBasePoweredItem implements IStorageCell
 {
 
-	public ToolMassCannon()
+	public ToolMatterCannon()
 	{
 		super( AEConfig.instance.matterCannonBattery );
 	}

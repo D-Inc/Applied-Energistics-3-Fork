@@ -21,7 +21,7 @@ import appeng.tools.AppEngTools;
 import appeng.tools.api.definitions.IToolsItemDefinitions;
 import appeng.tools.item.ToolChargedStaff;
 import appeng.tools.item.ToolEntropyManipulator;
-import appeng.tools.item.ToolMassCannon;
+import appeng.tools.item.ToolMatterCannon;
 import appeng.tools.item.ToolQuartzAxe;
 import appeng.tools.item.ToolQuartzHoe;
 import appeng.tools.item.ToolQuartzPickaxe;
@@ -83,7 +83,7 @@ public class ToolsItemDefinitions extends Definitions<Item, IItemDefinition<Item
 		this.entropyManipulator = powerTools.item( new ResourceLocation( AppEngTools.MODID, "entropy_manipulator" ), new ToolEntropyManipulator() ).addFeatures( AEFeature.EntropyManipulator ).build();
 		this.wirelessTerminal = powerTools.item( new ResourceLocation( AppEngTools.MODID, "wireless_terminal" ), new ToolWirelessTerminal() ).addFeatures( AEFeature.WirelessAccessTerminal ).build();
 		this.chargedStaff = powerTools.item( new ResourceLocation( AppEngTools.MODID, "charged_staff" ), new ToolChargedStaff() ).addFeatures( AEFeature.ChargedStaff ).build();
-		this.massCannon = powerTools.item( new ResourceLocation( AppEngTools.MODID, "mass_cannon" ), new ToolMassCannon() ).addFeatures( AEFeature.MatterCannon ).build();
+		this.massCannon = powerTools.item( new ResourceLocation( AppEngTools.MODID, "mass_cannon" ), new ToolMatterCannon() ).addFeatures( AEFeature.MatterCannon ).build();
 		this.portableCell = powerTools.item( new ResourceLocation( AppEngTools.MODID, "portable_cell" ), new ToolPortableCell() ).addFeatures( AEFeature.PortableCell, AEFeature.StorageCells ).build();
 
 		this.biometricCard = registry.item( new ResourceLocation( AppEngTools.MODID, "biometric_card" ), new ToolBiometricCard() ).features( AEFeature.Security ).build();
