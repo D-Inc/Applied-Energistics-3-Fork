@@ -19,26 +19,14 @@
 package appeng.core.item;
 
 
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 
-import appeng.core.api.implementations.guiobjects.IGuiItem;
-import appeng.core.api.implementations.guiobjects.IGuiItemObject;
-import appeng.core.api.util.AEPartLocation;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.item.AEBaseItem;
-import appeng.core.lib.sync.GuiBridge;
 import appeng.core.lib.util.Platform;
-import appeng.core.me.item.QuartzKnifeObj;
 
 
-public class ToolQuartzCuttingKnife extends AEBaseItem implements IGuiItem
+public class ToolQuartzCuttingKnife extends AEBaseItem
 {
 	private final AEFeature type;
 
@@ -47,27 +35,6 @@ public class ToolQuartzCuttingKnife extends AEBaseItem implements IGuiItem
 		this.type = type;
 		this.setMaxDamage( 50 );
 		this.setMaxStackSize( 1 );
-	}
-
-	@Override
-	public EnumActionResult onItemUse( final EntityPlayer p, final World worldIn, final BlockPos pos, final EnumHand hand, final EnumFacing side, final float hitX, final float hitY, final float hitZ )
-	{
-		if( Platform.isServer() )
-		{
-			Platform.openGUI( p, null, AEPartLocation.INTERNAL, GuiBridge.GUI_QUARTZ_KNIFE );
-		}
-		return EnumActionResult.SUCCESS;
-	}
-
-	@Override
-	public ActionResult<ItemStack> onItemRightClick( final World w, final EntityPlayer p, final EnumHand hand )
-	{
-		if( Platform.isServer() )
-		{
-			Platform.openGUI( p, null, AEPartLocation.INTERNAL, GuiBridge.GUI_QUARTZ_KNIFE );
-		}
-		p.swingArm( hand );
-		return new ActionResult<ItemStack>( EnumActionResult.SUCCESS, p.getHeldItem( hand ) );
 	}
 
 	@Override
@@ -95,9 +62,4 @@ public class ToolQuartzCuttingKnife extends AEBaseItem implements IGuiItem
 		return true;
 	}
 
-	@Override
-	public IGuiItemObject getGuiObject( final ItemStack is, final World world, final BlockPos pos )
-	{
-		return new QuartzKnifeObj( is );
-	}
 }

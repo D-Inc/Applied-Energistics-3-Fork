@@ -27,8 +27,6 @@ public class CoreMaterialDefinitions extends Definitions<Material, IMaterialDefi
 	private final IMaterialDefinition certusQuartzDust;
 	private final IMaterialDefinition netherQuartzDust;
 
-	private final IMaterialDefinition flour;
-
 	private final IMaterialDefinition goldDust;
 	private final IMaterialDefinition ironDust;
 
@@ -54,8 +52,6 @@ public class CoreMaterialDefinitions extends Definitions<Material, IMaterialDefi
 
 	private final IMaterialDefinition siliconPress;
 	private final IMaterialDefinition siliconPrint;
-
-	private final IMaterialDefinition namePress;
 
 	private final IMaterialDefinition logicProcessor;
 	private final IMaterialDefinition calcProcessor;
@@ -88,7 +84,6 @@ public class CoreMaterialDefinitions extends Definitions<Material, IMaterialDefi
 		certusQuartzCrystalCharged = registry.material( "certus_quartz_crystal_charged", new Material() ).model( new ModelResourceLocation( new ResourceLocation( AppEng.MODID, MATERIALSMODELSLOCATION + "certus_quartz_crystal_charged" ), MATERIALSMODELSVARIANT ) ).build();
 		certusQuartzDust = registry.material( "certus_quartz_dust", new Material() ).model( new ModelResourceLocation( new ResourceLocation( AppEng.MODID, MATERIALSMODELSLOCATION + "certus_quartz_dust" ), MATERIALSMODELSVARIANT ) ).build();
 		netherQuartzDust = registry.material( "nether_quartz_dust", new Material() ).model( new ModelResourceLocation( new ResourceLocation( AppEng.MODID, MATERIALSMODELSLOCATION + "nether_quartz_dust" ), MATERIALSMODELSVARIANT ) ).build();
-		flour = registry.material( "flour", new Material() ).model( new ModelResourceLocation( new ResourceLocation( AppEng.MODID, MATERIALSMODELSLOCATION + "flour" ), MATERIALSMODELSVARIANT ) ).build();
 		goldDust = registry.material( "gold_dust", new Material() ).model( new ModelResourceLocation( new ResourceLocation( AppEng.MODID, MATERIALSMODELSLOCATION + "gold_dust" ), MATERIALSMODELSVARIANT ) ).build();
 		ironDust = registry.material( "iron_dust", new Material() ).model( new ModelResourceLocation( new ResourceLocation( AppEng.MODID, MATERIALSMODELSLOCATION + "iron_dust" ), MATERIALSMODELSVARIANT ) ).build();
 		silicon = registry.material( "silicon", new Material() ).model( new ModelResourceLocation( new ResourceLocation( AppEng.MODID, MATERIALSMODELSLOCATION + "silicon" ), MATERIALSMODELSVARIANT ) ).build();
@@ -107,7 +102,6 @@ public class CoreMaterialDefinitions extends Definitions<Material, IMaterialDefi
 		logicProcessorPrint = registry.material( "logic_processor_print", new Material() ).model( new ModelResourceLocation( new ResourceLocation( AppEng.MODID, MATERIALSMODELSLOCATION + "logic_processor_print" ), MATERIALSMODELSVARIANT ) ).build();
 		siliconPress = registry.material( "silicon_press", new Material() ).model( new ModelResourceLocation( new ResourceLocation( AppEng.MODID, MATERIALSMODELSLOCATION + "silicon_press" ), MATERIALSMODELSVARIANT ) ).build();
 		siliconPrint = registry.material( "silicon_print", new Material() ).model( new ModelResourceLocation( new ResourceLocation( AppEng.MODID, MATERIALSMODELSLOCATION + "silicon_print" ), MATERIALSMODELSVARIANT ) ).build();
-		namePress = registry.material( "name_press", new Material() ).model( new ModelResourceLocation( new ResourceLocation( AppEng.MODID, MATERIALSMODELSLOCATION + "name_press" ), MATERIALSMODELSVARIANT ) ).build();
 		logicProcessor = registry.material( "logic_processor", new Material() ).model( new ModelResourceLocation( new ResourceLocation( AppEng.MODID, MATERIALSMODELSLOCATION + "logic_processor" ), MATERIALSMODELSVARIANT ) ).build();
 		calcProcessor = registry.material( "calc_processor", new Material() ).model( new ModelResourceLocation( new ResourceLocation( AppEng.MODID, MATERIALSMODELSLOCATION + "calc_processor" ), MATERIALSMODELSVARIANT ) ).build();
 		engProcessor = registry.material( "eng_processor", new Material() ).model( new ModelResourceLocation( new ResourceLocation( AppEng.MODID, MATERIALSMODELSLOCATION + "eng_processor" ), MATERIALSMODELSVARIANT ) ).build();

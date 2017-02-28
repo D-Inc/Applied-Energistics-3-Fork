@@ -30,11 +30,6 @@ public interface ICoreMaterialDefinitions extends IDefinitions<Material, IMateri
 		return get( "nether_quartz_dust" );
 	}
 
-	default IMaterialDefinition<Material> flour()
-	{
-		return get( "flour" );
-	}
-
 	default IMaterialDefinition<Material> goldDust()
 	{
 		return get( "gold_dust" );
@@ -123,11 +118,6 @@ public interface ICoreMaterialDefinitions extends IDefinitions<Material, IMateri
 	default IMaterialDefinition<Material> siliconPrint()
 	{
 		return get( "silicon_print" );
-	}
-
-	default IMaterialDefinition<Material> namePress()
-	{
-		return get( "name_press" );
 	}
 
 	default IMaterialDefinition<Material> logicProcessor()
