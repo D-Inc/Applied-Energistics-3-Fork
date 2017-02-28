@@ -38,6 +38,7 @@ import net.minecraft.world.World;
 
 import appeng.core.api.config.Actionable;
 import appeng.core.api.config.SecurityPermissions;
+import appeng.core.crafting.part.PartPatternTerminal;
 import appeng.core.lib.AELog;
 import appeng.core.lib.AppEngApi;
 import appeng.core.lib.container.AEBaseContainer;
@@ -62,7 +63,6 @@ import appeng.core.me.api.storage.ITerminalHost;
 import appeng.core.me.api.storage.data.IAEItemStack;
 import appeng.core.me.api.storage.data.IItemList;
 import appeng.core.me.part.reporting.PartCraftingTerminal;
-import appeng.core.me.part.reporting.PartPatternTerminal;
 import appeng.core.me.part.reporting.PartTerminal;
 
 

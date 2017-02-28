@@ -26,6 +26,7 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
 
 import appeng.core.crafting.container.ContainerCraftAmount;
+import appeng.core.crafting.part.PartPatternTerminal;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.ApiDefinitions;
 import appeng.core.lib.AppEngApi;
@@ -43,7 +44,6 @@ import appeng.core.lib.sync.packets.PacketCraftRequest;
 import appeng.core.lib.sync.packets.PacketSwitchGuis;
 import appeng.core.me.api.storage.ITerminalHost;
 import appeng.core.me.part.reporting.PartCraftingTerminal;
-import appeng.core.me.part.reporting.PartPatternTerminal;
 import appeng.core.me.part.reporting.PartTerminal;
 
 

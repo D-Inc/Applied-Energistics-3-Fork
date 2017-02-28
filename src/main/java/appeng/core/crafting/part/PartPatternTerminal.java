@@ -16,7 +16,7 @@
  * along with Applied Energistics 2.  If not, see <http://www.gnu.org/licenses/lgpl>.
  */
 
-package appeng.core.me.part.reporting;
+package appeng.core.crafting.part;
 
 
 import java.util.List;
@@ -33,6 +33,7 @@ import appeng.core.lib.tile.inventory.AppEngInternalInventory;
 import appeng.core.lib.tile.inventory.InvOperation;
 import appeng.core.me.api.networking.crafting.ICraftingPatternDetails;
 import appeng.core.me.api.storage.data.IAEItemStack;
+import appeng.core.me.part.reporting.AbstractPartTerminal;
 
 
 public final class PartPatternTerminal extends AbstractPartTerminal<PartPatternTerminal>

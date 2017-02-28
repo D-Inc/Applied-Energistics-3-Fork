@@ -36,6 +36,7 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
 
 import appeng.core.crafting.container.ContainerCraftConfirm;
+import appeng.core.crafting.part.PartPatternTerminal;
 import appeng.core.lib.AELog;
 import appeng.core.lib.AppEngApi;
 import appeng.core.lib.client.gui.AEBaseGui;
@@ -51,7 +52,6 @@ import appeng.core.me.api.storage.ITerminalHost;
 import appeng.core.me.api.storage.data.IAEItemStack;
 import appeng.core.me.api.storage.data.IItemList;
 import appeng.core.me.part.reporting.PartCraftingTerminal;
-import appeng.core.me.part.reporting.PartPatternTerminal;
 import appeng.core.me.part.reporting.PartTerminal;
 
 

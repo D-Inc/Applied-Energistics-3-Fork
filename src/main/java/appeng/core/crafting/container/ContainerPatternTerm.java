@@ -45,6 +45,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import appeng.core.api.config.Actionable;
 import appeng.core.crafting.AppEngCrafting;
 import appeng.core.crafting.definitions.CraftingItemDefinitions;
+import appeng.core.crafting.part.PartPatternTerminal;
 import appeng.core.lib.container.ContainerNull;
 import appeng.core.lib.container.guisync.GuiSync;
 import appeng.core.lib.container.slot.IOptionalSlotHost;
@@ -67,7 +68,6 @@ import appeng.core.me.api.storage.data.IItemList;
 import appeng.core.me.container.ContainerMEMonitorable;
 import appeng.core.me.container.SlotFakeCraftingMatrix;
 import appeng.core.me.item.ItemViewCell;
-import appeng.core.me.part.reporting.PartPatternTerminal;
 
 
 public class ContainerPatternTerm extends ContainerMEMonitorable implements IAEAppEngInventory, IOptionalSlotHost, IContainerCraftingPacket
