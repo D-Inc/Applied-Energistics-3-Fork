@@ -118,7 +118,7 @@ public class TileCraftingTile extends AENetworkTile implements IAEMultiBlock, IP
 		}
 
 		final BlockCraftingUnit unit = (BlockCraftingUnit) this.world.getBlockState( this.pos ).getBlock();
-		return unit.type == CraftingUnitType.ACCELERATOR;
+		return unit.type == CraftingUnitType.COPROCESSINGUNIT;
 	}
 
 	@Override

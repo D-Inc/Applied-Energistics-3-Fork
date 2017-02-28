@@ -42,12 +42,12 @@ import appeng.core.lib.util.Platform;
 import appeng.core.tile.TileQuartzGrowthAccelerator;
 
 
-public class BlockQuartzGrowthAccelerator extends AEBaseTileBlock
+public class BlockCrystalGrowthAccelerator extends AEBaseTileBlock
 {
 
 	private static final PropertyBool POWERED = PropertyBool.create( "powered" );
 
-	public BlockQuartzGrowthAccelerator()
+	public BlockCrystalGrowthAccelerator()
 	{
 		super( Material.ROCK );
 		this.setSoundType( SoundType.METAL );

@@ -29,6 +29,7 @@ import appeng.core.me.block.BlockCondenser;
 import appeng.core.me.block.BlockController;
 import appeng.core.me.block.BlockDrive;
 import appeng.core.me.block.BlockIOPort;
+import appeng.core.me.block.BlockInscriber;
 import appeng.core.me.block.BlockInterface;
 import appeng.core.me.block.BlockQuantumLinkChamber;
 import appeng.core.me.block.BlockQuantumRing;
@@ -49,6 +50,7 @@ public class MEBlockDefinitions extends Definitions<Block, IBlockDefinition<Bloc
 	private final IBlockDefinition quantumRing;
 	private final IBlockDefinition quantumLink;
 
+	private final IBlockDefinition inscriber;
 	private final IBlockDefinition controller;
 	private final IBlockDefinition drive;
 	private final IBlockDefinition chest;
@@ -56,11 +58,6 @@ public class MEBlockDefinitions extends Definitions<Block, IBlockDefinition<Bloc
 	private final IBlockDefinition cellWorkbench;
 	private final IBlockDefinition iOPort;
 	private final IBlockDefinition condenser;
-	private final IBlockDefinition energyAcceptor;
-	
-	private final IBlockDefinition energyCell;
-	private final IBlockDefinition energyCellDense;
-	private final IBlockDefinition energyCellCreative;
 
 	public MEBlockDefinitions( FeatureFactory registry )
 	{
@@ -79,6 +76,7 @@ public class MEBlockDefinitions extends Definitions<Block, IBlockDefinition<Bloc
 		this.quantumRing = registry.block( new ResourceLocation( AppEng.MODID, "quantum_ring" ), new BlockQuantumRing() ).features( AEFeature.QuantumNetworkBridge ).createDefaultItemBlock().build();
 		this.quantumLink = registry.block( new ResourceLocation( AppEng.MODID, "quantum_link" ), new BlockQuantumLinkChamber() ).features( AEFeature.QuantumNetworkBridge ).createDefaultItemBlock().build();
 		
+		this.inscriber = registry.block( new ResourceLocation( AppEng.MODID, "inscriber" ), new BlockInscriber() ).features( AEFeature.Inscriber ).createDefaultItemBlock().build();
 		this.controller = registry.block( new ResourceLocation( AppEng.MODID, "controller" ), new BlockController() ).features( AEFeature.Channels ).createDefaultItemBlock().build();
 		this.drive = registry.block( new ResourceLocation( AppEng.MODID, "drive" ), new BlockDrive() ).features( AEFeature.StorageCells, AEFeature.MEDrive ).createDefaultItemBlock().build();
 		this.chest = registry.block( new ResourceLocation( AppEng.MODID, "chest" ), new BlockChest() ).features( AEFeature.StorageCells, AEFeature.MEChest ).createDefaultItemBlock().build();
@@ -86,11 +84,6 @@ public class MEBlockDefinitions extends Definitions<Block, IBlockDefinition<Bloc
 		this.cellWorkbench = registry.block( new ResourceLocation( AppEng.MODID, "cell_workbench" ), new BlockCellWorkbench() ).features( AEFeature.StorageCells ).createDefaultItemBlock().build();
 		this.iOPort = registry.block( new ResourceLocation( AppEng.MODID, "ioport" ), new BlockIOPort() ).features( AEFeature.StorageCells, AEFeature.IOPort ).createDefaultItemBlock().build();
 		this.condenser = registry.block( new ResourceLocation( AppEng.MODID, "condenser" ), new BlockCondenser() ).createDefaultItemBlock().build();
-		this.energyAcceptor = registry.block( new ResourceLocation( AppEng.MODID, "energy_acceptor" ), new BlockEnergyAcceptor() ).createDefaultItemBlock().build();
-		
-		this.energyCell = registry.block( new ResourceLocation( AppEng.MODID, "energy_cell" ), new BlockEnergyCell() ).withItemBlock( AEBaseItemBlockChargeable::new ).rendering( new BlockEnergyCellRendering( new ResourceLocation( AppEng.MODID, "energy_cell" ) ) ).build();
-		this.energyCellDense = registry.block( new ResourceLocation( AppEng.MODID, "dense_energy_cell" ), new BlockDenseEnergyCell() ).features( AEFeature.DenseEnergyCells ).withItemBlock( AEBaseItemBlockChargeable::new ).rendering( new BlockEnergyCellRendering( new ResourceLocation( AppEng.MODID, "dense_energy_cell" ) ) ).build();
-		this.energyCellCreative = registry.block( new ResourceLocation( AppEng.MODID, "creative_energy_cell" ), new BlockCreativeEnergyCell() ).features( AEFeature.Creative ).withItemBlock( AEBaseItemBlockChargeable::new ).build();
 
 		init();
 	}

@@ -2,7 +2,6 @@
 package appeng.tools;
 
 
-import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.ForgeVersion;
@@ -26,7 +25,6 @@ import appeng.core.AppEng;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.bootstrap.FeatureFactory;
 import appeng.tools.api.ITools;
-import appeng.tools.definitions.ToolsBlockDefinitions;
 import appeng.tools.definitions.ToolsItemDefinitions;
 import appeng.tools.definitions.ToolsTileDefinitions;
 
@@ -46,7 +44,6 @@ public class AppEngTools implements ITools
 	private FeatureFactory registry;
 
 	private ToolsItemDefinitions itemDefinitions;
-	private ToolsBlockDefinitions blockDefinitions;
 	private ToolsTileDefinitions tileDefinitions;
 
 	@Override
@@ -55,10 +52,6 @@ public class AppEngTools implements ITools
 		if( clas == Item.class )
 		{
 			return (D) itemDefinitions;
-		}
-		if( clas == Block.class )
-		{
-			return (D) blockDefinitions;
 		}
 		if( clas == TileEntity.class )
 		{
@@ -71,7 +64,6 @@ public class AppEngTools implements ITools
 	public void preInitAE( FMLPreInitializationEvent event )
 	{
 		registry = new FeatureFactory();
-		this.blockDefinitions = new ToolsBlockDefinitions( registry );
 		this.itemDefinitions = new ToolsItemDefinitions( registry );
 		this.tileDefinitions = new ToolsTileDefinitions( registry );
 		registry.preInit( event );

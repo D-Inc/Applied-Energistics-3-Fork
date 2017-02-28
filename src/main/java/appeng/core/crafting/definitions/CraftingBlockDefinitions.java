@@ -27,7 +27,7 @@ public class CraftingBlockDefinitions extends Definitions<Block, IBlockDefinitio
 	private final IBlockDefinition craftingStorage16k;
 	private final IBlockDefinition craftingStorage64k;
 	private final IBlockDefinition craftingUnit;
-	private final IBlockDefinition craftingAccelerator;
+	private final IBlockDefinition craftingCoProcessingUnit;
 	
 	private final IBlockDefinition molecularAssembler;
 
@@ -39,7 +39,7 @@ public class CraftingBlockDefinitions extends Definitions<Block, IBlockDefinitio
 		craftingStorage4k = crafting.block( new ResourceLocation( AppEng.NAME, "crafting_storage_4k" ), new BlockCraftingStorage( BlockCraftingUnit.CraftingUnitType.STORAGE_4K ) ).withItemBlock( ItemCraftingStorage::new ).build();
 		craftingStorage16k = crafting.block( new ResourceLocation( AppEng.NAME, "crafting_storage_16k" ), new BlockCraftingStorage( BlockCraftingUnit.CraftingUnitType.STORAGE_16K ) ).withItemBlock( ItemCraftingStorage::new ).build();
 		craftingStorage64k = crafting.block( new ResourceLocation( AppEng.NAME, "crafting_storage_64k" ), new BlockCraftingStorage( BlockCraftingUnit.CraftingUnitType.STORAGE_64K ) ).withItemBlock( ItemCraftingStorage::new ).build();
-		craftingAccelerator = crafting.block( new ResourceLocation( AppEng.NAME, "crafting_accelerator" ), new BlockCraftingUnit( BlockCraftingUnit.CraftingUnitType.ACCELERATOR ) ).createDefaultItemBlock().build();
+		craftingCoProcessingUnit = crafting.block( new ResourceLocation( AppEng.NAME, "crafting_co_processing_unit" ), new BlockCraftingUnit( BlockCraftingUnit.CraftingUnitType.COPROCESSINGUNIT ) ).createDefaultItemBlock().build();
 		craftingUnit = crafting.block( new ResourceLocation( AppEng.NAME, "crafting_unit" ), new BlockCraftingUnit( BlockCraftingUnit.CraftingUnitType.UNIT ) ).createDefaultItemBlock().build();
 		
 		molecularAssembler = registry.block( new ResourceLocation( AppEng.NAME, "molecular_assembler" ), new BlockMolecularAssembler() ).createDefaultItemBlock().build();

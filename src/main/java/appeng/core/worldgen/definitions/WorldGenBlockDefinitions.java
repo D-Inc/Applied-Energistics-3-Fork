@@ -4,6 +4,7 @@ package appeng.core.worldgen.definitions;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.oredict.OreDictionary;
 
 import appeng.api.definitions.IBlockDefinition;
@@ -14,8 +15,10 @@ import appeng.core.worldgen.api.definitions.IWorldGenBlockDefinitions;
 import appeng.core.worldgen.block.BlockChargedQuartzOre;
 import appeng.core.worldgen.block.BlockQuartzOre;
 import appeng.core.worldgen.block.BlockSkyChest;
+import appeng.core.worldgen.block.BlockSkyCompass;
 import appeng.core.worldgen.block.BlockSkyChest.SkyChestType;
 import appeng.core.worldgen.client.render.SkyChestRenderingCustomizer;
+import appeng.miscellaneous.AppEngMiscellaneous;
 
 
 public class WorldGenBlockDefinitions extends Definitions<Block, IBlockDefinition<Block>> implements IWorldGenBlockDefinitions
@@ -25,6 +28,8 @@ public class WorldGenBlockDefinitions extends Definitions<Block, IBlockDefinitio
 	private final IBlockDefinition quartzOreCharged;
 	private final IBlockDefinition skyStoneChest;
 	private final IBlockDefinition smoothSkyStoneChest;
+	
+	private final IBlockDefinition skyCompass;
 	
 	public WorldGenBlockDefinitions( FeatureFactory registry )
 	{
@@ -38,6 +43,8 @@ public class WorldGenBlockDefinitions extends Definitions<Block, IBlockDefinitio
 		this.skyStoneChest = registry.block( "skystone_chest", new BlockSkyChest( SkyChestType.STONE ) ).features( AEFeature.SkyStoneChests ).rendering( new SkyChestRenderingCustomizer( SkyChestType.STONE ) ).createDefaultItemBlock().build();
 		this.smoothSkyStoneChest = registry.block( "smooth_skystone_chest", new BlockSkyChest( SkyChestType.BLOCK ) ).features( AEFeature.SkyStoneChests ).rendering( new SkyChestRenderingCustomizer( SkyChestType.BLOCK ) ).createDefaultItemBlock().build();
 		
+		this.skyCompass = registry.block( new ResourceLocation( AppEngMiscellaneous.MODID, "sky_compass" ), new BlockSkyCompass() ).features( AEFeature.MeteoriteCompass ).build();
+
 		init();
 	}
 
