@@ -8,7 +8,7 @@ import net.minecraft.util.ResourceLocation;
 import appeng.api.definitions.IItemDefinition;
 import appeng.core.AppEng;
 import appeng.core.crafting.api.definitions.ICraftingItemDefinitions;
-import appeng.core.crafting.item.ItemEncodedPattern;
+import appeng.core.crafting.item.ItemPattern;
 import appeng.core.lib.bootstrap.FeatureFactory;
 import appeng.core.lib.definitions.Definitions;
 
@@ -20,7 +20,7 @@ public class CraftingItemDefinitions extends Definitions<Item, IItemDefinition<I
 
 	public CraftingItemDefinitions( FeatureFactory registry )
 	{
-		this.encodedPattern = registry.item( new ResourceLocation( AppEng.NAME, "encoded_pattern" ), new ItemEncodedPattern() ).build();
+		this.encodedPattern = registry.item( new ResourceLocation( AppEng.NAME, "encoded_pattern" ), new ItemPattern() ).build();
 		init( registry.buildDefaultItemBlocks() );
 	}
 

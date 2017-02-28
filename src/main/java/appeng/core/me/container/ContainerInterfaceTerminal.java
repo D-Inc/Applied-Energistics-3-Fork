@@ -33,7 +33,7 @@ import net.minecraft.util.EnumFacing;
 
 import appeng.core.api.config.Settings;
 import appeng.core.api.config.YesNo;
-import appeng.core.crafting.item.ItemEncodedPattern;
+import appeng.core.crafting.item.ItemPattern;
 import appeng.core.lib.container.AEBaseContainer;
 import appeng.core.lib.helpers.DualityInterface;
 import appeng.core.lib.helpers.IInterfaceHost;
@@ -430,7 +430,7 @@ public final class ContainerInterfaceTerminal extends AEBaseContainer
 		@Override
 		public boolean isItemValid( final ItemStack itemstack )
 		{
-			return itemstack != null && itemstack.getItem() instanceof ItemEncodedPattern;
+			return itemstack != null && itemstack.getItem() instanceof ItemPattern;
 		}
 	}
 }

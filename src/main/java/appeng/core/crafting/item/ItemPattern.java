@@ -34,10 +34,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
-import appeng.core.AppEngCore;
 import appeng.core.api.implementations.ICraftingPatternItem;
-import appeng.core.api.material.Material;
-import appeng.core.definitions.CoreMaterialDefinitions;
 import appeng.core.lib.CommonHelper;
 import appeng.core.lib.helpers.PatternHelper;
 import appeng.core.lib.item.AEBaseItem;
@@ -47,15 +44,16 @@ import appeng.core.me.api.networking.crafting.ICraftingPatternDetails;
 import appeng.core.me.api.storage.data.IAEItemStack;
 
 
-public class ItemEncodedPattern extends AEBaseItem implements ICraftingPatternItem
+public class ItemPattern extends AEBaseItem implements ICraftingPatternItem
 {
 	// rather simple client side caching.
 	private static final Map<ItemStack, ItemStack> SIMPLE_CACHE = new WeakHashMap<ItemStack, ItemStack>();
 
-	public ItemEncodedPattern()
+	public ItemPattern()
 	{
-		this.setMaxStackSize( 1 );
+
 	}
+
 	@Override
 	public ActionResult<ItemStack> onItemRightClick( final World w, final EntityPlayer player, final EnumHand hand )
 	{
@@ -81,8 +79,7 @@ public class ItemEncodedPattern extends AEBaseItem implements ICraftingPatternIt
 
 			final InventoryPlayer inv = player.inventory;
 
-			// TODO 1.11.2-CD:A - Blank Pattern is a separate item now
-			ItemStack is = (ItemStack) AppEngCore.INSTANCE.<Material, CoreMaterialDefinitions>definitions( Material.class ).blankPattern().maybeStack( stack.getCount() ).orElse( null );
+			ItemStack is = new ItemStack( this );
 			if( is != null )
 			{
 				for( int s = 0; s < player.inventory.getSizeInventory(); s++ )
@@ -106,7 +103,6 @@ public class ItemEncodedPattern extends AEBaseItem implements ICraftingPatternIt
 
 		if( details == null )
 		{
-			lines.add( TextFormatting.RED + GuiText.InvalidPattern.getLocal() );
 			return;
 		}
 

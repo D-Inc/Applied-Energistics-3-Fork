@@ -37,12 +37,9 @@ import appeng.core.me.entity.EntitySingularity;
 
 public enum MaterialType
 {
-	// Adv Cards
 	Wireless( 41, "material_wireless", AEFeature.WirelessAccessTerminal ), WirelessBooster( 42, "material_wireless_booster", AEFeature.WirelessAccessTerminal ),
 
-	Singularity( 47, "material_singularity", AEFeature.QuantumNetworkBridge, EntitySingularity.class ), QESingularity( 48, "material_qesingularity", AEFeature.QuantumNetworkBridge, EntitySingularity.class ),
-
-	BlankPattern( 52, "material_blank_pattern" );
+	Singularity( 47, "material_singularity", AEFeature.QuantumNetworkBridge, EntitySingularity.class ), QESingularity( 48, "material_qesingularity", AEFeature.QuantumNetworkBridge, EntitySingularity.class );
 
 	private final EnumSet<AEFeature> features;
 	private final ModelResourceLocation model;

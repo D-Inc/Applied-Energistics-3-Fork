@@ -38,7 +38,7 @@ import appeng.core.api.implementations.items.ISpatialStorageCell;
 import appeng.core.api.implementations.items.IStorageComponent;
 import appeng.core.api.implementations.items.IUpgradeModule;
 import appeng.core.api.material.Material;
-import appeng.core.crafting.item.ItemEncodedPattern;
+import appeng.core.crafting.item.ItemPattern;
 import appeng.core.definitions.CoreMaterialDefinitions;
 import appeng.core.lib.AppEngApi;
 import appeng.core.lib.util.Platform;
@@ -244,9 +244,9 @@ public class SlotRestrictedInput extends AppEngSlot
 		if( Platform.isClient() && ( this.which == PlacableItemType.ENCODED_PATTERN ) )
 		{
 			final ItemStack is = super.getStack();
-			if( is != null && is.getItem() instanceof ItemEncodedPattern )
+			if( is != null && is.getItem() instanceof ItemPattern )
 			{
-				final ItemEncodedPattern iep = (ItemEncodedPattern) is.getItem();
+				final ItemPattern iep = (ItemPattern) is.getItem();
 				final ItemStack out = iep.getOutput( is );
 				if( out != null )
 				{

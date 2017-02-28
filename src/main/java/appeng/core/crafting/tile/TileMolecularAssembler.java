@@ -51,7 +51,7 @@ import appeng.core.api.util.DimensionalCoord;
 import appeng.core.api.util.IConfigManager;
 import appeng.core.crafting.AppEngCrafting;
 import appeng.core.crafting.definitions.CraftingItemDefinitions;
-import appeng.core.crafting.item.ItemEncodedPattern;
+import appeng.core.crafting.item.ItemPattern;
 import appeng.core.lib.container.ContainerNull;
 import appeng.core.lib.sync.network.NetworkHandler;
 import appeng.core.lib.sync.packets.PacketAssemblerAnimation;
@@ -237,10 +237,10 @@ public class TileMolecularAssembler extends AENetworkInvTile implements IUpgrade
 		{
 			final ItemStack myPat = new ItemStack( data.getCompoundTag( "myPlan" ) );
 
-			if( myPat != null && myPat.getItem() instanceof ItemEncodedPattern )
+			if( myPat != null && myPat.getItem() instanceof ItemPattern )
 			{
 				final World w = this.getWorld();
-				final ItemEncodedPattern iep = (ItemEncodedPattern) myPat.getItem();
+				final ItemPattern iep = (ItemPattern) myPat.getItem();
 				final ICraftingPatternDetails ph = iep.getPatternForItem( myPat, w );
 				if( ph != null && ph.isCraftable() )
 				{
@@ -268,12 +268,12 @@ public class TileMolecularAssembler extends AENetworkInvTile implements IUpgrade
 
 		final ItemStack is = this.inv.getStackInSlot( 10 );
 
-		if( is != null && is.getItem() instanceof ItemEncodedPattern )
+		if( is != null && is.getItem() instanceof ItemPattern )
 		{
 			if( !Platform.isSameItem( is, this.myPattern ) )
 			{
 				final World w = this.getWorld();
-				final ItemEncodedPattern iep = (ItemEncodedPattern) is.getItem();
+				final ItemPattern iep = (ItemPattern) is.getItem();
 				final ICraftingPatternDetails ph = iep.getPatternForItem( is, w );
 
 				if( ph != null && ph.isCraftable() )

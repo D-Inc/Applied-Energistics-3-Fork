@@ -27,7 +27,7 @@ import net.minecraft.world.World;
 import appeng.core.api.config.RedstoneMode;
 import appeng.core.api.config.SecurityPermissions;
 import appeng.core.api.config.Settings;
-import appeng.core.crafting.item.ItemEncodedPattern;
+import appeng.core.crafting.item.ItemPattern;
 import appeng.core.crafting.tile.TileMolecularAssembler;
 import appeng.core.lib.container.ContainerUpgradeable;
 import appeng.core.lib.container.guisync.GuiSync;
@@ -63,10 +63,10 @@ public class ContainerMAC extends ContainerUpgradeable implements IProgressProvi
 			return false;
 		}
 
-		if( is.getItem() instanceof ItemEncodedPattern )
+		if( is.getItem() instanceof ItemPattern )
 		{
 			final World w = this.getTileEntity().getWorld();
-			final ItemEncodedPattern iep = (ItemEncodedPattern) is.getItem();
+			final ItemPattern iep = (ItemPattern) is.getItem();
 			final ICraftingPatternDetails ph = iep.getPatternForItem( is, w );
 			if( ph.isCraftable() )
 			{
