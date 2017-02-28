@@ -9,11 +9,11 @@ import appeng.api.definitions.ITileDefinition;
 import appeng.core.lib.bootstrap.FeatureFactory;
 import appeng.core.lib.definitions.Definitions;
 import appeng.core.lib.features.AEFeature;
+import appeng.core.tile.TileQuartzGrowthAccelerator;
 import appeng.miscellaneous.AppEngMiscellaneous;
 import appeng.miscellaneous.api.definitions.IMiscellaneousTileDefinitions;
 import appeng.miscellaneous.tile.TileLightDetector;
 import appeng.miscellaneous.tile.TilePaint;
-import appeng.miscellaneous.tile.TileQuartzGrowthAccelerator;
 import appeng.miscellaneous.tile.TileSkyCompass;
 
 

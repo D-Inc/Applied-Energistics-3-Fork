@@ -33,7 +33,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import appeng.core.lib.block.AEBaseTileBlock;
 import appeng.core.lib.helpers.AEGlassMaterial;
 import appeng.core.lib.util.Platform;
-import appeng.core.me.tile.TileEnergyCell;
+import appeng.core.tile.TileEnergyCell;
 
 
 public class BlockEnergyCell extends AEBaseTileBlock

@@ -11,7 +11,7 @@ import appeng.core.lib.bootstrap.BlockRenderingCustomizer;
 import appeng.core.lib.bootstrap.IBlockRendering;
 import appeng.core.lib.bootstrap.IItemRendering;
 import appeng.core.lib.item.AEBaseItemBlockChargeable;
-import appeng.core.me.tile.TileEnergyCell;
+import appeng.core.tile.TileEnergyCell;
 
 
 public class BlockEnergyCellRendering extends BlockRenderingCustomizer

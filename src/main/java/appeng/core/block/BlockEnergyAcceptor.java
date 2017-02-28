@@ -22,7 +22,7 @@ package appeng.core.block;
 import net.minecraft.block.material.Material;
 
 import appeng.core.lib.block.AEBaseTileBlock;
-import appeng.core.me.tile.TileEnergyAcceptor;
+import appeng.core.tile.TileEnergyAcceptor;
 
 
 public class BlockEnergyAcceptor extends AEBaseTileBlock

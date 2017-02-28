@@ -16,7 +16,7 @@
  * along with Applied Energistics 2.  If not, see <http://www.gnu.org/licenses/lgpl>.
  */
 
-package appeng.core.me.tile;
+package appeng.core.tile;
 
 
 import net.minecraft.inventory.IInventory;
@@ -31,6 +31,7 @@ import appeng.core.lib.tile.inventory.AppEngInternalInventory;
 import appeng.core.lib.tile.inventory.InvOperation;
 import appeng.core.me.api.networking.energy.IEnergyGrid;
 import appeng.core.me.grid.GridAccessException;
+import appeng.core.me.tile.AENetworkPowerTile;
 
 
 public class TileEnergyAcceptor extends AENetworkPowerTile

@@ -19,7 +19,7 @@
 package appeng.core.block;
 
 
-import appeng.core.me.tile.TileDenseEnergyCell;
+import appeng.core.tile.TileDenseEnergyCell;
 
 
 public class BlockDenseEnergyCell extends BlockEnergyCell

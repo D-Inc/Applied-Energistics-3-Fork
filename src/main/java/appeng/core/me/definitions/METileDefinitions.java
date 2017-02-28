@@ -16,16 +16,16 @@ import appeng.core.me.tile.TileCellWorkbench;
 import appeng.core.me.tile.TileChest;
 import appeng.core.me.tile.TileCondenser;
 import appeng.core.me.tile.TileController;
-import appeng.core.me.tile.TileCreativeEnergyCell;
-import appeng.core.me.tile.TileDenseEnergyCell;
 import appeng.core.me.tile.TileDrive;
-import appeng.core.me.tile.TileEnergyAcceptor;
-import appeng.core.me.tile.TileEnergyCell;
 import appeng.core.me.tile.TileIOPort;
 import appeng.core.me.tile.TileInterface;
 import appeng.core.me.tile.TileQuantumBridge;
 import appeng.core.me.tile.TileSecurity;
 import appeng.core.me.tile.TileWireless;
+import appeng.core.tile.TileCreativeEnergyCell;
+import appeng.core.tile.TileDenseEnergyCell;
+import appeng.core.tile.TileEnergyAcceptor;
+import appeng.core.tile.TileEnergyCell;
 
 
 public class METileDefinitions extends Definitions<Class<TileEntity>, ITileDefinition<TileEntity>> implements IMETileDefinitions

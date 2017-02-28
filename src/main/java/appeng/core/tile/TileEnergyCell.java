@@ -16,7 +16,7 @@
  * along with Applied Energistics 2.  If not, see <http://www.gnu.org/licenses/lgpl>.
  */
 
-package appeng.core.me.tile;
+package appeng.core.tile;
 
 
 import net.minecraft.nbt.NBTTagCompound;
@@ -34,6 +34,7 @@ import appeng.core.me.api.networking.energy.IAEPowerStorage;
 import appeng.core.me.api.networking.events.MENetworkPowerStorage;
 import appeng.core.me.api.networking.events.MENetworkPowerStorage.PowerEventType;
 import appeng.core.me.grid.GridAccessException;
+import appeng.core.me.tile.AENetworkTile;
 
 
 public class TileEnergyCell extends AENetworkTile implements IAEPowerStorage

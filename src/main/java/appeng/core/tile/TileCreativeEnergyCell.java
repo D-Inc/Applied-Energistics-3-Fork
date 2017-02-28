@@ -16,7 +16,7 @@
  * along with Applied Energistics 2.  If not, see <http://www.gnu.org/licenses/lgpl>.
  */
 
-package appeng.core.me.tile;
+package appeng.core.tile;
 
 
 import appeng.core.api.config.AccessRestriction;
@@ -25,6 +25,7 @@ import appeng.core.api.config.PowerMultiplier;
 import appeng.core.api.util.AECableType;
 import appeng.core.api.util.AEPartLocation;
 import appeng.core.me.api.networking.energy.IAEPowerStorage;
+import appeng.core.me.tile.AENetworkTile;
 
 
 public class TileCreativeEnergyCell extends AENetworkTile implements IAEPowerStorage
