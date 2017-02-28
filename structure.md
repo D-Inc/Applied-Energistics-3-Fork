@@ -107,6 +107,7 @@ Now that we covered distribution, we only have to sum things up to define _inter
       - ME Quantum Link Chamber
       - ME Quantum Ring
       - ME Security Terminal
+      - ME Wireless Access Point
     - Items:
       - 16k ME Storage Cell
       - 1k ME Storage Cell
@@ -173,7 +174,6 @@ Now that we covered distribution, we only have to sum things up to define _inter
       - ME Storage Monitor
       - ME Terminal
       - ME Toggle Bus
-      - ME Wireless Access Point
       - Quartz Fiber
   - Spatial
     - Blocks:
