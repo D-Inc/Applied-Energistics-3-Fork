@@ -26,13 +26,13 @@ import appeng.core.api.config.Actionable;
 import appeng.core.api.config.PowerMultiplier;
 import appeng.core.api.util.AECableType;
 import appeng.core.api.util.AEPartLocation;
+import appeng.core.block.BlockEnergyCell;
 import appeng.core.lib.tile.TileEvent;
 import appeng.core.lib.tile.events.TileEventType;
 import appeng.core.lib.util.SettingsFrom;
 import appeng.core.me.api.networking.energy.IAEPowerStorage;
 import appeng.core.me.api.networking.events.MENetworkPowerStorage;
 import appeng.core.me.api.networking.events.MENetworkPowerStorage.PowerEventType;
-import appeng.core.me.block.BlockEnergyCell;
 import appeng.core.me.grid.GridAccessException;
 
 

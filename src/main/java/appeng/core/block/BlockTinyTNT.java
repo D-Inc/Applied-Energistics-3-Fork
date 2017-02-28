@@ -16,7 +16,7 @@
  * along with Applied Energistics 2.  If not, see <http://www.gnu.org/licenses/lgpl>.
  */
 
-package appeng.miscellaneous.block;
+package appeng.core.block;
 
 
 import java.util.Collections;

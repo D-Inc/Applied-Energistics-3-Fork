@@ -16,20 +16,23 @@
  * along with Applied Energistics 2.  If not, see <http://www.gnu.org/licenses/lgpl>.
  */
 
-package appeng.core.me.block;
+package appeng.core.block;
 
 
-import appeng.core.lib.block.AEBaseTileBlock;
-import appeng.core.lib.helpers.AEGlassMaterial;
-import appeng.core.me.tile.TileCreativeEnergyCell;
+import appeng.core.me.tile.TileDenseEnergyCell;
 
 
-public class BlockCreativeEnergyCell extends AEBaseTileBlock
+public class BlockDenseEnergyCell extends BlockEnergyCell
 {
 
-	public BlockCreativeEnergyCell()
+	public BlockDenseEnergyCell()
 	{
-		super( AEGlassMaterial.INSTANCE );
-		this.setTileEntity( TileCreativeEnergyCell.class );
+		this.setTileEntity( TileDenseEnergyCell.class );
+	}
+
+	@Override
+	public double getMaxPower()
+	{
+		return 200000.0 * 8.0;
 	}
 }

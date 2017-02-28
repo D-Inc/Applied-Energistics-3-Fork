@@ -16,21 +16,20 @@
  * along with Applied Energistics 2.  If not, see <http://www.gnu.org/licenses/lgpl>.
  */
 
-package appeng.core.me.block;
+package appeng.core.block;
 
-
-import net.minecraft.block.material.Material;
 
 import appeng.core.lib.block.AEBaseTileBlock;
-import appeng.core.me.tile.TileEnergyAcceptor;
+import appeng.core.lib.helpers.AEGlassMaterial;
+import appeng.core.me.tile.TileCreativeEnergyCell;
 
 
-public class BlockEnergyAcceptor extends AEBaseTileBlock
+public class BlockCreativeEnergyCell extends AEBaseTileBlock
 {
 
-	public BlockEnergyAcceptor()
+	public BlockCreativeEnergyCell()
 	{
-		super( Material.IRON );
-		this.setTileEntity( TileEnergyAcceptor.class );
+		super( AEGlassMaterial.INSTANCE );
+		this.setTileEntity( TileCreativeEnergyCell.class );
 	}
 }

@@ -1,5 +1,5 @@
 
-package appeng.core.me.block;
+package appeng.core.block;
 
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;

@@ -16,23 +16,21 @@
  * along with Applied Energistics 2.  If not, see <http://www.gnu.org/licenses/lgpl>.
  */
 
-package appeng.core.me.block;
+package appeng.core.block;
 
 
-import appeng.core.me.tile.TileDenseEnergyCell;
+import net.minecraft.block.material.Material;
+
+import appeng.core.lib.block.AEBaseTileBlock;
+import appeng.core.me.tile.TileEnergyAcceptor;
 
 
-public class BlockDenseEnergyCell extends BlockEnergyCell
+public class BlockEnergyAcceptor extends AEBaseTileBlock
 {
 
-	public BlockDenseEnergyCell()
+	public BlockEnergyAcceptor()
 	{
-		this.setTileEntity( TileDenseEnergyCell.class );
-	}
-
-	@Override
-	public double getMaxPower()
-	{
-		return 200000.0 * 8.0;
+		super( Material.IRON );
+		this.setTileEntity( TileEnergyAcceptor.class );
 	}
 }

@@ -47,12 +47,12 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
 import appeng.core.api.util.DimensionalCoord;
+import appeng.core.block.BlockTinyTNT;
 import appeng.core.hooks.IBlockTool;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.item.powered.AEBasePoweredItem;
 import appeng.core.lib.util.InWorldToolOperationResult;
 import appeng.core.lib.util.Platform;
-import appeng.miscellaneous.block.BlockTinyTNT;
 import appeng.tools.hooks.DispenserBlockTool;
 
 

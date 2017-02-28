@@ -16,7 +16,7 @@
  * along with Applied Energistics 2.  If not, see <http://www.gnu.org/licenses/lgpl>.
  */
 
-package appeng.decorative.block;
+package appeng.core.block;
 
 
 import java.util.Random;
@@ -33,10 +33,10 @@ import appeng.core.lib.CommonHelper;
 import appeng.core.lib.client.render.effects.VibrantFX;
 
 
-public class BlockQuartzLamp extends BlockQuartzGlass
+public class BlockVibrantQuartzGlass extends BlockQuartzGlass
 {
 
-	public BlockQuartzLamp()
+	public BlockVibrantQuartzGlass()
 	{
 		this.setLightLevel( 1.0f );
 	}
