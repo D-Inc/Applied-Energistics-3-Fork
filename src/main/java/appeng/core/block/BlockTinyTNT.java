@@ -46,10 +46,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 import appeng.core.AppEng;
+import appeng.core.entity.EntityTinyTNTPrimed;
 import appeng.core.lib.block.AEBaseBlock;
 import appeng.core.lib.entity.EntityIds;
 import appeng.core.lib.helpers.ICustomCollision;
-import appeng.miscellaneous.entity.EntityTinyTNTPrimed;
 
 
 public class BlockTinyTNT extends AEBaseBlock implements ICustomCollision

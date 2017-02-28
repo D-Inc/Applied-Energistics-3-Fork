@@ -26,7 +26,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
-import appeng.miscellaneous.entity.EntityTinyTNTPrimed;
+import appeng.core.entity.EntityTinyTNTPrimed;
 
 
 public final class DispenserBehaviorTinyTNT extends BehaviorDefaultDispenseItem
