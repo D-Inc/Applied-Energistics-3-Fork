@@ -210,4 +210,9 @@ public interface ICoreMaterialDefinitions extends IDefinitions<Material, IMateri
 		return get( "ender_dust" );
 	}
 
+	default IMaterialDefinition<Material> wirelessReceiver()
+	{
+		return get( "wireless_receiver" );
+	}
+
 }

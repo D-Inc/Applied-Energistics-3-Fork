@@ -78,6 +78,8 @@ public class CoreMaterialDefinitions extends Definitions<Material, IMaterialDefi
 	private final IMaterialDefinition skyDust;
 	private final IMaterialDefinition enderDust;
 
+	private final IMaterialDefinition wirelessReceiver;
+
 	public CoreMaterialDefinitions( FeatureFactory registry )
 	{
 		certusQuartzCrystal = registry.material( "certus_quartz_crystal", new Material() ).model( new ModelResourceLocation( new ResourceLocation( AppEng.MODID, MATERIALSMODELSLOCATION + "certus_quartz_crystal" ), MATERIALSMODELSVARIANT ) ).build();
@@ -120,6 +122,7 @@ public class CoreMaterialDefinitions extends Definitions<Material, IMaterialDefi
 		annihilationCore = registry.material( "annihilation_core", new Material() ).model( new ModelResourceLocation( new ResourceLocation( AppEng.MODID, MATERIALSMODELSLOCATION + "annihilation_core" ), MATERIALSMODELSVARIANT ) ).build();
 		skyDust = registry.material( "sky_dust", new Material() ).model( new ModelResourceLocation( new ResourceLocation( AppEng.MODID, MATERIALSMODELSLOCATION + "sky_dust" ), MATERIALSMODELSVARIANT ) ).build();
 		enderDust = registry.material( "ender_dust", new Material() ).model( new ModelResourceLocation( new ResourceLocation( AppEng.MODID, MATERIALSMODELSLOCATION + "ender_dust" ), MATERIALSMODELSVARIANT ) ).build();
+		wirelessReceiver = registry.material( "wireless_receiver", new Material() ).model( new ModelResourceLocation( new ResourceLocation( AppEng.MODID, MATERIALSMODELSLOCATION + "wireless_receiver" ), MATERIALSMODELSVARIANT ) ).build();
 
 		init();
 	}
