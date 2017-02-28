@@ -33,7 +33,7 @@ import appeng.core.api.util.AEPartLocation;
 import appeng.core.lib.block.AEBaseTileBlock;
 import appeng.core.lib.sync.GuiBridge;
 import appeng.core.lib.util.Platform;
-import appeng.core.tile.TileInscriber;
+import appeng.core.me.tile.TileInscriber;
 
 
 public class BlockInscriber extends AEBaseTileBlock

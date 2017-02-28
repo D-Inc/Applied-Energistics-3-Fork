@@ -16,7 +16,7 @@
  * along with Applied Energistics 2.  If not, see <http://www.gnu.org/licenses/lgpl>.
  */
 
-package appeng.core.tile;
+package appeng.core.me.tile;
 
 
 import java.io.IOException;
@@ -74,7 +74,6 @@ import appeng.core.me.api.networking.ticking.TickingRequest;
 import appeng.core.me.grid.GridAccessException;
 import appeng.core.me.part.automation.DefinitionUpgradeInventory;
 import appeng.core.me.part.automation.UpgradeInventory;
-import appeng.core.me.tile.AENetworkPowerTile;
 
 
 /**

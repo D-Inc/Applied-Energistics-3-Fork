@@ -27,7 +27,7 @@ import appeng.core.lib.client.gui.widgets.GuiProgressBar;
 import appeng.core.lib.client.gui.widgets.GuiProgressBar.Direction;
 import appeng.core.lib.container.ContainerUpgradeable;
 import appeng.core.lib.localization.GuiText;
-import appeng.core.tile.TileInscriber;
+import appeng.core.me.tile.TileInscriber;
 
 
 public class GuiInscriber extends AEBaseGui

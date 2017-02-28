@@ -36,7 +36,7 @@ import appeng.core.lib.container.interfaces.IProgressProvider;
 import appeng.core.lib.container.slot.SlotOutput;
 import appeng.core.lib.container.slot.SlotRestrictedInput;
 import appeng.core.lib.util.Platform;
-import appeng.core.tile.TileInscriber;
+import appeng.core.me.tile.TileInscriber;
 
 
 /**
