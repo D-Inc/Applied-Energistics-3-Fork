@@ -11,9 +11,9 @@ import appeng.core.lib.bootstrap.FeatureFactory;
 import appeng.core.lib.definitions.Definitions;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.me.CreativeTabFacade;
+import appeng.core.me.item.ItemFacade;
 import appeng.decorative.AppEngDecorative;
 import appeng.decorative.api.definitions.IDecorativeItemDefinitions;
-import appeng.decorative.item.ItemFacade;
 import appeng.decorative.item.ItemPaintBall;
 import appeng.decorative.item.ItemPaintBallRendering;
 

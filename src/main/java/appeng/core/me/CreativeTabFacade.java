@@ -27,7 +27,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 import appeng.core.lib.AppEngApi;
-import appeng.decorative.item.ItemFacade;
+import appeng.core.me.item.ItemFacade;
 
 
 public final class CreativeTabFacade extends CreativeTabs

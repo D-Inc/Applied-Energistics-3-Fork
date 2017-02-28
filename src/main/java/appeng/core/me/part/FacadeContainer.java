@@ -33,7 +33,7 @@ import appeng.core.lib.AppEngApi;
 import appeng.core.me.api.parts.IFacadeContainer;
 import appeng.core.me.api.parts.IFacadePart;
 import appeng.core.me.api.parts.IPartHost;
-import appeng.decorative.item.ItemFacade;
+import appeng.core.me.item.ItemFacade;
 import appeng.decorative.part.FacadePart;
 import appeng.decorative.part.IFacadeItem;
 

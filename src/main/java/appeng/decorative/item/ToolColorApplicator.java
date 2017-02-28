@@ -16,7 +16,7 @@
  * along with Applied Energistics 2.  If not, see <http://www.gnu.org/licenses/lgpl>.
  */
 
-package appeng.tools.item;
+package appeng.decorative.item;
 
 
 import java.util.Collections;
@@ -74,7 +74,6 @@ import appeng.core.me.grid.storage.CellInventoryHandler;
 import appeng.core.me.item.CellConfig;
 import appeng.core.me.item.CellUpgrades;
 import appeng.decorative.block.BlockPaint;
-import appeng.decorative.item.ItemPaintBall;
 import appeng.miscellaneous.tile.TilePaint;
 import appeng.tools.hooks.DispenserBlockTool;
 
