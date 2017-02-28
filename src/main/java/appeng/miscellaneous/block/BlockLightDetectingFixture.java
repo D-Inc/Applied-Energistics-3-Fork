@@ -16,7 +16,7 @@
  * along with Applied Energistics 2.  If not, see <http://www.gnu.org/licenses/lgpl>.
  */
 
-package appeng.decorative.block;
+package appeng.miscellaneous.block;
 
 
 import java.util.Collections;
@@ -39,10 +39,10 @@ import appeng.core.lib.helpers.ICustomCollision;
 import appeng.miscellaneous.tile.TileLightDetector;
 
 
-public class BlockLightDetector extends AEBaseTileBlock implements IOrientableBlock, ICustomCollision
+public class BlockLightDetectingFixture extends AEBaseTileBlock implements IOrientableBlock, ICustomCollision
 {
 
-	public BlockLightDetector()
+	public BlockLightDetectingFixture()
 	{
 		super( Material.CIRCUITS );
 

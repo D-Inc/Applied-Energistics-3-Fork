@@ -41,7 +41,7 @@ import appeng.core.lib.tile.AEBaseTile;
 import appeng.core.me.block.BlockWireless;
 import appeng.core.me.grid.helpers.IGridProxyable;
 import appeng.core.worldgen.block.BlockSkyCompass;
-import appeng.decorative.block.BlockLightDetector;
+import appeng.miscellaneous.block.BlockLightDetectingFixture;
 
 
 public class AEBaseItemBlock extends ItemBlock
@@ -100,7 +100,7 @@ public class AEBaseItemBlock extends ItemBlock
 
 		if( this.blockType instanceof AEBaseTileBlock )
 		{
-			if( this.blockType instanceof BlockLightDetector )
+			if( this.blockType instanceof BlockLightDetectingFixture )
 			{
 				up = side;
 				if( up == EnumFacing.UP || up == EnumFacing.DOWN )
@@ -179,7 +179,7 @@ public class AEBaseItemBlock extends ItemBlock
 
 		if( super.placeBlockAt( stack, player, w, pos, side, hitX, hitY, hitZ, newState ) )
 		{
-			if( this.blockType instanceof AEBaseTileBlock && !( this.blockType instanceof BlockLightDetector ) )
+			if( this.blockType instanceof AEBaseTileBlock && !( this.blockType instanceof BlockLightDetectingFixture ) )
 			{
 				final AEBaseTile tile = ( (AEBaseTileBlock) this.blockType ).getTileEntity( w, pos );
 				ori = tile;

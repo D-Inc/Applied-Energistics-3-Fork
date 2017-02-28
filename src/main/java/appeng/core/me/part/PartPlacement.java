@@ -62,7 +62,6 @@ import appeng.core.me.api.parts.IPartHost;
 import appeng.core.me.api.parts.IPartItem;
 import appeng.core.me.api.parts.PartItemStack;
 import appeng.core.me.api.parts.SelectedPart;
-import appeng.decorative.part.IFacadeItem;
 
 
 public class PartPlacement

@@ -47,8 +47,8 @@ import appeng.core.lib.AppEngApi;
 import appeng.core.lib.FacadeConfig;
 import appeng.core.lib.item.AEBaseItem;
 import appeng.core.me.api.parts.IAlphaPassItem;
-import appeng.decorative.part.FacadePart;
-import appeng.decorative.part.IFacadeItem;
+import appeng.core.me.part.FacadePart;
+import appeng.core.me.part.IFacadeItem;
 
 
 public class ItemFacade extends AEBaseItem implements IFacadeItem, IAlphaPassItem

@@ -11,10 +11,10 @@ import appeng.core.lib.definitions.Definitions;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.tile.TileQuartzGrowthAccelerator;
 import appeng.core.worldgen.tile.TileSkyCompass;
+import appeng.decorative.tile.TilePaint;
 import appeng.miscellaneous.AppEngMiscellaneous;
 import appeng.miscellaneous.api.definitions.IMiscellaneousTileDefinitions;
 import appeng.miscellaneous.tile.TileLightDetector;
-import appeng.miscellaneous.tile.TilePaint;
 
 
 public class MiscellaneousTileDefinitions extends Definitions<Class<TileEntity>, ITileDefinition<TileEntity>> implements IMiscellaneousTileDefinitions

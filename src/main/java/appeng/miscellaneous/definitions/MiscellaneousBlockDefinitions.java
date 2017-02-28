@@ -13,10 +13,10 @@ import appeng.core.lib.bootstrap.FeatureFactory;
 import appeng.core.lib.definitions.Definitions;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.worldgen.block.BlockSkyCompass;
-import appeng.decorative.block.BlockLightDetector;
 import appeng.decorative.block.BlockPaint;
 import appeng.miscellaneous.AppEngMiscellaneous;
 import appeng.miscellaneous.api.definitions.IMiscellaneousBlockDefinitions;
+import appeng.miscellaneous.block.BlockLightDetectingFixture;
 import appeng.tools.hooks.DispenserBehaviorTinyTNT;
 
 
@@ -39,7 +39,7 @@ public class MiscellaneousBlockDefinitions extends Definitions<Block, IBlockDefi
 		
 		this.quartzGrowthAccelerator = registry.block( new ResourceLocation( AppEngMiscellaneous.MODID, "quartz_growth_accelerator" ), new BlockQuartzGrowthAccelerator() ).createDefaultItemBlock().build();
 		
-		this.lightDetector = registry.block( new ResourceLocation( AppEngMiscellaneous.MODID, "light_detector" ), new BlockLightDetector() ).features( AEFeature.LightDetector ).createDefaultItemBlock().build();
+		this.lightDetector = registry.block( new ResourceLocation( AppEngMiscellaneous.MODID, "light_detector" ), new BlockLightDetectingFixture() ).features( AEFeature.LightDetector ).createDefaultItemBlock().build();
 		this.paint = registry.block( new ResourceLocation( AppEngMiscellaneous.MODID, "paint" ), new BlockPaint() ).features( AEFeature.PaintBalls ).createDefaultItemBlock().build();
 		
 		init();

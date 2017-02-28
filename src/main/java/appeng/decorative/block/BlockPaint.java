@@ -39,7 +39,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import appeng.core.lib.block.AEBaseTileBlock;
 import appeng.core.lib.util.Platform;
-import appeng.miscellaneous.tile.TilePaint;
+import appeng.decorative.tile.TilePaint;
 
 
 public class BlockPaint extends AEBaseTileBlock

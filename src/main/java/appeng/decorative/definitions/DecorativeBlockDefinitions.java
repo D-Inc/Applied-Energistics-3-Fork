@@ -19,7 +19,7 @@ import appeng.decorative.api.definitions.IDecorativeBlockDefinitions;
 import appeng.decorative.block.BlockChiseledQuartz;
 import appeng.decorative.block.BlockFluix;
 import appeng.decorative.block.BlockQuartzPillar;
-import appeng.decorative.block.BlockQuartzTorch;
+import appeng.decorative.block.BlockQuartzFixture;
 import appeng.decorative.block.BlockStairCommon;
 
 
@@ -65,7 +65,7 @@ public class DecorativeBlockDefinitions extends Definitions<Block, IBlockDefinit
 		this.chiseledQuartzBlock = deco.block( new ResourceLocation( AppEngDecorative.MODID, "chiseled_quartz_block" ), new BlockChiseledQuartz() ).createDefaultItemBlock().build();
 		this.quartzGlass = deco.block( new ResourceLocation( AppEngDecorative.MODID, "quartz_glass" ), new BlockQuartzGlass() ).createDefaultItemBlock().build();
 		this.quartzVibrantGlass = deco.block( new ResourceLocation( AppEngDecorative.MODID, "quartz_vibrant_glass" ), new BlockVibrantQuartzGlass() ).addFeatures( AEFeature.DecorativeLights ).createDefaultItemBlock().build();
-		this.quartzFixture = registry.block( new ResourceLocation( AppEngDecorative.MODID, "quartz_fixture" ), new BlockQuartzTorch() ).features( AEFeature.DecorativeLights ).createDefaultItemBlock().build();
+		this.quartzFixture = registry.block( new ResourceLocation( AppEngDecorative.MODID, "quartz_fixture" ), new BlockQuartzFixture() ).features( AEFeature.DecorativeLights ).createDefaultItemBlock().build();
 
 		this.fluixBlock = deco.block( new ResourceLocation( AppEngDecorative.MODID, "fluix_block" ), new BlockFluix() ).createDefaultItemBlock().build();
 		this.skyStoneBlock = deco.block( new ResourceLocation( AppEngDecorative.MODID, "sky_stone_block" ), new BlockSkyStone( SkystoneType.STONE ) ).createDefaultItemBlock().build();

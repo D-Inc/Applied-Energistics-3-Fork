@@ -34,8 +34,6 @@ import appeng.core.me.api.parts.IFacadeContainer;
 import appeng.core.me.api.parts.IFacadePart;
 import appeng.core.me.api.parts.IPartHost;
 import appeng.core.me.item.ItemFacade;
-import appeng.decorative.part.FacadePart;
-import appeng.decorative.part.IFacadeItem;
 
 
 public class FacadeContainer implements IFacadeContainer
