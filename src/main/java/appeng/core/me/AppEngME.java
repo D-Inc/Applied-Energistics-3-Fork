@@ -27,6 +27,9 @@ import net.minecraftforge.fml.common.registry.IForgeRegistry.CreateCallback;
 import net.minecraftforge.fml.common.registry.IForgeRegistry.SubstitutionCallback;
 import net.minecraftforge.fml.common.registry.RegistryBuilder;
 
+import code.elix_x.excomms.reflection.ReflectionHelper.AClass;
+import code.elix_x.excomms.reflection.ReflectionHelper.AClass.AEnum;
+
 import appeng.api.definitions.IDefinition;
 import appeng.api.definitions.IDefinitions;
 import appeng.api.module.Module;
@@ -44,6 +47,7 @@ import appeng.core.me.definitions.MEBlockDefinitions;
 import appeng.core.me.definitions.MEItemDefinitions;
 import appeng.core.me.definitions.MEPartDefinitions;
 import appeng.core.me.definitions.METileDefinitions;
+import appeng.core.me.item.ItemCard;
 
 
 @Module( IME.NAME )
@@ -54,6 +58,13 @@ public class AppEngME implements IME
 	public static final AppEngME INSTANCE = null;
 
 	private static final ResourceLocation CLASS2PARTMAP = new ResourceLocation( AppEng.MODID, "class-partrege_map" );
+
+	public final ItemCard.EnumCardType CAPACITY = ItemCard.EnumCardType.addCardType( "CAPACITY" );
+	public final ItemCard.EnumCardType REDSTONE = ItemCard.EnumCardType.addCardType( "REDSTONE" );
+
+	public final ItemCard.EnumCardType FUZZY = ItemCard.EnumCardType.addCardType( "FUZZY" );
+	public final ItemCard.EnumCardType INVERTER = ItemCard.EnumCardType.addCardType( "INVERTER" );
+	public final ItemCard.EnumCardType ACCELERATION = ItemCard.EnumCardType.addCardType( "ACCELERATION" );
 
 	private FMLControlledNamespacedRegistry<PartRegistryEntry<?>> partRegistry;
 

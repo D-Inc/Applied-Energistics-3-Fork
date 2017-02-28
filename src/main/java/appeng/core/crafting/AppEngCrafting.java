@@ -12,6 +12,7 @@ import net.minecraftforge.fml.common.event.FMLServerAboutToStartEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppedEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
+import net.minecraftforge.fml.common.registry.ItemStackHolderInjector;
 
 import appeng.api.definitions.IDefinition;
 import appeng.api.definitions.IDefinitions;
@@ -23,6 +24,7 @@ import appeng.core.crafting.definitions.CraftingBlockDefinitions;
 import appeng.core.crafting.definitions.CraftingItemDefinitions;
 import appeng.core.crafting.definitions.CraftingTileDefinitions;
 import appeng.core.lib.bootstrap.FeatureFactory;
+import appeng.core.me.item.ItemCard;
 
 
 @Module( ICrafting.NAME )
@@ -31,6 +33,8 @@ public class AppEngCrafting implements ICrafting
 
 	@Module.Instance( NAME )
 	public static final AppEngCrafting INSTANCE = null;
+
+	public final ItemCard.EnumCardType CRAFTING = ItemCard.EnumCardType.addCardType( "CRAFTING" );
 
 	private FeatureFactory registry;
 
