@@ -11,4 +11,9 @@ import appeng.api.definitions.ITileDefinition;
 public interface IDecorativeTileDefinitions extends IDefinitions<Class<TileEntity>, ITileDefinition<TileEntity>>
 {
 
+	default ITileDefinition<TileEntity> paint()
+	{
+		return get( "paint" );
+	}
+
 }

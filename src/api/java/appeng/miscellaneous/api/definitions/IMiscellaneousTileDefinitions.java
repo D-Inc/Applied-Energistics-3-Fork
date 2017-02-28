@@ -10,28 +10,9 @@ import appeng.api.definitions.ITileDefinition;
 
 public interface IMiscellaneousTileDefinitions extends IDefinitions<Class<TileEntity>, ITileDefinition<TileEntity>>
 {
-    default ITileDefinition<TileEntity> skyCompass()
-    {
-        return get( "sky_compass" );
-    }
 
-    default ITileDefinition<TileEntity> tinyTNT()
+    default ITileDefinition<TileEntity> lightDetectingFixture()
     {
-        return get( "tiny_tnt" );
-    }
-
-    default ITileDefinition<TileEntity> quartzGrowthAccelerator()
-    {
-        return get( "quartz_growth_accelerator" );
-    }
-
-    default ITileDefinition<TileEntity> lightDetector()
-    {
-        return get( "light_detector" );
-    }
-
-    default ITileDefinition<TileEntity> paint()
-    {
-        return get( "paint" );
+        return get( "light_detecting_fixture" );
     }
 }

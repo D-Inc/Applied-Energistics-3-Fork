@@ -9,7 +9,7 @@ import appeng.api.definitions.ITileDefinition;
 import appeng.core.lib.bootstrap.FeatureFactory;
 import appeng.core.lib.definitions.Definitions;
 import appeng.core.lib.features.AEFeature;
-import appeng.core.tile.TileQuartzGrowthAccelerator;
+import appeng.core.tile.TileCrystalGrowthAccelerator;
 import appeng.core.worldgen.tile.TileSkyCompass;
 import appeng.decorative.tile.TilePaint;
 import appeng.miscellaneous.AppEngMiscellaneous;
@@ -20,17 +20,11 @@ import appeng.miscellaneous.tile.TileLightDetector;
 public class MiscellaneousTileDefinitions extends Definitions<Class<TileEntity>, ITileDefinition<TileEntity>> implements IMiscellaneousTileDefinitions
 {
 
-	private final ITileDefinition quartzGrowthAccelerator;
-	private final ITileDefinition skyCompass;
-	private final ITileDefinition lightDetector;
-	private final ITileDefinition paint;
+	private final ITileDefinition lightDetectingFixture;
 
 	public MiscellaneousTileDefinitions( FeatureFactory registry )
 	{
-		this.quartzGrowthAccelerator = registry.tile( new ResourceLocation( AppEngMiscellaneous.MODID, "quartz_growth_accelerator" ), TileQuartzGrowthAccelerator.class ).build();
-		this.skyCompass = registry.tile( new ResourceLocation( AppEngMiscellaneous.MODID, "sky_compass" ), TileSkyCompass.class ).addFeatures( AEFeature.MeteoriteCompass ).build();
-		this.lightDetector = registry.tile( new ResourceLocation( AppEngMiscellaneous.MODID, "light_detector" ), TileLightDetector.class ).features( AEFeature.LightDetector ).build();
-		this.paint = registry.tile( new ResourceLocation( AppEngMiscellaneous.MODID, "paint" ), TilePaint.class ).features( AEFeature.PaintBalls ).build();
+		this.lightDetectingFixture = registry.tile( new ResourceLocation( AppEngMiscellaneous.MODID, "light_detecting_fixture" ), TileLightDetector.class ).features( AEFeature.LightDetector ).build();
 
 		init();
 	}

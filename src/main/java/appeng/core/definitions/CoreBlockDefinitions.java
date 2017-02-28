@@ -77,7 +77,7 @@ public class CoreBlockDefinitions extends Definitions<Block, IBlockDefinition<Bl
 		this.energyCellDense = registry.block( new ResourceLocation( AppEng.MODID, "dense_energy_cell" ), new BlockDenseEnergyCell() ).features( AEFeature.DenseEnergyCells ).withItemBlock( AEBaseItemBlockChargeable::new ).rendering( new BlockEnergyCellRendering( new ResourceLocation( AppEng.MODID, "dense_energy_cell" ) ) ).build();
 		this.energyCellCreative = registry.block( new ResourceLocation( AppEng.MODID, "creative_energy_cell" ), new BlockCreativeEnergyCell() ).features( AEFeature.Creative ).withItemBlock( AEBaseItemBlockChargeable::new ).build();
 
-		this.crystalGrowthAccelerator = registry.block( new ResourceLocation( AppEngMiscellaneous.MODID, "quartz_growth_accelerator" ), new BlockCrystalGrowthAccelerator() ).createDefaultItemBlock().build();
+		this.crystalGrowthAccelerator = registry.block( new ResourceLocation( AppEngMiscellaneous.MODID, "crystal_growth_accelerator" ), new BlockCrystalGrowthAccelerator() ).createDefaultItemBlock().build();
 		
 		this.tinyTNT = registry.block( new ResourceLocation( AppEngMiscellaneous.MODID, "tiny_tnt" ), new BlockTinyTNT() ).features( AEFeature.TinyTNT ).createDefaultItemBlock().postInit( ( block ) -> {
 			BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject( block.maybeItem().get().maybe().get(), new DispenserBehaviorTinyTNT() );

@@ -38,12 +38,12 @@ import appeng.core.me.grid.GridAccessException;
 import appeng.core.me.tile.AENetworkTile;
 
 
-public class TileQuartzGrowthAccelerator extends AENetworkTile implements IPowerChannelState, ICrystalGrowthAccelerator
+public class TileCrystalGrowthAccelerator extends AENetworkTile implements IPowerChannelState, ICrystalGrowthAccelerator
 {
 
 	private boolean hasPower = false;
 
-	public TileQuartzGrowthAccelerator()
+	public TileCrystalGrowthAccelerator()
 	{
 		this.getProxy().setValidSides( EnumSet.noneOf( EnumFacing.class ) );
 		this.getProxy().setFlags();

@@ -39,7 +39,7 @@ import appeng.core.lib.CommonHelper;
 import appeng.core.lib.block.AEBaseTileBlock;
 import appeng.core.lib.client.render.effects.LightningFX;
 import appeng.core.lib.util.Platform;
-import appeng.core.tile.TileQuartzGrowthAccelerator;
+import appeng.core.tile.TileCrystalGrowthAccelerator;
 
 
 public class BlockCrystalGrowthAccelerator extends AEBaseTileBlock
@@ -51,14 +51,14 @@ public class BlockCrystalGrowthAccelerator extends AEBaseTileBlock
 	{
 		super( Material.ROCK );
 		this.setSoundType( SoundType.METAL );
-		this.setTileEntity( TileQuartzGrowthAccelerator.class );
+		this.setTileEntity( TileCrystalGrowthAccelerator.class );
 		this.setDefaultState( getDefaultState().withProperty( POWERED, false ) );
 	}
 
 	@Override
 	public IBlockState getActualState( IBlockState state, IBlockAccess world, BlockPos pos )
 	{
-		TileQuartzGrowthAccelerator te = getTileEntity( world, pos );
+		TileCrystalGrowthAccelerator te = getTileEntity( world, pos );
 		boolean powered = te != null && te.isPowered();
 
 		return super.getActualState( state, world, pos ).withProperty( POWERED, powered );
@@ -79,7 +79,7 @@ public class BlockCrystalGrowthAccelerator extends AEBaseTileBlock
 			return;
 		}
 
-		final TileQuartzGrowthAccelerator cga = this.getTileEntity( w, pos );
+		final TileCrystalGrowthAccelerator cga = this.getTileEntity( w, pos );
 
 		if( cga != null && cga.isPowered() && CommonHelper.proxy.shouldAddParticles( r ) )
 		{
