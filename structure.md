@@ -130,7 +130,6 @@ Now that we covered distribution, we only have to sum things up to define _inter
       - Singularity
       - Quantum Entangled Singularity
       - Wireless Booster
-      - Wireless Receiver
       - Wireless Terminal
       - Engineering Processor
       - Calculation Processor
@@ -151,6 +150,7 @@ Now that we covered distribution, we only have to sum things up to define _inter
       - Printed Engineering Circuit
       - Printed Logic Circuit
       - Printed Silicon
+      - Wireless Receiver
     - Parts:
       - Bright Illuminated Panel
       - Cable Anchor
