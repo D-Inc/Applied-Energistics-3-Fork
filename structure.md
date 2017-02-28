@@ -40,6 +40,7 @@ Now that we covered distribution, we only have to sum things up to define _inter
 ## Repartition Of AE2 Features:
 - Core
   - Blocks:
+    - Energy Acceptor
     - Charger
     - Energy Cell
     - Dense Energy Cell
@@ -95,7 +96,6 @@ Now that we covered distribution, we only have to sum things up to define _inter
       - ME Pattern Terminal
   - ME
     - Blocks:
-      - Energy Acceptor
       - Inscriber
       - Matter Condenser
       - Cell Workbench
