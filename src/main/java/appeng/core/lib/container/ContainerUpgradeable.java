@@ -45,8 +45,8 @@ import appeng.core.lib.container.slot.SlotRestrictedInput;
 import appeng.core.lib.util.Platform;
 import appeng.core.me.api.parts.IPart;
 import appeng.core.me.item.NetworkToolViewer;
+import appeng.core.me.item.ToolNetworkTool;
 import appeng.core.me.part.automation.PartExportBus;
-import appeng.tools.item.ToolNetworkTool;
 
 
 public class ContainerUpgradeable extends AEBaseContainer implements IOptionalSlotHost

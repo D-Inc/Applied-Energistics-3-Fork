@@ -34,10 +34,10 @@ import appeng.core.api.implementations.items.IMemoryCard;
 import appeng.core.api.implementations.items.MemoryCardMessages;
 import appeng.core.lib.sync.AppEngPacket;
 import appeng.core.lib.sync.network.INetworkInfo;
+import appeng.core.me.item.ToolNetworkTool;
 import appeng.tools.AppEngTools;
 import appeng.tools.definitions.ToolsItemDefinitions;
 import appeng.tools.item.ToolColorApplicator;
-import appeng.tools.item.ToolNetworkTool;
 
 
 public class PacketClick extends AppEngPacket

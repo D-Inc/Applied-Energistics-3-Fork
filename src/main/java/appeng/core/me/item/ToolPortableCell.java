@@ -16,7 +16,7 @@
  * along with Applied Energistics 2.  If not, see <http://www.gnu.org/licenses/lgpl>.
  */
 
-package appeng.tools.item;
+package appeng.core.me.item;
 
 
 import java.util.List;
@@ -51,9 +51,6 @@ import appeng.core.me.api.storage.IMEInventory;
 import appeng.core.me.api.storage.StorageChannel;
 import appeng.core.me.api.storage.data.IAEItemStack;
 import appeng.core.me.grid.storage.CellInventoryHandler;
-import appeng.core.me.item.CellConfig;
-import appeng.core.me.item.CellUpgrades;
-import appeng.core.me.item.PortableCellViewer;
 
 
 public class ToolPortableCell extends AEBasePoweredItem implements IStorageCell, IGuiItem, IItemGroup

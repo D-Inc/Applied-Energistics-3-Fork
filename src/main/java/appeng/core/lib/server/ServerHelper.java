@@ -41,7 +41,7 @@ import appeng.core.lib.sync.AppEngPacket;
 import appeng.core.lib.sync.network.NetworkHandler;
 import appeng.core.lib.util.Platform;
 import appeng.core.me.api.parts.CableRenderMode;
-import appeng.tools.item.ToolNetworkTool;
+import appeng.core.me.item.ToolNetworkTool;
 
 
 public abstract class ServerHelper extends CommonHelper

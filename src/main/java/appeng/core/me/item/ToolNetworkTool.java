@@ -16,7 +16,7 @@
  * along with Applied Energistics 2.  If not, see <http://www.gnu.org/licenses/lgpl>.
  */
 
-package appeng.tools.item;
+package appeng.core.me.item;
 
 
 import net.minecraft.block.Block;
@@ -49,7 +49,6 @@ import appeng.core.lib.util.Platform;
 import appeng.core.me.api.networking.IGridHost;
 import appeng.core.me.api.parts.IPartHost;
 import appeng.core.me.api.parts.SelectedPart;
-import appeng.core.me.item.NetworkToolViewer;
 
 
 // TODO Pre-1.8 - BC Integration
