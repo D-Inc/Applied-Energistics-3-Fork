@@ -73,8 +73,8 @@ import appeng.core.me.block.BlockCableBus;
 import appeng.core.me.grid.storage.CellInventoryHandler;
 import appeng.core.me.item.CellConfig;
 import appeng.core.me.item.CellUpgrades;
+import appeng.decorative.block.BlockPaint;
 import appeng.decorative.item.ItemPaintBall;
-import appeng.miscellaneous.block.BlockPaint;
 import appeng.miscellaneous.tile.TilePaint;
 import appeng.tools.hooks.DispenserBlockTool;
 

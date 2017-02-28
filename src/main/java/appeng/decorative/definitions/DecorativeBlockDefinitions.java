@@ -19,8 +19,8 @@ import appeng.decorative.api.definitions.IDecorativeBlockDefinitions;
 import appeng.decorative.block.BlockChiseledQuartz;
 import appeng.decorative.block.BlockFluix;
 import appeng.decorative.block.BlockQuartzPillar;
+import appeng.decorative.block.BlockQuartzTorch;
 import appeng.decorative.block.BlockStairCommon;
-import appeng.miscellaneous.block.BlockQuartzTorch;
 
 
 public class DecorativeBlockDefinitions extends Definitions<Block, IBlockDefinition<Block>> implements IDecorativeBlockDefinitions

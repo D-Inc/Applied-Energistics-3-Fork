@@ -41,7 +41,7 @@ import appeng.core.lib.tile.AEBaseTile;
 import appeng.core.me.block.BlockWireless;
 import appeng.core.me.grid.helpers.IGridProxyable;
 import appeng.core.worldgen.block.BlockSkyCompass;
-import appeng.miscellaneous.block.BlockLightDetector;
+import appeng.decorative.block.BlockLightDetector;
 
 
 public class AEBaseItemBlock extends ItemBlock
