@@ -22,6 +22,7 @@ package appeng.core.me.item;
 import java.util.List;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
@@ -45,6 +46,8 @@ import appeng.core.lib.localization.GuiText;
 import appeng.core.lib.util.ConfigManager;
 import appeng.core.lib.util.IConfigManagerHost;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.AppEngME;
+import appeng.core.me.definitions.MEItemDefinitions;
 
 
 public class ToolWirelessTerminal extends AEBasePoweredItem implements IWirelessTermHandler
@@ -101,7 +104,7 @@ public class ToolWirelessTerminal extends AEBasePoweredItem implements IWireless
 	@Override
 	public boolean canHandle( final ItemStack is )
 	{
-		return AppEngApi.internalApi().definitions().items().wirelessTerminal().isSameAs( is );
+		return AppEngME.INSTANCE.<Item, MEItemDefinitions>definitions( Item.class ).wirelessTerminal().isSameAs( is );
 	}
 
 	@Override
