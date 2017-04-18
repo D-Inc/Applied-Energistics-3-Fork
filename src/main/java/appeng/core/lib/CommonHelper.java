@@ -29,6 +29,7 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.SidedProxy;
 
+import appeng.core.AppEng;
 import appeng.core.lib.block.AEBaseBlock;
 import appeng.core.lib.client.EffectType;
 import appeng.core.lib.sync.AppEngPacket;
@@ -38,7 +39,7 @@ import appeng.core.me.api.parts.CableRenderMode;
 public abstract class CommonHelper
 {
 
-	@SidedProxy( clientSide = "appeng.core.lib.client.ClientHelper", serverSide = "appeng.core.lib.server.ServerHelper" )
+	@SidedProxy( modId = AppEng.MODID, clientSide = "appeng.core.lib.client.ClientHelper", serverSide = "appeng.core.lib.server.ServerHelper" )
 	public static CommonHelper proxy;
 
 	public abstract void moduleLoadingException( String exceptionText, String guiText );
