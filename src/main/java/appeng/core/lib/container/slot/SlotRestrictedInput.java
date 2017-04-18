@@ -38,6 +38,8 @@ import appeng.core.api.implementations.items.ISpatialStorageCell;
 import appeng.core.api.implementations.items.IStorageComponent;
 import appeng.core.api.implementations.items.IUpgradeModule;
 import appeng.core.api.material.Material;
+import appeng.core.crafting.AppEngCrafting;
+import appeng.core.crafting.definitions.CraftingItemDefinitions;
 import appeng.core.crafting.item.ItemPattern;
 import appeng.core.definitions.CoreMaterialDefinitions;
 import appeng.core.lib.AppEngApi;
@@ -161,7 +163,7 @@ public class SlotRestrictedInput extends AppEngSlot
 					return true;
 				}
 
-				return materials.blankPattern().isSameAs( i );
+				return AppEngCrafting.INSTANCE.<Item, CraftingItemDefinitions>definitions( Item.class ).pattern().isSameAs( i );
 
 			case INSCRIBER_PLATE:
 				if( materials.namePress().isSameAs( i ) )
@@ -241,7 +243,7 @@ public class SlotRestrictedInput extends AppEngSlot
 	@Override
 	public ItemStack getDisplayStack()
 	{
-		if( Platform.isClient() && ( this.which == PlacableItemType.ENCODED_PATTERN ) )
+		if( Platform.isClient() && ( this.which == PlacableItemType.PATTERN ) )
 		{
 			final ItemStack is = super.getStack();
 			if( is != null && is.getItem() instanceof ItemPattern )
@@ -294,7 +296,7 @@ public class SlotRestrictedInput extends AppEngSlot
 
 		ENCODABLE_ITEM( 4 * 16 + 15 ), TRASH( 5 * 16 + 15 ), VALID_ENCODED_PATTERN_W_OUTPUT( 7 * 16 + 15 ), ENCODED_PATTERN_W_OUTPUT( 7 * 16 + 15 ),
 
-		ENCODED_CRAFTING_PATTERN( 7 * 16 + 15 ), ENCODED_PATTERN( 7 * 16 + 15 ), PATTERN( 8 * 16 + 15 ), BLANK_PATTERN( 8 * 16 + 15 ), POWERED_TOOL( 9 * 16 + 15 ),
+		ENCODED_CRAFTING_PATTERN( 7 * 16 + 15 ), PATTERN( 8 * 16 + 15 ), POWERED_TOOL( 9 * 16 + 15 ),
 
 		RANGE_BOOSTER( 6 * 16 + 15 ), QE_SINGULARITY( 10 * 16 + 15 ), SPATIAL_STORAGE_CELLS( 11 * 16 + 15 ),
 
