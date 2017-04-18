@@ -42,7 +42,6 @@ import appeng.core.api.config.TerminalStyle;
 import appeng.core.api.config.YesNo;
 import appeng.core.api.util.IConfigManager;
 import appeng.core.api.util.IConfigurableObject;
-import appeng.core.item.MaterialType;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.settings.TickRates;
 import appeng.core.lib.util.ConfigManager;
@@ -372,7 +371,8 @@ public final class AEConfig extends Configuration implements IConfigurableObject
 		return this.configFile.toString();
 	}
 
-	public boolean useAEVersion( final MaterialType mt )
+	//TODO 1.11.2-CD:A - This has something to do with ore dictionary. [Insert Shrug Emoji]
+	/*public boolean useAEVersion( final MaterialType mt )
 	{
 		if( this.isFeatureEnabled( AEFeature.WebsiteRecipes ) )
 		{
@@ -384,7 +384,7 @@ public final class AEConfig extends Configuration implements IConfigurableObject
 		p.setComment( "OreDictionary Names: " + mt.getOreName() );
 
 		return !p.getBoolean( true );
-	}
+	}*/
 
 	@Override
 	public void updateSetting( final IConfigManager manager, final Enum setting, final Enum newValue )
