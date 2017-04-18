@@ -12,7 +12,6 @@ import net.minecraftforge.fml.common.event.FMLServerAboutToStartEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppedEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
-import net.minecraftforge.fml.common.registry.ItemStackHolderInjector;
 
 import appeng.api.definitions.IDefinition;
 import appeng.api.definitions.IDefinitions;
@@ -22,8 +21,10 @@ import appeng.api.module.ModuleIMCMessageEvent;
 import appeng.core.crafting.api.ICrafting;
 import appeng.core.crafting.definitions.CraftingBlockDefinitions;
 import appeng.core.crafting.definitions.CraftingItemDefinitions;
+import appeng.core.crafting.definitions.CraftingPartDefinitions;
 import appeng.core.crafting.definitions.CraftingTileDefinitions;
-import appeng.core.lib.bootstrap.FeatureFactory;
+import appeng.core.me.api.part.PartRegistryEntry;
+import appeng.core.me.bootstrap.MEFeatureFactory;
 import appeng.core.me.item.ItemCard;
 
 
@@ -36,11 +37,12 @@ public class AppEngCrafting implements ICrafting
 
 	public final ItemCard.EnumCardType CRAFTING = ItemCard.EnumCardType.addCardType( "CRAFTING" );
 
-	private FeatureFactory registry;
+	private MEFeatureFactory registry;
 
 	private CraftingItemDefinitions itemDefinitions;
 	private CraftingBlockDefinitions blockDefinitions;
 	private CraftingTileDefinitions tileDefinitions;
+	private CraftingPartDefinitions partDefinitions;
 
 	@Override
 	public <T, D extends IDefinitions<T, ? extends IDefinition<T>>> D definitions( Class<T> clas )
@@ -57,16 +59,21 @@ public class AppEngCrafting implements ICrafting
 		{
 			return (D) tileDefinitions;
 		}
+		if( clas == PartRegistryEntry.class )
+		{
+			return (D) partDefinitions;
+		}
 		return null;
 	}
 
 	@ModuleEventHandler
 	public void preInit( FMLPreInitializationEvent event )
 	{
-		registry = new FeatureFactory();
+		registry = new MEFeatureFactory();
 		this.blockDefinitions = new CraftingBlockDefinitions( registry );
 		this.itemDefinitions = new CraftingItemDefinitions( registry );
 		this.tileDefinitions = new CraftingTileDefinitions( registry );
+		this.partDefinitions = new CraftingPartDefinitions<>( registry );
 		registry.preInit( event );
 	}
 
