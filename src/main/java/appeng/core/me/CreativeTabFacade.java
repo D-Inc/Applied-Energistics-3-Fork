@@ -26,7 +26,10 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
+import appeng.api.definitions.IItemDefinition;
 import appeng.core.lib.AppEngApi;
+import appeng.core.me.api.part.PartRegistryEntry;
+import appeng.core.me.definitions.MEPartDefinitions;
 import appeng.core.me.item.ItemFacade;
 
 
@@ -48,7 +51,7 @@ public final class CreativeTabFacade extends CreativeTabs
 	@Override
 	public ItemStack getTabIconItem()
 	{
-		final Optional<Item> maybeFacade = AppEngApi.internalApi().definitions().items().facade().maybe();
+		final Optional<IItemDefinition<ItemFacade>> maybeFacade = ((MEPartDefinitions<?>) (MEPartDefinitions) AppEngME.INSTANCE.definitions( PartRegistryEntry.class )).cableFacade().<ItemFacade>maybeItem();
 		if( maybeFacade.isPresent() )
 		{
 			return ( (ItemFacade) maybeFacade.get() ).getCreativeTabIcon();
