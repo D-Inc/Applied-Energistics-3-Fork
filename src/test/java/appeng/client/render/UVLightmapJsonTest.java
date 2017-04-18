@@ -23,11 +23,11 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 
-@Mod( modid = "UVLightmapJsonTest", name = "UVLightmapJsonTest", version = "0.0.0" )
+@Mod( modid = "uvlightmapjsontest", name = "UVLightmapJsonTest", version = "0.0.0" )
 public class UVLightmapJsonTest
 {
 
-	private static final ResourceLocation uvlblockR = new ResourceLocation( "UVLightmapJsonTest", "uvlblock" );
+	private static final ResourceLocation uvlblockR = new ResourceLocation( "uvlightmapjsontest", "uvlblock" );
 
 	public static Block uvlblock;
 	public static Item uvlblockItem;
