@@ -46,7 +46,10 @@ import appeng.core.api.util.AEPartLocation;
 import appeng.core.lib.AppEngApi;
 import appeng.core.lib.FacadeConfig;
 import appeng.core.lib.item.AEBaseItem;
+import appeng.core.me.AppEngME;
+import appeng.core.me.api.part.PartRegistryEntry;
 import appeng.core.me.api.parts.IAlphaPassItem;
+import appeng.core.me.definitions.MEPartDefinitions;
 import appeng.core.me.part.FacadePart;
 import appeng.core.me.part.IFacadeItem;
 
@@ -250,7 +253,7 @@ public class ItemFacade extends AEBaseItem implements IFacadeItem, IAlphaPassIte
 
 	public ItemStack createFromIDs( final int[] ids )
 	{
-		ItemStack facadeStack = (ItemStack) AppEngApi.internalApi().definitions().items().facade().maybeStack( 1 ).orElseThrow( () -> new MissingDefinition( "Tried to create a facade, while facades are being deactivated." ) );
+		ItemStack facadeStack = ((MEPartDefinitions<?>) (MEPartDefinitions) AppEngME.INSTANCE.definitions( PartRegistryEntry.class )).cableFacade().maybeItem().orElseThrow( () -> new MissingDefinition( "Tried to create a facade, while facades are being deactivated." ) ).maybeStack( 1 ).get();
 
 		final NBTTagCompound facadeTag = new NBTTagCompound();
 		facadeTag.setIntArray( "x", ids.clone() );
