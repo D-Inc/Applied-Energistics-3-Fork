@@ -76,6 +76,8 @@ import appeng.core.me.api.storage.data.IItemList;
 import appeng.core.me.grid.storage.CellInventoryHandler;
 import appeng.core.me.item.CellConfig;
 import appeng.core.me.item.CellUpgrades;
+import appeng.decorative.AppEngDecorative;
+import appeng.decorative.definitions.DecorativeBlockDefinitions;
 import appeng.decorative.item.ItemPaintBall;
 import appeng.decorative.tile.TilePaint;
 import appeng.tools.hooks.DispenserMatterCannon;
@@ -295,7 +297,7 @@ public class ToolMatterCannon extends AEBasePoweredItem implements IStorageCell
 				final Block whatsThere = w.getBlockState( hitPos ).getBlock();
 				if( whatsThere.isReplaceable( w, hitPos ) && w.isAirBlock( hitPos ) )
 				{
-					AppEngApi.internalApi().definitions().blocks().paint().block().maybe().ifPresent( paintBlock -> {
+					AppEngDecorative.INSTANCE.<Block, DecorativeBlockDefinitions>definitions( Block.class ).paint().maybe().ifPresent( paintBlock -> {
 						w.setBlockState( hitPos, paintBlock.getDefaultState(), 3 );
 					} );
 				}
