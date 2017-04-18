@@ -73,7 +73,7 @@ public class MEItemDefinitions extends Definitions<Item, IItemDefinition<Item>> 
 		this.cellCreative = registry.item( new ResourceLocation( AppEng.MODID, "creative_storage_cell" ), new ItemCreativeStorageCell() ).features( AEFeature.StorageCells, AEFeature.Creative ).build();
 		this.viewCell = registry.item( new ResourceLocation( AppEng.MODID, "view_cell" ), new ItemViewCell() ).build();
 
-		CoreMaterialDefinitions materials = AppEngCore.INSTANCE.definitions( Material.class );
+		MEMaterialDefinitions materials = AppEngME.INSTANCE.definitions( Material.class );
 		FeatureFactory storageCells = registry.features( AEFeature.StorageCells );
 		this.cell1k = storageCells.item( new ResourceLocation( AppEng.MODID, "basic_storage_cell_1k" ), new ItemBasicStorageCell( materials.cell1kPart(), 8, 0.5, 1 ) ).build();
 		this.cell4k = storageCells.item( new ResourceLocation( AppEng.MODID, "basic_storage_cell_4k" ), new ItemBasicStorageCell( materials.cell4kPart(), 32, 1, 4 ) ).build();

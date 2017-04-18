@@ -34,7 +34,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import appeng.api.definitions.IMaterialDefinition;
-import appeng.core.AppEngCore;
 import appeng.core.api.config.FuzzyMode;
 import appeng.core.api.config.IncludeExclude;
 import appeng.core.api.exceptions.MissingDefinition;
@@ -42,7 +41,6 @@ import appeng.core.api.implementations.items.IItemGroup;
 import appeng.core.api.implementations.items.IStorageCell;
 import appeng.core.api.implementations.items.IUpgradeModule;
 import appeng.core.api.material.Material;
-import appeng.core.definitions.CoreMaterialDefinitions;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.AppEngApi;
 import appeng.core.lib.features.AEFeature;
@@ -50,12 +48,14 @@ import appeng.core.lib.item.AEBaseItem;
 import appeng.core.lib.localization.GuiText;
 import appeng.core.lib.util.InventoryAdaptor;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.AppEngME;
 import appeng.core.me.api.storage.ICellInventory;
 import appeng.core.me.api.storage.ICellInventoryHandler;
 import appeng.core.me.api.storage.IMEInventoryHandler;
 import appeng.core.me.api.storage.StorageChannel;
 import appeng.core.me.api.storage.data.IAEItemStack;
 import appeng.core.me.api.storage.data.IItemList;
+import appeng.core.me.definitions.MEMaterialDefinitions;
 
 
 public final class ItemBasicStorageCell extends AEBaseItem implements IStorageCell, IItemGroup
@@ -240,7 +240,7 @@ public final class ItemBasicStorageCell extends AEBaseItem implements IStorageCe
 					}
 
 					// drop empty storage cell case
-					AppEngCore.INSTANCE.<Material, CoreMaterialDefinitions>definitions( Material.class ).cellHousing().maybeStack( 1 ).ifPresent( is -> {
+					AppEngME.INSTANCE.<Material, MEMaterialDefinitions>definitions( Material.class ).cellHousing().maybeStack( 1 ).ifPresent( is -> {
 						final ItemStack extraA = ia.addItems( (ItemStack) is );
 						if( extraA != null )
 						{
@@ -269,7 +269,7 @@ public final class ItemBasicStorageCell extends AEBaseItem implements IStorageCe
 	@Override
 	public ItemStack getContainerItem( final ItemStack itemStack )
 	{
-		return AppEngCore.INSTANCE.<Material, CoreMaterialDefinitions>definitions( Material.class ).cellHousing().maybeStack( 1 ).orElseThrow( () -> new MissingDefinition( "Tried to use empty storage cells while basic storage cells are defined." ) );
+		return AppEngME.INSTANCE.<Material, MEMaterialDefinitions>definitions( Material.class ).cellHousing().maybeStack( 1 ).orElseThrow( () -> new MissingDefinition( "Tried to use empty storage cells while basic storage cells are defined." ) );
 	}
 
 	@Override
