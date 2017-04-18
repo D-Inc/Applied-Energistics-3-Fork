@@ -24,6 +24,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.WorldProvider;
+import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeProviderSingle;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunkGenerator;
@@ -33,7 +34,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import appeng.core.AppEng;
 import appeng.core.AppEngCore;
+import appeng.core.spatial.AppEngSpatial;
 import appeng.core.spatial.client.renderer.SpatialSkyRender;
+import appeng.core.spatial.definitions.SpatialBiomeDefinitions;
 
 
 public class StorageWorldProvider extends WorldProvider
@@ -42,7 +45,7 @@ public class StorageWorldProvider extends WorldProvider
 	public StorageWorldProvider()
 	{
 		this.hasNoSky = true;
-		this.biomeProvider = new BiomeProviderSingle( AppEng.instance().getModule( AppEngCore.class ).getRegistration().getStorageBiome() );
+		this.biomeProvider = new BiomeProviderSingle( AppEngSpatial.INSTANCE.<Biome, SpatialBiomeDefinitions>definitions( Biome.class ).spatialStorage().maybe().get() );
 	}
 
 	@Override
