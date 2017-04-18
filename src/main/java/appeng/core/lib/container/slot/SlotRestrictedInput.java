@@ -160,6 +160,17 @@ public class SlotRestrictedInput extends AppEngSlot
 							 * return false;
 							 */
 
+			case INSCRIBER_PLATE:
+				for( final ItemStack optional : AppEngApi.internalApi().registries().inscriber().getOptionals() )
+				{
+					if( Platform.isSameItemPrecise( optional, i ) )
+					{
+						return true;
+					}
+				}
+
+				return false;
+			
 			case METAL_INGOTS:
 
 				return isMetalIngot( i );
@@ -274,7 +285,7 @@ public class SlotRestrictedInput extends AppEngSlot
 
 		FUEL( 12 * 16 + 15 ), UPGRADES( 13 * 16 + 15 ), WORKBENCH_CELL( 15 ), BIOMETRIC_CARD( 14 * 16 + 15 ), VIEW_CELL( 4 * 16 + 14 ),
 
-		INSCRIBER_INPUT( 3 * 16 + 14 ), METAL_INGOTS( 3 * 16 + 14 );
+		INSCRIBER_PLATE( 2 * 16 + 14 ), INSCRIBER_INPUT( 3 * 16 + 14 ), METAL_INGOTS( 3 * 16 + 14 );
 
 		public final int IIcon;
 
