@@ -311,16 +311,7 @@ public class ContainerPatternTerm extends ContainerMEMonitorable implements IAEA
 
 	private boolean isPattern( final ItemStack output )
 	{
-		if( output == null )
-		{
-			return false;
-		}
-
-		boolean isPattern = AppEngCrafting.INSTANCE.<Item, CraftingItemDefinitions>definitions( Item.class ).pattern().isSameAs( output );
-		// TODO 1.11.2-CD:A - Blank pattern is a separate item now!
-		isPattern |= definitions.materials().blankPattern().isSameAs( output );
-
-		return isPattern;
+		return AppEngCrafting.INSTANCE.<Item, CraftingItemDefinitions>definitions( Item.class ).pattern().isSameAs( output );
 	}
 
 	private NBTBase createItemTag( final ItemStack i )
