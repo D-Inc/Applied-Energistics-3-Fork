@@ -34,7 +34,11 @@ import appeng.core.api.implementations.items.IMemoryCard;
 import appeng.core.api.implementations.items.MemoryCardMessages;
 import appeng.core.lib.sync.AppEngPacket;
 import appeng.core.lib.sync.network.INetworkInfo;
+import appeng.core.me.AppEngME;
+import appeng.core.me.definitions.MEItemDefinitions;
 import appeng.core.me.item.ToolNetworkTool;
+import appeng.decorative.AppEngDecorative;
+import appeng.decorative.definitions.DecorativeItemDefinitions;
 import appeng.decorative.item.ToolColorApplicator;
 import appeng.tools.AppEngTools;
 import appeng.tools.definitions.ToolsItemDefinitions;
@@ -88,9 +92,8 @@ public class PacketClick extends AppEngPacket
 	public void serverPacketData( final INetworkInfo manager, final AppEngPacket packet, final EntityPlayer player )
 	{
 		final ItemStack is = player.inventory.getCurrentItem();
-		final ToolsItemDefinitions items = AppEngTools.INSTANCE.<Item, ToolsItemDefinitions>definitions( Item.class );
-		final IItemDefinition<Item> maybeMemoryCard = items.memoryCard();
-		final IItemDefinition<Item> maybeColorApplicator = items.colorApplicator();
+		final IItemDefinition<Item> maybeMemoryCard = AppEngME.INSTANCE.<Item, MEItemDefinitions>definitions( Item.class ).memoryCard();
+		final IItemDefinition<Item> maybeColorApplicator = AppEngDecorative.INSTANCE.<Item, DecorativeItemDefinitions>definitions( Item.class ).colorApplicator();
 
 		if( is != null )
 		{
