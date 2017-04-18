@@ -70,7 +70,8 @@ import appeng.core.lib.sync.network.NetworkHandler;
 import appeng.core.lib.sync.packets.PacketAssemblerAnimation;
 import appeng.core.lib.sync.packets.PacketValueConfig;
 import appeng.core.lib.util.Platform;
-import appeng.core.me.item.PartType;
+import appeng.core.me.AppEngME;
+import appeng.core.me.api.part.PartRegistryEntry;
 import appeng.core.me.part.AEBasePart;
 import appeng.core.server.AppEngCoreServerProxy;
 import appeng.miscellaneous.client.render.RenderTinyTNTPrimed;
@@ -253,11 +254,12 @@ public class AppEngCoreClientProxy extends AppEngCoreServerProxy
 				}
 			}
 		}
-		for( PartType part : PartType.values() )
+		for( PartRegistryEntry<?> part : AppEngME.INSTANCE.getPartRegistry() )
 		{
-			if( !part.isCable() )
-			{
-				IModel model = ModelsCache.INSTANCE.getOrLoadModel( part.getModel() );
+//			if( !part.isCable() )
+//			{
+				//TODO 1.11.2-CD:A - First, this does belong to core module. Second, move to format-based models (EXCore).
+				IModel model = ModelsCache.INSTANCE.getOrLoadModel( new ResourceLocation( part.getRegistryName().getResourceDomain(), "part/" + part.getRegistryName().getResourcePath() ) );
 				for( ResourceLocation location : model.getTextures() )
 				{
 					for( AEColor color : AEColor.values() )
@@ -265,7 +267,7 @@ public class AppEngCoreClientProxy extends AppEngCoreServerProxy
 						event.getMap().registerSprite( AEBasePart.replaceProperties( location, ImmutableMap.of( "color", color.name() ) ) );
 					}
 				}
-			}
+//			}
 		}
 
 		for( ResourceLocation location : ModelsCache.INSTANCE.getOrLoadModel( new ResourceLocation( AppEng.MODID, "part/cable_facade" ) ).getTextures() )
