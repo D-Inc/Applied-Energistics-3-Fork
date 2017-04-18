@@ -103,7 +103,7 @@ public final class AppEng
 
 	private File configDirectory;
 
-	private AppEng()
+	public AppEng()
 	{
 		FMLCommonHandler.instance().registerCrashCallable( new ModCrashEnhancement( CrashInfo.MOD_VERSION ) );
 	}
