@@ -30,9 +30,12 @@ import net.minecraft.nbt.NBTTagCompound;
 
 import appeng.core.api.util.AEPartLocation;
 import appeng.core.lib.AppEngApi;
+import appeng.core.me.AppEngME;
+import appeng.core.me.api.part.PartRegistryEntry;
 import appeng.core.me.api.parts.IFacadeContainer;
 import appeng.core.me.api.parts.IFacadePart;
 import appeng.core.me.api.parts.IPartHost;
+import appeng.core.me.definitions.MEPartDefinitions;
 import appeng.core.me.item.ItemFacade;
 
 
@@ -132,7 +135,7 @@ public class FacadeContainer implements IFacadeContainer
 				ids[1] = out.readInt();
 				ids[0] = Math.abs( ids[0] );
 
-				Optional<Item> maybeFacadeItem = AppEngApi.internalApi().definitions().items().facade().maybe();
+				Optional<Item> maybeFacadeItem = ((MEPartDefinitions) AppEngME.INSTANCE.definitions( PartRegistryEntry.class )).cableFacade().maybe();
 				if( maybeFacadeItem.isPresent() )
 				{
 					final ItemFacade ifa = (ItemFacade) maybeFacadeItem.get();
