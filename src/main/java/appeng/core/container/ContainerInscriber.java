@@ -169,13 +169,6 @@ public class ContainerInscriber extends ContainerUpgradeable implements IProgres
 				otherSlot = this.top.getStack();
 			}
 
-			// name presses
-			final IMaterialDefinition<?> namePress = AppEngCore.INSTANCE.<Material, CoreMaterialDefinitions>definitions( Material.class ).namePress();
-			if( namePress.isSameAs( otherSlot ) )
-			{
-				return namePress.isSameAs( is );
-			}
-
 			// everything else
 			boolean isValid = false;
 			for( final IInscriberRecipe recipe : AppEngApi.internalApi().registries().inscriber().getRecipes() )
