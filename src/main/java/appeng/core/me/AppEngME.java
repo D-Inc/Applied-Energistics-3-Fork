@@ -19,6 +19,7 @@ import net.minecraftforge.fml.common.event.FMLServerAboutToStartEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppedEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
+import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.FMLControlledNamespacedRegistry;
 import net.minecraftforge.fml.common.registry.IForgeRegistry;
 import net.minecraftforge.fml.common.registry.IForgeRegistry.AddCallback;
@@ -42,6 +43,7 @@ import appeng.core.me.api.part.PartRegistryEntry;
 import appeng.core.me.api.parts.IPart;
 import appeng.core.me.bootstrap.MEFeatureFactory;
 import appeng.core.me.definitions.MEBlockDefinitions;
+import appeng.core.me.definitions.MEEntityDefinitions;
 import appeng.core.me.definitions.MEItemDefinitions;
 import appeng.core.me.definitions.MEMaterialDefinitions;
 import appeng.core.me.definitions.MEPartDefinitions;
@@ -74,6 +76,7 @@ public class AppEngME implements IME
 	private METileDefinitions tileDefinitions;
 	private MEMaterialDefinitions materialDefinitions;
 	private MEPartDefinitions partDefinitions;
+	private MEEntityDefinitions entityDefinitions;
 
 	@Override
 	public <T, D extends IDefinitions<T, ? extends IDefinition<T>>> D definitions( Class<T> clas )
@@ -97,6 +100,10 @@ public class AppEngME implements IME
 		if( clas == PartRegistryEntry.class )
 		{
 			return (D) partDefinitions;
+		}
+		if( clas == EntityEntry.class )
+		{
+			return (D) entityDefinitions;
 		}
 		return null;
 	}
@@ -136,6 +143,7 @@ public class AppEngME implements IME
 		this.tileDefinitions = new METileDefinitions( registry );
 		this.materialDefinitions = new MEMaterialDefinitions( registry );
 		this.partDefinitions = new MEPartDefinitions<>( registry );
+		this.entityDefinitions = new MEEntityDefinitions( registry );
 		registry.preInit( event );
 
 		FacadeConfig.instance = new FacadeConfig( new File( AppEng.instance().getConfigDirectory(), "Facades.cfg" ) );

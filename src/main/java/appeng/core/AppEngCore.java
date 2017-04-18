@@ -18,6 +18,7 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppedEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.FMLControlledNamespacedRegistry;
 import net.minecraftforge.fml.common.registry.RegistryBuilder;
 
@@ -32,6 +33,7 @@ import appeng.core.api.ICore;
 import appeng.core.api.definitions.ICoreItemDefinitions;
 import appeng.core.api.material.Material;
 import appeng.core.definitions.CoreBlockDefinitions;
+import appeng.core.definitions.CoreEntityDefinitions;
 import appeng.core.definitions.CoreItemDefinitions;
 import appeng.core.definitions.CoreMaterialDefinitions;
 import appeng.core.definitions.CoreTileDefinitions;
@@ -69,6 +71,7 @@ public class AppEngCore implements ICore
 	private CoreBlockDefinitions blockDefinitions;
 	private CoreTileDefinitions tileDefinitions;
 	private CoreMaterialDefinitions materialDefinitions;
+	private CoreEntityDefinitions entityDefinitions;
 
 	public AppEngCore()
 	{
@@ -94,6 +97,10 @@ public class AppEngCore implements ICore
 		{
 			return (D) materialDefinitions;
 		}
+		if( clas == EntityEntry.class )
+		{
+			return (D) entityDefinitions;
+		}
 		return null;
 	}
 
@@ -118,6 +125,7 @@ public class AppEngCore implements ICore
 		this.itemDefinitions = new CoreItemDefinitions( registry );
 		this.tileDefinitions = new CoreTileDefinitions( registry );
 		this.materialDefinitions = new CoreMaterialDefinitions( registry );
+		this.entityDefinitions = new CoreEntityDefinitions( registry );
 		registry.preInit( event );
 
 		CreativeTab.init();
