@@ -19,12 +19,9 @@
 package appeng.core.lib.client;
 
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
-import com.google.common.collect.ImmutableMap;
 
 import org.lwjgl.opengl.GL11;
 
@@ -36,26 +33,12 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.minecraftforge.client.event.ModelBakeEvent;
-import net.minecraftforge.client.event.MouseEvent;
-import net.minecraftforge.client.event.RenderLivingEvent;
-import net.minecraftforge.client.event.TextureStitchEvent;
-import net.minecraftforge.client.model.IModel;
 import net.minecraftforge.fml.client.CustomModLoadingErrorDisplayException;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import appeng.core.AppEng;
-import appeng.core.api.util.AECableType;
-import appeng.core.api.util.AEColor;
-import appeng.core.hooks.TickHandler;
-import appeng.core.hooks.TickHandler.PlayerColor;
 import appeng.core.lib.AEConfig;
-import appeng.core.lib.AELog;
 import appeng.core.lib.CommonHelper;
 import appeng.core.lib.block.AEBaseBlock;
 import appeng.core.lib.client.render.effects.AssemblerFX;
@@ -64,18 +47,10 @@ import appeng.core.lib.client.render.effects.EnergyFx;
 import appeng.core.lib.client.render.effects.LightningArcFX;
 import appeng.core.lib.client.render.effects.LightningFX;
 import appeng.core.lib.client.render.effects.VibrantFX;
-import appeng.core.lib.client.render.model.ModelsCache;
-import appeng.core.lib.client.render.model.UVLModelLoader;
-import appeng.core.lib.helpers.IMouseWheelItem;
 import appeng.core.lib.server.ServerHelper;
-import appeng.core.lib.sync.network.NetworkHandler;
 import appeng.core.lib.sync.packets.PacketAssemblerAnimation;
-import appeng.core.lib.sync.packets.PacketValueConfig;
 import appeng.core.lib.util.Platform;
 import appeng.core.me.api.parts.CableRenderMode;
-import appeng.core.me.item.PartType;
-import appeng.core.me.part.AEBasePart;
-import appeng.tools.client.render.texture.ParticleTextures;
 
 
 public class ClientHelper extends ServerHelper
@@ -244,21 +219,6 @@ public class ClientHelper extends ServerHelper
 		};
 	}
 
-	@SubscribeEvent
-	public void postPlayerRender( final RenderLivingEvent.Pre p )
-	{
-		final PlayerColor player = TickHandler.INSTANCE.getPlayerColors().get( p.getEntity().getEntityId() );
-		if( player != null )
-		{
-			final AEColor col = player.myColor;
-
-			final float r = 0xff & ( col.mediumVariant >> 16 );
-			final float g = 0xff & ( col.mediumVariant >> 8 );
-			final float b = 0xff & ( col.mediumVariant );
-			GL11.glColor3f( r / 255.0f, g / 255.0f, b / 255.0f );
-		}
-	}
-
 	private void spawnAssembler( final World world, final double posX, final double posY, final double posZ, final Object o )
 	{
 		final PacketAssemblerAnimation paa = (PacketAssemblerAnimation) o;
@@ -322,96 +282,4 @@ public class ClientHelper extends ServerHelper
 		Minecraft.getMinecraft().effectRenderer.addEffect( fx );
 	}
 
-	@SubscribeEvent
-	public void onModelBakeEvent( final ModelBakeEvent event )
-	{
-		UVLModelLoader.INSTANCE.setLoader( event.getModelLoader() );
-	}
-
-	@SubscribeEvent
-	public void wheelEvent( final MouseEvent me )
-	{
-		if( me.getDwheel() == 0 )
-		{
-			return;
-		}
-
-		final Minecraft mc = Minecraft.getMinecraft();
-		final EntityPlayer player = mc.player;
-		if( player.isSneaking() )
-		{
-			final EnumHand hand;
-			if( player.getHeldItem( EnumHand.MAIN_HAND ) != null && player.getHeldItem( EnumHand.MAIN_HAND ).getItem() instanceof IMouseWheelItem )
-			{
-				hand = EnumHand.MAIN_HAND;
-			}
-			else if( player.getHeldItem( EnumHand.OFF_HAND ) != null && player.getHeldItem( EnumHand.OFF_HAND ).getItem() instanceof IMouseWheelItem )
-			{
-				hand = EnumHand.OFF_HAND;
-			}
-			else
-			{
-				return;
-			}
-
-			final ItemStack is = player.getHeldItem( hand );
-			try
-			{
-				NetworkHandler.instance.sendToServer( new PacketValueConfig( "Item", me.getDwheel() > 0 ? "WheelUp" : "WheelDown" ) );
-				me.setCanceled( true );
-			}
-			catch( final IOException e )
-			{
-				AELog.debug( e );
-			}
-		}
-	}
-
-	@SubscribeEvent
-	public void onTextureStitch( final TextureStitchEvent.Pre event )
-	{
-		ParticleTextures.registerSprite( event );
-		for( AECableType type : AECableType.VALIDCABLES )
-		{
-			for( IModel model : new IModel[] { ModelsCache.INSTANCE.getOrLoadModel( type.getModel() ), ModelsCache.INSTANCE.getOrLoadModel( type.getConnectionModel() ), ModelsCache.INSTANCE.getOrLoadModel( type.getStraightModel() ) } )
-			{
-				for( ResourceLocation location : model.getTextures() )
-				{
-					for( AEColor color : AEColor.values() )
-					{
-						if( type.displayedChannels() > 0 )
-						{
-							for( int i = 0; i <= type.displayedChannels(); i++ )
-							{
-								event.getMap().registerSprite( AEBasePart.replaceProperties( location, ImmutableMap.of( "color", color.name(), "channels", String.valueOf( i ) ) ) );
-							}
-						}
-						else
-						{
-							event.getMap().registerSprite( AEBasePart.replaceProperties( location, ImmutableMap.of( "color", color.name() ) ) );
-						}
-					}
-				}
-			}
-		}
-		for( PartType part : PartType.values() )
-		{
-			if( !part.isCable() )
-			{
-				IModel model = ModelsCache.INSTANCE.getOrLoadModel( part.getModel() );
-				for( ResourceLocation location : model.getTextures() )
-				{
-					for( AEColor color : AEColor.values() )
-					{
-						event.getMap().registerSprite( AEBasePart.replaceProperties( location, ImmutableMap.of( "color", color.name() ) ) );
-					}
-				}
-			}
-		}
-
-		for( ResourceLocation location : ModelsCache.INSTANCE.getOrLoadModel( new ResourceLocation( AppEng.MODID, "part/cable_facade" ) ).getTextures() )
-		{
-			event.getMap().registerSprite( location );
-		}
-	}
 }

@@ -119,69 +119,6 @@ public class AppEngCoreClientProxy extends AppEngCoreServerProxy
 		}
 	}
 
-	private void spawnAssembler( final World world, final double posX, final double posY, final double posZ, final Object o )
-	{
-		final PacketAssemblerAnimation paa = (PacketAssemblerAnimation) o;
-
-		final AssemblerFX fx = new AssemblerFX( Minecraft.getMinecraft().world, posX, posY, posZ, 0.0D, 0.0D, 0.0D, paa.rate, paa.is );
-		Minecraft.getMinecraft().effectRenderer.addEffect( fx );
-	}
-
-	private void spawnVibrant( final World w, final double x, final double y, final double z )
-	{
-		if( CommonHelper.proxy.shouldAddParticles( Platform.getRandom() ) )
-		{
-			final double d0 = ( Platform.getRandomFloat() - 0.5F ) * 0.26D;
-			final double d1 = ( Platform.getRandomFloat() - 0.5F ) * 0.26D;
-			final double d2 = ( Platform.getRandomFloat() - 0.5F ) * 0.26D;
-
-			final VibrantFX fx = new VibrantFX( w, x + d0, y + d1, z + d2, 0.0D, 0.0D, 0.0D );
-			Minecraft.getMinecraft().effectRenderer.addEffect( fx );
-		}
-	}
-
-	private void spawnCrafting( final World w, final double posX, final double posY, final double posZ )
-	{
-		final float x = (float) ( ( ( Platform.getRandomInt() % 100 ) * 0.01 ) - 0.5 ) * 0.7f;
-		final float y = (float) ( ( ( Platform.getRandomInt() % 100 ) * 0.01 ) - 0.5 ) * 0.7f;
-		final float z = (float) ( ( ( Platform.getRandomInt() % 100 ) * 0.01 ) - 0.5 ) * 0.7f;
-
-		final CraftingFx fx = new CraftingFx( w, posX + x, posY + y, posZ + z, Items.DIAMOND );
-
-		fx.setMotionX( -x * 0.2f );
-		fx.setMotionY( -y * 0.2f );
-		fx.setMotionZ( -z * 0.2f );
-
-		Minecraft.getMinecraft().effectRenderer.addEffect( fx );
-	}
-
-	private void spawnEnergy( final World w, final double posX, final double posY, final double posZ )
-	{
-		final float x = (float) ( ( ( Platform.getRandomInt() % 100 ) * 0.01 ) - 0.5 ) * 0.7f;
-		final float y = (float) ( ( ( Platform.getRandomInt() % 100 ) * 0.01 ) - 0.5 ) * 0.7f;
-		final float z = (float) ( ( ( Platform.getRandomInt() % 100 ) * 0.01 ) - 0.5 ) * 0.7f;
-
-		final EnergyFx fx = new EnergyFx( w, posX + x, posY + y, posZ + z, Items.DIAMOND );
-
-		fx.setMotionX( -x * 0.1f );
-		fx.setMotionY( -y * 0.1f );
-		fx.setMotionZ( -z * 0.1f );
-
-		Minecraft.getMinecraft().effectRenderer.addEffect( fx );
-	}
-
-	private void spawnLightning( final World world, final double posX, final double posY, final double posZ )
-	{
-		final LightningFX fx = new LightningFX( world, posX, posY + 0.3f, posZ, 0.0f, 0.0f, 0.0f );
-		Minecraft.getMinecraft().effectRenderer.addEffect( fx );
-	}
-
-	private void spawnLightningArc( final World world, final double posX, final double posY, final double posZ, final Vec3d second )
-	{
-		final LightningFX fx = new LightningArcFX( world, posX, posY, posZ, second.xCoord, second.yCoord, second.zCoord, 0.0f, 0.0f, 0.0f );
-		Minecraft.getMinecraft().effectRenderer.addEffect( fx );
-	}
-
 	@SubscribeEvent
 	public void onModelBakeEvent( final ModelBakeEvent event )
 	{
