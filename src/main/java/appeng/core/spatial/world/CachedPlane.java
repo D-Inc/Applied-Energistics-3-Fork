@@ -37,10 +37,11 @@ import appeng.api.definitions.IBlockDefinition;
 import appeng.core.api.util.AEPartLocation;
 import appeng.core.api.util.WorldCoord;
 import appeng.core.lib.AELog;
-import appeng.core.lib.AppEngApi;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.worlddata.WorldData;
+import appeng.core.spatial.AppEngSpatial;
 import appeng.core.spatial.DefaultSpatialHandler;
+import appeng.core.spatial.definitions.SpatialBlockDefinitions;
 
 
 public class CachedPlane
@@ -59,7 +60,7 @@ public class CachedPlane
 	private final LinkedList<NextTickListEntry> ticks = new LinkedList<NextTickListEntry>();
 	private final World world;
 	private final LinkedList<WorldCoord> updates = new LinkedList<WorldCoord>();
-	private final IBlockDefinition matrixFrame = AppEngApi.internalApi().definitions().blocks().matrixFrame();
+	private final IBlockDefinition matrixFrame = AppEngSpatial.INSTANCE.<Block, SpatialBlockDefinitions>definitions( Block.class ).matrixFrame();
 	private int verticalBits;
 	private final DefaultSpatialHandler handler = new DefaultSpatialHandler();
 
