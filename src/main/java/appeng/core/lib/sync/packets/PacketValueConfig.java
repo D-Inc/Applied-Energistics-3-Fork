@@ -54,7 +54,6 @@ import appeng.core.me.container.ContainerLevelEmitter;
 import appeng.core.me.container.ContainerNetworkTool;
 import appeng.core.me.container.ContainerSecurity;
 import appeng.core.me.container.ContainerStorageBus;
-import appeng.tools.container.ContainerQuartzKnife;
 
 
 public class PacketValueConfig extends AppEngPacket
@@ -137,11 +136,6 @@ public class PacketValueConfig extends AppEngPacket
 		{
 			final ContainerCraftingCPU qk = (ContainerCraftingCPU) c;
 			qk.cancelCrafting();
-		}
-		else if( this.Name.equals( "QuartzKnife.Name" ) && c instanceof ContainerQuartzKnife )
-		{
-			final ContainerQuartzKnife qk = (ContainerQuartzKnife) c;
-			qk.setName( this.Value );
 		}
 		else if( this.Name.equals( "TileSecurity.ToggleOption" ) && c instanceof ContainerSecurity )
 		{
