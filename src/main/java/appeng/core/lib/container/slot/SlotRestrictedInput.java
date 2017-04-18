@@ -126,6 +126,7 @@ public class SlotRestrictedInput extends AppEngSlot
 		}
 
 		final CoreMaterialDefinitions materials = AppEngCore.INSTANCE.definitions( Material.class );
+		final MEItemDefinitions itemsME = AppEngME.INSTANCE.definitions( Item.class );
 
 		switch( this.which )
 		{
@@ -171,11 +172,11 @@ public class SlotRestrictedInput extends AppEngSlot
 				return TileEntityFurnace.getItemBurnTime( i ) > 0;
 			case POWERED_TOOL:
 				return Platform.isChargeable( i );
-			case QE_SINGULARITY:
-				return materials.qESingularity().isSameAs( i );
+			case SINGULARITY:
+				return itemsME.singularity().isSameAs( i );
 
 			case RANGE_BOOSTER:
-				return materials.wirelessBooster().isSameAs( i );
+				return itemsME.wirelessBooster().isSameAs( i );
 
 			case SPATIAL_STORAGE_CELLS:
 				return i.getItem() instanceof ISpatialStorageCell && ( (ISpatialStorageCell) i.getItem() ).isSpatialStorage( i );
@@ -269,7 +270,7 @@ public class SlotRestrictedInput extends AppEngSlot
 
 		ENCODED_CRAFTING_PATTERN( 7 * 16 + 15 ), PATTERN( 8 * 16 + 15 ), POWERED_TOOL( 9 * 16 + 15 ),
 
-		RANGE_BOOSTER( 6 * 16 + 15 ), QE_SINGULARITY( 10 * 16 + 15 ), SPATIAL_STORAGE_CELLS( 11 * 16 + 15 ),
+		RANGE_BOOSTER( 6 * 16 + 15 ), SINGULARITY( 10 * 16 + 15 ), SPATIAL_STORAGE_CELLS( 11 * 16 + 15 ),
 
 		FUEL( 12 * 16 + 15 ), UPGRADES( 13 * 16 + 15 ), WORKBENCH_CELL( 15 ), BIOMETRIC_CARD( 14 * 16 + 15 ), VIEW_CELL( 4 * 16 + 14 ),
 
