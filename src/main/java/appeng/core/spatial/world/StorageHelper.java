@@ -36,7 +36,9 @@ import net.minecraft.world.WorldServer;
 import appeng.core.api.util.WorldCoord;
 import appeng.core.lib.AppEngApi;
 import appeng.core.lib.util.Platform;
+import appeng.core.spatial.AppEngSpatial;
 import appeng.core.spatial.ISpatialVisitor;
+import appeng.core.spatial.definitions.SpatialBlockDefinitions;
 
 
 public class StorageHelper
@@ -171,7 +173,7 @@ public class StorageHelper
 			, final World dst/** storage cell **/
 			,final int x, final int y, final int z, final int i, final int j, final int k, final int scaleX, final int scaleY, final int scaleZ )
 	{
-		AppEngApi.internalApi().definitions().blocks().matrixFrame().maybe().ifPresent( matrixFrameBlock -> this.transverseEdges( i - 1, j - 1, k - 1, i + scaleX + 1, j + scaleY + 1, k + scaleZ + 1, new WrapInMatrixFrame( ( (Block) matrixFrameBlock ).getDefaultState(), dst ) ) );
+		AppEngSpatial.INSTANCE.<Block, SpatialBlockDefinitions>definitions( Block.class ).matrixFrame().maybe().ifPresent( matrixFrameBlock -> this.transverseEdges( i - 1, j - 1, k - 1, i + scaleX + 1, j + scaleY + 1, k + scaleZ + 1, new WrapInMatrixFrame( ( (Block) matrixFrameBlock ).getDefaultState(), dst ) ) );
 
 		final AxisAlignedBB srcBox = new AxisAlignedBB( x, y, z, x + scaleX + 1, y + scaleY + 1, z + scaleZ + 1 );
 
