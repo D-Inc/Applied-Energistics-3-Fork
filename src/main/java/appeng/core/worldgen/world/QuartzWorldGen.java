@@ -32,9 +32,9 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 import appeng.api.definitions.IBlockDefinition;
 import appeng.core.api.features.IWorldGen.WorldGenType;
 import appeng.core.lib.AEConfig;
-import appeng.core.lib.AppEngApi;
-import appeng.core.lib.api.definitions.ApiBlocks;
 import appeng.core.lib.features.registries.WorldGenRegistry;
+import appeng.core.worldgen.AppEngWorldGen;
+import appeng.core.worldgen.definitions.WorldGenBlockDefinitions;
 
 
 public final class QuartzWorldGen implements IWorldGenerator
@@ -44,7 +44,7 @@ public final class QuartzWorldGen implements IWorldGenerator
 
 	public QuartzWorldGen()
 	{
-		final ApiBlocks blocks = AppEngApi.internalApi().definitions().blocks();
+		final WorldGenBlockDefinitions blocks = AppEngWorldGen.INSTANCE.<Block, WorldGenBlockDefinitions>definitions( Block.class );
 		final IBlockDefinition<Block> oreDefinition = blocks.quartzOre();
 		final IBlockDefinition<Block> chargedDefinition = blocks.quartzOreCharged();
 
