@@ -36,6 +36,8 @@ import java.util.WeakHashMap;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import org.apache.commons.lang3.tuple.ImmutablePair;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -106,7 +108,6 @@ import appeng.core.hooks.TickHandler;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.AELog;
 import appeng.core.lib.AppEngApi;
-import appeng.core.lib.api.definitions.ApiParts;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.sync.GuiBridge;
 import appeng.core.lib.sync.GuiHostType;
@@ -125,6 +126,7 @@ import appeng.core.me.api.networking.security.ISecurityGrid;
 import appeng.core.me.api.networking.security.MachineSource;
 import appeng.core.me.api.networking.security.PlayerSource;
 import appeng.core.me.api.networking.storage.IStorageGrid;
+import appeng.core.me.api.part.PartRegistryEntry;
 import appeng.core.me.api.storage.IMEInventory;
 import appeng.core.me.api.storage.IMEMonitor;
 import appeng.core.me.api.storage.IMEMonitorHandlerReceiver;
@@ -134,6 +136,7 @@ import appeng.core.me.api.storage.data.IAEItemStack;
 import appeng.core.me.api.storage.data.IAEStack;
 import appeng.core.me.api.storage.data.IAETagCompound;
 import appeng.core.me.api.storage.data.IItemList;
+import appeng.core.me.definitions.MEPartDefinitions;
 import appeng.core.me.grid.GridAccessException;
 import appeng.core.me.grid.GridNode;
 import appeng.core.me.grid.helpers.AENetworkProxy;
@@ -2065,26 +2068,27 @@ public class Platform
 
 	public static Object findPreferred( final ItemStack[] is )
 	{
-		final ApiParts parts = AppEngApi.internalApi().definitions().parts();
+		final MEPartDefinitions<?> parts = (MEPartDefinitions) AppEngCore.INSTANCE.definitions( PartRegistryEntry.class );
 
 		for( final ItemStack stack : is )
 		{
-			if( parts.cableGlass().sameAs( AEColor.Transparent, stack ) )
+			//TODO 1.11.2-CD:A - Implement actual check, i guess.
+			if( parts.cableGlass().isSameAs( new ImmutablePair<>( AEColor.Transparent, stack ) ) )
 			{
 				return stack;
 			}
 
-			if( parts.cableCovered().sameAs( AEColor.Transparent, stack ) )
+			if( parts.cableCovered().isSameAs( new ImmutablePair<>( AEColor.Transparent, stack ) ) )
 			{
 				return stack;
 			}
 
-			if( parts.cableSmart().sameAs( AEColor.Transparent, stack ) )
+			if( parts.cableSmart().isSameAs( new ImmutablePair<>( AEColor.Transparent, stack ) ) )
 			{
 				return stack;
 			}
 
-			if( parts.cableDense().sameAs( AEColor.Transparent, stack ) )
+			if( parts.cableDense().isSameAs( new ImmutablePair<>( AEColor.Transparent, stack ) ) )
 			{
 				return stack;
 			}
