@@ -30,13 +30,13 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import appeng.api.definitions.IBlockDefinition;
+import appeng.core.AppEngCore;
 import appeng.core.api.config.AccessRestriction;
 import appeng.core.api.config.PowerUnits;
 import appeng.core.api.implementations.items.IAEItemPowerStorage;
+import appeng.core.definitions.CoreBlockDefinitions;
 import appeng.core.lib.localization.GuiText;
 import appeng.core.lib.util.Platform;
-import appeng.core.me.AppEngME;
-import appeng.core.me.definitions.MEBlockDefinitions;
 
 
 public class AEBaseItemBlockChargeable extends AEBaseItemBlock implements IAEItemPowerStorage
@@ -68,7 +68,7 @@ public class AEBaseItemBlockChargeable extends AEBaseItemBlock implements IAEIte
 	private double getMaxEnergyCapacity()
 	{
 		final Block blockID = Block.getBlockFromItem( this );
-		final IBlockDefinition energyCell = AppEngME.INSTANCE.<Block, MEBlockDefinitions>definitions( Block.class ).energyCell();
+		final IBlockDefinition energyCell = AppEngCore.INSTANCE.<Block, CoreBlockDefinitions>definitions( Block.class ).energyCell();
 		return (double) energyCell.maybe().map( block -> {
 			if( blockID == block )
 			{
