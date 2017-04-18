@@ -49,24 +49,24 @@ import appeng.core.api.util.AECableType;
 import appeng.core.api.util.AEColor;
 import appeng.core.api.util.AEPartLocation;
 import appeng.core.api.util.IReadOnlyCollection;
-import appeng.core.lib.AppEngApi;
-import appeng.core.lib.api.definitions.ApiParts;
 import appeng.core.lib.client.render.model.ModelsCache;
 import appeng.core.lib.client.render.model.pipeline.FacingQuadRotator;
 import appeng.core.lib.client.render.model.pipeline.MatVecApplicator;
 import appeng.core.lib.client.render.model.pipeline.TypeTransformer;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.AppEngME;
 import appeng.core.me.api.networking.GridFlags;
 import appeng.core.me.api.networking.IGridConnection;
 import appeng.core.me.api.networking.IGridHost;
 import appeng.core.me.api.networking.IGridNode;
+import appeng.core.me.api.part.PartRegistryEntry;
 import appeng.core.me.api.parts.BusSupport;
 import appeng.core.me.api.parts.ICustomCableConnection;
 import appeng.core.me.api.parts.IPart;
 import appeng.core.me.api.parts.IPartCollisionHelper;
 import appeng.core.me.api.parts.IPartHost;
+import appeng.core.me.definitions.MEPartDefinitions;
 import appeng.core.me.grid.GridAccessException;
-import appeng.core.me.item.ItemMultiPart;
 import appeng.core.me.part.AEBasePart;
 
 
@@ -85,7 +85,8 @@ public class PartCable<P extends PartCable<P>> extends AEBasePart<P> implements 
 		super( is );
 		this.getProxy().setFlags( GridFlags.PREFERRED );
 		this.getProxy().setIdlePowerUsage( 0.0 );
-		this.getProxy().setColor( AEColor.values()[( (ItemMultiPart) is.getItem() ).variantOf( is.getItemDamage() )] );
+		//TODO 1.11.2-CD:A - What?
+//		this.getProxy().setColor( AEColor.values()[( (ItemMultiPart) is.getItem() ).variantOf( is.getItemDamage() )] );
 	}
 
 	@Override
@@ -130,23 +131,27 @@ public class PartCable<P extends PartCable<P>> extends AEBasePart<P> implements 
 		{
 			ItemStack newPart = null;
 
-			final ApiParts parts = AppEngApi.internalApi().definitions().parts();
+			final MEPartDefinitions<?> parts = (MEPartDefinitions) AppEngME.INSTANCE.definitions( PartRegistryEntry.class );
 
 			if( this.getCableConnectionType() == AECableType.GLASS )
 			{
-				newPart = parts.cableGlass().stack( newColor, 1 );
+//				newPart = parts.cableGlass().stack( newColor, 1 );
+				newPart = parts.cableGlass().maybeItem().get().maybeStack(1).get();
 			}
 			else if( this.getCableConnectionType() == AECableType.COVERED )
 			{
-				newPart = parts.cableCovered().stack( newColor, 1 );
+//				newPart = parts.cableCovered().stack( newColor, 1 );
+				newPart = parts.cableCovered().maybeItem().get().maybeStack(1).get();
 			}
 			else if( this.getCableConnectionType() == AECableType.SMART )
 			{
-				newPart = parts.cableSmart().stack( newColor, 1 );
+//				newPart = parts.cableSmart().stack( newColor, 1 );
+				newPart = parts.cableSmart().maybeItem().get().maybeStack(1).get();
 			}
 			else if( this.getCableConnectionType() == AECableType.DENSE )
 			{
-				newPart = parts.cableDense().stack( newColor, 1 );
+//				newPart = parts.cableDense().stack( newColor, 1 );
+				newPart = parts.cableDense().maybeItem().get().maybeStack(1).get();
 			}
 
 			boolean hasPermission = true;
