@@ -24,6 +24,7 @@ import java.util.List;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
@@ -31,15 +32,13 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
 
-import appeng.core.AppEngCore;
-import appeng.core.api.material.Material;
-import appeng.core.definitions.CoreMaterialDefinitions;
 import appeng.core.lib.AEConfig;
-import appeng.core.lib.api.definitions.ApiMaterials;
 import appeng.core.lib.entity.AEBaseEntityItem;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.helpers.Reflected;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.AppEngME;
+import appeng.core.me.definitions.MEItemDefinitions;
 
 
 public final class EntitySingularity extends AEBaseEntityItem
@@ -84,9 +83,9 @@ public final class EntitySingularity extends AEBaseEntityItem
 
 		final ItemStack item = this.getEntityItem();
 
-		// TODO 1.11.2-CD:A - Singularity is a separate item now!
-		final CoreMaterialDefinitions materials = AppEngCore.INSTANCE.<Material, CoreMaterialDefinitions>definitions( Material.class );
+		final MEItemDefinitions materials = AppEngME.INSTANCE.<Item, MEItemDefinitions>definitions( Item.class );
 
+		// TODO 1.11.2-CD:A - Singularity is a state based item now!
 		if( materials.singularity().isSameAs( item ) )
 		{
 			final AxisAlignedBB region = new AxisAlignedBB( this.posX - 4, this.posY - 4, this.posZ - 4, this.posX + 4, this.posY + 4, this.posZ + 4 );
@@ -132,7 +131,8 @@ public final class EntitySingularity extends AEBaseEntityItem
 									e.setDead();
 								}
 
-								materials.qESingularity().maybeStack( 2 ).ifPresent( singularityStack -> {
+								// TODO 1.11.2-CD:A - Singularity is a state based item now!
+								materials.singularity().maybeStack( 2 ).ifPresent( singularityStack -> {
 									final NBTTagCompound cmp = Platform.openNbtData( (ItemStack) singularityStack );
 									cmp.setLong( "freq", ( new Date() ).getTime() * 100 + ( randTickSeed ) % 100 );
 									randTickSeed++;
