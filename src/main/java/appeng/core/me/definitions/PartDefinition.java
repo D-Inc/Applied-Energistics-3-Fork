@@ -40,7 +40,7 @@ public class PartDefinition<P extends IPart<P>> extends Definition<PartRegistryE
 	public PartDefinition( ResourceLocation identifier, PartRegistryEntry<P> t, IItemDefinition<?> item )
 	{
 		super( identifier, t );
-		this.item = Optional.fromNullable( item );
+		this.item = Optional.ofNullable( item );
 	}
 
 	@Override
