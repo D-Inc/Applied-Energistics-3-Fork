@@ -36,6 +36,7 @@ import appeng.api.module.Module;
 import appeng.api.module.Module.ModuleEventHandler;
 import appeng.api.module.ModuleIMCMessageEvent;
 import appeng.core.AppEng;
+import appeng.core.api.material.Material;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.FacadeConfig;
 import appeng.core.lib.features.AEFeature;
@@ -45,6 +46,7 @@ import appeng.core.me.api.parts.IPart;
 import appeng.core.me.bootstrap.MEFeatureFactory;
 import appeng.core.me.definitions.MEBlockDefinitions;
 import appeng.core.me.definitions.MEItemDefinitions;
+import appeng.core.me.definitions.MEMaterialDefinitions;
 import appeng.core.me.definitions.MEPartDefinitions;
 import appeng.core.me.definitions.METileDefinitions;
 import appeng.core.me.item.ItemCard;
@@ -73,6 +75,7 @@ public class AppEngME implements IME
 	private MEItemDefinitions itemDefinitions;
 	private MEBlockDefinitions blockDefinitions;
 	private METileDefinitions tileDefinitions;
+	private MEMaterialDefinitions materialDefinitions;
 	private MEPartDefinitions partDefinitions;
 
 	@Override
@@ -89,6 +92,10 @@ public class AppEngME implements IME
 		if( clas == TileEntity.class )
 		{
 			return (D) tileDefinitions;
+		}
+		if( clas == Material.class )
+		{
+			return (D) materialDefinitions;
 		}
 		if( clas == PartRegistryEntry.class )
 		{
@@ -130,6 +137,7 @@ public class AppEngME implements IME
 		this.blockDefinitions = new MEBlockDefinitions( registry );
 		this.itemDefinitions = new MEItemDefinitions( registry );
 		this.tileDefinitions = new METileDefinitions( registry );
+		this.materialDefinitions = new MEMaterialDefinitions( registry );
 		this.partDefinitions = new MEPartDefinitions<>( registry );
 		registry.preInit( event );
 
