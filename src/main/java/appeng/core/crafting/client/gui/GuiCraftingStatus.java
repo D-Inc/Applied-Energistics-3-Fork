@@ -29,14 +29,14 @@ import org.lwjgl.input.Mouse;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
+import appeng.core.crafting.AppEngCrafting;
 import appeng.core.crafting.container.ContainerCraftingStatus;
+import appeng.core.crafting.definitions.CraftingPartDefinitions;
 import appeng.core.crafting.part.PartPatternTerminal;
 import appeng.core.lib.AELog;
-import appeng.core.lib.ApiDefinitions;
-import appeng.core.lib.AppEngApi;
-import appeng.core.lib.api.definitions.ApiParts;
 import appeng.core.lib.client.gui.widgets.GuiTabButton;
 import appeng.core.lib.helpers.WirelessTerminalGuiObject;
 import appeng.core.lib.localization.GuiText;
@@ -44,7 +44,11 @@ import appeng.core.lib.sync.GuiBridge;
 import appeng.core.lib.sync.network.NetworkHandler;
 import appeng.core.lib.sync.packets.PacketSwitchGuis;
 import appeng.core.lib.sync.packets.PacketValueConfig;
+import appeng.core.me.AppEngME;
+import appeng.core.me.api.part.PartRegistryEntry;
 import appeng.core.me.api.storage.ITerminalHost;
+import appeng.core.me.definitions.MEItemDefinitions;
+import appeng.core.me.definitions.MEPartDefinitions;
 import appeng.core.me.part.reporting.PartCraftingTerminal;
 import appeng.core.me.part.reporting.PartTerminal;
 
@@ -65,34 +69,30 @@ public class GuiCraftingStatus extends GuiCraftingCPU
 
 		this.status = (ContainerCraftingStatus) this.inventorySlots;
 		final Object target = this.status.getTarget();
-		final ApiDefinitions definitions = AppEngApi.internalApi().definitions();
-		final ApiParts parts = definitions.parts();
+		final MEPartDefinitions<?> parts = (MEPartDefinitions) AppEngME.INSTANCE.definitions( PartRegistryEntry.class );
 
 		if( target instanceof WirelessTerminalGuiObject )
 		{
-			myIcon = (ItemStack) definitions.items().wirelessTerminal().maybeStack( 1 ).orElse( null );
+			myIcon = AppEngME.INSTANCE.<Item, MEItemDefinitions>definitions( Item.class ).wirelessTerminal().maybeStack( 1 ).orElse( myIcon );
 
 			this.originalGui = GuiBridge.GUI_WIRELESS_TERM;
 		}
 
 		if( target instanceof PartTerminal )
 		{
-			myIcon = (ItemStack) parts.terminal().maybeStack( 1 ).orElse( null );
-
+			myIcon = parts.terminal().maybeItem().get().maybeStack( 1 ).orElse( null );
 			this.originalGui = GuiBridge.GUI_ME;
 		}
 
 		if( target instanceof PartCraftingTerminal )
 		{
-			myIcon = (ItemStack) parts.craftingTerminal().maybeStack( 1 ).orElse( null );
-
+			myIcon = parts.craftingTerminal().maybeItem().get().maybeStack( 1 ).orElse( null );
 			this.originalGui = GuiBridge.GUI_CRAFTING_TERMINAL;
 		}
 
 		if( target instanceof PartPatternTerminal )
 		{
-			myIcon = (ItemStack) parts.patternTerminal().maybeStack( 1 ).orElse( null );
-
+			myIcon = ( (CraftingPartDefinitions<?>) (CraftingPartDefinitions) AppEngCrafting.INSTANCE.definitions( PartRegistryEntry.class ) ).patternTerminal().maybeItem().get().maybeStack( 1 ).orElse( null );
 			this.originalGui = GuiBridge.GUI_PATTERN_TERMINAL;
 		}
 	}
