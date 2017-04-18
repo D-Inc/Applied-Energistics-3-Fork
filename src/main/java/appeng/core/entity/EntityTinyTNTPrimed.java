@@ -30,6 +30,7 @@ import net.minecraft.entity.MoverType;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityTNTPrimed;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.item.Item;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
@@ -39,6 +40,8 @@ import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.IEntityAdditionalSpawnData;
 
+import appeng.core.AppEngCore;
+import appeng.core.definitions.CoreItemDefinitions;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.AppEngApi;
 import appeng.core.lib.CommonHelper;
@@ -90,7 +93,7 @@ public final class EntityTinyTNTPrimed extends EntityTNTPrimed implements IEntit
 
 		if( this.isInWater() && Platform.isServer() ) // put out the fuse.
 		{
-		AppEngApi.internalApi().definitions().blocks().tinyTNT().maybeItem().get().maybeStack( 1 ).ifPresent( tntStack -> {
+		AppEngCore.INSTANCE.<Item, CoreItemDefinitions>definitions( Item.class ).blockTinyTNT().maybeStack( 1 ).ifPresent( tntStack -> {
 				final EntityItem item = new EntityItem( this.world, this.posX, this.posY, this.posZ, tntStack );
 
 				item.motionX = this.motionX;

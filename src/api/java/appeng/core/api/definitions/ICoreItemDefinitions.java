@@ -78,7 +78,7 @@ public interface ICoreItemDefinitions extends IDefinitions<Item, IItemDefinition
 		return get( "energy_cell_dense" );
 	}
 
-	default IItemDefinition<Item> EEnergyCellCreative()
+	default IItemDefinition<Item> blockEnergyCellCreative()
 	{
 		return get( "energy_cell_creative" );
 	}
@@ -88,7 +88,7 @@ public interface ICoreItemDefinitions extends IDefinitions<Item, IItemDefinition
 		return get( "crystal_growth_accelerator" );
 	}
 
-	default IItemDefinition<Item> TTinyTNT()
+	default IItemDefinition<Item> blockTinyTNT()
 	{
 		return get( "tiny_tnt" );
 	}
