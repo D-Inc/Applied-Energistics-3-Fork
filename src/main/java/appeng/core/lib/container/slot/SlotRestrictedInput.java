@@ -142,19 +142,6 @@ public class SlotRestrictedInput extends AppEngSlot
 				return false;
 			case VALID_ENCODED_PATTERN_W_OUTPUT:
 			case ENCODED_PATTERN_W_OUTPUT:
-			case ENCODED_PATTERN:
-			{
-				if( i.getItem() instanceof ICraftingPatternItem )
-				{
-					return true;
-				}
-				// ICraftingPatternDetails pattern = i.getItem() instanceof ICraftingPatternItem ?
-				// ((ICraftingPatternItem)
-				// i.getItem()).getPatternForItem( i ) : null;
-				return false;// pattern != null;
-			}
-			case BLANK_PATTERN:
-				return materials.blankPattern().isSameAs( i );
 
 			case PATTERN:
 
@@ -164,22 +151,6 @@ public class SlotRestrictedInput extends AppEngSlot
 				}
 
 				return AppEngCrafting.INSTANCE.<Item, CraftingItemDefinitions>definitions( Item.class ).pattern().isSameAs( i );
-
-			case INSCRIBER_PLATE:
-				if( materials.namePress().isSameAs( i ) )
-				{
-					return true;
-				}
-
-				for( final ItemStack optional : AppEngApi.internalApi().registries().inscriber().getOptionals() )
-				{
-					if( Platform.isSameItemPrecise( optional, i ) )
-					{
-						return true;
-					}
-				}
-
-				return false;
 
 			case INSCRIBER_INPUT:
 				return true;/*
@@ -302,7 +273,7 @@ public class SlotRestrictedInput extends AppEngSlot
 
 		FUEL( 12 * 16 + 15 ), UPGRADES( 13 * 16 + 15 ), WORKBENCH_CELL( 15 ), BIOMETRIC_CARD( 14 * 16 + 15 ), VIEW_CELL( 4 * 16 + 14 ),
 
-		INSCRIBER_PLATE( 2 * 16 + 14 ), INSCRIBER_INPUT( 3 * 16 + 14 ), METAL_INGOTS( 3 * 16 + 14 );
+		INSCRIBER_INPUT( 3 * 16 + 14 ), METAL_INGOTS( 3 * 16 + 14 );
 
 		public final int IIcon;
 
