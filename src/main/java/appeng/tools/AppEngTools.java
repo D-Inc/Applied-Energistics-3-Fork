@@ -3,7 +3,6 @@ package appeng.tools;
 
 
 import net.minecraft.item.Item;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.ForgeVersion;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -22,11 +21,12 @@ import appeng.api.module.Module;
 import appeng.api.module.Module.ModuleEventHandler;
 import appeng.api.module.ModuleIMCMessageEvent;
 import appeng.core.AppEng;
+import appeng.core.api.material.Material;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.bootstrap.FeatureFactory;
 import appeng.tools.api.ITools;
 import appeng.tools.definitions.ToolsItemDefinitions;
-import appeng.tools.definitions.ToolsTileDefinitions;
+import appeng.tools.definitions.ToolsMaterialDefinitions;
 
 
 @Module( ITools.NAME )
@@ -44,7 +44,7 @@ public class AppEngTools implements ITools
 	private FeatureFactory registry;
 
 	private ToolsItemDefinitions itemDefinitions;
-	private ToolsTileDefinitions tileDefinitions;
+	private ToolsMaterialDefinitions materialDefinitions;
 
 	@Override
 	public <T, D extends IDefinitions<T, ? extends IDefinition<T>>> D definitions( Class<T> clas )
@@ -53,9 +53,9 @@ public class AppEngTools implements ITools
 		{
 			return (D) itemDefinitions;
 		}
-		if( clas == TileEntity.class )
+		if( clas == Material.class )
 		{
-			return (D) tileDefinitions;
+			return (D) materialDefinitions;
 		}
 		return null;
 	}
@@ -65,7 +65,7 @@ public class AppEngTools implements ITools
 	{
 		registry = new FeatureFactory();
 		this.itemDefinitions = new ToolsItemDefinitions( registry );
-		this.tileDefinitions = new ToolsTileDefinitions( registry );
+		this.materialDefinitions = new ToolsMaterialDefinitions( registry );
 		registry.preInit( event );
 	}
 
