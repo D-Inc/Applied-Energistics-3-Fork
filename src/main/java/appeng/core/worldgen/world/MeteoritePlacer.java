@@ -43,15 +43,16 @@ import appeng.api.definitions.IBlockDefinition;
 import appeng.api.definitions.IItemDefinition;
 import appeng.core.AppEngCore;
 import appeng.core.api.material.Material;
-import appeng.core.definitions.CoreMaterialDefinitions;
+import appeng.core.definitions.CoreBlockDefinitions;
 import appeng.core.lib.AEConfig;
-import appeng.core.lib.AppEngApi;
-import appeng.core.lib.api.definitions.ApiBlocks;
-import appeng.core.lib.api.definitions.ApiMaterials;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.util.InventoryAdaptor;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.worlddata.WorldData;
+import appeng.core.me.AppEngME;
+import appeng.core.me.definitions.MEMaterialDefinitions;
+import appeng.core.worldgen.AppEngWorldGen;
+import appeng.core.worldgen.definitions.WorldGenBlockDefinitions;
 import appeng.core.worldgen.world.meteorite.Fallout;
 import appeng.core.worldgen.world.meteorite.FalloutCopy;
 import appeng.core.worldgen.world.meteorite.FalloutSand;
@@ -78,10 +79,8 @@ public final class MeteoritePlacer
 
 	public MeteoritePlacer()
 	{
-		final ApiBlocks blocks = AppEngApi.internalApi().definitions().blocks();
-
-		this.skyChestDefinition = blocks.skyStoneChest();
-		this.skyStoneDefinition = blocks.skyStoneBlock();
+		this.skyChestDefinition = AppEngWorldGen.INSTANCE.<Block, WorldGenBlockDefinitions>definitions( Block.class ).skyStoneChest();
+		this.skyStoneDefinition = AppEngCore.INSTANCE.<Block, CoreBlockDefinitions>definitions( Block.class ).skyStone();
 
 		this.validSpawn.add( Blocks.STONE );
 		this.validSpawn.add( Blocks.COBBLESTONE );
@@ -257,7 +256,7 @@ public final class MeteoritePlacer
 						}
 
 						ItemStack toAdd = null;
-						final CoreMaterialDefinitions materials = AppEngCore.INSTANCE.<Material, CoreMaterialDefinitions>definitions( Material.class );
+						final MEMaterialDefinitions materials = AppEngME.INSTANCE.<Material, MEMaterialDefinitions>definitions( Material.class );
 
 						switch( r % 4 )
 						{
