@@ -26,7 +26,8 @@ package appeng.core.api.util;
 
 import net.minecraft.util.ResourceLocation;
 
-
+//TODO 1.11.2-CD:A - No. Bad enum. Bad.
+@Deprecated
 public enum AECableType
 {
 	/**
