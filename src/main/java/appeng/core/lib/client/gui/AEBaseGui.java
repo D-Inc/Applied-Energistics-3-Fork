@@ -210,7 +210,7 @@ public abstract class AEBaseGui extends GuiContainer
 
 			for( var6 = 0; var6 < var4.length; ++var6 )
 			{
-				var7 = this.fontRendererObj.getStringWidth( var4[var6] );
+				var7 = this.fontRenderer.getStringWidth( var4[var6] );
 
 				if( var7 > var5 )
 				{
@@ -265,7 +265,7 @@ public abstract class AEBaseGui extends GuiContainer
 					var14 = "\u00a77" + var14;
 				}
 
-				this.fontRendererObj.drawStringWithShadow( var14, var6, var7, -1 );
+				this.fontRenderer.drawStringWithShadow( var14, var6, var7, -1 );
 
 				if( var13 == 0 )
 				{

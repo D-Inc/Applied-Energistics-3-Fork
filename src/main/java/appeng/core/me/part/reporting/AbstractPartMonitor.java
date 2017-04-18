@@ -346,7 +346,7 @@ public abstract class AbstractPartMonitor<P extends AbstractPartMonitor<P>> exte
 		final long stackSize = ais.getCount();
 		final String renderedstackSize = NUMBER_CONVERTER.toWideReadableForm( stackSize );
 
-		final FontRenderer fr = Minecraft.getMinecraft().fontRendererObj;
+		final FontRenderer fr = Minecraft.getMinecraft().fontRenderer;
 		final int width = fr.getStringWidth( renderedstackSize );
 		GL11.glTranslatef( -0.5f * width, 0.0f, -1.0f );
 		fr.drawString( renderedstackSize, 0, 0, 0 );
