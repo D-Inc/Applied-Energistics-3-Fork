@@ -10,6 +10,7 @@ import appeng.core.AppEng;
 import appeng.core.AppEngCore;
 import appeng.core.api.material.Material;
 import appeng.core.definitions.CoreMaterialDefinitions;
+import appeng.core.lib.AppEngApi;
 import appeng.core.lib.bootstrap.FeatureFactory;
 import appeng.core.lib.definitions.Definitions;
 import appeng.core.lib.features.AEFeature;
@@ -79,7 +80,7 @@ public class MEItemDefinitions extends Definitions<Item, IItemDefinition<Item>> 
 		this.cell16k = storageCells.item( new ResourceLocation( AppEng.MODID, "basic_storage_cell_16k" ), new ItemBasicStorageCell( materials.cell16kPart(), 128, 1.5, 16 ) ).build();
 		this.cell64k = storageCells.item( new ResourceLocation( AppEng.MODID, "basic_storage_cell_64k" ), new ItemBasicStorageCell( materials.cell64kPart(), 512, 2, 64 ) ).build();
 
-		this.wirelessTerminal = registry.item( new ResourceLocation( AppEngTools.MODID, "wireless_terminal" ), new ToolWirelessTerminal() ).addFeatures( AEFeature.WirelessAccessTerminal ).build();
+		this.wirelessTerminal = registry.item( new ResourceLocation( AppEngTools.MODID, "wireless_terminal" ), new ToolWirelessTerminal() ).addFeatures( AEFeature.WirelessAccessTerminal ).postInit( def -> AppEngApi.INSTANCE.registries().wireless().registerWirelessHandler( def.maybe().get() ) ).build();
 
 		this.portableCell = registry.item( new ResourceLocation( AppEngTools.MODID, "portable_cell" ), new ToolPortableCell() ).addFeatures( AEFeature.PortableCell, AEFeature.StorageCells ).build();
 		this.biometricCard = registry.item( new ResourceLocation( AppEngTools.MODID, "biometric_card" ), new ToolBiometricCard() ).features( AEFeature.Security ).build();

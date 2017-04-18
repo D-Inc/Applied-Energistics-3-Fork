@@ -29,16 +29,10 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-import appeng.api.definitions.IItemDefinition;
-import appeng.core.api.config.Upgrades;
-import appeng.core.api.features.IWirelessTermHandler;
 import appeng.core.api.features.IWorldGen.WorldGenType;
 import appeng.core.hooks.TickHandler;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.AppEngApi;
-import appeng.core.lib.api.definitions.ApiBlocks;
-import appeng.core.lib.api.definitions.ApiItems;
-import appeng.core.lib.api.definitions.ApiParts;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.features.registries.GridCacheRegistry;
 import appeng.core.lib.features.registries.RegistryContainer;
@@ -54,7 +48,6 @@ import appeng.core.me.api.networking.spatial.ISpatialCache;
 import appeng.core.me.api.networking.storage.IStorageGrid;
 import appeng.core.me.api.networking.ticking.ITickManager;
 import appeng.core.me.api.parts.IPartHelper;
-import appeng.core.me.block.BlockCableBus;
 import appeng.core.me.grid.cache.CraftingGridCache;
 import appeng.core.me.grid.cache.EnergyGridCache;
 import appeng.core.me.grid.cache.GridStorageCache;
@@ -225,10 +218,6 @@ public final class Registration
 
 		// Inscriber
 		Upgrades.SPEED.registerItem( (IItemDefinition) blocks.inscriber().block().maybeItem().get(), 3 );*/
-
-		items.wirelessTerminal().maybe().ifPresent( terminal -> {
-			registries.wireless().registerWirelessHandler( (IWirelessTermHandler) terminal );
-		} );
 
 		// add villager trading to black smiths for a few basic materials
 		if( AEConfig.instance.isFeatureEnabled( AEFeature.VillagerTrading ) )
