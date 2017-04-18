@@ -109,7 +109,6 @@ public final class AppEng
 	}
 
 	@Nonnull
-	@Mod.InstanceFactory
 	public static AppEng instance()
 	{
 		return INSTANCE;
