@@ -19,6 +19,7 @@ import net.minecraft.world.biome.Biome;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -107,6 +108,17 @@ public class FeatureFactory
 	public <M extends Material> MaterialDefinitionBuilder<M> material( ResourceLocation id, M material )
 	{
 		return new MaterialDefinitionBuilder<M>( this, id, material ).features( defaultFeatures );
+	}
+
+	@Deprecated
+	public <E extends EntityEntry> EntityDefinitionBuilder<E> entity( String id, E entity )
+	{
+		return entity( new ResourceLocation( AppEng.MODID, id ), entity );
+	}
+
+	public <E extends EntityEntry> EntityDefinitionBuilder<E> entity( ResourceLocation id, E entity )
+	{
+		return new EntityDefinitionBuilder<E>( this, id, entity ).features( defaultFeatures );
 	}
 
 	@Deprecated
