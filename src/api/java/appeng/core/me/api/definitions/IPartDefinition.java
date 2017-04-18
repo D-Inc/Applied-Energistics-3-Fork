@@ -2,7 +2,7 @@
 package appeng.core.me.api.definitions;
 
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 
 import net.minecraft.item.Item;
 

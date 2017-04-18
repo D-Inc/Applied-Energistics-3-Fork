@@ -19,7 +19,7 @@
 package appeng.core.me.definitions;
 
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
