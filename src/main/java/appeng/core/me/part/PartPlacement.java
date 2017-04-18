@@ -28,6 +28,7 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -49,19 +50,22 @@ import appeng.api.definitions.IBlockDefinition;
 import appeng.api.definitions.IItemDefinition;
 import appeng.core.api.util.AEPartLocation;
 import appeng.core.api.util.DimensionalCoord;
-import appeng.core.lib.AppEngApi;
 import appeng.core.lib.CommonHelper;
-import appeng.core.lib.api.definitions.ApiItems;
 import appeng.core.lib.sync.network.NetworkHandler;
 import appeng.core.lib.sync.packets.PacketClick;
 import appeng.core.lib.sync.packets.PacketPartPlacement;
 import appeng.core.lib.util.LookDirection;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.AppEngME;
 import appeng.core.me.api.parts.IFacadePart;
 import appeng.core.me.api.parts.IPartHost;
 import appeng.core.me.api.parts.IPartItem;
 import appeng.core.me.api.parts.PartItemStack;
 import appeng.core.me.api.parts.SelectedPart;
+import appeng.core.me.definitions.MEBlockDefinitions;
+import appeng.core.me.definitions.MEItemDefinitions;
+import appeng.decorative.AppEngDecorative;
+import appeng.decorative.definitions.DecorativeItemDefinitions;
 
 
 public class PartPlacement
@@ -243,7 +247,7 @@ public class PartPlacement
 
 		BlockPos te_pos = pos;
 
-		final IBlockDefinition multiPart = AppEngApi.internalApi().definitions().blocks().multiPart().block();
+		final IBlockDefinition multiPart = AppEngME.INSTANCE.<Block, MEBlockDefinitions>definitions( Block.class ).multiPart();
 		if( host == null && pass == PlaceType.PLACE_ITEM )
 		{
 			EnumFacing offset = null;
@@ -454,10 +458,8 @@ public class PartPlacement
 			else
 			{
 				final ItemStack held = event.getEntityPlayer().getHeldItem( event.getHand() );
-				final ApiItems items = AppEngApi.internalApi().definitions().items();
 
-				boolean supportedItem = items.memoryCard().isSameAs( held );
-				supportedItem |= items.colorApplicator().isSameAs( held );
+				boolean supportedItem = AppEngME.INSTANCE.<Item, MEItemDefinitions>definitions( Item.class ).memoryCard().isSameAs( held ) || AppEngDecorative.INSTANCE.<Item, DecorativeItemDefinitions>definitions( Item.class ).colorApplicator().isSameAs( held );
 
 				if( event.getEntityPlayer().isSneaking() && held != null && supportedItem )
 				{
