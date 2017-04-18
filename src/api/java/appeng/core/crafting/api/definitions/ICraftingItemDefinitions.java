@@ -38,7 +38,7 @@ public interface ICraftingItemDefinitions extends IDefinitions<Item, IItemDefini
 		return get( "crafting_storage_4k" );
 	}
 
-	default IItemDefinition<Item> CraftingStorage16k()
+	default IItemDefinition<Item> blockCraftingStorage16k()
 	{
 		return get( "crafting_storage_16k" );
 	}
