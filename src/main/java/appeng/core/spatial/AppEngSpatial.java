@@ -20,12 +20,14 @@ import appeng.api.definitions.IDefinitions;
 import appeng.api.module.Module;
 import appeng.api.module.Module.ModuleEventHandler;
 import appeng.api.module.ModuleIMCMessageEvent;
+import appeng.core.api.material.Material;
 import appeng.core.lib.bootstrap.FeatureFactory;
 import appeng.core.spatial.api.ISpatial;
 import appeng.core.spatial.definitions.SpatialBiomeDefinitions;
 import appeng.core.spatial.definitions.SpatialBlockDefinitions;
 import appeng.core.spatial.definitions.SpatialDimensionTypeDefinitions;
 import appeng.core.spatial.definitions.SpatialItemDefinitions;
+import appeng.core.spatial.definitions.SpatialMaterialDefinitions;
 import appeng.core.spatial.definitions.SpatialTileDefinitions;
 
 
@@ -41,6 +43,7 @@ public class AppEngSpatial implements ISpatial
 	private SpatialItemDefinitions itemDefinitions;
 	private SpatialBlockDefinitions blockDefinitions;
 	private SpatialTileDefinitions tileDefinitions;
+	private SpatialMaterialDefinitions materialDefinitions;
 	private SpatialBiomeDefinitions biomeDefinitions;
 	private SpatialDimensionTypeDefinitions dimensionTypeDefinitions;
 
@@ -58,6 +61,10 @@ public class AppEngSpatial implements ISpatial
 		if( clas == TileEntity.class )
 		{
 			return (D) tileDefinitions;
+		}
+		if( clas == Material.class )
+		{
+			return (D) materialDefinitions;
 		}
 		if( clas == Biome.class )
 		{
@@ -77,6 +84,7 @@ public class AppEngSpatial implements ISpatial
 		this.blockDefinitions = new SpatialBlockDefinitions( registry );
 		this.itemDefinitions = new SpatialItemDefinitions( registry );
 		this.tileDefinitions = new SpatialTileDefinitions( registry );
+		this.materialDefinitions = new SpatialMaterialDefinitions( registry );
 		this.biomeDefinitions = new SpatialBiomeDefinitions( registry );
 		this.dimensionTypeDefinitions = new SpatialDimensionTypeDefinitions( registry );
 		registry.preInit( event );
