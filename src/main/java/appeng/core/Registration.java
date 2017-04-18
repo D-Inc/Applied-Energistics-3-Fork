@@ -154,9 +154,6 @@ public final class Registration
 	{
 		final AppEngApi api = AppEngApi.INSTANCE;
 		final RegistryContainer registries = api.registries();
-		final ApiParts parts = definitions.parts();
-		final ApiBlocks blocks = definitions.blocks();
-		final ApiItems items = definitions.items();
 
 		// add to localization..
 		PlayerMessages.values();
@@ -164,6 +161,8 @@ public final class Registration
 
 		blocks.multiPart().block().maybe().ifPresent( block -> ( (BlockCableBus) block ).setupTile() );
 
+		//TODO 1.11.2-CD:A - Re-add max upgrades count. Maybe something more dynamic. Like IPartUpgradeable#getMaxUpgrades(ItemCard.EnumCardType)
+		/*
 		// Interface
 		Upgrades.CRAFTING.registerItem( parts.iface(), 1 );
 		Upgrades.CRAFTING.registerItem( (IItemDefinition) blocks.iface().block().maybeItem().get(), 1 );
@@ -227,7 +226,7 @@ public final class Registration
 		Upgrades.SPEED.registerItem( (IItemDefinition) blocks.molecularAssembler().block().maybeItem().get(), 5 );
 
 		// Inscriber
-		Upgrades.SPEED.registerItem( (IItemDefinition) blocks.inscriber().block().maybeItem().get(), 3 );
+		Upgrades.SPEED.registerItem( (IItemDefinition) blocks.inscriber().block().maybeItem().get(), 3 );*/
 
 		items.wirelessTerminal().maybe().ifPresent( terminal -> {
 			registries.wireless().registerWirelessHandler( (IWirelessTermHandler) terminal );
