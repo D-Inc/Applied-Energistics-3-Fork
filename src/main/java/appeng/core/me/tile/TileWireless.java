@@ -24,28 +24,28 @@ import java.util.EnumSet;
 import io.netty.buffer.ByteBuf;
 
 import net.minecraft.inventory.IInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 
-import appeng.core.AppEngCore;
 import appeng.core.api.implementations.IPowerChannelState;
 import appeng.core.api.implementations.tiles.IWirelessAccessPoint;
-import appeng.core.api.material.Material;
 import appeng.core.api.util.AECableType;
 import appeng.core.api.util.AEPartLocation;
 import appeng.core.api.util.DimensionalCoord;
-import appeng.core.definitions.CoreMaterialDefinitions;
 import appeng.core.lib.AEConfig;
 import appeng.core.lib.tile.TileEvent;
 import appeng.core.lib.tile.events.TileEventType;
 import appeng.core.lib.tile.inventory.AppEngInternalInventory;
 import appeng.core.lib.tile.inventory.InvOperation;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.AppEngME;
 import appeng.core.me.api.networking.GridFlags;
 import appeng.core.me.api.networking.IGrid;
 import appeng.core.me.api.networking.events.MENetworkChannelsChanged;
 import appeng.core.me.api.networking.events.MENetworkEventSubscribe;
 import appeng.core.me.api.networking.events.MENetworkPowerStatusChange;
+import appeng.core.me.definitions.MEItemDefinitions;
 import appeng.core.me.grid.GridAccessException;
 
 
@@ -140,8 +140,7 @@ public class TileWireless extends AENetworkInvTile implements IWirelessAccessPoi
 	@Override
 	public boolean isItemValidForSlot( final int i, final ItemStack itemstack )
 	{
-		// TODO 1.11.2-R - Wireless booster is a separate item now!
-		return AppEngCore.INSTANCE.<Material, CoreMaterialDefinitions>definitions( Material.class ).wirelessBooster().isSameAs( itemstack );
+		return AppEngME.INSTANCE.<Item, MEItemDefinitions>definitions( Item.class ).wirelessBooster().isSameAs( itemstack );
 	}
 
 	@Override
