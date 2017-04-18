@@ -31,7 +31,7 @@ import appeng.core.lib.bootstrap.FeatureFactory;
 import appeng.miscellaneous.api.IMiscellaneous;
 
 
-@Module( "misc" )
+@Module( IMiscellaneous.NAME )
 @Mod( modid = AppEngMiscellaneous.MODID, name = AppEngMiscellaneous.MODNAME, version = AEConfig.VERSION, dependencies = "required-after:" + AppEng.MODID, acceptedMinecraftVersions = ForgeVersion.mcVersion )
 public class AppEngMiscellaneous implements IMiscellaneous
 {
