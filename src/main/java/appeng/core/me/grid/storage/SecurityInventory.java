@@ -21,17 +21,21 @@ package appeng.core.me.grid.storage;
 
 import com.mojang.authlib.GameProfile;
 
+import net.minecraft.item.Item;
+
 import appeng.core.api.config.AccessRestriction;
 import appeng.core.api.config.Actionable;
 import appeng.core.api.config.SecurityPermissions;
 import appeng.core.api.implementations.items.IBiometricCard;
 import appeng.core.lib.AppEngApi;
+import appeng.core.me.AppEngME;
 import appeng.core.me.api.networking.security.BaseActionSource;
 import appeng.core.me.api.networking.security.PlayerSource;
 import appeng.core.me.api.storage.IMEInventoryHandler;
 import appeng.core.me.api.storage.StorageChannel;
 import appeng.core.me.api.storage.data.IAEItemStack;
 import appeng.core.me.api.storage.data.IItemList;
+import appeng.core.me.definitions.MEItemDefinitions;
 import appeng.core.me.grid.GridAccessException;
 import appeng.core.me.tile.TileSecurity;
 
@@ -52,7 +56,7 @@ public class SecurityInventory implements IMEInventoryHandler<IAEItemStack>
 	{
 		if( this.hasPermission( src ) )
 		{
-			if( AppEngApi.internalApi().definitions().items().biometricCard().isSameAs( input.getItemStack() ) )
+			if( AppEngME.INSTANCE.<Item, MEItemDefinitions>definitions( Item.class ).biometricCard().isSameAs( input.getItemStack() ) )
 			{
 				if( this.canAccept( input ) )
 				{
