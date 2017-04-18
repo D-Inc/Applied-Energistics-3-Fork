@@ -42,6 +42,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -55,7 +56,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import appeng.api.client.BakingPipeline;
-import appeng.api.definitions.IItemDefinition;
 import appeng.core.api.config.Upgrades;
 import appeng.core.api.implementations.IUpgradeableHost;
 import appeng.core.api.implementations.items.IMemoryCard;
@@ -65,25 +65,25 @@ import appeng.core.api.util.AEColor;
 import appeng.core.api.util.AEPartLocation;
 import appeng.core.api.util.DimensionalCoord;
 import appeng.core.api.util.IConfigManager;
-import appeng.core.lib.ApiDefinitions;
-import appeng.core.lib.AppEngApi;
 import appeng.core.lib.client.render.model.ModelsCache;
 import appeng.core.lib.helpers.ICustomNameObject;
 import appeng.core.lib.helpers.IPriorityHost;
 import appeng.core.lib.tile.inventory.AppEngInternalAEInventory;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.util.SettingsFrom;
+import appeng.core.me.AppEngME;
 import appeng.core.me.api.networking.IGridNode;
 import appeng.core.me.api.networking.security.IActionHost;
+import appeng.core.me.api.part.PartRegistryEntry;
 import appeng.core.me.api.parts.BusSupport;
 import appeng.core.me.api.parts.IPart;
 import appeng.core.me.api.parts.IPartCollisionHelper;
 import appeng.core.me.api.parts.IPartHost;
 import appeng.core.me.api.parts.PartItemStack;
+import appeng.core.me.definitions.MEItemDefinitions;
+import appeng.core.me.definitions.MEPartDefinitions;
 import appeng.core.me.grid.helpers.AENetworkProxy;
 import appeng.core.me.grid.helpers.IGridProxyable;
-import appeng.core.me.item.ItemMultiPart;
-import appeng.core.me.item.PartType;
 import appeng.core.me.part.networking.PartCable;
 
 
@@ -139,14 +139,16 @@ public abstract class AEBasePart<P extends AEBasePart<P>> implements IPart<P>, I
 		return this.host;
 	}
 
-	public PartType getType()
+	@Deprecated
+	public PartRegistryEntry<P> getType()
 	{
-		return ItemMultiPart.instance.getTypeByStack( is );
+		return (PartRegistryEntry<P>) AppEngME.INSTANCE.getPartRegistry().getObject( AppEngME.INSTANCE.getRegistryName( getClass() ) );
 	}
 
 	public ResourceLocation getDefaultModelLocation()
 	{
-		return getType().getModel();
+		ResourceLocation reg = AppEngME.INSTANCE.getRegistryName( getClass() );
+		return new ResourceLocation( reg.getResourceDomain(), "part/" + reg.getResourcePath() );
 	}
 
 	@Override
@@ -478,10 +480,9 @@ public abstract class AEBasePart<P extends AEBasePart<P>> implements IPart<P>, I
 			ItemStack is = this.getItemStack( PartItemStack.Network );
 
 			// Blocks and parts share the same soul!
-			final ApiDefinitions definitions = AppEngApi.internalApi().definitions();
-			if( definitions.parts().iface().isSameAs( is ) )
+			if( ((MEPartDefinitions) AppEngME.INSTANCE.definitions( PartRegistryEntry.class )).iface().isSameAs( is ) )
 			{
-				Optional<ItemStack> iface = ( (IItemDefinition) definitions.blocks().iface().block().maybeItem().get() ).maybeStack( 1 );
+				Optional<ItemStack> iface = AppEngME.INSTANCE.<Item, MEItemDefinitions>definitions( Item.class ).blockIface().maybeStack( 1 );
 				if( iface.isPresent() )
 				{
 					is = iface.get();
