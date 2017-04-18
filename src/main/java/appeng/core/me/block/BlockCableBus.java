@@ -73,7 +73,6 @@ public class BlockCableBus extends AEBaseTileBlock
 {
 
 	private static final ICableBusContainer NULL_CABLE_BUS = new NullCableBusContainer();
-	private static Class<? extends AEBaseTile> noTesrTile;
 
 	public BlockCableBus()
 	{
@@ -338,18 +337,6 @@ public class BlockCableBus extends AEBaseTileBlock
 	public void getCheckedSubBlocks( final Item item, final CreativeTabs tabs, final NonNullList<ItemStack> itemStacks )
 	{
 		// do nothing
-	}
-
-	public void setupTile()
-	{
-		noTesrTile = AppEngApi.INSTANCE.partHelper().getCombinedInstance( TileCableBus.class.getName() );
-		this.setTileEntity( noTesrTile );
-		GameRegistry.registerTileEntity( noTesrTile, "BlockCableBus" );
-	}
-
-	public static Class<? extends AEBaseTile> getNoTesrTile()
-	{
-		return noTesrTile;
 	}
 
 }

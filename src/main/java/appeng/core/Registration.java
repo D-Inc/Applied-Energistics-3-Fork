@@ -159,8 +159,6 @@ public final class Registration
 		PlayerMessages.values();
 		GuiText.values();
 
-		blocks.multiPart().block().maybe().ifPresent( block -> ( (BlockCableBus) block ).setupTile() );
-
 		//TODO 1.11.2-CD:A - Re-add max upgrades count. Maybe something more dynamic. Like IPartUpgradeable#getMaxUpgrades(ItemCard.EnumCardType)
 		/*
 		// Interface
