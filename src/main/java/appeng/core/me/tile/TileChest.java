@@ -34,8 +34,8 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidTankProperties;
 
 import appeng.core.api.config.AccessRestriction;
 import appeng.core.api.config.Actionable;
@@ -695,6 +695,8 @@ public class TileChest extends AENetworkPowerTile implements IMEChest, IFluidHan
 	@Override
 	public int fill( final FluidStack resource, final boolean doFill )
 	{
+		if( !canFill( resource.getFluid() ) )
+			return 0;
 		final double req = resource.amount / 500.0;
 		final double available = this.extractAEPower( req, Actionable.SIMULATE, PowerMultiplier.CONFIG );
 		if( available >= req - 0.01 )
@@ -720,20 +722,7 @@ public class TileChest extends AENetworkPowerTile implements IMEChest, IFluidHan
 		return 0;
 	}
 
-	@Override
-	public FluidStack drain( final EnumFacing from, final FluidStack resource, final boolean doDrain )
-	{
-		return null;
-	}
-
-	@Override
-	public FluidStack drain( final EnumFacing from, final int maxDrain, final boolean doDrain )
-	{
-		return null;
-	}
-
-	@Override
-	public boolean canFill( final EnumFacing from, final Fluid fluid )
+	public boolean canFill( final Fluid fluid )
 	{
 		try
 		{
@@ -747,9 +736,21 @@ public class TileChest extends AENetworkPowerTile implements IMEChest, IFluidHan
 	}
 
 	@Override
-	public boolean canDrain( final EnumFacing from, final Fluid fluid )
+	public IFluidTankProperties[] getTankProperties()
 	{
-		return false;
+		return null;
+	}
+
+	@Override
+	public FluidStack drain( FluidStack resource, boolean doDrain )
+	{
+		return null;
+	}
+
+	@Override
+	public FluidStack drain( int maxDrain, boolean doDrain )
+	{
+		return null;
 	}
 
 	@Override

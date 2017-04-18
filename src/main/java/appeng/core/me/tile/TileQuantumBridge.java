@@ -43,9 +43,11 @@ import appeng.core.lib.tile.events.TileEventType;
 import appeng.core.lib.tile.inventory.AppEngInternalInventory;
 import appeng.core.lib.tile.inventory.InvOperation;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.AppEngME;
 import appeng.core.me.api.networking.GridFlags;
 import appeng.core.me.api.networking.events.MENetworkEventSubscribe;
 import appeng.core.me.api.networking.events.MENetworkPowerStatusChange;
+import appeng.core.me.definitions.MEBlockDefinitions;
 import appeng.core.me.grid.GridAccessException;
 import appeng.core.me.grid.cluster.IAECluster;
 import appeng.core.me.grid.cluster.IAEMultiBlock;
@@ -142,7 +144,7 @@ public class TileQuantumBridge extends AENetworkInvTile implements IAEMultiBlock
 
 	private boolean isCenter()
 	{
-		return (boolean) AppEngApi.internalApi().definitions().blocks().quantumLink().block().maybe().map( link -> getBlockType() == link ).orElse( false );
+		return (boolean) AppEngME.INSTANCE.<Block, MEBlockDefinitions>definitions( Block.class ).quantumLink().maybe().map( link -> getBlockType() == link ).orElse( false );
 	}
 
 	@MENetworkEventSubscribe
@@ -163,7 +165,7 @@ public class TileQuantumBridge extends AENetworkInvTile implements IAEMultiBlock
 	{
 		super.onReady();
 
-		final IBlockDefinition quantumRing = AppEngApi.internalApi().definitions().blocks().quantumRing().block();
+		final IBlockDefinition quantumRing = AppEngME.INSTANCE.<Block, MEBlockDefinitions>definitions( Block.class ).quantumRing();
 		final Optional<Block> maybeLinkBlock = quantumRing.maybe();
 		final Optional<ItemStack> maybeLinkStack = ( (IItemDefinition) quantumRing.maybeItem().get() ).maybeStack( 1 );
 

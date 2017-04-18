@@ -53,6 +53,7 @@ import appeng.core.lib.util.IConfigManagerHost;
 import appeng.core.lib.util.InventoryAdaptor;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.util.inv.WrapperInventoryRange;
+import appeng.core.me.AppEngME;
 import appeng.core.me.api.networking.GridFlags;
 import appeng.core.me.api.networking.IGridNode;
 import appeng.core.me.api.networking.energy.IEnergySource;
@@ -68,6 +69,7 @@ import appeng.core.me.api.storage.data.IAEFluidStack;
 import appeng.core.me.api.storage.data.IAEItemStack;
 import appeng.core.me.api.storage.data.IAEStack;
 import appeng.core.me.api.storage.data.IItemList;
+import appeng.core.me.definitions.MEBlockDefinitions;
 import appeng.core.me.grid.GridAccessException;
 import appeng.core.me.part.automation.BlockUpgradeInventory;
 import appeng.core.me.part.automation.UpgradeInventory;
@@ -116,7 +118,7 @@ public class TileIOPort extends AENetworkInvTile implements IUpgradeableHost, IC
 		this.mySrc = new MachineSource( this );
 		this.lastRedstoneState = YesNo.UNDECIDED;
 
-		final Block ioPortBlock = (Block) AppEngApi.internalApi().definitions().blocks().iOPort().block().maybe().get();
+		final Block ioPortBlock = AppEngME.INSTANCE.<Block, MEBlockDefinitions>definitions( Block.class ).iOPort().maybe().get();
 		this.upgrades = new BlockUpgradeInventory( ioPortBlock, this, 3 );
 	}
 

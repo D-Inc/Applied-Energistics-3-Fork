@@ -32,6 +32,7 @@ import io.netty.buffer.ByteBuf;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -65,12 +66,14 @@ import appeng.core.lib.util.InventoryAdaptor;
 import appeng.core.lib.util.Platform;
 import appeng.core.lib.util.inv.WrapperInventoryRange;
 import appeng.core.lib.util.item.AEItemStack;
+import appeng.core.me.AppEngME;
 import appeng.core.me.api.networking.IGridNode;
 import appeng.core.me.api.networking.energy.IEnergyGrid;
 import appeng.core.me.api.networking.energy.IEnergySource;
 import appeng.core.me.api.networking.ticking.IGridTickable;
 import appeng.core.me.api.networking.ticking.TickRateModulation;
 import appeng.core.me.api.networking.ticking.TickingRequest;
+import appeng.core.me.definitions.METileDefinitions;
 import appeng.core.me.grid.GridAccessException;
 import appeng.core.me.part.automation.DefinitionUpgradeInventory;
 import appeng.core.me.part.automation.UpgradeInventory;
@@ -106,7 +109,7 @@ public class TileInscriber extends AENetworkPowerTile implements IGridTickable, 
 		this.getProxy().setIdlePowerUsage( 0 );
 		this.settings = new ConfigManager( this );
 
-		final ITileDefinition inscriberDefinition = AppEngApi.internalApi().definitions().blocks().inscriber();
+		final ITileDefinition inscriberDefinition = ((METileDefinitions) (Object) AppEngME.INSTANCE.definitions( TileEntity.class )).inscriber();
 		this.upgrades = new DefinitionUpgradeInventory( (IItemDefinition) inscriberDefinition.block().maybeItem().get(), this, this.getUpgradeSlots() );
 	}
 
@@ -241,11 +244,6 @@ public class TileInscriber extends AENetworkPowerTile implements IGridTickable, 
 
 		if( i == 0 || i == 1 )
 		{
-			if( AppEngCore.INSTANCE.<Material, CoreMaterialDefinitions>definitions( Material.class ).namePress().isSameAs( itemstack ) )
-			{
-				return true;
-			}
-
 			for( final ItemStack optionals : AppEngApi.internalApi().registries().inscriber().getOptionals() )
 			{
 				if( Platform.isSameItemPrecise( optionals, itemstack ) )
@@ -348,55 +346,6 @@ public class TileInscriber extends AENetworkPowerTile implements IGridTickable, 
 		if( renamedItem != null && renamedItem.getCount() > 1 )
 		{
 			return null;
-		}
-
-		final IMaterialDefinition<?> namePress = AppEngCore.INSTANCE.<Material, CoreMaterialDefinitions>definitions( Material.class ).namePress();
-		final boolean isNameA = namePress.isSameAs( plateA );
-		final boolean isNameB = namePress.isSameAs( plateB );
-
-		if( ( isNameA || isNameB ) && ( isNameA || plateA == null ) && ( isNameB || plateB == null ) )
-		{
-			if( renamedItem != null )
-			{
-				String name = "";
-
-				if( plateA != null )
-				{
-					final NBTTagCompound tag = Platform.openNbtData( plateA );
-					name += tag.getString( "InscribeName" );
-				}
-
-				if( plateB != null )
-				{
-					final NBTTagCompound tag = Platform.openNbtData( plateB );
-					if( name.length() > 0 )
-					{
-						name += " ";
-					}
-					name += tag.getString( "InscribeName" );
-				}
-
-				final ItemStack startingItem = renamedItem.copy();
-				renamedItem = renamedItem.copy();
-				final NBTTagCompound tag = Platform.openNbtData( renamedItem );
-
-				final NBTTagCompound display = tag.getCompoundTag( "display" );
-				tag.setTag( "display", display );
-
-				if( name.length() > 0 )
-				{
-					display.setString( "Name", name );
-				}
-				else
-				{
-					display.removeTag( "Name" );
-				}
-
-				final List<ItemStack> inputs = Lists.newArrayList( startingItem );
-				final InscriberProcessType type = InscriberProcessType.Inscribe;
-
-				return new InscriberRecipe( inputs, renamedItem, plateA, plateB, type );
-			}
 		}
 
 		for( final IInscriberRecipe recipe : AppEngApi.internalApi().registries().inscriber().getRecipes() )

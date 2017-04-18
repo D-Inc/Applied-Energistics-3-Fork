@@ -20,22 +20,21 @@ package appeng.core.me.tile;
 
 
 import net.minecraft.inventory.IInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidTankProperties;
 
-import appeng.core.AppEngCore;
 import appeng.core.api.config.CondenserOutput;
 import appeng.core.api.config.Settings;
 import appeng.core.api.implementations.items.IStorageComponent;
 import appeng.core.api.material.Material;
 import appeng.core.api.util.IConfigManager;
 import appeng.core.api.util.IConfigurableObject;
-import appeng.core.definitions.CoreMaterialDefinitions;
-import appeng.core.lib.api.definitions.ApiMaterials;
 import appeng.core.lib.tile.AEBaseInvTile;
 import appeng.core.lib.tile.TileEvent;
 import appeng.core.lib.tile.events.TileEventType;
@@ -44,12 +43,15 @@ import appeng.core.lib.tile.inventory.InvOperation;
 import appeng.core.lib.util.ConfigManager;
 import appeng.core.lib.util.IConfigManagerHost;
 import appeng.core.lib.util.Platform;
+import appeng.core.me.AppEngME;
+import appeng.core.me.definitions.MEItemDefinitions;
+import appeng.tools.AppEngTools;
+import appeng.tools.definitions.ToolsMaterialDefinitions;
 
 
 public class TileCondenser extends AEBaseInvTile implements IFluidHandler, IConfigManagerHost, IConfigurableObject
 {
 
-	private static final FluidTankInfo[] EMPTY = { new FluidTankInfo( null, 10 ) };
 	private final int[] sides = { 0, 1 };
 	private final AppEngInternalInventory inv = new AppEngInternalInventory( this, 3 );
 	private final ConfigManager cm = new ConfigManager( this );
@@ -140,16 +142,13 @@ public class TileCondenser extends AEBaseInvTile implements IFluidHandler, IConf
 
 	private ItemStack getOutput()
 	{
-		final CoreMaterialDefinitions materials = AppEngCore.INSTANCE.<Material, CoreMaterialDefinitions>definitions( Material.class );
-
 		switch( (CondenserOutput) this.cm.getSetting( Settings.CONDENSER_OUTPUT ) )
 		{
 			case MATTER_BALLS:
-				return (ItemStack) materials.matterBall().maybeStack( 1 ).orElse( null );
+				return AppEngTools.INSTANCE.<Material, ToolsMaterialDefinitions>definitions( Material.class ).matterBall().maybeStack( 1 ).orElse( null );
 
 			case SINGULARITY:
-				// TODO 1.11.2-CD:A - Singularity is a separate item now!
-				return (ItemStack) materials.singularity().maybeStack( 1 ).orElse( null );
+				return AppEngME.INSTANCE.<Item, MEItemDefinitions>definitions( Item.class ).singularity().maybeStack( 1 ).orElse( null );
 
 			case TRASH:
 			default:
@@ -244,12 +243,6 @@ public class TileCondenser extends AEBaseInvTile implements IFluidHandler, IConf
 	{
 		return null;
 	}
-	
-	@Override
-	public FluidTankInfo[] getTankInfo()
-	{
-		return EMPTY;
-	}
 
 	@Override
 	public void updateSetting( final IConfigManager manager, final Enum settingName, final Enum newValue )
@@ -271,5 +264,12 @@ public class TileCondenser extends AEBaseInvTile implements IFluidHandler, IConf
 	private void setStoredPower( final double storedPower )
 	{
 		this.storedPower = storedPower;
+	}
+
+	//TODO 1.11.2-CD:A - Implement
+	@Override
+	public IFluidTankProperties[] getTankProperties()
+	{
+		return null;
 	}
 }
