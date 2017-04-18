@@ -154,7 +154,7 @@ public final class AppEng
 		}
 		if( module != null )
 		{
-			for( AMethod<M, ?> method : new AClass<M>( (Class<M>) module ).getDeclaredMethods() )
+			for( AMethod<M, ?> method : new AClass<M>( (Class<M>) module.getClass() ).getDeclaredMethods() )
 			{
 				if( method.get().getParameterTypes().length == 1 && method.get().getParameterTypes()[0].isAssignableFrom( event.getClass() ) && method.get().getDeclaredAnnotation( Module.ModuleEventHandler.class ) != null )
 				{
@@ -249,7 +249,7 @@ public final class AppEng
 				MutableObject<Object> moduleHolder = new MutableObject<>();
 				if( mod )
 				{
-					Loader.instance().getModObjectList().entrySet().stream().filter( entry -> entry.getValue().getClass() == moduleClass ).findFirst().ifPresent( instance -> moduleHolder.setValue( instance ) );
+					Loader.instance().getModObjectList().entrySet().stream().filter( entry -> entry.getValue().getClass() == moduleClass ).findFirst().ifPresent( instance -> moduleHolder.setValue( instance.getValue() ) );
 				}
 				if( moduleHolder.getValue() == null )
 				{
