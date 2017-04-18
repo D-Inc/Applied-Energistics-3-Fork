@@ -45,11 +45,6 @@ public interface ICoreMaterialDefinitions extends IDefinitions<Material, IMateri
 		return get( "silicon" );
 	}
 
-	default IMaterialDefinition<Material> matterBall()
-	{
-		return get( "matter_ball" );
-	}
-
 	default IMaterialDefinition<Material> fluixCrystal()
 	{
 		return get( "fluix_crystal" );
@@ -80,124 +75,9 @@ public interface ICoreMaterialDefinitions extends IDefinitions<Material, IMateri
 		return get( "purified_fluix_crystal" );
 	}
 
-	default IMaterialDefinition<Material> calcProcessorPress()
-	{
-		return get( "calc_processor_press" );
-	}
-
-	default IMaterialDefinition<Material> engProcessorPress()
-	{
-		return get( "eng_processor_press" );
-	}
-
-	default IMaterialDefinition<Material> logicProcessorPress()
-	{
-		return get( "logic_processor_press" );
-	}
-
-	default IMaterialDefinition<Material> calcProcessorPrint()
-	{
-		return get( "calc_processor_print" );
-	}
-
-	default IMaterialDefinition<Material> engProcessorPrint()
-	{
-		return get( "eng_processor_print" );
-	}
-
-	default IMaterialDefinition<Material> logicProcessorPrint()
-	{
-		return get( "logic_processor_print" );
-	}
-
-	default IMaterialDefinition<Material> siliconPress()
-	{
-		return get( "silicon_press" );
-	}
-
-	default IMaterialDefinition<Material> siliconPrint()
-	{
-		return get( "silicon_print" );
-	}
-
-	default IMaterialDefinition<Material> logicProcessor()
-	{
-		return get( "logic_processor" );
-	}
-
-	default IMaterialDefinition<Material> calcProcessor()
-	{
-		return get( "calc_processor" );
-	}
-
-	default IMaterialDefinition<Material> engProcessor()
-	{
-		return get( "eng_processor" );
-	}
-
-	default IMaterialDefinition<Material> basicCard()
-	{
-		return get( "basic_card" );
-	}
-
-	default IMaterialDefinition<Material> advCard()
-	{
-		return get( "adv_card" );
-	}
-
-	default IMaterialDefinition<Material> cell2SpatialPart()
-	{
-		return get( "cell_2_spatial_part" );
-	}
-
-	default IMaterialDefinition<Material> cell16SpatialPart()
-	{
-		return get( "cell_16_spatial_part" );
-	}
-
-	default IMaterialDefinition<Material> cell128SpatialPart()
-	{
-		return get( "cell_128_spatial_part" );
-	}
-
-	default IMaterialDefinition<Material> cell1kPart()
-	{
-		return get( "cell_1k_part" );
-	}
-
-	default IMaterialDefinition<Material> cell4kPart()
-	{
-		return get( "cell_4k_part" );
-	}
-
-	default IMaterialDefinition<Material> cell16kPart()
-	{
-		return get( "cell_16k_part" );
-	}
-
-	default IMaterialDefinition<Material> cell64kPart()
-	{
-		return get( "cell_64k_part" );
-	}
-
-	default IMaterialDefinition<Material> cellHousing()
-	{
-		return get( "cell_housing" );
-	}
-
 	default IMaterialDefinition<Material> woodenGear()
 	{
 		return get( "wooden_gear" );
-	}
-
-	default IMaterialDefinition<Material> formationCore()
-	{
-		return get( "formation_core" );
-	}
-
-	default IMaterialDefinition<Material> annihilationCore()
-	{
-		return get( "annihilation_core" );
 	}
 
 	default IMaterialDefinition<Material> skyDust()
@@ -208,11 +88,6 @@ public interface ICoreMaterialDefinitions extends IDefinitions<Material, IMateri
 	default IMaterialDefinition<Material> enderDust()
 	{
 		return get( "ender_dust" );
-	}
-
-	default IMaterialDefinition<Material> wirelessReceiver()
-	{
-		return get( "wireless_receiver" );
 	}
 
 }

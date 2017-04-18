@@ -27,9 +27,6 @@ import net.minecraftforge.fml.common.registry.IForgeRegistry.CreateCallback;
 import net.minecraftforge.fml.common.registry.IForgeRegistry.SubstitutionCallback;
 import net.minecraftforge.fml.common.registry.RegistryBuilder;
 
-import code.elix_x.excomms.reflection.ReflectionHelper.AClass;
-import code.elix_x.excomms.reflection.ReflectionHelper.AClass.AEnum;
-
 import appeng.api.definitions.IDefinition;
 import appeng.api.definitions.IDefinitions;
 import appeng.api.module.Module;
