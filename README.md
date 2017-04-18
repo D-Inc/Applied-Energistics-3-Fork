@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/AEModernMCPort/Applied-Energistics-3.svg?branch=codename-andromeda)](https://travis-ci.org/AEModernMCPort/Applied-Energistics-3) [![Latest](http://github-release-version.herokuapp.com/github/AEModernMCPort/Applied-Energistics-3/release.svg?style=flat)](https://github.com/AEModernMCPort/Applied-Energistics-3/releases/latest)
 
+![Logo](logo.gif)
+
 # Applied Energistics 3
 
 This repository is a WIP on Applied Energistics 3.

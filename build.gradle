@@ -31,7 +31,7 @@ def theDescription = description
 
 archivesBaseName = name
 version = "${version_major}.${version_minor}.${version_patch}"
-if(version_channel != 'release') version += "-$version_channel$build"
+if(version_channel != 'release') version += "-$version_channel"
 version += "-$minecraft_version"
 group = group
 jar {
