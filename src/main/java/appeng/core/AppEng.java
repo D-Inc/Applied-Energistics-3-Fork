@@ -20,7 +20,6 @@ package appeng.core;
 
 
 import java.io.File;
-import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -61,6 +60,7 @@ import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
 import code.elix_x.excomms.reflection.ReflectionHelper.AClass;
+import code.elix_x.excomms.reflection.ReflectionHelper.AMethod;
 
 import appeng.api.module.Module;
 import appeng.api.module.ModuleIMCMessageEvent;
@@ -87,10 +87,10 @@ public final class AppEng
 
 			// depend on version of forge used for build.
 			"after:appliedenergistics2-core;" + "required-after:Forge@[" // require forge.
-					+ net.minecraftforge.common.ForgeVersion.majorVersion + '.' // majorVersion
-					+ net.minecraftforge.common.ForgeVersion.minorVersion + '.' // minorVersion
-					+ net.minecraftforge.common.ForgeVersion.revisionVersion + '.' // revisionVersion
-					+ net.minecraftforge.common.ForgeVersion.buildVersion + ",)"; // buildVersion
+			+ net.minecraftforge.common.ForgeVersion.majorVersion + '.' // majorVersion
+			+ net.minecraftforge.common.ForgeVersion.minorVersion + '.' // minorVersion
+			+ net.minecraftforge.common.ForgeVersion.revisionVersion + '.' // revisionVersion
+			+ net.minecraftforge.common.ForgeVersion.buildVersion + ",)"; // buildVersion
 
 	@Mod.Instance( MODID )
 	private static AppEng INSTANCE;
@@ -143,7 +143,7 @@ public final class AppEng
 		}
 	}
 
-	private void fireModuleEvent( Object module, final FMLEvent event )
+	private <M> void fireModuleEvent( M module, final FMLEvent event )
 	{
 		if( module instanceof String )
 		{
@@ -151,23 +151,16 @@ public final class AppEng
 		}
 		if( module instanceof Class )
 		{
-			module = getModule( (Class) module );
+			module = getModule( (Class<M>) module );
 		}
 		if( module != null )
 		{
-			for( Method method : module.getClass().getDeclaredMethods() )
+			for( AMethod<M, ?> method : new AClass<M>( (Class<M>) module ).getDeclaredMethods() )
 			{
-				if( method.getParameterTypes().length == 1 && method.getParameterTypes()[0].isAssignableFrom( event.getClass() ) && method.getDeclaredAnnotation( Module.ModuleEventHandler.class ) != null )
+				if( method.get().getParameterTypes().length == 1 && method.get().getParameterTypes()[0].isAssignableFrom( event.getClass() ) && method.get().getDeclaredAnnotation( Module.ModuleEventHandler.class ) != null )
 				{
 					current = module;
-					try
-					{
-						method.invoke( module, event );
-					}
-					catch( Exception e )
-					{
-						// :(
-					}
+					method.invoke( module, event );
 					current = null;
 				}
 			}
@@ -181,15 +174,7 @@ public final class AppEng
 		ASMDataTable annotations = event.getAsmData();
 		for( ASMData data : annotations.getAll( Module.class.getCanonicalName() ) )
 		{
-			try
-			{
-				Class<?> clazz = Class.forName( data.getClassName() );
-				foundModules.put( (String) data.getAnnotationInfo().get( "value" ), new ImmutablePair<Class<?>, String>( clazz, (String) data.getAnnotationInfo().get( "dependencies" ) ) );
-			}
-			catch( Exception e )
-			{
-				// :(
-			}
+			foundModules.put( (String) data.getAnnotationInfo().get( "value" ), new ImmutablePair<Class<?>, String>( new AClass<>( data.getClassName() ).get(), (String) data.getAnnotationInfo().get( "dependencies" ) ) );
 		}
 
 		Map<String, Class<?>> modules = Maps.newHashMap();
@@ -450,7 +435,7 @@ public final class AppEng
 							node.dependencyOf( graph.getNode( which ) );
 						}
 					}
-					// "mod" cannot be handled here because AE2 cannot control mod loading else there is no vertex added to this graph
+					// "mod" cannot be handled here because AE3 cannot control mod loading else there is no vertex added to this graph
 				}
 			}
 		}
