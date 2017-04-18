@@ -102,7 +102,7 @@ public class NetworkHandler
 		{
 			try
 			{
-				this.serveHandler.onPacketData( null, ev.getHandler(), ev.getPacket(), srv.playerEntity );
+				this.serveHandler.onPacketData( null, ev.getHandler(), ev.getPacket(), srv.player );
 			}
 			catch( final ThreadQuickExitException ignored )
 			{
