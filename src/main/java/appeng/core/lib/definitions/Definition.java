@@ -7,6 +7,7 @@ import java.util.Optional;
 import net.minecraft.util.ResourceLocation;
 
 import appeng.api.definitions.IDefinition;
+import appeng.api.definitions.sub.ISubDefinition;
 
 
 public class Definition<T> implements IDefinition<T>
@@ -14,11 +15,13 @@ public class Definition<T> implements IDefinition<T>
 
 	private final ResourceLocation identifier;
 	private final Optional<T> t;
+	private final Optional<ISubDefinition<?, T, ?>> subDefinition;
 
-	public Definition( ResourceLocation identifier, T t )
+	public Definition( ResourceLocation identifier, T t, ISubDefinition<?, T, ?> subDefinition )
 	{
 		this.identifier = identifier;
 		this.t = Optional.ofNullable( t );
+		this.subDefinition = Optional.ofNullable( subDefinition );
 	}
 
 	@Override
@@ -31,6 +34,12 @@ public class Definition<T> implements IDefinition<T>
 	public final Optional<T> maybe()
 	{
 		return t;
+	}
+
+	@Override
+	public <D, P extends T, S extends ISubDefinition<D, P, S>> Optional<S> maybeSubDefinition()
+	{
+		return (Optional<S>) subDefinition;
 	}
 
 	@Override
