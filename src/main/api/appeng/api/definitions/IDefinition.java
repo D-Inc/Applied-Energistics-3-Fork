@@ -39,6 +39,10 @@ public interface IDefinition<T>
 	<R extends T> Optional<R> maybe();
 
 	/**
+	 * @param <D> Sub-definition type
+	 * @param <P> Parent type
+	 * @param <S> Sub-definition definition type
+	 * 
 	 * @return {@linkplain ISubDefinition} representation if applicable
 	 */
 	<D, P extends T, S extends ISubDefinition<D, P, S>> Optional<S> maybeSubDefinition();
