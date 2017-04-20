@@ -37,5 +37,25 @@ public interface ISubDefinition<T, D, S extends ISubDefinition<T, D, S>> extends
 	 */
 	@Nonnull
 	<V> S withProperty( ISubDefinitionProperty<V> property, V value );
+	
+	interface ISubDefinitionProperty<V>
+	{
+
+		/**
+		 * Gets the name of this property.
+		 * 
+		 * @return name of this property
+		 */
+		String getName();
+
+		/**
+		 * Checks whether value is a valid value.
+		 * 
+		 * @param value value to check
+		 * @return Whether value is valid
+		 */
+		boolean isValid( V value );
+
+	}
 
 }

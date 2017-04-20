@@ -13,7 +13,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 import appeng.api.definitions.sub.ISubDefinition;
-import appeng.api.definitions.sub.ISubDefinitionProperty;
 
 
 public interface IDefinition<T>
