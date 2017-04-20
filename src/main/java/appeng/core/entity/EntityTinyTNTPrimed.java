@@ -43,7 +43,6 @@ import net.minecraftforge.fml.common.registry.IEntityAdditionalSpawnData;
 import appeng.core.AppEngCore;
 import appeng.core.definitions.CoreItemDefinitions;
 import appeng.core.lib.AEConfig;
-import appeng.core.lib.AppEngApi;
 import appeng.core.lib.CommonHelper;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.lib.helpers.Reflected;

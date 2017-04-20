@@ -6,17 +6,9 @@ import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 
 import appeng.api.definitions.IItemDefinition;
-import appeng.core.item.ToolQuartzCuttingKnife;
-import appeng.core.item.ToolQuartzWrench;
 import appeng.core.lib.bootstrap.FeatureFactory;
 import appeng.core.lib.definitions.Definitions;
 import appeng.core.lib.features.AEFeature;
-import appeng.core.me.item.ToolBiometricCard;
-import appeng.core.me.item.ToolMemoryCard;
-import appeng.core.me.item.ToolNetworkTool;
-import appeng.core.me.item.ToolPortableCell;
-import appeng.core.me.item.ToolWirelessTerminal;
-import appeng.decorative.item.ToolColorApplicator;
 import appeng.tools.AppEngTools;
 import appeng.tools.api.definitions.IToolsItemDefinitions;
 import appeng.tools.item.ToolChargedStaff;

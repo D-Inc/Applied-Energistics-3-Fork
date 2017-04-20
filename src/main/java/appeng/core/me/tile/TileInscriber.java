@@ -25,8 +25,6 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import com.google.common.collect.Lists;
-
 import io.netty.buffer.ByteBuf;
 
 import net.minecraft.inventory.IInventory;
@@ -38,22 +36,17 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import appeng.api.definitions.IItemDefinition;
-import appeng.api.definitions.IMaterialDefinition;
 import appeng.api.definitions.ITileDefinition;
-import appeng.core.AppEngCore;
 import appeng.core.api.config.Actionable;
 import appeng.core.api.config.PowerMultiplier;
 import appeng.core.api.config.Upgrades;
 import appeng.core.api.features.IInscriberRecipe;
 import appeng.core.api.features.InscriberProcessType;
 import appeng.core.api.implementations.IUpgradeableHost;
-import appeng.core.api.material.Material;
 import appeng.core.api.util.AECableType;
 import appeng.core.api.util.AEPartLocation;
 import appeng.core.api.util.IConfigManager;
-import appeng.core.definitions.CoreMaterialDefinitions;
 import appeng.core.lib.AppEngApi;
-import appeng.core.lib.features.registries.entries.InscriberRecipe;
 import appeng.core.lib.helpers.Reflected;
 import appeng.core.lib.settings.TickRates;
 import appeng.core.lib.tile.TileEvent;

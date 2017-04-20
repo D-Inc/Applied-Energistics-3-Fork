@@ -9,18 +9,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import appeng.api.definitions.IBlockDefinition;
 import appeng.core.AppEng;
-import appeng.core.block.BlockCreativeEnergyCell;
-import appeng.core.block.BlockDenseEnergyCell;
-import appeng.core.block.BlockEnergyAcceptor;
-import appeng.core.block.BlockEnergyCell;
-import appeng.core.block.BlockEnergyCellRendering;
 import appeng.core.lib.bootstrap.BlockRenderingCustomizer;
 import appeng.core.lib.bootstrap.FeatureFactory;
 import appeng.core.lib.bootstrap.IBlockRendering;
 import appeng.core.lib.bootstrap.IItemRendering;
 import appeng.core.lib.definitions.Definitions;
 import appeng.core.lib.features.AEFeature;
-import appeng.core.lib.item.AEBaseItemBlockChargeable;
 import appeng.core.me.api.definitions.IMEBlockDefinitions;
 import appeng.core.me.block.BlockCableBus;
 import appeng.core.me.block.BlockCellWorkbench;

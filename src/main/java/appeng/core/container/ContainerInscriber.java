@@ -23,12 +23,7 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
-import appeng.api.definitions.IItemDefinition;
-import appeng.api.definitions.IMaterialDefinition;
-import appeng.core.AppEngCore;
 import appeng.core.api.features.IInscriberRecipe;
-import appeng.core.api.material.Material;
-import appeng.core.definitions.CoreMaterialDefinitions;
 import appeng.core.lib.AppEngApi;
 import appeng.core.lib.container.ContainerUpgradeable;
 import appeng.core.lib.container.guisync.GuiSync;

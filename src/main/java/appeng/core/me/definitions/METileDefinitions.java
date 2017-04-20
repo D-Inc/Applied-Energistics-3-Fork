@@ -23,10 +23,6 @@ import appeng.core.me.tile.TileInterface;
 import appeng.core.me.tile.TileQuantumBridge;
 import appeng.core.me.tile.TileSecurity;
 import appeng.core.me.tile.TileWireless;
-import appeng.core.tile.TileCreativeEnergyCell;
-import appeng.core.tile.TileDenseEnergyCell;
-import appeng.core.tile.TileEnergyAcceptor;
-import appeng.core.tile.TileEnergyCell;
 
 
 public class METileDefinitions extends Definitions<Class<TileEntity>, ITileDefinition<TileEntity>> implements IMETileDefinitions

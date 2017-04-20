@@ -15,8 +15,8 @@ import appeng.core.worldgen.api.definitions.IWorldGenBlockDefinitions;
 import appeng.core.worldgen.block.BlockChargedQuartzOre;
 import appeng.core.worldgen.block.BlockQuartzOre;
 import appeng.core.worldgen.block.BlockSkyChest;
-import appeng.core.worldgen.block.BlockSkyCompass;
 import appeng.core.worldgen.block.BlockSkyChest.SkyChestType;
+import appeng.core.worldgen.block.BlockSkyCompass;
 import appeng.core.worldgen.client.render.SkyChestRenderingCustomizer;
 import appeng.miscellaneous.AppEngMiscellaneous;
 

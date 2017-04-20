@@ -32,7 +32,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import appeng.api.item.IStateItem;
 import appeng.api.item.IStateItem.State.Property;
-import appeng.core.AppEng;
 import appeng.core.AppEngCore;
 import appeng.core.api.items.IItemMaterial;
 import appeng.core.api.material.Material;

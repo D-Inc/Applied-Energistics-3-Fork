@@ -2,7 +2,6 @@
 package appeng.decorative.api.definitions;
 
 
-import appeng.decorative.block.BlockStairCommon;
 import net.minecraft.block.Block;
 
 import appeng.api.definitions.IBlockDefinition;

@@ -40,8 +40,6 @@ import appeng.core.me.item.ToolNetworkTool;
 import appeng.decorative.AppEngDecorative;
 import appeng.decorative.definitions.DecorativeItemDefinitions;
 import appeng.decorative.item.ToolColorApplicator;
-import appeng.tools.AppEngTools;
-import appeng.tools.definitions.ToolsItemDefinitions;
 
 
 public class PacketClick extends AppEngPacket

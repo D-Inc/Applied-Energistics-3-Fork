@@ -29,7 +29,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
 import appeng.core.api.util.AEPartLocation;
-import appeng.core.lib.AppEngApi;
 import appeng.core.me.AppEngME;
 import appeng.core.me.api.part.PartRegistryEntry;
 import appeng.core.me.api.parts.IFacadeContainer;

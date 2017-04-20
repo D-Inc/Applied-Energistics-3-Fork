@@ -17,6 +17,7 @@ import appeng.api.item.IStateItem.State;
 import appeng.api.item.IStateItem.State.Property;
 import appeng.core.lib.bootstrap.ItemSubDefinitionsProvider.IStateItemSubDefinition;
 import appeng.core.lib.definitions.SubDefinitionsProvider;
+import appeng.core.lib.definitions.SubDefinitionsProvider.SubDefinition;
 
 
 public class ItemSubDefinitionsProvider<I extends Item & IStateItem<I>> extends SubDefinitionsProvider<I, State<I>, IStateItemSubDefinition, IStateItem.State.Property<?, I>>
