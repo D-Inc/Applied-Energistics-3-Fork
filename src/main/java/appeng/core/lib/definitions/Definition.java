@@ -15,18 +15,18 @@ public class Definition<T> implements IDefinition<T>
 
 	private final ResourceLocation identifier;
 	private final Optional<T> t;
-	private final Optional<ISubDefinition<?, T, ?>> subDefinition;
-
-	public Definition( ResourceLocation identifier, T t, ISubDefinition<?, T, ?> subDefinition )
-	{
-		this.identifier = identifier;
-		this.t = Optional.ofNullable( t );
-		this.subDefinition = Optional.ofNullable( subDefinition );
-	}
+	private Optional<ISubDefinition<?, T, ?>> subDefinition;
 
 	public Definition( ResourceLocation identifier, T t )
 	{
-		this( identifier, t, null );
+		this.identifier = identifier;
+		this.t = Optional.ofNullable( t );
+	}
+
+	public <D extends Definition<T>> D setSubDefinition( ISubDefinition<?, T, ?> subDefinition )
+	{
+		this.subDefinition = Optional.ofNullable( subDefinition );
+		return (D) this;
 	}
 
 	@Override
