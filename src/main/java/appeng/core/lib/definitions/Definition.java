@@ -24,6 +24,11 @@ public class Definition<T> implements IDefinition<T>
 		this.subDefinition = Optional.ofNullable( subDefinition );
 	}
 
+	public Definition( ResourceLocation identifier, T t )
+	{
+		this( identifier, t, null );
+	}
+
 	@Override
 	public final ResourceLocation identifier()
 	{
