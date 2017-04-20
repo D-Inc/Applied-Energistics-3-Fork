@@ -5,6 +5,8 @@ package appeng.api.definitions.sub;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import net.minecraft.util.ResourceLocation;
+
 import appeng.api.definitions.IDefinition;
 
 
@@ -20,6 +22,9 @@ import appeng.api.definitions.IDefinition;
  */
 public interface ISubDefinition<T, P, S extends ISubDefinition<T, P, S>> extends IDefinition<T>
 {
+
+	@Nullable
+	ResourceLocation identifier();
 
 	/**
 	 * @return parent of this {@linkplain ISubDefinition}
