@@ -22,17 +22,11 @@ import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.FMLControlledNamespacedRegistry;
 import net.minecraftforge.fml.common.registry.RegistryBuilder;
 
-import appeng.api.definitions.IBlockDefinition;
 import appeng.api.definitions.IDefinition;
 import appeng.api.definitions.IDefinitions;
-import appeng.api.definitions.IItemDefinition;
-import appeng.api.definitions.sub.ISubDefinition;
-import appeng.api.item.IStateItem;
-import appeng.api.item.IStateItem.State;
 import appeng.api.module.Module;
 import appeng.api.module.Module.ModuleEventHandler;
 import appeng.core.api.ICore;
-import appeng.core.api.definitions.ICoreItemDefinitions;
 import appeng.core.api.material.Material;
 import appeng.core.definitions.CoreBlockDefinitions;
 import appeng.core.definitions.CoreEntityDefinitions;
@@ -116,7 +110,7 @@ public class AppEngCore implements ICore
 	}
 
 	@ModuleEventHandler
-	public <I extends Item & IStateItem<I>, S extends ISubDefinition<I, State<I>, State.Property<?, I>, S>> void preInit( FMLPreInitializationEvent event )
+	public void preInit( FMLPreInitializationEvent event )
 	{
 		materialRegistry = (FMLControlledNamespacedRegistry<Material>) new RegistryBuilder().setName( new ResourceLocation( AppEng.MODID, "material" ) ).setType( Material.class ).setIDRange( 0, Short.MAX_VALUE ).create();
 
@@ -133,21 +127,6 @@ public class AppEngCore implements ICore
 		this.registration.preInitialize( event );
 
 		proxy.preInit( event );
-
-		/*
-		 * ###################################
-		 * TEST CODE
-		 * WITH ANY TYPE ARGS CHANGES TO DEFINITIONS, SHOULD COMPILE WITHOUT PROBLEMS
-		 */
-		IItemDefinition<Item> quartz = itemDefinitions.get( "quartz" );
-		Class<? extends TileEntity> tile = definitions( TileEntity.class.getClass() ).get( "grinder" ).maybe().get();
-		IDefinitions<Block, IBlockDefinition<Block>> bdefs = definitions( Block.class );
-		IBlockDefinition<Block> chargerDef = bdefs.get( "charger" );
-		chargerDef = (IBlockDefinition<Block>) definitions( Block.class ).get( "charger" );
-		AppEng.instance().<AppEngCore>getModule( "core" ).<Item, ICoreItemDefinitions>definitions( Item.class ).get( new ResourceLocation( AppEng.MODID, "material" ) ).<I, State<I>, State.Property<?, I>, S>maybeSubDefinition().ifPresent( subDefinition -> subDefinition.withProperty( null, null ).maybe().get().toItemStack( 1 ).clearCustomName() );
-		/*
-		 * ###################################
-		 */
 	}
 
 	private void startService( final String serviceName, final Thread thread )
