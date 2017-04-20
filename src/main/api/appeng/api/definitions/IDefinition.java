@@ -33,7 +33,7 @@ public interface IDefinition<T>
 	/**
 	 * @return {@linkplain ISubDefinition} representation if applicable
 	 */
-	<R extends T, D, P extends ISubDefinitionProperty<R, D, ?>, S extends ISubDefinition<R, D, P, S>> Optional<S> maybeSubDefinition();
+	<R extends T, D, S extends ISubDefinition<R, D, S>> Optional<S> maybeSubDefinition();
 
 	/**
 	 * @return <tt>true</tt> if definition is enabled

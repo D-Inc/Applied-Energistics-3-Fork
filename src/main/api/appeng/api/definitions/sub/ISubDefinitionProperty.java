@@ -2,7 +2,7 @@
 package appeng.api.definitions.sub;
 
 
-public interface ISubDefinitionProperty<T, D, V>
+public interface ISubDefinitionProperty<V>
 {
 
 	/**
