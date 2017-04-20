@@ -3,6 +3,7 @@ package appeng.core.lib.bootstrap;
 
 
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.ResourceLocation;
@@ -22,8 +23,6 @@ public class BlockDefinitionBuilder<B extends Block> extends DefinitionBuilder<B
 	private CreativeTabs creativeTab = CreativeTab.instance;
 
 	private IItemBlockCustomizer itemBlock = null;
-
-	private BlockSubDefinitionsProvider<B> subDefs;
 
 	@SideOnly( Side.CLIENT )
 	private BlockRendering blockRendering;
@@ -58,7 +57,7 @@ public class BlockDefinitionBuilder<B extends Block> extends DefinitionBuilder<B
 		return this;
 	}
 
-	public BlockDefinitionBuilder<B> withItemBlock(IItemBlockCustomizer ib)
+	public BlockDefinitionBuilder<B> withItemBlock( IItemBlockCustomizer ib )
 	{
 		itemBlock = ib;
 		return this;
@@ -97,7 +96,7 @@ public class BlockDefinitionBuilder<B extends Block> extends DefinitionBuilder<B
 		BlockDefinition definition = new BlockDefinition<B>( registryName, block );
 		if( !block.getBlockState().getProperties().isEmpty() )
 		{
-			definition.setSubDefinitionsProvider( new BlockSubDefinitionsProvider( definition ) );
+			definition.setSubDefinition( new BlockSubDefinition<IBlockState, Block>( block.getDefaultState(), definition ) );
 		}
 
 		if( itemBlock != null )
