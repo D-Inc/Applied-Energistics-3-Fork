@@ -114,11 +114,13 @@ public final class AppEng
 		return INSTANCE;
 	}
 
+	@Deprecated
 	public <M> M getModule( String name )
 	{
 		return (M) modules.get( name );
 	}
 
+	@Deprecated
 	public <M> M getModule( Class<M> clas )
 	{
 		return (M) classModule.get( clas );
