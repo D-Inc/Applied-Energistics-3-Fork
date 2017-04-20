@@ -42,9 +42,9 @@ import appeng.core.lib.item.AEBaseItem;
 public class ItemMaterial extends AEBaseItem implements IItemMaterial<ItemMaterial>, IStateItem<ItemMaterial>
 {
 
-	public static final FMLControlledNamespacedRegistry<Material> REGISTRY = AppEng.instance().getModule( AppEngCore.class ).getMaterialRegistry();
+	public static final FMLControlledNamespacedRegistry<Material> REGISTRY = AppEngCore.INSTANCE.getMaterialRegistry();
 
-	public static enum MaterialProperty implements IStateItem.State.Property<Material, ItemMaterial>
+	public static enum MaterialProperty implements IStateItem.State.Property<Material>
 	{
 
 		INSTANCE;
@@ -84,6 +84,12 @@ public class ItemMaterial extends AEBaseItem implements IItemMaterial<ItemMateri
 	public State<ItemMaterial> getState( ItemStack itemstack )
 	{
 		return new State<>( this ).withProperty( ItemMaterial.MaterialProperty.INSTANCE, REGISTRY.getObjectById( itemstack.getMetadata() ) );
+	}
+
+	@Override
+	public State<ItemMaterial> getDefaultState()
+	{
+		return new State<ItemMaterial>( this ).withProperty( MaterialProperty.INSTANCE, REGISTRY.getObjectById( 0 ) );
 	}
 
 	@Override
