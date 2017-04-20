@@ -37,8 +37,8 @@ public interface ISubDefinition<T, D, S extends ISubDefinition<T, D, S>> extends
 	 */
 	@Nonnull
 	<V> S withProperty( ISubDefinitionProperty<V> property, V value );
-	
-	interface ISubDefinitionProperty<V>
+
+	public interface ISubDefinitionProperty<V>
 	{
 
 		/**
