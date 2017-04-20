@@ -9,9 +9,9 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import appeng.api.definitions.IItemDefinition;
+import appeng.api.item.IStateItem;
 import appeng.core.CreativeTab;
 import appeng.core.lib.definitions.ItemDefinition;
-import appeng.core.lib.item.IStateItem;
 import appeng.core.lib.util.Platform;
 
 

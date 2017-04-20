@@ -26,10 +26,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 
+import appeng.api.item.IStateItem;
+import appeng.api.item.IStateItem.State.Property;
 import appeng.core.api.util.AEColor;
 import appeng.core.lib.item.AEBaseItem;
-import appeng.core.lib.item.IStateItem;
-import appeng.core.lib.item.IStateItem.State.Property;
 import appeng.core.lib.localization.GuiText;
 
 

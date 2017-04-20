@@ -6,9 +6,9 @@ import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+import appeng.api.item.IStateItem;
+import appeng.api.item.IStateItem.State.Property;
 import appeng.core.lib.item.AEBaseItem;
-import appeng.core.lib.item.IStateItem;
-import appeng.core.lib.item.IStateItem.State.Property;
 import appeng.core.me.entity.EntitySingularity;
 
 

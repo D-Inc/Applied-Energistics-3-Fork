@@ -12,11 +12,11 @@ import net.minecraft.util.ResourceLocation;
 
 import appeng.api.definitions.IItemDefinition;
 import appeng.api.definitions.sub.ISubDefinitionProperty;
+import appeng.api.item.IStateItem;
+import appeng.api.item.IStateItem.State;
+import appeng.api.item.IStateItem.State.Property;
 import appeng.core.lib.bootstrap.ItemSubDefinitionsProvider.IStateItemSubDefinition;
 import appeng.core.lib.definitions.SubDefinitionsProvider;
-import appeng.core.lib.item.IStateItem;
-import appeng.core.lib.item.IStateItem.State;
-import appeng.core.lib.item.IStateItem.State.Property;
 
 
 public class ItemSubDefinitionsProvider<I extends Item & IStateItem<I>> extends SubDefinitionsProvider<I, State<I>, IStateItemSubDefinition, IStateItem.State.Property<?, I>>

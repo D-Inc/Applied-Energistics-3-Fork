@@ -30,13 +30,13 @@ import net.minecraftforge.fml.common.registry.FMLControlledNamespacedRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import appeng.api.item.IStateItem;
+import appeng.api.item.IStateItem.State.Property;
 import appeng.core.AppEng;
 import appeng.core.AppEngCore;
 import appeng.core.api.items.IItemMaterial;
 import appeng.core.api.material.Material;
 import appeng.core.lib.item.AEBaseItem;
-import appeng.core.lib.item.IStateItem;
-import appeng.core.lib.item.IStateItem.State.Property;
 
 
 public class ItemMaterial extends AEBaseItem implements IItemMaterial<ItemMaterial>, IStateItem<ItemMaterial>
