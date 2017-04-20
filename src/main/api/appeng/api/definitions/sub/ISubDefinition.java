@@ -7,7 +7,7 @@ import javax.annotation.Nonnull;
 import appeng.api.definitions.IDefinition;
 
 
-public interface ISubDefinition<T, D, S extends ISubDefinition<T, D, S>> extends IDefinition<D>
+public interface ISubDefinition<T, P, S extends ISubDefinition<T, P, S>> extends IDefinition<T>
 {
 
 	/**
