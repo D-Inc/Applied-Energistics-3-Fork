@@ -34,11 +34,8 @@ public abstract class DefinitionBuilder<I, T, D extends IDefinition<T>, B extend
 	protected final EnumSet<AEFeature> features = EnumSet.noneOf( AEFeature.class );
 
 	private final List<Consumer<D>> buildCallbacks = new ArrayList<>();
-
 	private final List<Consumer<D>> preInitCallbacks = new ArrayList<>();
-
 	private final List<Consumer<D>> initCallbacks = new ArrayList<>();
-
 	private final List<Consumer<D>> postInitCallbacks = new ArrayList<>();
 
 	public DefinitionBuilder( FeatureFactory factory, ResourceLocation registryName, I instance )
