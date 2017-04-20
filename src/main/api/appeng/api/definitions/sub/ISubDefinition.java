@@ -14,7 +14,7 @@ public interface ISubDefinition<T, P, S extends ISubDefinition<T, P, S>> extends
 	 * @return parent of this {@linkplain ISubDefinition}
 	 */
 	@Nonnull
-	IDefinition<T> parent();
+	<PD extends IDefinition<P>> PD parent();
 
 	/**
 	 * Checks whether this subdefinition has given property.<br>
