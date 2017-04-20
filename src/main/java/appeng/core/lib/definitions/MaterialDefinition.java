@@ -22,7 +22,18 @@ import appeng.core.item.ItemMaterial;
 public class MaterialDefinition<M extends Material> extends Definition<M> implements IMaterialDefinition<M>
 {
 
-	private static IItemDefinition<ItemMaterial> itemMaterialDefinition = AppEngCore.INSTANCE.<Item, CoreItemDefinitions>definitions( Item.class ).getUncheked( "material" );
+	private static IItemDefinition<ItemMaterial> itemMaterialDefinition;
+
+	private static IItemDefinition<ItemMaterial> itemMaterialDefinition()
+	{
+		if( itemMaterialDefinition != null )
+		{
+			return itemMaterialDefinition;
+		}
+		if( AppEngCore.INSTANCE.<Item, CoreItemDefinitions>definitions( Item.class ) != null && AppEngCore.INSTANCE.<Item, CoreItemDefinitions>definitions( Item.class ).material() != null )
+			return itemMaterialDefinition = AppEngCore.INSTANCE.<Item, CoreItemDefinitions>definitions( Item.class ).getUncheked( "material" );
+		return null;
+	}
 
 	public MaterialDefinition( ResourceLocation identifier, M material )
 	{
@@ -39,7 +50,7 @@ public class MaterialDefinition<M extends Material> extends Definition<M> implem
 	@Override
 	public <S extends IStateItem.State<I>, I extends Item & IItemMaterial<I>, D extends IItemSubDefinition<S, I>> Optional<D> maybeAsSubDefinition()
 	{
-		return (Optional<D>) maybe().map( material -> itemMaterialDefinition.<State<ItemMaterial>, ItemMaterial, IItemSubDefinition<State<ItemMaterial>, ItemMaterial>>maybeSubDefinition().get().withProperty( "material", null ) );
+		return (Optional<D>) maybe().map( material -> itemMaterialDefinition().<State<ItemMaterial>, ItemMaterial, IItemSubDefinition<State<ItemMaterial>, ItemMaterial>>maybeSubDefinition().get().withProperty( "material", null ) );
 	}
 
 }

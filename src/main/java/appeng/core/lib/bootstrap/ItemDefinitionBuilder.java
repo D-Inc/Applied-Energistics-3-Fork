@@ -71,7 +71,7 @@ public class ItemDefinitionBuilder<I extends Item> extends DefinitionBuilder<I, 
 
 		if( item instanceof IStateItem )
 		{
-			definition.setSubDefinition( new ItemSubDefinition( ( (IStateItem) item ).getDefaultState(), definition ) );
+			preInit( def -> definition.setSubDefinition( new ItemSubDefinition( ( (IStateItem) item ).getDefaultState(), definition ) ) );
 		}
 
 		return definition;

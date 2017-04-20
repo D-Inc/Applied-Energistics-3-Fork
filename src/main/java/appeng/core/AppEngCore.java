@@ -115,10 +115,10 @@ public class AppEngCore implements ICore
 		materialRegistry = (FMLControlledNamespacedRegistry<Material>) new RegistryBuilder().setName( new ResourceLocation( AppEng.MODID, "material" ) ).setType( Material.class ).setIDRange( 0, Short.MAX_VALUE ).create();
 
 		registry = new FeatureFactory();
+		this.materialDefinitions = new CoreMaterialDefinitions( registry );
 		this.blockDefinitions = new CoreBlockDefinitions( registry );
 		this.itemDefinitions = new CoreItemDefinitions( registry );
 		this.tileDefinitions = new CoreTileDefinitions( registry );
-		this.materialDefinitions = new CoreMaterialDefinitions( registry );
 		this.entityDefinitions = new CoreEntityDefinitions( registry );
 		registry.preInit( event );
 
