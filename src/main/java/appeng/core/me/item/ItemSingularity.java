@@ -15,7 +15,7 @@ import appeng.core.me.entity.EntitySingularity;
 public class ItemSingularity extends AEBaseItem implements IStateItem<ItemSingularity>
 {
 
-	public static final IStateItem.State.Property<Boolean, ItemSingularity> ENTANGLED = new Property<Boolean, ItemSingularity>(){
+	public static final IStateItem.State.Property<Boolean> ENTANGLED = new Property<Boolean>(){
 
 		@Override
 		public String getName()
@@ -47,6 +47,12 @@ public class ItemSingularity extends AEBaseItem implements IStateItem<ItemSingul
 	public IStateItem.State<ItemSingularity> getState( ItemStack itemstack )
 	{
 		return new State<ItemSingularity>( this ).withProperty( ENTANGLED, itemstack.getItemDamage() == 1 );
+	}
+
+	@Override
+	public State<ItemSingularity> getDefaultState()
+	{
+		return new State<ItemSingularity>( this ).withProperty( ENTANGLED, false );
 	}
 
 	@Override
