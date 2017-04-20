@@ -15,6 +15,15 @@ import net.minecraft.util.ResourceLocation;
 import appeng.api.definitions.sub.ISubDefinition;
 
 
+/**
+ * Definition is an interface wrapper holding any feature created by AE.<br>
+ * AE's configs allow end user to disable/enable absolutely any small or big part of features. So we needed a solution that allows to work with features without knowing at compile time whether it is enabled or not.<br>
+ * Meet {{@linkplain IDefinition}} - an interface warpping features and using power of {@linkplain Optional} to make sure that everything works smoothly in all possible cases.
+ * 
+ * @author Elix_x
+ *
+ * @param <T> What this definition defines
+ */
 public interface IDefinition<T>
 {
 

@@ -3,10 +3,21 @@ package appeng.api.definitions.sub;
 
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import appeng.api.definitions.IDefinition;
 
 
+/**
+ * {@linkplain IDefinition}s are great. But what about features that can have <i>sub</i>types?<br>
+ * We have created {@linkplain ISubDefinition} just for that! It extends capabilities of {@linkplain IDefinition} with properties to allow fluent sub-types integration with AE.
+ * 
+ * @author Elix_x
+ *
+ * @param <T> "Type of sub-type" - what this subdefinition holds
+ * @param <P> Parent type - type of parent (normal) definition
+ * @param <S> Type of this
+ */
 public interface ISubDefinition<T, P, S extends ISubDefinition<T, P, S>> extends IDefinition<T>
 {
 
@@ -27,6 +38,15 @@ public interface ISubDefinition<T, P, S extends ISubDefinition<T, P, S>> extends
 	boolean hasProperty( ISubDefinitionProperty<?> property );
 
 	/**
+	 * Retrieves a property (of this sub-definition) by its' name.
+	 * 
+	 * @param name name of the property
+	 * @return {@linkplain ISubDefinitionProperty} with the given name, used by this {@linkplain ISubDefinition}
+	 */
+	@Nullable
+	<V> ISubDefinitionProperty<V> getProperty( String name );
+
+	/**
 	 * Applies property to this sub definition to create a new sub definition.<br>
 	 * <br>
 	 * If this subdefinition does not have the property ({@linkplain #hasProperty(ISubDefinitionProperty)}) or the value is invalid ({@linkplain ISubDefinitionProperty#isValid(Object)}, this method does nothing.
@@ -38,6 +58,13 @@ public interface ISubDefinition<T, P, S extends ISubDefinition<T, P, S>> extends
 	@Nonnull
 	<V> S withProperty( ISubDefinitionProperty<V> property, V value );
 
+	/**
+	 * A property to alter {@linkplain ISubDefinition}s.
+	 * 
+	 * @author Elix_x
+	 *
+	 * @param <V> Value type
+	 */
 	public interface ISubDefinitionProperty<V>
 	{
 
@@ -46,6 +73,7 @@ public interface ISubDefinition<T, P, S extends ISubDefinition<T, P, S>> extends
 		 * 
 		 * @return name of this property
 		 */
+		@Nonnull
 		String getName();
 
 		/**
