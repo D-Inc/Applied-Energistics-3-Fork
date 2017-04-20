@@ -36,7 +36,7 @@ import appeng.core.lib.localization.GuiText;
 public class ItemPaintBall extends AEBaseItem implements IStateItem<ItemPaintBall>
 {
 
-	private static final Property<AEColor, ItemPaintBall> COLOR = new Property<AEColor, ItemPaintBall>(){
+	private static final Property<AEColor> COLOR = new Property<AEColor>(){
 
 		@Override
 		public String getName()
@@ -52,7 +52,7 @@ public class ItemPaintBall extends AEBaseItem implements IStateItem<ItemPaintBal
 
 	};
 
-	private static final Property<Boolean, ItemPaintBall> LUMEN = new Property<Boolean, ItemPaintBall>(){
+	private static final Property<Boolean> LUMEN = new Property<Boolean>(){
 
 		@Override
 		public String getName()
@@ -90,6 +90,12 @@ public class ItemPaintBall extends AEBaseItem implements IStateItem<ItemPaintBal
 		AEColor color = AEColor.values()[itemstack.getItemDamage() & 15];
 		boolean lumen = ( ( itemstack.getItemDamage() >> 4 ) & 1 ) == 1;
 		return new State( this, ImmutableMap.of( COLOR, color, LUMEN, lumen ) );
+	}
+
+	@Override
+	public State<ItemPaintBall> getDefaultState()
+	{
+		return new State<ItemPaintBall>( this ).withProperty( COLOR, AEColor.Transparent ).withProperty( LUMEN, false );
 	}
 
 	@Override
