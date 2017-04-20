@@ -9,8 +9,9 @@ import net.minecraft.util.ResourceLocation;
 
 import appeng.api.definitions.IItemDefinition;
 import appeng.api.definitions.IMaterialDefinition;
-import appeng.api.definitions.sub.ISubDefinition;
-import appeng.api.definitions.sub.ISubDefinitionProperty;
+import appeng.api.definitions.sub.IItemSubDefinition;
+import appeng.api.item.IStateItem;
+import appeng.api.item.IStateItem.State;
 import appeng.core.AppEngCore;
 import appeng.core.api.items.IItemMaterial;
 import appeng.core.api.material.Material;
@@ -29,21 +30,16 @@ public class MaterialDefinition<M extends Material> extends Definition<M> implem
 	}
 
 	@Override
-	public <I extends Item & IItemMaterial<I>, D, P extends ISubDefinitionProperty<I, D, ?>, S extends ISubDefinition<I, D, P, ? extends S>> Optional<S> maybeAsSubDefinition()
-	{
-		return (Optional<S>) asSubDefinitionC();
-	}
-
-	public <I extends ItemMaterial, D, P extends ISubDefinitionProperty<I, D, M>, S extends ISubDefinition<I, D, P, S>> Optional<S> asSubDefinitionC()
-	{
-		return maybe().map( material -> itemMaterialDefinition.<I, D, P, S>maybeSubDefinition().get().withProperty( (P) ItemMaterial.MaterialProperty.INSTANCE, material ) );
-	}
-
-	@Override
 	public boolean isSameAs( Object other )
 	{
 		// TODO 1.11.2-CD:A - Add checks
 		return super.isSameAs( other );
+	}
+
+	@Override
+	public <S extends IStateItem.State<I>, I extends Item & IItemMaterial<I>, D extends IItemSubDefinition<S, I>> Optional<D> maybeAsSubDefinition()
+	{
+		return (Optional<D>) maybe().map( material -> itemMaterialDefinition.<State<ItemMaterial>, ItemMaterial, IItemSubDefinition<State<ItemMaterial>, ItemMaterial>>maybeSubDefinition().get().withProperty( "material", null ) );
 	}
 
 }
