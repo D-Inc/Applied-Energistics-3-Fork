@@ -52,11 +52,24 @@ public interface ISubDefinition<T, P, S extends ISubDefinition<T, P, S>> extends
 	 * If this subdefinition does not have the property ({@linkplain #hasProperty(ISubDefinitionProperty)}) or the value is invalid ({@linkplain ISubDefinitionProperty#isValid(Object)}, this method does nothing.
 	 * 
 	 * @param property property to change
-	 * @param value new value of property
+	 * @param value new value of
 	 * @return new {@linkplain ISubDefinition} with modified property, or <tt>this</tt> if property and/or value is invalid.
 	 */
 	@Nonnull
 	<V> S withProperty( ISubDefinitionProperty<V> property, V value );
+
+	/**
+	 * Name based version of {@link #withProperty(ISubDefinitionProperty, Object)}}.
+	 * 
+	 * @param property name of property to change
+	 * @param value new value of
+	 * @return new {@linkplain ISubDefinition} with modified property, or <tt>this</tt> if property and/or value is invalid.
+	 */
+	@Nonnull
+	default <V> S withProperty( String property, V value )
+	{
+		return withProperty( getProperty( property ), value );
+	}
 
 	/**
 	 * A property to alter {@linkplain ISubDefinition}s.
