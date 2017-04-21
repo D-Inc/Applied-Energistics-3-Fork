@@ -29,7 +29,7 @@ import appeng.core.me.bootstrap.MEFeatureFactory;
 import appeng.core.me.item.ItemCard;
 
 
-@Module( value = ICrafting.NAME, dependencies = "after:" + AppEngME.NAME )
+@Module( value = ICrafting.NAME, dependencies = "after:module-" + AppEngME.NAME )
 public class AppEngCrafting implements ICrafting
 {
 
