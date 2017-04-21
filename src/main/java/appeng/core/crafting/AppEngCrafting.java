@@ -23,12 +23,13 @@ import appeng.core.crafting.definitions.CraftingBlockDefinitions;
 import appeng.core.crafting.definitions.CraftingItemDefinitions;
 import appeng.core.crafting.definitions.CraftingPartDefinitions;
 import appeng.core.crafting.definitions.CraftingTileDefinitions;
+import appeng.core.me.AppEngME;
 import appeng.core.me.api.part.PartRegistryEntry;
 import appeng.core.me.bootstrap.MEFeatureFactory;
 import appeng.core.me.item.ItemCard;
 
 
-@Module( ICrafting.NAME )
+@Module( value = ICrafting.NAME, dependencies = "after:" + AppEngME.NAME )
 public class AppEngCrafting implements ICrafting
 {
 
