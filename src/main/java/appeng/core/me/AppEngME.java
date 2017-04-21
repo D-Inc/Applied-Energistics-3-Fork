@@ -28,6 +28,8 @@ import net.minecraftforge.fml.common.registry.IForgeRegistry.CreateCallback;
 import net.minecraftforge.fml.common.registry.IForgeRegistry.SubstitutionCallback;
 import net.minecraftforge.fml.common.registry.RegistryBuilder;
 
+import code.elix_x.excore.utils.net.packets.SmartNetworkWrapper;
+
 import appeng.api.definitions.IDefinition;
 import appeng.api.definitions.IDefinitions;
 import appeng.api.module.Module;
@@ -55,6 +57,8 @@ import appeng.core.me.item.ItemCard;
 public class AppEngME implements IME
 {
 
+	public static final String FULLMODID = AppEng.MODID + "|" + NAME;
+
 	@Module.Instance( NAME )
 	public static final AppEngME INSTANCE = null;
 
@@ -77,6 +81,8 @@ public class AppEngME implements IME
 	private MEMaterialDefinitions materialDefinitions;
 	private MEPartDefinitions partDefinitions;
 	private MEEntityDefinitions entityDefinitions;
+
+	public SmartNetworkWrapper net;
 
 	@Override
 	public <T, D extends IDefinitions<T, ? extends IDefinition<T>>> D definitions( Class<T> clas )
@@ -151,6 +157,8 @@ public class AppEngME implements IME
 		{
 			CreativeTabFacade.init();
 		}
+
+		net = new SmartNetworkWrapper( FULLMODID );
 	}
 
 	@ModuleEventHandler
