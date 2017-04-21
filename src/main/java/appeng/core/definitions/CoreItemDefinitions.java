@@ -37,7 +37,7 @@ public class CoreItemDefinitions extends Definitions<Item, IItemDefinition<Item>
 	{
 		this.material = registry.item( new ResourceLocation( AppEng.MODID, "material" ), new ItemMaterial() ).rendering( new ItemMaterialRendering() ).build();
 		
-		this.crystalSeed = registry.item( new ResourceLocation( AppEng.NAME, "crystal_seed" ), new ItemCrystalSeed() ).rendering( new ItemCrystalSeedRendering() ).build();
+		this.crystalSeed = registry.item( new ResourceLocation( AppEng.MODID, "crystal_seed" ), new ItemCrystalSeed() ).rendering( new ItemCrystalSeedRendering() ).build();
 		
 		this.certusQuartzWrench = registry.item( new ResourceLocation( AppEngTools.MODID, "certus_quartz_wrench" ), new ToolQuartzWrench() ).addFeatures( AEFeature.QuartzWrench ).build();
 		this.netherQuartzWrench = registry.item( new ResourceLocation( AppEngTools.MODID, "nether_quartz_wrench" ), new ToolQuartzWrench() ).addFeatures( AEFeature.QuartzWrench ).build();
