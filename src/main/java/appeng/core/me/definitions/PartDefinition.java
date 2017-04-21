@@ -32,12 +32,12 @@ import appeng.core.me.api.part.PartRegistryEntry;
 import appeng.core.me.api.parts.IPart;
 
 
-public class PartDefinition<P extends IPart<P>> extends Definition<PartRegistryEntry<P>> implements IPartDefinition<P>
+public class PartDefinition<P extends PartRegistryEntry> extends Definition<P> implements IPartDefinition<P>
 {
 
 	private final Optional item;
 
-	public PartDefinition( ResourceLocation identifier, PartRegistryEntry<P> t, IItemDefinition<?> item )
+	public PartDefinition( ResourceLocation identifier, P t, IItemDefinition<?> item )
 	{
 		super( identifier, t );
 		this.item = Optional.ofNullable( item );

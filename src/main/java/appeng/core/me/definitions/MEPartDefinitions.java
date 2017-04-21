@@ -10,9 +10,7 @@ import appeng.core.lib.features.AEFeature;
 import appeng.core.me.api.definitions.IMEPartDefinitions;
 import appeng.core.me.api.definitions.IPartDefinition;
 import appeng.core.me.api.part.PartRegistryEntry;
-import appeng.core.me.api.parts.IPart;
 import appeng.core.me.bootstrap.MEFeatureFactory;
-import appeng.core.me.part.FacadePart;
 import appeng.core.me.part.automation.PartAnnihilationPlane;
 import appeng.core.me.part.automation.PartExportBus;
 import appeng.core.me.part.automation.PartFormationPlane;
@@ -39,7 +37,7 @@ import appeng.core.me.part.reporting.PartStorageMonitor;
 import appeng.core.me.part.reporting.PartTerminal;
 
 
-public class MEPartDefinitions<P extends IPart<P>> extends Definitions<PartRegistryEntry<P>, IPartDefinition<P>> implements IMEPartDefinitions<P>
+public class MEPartDefinitions extends Definitions<PartRegistryEntry, IPartDefinition<PartRegistryEntry>> implements IMEPartDefinitions
 {
 
 	private final IPartDefinition cableGlass;
@@ -51,7 +49,8 @@ public class MEPartDefinitions<P extends IPart<P>> extends Definitions<PartRegis
 	private final IPartDefinition invertedToggleBus;
 
 	private final IPartDefinition cableAnchor;
-	private final IPartDefinition cableFacade;
+	// TODO 1.11.2-CD:A - Facaded is not a part ? o_O
+	// private final IPartDefinition cableFacade;
 
 	private final IPartDefinition quartzFiber;
 
@@ -80,41 +79,42 @@ public class MEPartDefinitions<P extends IPart<P>> extends Definitions<PartRegis
 
 	public MEPartDefinitions( MEFeatureFactory registry )
 	{
-		cableGlass = registry.part( new ResourceLocation( AppEng.MODID, "cable_glass" ), new PartRegistryEntry<P>( (Class<P>) PartCableGlass.class ) ).addFeatures( AEFeature.Core ).build();
-		cableCovered = registry.part( new ResourceLocation( AppEng.MODID, "cable_covered" ), new PartRegistryEntry<P>( (Class<P>) PartCableCovered.class ) ).addFeatures( AEFeature.Core ).build();
-		cableSmart = registry.part( new ResourceLocation( AppEng.MODID, "cable_smart" ), new PartRegistryEntry<P>( (Class<P>) PartCableSmart.class ) ).addFeatures( AEFeature.Channels ).build();
-		cableDense = registry.part( new ResourceLocation( AppEng.MODID, "cable_dense" ), new PartRegistryEntry<P>( (Class<P>) PartDenseCable.class ) ).addFeatures( AEFeature.Channels ).build();
+		cableGlass = registry.part( new ResourceLocation( AppEng.MODID, "cable_glass" ), new PartRegistryEntry( PartCableGlass.class ) ).addFeatures( AEFeature.Core ).build();
+		cableCovered = registry.part( new ResourceLocation( AppEng.MODID, "cable_covered" ), new PartRegistryEntry( PartCableCovered.class ) ).addFeatures( AEFeature.Core ).build();
+		cableSmart = registry.part( new ResourceLocation( AppEng.MODID, "cable_smart" ), new PartRegistryEntry( PartCableSmart.class ) ).addFeatures( AEFeature.Channels ).build();
+		cableDense = registry.part( new ResourceLocation( AppEng.MODID, "cable_dense" ), new PartRegistryEntry( PartDenseCable.class ) ).addFeatures( AEFeature.Channels ).build();
 
-		toggleBus = registry.part( new ResourceLocation( AppEng.MODID, "toggle_bus" ), new PartRegistryEntry<P>( (Class<P>) PartToggleBus.class ) ).addFeatures( AEFeature.Core ).build();
-		invertedToggleBus = registry.part( new ResourceLocation( AppEng.MODID, "inverted_toggle_bus" ), new PartRegistryEntry<P>( (Class<P>) PartInvertedToggleBus.class ) ).addFeatures( AEFeature.Core ).build();
+		toggleBus = registry.part( new ResourceLocation( AppEng.MODID, "toggle_bus" ), new PartRegistryEntry( PartToggleBus.class ) ).addFeatures( AEFeature.Core ).build();
+		invertedToggleBus = registry.part( new ResourceLocation( AppEng.MODID, "inverted_toggle_bus" ), new PartRegistryEntry( PartInvertedToggleBus.class ) ).addFeatures( AEFeature.Core ).build();
 
-		cableAnchor = registry.part( new ResourceLocation( AppEng.MODID, "cable_anchor" ), new PartRegistryEntry<P>( (Class<P>) PartCableAnchor.class ) ).addFeatures( AEFeature.Core ).build();
-		cableFacade = registry.part( new ResourceLocation( AppEng.MODID, "cable_facade" ), new PartRegistryEntry<P>( (Class<P>) FacadePart.class ) ).addFeatures( AEFeature.Core ).build();
+		cableAnchor = registry.part( new ResourceLocation( AppEng.MODID, "cable_anchor" ), new PartRegistryEntry( PartCableAnchor.class ) ).addFeatures( AEFeature.Core ).build();
 
-		quartzFiber = registry.part( new ResourceLocation( AppEng.MODID, "quartz_fiber" ), new PartRegistryEntry<P>( (Class<P>) PartQuartzFiber.class ) ).addFeatures( AEFeature.Core ).build();
+		// cableFacade = registry.part( new ResourceLocation( AppEng.MODID, "cable_facade" ), new PartRegistryEntry( FacadePart.class ) ).addFeatures( AEFeature.Core ).build();
 
-		monitor = registry.part( new ResourceLocation( AppEng.MODID, "monitor" ), new PartRegistryEntry<P>( (Class<P>) PartPanel.class ) ).addFeatures( AEFeature.Core ).build();
-		semiDarkMonitor = registry.part( new ResourceLocation( AppEng.MODID, "semi_dark_monitor" ), new PartRegistryEntry<P>( (Class<P>) PartSemiDarkPanel.class ) ).addFeatures( AEFeature.Core ).build();
-		darkMonitor = registry.part( new ResourceLocation( AppEng.MODID, "dark_monitor" ), new PartRegistryEntry<P>( (Class<P>) PartDarkPanel.class ) ).addFeatures( AEFeature.Core ).build();
+		quartzFiber = registry.part( new ResourceLocation( AppEng.MODID, "quartz_fiber" ), new PartRegistryEntry( PartQuartzFiber.class ) ).addFeatures( AEFeature.Core ).build();
 
-		storageBus = registry.part( new ResourceLocation( AppEng.MODID, "storage_bus" ), new PartRegistryEntry<P>( (Class<P>) PartStorageBus.class ) ).addFeatures( AEFeature.StorageBus ).build();
-		importBus = registry.part( new ResourceLocation( AppEng.MODID, "import_bus" ), new PartRegistryEntry<P>( (Class<P>) PartImportBus.class ) ).addFeatures( AEFeature.ImportBus ).build();
-		exportBus = registry.part( new ResourceLocation( AppEng.MODID, "export_bus" ), new PartRegistryEntry<P>( (Class<P>) PartExportBus.class ) ).addFeatures( AEFeature.ExportBus ).build();
+		monitor = registry.part( new ResourceLocation( AppEng.MODID, "monitor" ), new PartRegistryEntry( PartPanel.class ) ).addFeatures( AEFeature.Core ).build();
+		semiDarkMonitor = registry.part( new ResourceLocation( AppEng.MODID, "semi_dark_monitor" ), new PartRegistryEntry( PartSemiDarkPanel.class ) ).addFeatures( AEFeature.Core ).build();
+		darkMonitor = registry.part( new ResourceLocation( AppEng.MODID, "dark_monitor" ), new PartRegistryEntry( PartDarkPanel.class ) ).addFeatures( AEFeature.Core ).build();
 
-		levelEmitter = registry.part( new ResourceLocation( AppEng.MODID, "level_emitter" ), new PartRegistryEntry<P>( (Class<P>) PartLevelEmitter.class ) ).addFeatures( AEFeature.LevelEmitter ).build();
+		storageBus = registry.part( new ResourceLocation( AppEng.MODID, "storage_bus" ), new PartRegistryEntry( PartStorageBus.class ) ).addFeatures( AEFeature.StorageBus ).build();
+		importBus = registry.part( new ResourceLocation( AppEng.MODID, "import_bus" ), new PartRegistryEntry( PartImportBus.class ) ).addFeatures( AEFeature.ImportBus ).build();
+		exportBus = registry.part( new ResourceLocation( AppEng.MODID, "export_bus" ), new PartRegistryEntry( PartExportBus.class ) ).addFeatures( AEFeature.ExportBus ).build();
 
-		annihilationPlane = registry.part( new ResourceLocation( AppEng.MODID, "annihilation_plane" ), new PartRegistryEntry<P>( (Class<P>) PartAnnihilationPlane.class ) ).addFeatures( AEFeature.AnnihilationPlane ).build();
-		identityAnnihilationPlane = registry.part( new ResourceLocation( AppEng.MODID, "identity_annihilation_plane" ), new PartRegistryEntry<P>( (Class<P>) PartIdentityAnnihilationPlane.class ) ).addFeatures( AEFeature.AnnihilationPlane, AEFeature.IdentityAnnihilationPlane ).build();
-		formationPlane = registry.part( new ResourceLocation( AppEng.MODID, "formation_plane" ), new PartRegistryEntry<P>( (Class<P>) PartFormationPlane.class ) ).addFeatures( AEFeature.FormationPlane ).build();
+		levelEmitter = registry.part( new ResourceLocation( AppEng.MODID, "level_emitter" ), new PartRegistryEntry( PartLevelEmitter.class ) ).addFeatures( AEFeature.LevelEmitter ).build();
 
-		craftingTerminal = registry.part( new ResourceLocation( AppEng.MODID, "crafting_terminal" ), new PartRegistryEntry<P>( (Class<P>) PartCraftingTerminal.class ) ).addFeatures( AEFeature.CraftingTerminal ).build();
-		terminal = registry.part( new ResourceLocation( AppEng.MODID, "terminal" ), new PartRegistryEntry<P>( (Class<P>) PartTerminal.class ) ).addFeatures( AEFeature.Core ).build();
+		annihilationPlane = registry.part( new ResourceLocation( AppEng.MODID, "annihilation_plane" ), new PartRegistryEntry( PartAnnihilationPlane.class ) ).addFeatures( AEFeature.AnnihilationPlane ).build();
+		identityAnnihilationPlane = registry.part( new ResourceLocation( AppEng.MODID, "identity_annihilation_plane" ), new PartRegistryEntry( PartIdentityAnnihilationPlane.class ) ).addFeatures( AEFeature.AnnihilationPlane, AEFeature.IdentityAnnihilationPlane ).build();
+		formationPlane = registry.part( new ResourceLocation( AppEng.MODID, "formation_plane" ), new PartRegistryEntry( PartFormationPlane.class ) ).addFeatures( AEFeature.FormationPlane ).build();
 
-		storageMonitor = registry.part( new ResourceLocation( AppEng.MODID, "storage_monitor" ), new PartRegistryEntry<P>( (Class<P>) PartStorageMonitor.class ) ).addFeatures( AEFeature.StorageMonitor ).build();
-		conversionMonitor = registry.part( new ResourceLocation( AppEng.MODID, "conversion_monitor" ), new PartRegistryEntry<P>( (Class<P>) PartConversionMonitor.class ) ).addFeatures( AEFeature.PartConversionMonitor ).build();
+		craftingTerminal = registry.part( new ResourceLocation( AppEng.MODID, "crafting_terminal" ), new PartRegistryEntry( PartCraftingTerminal.class ) ).addFeatures( AEFeature.CraftingTerminal ).build();
+		terminal = registry.part( new ResourceLocation( AppEng.MODID, "terminal" ), new PartRegistryEntry( PartTerminal.class ) ).addFeatures( AEFeature.Core ).build();
 
-		iface = registry.part( new ResourceLocation( AppEng.MODID, "interface" ), new PartRegistryEntry<P>( (Class<P>) PartInterface.class ) ).addFeatures( AEFeature.Core ).build();
-		interfaceTerminal = registry.part( new ResourceLocation( AppEng.MODID, "interface_terminal" ), new PartRegistryEntry<P>( (Class<P>) PartInterfaceTerminal.class ) ).addFeatures( AEFeature.InterfaceTerminal ).build();
+		storageMonitor = registry.part( new ResourceLocation( AppEng.MODID, "storage_monitor" ), new PartRegistryEntry( PartStorageMonitor.class ) ).addFeatures( AEFeature.StorageMonitor ).build();
+		conversionMonitor = registry.part( new ResourceLocation( AppEng.MODID, "conversion_monitor" ), new PartRegistryEntry( PartConversionMonitor.class ) ).addFeatures( AEFeature.PartConversionMonitor ).build();
+
+		iface = registry.part( new ResourceLocation( AppEng.MODID, "interface" ), new PartRegistryEntry( PartInterface.class ) ).addFeatures( AEFeature.Core ).build();
+		interfaceTerminal = registry.part( new ResourceLocation( AppEng.MODID, "interface_terminal" ), new PartRegistryEntry( PartInterfaceTerminal.class ) ).addFeatures( AEFeature.InterfaceTerminal ).build();
 
 		init();
 	}

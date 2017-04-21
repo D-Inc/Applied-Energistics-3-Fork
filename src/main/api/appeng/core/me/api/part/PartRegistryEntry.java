@@ -21,21 +21,21 @@ import appeng.core.me.api.parts.IPart;
  *
  * @param <P> Part type
  */
-public final class PartRegistryEntry<P extends IPart<P>> extends IForgeRegistryEntry.Impl<PartRegistryEntry<P>>
+public final class PartRegistryEntry extends IForgeRegistryEntry.Impl<PartRegistryEntry>
 {
 
-	private final Class<P> partClass;
-	private final AConstructor<P> constructor;
+	private final Class<? extends IPart> partClass;
+	private final AConstructor<? extends IPart> constructor;
 
 	/**
 	 * Creates new part registry entry, wrapping given part class.
 	 * 
 	 * @param partClass The class of the part
 	 */
-	public PartRegistryEntry( Class<P> partClass )
+	public PartRegistryEntry( Class<? extends IPart> partClass )
 	{
 		this.partClass = partClass;
-		this.constructor = new AClass<P>( this.partClass ).getDeclaredConstructor();
+		this.constructor = new AClass<>( this.partClass ).getDeclaredConstructor();
 		try
 		{
 			createNewInstance();
@@ -46,14 +46,14 @@ public final class PartRegistryEntry<P extends IPart<P>> extends IForgeRegistryE
 		}
 	}
 
-	public Class<P> getPartClass()
+	public <P extends IPart<P>> Class<P> getPartClass()
 	{
-		return partClass;
+		return (Class<P>) partClass;
 	}
 
-	public P createNewInstance()
+	public <P extends IPart<P>> P createNewInstance()
 	{
-		return constructor.newInstance();
+		return (P) constructor.newInstance();
 	}
 
 }

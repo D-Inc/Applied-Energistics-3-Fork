@@ -5,15 +5,15 @@ package appeng.core.me.item;
 import net.minecraft.item.Item;
 
 import appeng.core.me.api.part.PartRegistryEntry;
-import appeng.core.me.api.parts.IPart;
+
 
 @Deprecated
-public class ItemPartDefaultTemp<P extends IPart<P>> extends Item
+public class ItemPartDefaultTemp<P extends PartRegistryEntry> extends Item
 {
 
-	private final PartRegistryEntry<P> part;
+	private final P part;
 
-	public ItemPartDefaultTemp( PartRegistryEntry<P> part )
+	public ItemPartDefaultTemp( P part )
 	{
 		this.part = part;
 	}

@@ -14,7 +14,6 @@ import appeng.core.AppEng;
 import appeng.core.lib.bootstrap.FeatureFactory;
 import appeng.core.lib.features.AEFeature;
 import appeng.core.me.api.part.PartRegistryEntry;
-import appeng.core.me.api.parts.IPart;
 import appeng.core.me.item.ItemPartDefaultTemp;
 
 
@@ -35,18 +34,18 @@ public class MEFeatureFactory extends FeatureFactory
 	}
 
 	@Deprecated
-	public <P extends IPart<P>> PartDefinitionBuilder<P> part( String id, PartRegistryEntry<P> biome )
+	public <P extends PartRegistryEntry> PartDefinitionBuilder<P> part( String id, P biome )
 	{
 		return part( new ResourceLocation( AppEng.MODID, id ), biome );
 	}
 
-	public <P extends IPart<P>> PartDefinitionBuilder<P> part( ResourceLocation id, PartRegistryEntry<P> biome )
+	public <P extends PartRegistryEntry> PartDefinitionBuilder<P> part( ResourceLocation id, P biome )
 	{
 		return new PartDefinitionBuilder<P>( this, id, biome ).features( defaultFeatures );
 	}
 
 	@Deprecated
-	public <P extends IPart<P>> IItemDefinition<ItemPartDefaultTemp<P>> defaultItemPartTemp( PartRegistryEntry<P> part )
+	public <P extends PartRegistryEntry> IItemDefinition<ItemPartDefaultTemp<P>> defaultItemPartTemp( P part )
 	{
 		IItemDefinition<ItemPartDefaultTemp<P>> def = item( part.getRegistryName(), new ItemPartDefaultTemp<>( part ) ).build();
 		defaultItemParts.put( part.getRegistryName(), def );

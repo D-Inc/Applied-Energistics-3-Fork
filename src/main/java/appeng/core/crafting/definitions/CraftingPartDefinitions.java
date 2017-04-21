@@ -15,14 +15,14 @@ import appeng.core.me.api.parts.IPart;
 import appeng.core.me.bootstrap.MEFeatureFactory;
 
 
-public class CraftingPartDefinitions<P extends IPart<P>> extends Definitions<PartRegistryEntry<P>, IPartDefinition<P>> implements ICraftingPartDefinitions<P>
+public class CraftingPartDefinitions<P extends IPart<P>> extends Definitions<PartRegistryEntry, IPartDefinition<PartRegistryEntry>> implements ICraftingPartDefinitions
 {
 
 	private final IPartDefinition patternTerminal;
 
 	public CraftingPartDefinitions( MEFeatureFactory registry )
 	{
-		patternTerminal = registry.part( new ResourceLocation( AppEng.MODID, "pattern_terminal" ), new PartRegistryEntry<P>( (Class<P>) PartPatternTerminal.class ) ).addFeatures( AEFeature.Patterns ).build();
+		patternTerminal = registry.part( new ResourceLocation( AppEng.MODID, "pattern_terminal" ), new PartRegistryEntry( PartPatternTerminal.class ) ).addFeatures( AEFeature.Patterns ).build();
 
 		init();
 	}
