@@ -138,10 +138,10 @@ public class AppEngME implements IME
 		// @formatter:on
 
 		registry = new MEFeatureFactory();
+		this.materialDefinitions = new MEMaterialDefinitions( registry );
 		this.blockDefinitions = new MEBlockDefinitions( registry );
 		this.itemDefinitions = new MEItemDefinitions( registry );
 		this.tileDefinitions = new METileDefinitions( registry );
-		this.materialDefinitions = new MEMaterialDefinitions( registry );
 		this.partDefinitions = new MEPartDefinitions<>( registry );
 		this.entityDefinitions = new MEEntityDefinitions( registry );
 		registry.preInit( event );

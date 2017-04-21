@@ -64,8 +64,8 @@ public class AppEngTools implements ITools
 	public void preInitAE( FMLPreInitializationEvent event )
 	{
 		registry = new FeatureFactory();
-		this.itemDefinitions = new ToolsItemDefinitions( registry );
 		this.materialDefinitions = new ToolsMaterialDefinitions( registry );
+		this.itemDefinitions = new ToolsItemDefinitions( registry );
 		registry.preInit( event );
 	}
 
