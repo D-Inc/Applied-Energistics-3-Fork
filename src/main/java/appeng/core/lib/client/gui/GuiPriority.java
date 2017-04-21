@@ -94,7 +94,7 @@ public class GuiPriority extends AEBaseGui
 
 		ItemStack myIcon = null;
 		final Object target = ( (AEBaseContainer) this.inventorySlots ).getTarget();
-		final MEPartDefinitions<?> parts = (MEPartDefinitions) AppEngME.INSTANCE.definitions( PartRegistryEntry.class );
+		final MEPartDefinitions parts = AppEngME.INSTANCE.<PartRegistryEntry, MEPartDefinitions>definitions( PartRegistryEntry.class );
 		final MEBlockDefinitions blocks = AppEngME.INSTANCE.definitions( Block.class );
 
 		if( target instanceof PartStorageBus )

@@ -140,9 +140,9 @@ public abstract class AEBasePart<P extends AEBasePart<P>> implements IPart<P>, I
 	}
 
 	@Deprecated
-	public PartRegistryEntry<P> getType()
+	public PartRegistryEntry getType()
 	{
-		return (PartRegistryEntry<P>) AppEngME.INSTANCE.getPartRegistry().getObject( AppEngME.INSTANCE.getRegistryName( getClass() ) );
+		return AppEngME.INSTANCE.getPartRegistry().getObject( AppEngME.INSTANCE.getRegistryName( getClass() ) );
 	}
 
 	public ResourceLocation getDefaultModelLocation()

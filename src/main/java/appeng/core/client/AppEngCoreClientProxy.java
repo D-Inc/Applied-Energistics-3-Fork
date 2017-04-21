@@ -179,7 +179,7 @@ public class AppEngCoreClientProxy extends AppEngCoreServerProxy
 				}
 			}
 		}
-		for( PartRegistryEntry<?> part : AppEngME.INSTANCE.getPartRegistry() )
+		for( PartRegistryEntry part : AppEngME.INSTANCE.getPartRegistry() )
 		{
 //			if( !part.isCable() )
 //			{

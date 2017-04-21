@@ -253,7 +253,7 @@ public class ItemFacade extends AEBaseItem implements IFacadeItem, IAlphaPassIte
 
 	public ItemStack createFromIDs( final int[] ids )
 	{
-		ItemStack facadeStack = ((MEPartDefinitions<?>) (MEPartDefinitions) AppEngME.INSTANCE.definitions( PartRegistryEntry.class )).cableFacade().maybeItem().orElseThrow( () -> new MissingDefinition( "Tried to create a facade, while facades are being deactivated." ) ).maybeStack( 1 ).get();
+		ItemStack facadeStack = AppEngME.INSTANCE.<PartRegistryEntry, MEPartDefinitions>definitions( PartRegistryEntry.class ).cableFacade().maybeItem().orElseThrow( () -> new MissingDefinition( "Tried to create a facade, while facades are being deactivated." ) ).maybeStack( 1 ).get();
 
 		final NBTTagCompound facadeTag = new NBTTagCompound();
 		facadeTag.setIntArray( "x", ids.clone() );

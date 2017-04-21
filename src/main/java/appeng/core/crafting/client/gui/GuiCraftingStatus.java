@@ -69,7 +69,7 @@ public class GuiCraftingStatus extends GuiCraftingCPU
 
 		this.status = (ContainerCraftingStatus) this.inventorySlots;
 		final Object target = this.status.getTarget();
-		final MEPartDefinitions<?> parts = (MEPartDefinitions) AppEngME.INSTANCE.definitions( PartRegistryEntry.class );
+		final MEPartDefinitions parts = AppEngME.INSTANCE.<PartRegistryEntry, MEPartDefinitions>definitions( PartRegistryEntry.class );
 
 		if( target instanceof WirelessTerminalGuiObject )
 		{

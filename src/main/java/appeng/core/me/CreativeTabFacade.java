@@ -49,7 +49,7 @@ public final class CreativeTabFacade extends CreativeTabs
 	@Override
 	public ItemStack getTabIconItem()
 	{
-		final Optional<IItemDefinition<ItemFacade>> maybeFacade = ((MEPartDefinitions<?>) (MEPartDefinitions) AppEngME.INSTANCE.definitions( PartRegistryEntry.class )).cableFacade().<ItemFacade>maybeItem();
+		final Optional<IItemDefinition<ItemFacade>> maybeFacade = AppEngME.INSTANCE.<PartRegistryEntry, MEPartDefinitions>definitions( PartRegistryEntry.class ).cableFacade().<ItemFacade>maybeItem();
 		if( maybeFacade.isPresent() )
 		{
 			return ( (ItemFacade) maybeFacade.get() ).getCreativeTabIcon();

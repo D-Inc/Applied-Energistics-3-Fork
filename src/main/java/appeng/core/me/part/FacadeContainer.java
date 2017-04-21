@@ -134,7 +134,7 @@ public class FacadeContainer implements IFacadeContainer
 				ids[1] = out.readInt();
 				ids[0] = Math.abs( ids[0] );
 
-				Optional<Item> maybeFacadeItem = ((MEPartDefinitions) AppEngME.INSTANCE.definitions( PartRegistryEntry.class )).cableFacade().maybe();
+				Optional<Item> maybeFacadeItem = AppEngME.INSTANCE.<PartRegistryEntry, MEPartDefinitions>definitions( PartRegistryEntry.class ).cableFacade().maybeItem().get().maybe();
 				if( maybeFacadeItem.isPresent() )
 				{
 					final ItemFacade ifa = (ItemFacade) maybeFacadeItem.get();

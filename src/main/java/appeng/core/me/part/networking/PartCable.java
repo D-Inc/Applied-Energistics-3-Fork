@@ -131,7 +131,7 @@ public class PartCable<P extends PartCable<P>> extends AEBasePart<P> implements 
 		{
 			ItemStack newPart = null;
 
-			final MEPartDefinitions<?> parts = (MEPartDefinitions) AppEngME.INSTANCE.definitions( PartRegistryEntry.class );
+			final MEPartDefinitions parts = AppEngME.INSTANCE.<PartRegistryEntry, MEPartDefinitions>definitions( PartRegistryEntry.class );
 
 			if( this.getCableConnectionType() == AECableType.GLASS )
 			{

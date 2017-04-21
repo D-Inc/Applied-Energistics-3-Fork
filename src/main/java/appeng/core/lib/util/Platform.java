@@ -116,6 +116,7 @@ import appeng.core.lib.util.item.AESharedNBT;
 import appeng.core.lib.util.item.OreHelper;
 import appeng.core.lib.util.item.OreReference;
 import appeng.core.lib.util.prioitylist.IPartitionList;
+import appeng.core.me.AppEngME;
 import appeng.core.me.api.networking.IGrid;
 import appeng.core.me.api.networking.IGridNode;
 import appeng.core.me.api.networking.energy.IEnergyGrid;
@@ -2068,7 +2069,7 @@ public class Platform
 
 	public static Object findPreferred( final ItemStack[] is )
 	{
-		final MEPartDefinitions<?> parts = (MEPartDefinitions) AppEngCore.INSTANCE.definitions( PartRegistryEntry.class );
+		final MEPartDefinitions parts = AppEngME.INSTANCE.<PartRegistryEntry, MEPartDefinitions>definitions( PartRegistryEntry.class );
 
 		for( final ItemStack stack : is )
 		{
