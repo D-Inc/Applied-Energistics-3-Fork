@@ -17,7 +17,6 @@ import net.minecraftforge.fml.common.event.FMLServerAboutToStartEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppedEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.FMLControlledNamespacedRegistry;
 import net.minecraftforge.fml.common.registry.RegistryBuilder;
@@ -36,8 +35,6 @@ import appeng.core.definitions.CoreTileDefinitions;
 import appeng.core.hooks.TickHandler;
 import appeng.core.lib.AELog;
 import appeng.core.lib.bootstrap.FeatureFactory;
-import appeng.core.lib.sync.GuiBridge;
-import appeng.core.lib.sync.network.NetworkHandler;
 import appeng.core.lib.worlddata.WorldData;
 import appeng.core.server.AECommand;
 
@@ -156,9 +153,6 @@ public class AppEngCore implements ICore
 		registry.postInit( event );
 
 		proxy.postInit( event );
-
-		NetworkRegistry.INSTANCE.registerGuiHandler( this, GuiBridge.GUI_Handler );
-		NetworkHandler.instance = new NetworkHandler( "AE2" );
 	}
 
 	@ModuleEventHandler
