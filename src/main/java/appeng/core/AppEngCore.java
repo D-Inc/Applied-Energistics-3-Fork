@@ -21,6 +21,8 @@ import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.FMLControlledNamespacedRegistry;
 import net.minecraftforge.fml.common.registry.RegistryBuilder;
 
+import code.elix_x.excore.utils.net.packets.SmartNetworkWrapper;
+
 import appeng.api.definitions.IDefinition;
 import appeng.api.definitions.IDefinitions;
 import appeng.api.module.Module;
@@ -46,6 +48,8 @@ import appeng.core.server.AECommand;
 public class AppEngCore implements ICore
 {
 
+	public static final String FULLMODID = AppEng.MODID + "|" + NAME;
+
 	@Module.Instance( NAME )
 	public static final AppEngCore INSTANCE = null;
 
@@ -63,6 +67,8 @@ public class AppEngCore implements ICore
 	private CoreTileDefinitions tileDefinitions;
 	private CoreMaterialDefinitions materialDefinitions;
 	private CoreEntityDefinitions entityDefinitions;
+
+	public SmartNetworkWrapper net;
 
 	public AppEngCore()
 	{
@@ -118,6 +124,8 @@ public class AppEngCore implements ICore
 		this.tileDefinitions = new CoreTileDefinitions( registry );
 		this.entityDefinitions = new CoreEntityDefinitions( registry );
 		registry.preInit( event );
+
+		net = new SmartNetworkWrapper( FULLMODID );
 
 		CreativeTab.init();
 

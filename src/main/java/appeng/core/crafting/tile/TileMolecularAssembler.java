@@ -19,7 +19,6 @@
 package appeng.core.crafting.tile;
 
 
-import java.io.IOException;
 import java.util.List;
 
 import io.netty.buffer.ByteBuf;
@@ -52,9 +51,8 @@ import appeng.core.api.util.IConfigManager;
 import appeng.core.crafting.AppEngCrafting;
 import appeng.core.crafting.definitions.CraftingItemDefinitions;
 import appeng.core.crafting.item.ItemPattern;
+import appeng.core.crafting.net.AssemblerAnimationMessage;
 import appeng.core.lib.container.ContainerNull;
-import appeng.core.lib.sync.network.NetworkHandler;
-import appeng.core.lib.sync.packets.PacketAssemblerAnimation;
 import appeng.core.lib.tile.TileEvent;
 import appeng.core.lib.tile.events.TileEventType;
 import appeng.core.lib.tile.inventory.AppEngInternalInventory;
@@ -63,7 +61,6 @@ import appeng.core.lib.util.ConfigManager;
 import appeng.core.lib.util.IConfigManagerHost;
 import appeng.core.lib.util.InventoryAdaptor;
 import appeng.core.lib.util.Platform;
-import appeng.core.lib.util.item.AEItemStack;
 import appeng.core.me.api.networking.IGridNode;
 import appeng.core.me.api.networking.crafting.ICraftingPatternDetails;
 import appeng.core.me.api.networking.events.MENetworkEventSubscribe;
@@ -71,7 +68,6 @@ import appeng.core.me.api.networking.events.MENetworkPowerStatusChange;
 import appeng.core.me.api.networking.ticking.IGridTickable;
 import appeng.core.me.api.networking.ticking.TickRateModulation;
 import appeng.core.me.api.networking.ticking.TickingRequest;
-import appeng.core.me.api.storage.data.IAEItemStack;
 import appeng.core.me.grid.GridAccessException;
 import appeng.core.me.part.automation.DefinitionUpgradeInventory;
 import appeng.core.me.part.automation.UpgradeInventory;
@@ -506,16 +502,7 @@ public class TileMolecularAssembler extends AENetworkInvTile implements IUpgrade
 
 				this.ejectHeldItems();
 
-				try
-				{
-					final TargetPoint where = new TargetPoint( this.world.provider.getDimension(), this.pos.getX(), this.pos.getY(), this.pos.getZ(), 32 );
-					final IAEItemStack item = AEItemStack.create( output );
-					NetworkHandler.instance.sendToAllAround( new PacketAssemblerAnimation( this.pos, (byte) speed, item ), where );
-				}
-				catch( final IOException e )
-				{
-					// ;P
-				}
+				AppEngCrafting.INSTANCE.net.sendToAllAround( new AssemblerAnimationMessage( this.pos, speed ), new TargetPoint( this.world.provider.getDimension(), this.pos.getX(), this.pos.getY(), this.pos.getZ(), 32 ) );
 
 				this.markDirty();
 				this.updateSleepiness();
