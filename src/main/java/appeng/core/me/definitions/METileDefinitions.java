@@ -53,8 +53,8 @@ public class METileDefinitions extends Definitions<Class<TileEntity>, ITileDefin
 		this.wirelessAccessPoint = registry.tile( new ResourceLocation( AppEng.MODID, "wireless_access_point" ), TileWireless.class ).features( AEFeature.WirelessAccessTerminal ).build();
 		
 		this.securityStation = registry.tile( new ResourceLocation( AppEng.MODID, "security_station" ), TileSecurity.class ).features( AEFeature.Security ).build();
-		this.quantumRing = registry.tile( new ResourceLocation( AppEng.MODID, "quantum_ring" ), TileQuantumBridge.class ).features( AEFeature.QuantumNetworkBridge ).build();
-		this.quantumLink = registry.tile( new ResourceLocation( AppEng.MODID, "quantum_link" ), TileQuantumBridge.class ).features( AEFeature.QuantumNetworkBridge ).build();
+		this.quantumRing = registry.tile( new ResourceLocation( AppEng.MODID, "quantum_ring" ), TileQuantumBridge.Ring.class ).features( AEFeature.QuantumNetworkBridge ).build();
+		this.quantumLink = registry.tile( new ResourceLocation( AppEng.MODID, "quantum_link" ), TileQuantumBridge.Link.class ).features( AEFeature.QuantumNetworkBridge ).build();
 		
 		this.inscriber = registry.tile( new ResourceLocation( AppEng.MODID, "inscriber"), TileInscriber.class ).features( AEFeature.Inscriber ).build();
 		this.controller = registry.tile( new ResourceLocation( AppEng.MODID, "controller" ), TileController.class ).features( AEFeature.Channels ).build();

@@ -54,7 +54,7 @@ import appeng.core.me.grid.cluster.implementations.QuantumCalculator;
 import appeng.core.me.grid.cluster.implementations.QuantumCluster;
 
 
-public class TileQuantumBridge extends AENetworkInvTile implements IAEMultiBlock, ITickable
+public abstract class TileQuantumBridge extends AENetworkInvTile implements IAEMultiBlock, ITickable
 {
 	private final byte corner = 16;
 	private final int[] sidesRing = {};
@@ -347,4 +347,15 @@ public class TileQuantumBridge extends AENetworkInvTile implements IAEMultiBlock
 	{
 		return this.corner;
 	}
+
+	public static class Ring extends TileQuantumBridge
+	{
+
+	}
+
+	public static class Link extends TileQuantumBridge
+	{
+
+	}
+
 }
