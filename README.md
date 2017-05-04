@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/AEModernMCPort/Applied-Energistics-3.svg?branch=codename-andromeda)](https://travis-ci.org/AEModernMCPort/Applied-Energistics-3) [![Latest](http://github-release-version.herokuapp.com/github/AEModernMCPort/Applied-Energistics-3/release.svg?style=flat)](https://github.com/AEModernMCPort/Applied-Energistics-3/releases/latest)
+[![Build Status](https://travis-ci.org/AEModernMCPort/Applied-Energistics-3.svg?branch=codename-andromeda)](https://travis-ci.org/AEModernMCPort/Applied-Energistics-3) [![Latest](http://github-release-version.herokuapp.com/github/AEModernMCPort/Applied-Energistics-3/release.svg?style=flat)](https://github.com/AEModernMCPort/Applied-Energistics-3/releases/latest) [![Discord](https://img.shields.io/discord/219142420112211981.svg)](https://discord.gg/bwq3k79)
 
 ![Logo](logo.gif)
 
