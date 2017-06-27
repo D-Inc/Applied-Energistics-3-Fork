@@ -6,6 +6,18 @@
 
 This repository is a WIP on Applied Energistics 3.
 
+## We are still alive!
+
+So if you look at our latest commit or commit history, you will probably think that we are dead. **We are not!**
+All the work has moved to the [ReOver](https://github.com/AEModernMCPort/Applied-Energistics-3-ReOver) repository. You see, some stuff just can't be ported and has to be fully rewritten. We are using [ReOver](https://github.com/AEModernMCPort/Applied-Energistics-3-ReOver) repo just for that - a clean sheet where we can write and test stuff without worrying of breaking old stuff.
+
+[Go check it out!
+https://github.com/AEModernMCPort/Applied-Energistics-3-ReOver](https://github.com/AEModernMCPort/Applied-Energistics-3-ReOver)
+
+_Once time comes, the 2 repositories will be merged forming a new one._
+
+-----
+
 ### Differences from AE2 (the beginning)
 
 Applied Energistics 3 has a whole new modular structure described in a dedicated file - [structure.md](structure.md).
