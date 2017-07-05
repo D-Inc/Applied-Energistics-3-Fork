@@ -21,13 +21,13 @@ cache:
     - "$HOME/.gradle/caches/"
     - "$HOME/.gradle/wrapper/"
 
-#deploy:
-#  - provider: releases
-#    api_key:
-#      secure: $GITACCESSTOKEN
-#    file_glob: true
-#    file: "./build/libs/*.jar | grep -v obf"
-#    skip_cleanup: true
+deploy:
+  - provider: releases
+    api_key:
+      secure: $token
+    file_glob: true
+    file: "./build/libs/*.jar | grep -v obf"
+    skip_cleanup: true
 #    on:
 #      tags: true
 #  - provider: script
