@@ -16,7 +16,7 @@ before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
   - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 
-script: "./gradlew build test"
+script: "./gradlew build"
 
 cache:
   directories:
@@ -24,13 +24,13 @@ cache:
     - "$HOME/.gradle/wrapper/"
 
 deploy:
-  - provider: releases
-    api_key:
-      secure: $token
-    file_glob: true
-    file: "./build/libs/*.jar | grep -v obf"
-    skip_cleanup: true
-    on:
+  provider: releases
+  api_key: $token
+  file_glob: true
+  file:
+  - "build/libs/*.jar"
+  skip_cleanup: true
+  on:
 #      tags: true
 #  - provider: script
 #    script: /bin/sh ./gitwebpages.sh
